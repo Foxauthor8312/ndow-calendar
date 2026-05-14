@@ -276,11 +276,19 @@ button{
   margin-top:14px;
   font-size:14px;
 }
-  .user-display{
+
+.user-display{
   font-size:14px;
   color:rgba(255,255,255,0.9);
   margin-top:6px;
 }
+
+.account-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+  
 </style>
 </head>
 
@@ -337,14 +345,19 @@ button{
   </div>
 
 </div>
-<div id="userDisplay" class="user-display">
-  Logged in
-</div>
-  
-  <div class="controls">
+<div class="account-controls">
+
+  <div id="userDisplay" class="user-display">
+    Logged in
+  </div>
+
   <button onclick="logout()">
     Logout
   </button>
+
+</div>
+
+<div class="controls">
     
     <button onclick="prevMonth()">Previous</button>
 
