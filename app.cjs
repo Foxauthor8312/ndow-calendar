@@ -108,7 +108,7 @@ while (true) {
     pageUrl,
     {
       waitUntil:'networkidle2',
-      timeout:20000
+      timeout:60000
     }
   );
  
