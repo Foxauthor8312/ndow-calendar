@@ -1,10 +1,30 @@
-{
-  "Hunter Education":"hunter@example.com",
-  "Fishing":"fishing@example.com",
-  "Wildlife":"wildlife@example.com",
-  "Archery":"archery@example.com",
-  "Bowhunter":"bowhunter@example.com",
-  "Boating":"boating@example.com",
-  "Schools":"schools@example.com",
-  "Other":"lvrcav8tr@gmail.com"
-}
+[
+  {
+    "title":"Hunter Education & Shooting Sports Coordinator",
+    "email":"mgolson@ndow.org"
+  },
+  {
+    "title":"Fishing / Schools Program Coordinator",
+    "email":"abbeyc@ndow.org"
+  },
+  {
+    "title":"Wildlife Education Coordinator",
+    "email":"lauren.macleod@ndow.org"
+  },
+  {
+    "title":"Urban Wildlife Education Coordinator",
+    "email":"claire.clarke@ndow.org"
+  },
+  {
+    "title":"Boating Coordinator",
+    "email":"boating@example.com"
+  },
+  {
+    "title":"Volunteer Coordinator Conservation Education",
+    "email":"michelle.lopez@ndow.org"
+  },
+  {
+    "title":"Other / Custom Email",
+    "email":"custom"
+  }
+]
