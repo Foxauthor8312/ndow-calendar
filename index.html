@@ -2,26 +2,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>NDOW Volunteer Event Calendar</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+ <title>NDOW Volunteer Event Calendar</title>
 
 
 <style>
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
+  font-family:'Inter',sans-serif;
   background:#f3f4f6;
 }
 
 header{
-  background:#166534;
+  background:#19304B;
   color:white;
-  padding:20px;
+  padding:20px 24px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  border-bottom:2px solid #F29647;
 }
 
+h1{
+  margin:0;
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
 .controls{
   display:flex;
   gap:10px;
@@ -29,13 +42,18 @@ header{
 }
 
 button{
-  background:white;
-  color:#166534;
+  background:#F29647;
+  color:white;
   border:none;
   padding:10px 16px;
-  border-radius:8px;
+  border-radius:4px;
   cursor:pointer;
-  font-weight:bold;
+  font-weight:600;
+  transition:.2s ease;
+}
+
+button:hover{
+  opacity:.9;
 }
 
 .calendar{
@@ -222,18 +240,19 @@ button{
   color:#374151;
 }
 .disclaimer{
-  background:#f3f4f6;
+  background:#ECECEC;
   color:#4b5563;
   font-size:12px;
   line-height:1.2;
   padding:20px;
   border-top:1px solid #d1d5db;
 }
- .subtitle{
-  color:rgba(255,255,255,0.85);
-  font-size:14px;
-  margin-top:4px;
-  letter-spacing:.3px;
+.subtitle{
+  color:rgba(255,255,255,0.78);
+  font-size:13px;
+  margin-top:6px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
 }
   .login-screen{
   position:fixed;
