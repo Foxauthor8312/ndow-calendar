@@ -70,7 +70,7 @@ if(await page.$('input[type="password"]')){
   );
 
   await page.waitForNavigation({
-    waitUntil:'domcontentloaded',
+    waitUntil:'networkidle2',
     timeout:60000
   });
 
@@ -107,7 +107,7 @@ while (true) {
   await page.goto(
     pageUrl,
     {
-      waitUntil:'domcontentloaded',
+      waitUntil:'networkidle2',
       timeout:20000
     }
   );
