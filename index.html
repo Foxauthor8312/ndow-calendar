@@ -254,26 +254,6 @@ button{
 
 <div class="calendar" id="calendar"></div>
 
-<div class="modal" id="modal">
-
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal()">×</span>
-
-    <h2 id="modalTitle"></h2>
-
-    <p><b>Date:</b> <span id="modalDate"></span></p>
-    <p><b>Time:</b> <span id="modalTime"></span></p>
-    <p><b>Location:</b> <span id="modalLocation"></span></p>
-    <p><b>Category:</b> <span id="modalCategory"></span></p>
-    <p>
-    <b>Description:</b><br>
-     <span id="modalDescription"></span>
-    </p>
-
-  </div>
-
-</div>
 
 <script>
 
@@ -442,38 +422,6 @@ function renderCalendar(){
     calendar.appendChild(cell);
 
   }
-
-}
-
-function showEvent(event){
-
-  document.getElementById('modal').style.display =
-    'flex';
-
-  document.getElementById('modalTitle').innerText =
-    event.title;
-
-  document.getElementById('modalDate').innerText =
-    event.date;
-
-  document.getElementById('modalTime').innerText =
-    event.time;
-
-  document.getElementById('modalLocation').innerText =
-    event.location;
-
-  document.getElementById('modalCategory').innerText =
-    event.category;
-
-  document.getElementById('modalDescription').innerText =
-  event.description;
-
-}
-
-function closeModal(){
-
-  document.getElementById('modal').style.display =
-    'none';
 
 }
 
