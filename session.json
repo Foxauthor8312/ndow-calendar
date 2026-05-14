@@ -1,0 +1,59 @@
+[
+  {
+    "name": "_storefront_session",
+    "value": "su%2F9B6JKOQe0gVAEbPdhm4tCyapoHVS%2F8%2FB3Z3ykJSJxyAK9AjR3ptpXX0Pe8iIWCBMvWKTa%2BLsOeE0w1C%2FYj0D5%2BN08D7rHY%2BsYBz6LwMs6Pm8PbpiNm8hXkwSEH3bkxCqTraHQam7ZvTDJBShIUo3r64nFmeBxKVkJSqtsBaQsKDQLrEbIx%2FyG52kyFMhT6fz28dfN6HE5qIMpuGA05Euqj0WxkvEaX0q2ilIs2GtULbrqtujKsZJmcR6tt95v2h9BKIQ0ocEoN3aoRC41CObwPhSFp68q4ZVc7WiGAqcf%2BeLayrp1cJw9y7SkwWncQhHqTgC7x7bZkiW9nqw3XnCGy7clz0AZCS%2FQiyrcdbxNRjsMKWsIib39o58dZm%2F13iDv5kgvkAiFIFLgNBup1wsW7g9zJ9ZSrBRbUAKVIv17h4GVpWC3jVymetGxiyr1XOzxIf8IPgy%2Bgoeu9JJv%2FyFo65xNOqhdCJZV%2BQieo7%2FXV%2Fu8Rve3yG%2BW%2FXGe4VB7U2W%2FXqZJalHNF1NQRteu--R%2FzLXkb8mP%2FQtiUV--oSL0RfY84bzxdwKpPvvzSA%3D%3D",
+    "domain": "nevada.events.licensing.app",
+    "path": "/",
+    "expires": -1,
+    "size": 641,
+    "httpOnly": true,
+    "secure": false,
+    "session": true,
+    "priority": "Medium",
+    "sourceScheme": "Secure",
+    "sameParty": false
+  },
+  {
+    "name": "AWSALBCORS",
+    "value": "UH6bn9F/8Y/WnBf+OdbeTtbLePsKDu+qNipAfBQAFd9pLkjjFCdBH0K0uF+H7ggVbtsH3lqqNZflHKq+cxUgiPZU/m57UUMyd6vY1Hl8AhAYu/6WqRVMLlzzP+i0",
+    "domain": "nevada.events.licensing.app",
+    "path": "/",
+    "expires": 1779368931.06902,
+    "size": 134,
+    "httpOnly": false,
+    "secure": true,
+    "session": false,
+    "sameSite": "None",
+    "priority": "Medium",
+    "sourceScheme": "Secure",
+    "sameParty": false
+  },
+  {
+    "name": "AWSALB",
+    "value": "UH6bn9F/8Y/WnBf+OdbeTtbLePsKDu+qNipAfBQAFd9pLkjjFCdBH0K0uF+H7ggVbtsH3lqqNZflHKq+cxUgiPZU/m57UUMyd6vY1Hl8AhAYu/6WqRVMLlzzP+i0",
+    "domain": "nevada.events.licensing.app",
+    "path": "/",
+    "expires": 1779368931.068754,
+    "size": 130,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "priority": "Medium",
+    "sourceScheme": "Secure",
+    "sameParty": false
+  },
+  {
+    "name": "required_details_saved_for_contract",
+    "value": "o3YlUVXeL%2FIpG9BD6XY%2BJqcrtyKSWNsT2qtVaK9rsqFgzUMSM10Uzc0OnZCDi6GjQny8SiDS1JSuKRlIXzhDrswttpW2z6q3JQiE09JK9izsRx09vXAEs77c2LshayDeeUaqoKcqzFJqXNOq6dYrVo6dQNu%2F6o7WWLdZ1iM9Aoh5UH3FycqRvW%2Bgatfl--%2BjfRk5ty0bwfi9l5--9CQ1wb2OU1xzV8E5rXQzCg%3D%3D",
+    "domain": "nevada.events.licensing.app",
+    "path": "/",
+    "expires": 1778764431.069123,
+    "size": 281,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "priority": "Medium",
+    "sourceScheme": "Secure",
+    "sameParty": false
+  }
+]
