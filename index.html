@@ -129,6 +129,63 @@ button{
   font-size: 28px;
   cursor: pointer;
 }
+/* LEGEND */
+
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  padding:14px 20px;
+  background:white;
+  border-bottom:1px solid #d1d5db;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+}
+
+.legend-color{
+  width:14px;
+  height:14px;
+  border-radius:4px;
+  display:inline-block;
+}
+
+.hunter{
+  background:#2563eb;
+}
+
+.fishing{
+  background:#16a34a;
+}
+
+.wildlife{
+  background:#9333ea;
+}
+
+.archery{
+  background:#ea580c;
+}
+
+.bowhunter{
+  background:#dc2626;
+}
+
+.boating{
+  background:#0891b2;
+}
+
+.schools{
+  background:#b45309;
+}
+
+.other{
+  background:#64748b;
+}
+  
   
 </style>
 </head>
@@ -150,6 +207,50 @@ button{
   </div>
 
 </header>
+
+  <div class="legend">
+
+  <div class="legend-item">
+    <span class="legend-color hunter"></span>
+    Hunter Education
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color fishing"></span>
+    Fishing
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color wildlife"></span>
+    Wildlife
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color archery"></span>
+    Archery
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color bowhunter"></span>
+    Bowhunter
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color boating"></span>
+    Boating
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color schools"></span>
+    Schools
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color other"></span>
+    Other
+  </div>
+
+</div>
 
 <div class="calendar" id="calendar"></div>
 
