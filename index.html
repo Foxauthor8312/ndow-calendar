@@ -412,7 +412,7 @@ button{
 </div>
 
 <script>
-  
+let authorizedUsers = [];  
 let categoryEmails = {};
 
  
@@ -448,17 +448,17 @@ events = data.events || data;
 
   });
 
-fetch('emails.json')
+fetch('users.json')
   .then(res => res.json())
   .then(data => {
 
-    categoryEmails = data;
+    authorizedUsers = data;
 
   })
   .catch(err => {
 
     console.error(
-      'Email config failed',
+      'User config failed',
       err
     );
 
