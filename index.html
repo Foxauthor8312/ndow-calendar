@@ -907,6 +907,14 @@ if(
     'appContent'
   ).style.display = 'block';
 
+  document.getElementById(
+  'userDisplay'
+).innerText =
+  'Logged in as: ' +
+  localStorage.getItem(
+    'ndowUser'
+  );
+  
 }
   let inactivityTimer;
 
