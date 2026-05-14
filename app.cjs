@@ -18,10 +18,9 @@ page.on('request', req => {
     req.resourceType();
 
   if(
-    type === 'image' ||
-    type === 'stylesheet' ||
-    type === 'font'
-  ){
+  type === 'image' ||
+  type === 'font'
+){
     req.abort();
   } else {
     req.continue();
