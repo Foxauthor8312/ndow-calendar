@@ -428,8 +428,10 @@ function renderCalendar(){
 
       div.innerText = event.title;
 
-     div.onclick = () => openEventModal(event.url);
-
+     //div.onclick = () => openEventModal(event.url);
+div.onclick = () => {
+  alert(JSON.stringify(event, null, 2));
+};
       cell.appendChild(div);
 
     });
