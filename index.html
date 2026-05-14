@@ -746,6 +746,25 @@ async function openEventModal(eventUrl) {
  modal.classList.remove("hidden");
  modal.style.display = "flex";
 
+ const event =
+  events.find(e => e.url === eventUrl);
+
+const eventDate =
+  new Date(event.date);
+
+const now =
+  new Date();
+
+const oneDayAfter =
+  new Date(eventDate);
+
+oneDayAfter.setDate(
+  oneDayAfter.getDate() + 1
+);
+
+const allowRequests =
+  now <= oneDayAfter;
+ 
  modalBody.innerHTML = `
   <div class="modal-body">
 
@@ -790,6 +809,8 @@ async function openEventModal(eventUrl) {
   "
 >
 
+${allowRequests ? `
+
 <a href="#"
    class="request-link"
    onclick="requestInstructor('${eventUrl}')">
@@ -797,6 +818,20 @@ async function openEventModal(eventUrl) {
    Send Instructor Request
 
 </a>
+
+` : `
+
+<div style="
+  margin-top:16px;
+  color:#6b7280;
+  font-size:14px;
+">
+
+  Volunteer requests are closed for this event.
+
+</div>
+
+`}
 
   </div>
 `;
@@ -861,6 +896,8 @@ async function openEventModal(eventUrl) {
   "
 >
 
+${allowRequests ? `
+
 <a href="#"
    class="request-link"
    onclick="requestInstructor('${eventUrl}')">
@@ -868,6 +905,20 @@ async function openEventModal(eventUrl) {
    Send Instructor Request
 
 </a>
+
+` : `
+
+<div style="
+  margin-top:16px;
+  color:#6b7280;
+  font-size:14px;
+">
+
+  Volunteer requests are closed for this event.
+
+</div>
+
+`}
       </div>
     `;
 
