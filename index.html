@@ -317,14 +317,7 @@ fetch('events.json')
   .then(res => res.json())
   .then(data => {
 
-      const events =
-  data.events || data;
-    
-  document.getElementById('lastUpdated')
-  .innerText =
-  'Last Updated: ' + data.lastUpdated;
-
-events = data.events.map(event => {
+events = (data.events || data).map(event => {
 
       let formattedDate = '';
 
