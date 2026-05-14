@@ -195,6 +195,13 @@ button{
   border-radius:8px;
   font-weight:bold;
 }
+
+.updated-bar{
+  background:#e5e7eb;
+  padding:10px 20px;
+  font-size:14px;
+  color:#374151;
+}
   
 </style>
 </head>
@@ -216,7 +223,10 @@ button{
   </div>
 
 </header>
-
+<div id="lastUpdated" class="updated-bar">
+  Last Updated:
+</div>
+  
   <div class="legend">
 
   <div class="legend-item">
@@ -298,7 +308,11 @@ fetch('events.json')
   .then(res => res.json())
   .then(data => {
 
-    events = data.map(event => {
+  document.getElementById('lastUpdated')
+  .innerText =
+  'Last Updated: ' + data.lastUpdated;
+
+events = data.events.map(event => {
 
       let formattedDate = '';
 
