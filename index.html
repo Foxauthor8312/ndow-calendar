@@ -317,51 +317,7 @@ fetch('events.json')
   .then(res => res.json())
   .then(data => {
 
-events = (data.events || data).map(event => {
-
-      let formattedDate = '';
-
-      const cleanDate =
-  String(event.date || '').substring(0, 12);
-
-const match = cleanDate.match(
-  /(\w+)\s(\d+),\s(\d{4})/
-);
-      if(match){
-
-        const months = {
-          Jan:'01',
-          Feb:'02',
-          Mar:'03',
-          Apr:'04',
-          May:'05',
-          Jun:'06',
-          Jul:'07',
-          Aug:'08',
-          Sep:'09',
-          Oct:'10',
-          Nov:'11',
-          Dec:'12'
-        };
-
-        const month =
-          months[match[1].substring(0,3)];
-
-        const day =
-          match[2].padStart(2,'0');
-
-        const year = match[3];
-
-        formattedDate =
-          `${year}-${month}-${day}`;
-      }
-
-      return {
-        ...event,
-        date: formattedDate
-      };
-
-    });
+events = data.events || data;
 
     renderCalendar();
 
