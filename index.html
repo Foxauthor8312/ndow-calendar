@@ -309,7 +309,11 @@ button:hover{
   align-items:center;
   gap:10px;
 }
-  
+
+ button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
 </style>
 </head>
 
@@ -341,9 +345,11 @@ button:hover{
     >
 
     <button
-      class="login-button"
-      onclick="checkLogin()"
-    >
+  id="loginButton"
+  class="login-button"
+  onclick="checkLogin()"
+  disabled
+>
       Access Calendar
     </button>
 
@@ -492,6 +498,26 @@ events = data.events || data;
 
   });
 
+fetch('users.json')
+  .then(res => res.json())
+  .then(data => {
+
+    authorizedUsers = data;
+
+    document.getElementById(
+      'loginButton'
+    ).disabled = false;
+
+  })
+  .catch(err => {
+
+    console.error(
+      'User config failed',
+      err
+    );
+
+  });
+ 
 fetch('emails.json')
   .then(res => res.json())
   .then(data => {
@@ -524,6 +550,7 @@ function checkLogin(){
   const validUser =
     authorizedUsers.find(user =>
 
+ 
       user.name.toLowerCase() ===
       name.toLowerCase()
 
