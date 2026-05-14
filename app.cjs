@@ -84,9 +84,7 @@ while (true) {
 
     const results = [];
 
-    const cards = document.querySelectorAll(
-      'article.row.my-3.mx-0.rounded.border-0.shadow.bg-white'
-    );
+   const cards = document.querySelectorAll('article');
 
     cards.forEach(card => {
 
