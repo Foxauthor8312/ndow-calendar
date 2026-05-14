@@ -10,6 +10,25 @@ const fs = require('fs');
 
   const page = await browser.newPage();
 
+    await page.setRequestInterception(true);
+
+page.on('request', req => {
+
+  const type =
+    req.resourceType();
+
+  if(
+    type === 'image' ||
+    type === 'stylesheet' ||
+    type === 'font'
+  ){
+    req.abort();
+  } else {
+    req.continue();
+  }
+
+});
+  
   if(fs.existsSync('session.json')){
 
     const cookies = JSON.parse(
@@ -90,16 +109,12 @@ while (true) {
     pageUrl,
     {
       waitUntil:'domcontentloaded',
-      timeout:60000
+      timeout:2000
     }
   );
  
 
-  await new Promise(resolve =>
-    setTimeout(resolve, 2000)
-  );
-
-  const events = await page.evaluate(() => {
+    const events = await page.evaluate(() => {
 
     const results = [];
 
