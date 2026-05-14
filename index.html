@@ -196,7 +196,17 @@ button{
   border-radius:8px;
   font-weight:bold;
 }
-
+.request-link{
+  display:inline-block;
+  margin-top:12px;
+  margin-left:10px;
+  padding:12px 18px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
 .updated-bar{
   background:#e5e7eb;
   padding:10px 20px;
@@ -492,12 +502,20 @@ async function openEventModal(eventUrl) {
     </p>
 
     <a href="${eventUrl}"
-       target="_blank"
-       class="official-link">
+   target="_blank"
+   class="official-link">
 
-       Open Official Event Page
+   Open Official Event Page
 
-    </a>
+</a>
+
+<a href="#"
+   class="request-link"
+   onclick="requestInstructor('${eventUrl}')">
+
+   Request Instructor Assignment
+
+</a>
 
   </div>
 `;
@@ -534,6 +552,14 @@ async function openEventModal(eventUrl) {
    Open Official Event Page
 
 </a>
+
+<a href="#"
+   class="request-link"
+   onclick="requestInstructor('${eventUrl}')">
+
+   Request Instructor Assignment
+
+</a>
       </div>
     `;
 
@@ -545,6 +571,46 @@ async function openEventModal(eventUrl) {
       </div>
     `;
   }
+}
+
+function requestInstructor(eventUrl){
+
+  const event =
+    events.find(e => e.url === eventUrl);
+
+  if(!event) return;
+
+  const subject =
+    encodeURIComponent(
+      'Instructor Request - ' + event.title
+    );
+
+  const body =
+    encodeURIComponent(
+
+`I would like to volunteer as an instructor for the following event:
+
+${event.title}
+
+Date:
+${event.date}
+
+Time:
+${event.time}
+
+Location:
+${event.location}
+
+Event Link:
+${event.url}
+
+Thank you.
+`
+    );
+
+  window.location.href =
+  `mailto:lvrcav8tr@gmail.com?subject=${subject}&body=${body}`;
+
 }
   
 </script>
