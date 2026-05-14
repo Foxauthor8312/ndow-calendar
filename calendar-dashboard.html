@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NDOW Event Calendar</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+}
+
+header{
+  background:#166534;
+  color:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.controls{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+button{
+  background:white;
+  color:#166534;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.calendar{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  grid-auto-rows:minmax(140px,auto);
+  gap:1px;
+  background:#d1d5db;
+}
+
+.day-name{
+  background:#e5e7eb;
+  padding:15px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.day{
+  background:white;
+  min-height:140px;
+  padding:8px;
+}
+
+.day-number{
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.event{
+  padding:6px;
+  border-radius:6px;
+  color:white;
+  font-size:12px;
+  margin-bottom:5px;
+  cursor:pointer;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:white;
+  width:500px;
+  border-radius:14px;
+  padding:25px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <h1>NDOW Event Calendar</h1>
+
+  <div class="controls">
+
+    <button onclick="prevMonth()">Previous</button>
+
+    <h2 id="monthLabel"></h2>
+
+    <button onclick="nextMonth()">Next</button>
+
+  </div>
+
+</header>
+
+<div class="calendar" id="calendar"></div>
+
+<div class="modal" id="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal()">×</span>
+
+    <h2 id="modalTitle"></h2>
+
+    <p><b>Date:</b> <span id="modalDate"></span></p>
+    <p><b>Time:</b> <span id="modalTime"></span></p>
+    <p><b>Location:</b> <span id="modalLocation"></span></p>
+    <p><b>Category:</b> <span id="modalCategory"></span></p>
+    <p>
+    <b>Description:</b><br>
+     <span id="modalDescription"></span>
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+
+const categoryColors = {
+  'Hunter Education':'#2563eb',
+  'Fishing':'#16a34a',
+  'Wildlife':'#9333ea',
+  'Archery':'#ea580c',
+  'Bowhunter':'#dc2626',
+  'Boating':'#0891b2',
+  'Schools':'#b45309',
+  'Other': '#64748b',
+};
+
+let events = [];
+
+fetch('events.json')
+  .then(res => res.json())
+  .then(data => {
+
+    events = data.map(event => {
+
+      let formattedDate = '';
+
+      const cleanDate =
+  String(event.date || '').substring(0, 12);
+
+const match = cleanDate.match(
+  /(\w+)\s(\d+),\s(\d{4})/
+);
+      if(match){
+
+        const months = {
+          Jan:'01',
+          Feb:'02',
+          Mar:'03',
+          Apr:'04',
+          May:'05',
+          Jun:'06',
+          Jul:'07',
+          Aug:'08',
+          Sep:'09',
+          Oct:'10',
+          Nov:'11',
+          Dec:'12'
+        };
+
+        const month =
+          months[match[1].substring(0,3)];
+
+        const day =
+          match[2].padStart(2,'0');
+
+        const year = match[3];
+
+        formattedDate =
+          `${year}-${month}-${day}`;
+      }
+
+      return {
+        ...event,
+        date: formattedDate
+      };
+
+    });
+
+    renderCalendar();
+
+  })
+  .catch(err => {
+
+    console.error(err);
+
+    renderCalendar();
+
+  });
+
+let currentDate = new Date();
+
+function renderCalendar(){
+
+  const calendar =
+    document.getElementById('calendar');
+
+  calendar.innerHTML = '';
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+
+  const monthNames = [
+    'January','February','March','April',
+    'May','June','July','August',
+    'September','October','November','December'
+  ];
+
+  document.getElementById('monthLabel').innerText =
+    monthNames[month] + ' ' + year;
+
+  const firstDay =
+    new Date(year, month, 1).getDay();
+
+  const daysInMonth =
+    new Date(year, month + 1, 0).getDate();
+
+  const dayNames = [
+    'Sun','Mon','Tue','Wed',
+    'Thu','Fri','Sat'
+  ];
+
+  dayNames.forEach(name => {
+
+    const div = document.createElement('div');
+
+    div.className = 'day-name';
+
+    div.innerText = name;
+
+    calendar.appendChild(div);
+
+  });
+
+  for(let i = 0; i < firstDay; i++){
+
+    const empty = document.createElement('div');
+
+    empty.className = 'day';
+
+    calendar.appendChild(empty);
+
+  }
+
+  for(let day = 1; day <= daysInMonth; day++){
+
+    const cell = document.createElement('div');
+
+    cell.className = 'day';
+
+    cell.innerHTML =
+      `<div class="day-number">${day}</div>`;
+
+    const dateStr =
+      `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+
+    const dayEvents = events.filter(
+      e => e.date === dateStr
+    );
+
+    dayEvents.forEach(event => {
+
+      const div = document.createElement('div');
+
+      div.className = 'event';
+
+      div.style.background =
+        categoryColors[event.category]
+        || categoryColors.Other;
+
+      div.innerText = event.title;
+
+      div.onclick = () => showEvent(event);
+
+      cell.appendChild(div);
+
+    });
+
+    calendar.appendChild(cell);
+
+  }
+
+}
+
+function showEvent(event){
+
+  document.getElementById('modal').style.display =
+    'flex';
+
+  document.getElementById('modalTitle').innerText =
+    event.title;
+
+  document.getElementById('modalDate').innerText =
+    event.date;
+
+  document.getElementById('modalTime').innerText =
+    event.time;
+
+  document.getElementById('modalLocation').innerText =
+    event.location;
+
+  document.getElementById('modalCategory').innerText =
+    event.category;
+
+  document.getElementById('modalDescription').innerText =
+  event.description;
+
+}
+
+function closeModal(){
+
+  document.getElementById('modal').style.display =
+    'none';
+
+}
+
+function nextMonth(){
+
+  currentDate.setMonth(
+    currentDate.getMonth() + 1
+  );
+
+  renderCalendar();
+
+}
+
+function prevMonth(){
+
+  currentDate.setMonth(
+    currentDate.getMonth() - 1
+  );
+
+  renderCalendar();
+
+}
+
+</script>
+
+</body>
+</html>
