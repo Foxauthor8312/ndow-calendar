@@ -18,7 +18,7 @@ blocks.forEach(block => {
     .map(l => l.trim())
     .filter(Boolean);
 
-  if(lines.length < 5) return;
+  if(lines.length < 3) return;
 
   const title =
   lines[3] || '';
