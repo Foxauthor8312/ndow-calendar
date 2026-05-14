@@ -109,7 +109,7 @@ while (true) {
     pageUrl,
     {
       waitUntil:'domcontentloaded',
-      timeout:2000
+      timeout:20000
     }
   );
  
