@@ -185,7 +185,16 @@ button{
 .other{
   background:#64748b;
 }
-  
+  .official-link{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 18px;
+  background:#166534;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
   
 </style>
 </head>
@@ -476,11 +485,25 @@ async function openEventModal(eventUrl) {
  modal.classList.remove("hidden");
  modal.style.display = "flex";
 
-  modalBody.innerHTML = `
-    <div style="padding:40px;text-align:center;">
-      Loading event...
-    </div>
-  `;
+ modalBody.innerHTML = `
+  <div class="modal-body">
+
+    <h2>Official NDOW Event</h2>
+
+    <p>
+      Additional details for this event are available on the official NDOW website.
+    </p>
+
+    <a href="${eventUrl}"
+       target="_blank"
+       class="official-link">
+
+       Open Official Event Page
+
+    </a>
+
+  </div>
+`;
 
   try {
 
@@ -501,7 +524,19 @@ async function openEventModal(eventUrl) {
 
     modalBody.innerHTML = `
       <div class="modal-body">
-        ${article ? article.innerHTML : html}
+        <h2>Official NDOW Event</h2>
+
+<p>
+  Additional details for this event are available on the official NDOW website.
+</p>
+
+<a href="${eventUrl}"
+   target="_blank"
+   class="official-link">
+
+   Open Official Event Page
+
+</a>
       </div>
     `;
 
