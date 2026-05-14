@@ -254,6 +254,21 @@ button{
 
 <div class="calendar" id="calendar"></div>
 
+  <div id="eventModal" class="modal hidden">
+  <div class="modal-content">
+
+    <button id="closeModal" class="modal-close">
+      ✕
+    </button>
+
+    <div id="modalBody">
+      <div class="modal-loading">
+        Loading event...
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script>
 
@@ -498,21 +513,7 @@ async function openEventModal(eventUrl) {
 }
   
 </script>
-<div id="eventModal" class="modal hidden">
-  <div class="modal-content">
 
-    <button id="closeModal" class="modal-close">
-      ✕
-    </button>
-
-    <div id="modalBody">
-      <div class="modal-loading">
-        Loading event...
-      </div>
-    </div>
-
-  </div>
-</div>
   
 </body>
 </html>
