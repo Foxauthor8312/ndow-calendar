@@ -484,7 +484,10 @@ async function openEventModal(eventUrl) {
 
   try {
 
-    const response = await fetch(eventUrl);
+   const response = await fetch(
+  'https://image-forensics-saas-1.onrender.com/api/event?url=' +
+  encodeURIComponent(eventUrl)
+);
 
     const html = await response.text();
 
