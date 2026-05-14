@@ -276,7 +276,11 @@ button{
   margin-top:14px;
   font-size:14px;
 }
-  
+  .user-display{
+  font-size:14px;
+  color:rgba(255,255,255,0.9);
+  margin-top:6px;
+}
 </style>
 </head>
 
@@ -333,9 +337,15 @@ button{
   </div>
 
 </div>
-
+<div id="userDisplay" class="user-display">
+  Logged in
+</div>
+  
   <div class="controls">
-
+  <button onclick="logout()">
+    Logout
+  </button>
+    
     <button onclick="prevMonth()">Previous</button>
 
     <h2 id="monthLabel"></h2>
@@ -465,7 +475,67 @@ fetch('users.json')
   });
   
 let currentDate = new Date();
+function checkLogin(){
 
+  const name =
+    document.getElementById(
+      'userName'
+    ).value.trim();
+
+  const pin =
+    document.getElementById(
+      'userPin'
+    ).value.trim();
+
+  const validUser =
+    authorizedUsers.find(user =>
+
+      user.name.toLowerCase() ===
+      name.toLowerCase()
+
+      &&
+
+      user.pin === pin
+
+    );
+
+  if(validUser){
+
+    localStorage.setItem(
+      'ndowAccess',
+      'granted'
+    );
+
+    localStorage.setItem(
+      'ndowUser',
+      validUser.name
+    );
+
+    document.getElementById(
+      'loginScreen'
+    ).style.display = 'none';
+
+    document.getElementById(
+      'appContent'
+    ).style.display = 'block';
+
+      
+  document.getElementById(
+    'userDisplay'
+  ).innerText =
+    'Logged in as: ' +
+  validUser.name;
+    
+  } else {
+
+    document.getElementById(
+      'loginError'
+    ).innerText =
+      'Invalid name or PIN';
+
+  }
+
+}
 function renderCalendar(){
 
   const calendar =
@@ -566,7 +636,19 @@ calendar.appendChild(cell);
 }
 
 }
+function logout(){
 
+  localStorage.removeItem(
+    'ndowAccess'
+  );
+
+  localStorage.removeItem(
+    'ndowUser'
+  );
+
+  location.reload();
+
+}
 function nextMonth(){
 
   currentDate.setMonth(
@@ -810,7 +892,52 @@ window.location.href =
   `mailto:${recipient}?subject=${subject}&body=${body}`;
 
 }
-  
+
+if(
+  localStorage.getItem(
+    'ndowAccess'
+  ) === 'granted'
+){
+
+  document.getElementById(
+    'loginScreen'
+  ).style.display = 'none';
+
+  document.getElementById(
+    'appContent'
+  ).style.display = 'block';
+
+}
+  let inactivityTimer;
+
+function resetInactivityTimer(){
+
+  clearTimeout(inactivityTimer);
+
+  inactivityTimer = setTimeout(() => {
+
+    logout();
+
+  }, 1000 * 60 * 30);
+
+}
+
+[
+  'click',
+  'mousemove',
+  'keydown',
+  'scroll',
+  'touchstart'
+].forEach(event => {
+
+  document.addEventListener(
+    event,
+    resetInactivityTimer
+  );
+
+});
+
+resetInactivityTimer();
 </script>
 <div class="disclaimer">
 
