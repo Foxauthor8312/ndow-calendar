@@ -207,6 +207,14 @@ button{
   border-radius:8px;
   font-weight:bold;
 }
+  .contact-select{
+  margin-top:14px;
+  padding:10px;
+  width:100%;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  font-size:14px;
+}
 .updated-bar{
   background:#e5e7eb;
   padding:10px 20px;
@@ -528,11 +536,38 @@ async function openEventModal(eventUrl) {
 
 </a>
 
+<select
+  id="contactSelect"
+  class="contact-select"
+  onchange="toggleCustomEmail()">
+
+  ${categoryEmails.map(contact => `
+    <option value="${contact.email}">
+      ${contact.title}
+    </option>
+  `).join('')}
+
+</select>
+
+<input
+  type="email"
+  id="customEmail"
+  placeholder="Enter custom email"
+  style="
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+  "
+>
+
 <a href="#"
    class="request-link"
    onclick="requestInstructor('${eventUrl}')">
 
-   Request Instructor Assignment
+   Send Instructor Request
 
 </a>
 
@@ -572,11 +607,38 @@ async function openEventModal(eventUrl) {
 
 </a>
 
+<select
+  id="contactSelect"
+  class="contact-select"
+  onchange="toggleCustomEmail()">
+
+  ${categoryEmails.map(contact => `
+    <option value="${contact.email}">
+      ${contact.title}
+    </option>
+  `).join('')}
+
+</select>
+
+<input
+  type="email"
+  id="customEmail"
+  placeholder="Enter custom email"
+  style="
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+  "
+>
+
 <a href="#"
    class="request-link"
    onclick="requestInstructor('${eventUrl}')">
 
-   Request Instructor Assignment
+   Send Instructor Request
 
 </a>
       </div>
@@ -591,7 +653,24 @@ async function openEventModal(eventUrl) {
     `;
   }
 }
+function toggleCustomEmail(){
 
+  const select =
+    document.getElementById(
+      'contactSelect'
+    );
+
+  const custom =
+    document.getElementById(
+      'customEmail'
+    );
+
+  custom.style.display =
+    select.value === 'custom'
+      ? 'block'
+      : 'none';
+}
+  
 function requestInstructor(eventUrl){
 
   const event =
@@ -627,9 +706,18 @@ Thank you.
 `
     );
 
- const recipient =
-  categoryEmails[event.category]
-  || 'lvrcav8tr@gmail.com';
+let recipient =
+  document.getElementById(
+    'contactSelect'
+  ).value;
+
+if(recipient === 'custom'){
+
+  recipient =
+    document.getElementById(
+      'customEmail'
+    ).value.trim();
+}
 
 window.location.href =
   `mailto:${recipient}?subject=${subject}&body=${body}`;
