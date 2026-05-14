@@ -23,6 +23,7 @@ const fs = require('fs');
   console.log('Opening NDOW...');
 
   await page.goto(
+    
     'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
     {
       waitUntil: 'domcontentloaded',
@@ -33,7 +34,7 @@ const fs = require('fs');
   console.log('Waiting for login...');
 
   await new Promise(resolve =>
-    setTimeout(resolve, 30000)
+    setTimeout(resolve, 5000)
   );
 
   const cookies = await page.cookies();
@@ -68,6 +69,12 @@ while (true) {
       timeout:60000
     }
   );
+  if(await page.$('input[type="password"]')){
+
+  console.log('Login expired.');
+
+  break;
+}
 
   await new Promise(resolve =>
     setTimeout(resolve, 2000)
@@ -95,7 +102,7 @@ while (true) {
           : 'https://nevada.events.licensing.app' + rawHref;
 
       results.push(
-        'URL: ' + url + '\\n\\n' + card.innerText
+       'URL: ' + url + '\n\n' + card.innerText
       );
 
     });
@@ -114,12 +121,18 @@ while (true) {
     break;
   }
 
-  combinedText +=
-    '\\n\\n' +
-    events.join(
-      '\\n\\n====================\\n\\n'
-    );
-
+combinedText +=
+  '\n\n' +
+  events.join(
+    '\n\n====================\n\n'
+  );
+  
+console.log(
+  'Scraped',
+  events.length,
+  'events from page',
+  currentPage
+);
   currentPage++;
 
 }
