@@ -398,9 +398,18 @@ function renderCalendar(){
     const dateStr =
       `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
 
-    const dayEvents = events.filter(
-      e => e.date === dateStr
-    );
+   const dayEvents = events.filter(e => {
+
+  const d = new Date(e.date);
+
+  const formatted =
+    d.getFullYear() + '-' +
+    String(d.getMonth() + 1).padStart(2,'0') + '-' +
+    String(d.getDate()).padStart(2,'0');
+
+  return formatted === dateStr;
+
+});
 
    dayEvents.forEach(event => {
 
