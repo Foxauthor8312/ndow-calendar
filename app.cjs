@@ -174,7 +174,23 @@ console.log(
   );
 
   console.log('DONE!');
+try {
 
+  await page.goto(
+    'https://nevada.events.licensing.app/logout',
+    {
+      waitUntil:'networkidle2',
+      timeout:60000
+    }
+  );
+
+  console.log('Logged out.');
+
+} catch(err){
+
+  console.log('Logout skipped.');
+
+}
   await browser.close();
 
 })();
