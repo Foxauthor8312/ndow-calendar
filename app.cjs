@@ -43,7 +43,7 @@ console.log('Opening NDOW...');
 await page.goto(
   'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
   {
-    waitUntil: 'domcontentloaded',
+    waitUntil: 'networkidle2',
     timeout: 60000
   }
 );
