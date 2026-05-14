@@ -93,7 +93,43 @@ button{
   cursor:pointer;
   font-size:22px;
 }
+/* MODAL */
 
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  position: relative;
+  padding: 28px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+  
 </style>
 </head>
 
@@ -296,7 +332,7 @@ function renderCalendar(){
 
       div.innerText = event.title;
 
-      div.onclick = () => showEvent(event);
+     div.onclick = () => openEventModal(event.url);
 
       cell.appendChild(div);
 
@@ -360,7 +396,72 @@ function prevMonth(){
 
 }
 
-</script>
+const modal = document.getElementById("eventModal");
+const modalBody = document.getElementById("modalBody");
 
+document.getElementById("closeModal")
+  .addEventListener("click", closeModal);
+
+function closeModal() {
+  modal.classList.add("hidden");
+}
+
+async function openEventModal(eventUrl) {
+
+  modal.classList.remove("hidden");
+
+  modalBody.innerHTML = `
+    <div style="padding:40px;text-align:center;">
+      Loading event...
+    </div>
+  `;
+
+  try {
+
+    const response = await fetch(eventUrl);
+
+    const html = await response.text();
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(html, "text/html");
+
+    const article =
+      doc.querySelector("article") ||
+      doc.querySelector("main");
+
+    modalBody.innerHTML = `
+      <div class="modal-body">
+        ${article ? article.innerHTML : html}
+      </div>
+    `;
+
+  } catch (err) {
+
+    modalBody.innerHTML = `
+      <div style="padding:40px;text-align:center;">
+        Failed to load event.
+      </div>
+    `;
+  }
+}
+  
+</script>
+<div id="eventModal" class="modal hidden">
+  <div class="modal-content">
+
+    <button id="closeModal" class="modal-close">
+      ✕
+    </button>
+
+    <div id="modalBody">
+      <div class="modal-loading">
+        Loading event...
+      </div>
+    </div>
+
+  </div>
+</div>
+  
 </body>
 </html>
