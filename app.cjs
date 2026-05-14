@@ -69,12 +69,7 @@ while (true) {
       timeout:60000
     }
   );
-  if(await page.$('input[type="password"]')){
-
-  console.log('Login expired.');
-
-  break;
-}
+ 
 
   await new Promise(resolve =>
     setTimeout(resolve, 2000)
