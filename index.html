@@ -416,29 +416,27 @@ function renderCalendar(){
       e => e.date === dateStr
     );
 
-    dayEvents.forEach(event => {
+   dayEvents.forEach(event => {
 
-      const div = document.createElement('div');
+  const div = document.createElement('div');
 
-      div.className = 'event';
+  div.className = 'event';
 
-      div.style.background =
-        categoryColors[event.category]
-        || categoryColors.Other;
+  div.style.background =
+    categoryColors[event.category]
+    || categoryColors.Other;
 
-      div.innerText = event.title;
+  div.innerText = event.title;
 
-     //div.onclick = () => openEventModal(event.url);
-div.onclick = () => {
-  alert(JSON.stringify(event, null, 2));
-};
-      cell.appendChild(div);
+  div.onclick = () => openEventModal(event.url);
 
-    });
+  cell.appendChild(div);
 
-    calendar.appendChild(cell);
+});
 
-  }
+calendar.appendChild(cell);
+
+}
 
 }
 
