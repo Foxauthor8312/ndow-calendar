@@ -48,64 +48,81 @@ const fs = require('fs');
   console.log('Starting fast scrape...');
 
   let combinedText = '';
+  let currentPage = 1;
 
-  for(let i = 1; i <= 36; i++) {
+while (true) {
 
-    const pageUrl =
-      'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events?filter%5Bevents_program_id%5D=&ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending&ordering%5Border_by%5D%5B%5D=desc&page=' +
-      i +
-      '&size=10';
+  const pageUrl =
+    'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events?filter%5Bevents_program_id%5D=&ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending&ordering%5Border_by%5D%5B%5D=desc&page=' +
+    currentPage +
+    '&size=10';
+
+  console.log(
+    'Opening page ' + currentPage
+  );
+
+  await page.goto(
+    pageUrl,
+    {
+      waitUntil:'domcontentloaded',
+      timeout:60000
+    }
+  );
+
+  await new Promise(resolve =>
+    setTimeout(resolve, 2000)
+  );
+
+  const events = await page.evaluate(() => {
+
+    const results = [];
+
+    const cards = document.querySelectorAll(
+      'article.row.my-3.mx-0.rounded.border-0.shadow.bg-white'
+    );
+
+    cards.forEach(card => {
+
+      const linkEl =
+        card.querySelector('a');
+
+      const rawHref =
+        linkEl?.getAttribute('href') || '';
+
+      const url =
+        rawHref.startsWith('http')
+          ? rawHref
+          : 'https://nevada.events.licensing.app' + rawHref;
+
+      results.push(
+        'URL: ' + url + '\\n\\n' + card.innerText
+      );
+
+    });
+
+    return results;
+
+  });
+
+  // STOP when no events found
+  if(events.length === 0){
 
     console.log(
-      'Opening page ' + i
+      'No more pages found.'
     );
 
-    await page.goto(
-      pageUrl,
-      {
-        waitUntil:'domcontentloaded',
-        timeout:60000
-      }
-    );
-
-    await new Promise(resolve =>
-      setTimeout(resolve, 3000)
-    );
-
-    const events = await page.evaluate(() => {
-
-  const results = [];
-
-  const cards = document.querySelectorAll(
-    'article.row.my-3.mx-0.rounded.border-0.shadow.bg-white'
-  );
-
-  cards.forEach(card => {
-
-  const linkEl =
-    card.querySelector('a');
-
-  const rawHref =
-    linkEl?.getAttribute('href') || '';
-
-  const url =
-    rawHref.startsWith('http')
-      ? rawHref
-      : 'https://nevada.events.licensing.app' + rawHref;
-
-  results.push(
-    'URL: ' + url + '\n\n' + card.innerText
-  );
-
-});
-
-  return results;
-
-});
-
-combinedText += '\n\n' + events.join('\n\n====================\n\n');
-
+    break;
   }
+
+  combinedText +=
+    '\\n\\n' +
+    events.join(
+      '\\n\\n====================\\n\\n'
+    );
+
+  currentPage++;
+
+}
 
   fs.writeFileSync(
     'all-events.txt',
