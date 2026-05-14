@@ -20,25 +20,49 @@ const fs = require('fs');
 
   }
 
-  console.log('Opening NDOW...');
+console.log('Opening NDOW...');
 
-  await page.goto(
-    
-    'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
-    {
-      waitUntil: 'domcontentloaded',
-      timeout: 60000
-    }
+await page.goto(
+  'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
+  {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000
+  }
+);
+
+// auto login if needed
+if(await page.$('input[type="password"]')){
+
+  console.log(
+    'Login required...'
   );
 
-  console.log('Waiting for login...');
-
-  await new Promise(resolve =>
-    setTimeout(resolve, 5000)
+  await page.type(
+    'input[type="email"]',
+    process.env.NDOW_EMAIL
   );
 
-  const cookies = await page.cookies();
+  await page.type(
+    'input[type="password"]',
+    process.env.NDOW_PASSWORD
+  );
 
+  await page.click(
+    'button[type="submit"]'
+  );
+
+  await page.waitForNavigation({
+    waitUntil:'domcontentloaded',
+    timeout:60000
+  });
+
+  console.log(
+    'Login successful.'
+  );
+}
+
+const cookies =
+  await page.cookies();
   fs.writeFileSync(
     'session.json',
     JSON.stringify(cookies, null, 2)
