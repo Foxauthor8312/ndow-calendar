@@ -320,36 +320,10 @@ button{
 </div>
 
 <script>
-
-const categoryEmails = {
-
-  'Hunter Education':
-    'hunter@example.com',
-
-  'Fishing':
-    'fishing@example.com',
-
-  'Wildlife':
-    'wildlife@example.com',
-
-  'Archery':
-    'archery@example.com',
-
-  'Bowhunter':
-    'bowhunter@example.com',
-
-  'Boating':
-    'boating@example.com',
-
-  'Schools':
-    'schools@example.com',
-
-  'Other':
-    'lvrcav8tr@gmail.com'
-};
-
-const categoryColors = {
   
+let categoryEmails = {};
+
+ 
 const categoryColors = {
   'Hunter Education':'#2563eb',
   'Fishing':'#16a34a',
@@ -382,6 +356,22 @@ events = data.events || data;
 
   });
 
+fetch('emails.json')
+  .then(res => res.json())
+  .then(data => {
+
+    categoryEmails = data;
+
+  })
+  .catch(err => {
+
+    console.error(
+      'Email config failed',
+      err
+    );
+
+  });
+  
 let currentDate = new Date();
 
 function renderCalendar(){
@@ -637,8 +627,12 @@ Thank you.
 `
     );
 
-  window.location.href =
-  `mailto:lvrcav8tr@gmail.com?subject=${subject}&body=${body}`;
+ const recipient =
+  categoryEmails[event.category]
+  || 'lvrcav8tr@gmail.com';
+
+window.location.href =
+  `mailto:${recipient}?subject=${subject}&body=${body}`;
 
 }
   
