@@ -624,7 +624,13 @@ events = data.events || data;
   .catch(err => {
 
     console.error(err);
-
+   
+document.getElementById(
+  'lastUpdated'
+).innerText =
+  'Last Updated: ' +
+  new Date().toLocaleString();
+   
     renderCalendar();
 
   });
