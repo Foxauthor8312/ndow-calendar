@@ -1023,10 +1023,9 @@ function requestInstructor(eventUrl){
   const subject =
     encodeURIComponent(
       'Instructor Request - ' + event.title
-    );
 
-  const body =
-    encodeURIComponent(
+const body =
+  encodeURIComponent(
 
 `Hello,
 
@@ -1041,11 +1040,10 @@ ${event.location}
 
 ${event.url}
 
-Thank you.`
+Thank you.
 
+This message is intended only for the named recipient. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.`
 
-This message is intended only for the named recipient. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.
-`
     );
 
 let recipient =
