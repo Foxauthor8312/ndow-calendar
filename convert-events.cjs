@@ -132,7 +132,7 @@ const url =
 });
 
 fs.writeFileSync(
-  'events.json',
+  './server/events.json',
   JSON.stringify(
     {
       lastUpdated:
