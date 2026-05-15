@@ -408,6 +408,12 @@ button:hover{
   opacity:.5;
   cursor:not-allowed;
 }
+ .session-note{
+  margin-top:14px;
+  font-size:13px;
+  color:#92400e;
+  line-height:1.4;
+}
 </style>
 </head>
 
@@ -465,8 +471,8 @@ button:hover{
     </button>
 
     <div id="loginError" class="login-error"></div>
-
-   <div class="access-help">
+    <div id="sessionMessage" class="session-note"></div>
+    <div class="access-help">
 
   Need access or forgot your PIN?
 
@@ -486,6 +492,7 @@ button:hover{
 
 </div>
 
+   
   </div>
 
 </div>
@@ -835,7 +842,7 @@ calendar.appendChild(cell);
 }
 
 }
-function logout(){
+function logout(showMessage = false){
 
   localStorage.removeItem(
     'ndowAccess'
@@ -849,6 +856,15 @@ function logout(){
     'userDisplay'
   ).innerText = 'Logged in';
 
+  if(showMessage){
+
+  sessionStorage.setItem(
+    'ndowLoggedOut',
+    'inactive'
+  );
+
+}
+ 
   location.reload();
 
 }
@@ -1204,6 +1220,23 @@ window.location.href =
 }
 
 if(
+  sessionStorage.getItem(
+    'ndowLoggedOut'
+  ) === 'inactive'
+){
+
+  document.getElementById(
+    'sessionMessage'
+  ).innerText =
+    'You have been logged out due to inactivity. Log back in to resume your session.';
+
+  sessionStorage.removeItem(
+    'ndowLoggedOut'
+  );
+
+}
+
+if(
   localStorage.getItem(
     'ndowAccess'
   ) === 'granted'
@@ -1218,13 +1251,13 @@ if(
   ).style.display = 'block';
 
   document.getElementById(
-  'userDisplay'
-).innerText =
-  'Logged in as: ' +
-  localStorage.getItem(
-    'ndowUser'
-  );
-  
+    'userDisplay'
+  ).innerText =
+    'Logged in as: ' +
+    localStorage.getItem(
+      'ndowUser'
+    );
+
 }
   let inactivityTimer;
 
@@ -1234,7 +1267,7 @@ function resetInactivityTimer(){
 
   inactivityTimer = setTimeout(() => {
 
-    logout();
+    logout(true);
 
   }, 1000 * 60 * 30);
 
