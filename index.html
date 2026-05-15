@@ -361,13 +361,25 @@ button:hover{
     >
 
     <input
-  type="password"
-      id="userPin"
-      autocomplete="new-password"
-      placeholder="6-digit PIN"
-      class="login-input"
-      maxlength="6"
-    >
+<div class="password-wrap">
+
+  <input
+    type="password"
+    id="userPin"
+    autocomplete="new-password"
+    placeholder="6-digit PIN"
+    class="login-input"
+    maxlength="6"
+  >
+
+  <span
+    class="toggle-password"
+    onclick="togglePassword()"
+  >
+    👁
+  </span>
+
+</div>
 
     <button
   id="loginButton"
