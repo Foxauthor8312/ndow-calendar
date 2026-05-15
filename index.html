@@ -526,9 +526,12 @@ button:hover{
   </div>
 
 </header>
-<div id="lastUpdated" class="updated-bar">
-  Last Updated: waiting...
-</div>>
+ 
+document.getElementById(
+  'lastUpdated'
+).innerText =
+  'Last Updated: ' +
+  new Date().toLocaleString();
   
   <div class="legend">
 
