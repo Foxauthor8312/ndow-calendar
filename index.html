@@ -527,12 +527,7 @@ button:hover{
 
 </header>
  
-document.getElementById(
-  'lastUpdated'
-).innerText =
-  'Last Updated: ' +
-  new Date().toLocaleString();
-  
+
   <div class="legend">
 
   <div class="legend-item">
@@ -616,19 +611,16 @@ let events = [];
 fetch('events.json')
   .then(res => res.json())
   .then(data => {
+
     console.log(data);
 
-events = data.events;
+    events = data.events || data;
 
-   document.getElementById(
-  'lastUpdated'
-).innerText =
-  'Last Updated: ' +
-  new Date(
-    data.lastUpdated
-  ).toLocaleString();
-   
-    console.log(events[0]);
+    document.getElementById(
+      'lastUpdated'
+    ).innerText =
+      'Last Updated: ' +
+      new Date().toLocaleString();
 
     renderCalendar();
 
@@ -636,13 +628,7 @@ events = data.events;
   .catch(err => {
 
     console.error(err);
-   
-document.getElementById(
-  'lastUpdated'
-).innerText =
-  'Last Updated: ' +
-  new Date().toLocaleString();
-   
+
     renderCalendar();
 
   });
