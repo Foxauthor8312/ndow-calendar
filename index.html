@@ -618,7 +618,16 @@ fetch('events.json')
   .then(data => {
     console.log(data);
 
-events = data.events || data;
+events = data.events;
+
+   document.getElementById(
+  'lastUpdated'
+).innerText =
+  'Last Updated: ' +
+  new Date(
+    data.lastUpdated
+  ).toLocaleString();
+   
     console.log(events[0]);
 
     renderCalendar();
