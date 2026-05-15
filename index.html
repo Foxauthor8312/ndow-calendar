@@ -297,13 +297,38 @@ button:hover{
 .login-input{
   width:100%;
   padding:12px;
-  margin-top:14px;
   border-radius:8px;
   border:1px solid #d1d5db;
   font-size:16px;
   box-sizing:border-box;
 }
 
+#userName{
+  margin-top:14px;
+}
+
+.password-wrap{
+  position:relative;
+  width:100%;
+  margin-top:14px;
+}
+
+.password-input{
+  padding-right:50px;
+}
+
+.toggle-password{
+  position:absolute;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-size:22px;
+  color:#4b5563;
+  user-select:none;
+  z-index:20;
+}
+ 
 .login-button{
   width:100%;
   margin-top:18px;
@@ -1034,7 +1059,21 @@ function toggleCustomEmail(){
       ? 'block'
       : 'none';
 }
-  
+
+function togglePassword(){
+
+  const input =
+    document.getElementById(
+      'userPin'
+    );
+
+  input.type =
+    input.type === 'password'
+      ? 'text'
+      : 'password';
+
+}
+ 
 function requestInstructor(eventUrl){
 
   const event =
