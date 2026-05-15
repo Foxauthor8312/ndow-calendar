@@ -620,8 +620,6 @@ let events = [];
 
 async function loadEvents(){
 
- async function loadEvents(){
-
   const token =
     localStorage.getItem('token');
 
@@ -635,7 +633,7 @@ async function loadEvents(){
   try {
 
     const response = await fetch(
-      'http://localhost:3000/api/events',
+  'https://ndow-calendar-server.onrender.com/api/events',
       {
         headers:{
           Authorization:
@@ -681,7 +679,7 @@ async function loadEvents(){
 
 }
 
-loadEvents();
+// loadEvents();
  
 fetch('emails.json')
   .then(res => res.json())
@@ -689,7 +687,7 @@ fetch('emails.json')
 
     categoryEmails = data;
 
-  })
+   })
   .catch(err => {
 
     console.error(
@@ -698,6 +696,10 @@ fetch('emails.json')
     );
 
   });
+
+document.getElementById(
+  'loginButton'
+).disabled = false;
   
 let currentDate = new Date();
 async function checkLogin(){
@@ -715,7 +717,7 @@ async function checkLogin(){
   try {
 
   const response = await fetch(
-    'http://localhost:3000/api/login',
+    'https://ndow-calendar-server.onrender.com/api/login',
     {
       method: 'POST',
       headers: {
@@ -732,38 +734,45 @@ async function checkLogin(){
 
   if(data.success){
 
-    localStorage.setItem(
-      'token',
-      data.token
-    );
+  localStorage.setItem(
+    'token',
+    data.token
+  );
 
-    localStorage.setItem(
-      'user',
-      JSON.stringify(data.user)
-    );
-    localStorage.setItem(
-      'ndowAccess',
-      'granted'
-    );
+  localStorage.setItem(
+    'user',
+    JSON.stringify(data.user)
+  );
 
-       document.getElementById(
-      'loginScreen'
-    ).style.display = 'none';
+  localStorage.setItem(
+    'ndowAccess',
+    'granted'
+  );
 
-    document.getElementById(
-      'appContent'
-    ).style.display = 'block';
+  document.getElementById(
+    'userDisplay'
+  ).innerText =
+    'Logged in as: ' +
+    data.user.username;
 
-      
-    
-   } else {
+  document.getElementById(
+    'loginScreen'
+  ).style.display = 'none';
 
-    document.getElementById(
-      'loginError'
-    ).innerText =
-      'Invalid name or PIN';
+  document.getElementById(
+    'appContent'
+  ).style.display = 'block';
 
-  }
+  loadEvents();
+
+} else {
+
+  document.getElementById(
+    'loginError'
+  ).innerText =
+    'Invalid name or PIN';
+
+}
 
   } catch(err){
 
@@ -888,7 +897,11 @@ function logout(showMessage = false){
   );
 
   localStorage.removeItem(
-    'ndowUser'
+    'user'
+  );
+
+  localStorage.removeItem(
+    'token'
   );
 
   document.getElementById(
@@ -897,13 +910,13 @@ function logout(showMessage = false){
 
   if(showMessage){
 
-  sessionStorage.setItem(
-    'ndowLoggedOut',
-    'inactive'
-  );
+    sessionStorage.setItem(
+      'ndowLoggedOut',
+      'inactive'
+    );
 
-}
- 
+  }
+
   location.reload();
 
 }
@@ -1293,16 +1306,26 @@ if(
     'appContent'
   ).style.display = 'block';
 
-  document.getElementById(
-    'userDisplay'
-  ).innerText =
-    'Logged in as: ' +
-    localStorage.getItem(
-      'ndowUser'
+  const savedUser =
+    JSON.parse(
+      localStorage.getItem(
+        'user'
+      )
     );
 
-}
-  let inactivityTimer;
+  if(savedUser){
+
+    document.getElementById(
+      'userDisplay'
+    ).innerText =
+      'Logged in as: ' +
+      savedUser.username;
+
+  }
+
+  loadEvents();
+
+}  let inactivityTimer;
 
 function resetInactivityTimer(){
 
