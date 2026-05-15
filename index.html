@@ -645,25 +645,9 @@ fetch('events.json')
 
   });
 
-fetch('users.json')
-  .then(res => res.json())
-  .then(data => {
-
-    authorizedUsers = data;
-
-    document.getElementById(
-      'loginButton'
-    ).disabled = false;
-
-  })
-  .catch(err => {
-
-    console.error(
-      'User config failed',
-      err
-    );
-
-  });
+document.getElementById(
+  'loginButton'
+).disabled = false;
  
 fetch('emails.json')
   .then(res => res.json())
@@ -682,7 +666,7 @@ fetch('emails.json')
   });
   
 let currentDate = new Date();
-function checkLogin(){
+async function checkLogin(){
 
   const name =
     document.getElementById(
@@ -694,32 +678,41 @@ function checkLogin(){
       'userPin'
     ).value.trim();
 
-  const validUser =
-    authorizedUsers.find(user =>
+  try {
 
- 
-      user.name.toLowerCase() ===
-      name.toLowerCase()
+  const response = await fetch(
+    'http://localhost:3000/api/login',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: name,
+        pin: pin
+      })
+    }
+  );
 
-      &&
+  const data = await response.json();
 
-      user.pin === pin
+  if(data.success){
 
+    localStorage.setItem(
+      'token',
+      data.token
     );
 
-  if(validUser){
-
+    localStorage.setItem(
+      'user',
+      JSON.stringify(data.user)
+    );
     localStorage.setItem(
       'ndowAccess',
       'granted'
     );
 
-    localStorage.setItem(
-      'ndowUser',
-      validUser.name
-    );
-
-    document.getElementById(
+       document.getElementById(
       'loginScreen'
     ).style.display = 'none';
 
@@ -728,13 +721,8 @@ function checkLogin(){
     ).style.display = 'block';
 
       
-  document.getElementById(
-    'userDisplay'
-  ).innerText =
-    'Logged in as: ' +
-  validUser.name;
     
-  } else {
+   } else {
 
     document.getElementById(
       'loginError'
@@ -743,7 +731,22 @@ function checkLogin(){
 
   }
 
+  } catch(err){
+
+    console.error(
+      'Login error:',
+      err
+    );
+
+    document.getElementById(
+      'loginError'
+    ).innerText =
+      'Server connection failed';
+
+  }
+
 }
+
 function renderCalendar(){
 
   const calendar =
