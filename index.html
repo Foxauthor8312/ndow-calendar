@@ -1358,6 +1358,102 @@ function resetInactivityTimer(){
 
 });
 
+function openAdminPanel(){
+
+  const user = JSON.parse(
+    localStorage.getItem('user')
+  );
+
+  if(!user || user.role !== 'admin'){
+
+    alert('Admin access only');
+
+    return;
+
+  }
+
+  const modal = document.getElementById(
+    'adminModal'
+  );
+
+  modal.classList.remove('hidden');
+
+  modal.style.display = 'flex';
+
+}
+
+function closeAdminPanel(){
+
+  const modal = document.getElementById(
+    'adminModal'
+  );
+
+  modal.classList.add('hidden');
+
+  modal.style.display = 'none';
+
+}
+
+async function addUser(){
+
+  const username =
+    document.getElementById(
+      'adminUsername'
+    ).value.trim();
+
+  const pin =
+    document.getElementById(
+      'adminPin'
+    ).value.trim();
+
+  const role =
+    document.getElementById(
+      'adminRole'
+    ).value;
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/admin/add-user',
+      {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:`Bearer ${token}`
+        },
+        body:JSON.stringify({
+          username,
+          pin,
+          role
+        })
+      }
+    );
+
+    const data =
+      await response.json();
+
+    document.getElementById(
+      'adminMessage'
+    ).innerText = data.message;
+
+  } catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'adminMessage'
+    ).innerText =
+      'Server error';
+
+  }
+
+}
+
 resetInactivityTimer();
 </script>
 <div class="disclaimer">
