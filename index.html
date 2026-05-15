@@ -291,7 +291,10 @@ button:hover{
   border-radius:16px;
   width:320px;
   text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  box-shadow:
+  0 18px 40px rgba(0,0,0,.32),
+  0 6px 14px rgba(0,0,0,.18),
+  0 0 0 1px rgba(255,255,255,.15);
 }
 
 .login-input{
@@ -323,13 +326,13 @@ button:hover{
   top:50%;
   transform:translateY(-50%);
   cursor:pointer;
-  font-size:28px;
-  color:#111827;
+  font-size:22px;
+  color:#374151;
   background:#f3f4f6;
-  border:2px solid #9ca3af;
+  border:1px solid #9ca3af;
   border-radius:50%;
-  width:38px;
-  height:38px;
+  width:34px;
+  height:34px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -337,17 +340,13 @@ button:hover{
   z-index:50;
 
   box-shadow:
-    0 4px 10px rgba(0,0,0,.45),
-    0 0 12px rgba(0,0,0,.25);
+    0 3px 8px rgba(0,0,0,.22);
 
   transition:.2s ease;
 }
 
 .toggle-password:hover{
-  transform:translateY(-50%) scale(1.08);
-  box-shadow:
-    0 6px 16px rgba(0,0,0,.55),
-    0 0 16px rgba(0,0,0,.35);
+  transform:translateY(-50%) scale(1.05);
 }
  
 .login-button{
