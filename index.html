@@ -624,13 +624,15 @@ fetch('events.json')
 
     console.log(data);
 
-    events = data.events || data;
+    events = data.events;
 
     document.getElementById(
-      'lastUpdated'
-    ).innerText =
-      'Last Updated: ' +
-      new Date().toLocaleString();
+  'lastUpdated'
+).innerText =
+  'Last Updated: ' +
+  new Date(
+    data.lastUpdated
+  ).toLocaleString();
 
     renderCalendar();
 
