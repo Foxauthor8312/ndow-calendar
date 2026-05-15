@@ -523,6 +523,8 @@ button:hover{
 </div>
 
 <div class="controls">
+
+    <button onclick="openAdminPanel()">Admin</button>
     
     <button onclick="prevMonth()">Previous</button>
 
@@ -1325,7 +1327,9 @@ if(
 
   loadEvents();
 
-}  let inactivityTimer;
+}  
+
+let inactivityTimer;
 
 function resetInactivityTimer(){
 
@@ -1368,5 +1372,70 @@ resetInactivityTimer();
 
 </div>
   </div>
+
+<div id="adminModal" class="modal hidden">
+
+  <div class="modal-content">
+
+    <button
+      class="modal-close"
+      onclick="closeAdminPanel()"
+    >
+      ✕
+    </button>
+
+    <h2>Add User</h2>
+
+    <input
+      id="adminUsername"
+      class="login-input"
+      placeholder="Username"
+      style="margin-top:14px;"
+    >
+
+    <input
+      id="adminPin"
+      class="login-input"
+      placeholder="PIN"
+      style="margin-top:14px;"
+    >
+
+    <select
+      id="adminRole"
+      class="contact-select"
+      style="margin-top:14px;"
+    >
+
+      <option value="user">
+        User
+      </option>
+
+      <option value="admin">
+        Admin
+      </option>
+
+    </select>
+
+    <button
+      style="
+        margin-top:18px;
+        width:100%;
+      "
+      onclick="addUser()"
+    >
+      Create User
+    </button>
+
+    <div
+      id="adminMessage"
+      style="
+        margin-top:14px;
+        font-size:14px;
+      "
+    ></div>
+
+  </div>
+
+</div>
 </body>
 </html>
