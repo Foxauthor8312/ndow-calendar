@@ -4,7 +4,7 @@ on:
   schedule:
 
     # Runs nightly around 10 PM Pacific
-    - cron: '0 5 * * *'
+    - cron: '23 5 * * *'
 
   workflow_dispatch:
 
