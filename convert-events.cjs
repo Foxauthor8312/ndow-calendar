@@ -133,7 +133,15 @@ const url =
 
 fs.writeFileSync(
   'events.json',
-  JSON.stringify(events, null, 2)
+  JSON.stringify(
+    {
+      lastUpdated:
+        new Date().toISOString(),
+      events
+    },
+    null,
+    2
+  )
 );
 
 console.log(
