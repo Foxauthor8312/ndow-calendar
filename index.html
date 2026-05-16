@@ -429,6 +429,25 @@ button:hover{
   color:#92400e;
   line-height:1.4;
 }
+
+.admin-layout{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:24px;
+  margin-top:20px;
+}
+
+.admin-panel{
+  background:#f9fafb;
+  border:1px solid #d1d5db;
+  border-radius:12px;
+  padding:20px;
+}
+
+.admin-panel h2,
+.admin-panel h3{
+  margin-top:0;
+}
 </style>
 </head>
 
@@ -1927,7 +1946,11 @@ async function resetPin(username){
       ✕
     </button>
 
-    <h2>Add User</h2>
+    <div class="admin-layout">
+
+      <div class="admin-panel">
+
+        <h2>Add User</h2>
 
     <input
       id="adminUsername"
@@ -1977,7 +2000,9 @@ async function resetPin(username){
       "
     ></div>
 
-<hr style="margin:20px 0;">
+</div>
+
+<div class="admin-panel">
 
 <h3>Users</h3>
 
@@ -1990,7 +2015,11 @@ async function resetPin(username){
     margin-top:12px;
     text-align:left;
   "
-></div>
+
+	</div>
+
+</div>
+	></div>
 
   </div>
 
