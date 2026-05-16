@@ -1057,9 +1057,11 @@ if(!sessionStorage.getItem('stableLastUpdated')){
 document.getElementById(
   'lastUpdated'
 ).innerText =
-  sessionStorage.getItem(
-    'stableLastUpdated'
-  );
+  new Date(
+    sessionStorage.getItem(
+      'stableLastUpdated'
+    )
+  ).toLocaleString();
 
 renderCalendar();
 
