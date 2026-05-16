@@ -1032,21 +1032,36 @@ async function loadEvents(){
 
     events = data.events;
 
-	events = events.map(event => ({
-  	...event,
-  	category: classifyEvent(event.title)
+	if(!sessionStorage.getItem('stableLastUpdated')){
+
+  sessionStorage.setItem(
+    'stableLastUpdated',
+    data.lastUpdated
+  );
+
+}
+events = events.map(event => ({
+  ...event,
+  category: classifyEvent(event.title)
 }));
 
- document.getElementById(
+if(!sessionStorage.getItem('stableLastUpdated')){
+
+  sessionStorage.setItem(
+    'stableLastUpdated',
+    data.lastUpdated
+  );
+
+}
+
+document.getElementById(
   'lastUpdated'
-).innerText = data.lastUpdated
+).innerText =
+  sessionStorage.getItem(
+    'stableLastUpdated'
+  );
 
-  ? new Date(
-      data.lastUpdated
-    ).toLocaleString()
-
-  : 'Unavailable - check update status';
-    renderCalendar();
+renderCalendar();
 
   } catch(err){
 
