@@ -1076,6 +1076,45 @@ document.getElementById(
 
 }
 
+	function toggleFilter(category){
+
+  if(activeFilters.includes(category)){
+
+    activeFilters =
+      activeFilters.filter(
+        c => c !== category
+      );
+
+  } else {
+
+    activeFilters.push(category);
+
+  }
+
+  document
+    .querySelectorAll('.legend-item')
+    .forEach(item => {
+
+      item.classList.remove(
+        'active-filter'
+      );
+
+      const label =
+        item.innerText.trim();
+
+      if(
+        activeFilters.includes(label)
+      ){
+        item.classList.add(
+          'active-filter'
+        );
+      }
+
+    });
+
+  renderCalendar();
+}
+
 function renderCalendar(){
 
   const calendar =
