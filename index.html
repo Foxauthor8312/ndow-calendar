@@ -217,6 +217,22 @@ button:hover{
 .legend-item:last-child{
   border-right:none;
 }
+
+.legend-item{
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.legend-item:hover{
+  background:#e5e7eb;
+}
+
+.legend-item.active-filter{
+  background:#19304B;
+  color:white;
+}
+
+
 .legend-color{
   width:14px;
   height:14px;
@@ -638,56 +654,65 @@ button:hover{
 
   <div class="legend">
 
-  <div class="legend-item">
-    <span class="legend-color hunter"></span>
-    Hunter Education
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Hunter Education')">
+  <span class="legend-color hunter"></span>
+  Hunter Education
+</div>
 
-  <div class="legend-item">
-    <span class="legend-color fishing"></span>
-    Fishing
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Fishing')">
+  <span class="legend-color fishing"></span>
+  Fishing
+</div>
 
-<div class="legend-item">
+<div class="legend-item"
+     onclick="toggleFilter('Advanced Hunter Education')">
   <span class="legend-color advanced-hunter"></span>
   Advanced Hunter Education
 </div>
 
-  <div class="legend-item">
-    <span class="legend-color wildlife"></span>
-    Wildlife
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Wildlife')">
+  <span class="legend-color wildlife"></span>
+  Wildlife
+</div>
 
-  <div class="legend-item">
-    <span class="legend-color urban-wildlife"></span>
-    Urban Wildlife
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Urban Wildlife')">
+  <span class="legend-color urban-wildlife"></span>
+  Urban Wildlife
+</div>
 
-  <div class="legend-item">
-    <span class="legend-color archery"></span>
-    Archery
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Archery')">
+  <span class="legend-color archery"></span>
+  Archery
+</div>
 
-    <div class="legend-item">
-    <span class="legend-color boating"></span>
-    Boating
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Boating')">
+  <span class="legend-color boating"></span>
+  Boating
+</div>
 
-  <div class="legend-item">
-    <span class="legend-color school"></span>
-    School
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('School')">
+  <span class="legend-color school"></span>
+  School
+</div>
 
-  <div class="legend-item">
-    <span class="legend-color volunteer"></span>
-    Volunteer
-  </div>
+<div class="legend-item"
+     onclick="toggleFilter('Volunteer')">
+  <span class="legend-color volunteer"></span>
+  Volunteer
+</div>
 
-  <div class="legend-item">
-    <span class="legend-color other"></span>
-    Other
-  </div>
-
+<div class="legend-item"
+     onclick="toggleFilter('Other')">
+  <span class="legend-color other"></span>
+  Other
+</div>
 </div>
 
 <div class="calendar" id="calendar"></div>
@@ -856,7 +881,10 @@ const categoryColors = {
   'School':'#b45309',
 
   'Other':'#64748b'
-};let events = [];
+};
+	let events = [];
+    let activeFilters = [];
+	
 
 async function loadEvents(){
 
@@ -1113,6 +1141,13 @@ function renderCalendar(){
       `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
 
   const dayEvents = events.filter(e => {
+
+  if(
+    activeFilters.length > 0 &&
+    !activeFilters.includes(e.category)
+  ){
+    return false;
+  }
 
   const d = new Date(e.date);
 
