@@ -761,6 +761,18 @@ async function checkLogin(){
     'loginScreen'
   ).style.display = 'none';
 
+document.getElementById(
+  'loginError'
+).innerText = '';
+
+document.getElementById(
+  'userName'
+).value = '';
+
+document.getElementById(
+  'userPin'
+).value = '';
+   
   document.getElementById(
     'appContent'
   ).style.display = 'block';
@@ -1649,7 +1661,7 @@ async function resetPin(username){
 
 }
 
-resetInactivityTimer();
+
 </script>
 <div class="disclaimer">
 
