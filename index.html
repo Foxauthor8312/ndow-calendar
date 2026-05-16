@@ -174,19 +174,27 @@ button:hover{
 .legend{
   display:flex;
   flex-wrap:wrap;
-  gap:14px;
+  gap:0;
   padding:14px 20px;
   background:white;
   border-bottom:1px solid #d1d5db;
+  overflow:hidden;
 }
 
 .legend-item{
   display:flex;
   align-items:center;
-  gap:6px;
-  font-size:14px;
+  gap:8px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  border-right:1px solid #d1d5db;
+  background:#f9fafb;
 }
 
+.legend-item:last-child{
+  border-right:none;
+}
 .legend-color{
   width:14px;
   height:14px;
@@ -195,37 +203,44 @@ button:hover{
 }
 
 .hunter{
-  background:#2563eb;
+  background:#84cc16;
+}
+
+.advanced-hunter{
+  background:#166534;
 }
 
 .fishing{
-  background:#16a34a;
+  background:#f97316;
 }
 
 .wildlife{
   background:#9333ea;
 }
 
+.urban-wildlife{
+  background:#0f766e;
+}
+
+.boating{
+  background:#6b7280;
+}
+
 .archery{
   background:#ea580c;
 }
 
-.bowhunter{
-  background:#dc2626;
-}
-
-.boating{
-  background:#0891b2;
-}
-
-.schools{
+.school{
   background:#b45309;
+}
+
+.volunteer{
+  background:#2563eb;
 }
 
 .other{
   background:#64748b;
-}
-  .official-link{
+}  .official-link{
   display:inline-block;
   margin-top:20px;
   padding:12px 18px;
@@ -552,9 +567,19 @@ button:hover{
     Fishing
   </div>
 
+<div class="legend-item">
+  <span class="legend-color advanced-hunter"></span>
+  Advanced Hunter Education
+</div>
+
   <div class="legend-item">
     <span class="legend-color wildlife"></span>
     Wildlife
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color urban-wildlife"></span>
+    Urban Wildlife
   </div>
 
   <div class="legend-item">
@@ -562,19 +587,19 @@ button:hover{
     Archery
   </div>
 
-  <div class="legend-item">
-    <span class="legend-color bowhunter"></span>
-    Bowhunter
-  </div>
-
-  <div class="legend-item">
+    <div class="legend-item">
     <span class="legend-color boating"></span>
     Boating
   </div>
 
   <div class="legend-item">
-    <span class="legend-color schools"></span>
-    Schools
+    <span class="legend-color school"></span>
+    School
+  </div>
+
+  <div class="legend-item">
+    <span class="legend-color volunteer"></span>
+    Volunteer
   </div>
 
   <div class="legend-item">
@@ -607,20 +632,150 @@ let authorizedUsers = [];
 let categoryEmails = [];
 
  
-const categoryColors = {
- 
-  'Hunter Education':'#2563eb',
-  'Advanced Hunter Education':'#2563eb',
-  'Fishing':'#16a34a',
-  'Wildlife':'#9333ea',
-  'Archery':'#ea580c',
-  'Bowhunter':'#dc2626',
-  'Boating':'#0891b2',
-  'Schools':'#b45309',
-  'Other': '#64748b',
+const CATEGORY_RULES = {
+
+  'Hunter Education': [
+    'hunter ed'
+  ],
+
+  'Advanced Hunter Education': [
+    'clays',
+    'rso',
+    'crossbow',
+    '.22',
+    'rifle',
+    'shotgun',
+    'muzzleloader',
+    'skeet',
+    'trap',
+    'dutch',
+    'oven',
+    'field day',
+    'bowhunter',
+    'maintenance',
+    'firearm',
+    'nra',
+    'ams'
+  ],
+
+  'Fishing': [
+    'fishing',
+    'flies',
+    'angling',
+    'fly casting',
+    'float',
+    'kayak',
+    'carp',
+    'intermediate fly',
+    'ranger day',
+    'sntu',
+    'rodeo',
+    'pike out',
+    'cops',
+    'bobbers'
+  ],
+
+  'School': [
+    'school',
+    'career',
+    'tic',
+    'kyn',
+    'hatchery',
+    'steam',
+    'alamo',
+    '4h',
+    'know your nevada',
+    'eco'
+  ],
+
+  'Archery': [
+    'nasp',
+    'intro to archery',
+    'bai',
+    'bait'
+  ],
+
+   'Urban Wildlife': [
+    'urban wildlife',
+    'urban education',
+    'urban ed'
+  ],
+
+  'Wildlife': [
+    'wildlife',
+    'living with',
+    'skins',
+    'table',
+    'chat',
+    'wild',
+    'bird',
+    'burrows',
+    'nests',
+    'bats',
+    'skulls',
+    'reptile',
+    'snake',
+    'bat walk',
+    'animal',
+    'owl'
+  ],
+
+    'Boating': [
+    'boat',
+    'boating'
+  ],
+
+  'Volunteer': [
+    'volunteer',
+    'instructor',
+    'volunteer meeting',
+    'volunteer training',
+    'academy'
+  ]
 };
 
-let events = [];
+function classifyEvent(title = '') {
+
+  const t = title.toLowerCase();
+
+  for (const category in CATEGORY_RULES) {
+
+    const keywords = CATEGORY_RULES[category];
+
+    const matched = keywords.some(keyword =>
+      t.includes(keyword.toLowerCase())
+    );
+
+    if (matched) {
+      return category;
+    }
+  }
+
+  return 'Other';
+}
+
+const categoryColors = {
+
+  'Hunter Education':'#84cc16',          // lime green
+
+  'Advanced Hunter Education':'#166534',
+
+  'Fishing':'#f97316',                   // orange
+
+  'Wildlife':'#9333ea',                  // purple
+
+  'Urban Wildlife':'#0f766e',            // teal
+
+  'Boating':'#6b7280',                   // gray
+
+  'Volunteer':'#2563eb',                 // blue
+
+  'Archery':'#ea580c',
+
+  'School':'#b45309',
+
+  'Other':'#64748b'
+};let events = [];
 
 async function loadEvents(){
 
@@ -662,6 +817,11 @@ async function loadEvents(){
     console.log(data);
 
     events = data.events;
+
+	events = events.map(event => ({
+  	...event,
+  	category: classifyEvent(event.title)
+}));
 
     document.getElementById(
       'lastUpdated'
@@ -885,15 +1045,6 @@ function renderCalendar(){
 
    dayEvents.forEach(event => {
 
-   if(
-  event.category
-    .trim()
-    .includes('Advanced Hunter Education')
-){
-  event.category =
-    'Hunter Education';
-}
-
   const div = document.createElement('div');
 
   div.className = 'event';
@@ -905,12 +1056,6 @@ function renderCalendar(){
     .trim()
     .toLowerCase();
 
-if(
-  category.includes('advanced hunter')
-){
-  event.category =
-    'Hunter Education';
-}
 console.log(event);
     
 div.style.background =
