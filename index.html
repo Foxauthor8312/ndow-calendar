@@ -90,6 +90,15 @@ button:hover{
   margin-bottom:8px;
 }
 
+.admin-button{
+  background:#374151;
+  color:white;
+}
+
+.admin-button:hover{
+  background:#1f2937;
+}
+
 .event{
   padding:6px;
   border-radius:6px;
@@ -576,12 +585,14 @@ button:hover{
     Logout
   </button>
 
+  <button class="admin-button" onclick="openAdminPanel()">
+    Admin
+  </button>
+
 </div>
 
 <div class="controls">
-
-    <button onclick="openAdminPanel()">Admin</button>
-    
+   
     <button onclick="prevMonth()">Previous</button>
 
     <h2 id="monthLabel"></h2>
