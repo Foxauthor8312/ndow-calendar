@@ -275,6 +275,10 @@ button:hover{
   padding:10px 20px;
   font-size:14px;
   color:#374151;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 .disclaimer{
   background:#ECECEC;
@@ -570,8 +574,16 @@ button:hover{
 
 </header>
 
- <div id="lastUpdated" class="updated-bar">
-  Last Updated:
+<div class="updated-bar">
+
+  <div id="lastUpdated">
+    Last Updated:
+  </div>
+
+  <div id="currentTime">
+    Current Time:
+  </div>
+
 </div>
 
   <div class="legend">
@@ -842,14 +854,16 @@ async function loadEvents(){
   	category: classifyEvent(event.title)
 }));
 
-    document.getElementById(
-      'lastUpdated'
-    ).innerText =
-      'Last Updated: ' +
-      new Date(
-        data.lastUpdated
-      ).toLocaleString();
+   document.getElementById(
+  'lastUpdated'
+).innerText = data.lastUpdated
 
+  ? 'Last Updated: ' +
+    new Date(
+      data.lastUpdated
+    ).toLocaleString()
+
+  : 'Update status unavailable — scraper may not have completed successfully.';
     renderCalendar();
 
   } catch(err){
