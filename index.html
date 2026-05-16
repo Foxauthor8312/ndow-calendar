@@ -211,6 +211,9 @@ button:hover{
   background:white;
   border-bottom:1px solid #d1d5db;
   overflow:hidden;
+
+  justify-content:flex-start;
+  align-items:center;
 }
 
 .legend-item{
@@ -543,12 +546,14 @@ button:hover{
 }
 
 .filter-note{
-  margin-left:auto;
+  margin-left:18px;
   background:transparent;
   border-right:none;
   color:#6b7280;
   cursor:default;
   font-style:italic;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
 .filter-note:hover{
