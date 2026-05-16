@@ -22,10 +22,14 @@ header{
   background:#19304B;
   color:white;
   padding:20px 24px;
+
   display:flex;
   align-items:center;
+  justify-content:space-between;
+
   gap:20px;
   flex-wrap:wrap;
+
   border-bottom:2px solid #F29647;
 }
 
@@ -36,6 +40,7 @@ h1{
   letter-spacing:1px;
   text-transform:uppercase;
 }
+	
 .controls{
   display:flex;
   gap:10px;
@@ -99,6 +104,14 @@ button:hover{
   background:#3B5872;
 }
 
+.admin-panel button{
+  background:#4B6B88;
+  color:white;
+}
+
+.admin-panel button:hover{
+  background:#3B5872;
+}
 .event{
   padding:6px;
   border-radius:6px;
@@ -448,7 +461,6 @@ button:hover{
   display:flex;
   align-items:center;
   gap:10px;
-  margin-left:auto;
 }
 
  button:disabled{
@@ -576,7 +588,19 @@ button:hover{
   </div>
 
 </div>
-<div class="account-controls">
+
+
+<div class="controls">
+   
+    <button onclick="prevMonth()">Previous</button>
+
+    <h2 id="monthLabel"></h2>
+
+    <button onclick="nextMonth()">Next</button>
+
+  </div>
+
+	<div class="account-controls">
 
   <div id="userDisplay" class="user-display">
     Logged in
@@ -591,17 +615,7 @@ button:hover{
   </button>
 
 </div>
-
-<div class="controls">
-   
-    <button onclick="prevMonth()">Previous</button>
-
-    <h2 id="monthLabel"></h2>
-
-    <button onclick="nextMonth()">Next</button>
-
-  </div>
-
+	
 </header>
 
 <div class="updated-bar">
