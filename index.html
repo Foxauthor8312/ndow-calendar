@@ -1428,7 +1428,13 @@ div.innerHTML =
     ? 'Enable'
     : 'Disable') +
 
-  '</button>';
+  '</button>' +
+
+'<button style="margin-top:8px;margin-left:8px;" onclick="resetPin(\'' +
+user.username +
+'\')">Reset PIN</button>';
+
+
 container.appendChild(div);
 
 console.log(user);
@@ -1589,6 +1595,45 @@ if(currentUser.username === username){
   );
 
   loadUsers();
+
+}
+
+async function resetPin(username){
+
+  const newPin =
+    prompt(
+      'Enter new 6-digit PIN for ' +
+      username
+    );
+
+  if(!newPin){
+
+    return;
+
+  }
+
+  const token =
+    localStorage.getItem('token');
+
+  const response = await fetch(
+    'https://ndow-calendar-server.onrender.com/api/admin/reset-pin',
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        Authorization:`Bearer ${token}`
+      },
+      body:JSON.stringify({
+        username,
+        pin:newPin
+      })
+    }
+  );
+
+  const data =
+    await response.json();
+
+  alert(data.message);
 
 }
 
