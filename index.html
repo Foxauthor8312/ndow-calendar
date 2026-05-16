@@ -919,7 +919,19 @@ function logout(showMessage = false){
 
   }
 
-  location.reload();
+  document.getElementById(
+  'appContent'
+).style.display = 'none';
+
+document.getElementById(
+  'loginScreen'
+).style.display = 'flex';
+
+document.getElementById(
+  'userPin'
+).value = '';
+
+resetInactivityTimer();
 
 }
 function nextMonth(){
