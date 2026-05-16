@@ -897,7 +897,9 @@ function renderCalendar(){
   const div = document.createElement('div');
 
   div.className = 'event';
-
+    
+  console.log(event.category);
+    
   div.style.background =
     categoryColors[event.category]
     || categoryColors.Other;
