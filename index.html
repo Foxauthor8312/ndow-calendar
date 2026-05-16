@@ -885,9 +885,10 @@ function renderCalendar(){
 
    dayEvents.forEach(event => {
 
-    if(
-  event.category ===
-  'Advanced Hunter Education'
+   if(
+  event.category
+    .trim()
+    .includes('Advanced Hunter Education')
 ){
   event.category =
     'Hunter Education';
