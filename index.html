@@ -1150,6 +1150,25 @@ document.getElementById(
 resetInactivityTimer();
 
 }
+
+function updateCurrentTime(){
+
+  const now = new Date();
+
+  document.getElementById(
+    'currentTime'
+  ).innerText =
+    'Current Time: ' +
+    now.toLocaleString();
+}
+
+setInterval(
+  updateCurrentTime,
+  1000
+);
+
+updateCurrentTime();
+	
 function nextMonth(){
 
   currentDate.setMonth(
