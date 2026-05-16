@@ -12,12 +12,20 @@
 
 <style>
 
+/* ========================================
+   START GLOBAL STYLES
+======================================== */
+	
  body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:#f3f4f6;
 }
 
+/* ========================================
+   START HEADER SECTION
+======================================== */
+	
 header{
   background:#19304B;
   color:white;
@@ -191,7 +199,9 @@ button:hover{
 .modal-close:hover{
   background:#b91c1c;
 }
-/* LEGEND */
+/* ========================================
+   START LEGEND SECTION
+======================================== */
 
 .legend{
   display:flex;
@@ -232,6 +242,9 @@ button:hover{
   color:white;
 }
 
+<div class="legend-item filter-note">
+  Filter: select one or more categories - reslect to clear
+</div>
 
 .legend-color{
   width:14px;
@@ -308,6 +321,11 @@ button:hover{
   border:1px solid #d1d5db;
   font-size:14px;
 }
+
+/* ========================================
+   START STATUS BAR SECTION
+======================================== */
+	
 .updated-bar{
   background:#dbeafe;
   padding:10px 20px;
@@ -351,6 +369,12 @@ button:hover{
   letter-spacing:1.2px;
   text-transform:uppercase;
 }
+
+/* ========================================
+   START LOGIN SCREEN
+======================================== */
+
+	
  .login-screen{
   position:fixed;
   inset:0;
@@ -490,6 +514,10 @@ button:hover{
   line-height:1.4;
 }
 
+/* ========================================
+   START ADMIN PANEL
+======================================== */	
+
 .admin-layout{
   display:grid;
   grid-template-columns:320px 1fr;
@@ -508,11 +536,35 @@ button:hover{
 .admin-panel h3{
   margin-top:0;
 }
+
+.legend-item.active-filter{
+  background:#19304B;
+  color:white;
+}
+
+.filter-note{
+  margin-left:auto;
+  background:transparent;
+  border-right:none;
+  color:#6b7280;
+  cursor:default;
+  font-style:italic;
+}
+
+.filter-note:hover{
+  background:transparent;
+}
+	
 </style>
 </head>
 
 <body>
 
+<!-- ========================================
+     START LOGIN HTML
+======================================== -->
+
+	
 <div id="loginScreen" class="login-screen">
 
   <div class="login-box">
@@ -591,8 +643,17 @@ button:hover{
 
 </div>
 
+<!-- ========================================
+     START MAIN APPLICATION
+======================================== -->
+	
 <div id="appContent" style="display:none;">
-  
+
+<!-- ========================================
+     START HEADER
+======================================== -->
+
+	
 <header>
 
  <div class="title-block">
@@ -652,6 +713,10 @@ button:hover{
 
 </div>
 
+<!-- ========================================
+     START LEGEND
+======================================== -->
+	
   <div class="legend">
 
 <div class="legend-item"
@@ -715,12 +780,17 @@ button:hover{
 </div>
 </div>
 
-<div class="filter-help">
-  Click one or more legend categories to filter calendar events.
-</div>
+	<!-- ========================================
+     START CALENDAR
+======================================== -->
 
 <div class="calendar" id="calendar"></div>
 
+<!-- ========================================
+     START EVENT MODAL
+======================================== -->
+
+	
   <div id="eventModal" class="modal hidden">
   <div class="modal-content">
 
@@ -741,6 +811,9 @@ button:hover{
 let authorizedUsers = [];  
 let categoryEmails = [];
 
+	// ========================================
+// START CATEGORY RULES
+// ========================================
  
 const CATEGORY_RULES = {
 
@@ -844,6 +917,10 @@ const CATEGORY_RULES = {
   ]
 };
 
+// ========================================
+// START EVENT CLASSIFICATION
+// ========================================
+	
 function classifyEvent(title = '') {
 
   const t = title.toLowerCase();
@@ -888,6 +965,10 @@ const categoryColors = {
 };
 	let events = [];
     let activeFilters = [];
+
+// ========================================
+// START EVENT LOADING
+// ========================================
 	
 
 async function loadEvents(){
@@ -980,6 +1061,11 @@ document.getElementById(
 ).disabled = false;
   
 let currentDate = new Date();
+// ========================================
+// START AUTHENTICATION
+// ========================================
+
+	
 async function checkLogin(){
 
   const name =
@@ -1080,6 +1166,10 @@ document.getElementById(
 
 }
 
+	// ========================================
+// START FILTER SYSTEM
+// ========================================
+
 	function toggleFilter(category){
 
   if(activeFilters.includes(category)){
@@ -1118,7 +1208,11 @@ document.getElementById(
 
   renderCalendar();
 }
-
+// ========================================
+// START CALENDAR RENDERING
+// ========================================
+	
+	
 function renderCalendar(){
 
   const calendar =
@@ -1239,6 +1333,11 @@ calendar.appendChild(cell);
 }
 
 }
+// ========================================
+// START SESSION MANAGEMENT
+// ========================================
+
+	
 function logout(showMessage = false){
 
   localStorage.removeItem(
@@ -1329,7 +1428,11 @@ function closeModal() {
   modal.classList.add("hidden");
   modal.style.display = "none";
 }
+// ========================================
+// START EVENT MODAL SYSTEM
+// ========================================
 
+	
 async function openEventModal(eventUrl) {
 
  modal.classList.remove("hidden");
@@ -1758,6 +1861,10 @@ function stayLoggedIn(){
   resetInactivityTimer();
 
 }
+
+	// ========================================
+// START ADMIN SYSTEM
+// ========================================
  
 async function loadUsers(){
 
@@ -2097,7 +2204,11 @@ async function resetPin(username){
 
 </div>
   </div>
+<!-- ========================================
+     START ADMIN MODAL
+======================================== -->
 
+	
 <div id="adminModal" class="modal hidden">
 
   <div class="modal-content">
