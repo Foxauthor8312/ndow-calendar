@@ -1663,6 +1663,51 @@ async function resetPin(username){
 
 
 </script>
+
+ <div id="timeoutWarning" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+">
+
+  <div style="
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    max-width:320px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+  ">
+
+    <h3>
+      Session Expiring
+    </h3>
+
+    <p>
+      You will be logged out in 60 seconds due to inactivity.
+    </p>
+
+    <button onclick="stayLoggedIn()">
+      Stay Logged In
+    </button>
+
+    <button
+      onclick="logout(true)"
+      style="margin-left:10px;"
+    >
+      Logout Now
+    </button>
+
+  </div>
+
+</div>
 <div class="disclaimer">
 
   This calendar is provided solely as a convenience tool for NDOW volunteer instructors and volunteers to assist in identifying publicly listed events they may wish to participate in.
