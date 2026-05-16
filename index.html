@@ -271,14 +271,28 @@ button:hover{
   font-size:14px;
 }
 .updated-bar{
-  background:#e5e7eb;
+  background:#D8E5F7;
   padding:10px 20px;
-  font-size:14px;
   color:#374151;
 
   display:flex;
   justify-content:space-between;
   align-items:center;
+
+  font-weight:700;
+  border-top:1px solid #c3d4ea;
+  border-bottom:1px solid #c3d4ea;
+}
+
+.updated-section{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+#currentTime{
+  min-width:260px;
+  text-align:right;
 }
 .disclaimer{
   background:#ECECEC;
@@ -576,12 +590,18 @@ button:hover{
 
 <div class="updated-bar">
 
-  <div id="lastUpdated">
-    Last Updated:
+  <div class="updated-section">
+    <strong>LAST UPDATED:</strong>
+    <span id="lastUpdated">
+      --
+    </span>
   </div>
 
-  <div id="currentTime">
-    Current day & time:
+  <div class="updated-section">
+    <strong>CURRENT DATE/TIME:</strong>
+    <span id="currentTime">
+      --
+    </span>
   </div>
 
 </div>
@@ -854,16 +874,15 @@ async function loadEvents(){
   	category: classifyEvent(event.title)
 }));
 
-   document.getElementById(
+ document.getElementById(
   'lastUpdated'
 ).innerText = data.lastUpdated
 
-  ? 'Last Updated: ' +
-    new Date(
+  ? new Date(
       data.lastUpdated
     ).toLocaleString()
 
-  : 'Update status unavailable — scraper may not have completed successfully.';
+  : 'Unavailable - check update status';
     renderCalendar();
 
   } catch(err){
@@ -1158,8 +1177,7 @@ function updateCurrentTime(){
   document.getElementById(
     'currentTime'
   ).innerText =
-    'Current Date/Time: ' +
-    now.toLocaleString();
+     now.toLocaleString();
 }
 
 setInterval(
