@@ -608,6 +608,7 @@ let categoryEmails = [];
 
  
 const categoryColors = {
+ 
   'Hunter Education':'#2563eb',
   'Fishing':'#16a34a',
   'Wildlife':'#9333ea',
@@ -882,6 +883,14 @@ function renderCalendar(){
 });
 
    dayEvents.forEach(event => {
+
+    if(
+  event.category ===
+  'Advanced Hunter Education'
+){
+  event.category =
+    'Hunter Education';
+}
 
   const div = document.createElement('div');
 
