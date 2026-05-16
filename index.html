@@ -900,9 +900,21 @@ function renderCalendar(){
     
   console.log(event.category);
     
-  div.style.background =
-    categoryColors[event.category]
-    || categoryColors.Other;
+ const category =
+  event.category
+    .trim()
+    .toLowerCase();
+
+if(
+  category.includes('advanced hunter')
+){
+  event.category =
+    'Hunter Education';
+}
+
+div.style.background =
+  categoryColors[event.category]
+  || categoryColors['Other'];
 
   div.innerText = event.title;
 
