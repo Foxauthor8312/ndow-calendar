@@ -63,9 +63,13 @@ blocks.forEach(block => {
 
   let category = 'Other';
 
-  if(title.includes('Hunter')){
-    category = 'Hunter Education';
-  }
+  if(
+  title.includes('Hunter')
+  ||
+  title.includes('Advanced')
+){
+  category = 'Hunter Education';
+}
 
   if(title.includes('Fishing')){
     category = 'Fishing';
