@@ -446,14 +446,15 @@ button:hover{
 
   margin:0;
 
-  font-size:42px;
-  line-height:1.05;
+  font-size:44px;
+  line-height:1.02;
   font-weight:700;
 
   color:white;
 
-}
+  letter-spacing:-0.5px;
 
+}
 .login-divider{
 
   width:72px;
@@ -486,7 +487,7 @@ button:hover{
 
 .login-logo{
 
-  width:110px;
+width:92px;
 
   filter:
     drop-shadow(
@@ -497,26 +498,34 @@ button:hover{
 
 .login-input{
 
-  width:88%;
+.login-input::placeholder{
 
-  margin-left:auto;
-  margin-right:auto;
+  color:
+    rgba(255,255,255,.68);
 
-  display:block;
+}
+	
+  width:100%;
 
-  padding:14px 16px;
+  padding:15px 16px;
 
   border-radius:12px;
 
   border:
-    1px solid rgba(255,255,255,.12);
+    1px solid rgba(255,255,255,.10);
 
   background:
-    rgba(255,255,255,.88);
+    rgba(255,255,255,.16);
+
+  color:white;
+
+  box-sizing:border-box;
 
   font-size:17px;
 
-  box-sizing:border-box;
+  outline:none;
+
+  backdrop-filter:blur(6px);
 
 }
 
@@ -587,11 +596,11 @@ display:block;
   border-radius:12px;
 
   background:
-    linear-gradient(
-      180deg,
-      #4d83e8,
-      #2c5fc0
-    );
+  linear-gradient(
+    180deg,
+    #5a8fe8,
+    #3c6dc0
+  );
 
   color:white;
 
@@ -638,11 +647,11 @@ margin-right:auto;
 
   border-radius:12px;
 
-  background:
-    rgba(255,255,255,.08);
+ background:
+  rgba(255,255,255,.05);
 
   border:
-    1px solid rgba(255,255,255,.14);
+  1px solid rgba(255,255,255,.08);
 
   color:
     rgba(255,255,255,.92);
@@ -1032,6 +1041,7 @@ margin-right:auto;
   <div style="
     font-size:28px;
     font-weight:700;
+	  letter-spacing:.3px;
     margin-bottom:18px;
   ">
     Loading Calendar...
