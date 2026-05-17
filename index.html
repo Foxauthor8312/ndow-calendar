@@ -2160,10 +2160,17 @@ if(
   ) === 'inactive'
 ){
 
+ const sessionMessage =
   document.getElementById(
     'sessionMessage'
-  ).innerText =
+  );
+
+if(sessionMessage){
+
+  sessionMessage.innerText =
     'You have been logged out due to inactivity. Log back in to resume your session.';
+
+}
 
   sessionStorage.removeItem(
     'ndowLoggedOut'
