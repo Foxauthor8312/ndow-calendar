@@ -397,54 +397,60 @@ button:hover{
   justify-content:center;
   align-items:center;
 
-  z-index:99999;
-
-  overflow:auto;
-
   padding:40px;
+
+  z-index:99999;
 
 }
 
 .login-box{
 
-  width:760px;
+  width:640px;
 
-  max-width:92%;
+  max-width:94vw;
 
-  padding:70px 72px 56px;
+  padding:46px 46px 40px;
 
-  border-radius:34px;
+  border-radius:30px;
 
   background:
     linear-gradient(
       180deg,
-      rgba(18,22,30,.96),
-      rgba(8,10,14,.98)
+      rgba(10,14,22,.98),
+      rgba(4,6,10,1)
     );
 
   border:
-    1px solid rgba(255,255,255,.10);
+    1px solid rgba(255,255,255,.12);
 
   box-shadow:
-    0 30px 90px rgba(0,0,0,.65);
+    0 30px 90px rgba(0,0,0,.72);
 
 }
 
 .login-header{
 
-  margin-bottom:44px;
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:30px;
+
+  margin-bottom:42px;
 
 }
 
 .login-title-main{
 
-  font-size:96px;
+  font-size:64px;
 
   line-height:.92;
 
   font-weight:700;
 
-  letter-spacing:-4px;
+  letter-spacing:-3px;
 
   color:white;
 
@@ -452,22 +458,49 @@ button:hover{
 
 .login-title-sub{
 
-  margin-top:8px;
+  margin-top:6px;
 
-  font-size:34px;
+  font-size:24px;
 
-  line-height:1.12;
+  line-height:1.15;
 
   font-weight:300;
 
   color:
-    rgba(255,255,255,.92);
+    rgba(255,255,255,.94);
+
+}
+
+.logo-badge{
+
+  width:120px;
+  height:120px;
+
+  border-radius:24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
+}
+
+.login-logo{
+
+  width:84px;
+
+  display:block;
 
 }
 
 .login-form{
 
-  margin-top:24px;
+  margin-top:12px;
 
 }
 
@@ -484,21 +517,35 @@ button:hover{
 
   position:absolute;
 
-  left:26px;
+  left:28px;
   top:50%;
 
   transform:translateY(-50%);
 
-  color:
-    rgba(255,255,255,.92);
+  color:white;
+
+  font-size:28px;
+
+  opacity:.95;
+
+  z-index:5;
+
+}
+
+.input-right-icon{
+
+  position:absolute;
+
+  right:28px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:white;
 
   font-size:24px;
 
-  width:24px;
-
-  text-align:center;
-
-  z-index:5;
+  opacity:.92;
 
 }
 
@@ -506,29 +553,27 @@ button:hover{
 
   width:100%;
 
-  height:88px;
+  height:68px;
 
-  padding:0 80px;
+  padding:0 64px;
 
-  border-radius:22px;
+  border-radius:18px;
 
   border:
-    1px solid rgba(255,255,255,.26);
+    1px solid rgba(255,255,255,.20);
 
   background:
     linear-gradient(
       90deg,
-      rgba(22,26,36,.95),
-      rgba(10,14,22,.98)
+      rgba(14,18,28,.96),
+      rgba(8,10,18,.98)
     );
 
   color:white;
 
-  font-size:34px;
+  font-size:24px;
 
   font-weight:300;
-
-  letter-spacing:.2px;
 
   outline:none;
 
@@ -539,13 +584,13 @@ button:hover{
 .login-input::placeholder{
 
   color:
-    rgba(255,255,255,.86);
+    rgba(255,255,255,.82);
 
 }
 
 .password-input{
 
-  padding-right:90px;
+  padding-right:94px;
 
 }
 
@@ -558,10 +603,11 @@ button:hover{
 
   transform:translateY(-50%);
 
-  color:
-    rgba(255,255,255,.84);
+  color:white;
 
-  font-size:24px;
+  font-size:28px;
+
+  opacity:.95;
 
   cursor:pointer;
 
@@ -569,66 +615,59 @@ button:hover{
 
 .login-button{
 
-  width:62%;
+  width:100%;
 
-  height:82px;
+  height:72px;
 
-  margin:34px auto 0 auto;
-
-  display:block;
+  margin-top:18px;
 
   border:none;
 
-  border-radius:22px;
+  border-radius:18px;
 
   background:
     linear-gradient(
       180deg,
-      #3567c8,
-      #214b9a
+      #2563eb,
+      #1d4ed8
     );
 
   color:white;
 
-  font-size:38px;
+  font-size:28px;
 
-  font-weight:400;
-
-  letter-spacing:.2px;
+  font-weight:600;
 
   cursor:pointer;
-
-  box-shadow:
-    0 10px 28px rgba(0,0,0,.34);
 
 }
 
 .login-error{
 
-  margin-top:18px;
+  margin-top:16px;
 
   text-align:center;
 
   color:#ffb7b7;
 
-  font-size:16px;
+  font-size:18px;
 
 }
 
 .access-help{
 
-  margin:44px 0 26px;
+  margin:44px 0 24px;
 
   display:flex;
 
   align-items:center;
 
-  gap:20px;
+  gap:22px;
 
   color:
-    rgba(255,255,255,.84);
+    rgba(255,255,255,.92);
 
-  font-size:28px;
+  font-size:34px;
 
   font-weight:300;
 
@@ -644,7 +683,7 @@ button:hover{
   height:1px;
 
   background:
-    rgba(255,255,255,.34);
+    rgba(255,255,255,.28);
 
 }
 
@@ -655,21 +694,21 @@ button:hover{
   align-items:center;
   justify-content:space-between;
 
-  margin-top:20px;
+  margin-top:18px;
 
-  padding:26px 30px;
+  padding:28px 32px;
 
-  border-radius:22px;
+  border-radius:24px;
 
   background:
     linear-gradient(
       90deg,
-      rgba(18,24,34,.96),
-      rgba(10,14,22,.98)
+      rgba(12,16,26,.98),
+      rgba(6,8,14,1)
     );
 
   border:
-    1px solid rgba(255,255,255,.22);
+    1px solid rgba(255,255,255,.16);
 
   color:white;
 
@@ -683,9 +722,9 @@ button:hover{
 
   align-items:center;
 
-  gap:20px;
+  gap:22px;
 
-  font-size:32px;
+  font-size:38px;
 
   font-weight:300;
 
@@ -695,11 +734,11 @@ button:hover{
 
 .access-left i{
 
-  width:28px;
+  width:32px;
 
   text-align:center;
 
-  font-size:28px;
+  font-size:30px;
 
 }
 
@@ -708,21 +747,6 @@ button:hover{
   font-size:24px;
 
   opacity:.92;
-
-}
-
-.session-note{
-
-  margin-top:40px;
-
-  text-align:center;
-
-  color:
-    rgba(255,255,255,.56);
-
-  font-size:24px;
-
-  line-height:1.5;
 
 }
 /* ========================================
@@ -804,12 +828,6 @@ body{
           Volunteer Event Calendar
         </div>
 
-        <div class="login-divider"></div>
-
-        <div class="login-subtitle">
-          Volunteer-maintained events calendar
-        </div>
-
       </div>
 
       <div class="logo-badge">
@@ -838,6 +856,10 @@ body{
           placeholder="User ID"
           class="login-input"
         >
+
+        <span class="input-right-icon">
+          <i class="fa-regular fa-id-card"></i>
+        </span>
 
       </div>
 
@@ -875,8 +897,6 @@ body{
       </button>
 
       <div id="loginError" class="login-error"></div>
-
-      <div id="sessionMessage" class="session-note"></div>
 
       <div class="access-help">
         Need access or forgot your PIN?
