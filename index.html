@@ -548,10 +548,34 @@ button:hover{
 }
  
 .login-button{
+
   width:100%;
-  margin-top:18px;
-  background:#166534;
+
+  margin-top:20px;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #4d83e8,
+      #2c5fc0
+    );
+
   color:white;
+
+  font-size:18px;
+  font-weight:600;
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.28);
+
+  transition:.2s ease;
+
 }
 
 .login-error{
@@ -561,22 +585,53 @@ button:hover{
 }
 
 .access-help{
-  margin-top:18px;
-  font-size:14px;
-  color:#6b7280;
-  line-height:1.5;
+
+  margin-top:24px;
+
+  font-size:15px;
+
+  color:
+    rgba(255,255,255,.72);
+
+  line-height:1.6;
+
+  text-align:center;
+
+}
+.access-link{
+
+  display:block;
+
+  margin-top:14px;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
+  color:
+    rgba(255,255,255,.92);
+
+  font-weight:500;
+
+  text-decoration:none;
+
+  text-align:center;
+
+  transition:.2s ease;
+
 }
 
-.access-link{
-  display:block;
-  margin-top:12px;
-  padding:10px;
-  border-radius:8px;
-  background:#f3f4f6;
-  color:#166534;
-  font-weight:600;
-  text-decoration:none;
-  transition:.2s ease;
+.access-link:hover{
+
+  background:
+    rgba(255,255,255,.14);
+
 }
 
 .access-link:hover{
@@ -693,7 +748,7 @@ button:hover{
       type="text"
       id="userName"
       autocomplete="off"
-      placeholder="Your Name"
+      placeholder="User ID"
       class="login-input"
      
     >
