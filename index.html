@@ -729,11 +729,12 @@ button:hover{
   border:
     1px solid rgba(255,255,255,.08);
 
-  color:white;
+  color:
+  rgba(255,255,255,.92);
 
   text-decoration:none;
 
-  font-size:15px;
+  font-size:16px;
 
   font-weight:500;
 
@@ -751,7 +752,16 @@ button:hover{
 
 }
 	.access-link i{
+.access-left{
 
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+}
+		
   opacity:.72;
 
   font-size:14px;
@@ -909,21 +919,33 @@ body{
         Need access or forgot your PIN?
       </div>
 
-      <a
-        href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
-        class="access-link"
-      >
-        Request Calendar Access by Email
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
+     <a
+  href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
+  class="access-link"
+>
 
-      <a
-        href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
-        class="access-link"
-      >
-        Request Calendar Access by Text
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
+  <span class="access-left">
+    <i class="fa-regular fa-envelope"></i>
+    Request Access by Email
+  </span>
+
+  <i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+     <a
+  href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
+  class="access-link"
+>
+
+  <span class="access-left">
+    <i class="fa-regular fa-comment"></i>
+    Request Access by Text
+  </span>
+
+  <i class="fa-solid fa-arrow-right"></i>
+
+</a>
 
     </div>
 
