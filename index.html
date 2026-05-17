@@ -56,6 +56,7 @@ h1{
   font-weight:700;
   letter-spacing:1px;
   text-transform:uppercase;
+  color:white;
 }
 	
 .controls{
@@ -63,6 +64,19 @@ h1{
   gap:10px;
   align-items:center;
 }
+.account-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.user-display{
+  color:white;
+  font-size:14px;
+  font-weight:600;
+}
+	
 
 button{
   background:#F29647;
@@ -81,7 +95,7 @@ button:hover{
 
 .calendar{
   display:grid;
-  grid-template-columns:repeat(7,1fr);
+  grid-template-columns:repeat(7,minmax(0,1fr));
   grid-template-rows:32px;
   grid-auto-rows:minmax(140px,auto);
   gap:1px;
@@ -207,6 +221,29 @@ button:hover{
 
 .modal-close:hover{
   background:#b91c1c;
+}
+
+	@media(max-width:768px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .controls,
+  .account-controls{
+    width:100%;
+  }
+
+  .calendar{
+    grid-template-columns:repeat(7,minmax(120px,1fr));
+    overflow-x:auto;
+  }
+
+  .legend{
+    justify-content:flex-start;
+  }
+
 }
 /* ========================================
    START LEGEND SECTION
@@ -372,13 +409,16 @@ button:hover{
   border-top:1px solid #d1d5db;
 }
 .subtitle{
+	
   color:rgba(255,255,255,0.78);
   font-size:13px;
   margin-top:6px;
   letter-spacing:1.2px;
   text-transform:uppercase;
 }
-
+.title-block{
+  color:white;
+}
 /* ========================================
    START LOGIN SCREEN
 ======================================== */
@@ -586,6 +626,11 @@ button:hover{
   margin-top:4px;
 
 }
+.login-button:disabled{
+  opacity:.7;
+  cursor:not-allowed;
+}
+	
 
 .login-error{
 
