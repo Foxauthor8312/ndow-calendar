@@ -32,17 +32,24 @@
 ======================================== */
 	
 header{
+
   background:#19304B;
 
+  display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
   gap:20px;
-  flex-wrap:nowrap;
+
+  flex-wrap:wrap;
+
+  padding:18px 20px;
 
   border-bottom:2px solid #F29647;
-}
 
+}
 h1{
   margin:0;
   font-size:30px;
@@ -247,9 +254,6 @@ button:hover{
   color:white;
 }
 
-<div class="legend-item filter-note">
-  Filter: select one or more categories - reslect to clear
-</div>
 
 .legend-color{
   width:14px;
@@ -419,9 +423,37 @@ button:hover{
 
 }
 
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .login-box{
+
+    width:100%;
+
+    max-width:360px;
+
+    padding:24px;
+
+  }
+
+  .login-title-main{
+
+    font-size:34px;
+
+  }
+
+}
+
 .login-header{
 
   margin-bottom:24px;
+
+}
+
+.login-title-wrap{
+
+  width:100%;
 
 }
 
@@ -435,8 +467,10 @@ button:hover{
 
   color:white;
 
-}
+  line-height:1;
 
+}
+	
 .login-title-sub{
 
   margin-top:4px;
