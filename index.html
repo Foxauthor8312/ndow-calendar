@@ -764,101 +764,115 @@ button:hover{
      START LOGIN HTML
 ======================================== -->
 
-	
 <div id="loginScreen" class="login-screen">
 
   <div class="login-box">
 
     <div class="login-header">
 
-  <div class="login-title-wrap">
+      <div class="login-title-wrap">
 
-    <h1 class="login-title">
-      NDOW Volunteer<br>
-      Event Calendar
-    </h1>
+        <h1 class="login-title">
+          NDOW Volunteer<br>
+          Event Calendar
+        </h1>
 
-    <div class="login-divider"></div>
+        <div class="login-divider"></div>
 
-    <p class="login-subtitle">
-      Volunteer-maintained<br>
-      events calendar
-    </p>
+        <p class="login-subtitle">
+          Volunteer-maintained<br>
+          events calendar
+        </p>
+
+      </div>
+
+      <img
+        src="ndow-logo.png"
+        class="login-logo"
+      >
+
+    </div>
+
+    <div class="login-form">
+
+      <div class="input-wrap">
+
+        <span class="input-icon">
+          👤
+        </span>
+
+        <input
+          type="text"
+          id="userName"
+          autocomplete="off"
+          placeholder="User ID"
+          class="login-input"
+        >
+
+      </div>
+
+      <div class="password-wrap">
+
+        <span class="input-icon">
+          🔒
+        </span>
+
+        <input
+          type="password"
+          id="userPin"
+          autocomplete="new-password"
+          placeholder="6-digit PIN"
+          class="login-input password-input"
+          maxlength="6"
+        >
+
+        <span
+          class="toggle-password"
+          onclick="togglePassword()"
+        >
+          👁
+        </span>
+
+      </div>
+
+      <button
+        id="loginButton"
+        class="login-button"
+        onclick="checkLogin()"
+        disabled
+      >
+        Continue Login
+      </button>
+
+      <div id="loginError" class="login-error"></div>
+
+      <div id="sessionMessage" class="session-note"></div>
+
+      <div class="access-help">
+        Need access or forgot your PIN?
+      </div>
+
+      <a
+        href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
+        class="access-link"
+      >
+        Request Calendar Access by Email
+        <span>✉️</span>
+      </a>
+
+      <a
+        href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
+        class="access-link"
+      >
+        Request Calendar Access by Text
+        <span>💬</span>
+      </a>
+
+    </div>
 
   </div>
 
-  <img
-    src="ndow-logo.png"
-    class="login-logo"
-  >
-
 </div>
-
-   <input
-  type="text"
-  id="userName"
-  autocomplete="off"
-  placeholder="User ID"
-  class="login-input"
->
-
-   <div class="password-wrap">
-
-  <input
-    type="password"
-    id="userPin"
-    autocomplete="new-password"
-    placeholder="6-digit PIN"
-    class="login-input password-input"
-    maxlength="6"
-  >
-
-  <span
-    class="toggle-password"
-    onclick="togglePassword()"
-  >
-    👁
-  </span>
-
-</div>
-
-<button
-  id="loginButton"
-  class="login-button"
-  onclick="checkLogin()"
-  disabled
->
-  Continue Login
-</button>
-	  
-      
-    <div id="loginError" class="login-error"></div>
-    <div id="sessionMessage" class="session-note"></div>
-    <div class="access-help">
-
-  Need access or forgot your PIN?
-
-<a
-  href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
-  class="access-link"
->
-  Request Calendar Access by Email
-</a>
-
-<a
-  href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
-  class="access-link"
->
-  Request Calendar Access by Text
-</a>
-
-</div>
-
-   
-  </div>
-
-</div>
-
 <!-- ========================================
      START MAIN APPLICATION
 ======================================== -->
