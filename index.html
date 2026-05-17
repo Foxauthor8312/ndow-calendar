@@ -1032,7 +1032,9 @@ async function loadEvents(){
 
     events = data.events;
 
-	const storedTimestamp =
+	events = data.events;
+
+const storedTimestamp =
   sessionStorage.getItem(
     'stableLastUpdated'
   );
@@ -1049,20 +1051,10 @@ if(
 
 }
 
-}
 events = events.map(event => ({
   ...event,
   category: classifyEvent(event.title)
 }));
-
-if(!sessionStorage.getItem('stableLastUpdated')){
-
-  sessionStorage.setItem(
-    'stableLastUpdated',
-    data.lastUpdated
-  );
-
-}
 
 document.getElementById(
   'lastUpdated'
@@ -1074,12 +1066,6 @@ document.getElementById(
   ).toLocaleString();
 
 renderCalendar();
-
-  } catch(err){
-
-    console.error(err);
-
-    renderCalendar();
 
   }
 
