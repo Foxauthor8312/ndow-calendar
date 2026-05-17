@@ -548,24 +548,26 @@ button:hover{
 
 }
 
-..login-input{
+.login-input{
 
-  width:100%;
+  width:100% !important;
 
   height:64px;
+
+  display:block;
 
   padding:0 58px;
 
   border-radius:20px;
 
-  border:1px solid rgba(140,180,255,.30);
+  border:1px solid rgba(140,180,255,.28);
 
   background:
     linear-gradient(
       90deg,
       rgba(2,10,28,.98) 0%,
       rgba(18,46,96,.95) 18%,
-      rgba(58,96,170,.92) 50%,
+      rgba(58,96,170,.90) 50%,
       rgba(18,46,96,.95) 82%,
       rgba(2,10,28,.98) 100%
     );
@@ -577,6 +579,10 @@ button:hover{
   outline:none;
 
   box-sizing:border-box;
+
+  appearance:none;
+
+  -webkit-appearance:none;
 
   box-shadow:
     inset 0 0 18px rgba(255,255,255,.05),
