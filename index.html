@@ -529,26 +529,23 @@ button:hover{
 
   margin-top:2px;
 
-  padding:12px;
+  padding:14px;
 
-  border-radius:20px;
+  border-radius:22px;
 
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.10),
-      rgba(255,255,255,.04)
-    );
+    rgba(255,255,255,.14);
 
   border:
-    1px solid rgba(255,255,255,.12);
+    1px solid rgba(255,255,255,.22);
 
   box-shadow:
-    0 12px 30px rgba(0,0,0,.34),
-    0 0 30px rgba(255,255,255,.10),
-    inset 0 1px 0 rgba(255,255,255,.08);
+    0 18px 40px rgba(0,0,0,.42),
+    0 0 42px rgba(255,255,255,.18),
+    0 0 12px rgba(255,255,255,.10);
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:
+    blur(18px);
 
 }
 
@@ -760,28 +757,29 @@ button:hover{
 
   margin-top:12px;
 
-  padding:14px 18px;
+  padding:15px 18px;
 
-  border-radius:15px;
+  border-radius:16px;
 
   background:
-    rgba(255,255,255,.035);
+    rgba(255,255,255,.045);
 
   border:
-    1px solid rgba(255,255,255,.08);
+    1px solid rgba(255,255,255,.10);
 
-  color:
-    rgba(255,255,255,.92);
+  color:white;
 
   text-decoration:none;
 
-  font-size:15px;
+  font-size:16px;
 
-  font-weight:400;
+  font-weight:500;
 
-  letter-spacing:.15px;
+  letter-spacing:.1px;
 
   transition:.2s ease;
+
+  backdrop-filter:blur(10px);
 
 }
 
@@ -821,13 +819,19 @@ button:hover{
 
   gap:12px;
 
-  font-weight:400;
-
-  letter-spacing:.15px;
-
   color:white;
 
-  opacity:.96;
+  opacity:1;
+
+  font-weight:500;
+
+  letter-spacing:.1px;
+
+  text-rendering:
+    geometricPrecision;
+
+  -webkit-font-smoothing:
+    antialiased;
 
 }
 
@@ -837,7 +841,7 @@ button:hover{
 
   text-align:center;
 
-  opacity:.92;
+  opacity:1;
 
   font-size:14px;
 
