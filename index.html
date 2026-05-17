@@ -422,13 +422,6 @@ button:hover{
   color:white;
 }
 /* ========================================
-   START LOGIN SCREEN
-======================================== */
-/* ========================================
-   LOGIN SCREEN
-======================================== */
-
-/* ========================================
    LOGIN SCREEN
 ======================================== */
 
@@ -1020,6 +1013,10 @@ body{
 
   <button class="admin-button" onclick="openAdminPanel()">
     Admin
+  </button>
+		
+  <button class="admin-button" onclick="openHelpModal()">
+    Help
   </button>
 
 </div>
@@ -2357,6 +2354,32 @@ console.log(user);
 
 }
 
+function openHelpModal(){
+
+  const modal =
+    document.getElementById(
+      'helpModal'
+    );
+
+  modal.classList.remove('hidden');
+
+  modal.style.display = 'flex';
+
+}
+
+function closeHelpModal(){
+
+  const modal =
+    document.getElementById(
+      'helpModal'
+    );
+
+  modal.classList.add('hidden');
+
+  modal.style.display = 'none';
+
+}
+	
 function openAdminPanel(){
 
   const user = JSON.parse(
@@ -2604,6 +2627,61 @@ async function resetPin(username){
 
 </div>
   </div>
+
+	<!-- ========================================
+     START HELP MODAL
+======================================== -->
+
+<div id="helpModal" class="modal hidden">
+
+  <div class="modal-content">
+
+    <button
+      class="modal-close"
+      onclick="closeHelpModal()"
+    >
+      ✕
+    </button>
+
+    <h2 style="margin-top:0;">
+      Calendar Help
+    </h2>
+
+    <div style="
+      line-height:1.7;
+      color:#374151;
+      font-size:15px;
+    ">
+
+      <p>
+        • Use the category filters to display specific event types.
+      </p>
+
+      <p>
+        • Click any event on the calendar to view additional details.
+      </p>
+
+      <p>
+        • Some private or unlisted events require login access.
+      </p>
+
+      <p>
+        • The calendar updates automatically throughout the day.
+      </p>
+
+      <p>
+        • Mobile and desktop access are fully supported.
+      </p>
+
+      <p>
+        • Contact the calendar administrator if you experience login or access issues.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
 <!-- ========================================
      START ADMIN MODAL
 ======================================== -->
