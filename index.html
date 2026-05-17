@@ -377,15 +377,19 @@ button:hover{
    START LOGIN SCREEN
 ======================================== */
 
-	
- .login-screen{
+/* ========================================
+   START LOGIN SCREEN
+======================================== */
+
+.login-screen{
+
   position:fixed;
   inset:0;
 
   background:
     linear-gradient(
-      rgba(8,18,35,.28),
-      rgba(8,18,35,.34)
+      rgba(6,12,20,.42),
+      rgba(6,12,20,.56)
     ),
     url('desert-bg.jpg');
 
@@ -397,31 +401,32 @@ button:hover{
   align-items:center;
 
   z-index:99999;
+
 }
 
 .login-box{
 
-  width:520px;
+  width:540px;
   max-width:90%;
 
-  padding:44px 42px 38px 42px;
+  padding:46px 44px 40px;
 
   border-radius:34px;
 
   background:
     linear-gradient(
       180deg,
-      rgba(32,42,60,.78),
-      rgba(14,22,34,.82)
+      rgba(34,44,60,.76),
+      rgba(15,22,32,.84)
     );
 
   backdrop-filter:blur(18px);
 
   border:
-    1px solid rgba(255,255,255,.14);
+    1px solid rgba(255,255,255,.10);
 
   box-shadow:
-    0 30px 80px rgba(0,0,0,.45);
+    0 30px 90px rgba(0,0,0,.48);
 
 }
 
@@ -431,9 +436,7 @@ button:hover{
   justify-content:space-between;
   align-items:flex-start;
 
-  gap:20px;
-
-  margin-bottom:30px;
+  gap:22px;
 
 }
 
@@ -447,7 +450,7 @@ button:hover{
 
   margin:0;
 
-  font-size:66px;
+  font-size:64px;
   line-height:.92;
   font-weight:700;
 
@@ -456,21 +459,21 @@ button:hover{
   letter-spacing:-2px;
 
 }
-	
+
 .login-divider{
 
-  width:86px;
+  width:82px;
   height:5px;
 
-  margin:26px 0 20px 0;
+  margin:24px 0 20px;
 
-  border-radius:10px;
+  border-radius:20px;
 
   background:
     linear-gradient(
       90deg,
-      #809c63,
-      #c4d3b2
+      #79945f,
+      #b8c7a8
     );
 
 }
@@ -480,41 +483,64 @@ button:hover{
   margin:0;
 
   color:
-    rgba(255,255,255,.74);
+    rgba(255,255,255,.72);
 
-  font-size:22px;
+  font-size:21px;
   line-height:1.5;
-
   font-weight:300;
 
 }
 
 .login-logo{
 
-  width:150px;
+  width:148px;
 
-  opacity:.98;
-
-  margin-top:4px;
+  margin-top:2px;
 
   filter:
     drop-shadow(
-      0 10px 22px rgba(0,0,0,.35)
+      0 10px 20px rgba(0,0,0,.35)
     );
 
 }
 
 .login-form{
 
-  margin-top:26px;
+  margin-top:34px;
 
 }
-	
+
+.input-wrap,
+.password-wrap{
+
+  position:relative;
+
+}
+
+.input-icon{
+
+  position:absolute;
+
+  left:22px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  font-size:22px;
+
+  opacity:.58;
+
+  pointer-events:none;
+
+}
+
 .login-input{
 
   width:100%;
 
-  padding:20px 22px;
+  padding:20px 24px 20px 62px;
+
+  margin-bottom:18px;
 
   border-radius:18px;
 
@@ -526,9 +552,9 @@ button:hover{
 
   color:white;
 
-  box-sizing:border-box;
-
   font-size:24px;
+
+  box-sizing:border-box;
 
   outline:none;
 
@@ -539,67 +565,46 @@ button:hover{
 .login-input::placeholder{
 
   color:
-    rgba(255,255,255,.48);
-
-}
-	
-
-#userName{
-  margin-top:14px;
-}
-
-.password-wrap{
-
-  position:relative;
-
-  width:88%;
-
-  margin:16px auto 0 auto;
+    rgba(255,255,255,.46);
 
 }
 
 .password-input{
-  padding-right:50px;
+
+  padding-right:74px;
+
 }
 
 .toggle-password{
+
   position:absolute;
-  right:14px;
+
+  right:18px;
   top:50%;
+
   transform:translateY(-50%);
+
+  background:none;
+  border:none;
+
+  color:
+    rgba(255,255,255,.74);
+
+  font-size:28px;
+
   cursor:pointer;
-  font-size:22px;
-  color:#374151;
-  background:#f3f4f6;
-  border:1px solid #9ca3af;
-  border-radius:50%;
-  width:34px;
-  height:34px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  user-select:none;
-  z-index:50;
 
-  box-shadow:
-    0 3px 8px rgba(0,0,0,.22);
-
-  transition:.2s ease;
 }
 
-.toggle-password:hover{
-  transform:translateY(-50%) scale(1.05);
-}
- 
 .login-button{
 
-  width:68%;
+  width:64%;
 
-  margin:34px auto 0 auto;
+  margin:18px auto 0 auto;
 
   display:block;
 
-  padding:18px 24px;
+  padding:18px;
 
   border:none;
 
@@ -608,8 +613,8 @@ button:hover{
   background:
     linear-gradient(
       180deg,
-      #6f8d4f,
-      #4e6935
+      #708d52,
+      #52693c
     );
 
   color:white;
@@ -620,64 +625,64 @@ button:hover{
   letter-spacing:.2px;
 
   box-shadow:
-    0 14px 30px rgba(0,0,0,.26);
+    0 14px 28px rgba(0,0,0,.24);
 
   cursor:pointer;
 
-  transition:.2s ease;
-
 }
 
-.login-button:hover{
-
-  background:
-    rgba(255,255,255,.16);
-
-  transform:
-    translateY(-1px);
-
-}
-	
 .login-error{
-  color:#dc2626;
-  margin-top:14px;
+
+  margin-top:16px;
+
+  text-align:center;
+
+  color:#ffb7b7;
+
   font-size:14px;
+
 }
 
-.access-help{
+.session-note{
 
-  margin:38px 0 22px 0;
+  margin-top:14px;
 
   text-align:center;
 
   color:
-    rgba(255,255,255,.68);
+    rgba(255,255,255,.66);
 
-  font-size:20px;
+  font-size:13px;
 
-  position:relative;
+  line-height:1.5;
 
 }
-	
+
+.access-help{
+
+  margin:34px 0 18px;
+
+  text-align:center;
+
+  color:
+    rgba(255,255,255,.62);
+
+  font-size:18px;
+
+}
+
 .access-link{
 
   display:flex;
 
   align-items:center;
-
   justify-content:space-between;
 
-  margin-top:18px;
+  margin-top:16px;
 
-  padding:20px 24px;
+  padding:18px 22px;
 
   border-radius:18px;
-
-  text-decoration:none;
-
-  color:white;
-
-  font-size:21px;
 
   background:
     rgba(255,255,255,.03);
@@ -685,6 +690,12 @@ button:hover{
   border:
     1px solid rgba(255,255,255,.08);
 
+  color:white;
+
+  text-decoration:none;
+
+  font-size:20px;
+
   transition:.2s ease;
 
 }
@@ -692,44 +703,13 @@ button:hover{
 .access-link:hover{
 
   background:
-    rgba(255,255,255,.14);
+    rgba(255,255,255,.06);
 
 }
 
-.access-link:hover{
-  background:#e5e7eb;
-}
- 
-.user-display{
-  font-size:14px;
-  color:rgba(255,255,255,0.9);
-  margin-top:6px;
-}
-
-.account-controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
- button:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
- .session-note{
-
-  margin-top:16px;
-
-  color:
-    rgba(255,255,255,.70);
-
-  font-size:13px;
-
-  text-align:center;
-
-  line-height:1.5;
-
-}
+/* ========================================
+   START ADMIN PANEL
+======================================== */
 /* ========================================
    START ADMIN PANEL
 ======================================== */	
