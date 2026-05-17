@@ -1032,12 +1032,22 @@ async function loadEvents(){
 
     events = data.events;
 
-	if(!sessionStorage.getItem('stableLastUpdated')){
+	const storedTimestamp =
+  sessionStorage.getItem(
+    'stableLastUpdated'
+  );
+
+if(
+  storedTimestamp !==
+  data.lastUpdated
+){
 
   sessionStorage.setItem(
     'stableLastUpdated',
     data.lastUpdated
   );
+
+}
 
 }
 events = events.map(event => ({
