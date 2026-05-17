@@ -114,16 +114,17 @@ const fs = require('fs');
       }
     );
 
-    await page.waitForSelector(
-      'article'
-    );
+   
+  const events = await page.evaluate(() => {
 
-    const events = await page.evaluate(() => {
+  const cards =
+    document.querySelectorAll('article');
 
-      const results = [];
+  if(cards.length === 0){
+    return [];
+  }
 
-      const cards =
-        document.querySelectorAll('article');
+  const results = [];
 
       cards.forEach(card => {
 
