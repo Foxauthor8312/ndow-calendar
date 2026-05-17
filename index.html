@@ -500,6 +500,12 @@ button:hover{
 
 }
 
+.login-form{
+
+  margin-top:26px;
+
+}
+	
 .login-input{
 
 .login-input::placeholder{
@@ -582,42 +588,52 @@ button:hover{
  
 .login-button{
 
-  width:100%;
+  width:62%;
 
-  margin-top:20px;
+  margin:22px auto 0 auto;
 
-width:88%;
+  display:block;
 
-margin-left:auto;
-margin-right:auto;
-
-display:block;
-	
-  padding:14px;
+  padding:13px 18px;
 
   border:none;
 
-  border-radius:12px;
+  border-radius:14px;
 
   background:
-  linear-gradient(
-    180deg,
-    #5a8fe8,
-    #3c6dc0
-  );
+    rgba(255,255,255,.10);
+
+  border:
+    1px solid rgba(255,255,255,.12);
 
   color:white;
 
   font-size:18px;
   font-weight:600;
 
+  letter-spacing:.2px;
+
+  backdrop-filter:blur(8px);
+
   box-shadow:
-    0 10px 22px rgba(0,0,0,.28);
+    0 8px 18px rgba(0,0,0,.22);
+
+  cursor:pointer;
 
   transition:.2s ease;
 
 }
 
+.login-button:hover{
+
+  background:
+    rgba(255,255,255,.16);
+
+  transform:
+    translateY(-1px);
+
+}
+	
 .login-error{
   color:#dc2626;
   margin-top:14px;
@@ -647,10 +663,10 @@ margin-left:auto;
 margin-right:auto;
   margin-top:14px;
 
-  padding:11px;
+  padding:10px 14px;
   font-size:15px;
   border-radius:12px;
-
+font-size:15px;
  background:
   rgba(255,255,255,.05);
 
@@ -698,12 +714,19 @@ margin-right:auto;
   cursor:not-allowed;
 }
  .session-note{
-  margin-top:14px;
-  font-size:13px;
-  color:#92400e;
-  line-height:1.4;
-}
 
+  margin-top:16px;
+
+  color:
+    rgba(255,255,255,.70);
+
+  font-size:13px;
+
+  text-align:center;
+
+  line-height:1.5;
+
+}
 /* ========================================
    START ADMIN PANEL
 ======================================== */	
