@@ -1582,7 +1582,13 @@ document.getElementById(
     'loginError'
   ).innerText =
     'Invalid name or PIN';
+  document.getElementById(
+   'userName'
+  ).value = '';
 
+document.getElementById(
+  'userPin'
+).value = '';
 }
 
   } catch(err){
