@@ -100,7 +100,7 @@ const fs = require('fs');
     const pageUrl =
       'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events?filter%5Bevents_program_id%5D=&ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending&ordering%5Border_by%5D%5B%5D=desc&page=' +
       currentPage +
-      '&size=10';
+      '&size=50';
 
     console.log(
       'Opening page ' + currentPage
