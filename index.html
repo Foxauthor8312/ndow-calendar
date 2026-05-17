@@ -504,10 +504,20 @@ button:hover{
 
   margin-top:2px;
 
-  filter:
-    drop-shadow(
-      0 8px 18px rgba(0,0,0,.35)
-    );
+  padding:10px;
+
+  border-radius:18px;
+
+  background:
+    rgba(255,255,255,.04);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.34);
+
+  backdrop-filter:blur(10px);
 
 }
 
@@ -730,11 +740,11 @@ button:hover{
     1px solid rgba(255,255,255,.08);
 
   color:
-  rgba(255,255,255,.92);
+    rgba(255,255,255,.92);
 
   text-decoration:none;
 
-  font-size:16px;
+  font-size:15px;
 
   font-weight:500;
 
@@ -751,7 +761,25 @@ button:hover{
     translateY(-1px);
 
 }
-	.access-link i{
+
+.access-link > i{
+
+  opacity:.55;
+
+  font-size:13px;
+
+  transition:.2s ease;
+
+}
+
+.access-link:hover > i{
+
+  transform:translateX(2px);
+
+  opacity:.9;
+
+}
+
 .access-left{
 
   display:flex;
@@ -760,11 +788,21 @@ button:hover{
 
   gap:12px;
 
-}
-		
-  opacity:.72;
+  font-weight:500;
 
-  font-size:14px;
+  letter-spacing:.1px;
+
+}
+
+.access-left i{
+
+  width:18px;
+
+  text-align:center;
+
+  opacity:.82;
+
+  font-size:15px;
 
 }
 
