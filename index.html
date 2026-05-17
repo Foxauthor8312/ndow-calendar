@@ -2145,7 +2145,27 @@ function togglePassword(){
       : 'password';
 
 }
- 
+ document.getElementById(
+  'userName'
+).addEventListener(
+  'focus',
+  clearLoginError
+);
+
+document.getElementById(
+  'userPin'
+).addEventListener(
+  'focus',
+  clearLoginError
+);
+
+function clearLoginError(){
+
+  document.getElementById(
+    'loginError'
+  ).innerText = '';
+
+}
 function requestInstructor(eventUrl){
 
   const event =
