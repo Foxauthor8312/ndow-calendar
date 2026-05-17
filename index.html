@@ -525,11 +525,11 @@ button:hover{
 
 .login-logo{
 
-  width:112px;
+  width:56px;
 
   margin-top:2px;
 
-  padding:14px;
+  padding:8px;
 
   border-radius:22px;
 
@@ -918,31 +918,30 @@ body{
 
       <div class="login-title-wrap">
 
-        <h1 class="login-title">
+        <div class="login-title-main">
+          NDOW
+        </div>
 
-  <span class="login-title-main">
-    NDOW
-  </span>
-
-  <span class="login-title-sub">
-    Volunteer Event Calendar
-  </span>
-
-</h1>
+        <div class="login-title-sub">
+          Volunteer Event Calendar
+        </div>
 
         <div class="login-divider"></div>
 
-        <p class="login-subtitle">
-          Volunteer-maintained<br>
-          events calendar
-        </p>
+        <div class="login-subtitle">
+          Volunteer-maintained events calendar
+        </div>
 
       </div>
 
-      <img
-        src="ndow-logo.png"
-        class="login-logo"
-      >
+      <div class="logo-badge">
+
+        <img
+          src="ndow-logo.png"
+          class="login-logo"
+        >
+
+      </div>
 
     </div>
 
@@ -950,9 +949,9 @@ body{
 
       <div class="input-wrap">
 
-       <span class="input-icon">
-  		<i class="fa-regular fa-user"></i>
-	   </span>
+        <span class="input-icon">
+          <i class="fa-regular fa-user"></i>
+        </span>
 
         <input
           type="text"
@@ -966,9 +965,9 @@ body{
 
       <div class="password-wrap">
 
-		  <span class="input-icon">
-  			<i class="fa-solid fa-lock"></i>
-		  </span>
+        <span class="input-icon">
+          <i class="fa-solid fa-lock"></i>
+        </span>
 
         <input
           type="password"
@@ -983,7 +982,7 @@ body{
           class="toggle-password"
           onclick="togglePassword()"
         >
-         <i class="fa-regular fa-eye"></i>
+          <i class="fa-regular fa-eye"></i>
         </span>
 
       </div>
@@ -994,7 +993,7 @@ body{
         onclick="checkLogin()"
         disabled
       >
-        Continue Login
+        Access Calendar
       </button>
 
       <div id="loginError" class="login-error"></div>
@@ -1005,33 +1004,39 @@ body{
         Need access or forgot your PIN?
       </div>
 
-     <a
-  href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
-  class="access-link"
->
+      <a
+        href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
+        class="access-link"
+      >
 
-  <span class="access-left">
-    <i class="fa-regular fa-envelope"></i>
-    Request Access by Email
-  </span>
+        <span class="access-left">
 
-  <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-regular fa-envelope"></i>
 
-</a>
+          Request Access by Email
 
-     <a
-  href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
-  class="access-link"
->
+        </span>
 
-  <span class="access-left">
-    <i class="fa-regular fa-comment"></i>
-    Request Access by Text
-  </span>
+        <i class="fa-solid fa-chevron-right"></i>
 
-  <i class="fa-solid fa-arrow-right"></i>
+      </a>
 
-</a>
+      <a
+        href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
+        class="access-link"
+      >
+
+        <span class="access-left">
+
+          <i class="fa-regular fa-comment"></i>
+
+          Request Access by Text
+
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
 
     </div>
 
