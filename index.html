@@ -424,7 +424,6 @@ button:hover{
 /* ========================================
    START LOGIN SCREEN
 ======================================== */
-
 /* ========================================
    LOGIN SCREEN
 ======================================== */
@@ -445,31 +444,15 @@ button:hover{
   z-index:99999;
 
 }
+
 .login-box{
 
-  width:420px;
-  max-width:100%;
+  width:100%;
+  max-width:700px;
 
-  padding:40px 34px 30px;
-
-  border-radius:26px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(15,23,42,.72) 0%,
-      rgba(2,8,23,.62) 100%
-    );
-
-  backdrop-filter:
-    blur(18px);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  box-shadow:
-    0 0 60px rgba(20,40,90,.18),
-    0 30px 80px rgba(0,0,0,.55);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 
 }
 
@@ -478,19 +461,30 @@ button:hover{
 .login-header{
 
   display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
+  align-items:center;
+  gap:22px;
 
-  margin-bottom:28px;
+  margin-bottom:42px;
 
 }
+
+.state-outline{
+
+  width:54px;
+
+  height:auto;
+
+  opacity:.96;
+
+}
+
 .login-title-main{
 
-  font-size:64px;
+  font-size:92px;
 
   font-weight:800;
 
-  letter-spacing:-3px;
+  letter-spacing:-4px;
 
   line-height:.9;
 
@@ -502,50 +496,23 @@ button:hover{
 
   margin-top:8px;
 
-  font-size:15px;
+  font-size:28px;
 
-  font-weight:500;
+  font-weight:400;
 
-  color:rgba(255,255,255,.78);
-
-}
-
-.logo-placeholder{
-
-  width:72px;
-  height:72px;
-
-  border-radius:18px;
-
-  border:
-    1px solid rgba(255,255,255,.10);
-
-  background:
-    rgba(255,255,255,.015);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:white;
-
-  flex-shrink:0;
+  color:rgba(255,255,255,.72);
 
 }
 
-.logo-placeholder i{
+/* FORM */
 
-  font-size:30px;
-
-  opacity:.92;
-
-  transform:scale(.82);
-
-}
-	
 .login-form{
 
   width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 
 }
 
@@ -554,7 +521,9 @@ button:hover{
 
   position:relative;
 
-  margin-bottom:16px;
+  width:100%;
+
+  margin-bottom:24px;
 
 }
 
@@ -562,14 +531,16 @@ button:hover{
 
   position:absolute;
 
-  left:16px;
+  left:28px;
   top:50%;
 
   transform:translateY(-50%);
 
-  color:rgba(255,255,255,.78);
+  color:rgba(255,255,255,.92);
 
-  font-size:15px;
+  font-size:30px;
+
+  z-index:5;
 
 }
 
@@ -577,29 +548,37 @@ button:hover{
 
   width:100%;
 
-  height:58px;
+  height:108px;
 
-  padding:0 52px;
+  padding:0 90px;
 
-  border-radius:16px;
+  border-radius:28px;
 
-  border:1px solid rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
 
-  background:rgba(255,255,255,.05);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18,28,48,.82),
+      rgba(10,18,35,.92)
+    );
 
   color:white;
 
-  font-size:18px;
+  font-size:44px;
 
   outline:none;
 
   box-sizing:border-box;
 
+  box-shadow:
+    inset 0 0 24px rgba(255,255,255,.02);
+
 }
 
 .login-input::placeholder{
 
-  color:rgba(255,255,255,.42);
+  color:rgba(255,255,255,.62);
 
 }
 
@@ -607,89 +586,116 @@ button:hover{
 
   position:absolute;
 
-  right:18px;
+  right:30px;
   top:50%;
 
   transform:translateY(-50%);
 
-  color:rgba(255,255,255,.75);
+  color:rgba(255,255,255,.92);
 
-  font-size:18px;
+  font-size:34px;
 
   cursor:pointer;
 
 }
 
+/* LOGIN BUTTON */
+
 .login-button{
 
-  width:58%;
+  width:280px;
 
-  height:52px;
+  height:82px;
 
-  margin:12px auto 0;
-
-  display:block;
+  margin-top:14px;
 
   border:none;
 
-  border-radius:14px;
+  border-radius:24px;
 
   background:
     linear-gradient(
       180deg,
-      #688f49,
-      #55753d
+      #214f9d,
+      #14346b
     );
 
   color:white;
 
-  font-size:17px;
+  font-size:42px;
 
-  font-weight:700;
-
-  letter-spacing:.2px;
+  font-weight:500;
 
   cursor:pointer;
 
-  transition:.2s ease;
+  box-shadow:
+    0 0 30px rgba(40,90,180,.22);
 
 }
 
+/* HELP */
+
 .access-help{
 
-  margin:28px 0 18px;
+  width:100%;
+
+  margin:54px 0 26px;
 
   display:flex;
   align-items:center;
 
-  gap:14px;
+  gap:20px;
 
-  color:rgba(255,255,255,.58);
+  color:rgba(255,255,255,.62);
 
-  font-size:14px;
+  font-size:34px;
 
 }
 
+.access-help::before,
+.access-help::after{
+
+  content:'';
+
+  flex:1;
+
+  height:1px;
+
+  background:rgba(255,255,255,.18);
+
+}
+
+/* ACCESS LINKS */
+
 .access-link{
+
+  width:100%;
 
   display:flex;
 
   align-items:center;
   justify-content:space-between;
 
-  margin-top:12px;
+  margin-top:18px;
 
-  padding:18px;
+  padding:28px 30px;
 
-  border-radius:16px;
+  border-radius:24px;
 
-  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.12);
 
-  border:1px solid rgba(255,255,255,.08);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18,28,48,.78),
+      rgba(8,14,28,.92)
+    );
 
   color:white;
 
   text-decoration:none;
+
+  box-sizing:border-box;
 
 }
 
@@ -699,33 +705,141 @@ button:hover{
 
   align-items:center;
 
-  gap:14px;
+  gap:24px;
 
-  font-size:17px;
+  font-size:38px;
 
   color:white;
 
 }
 
+.access-left i{
+
+  font-size:36px;
+
+}
+
+.access-link > i{
+
+  font-size:30px;
+
+  opacity:.92;
+
+}
+
+/* MOBILE */
+
 @media(max-width:768px){
 
   .login-box{
 
-    width:100%;
     max-width:390px;
 
-    padding:32px 24px 24px;
+  }
+
+  .login-header{
+
+    gap:14px;
+
+    margin-bottom:28px;
+
+  }
+
+  .state-outline{
+
+    width:32px;
 
   }
 
   .login-title-main{
 
-    font-size:52px;
+    font-size:62px;
+
+  }
+
+  .login-title-sub{
+
+    font-size:16px;
+
+  }
+
+  .login-input{
+
+    height:64px;
+
+    font-size:18px;
+
+    border-radius:18px;
+
+    padding:0 54px;
+
+  }
+
+  .input-icon{
+
+    left:18px;
+
+    font-size:18px;
+
+  }
+
+  .toggle-password{
+
+    right:18px;
+
+    font-size:20px;
+
+  }
+
+  .login-button{
+
+    width:180px;
+
+    height:56px;
+
+    font-size:20px;
+
+    border-radius:16px;
+
+  }
+
+  .access-help{
+
+    font-size:14px;
+
+    margin:32px 0 14px;
+
+  }
+
+  .access-link{
+
+    padding:18px;
+
+    border-radius:18px;
+
+  }
+
+  .access-left{
+
+    gap:14px;
+
+    font-size:16px;
+
+  }
+
+  .access-left i{
+
+    font-size:16px;
+
+  }
+
+  .access-link > i{
+
+    font-size:14px;
 
   }
 
 }
-
 /* ========================================
    START ADMIN PANEL
 ======================================== */
@@ -800,32 +914,31 @@ body{
 
 <div id="loginScreen" class="login-screen">
 
-  <div class="login-box">
+<div class="login-box">
 
-       <div class="login-header">
+  <div class="login-header">
 
-      <div class="login-title-wrap">
+    <img
+      src="state-outline.png"
+      alt="Nevada Outline"
+      class="state-outline"
+    >
 
-        <div class="login-title-main">
-          NDOW
-        </div>
+    <div class="login-title-wrap">
 
-        <div class="login-title-sub">
-          Volunteer Event Calendar
-        </div>
-
+      <div class="login-title-main">
+        NDOW
       </div>
 
-      <div class="logo-placeholder">
-
-        <i class="fa-regular fa-bookmark"></i>
-
+      <div class="login-title-sub">
+        Volunteer Event Calendar
       </div>
 
     </div>
 
-    <div class="login-form">
+  </div>
 
+  <div class="login-form">
       <div class="input-wrap">
 
         <span class="input-icon">
