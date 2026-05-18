@@ -1537,7 +1537,9 @@ async function checkLogin(){
 try {
 
   const response =
-    await fetch('/api/login', {
+    await fetch(
+  'https://ndow-calendar-server.onrender.com/api/login',
+  {
 
     method:'POST',
 
