@@ -1198,9 +1198,7 @@ body{
 
   </div>
 </div>
-
 <div id="loadingOverlay" style="
-  display:none;
   flex-direction:column;
   position:fixed;
   inset:0;
@@ -1212,6 +1210,14 @@ body{
   font-family:'Inter',sans-serif;
 ">
 
+<style>
+
+#loadingOverlay{
+  display:none;
+}
+
+</style>
+	
   <div style="
     font-size:28px;
     font-weight:700;
@@ -1511,23 +1517,16 @@ let currentDate = new Date();
 // START AUTHENTICATION
 // ========================================
 
-	
 async function checkLogin(){
-
-  
-  setTimeout(() => {
 
   document.getElementById(
     'loadingOverlay'
-  ).style.display = 'none';
-
-}, 3000);
+  ).style.display = 'flex';
 
   const button =
     document.getElementById(
       'loginButton'
     );
-
   const name =
     document.getElementById(
       'userName'
