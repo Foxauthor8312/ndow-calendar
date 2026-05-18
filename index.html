@@ -1492,9 +1492,6 @@ fetch('emails.json')
 
   });
 
-document.getElementById(
-  'loginButton'
-).disabled = false;
   
 let currentDate = new Date();
 // ========================================
@@ -1557,21 +1554,21 @@ try {
     const data =
       await response.json();
 
-    if(!data.success){
+  if(!data.success){
 
-      throw new Error(
-        'Invalid login'
-      );
-    }
+  throw new Error(
+    'Invalid login'
+  );
+}
 
-status.style.display =
-  'none';
+await new Promise(resolve =>
+  setTimeout(resolve, 1200)
+);
 
 localStorage.setItem(
   'ndowAccess',
   'granted'
 );
-
 localStorage.setItem(
   'token',
   data.token
@@ -1811,6 +1808,7 @@ function logout(showMessage = false){
 
   document.getElementById(
   'appContent'
+	  
 ).style.display = 'none';
 
 document.getElementById(
