@@ -2931,6 +2931,11 @@ async function saveHelpTopic(){
           'helpSortOrder'
         ).value,
 
+	  visibility_role:
+	    document.getElementById(
+         'helpVisibilityRole'
+         ).value,
+		
       content:
         document.getElementById(
           'helpContent'
@@ -2993,6 +2998,11 @@ function newHelpTopic(){
     'helpTitle'
   ).value = '';
 
+document.getElementById(
+  'helpVisibilityRole'
+).value =
+  topic.visibility_role || 'all';
+	
   document.getElementById(
     'helpSortOrder'
   ).value = '0';
