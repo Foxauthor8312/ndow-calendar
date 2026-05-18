@@ -933,14 +933,23 @@ body{
 
       </div>
 
-      <button
-        id="loginButton"
-        class="login-button"
-        onclick="checkLogin()"
-        disabled
-      >
-        Login
-      </button>
+ <button
+  id="loginButton"
+  onclick="checkLogin()">
+  Login
+</button>
+
+<div
+  id="loginStatus"
+  style="
+    display:none;
+    margin-top:12px;
+    color:#2c6e49;
+    font-size:14px;
+    text-align:center;
+  ">
+  Verifying instructor access...
+</div>
 
       <div id="loginError" class="login-error"></div>
 
@@ -1495,6 +1504,19 @@ let currentDate = new Date();
 	
 async function checkLogin(){
 
+  const status =
+    document.getElementById(
+      'loginStatus'
+    );
+
+  status.style.display =
+    'block';
+
+  const button =
+    document.getElementById(
+      'loginButton'
+    );
+
   const name =
     document.getElementById(
       'userName'
@@ -1505,117 +1527,85 @@ async function checkLogin(){
       'userPin'
     ).value.trim();
 
-  try {
-	  
-document.getElementById(
-  'loadingOverlay'
-).style.display = 'flex';
-	  
-  const response = await fetch(
-    'https://ndow-calendar-server.onrender.com/api/login',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: name,
-        pin: pin
-      })
+  // SHOW STATUS
+  status.style.display =
+    'block';
+
+  status.innerText =
+  'Verifying instructor access...';
+
+try {
+
+  const response =
+    await fetch('/api/login', {
+
+    method:'POST',
+
+    headers:{
+      'Content-Type':
+        'application/json'
+    },
+
+    body:JSON.stringify({
+      name,
+      pin
+    })
+  });
+
+    const data =
+      await response.json();
+
+    if(!data.success){
+
+      throw new Error(
+        'Invalid login'
+      );
     }
-  );
 
-  const data = await response.json();
+status.style.display =
+  'none';
 
-  if(data.success){
+localStorage.setItem(
+  'ndowAccess',
+  'granted'
+);
 
-  localStorage.setItem(
-    'token',
-    data.token
-  );
+localStorage.setItem(
+  'token',
+  data.token
+);
 
-  localStorage.setItem(
-    'user',
-    JSON.stringify(data.user)
-  );
-
-  localStorage.setItem(
-    'ndowAccess',
-    'granted'
-  );
-
-  document.getElementById(
-    'userDisplay'
-  ).innerText =
-    'Logged in as: ' +
-    data.user.username;
-
-  document.getElementById(
-    'loginScreen'
-  ).style.display = 'none';
+localStorage.setItem(
+  'user',
+  JSON.stringify(data.user)
+);
 
 document.getElementById(
-  'loginError'
-).innerText = '';
-
-document.getElementById(
-  'sessionMessage'
-).innerText = '';
-	  
-document.getElementById(
-  'userName'
-).value = '';
-
-document.getElementById(
-  'userPin'
-).value = '';
-
-	  
-  document.getElementById(
-    'appContent'
-  ).style.display = 'block';
-
-  loadEvents();
-document.getElementById(
-  'loadingOverlay'
+  'loginScreen'
 ).style.display = 'none';
-	  
-} else {
 
 document.getElementById(
-  'loadingOverlay'
-).style.display = 'none';
-	  
-  document.getElementById(
-    'loginError'
-  ).innerText =
-    'Invalid name or PIN';
-  document.getElementById(
-   'userName'
-  ).value = '';
+  'appContent'
+).style.display = 'block';
 
 document.getElementById(
-  'userPin'
-).value = '';
-}
+  'userDisplay'
+).innerText =
+  'Logged in as: ' +
+  data.user.username;
 
+loadEvents();
+
+resetInactivityTimer();
+    
   } catch(err){
-document.getElementById(
-  'loadingOverlay'
-	
-).style.display = 'none';
-    console.error(
-      'Login error:',
-      err
-    );
 
-    document.getElementById(
-      'loginError'
-    ).innerText =
-      'Server connection failed';
+    console.error(err);
+
+    status.innerText =
+      'Login failed';
 
   }
-
 }
 
 	// ========================================
