@@ -3346,6 +3346,25 @@ async function deleteHelpTopic(){
 
 <input
   id="helpSortOrder"
+	<select
+  id="helpVisibilityRole"
+  class="contact-select"
+  style="margin-top:14px;"
+>
+
+  <option value="all">
+    All Users
+  </option>
+
+  <option value="user">
+    Standard Users
+  </option>
+
+  <option value="admin">
+    Admin Only
+  </option>
+
+</select>
   class="login-input"
   placeholder="Sort Order"
   value="0"
