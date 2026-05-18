@@ -1715,22 +1715,24 @@ if(
 
 }
 
-events = events.map(event => {
+eevents = events.map(event => {
 
   const zipMatch =
-  event.location?.match(/\b\d{5}\b/);
+    event.location?.match(/\b\d{5}\b/);
 
-const zip =
-  zipMatch
-    ? zipMatch[0]
-    : '';
+  const zip =
+    zipMatch
+      ? zipMatch[0]
+      : '';
 
-const geo =
-  zipLookup[zip];
+  const geo =
+    zipLookup[zip];
 
   return {
 
     ...event,
+
+    zip,
 
     category:
       classifyEvent(event.title),
@@ -1747,7 +1749,6 @@ const geo =
   };
 
 });
-
 console.log(events[0]);
 	  
 document.getElementById(
