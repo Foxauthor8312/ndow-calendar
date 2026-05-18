@@ -1559,7 +1559,43 @@ let currentDate = new Date();
 // ========================================
 // START AUTHENTICATION
 // ========================================
+async function wakeServer(){
 
+  const wakeUrl =
+    'https://ndow-calendar-server.onrender.com/api/help/topics';
+
+  for(let i = 0; i < 5; i++){
+
+    try {
+
+      const response =
+        await fetch(wakeUrl);
+
+      if(response.ok){
+
+        return true;
+
+      }
+
+    } catch(err){
+
+      console.log(
+        'Server waking...',
+        i + 1
+      );
+
+    }
+
+    await new Promise(resolve =>
+      setTimeout(resolve, 3000)
+    );
+
+  }
+
+  return false;
+
+}
+	
 async function checkLogin(){
 
 document.getElementById(
