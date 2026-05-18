@@ -2510,7 +2510,33 @@ async function loadHelpTopics(){
 
     }
 
-    helpTopics = data.topics;
+    const currentUser = JSON.parse(
+  localStorage.getItem('user')
+);
+
+helpTopics = data.topics.filter(topic => {
+
+  if(topic.visibility_role === 'all'){
+
+    return true;
+
+  }
+
+  if(topic.visibility_role === 'admin'){
+
+    return currentUser?.role === 'admin';
+
+  }
+
+  if(topic.visibility_role === 'user'){
+
+    return currentUser?.role === 'user';
+
+  }
+
+  return true;
+
+});
 
     renderHelpTopics();
 
