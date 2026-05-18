@@ -1515,9 +1515,13 @@ let currentDate = new Date();
 async function checkLogin(){
 
   
+  setTimeout(() => {
+
   document.getElementById(
-  'loadingOverlay'
-).style.display = 'flex';
+    'loadingOverlay'
+  ).style.display = 'none';
+
+}, 3000);
 
   const button =
     document.getElementById(
