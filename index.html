@@ -1247,14 +1247,14 @@ body{
   font-family:'Inter',sans-serif;
 ">
 
-  <div style="
+ <div id="loadingMessage" style="
     font-size:26px;
     font-weight:600;
     letter-spacing:.3px;
     margin-bottom:18px;
   ">
-    Verifying Instructor Access...Please wait
-  </div>
+    Verifying Instructor Access... Please wait.
+</div>
 
   <div style="
     width:52px;
@@ -1548,17 +1548,9 @@ let currentDate = new Date();
 
 async function checkLogin(){
 
- document.getElementById(
+document.getElementById(
   'loadingOverlay'
 ).style.display = 'flex';
-
-document.getElementById(
-  'loginScreen'
-).style.display = 'none';
-
-await new Promise(resolve =>
-  setTimeout(resolve, 1200)
-);
 
 const button =
     document.getElementById(
@@ -1600,6 +1592,14 @@ try {
     const data =
 	await response.json();
 
+if(!data.success){
+
+  throw new Error(
+    'Invalid login'
+  );
+
+}
+
 if(data.user.role === 'admin'){
 
   document.getElementById(
@@ -1614,13 +1614,6 @@ if(data.user.role === 'admin'){
   ).innerText =
     'Verifying Instructor Access... Please wait.';
 
-}
-	
-  if(!data.success){
-
-  throw new Error(
-    'Invalid login'
-  );
 }
 
 await new Promise(resolve =>
