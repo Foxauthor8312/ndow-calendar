@@ -1707,7 +1707,7 @@ loadEvents();
 
 resetInactivityTimer();
     
-  } catch(err){
+ } catch(err){
 
   document.getElementById(
     'loadingOverlay'
@@ -1715,14 +1715,23 @@ resetInactivityTimer();
 
   console.error(err);
 
-  document.getElementById(
-    'loginError'
-  ).innerText =
-    'Invalid login';
+  if(err instanceof TypeError){
+
+    document.getElementById(
+      'loginError'
+    ).innerText =
+      'Connecting to secure server... please try again.';
+
+  } else {
+
+    document.getElementById(
+      'loginError'
+    ).innerText =
+      'Invalid login';
+
+  }
 
 }
-}
-
 	// ========================================
 // START FILTER SYSTEM
 // ========================================
