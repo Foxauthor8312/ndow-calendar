@@ -1602,6 +1602,11 @@ document.getElementById(
   'loadingOverlay'
 ).style.display = 'flex';
 
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Connecting to secure NDOW services...';
+
 const button =
     document.getElementById(
       'loginButton'
@@ -1642,6 +1647,11 @@ try {
     const data =
 	await response.json();
 
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Verifying account permissions...';
+
 if(!data.success){
 
   throw new Error(
@@ -1655,17 +1665,16 @@ if(data.user.role === 'admin'){
   document.getElementById(
     'loadingMessage'
   ).innerText =
-    'Verifying Administrator Access... Please wait.';
+    'Loading administrator dashboard...';
 
 } else {
 
   document.getElementById(
     'loadingMessage'
   ).innerText =
-    'Verifying Instructor Access... Please wait.';
+    'Loading volunteer calendar...';
 
 }
-
 await new Promise(resolve =>
   setTimeout(resolve, 1200)
 );
@@ -1730,7 +1739,7 @@ resetInactivityTimer();
       'Invalid login';
 
   }
-
+}
 }
 	// ========================================
 // START FILTER SYSTEM
