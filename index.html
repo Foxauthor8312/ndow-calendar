@@ -2498,7 +2498,7 @@ async function loadHelpTopics(){
   try {
 
     const response = await fetch(
-      'http://localhost:3000/api/help/topics'
+      'https://ndow-calendar-server.onrender.com/api/help/topics',
     );
 
     const data =
@@ -2940,7 +2940,7 @@ async function saveHelpTopic(){
 
     const response =
       await fetch(
-        'http://localhost:3000/api/help/save',
+       'https://ndow-calendar-server.onrender.com/api/help/save',
         {
           method:'POST',
           headers:{
@@ -3030,7 +3030,7 @@ async function deleteHelpTopic(){
 
     const response =
       await fetch(
-        'http://localhost:3000/api/help/delete',
+        'https://ndow-calendar-server.onrender.com/api/help/delete',
         {
           method:'POST',
           headers:{
