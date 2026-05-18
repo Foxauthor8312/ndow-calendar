@@ -1717,8 +1717,16 @@ if(
 
 events = events.map(event => {
 
-  const geo =
-    zipLookup[event.zip];
+  const zipMatch =
+  event.location?.match(/\b\d{5}\b/);
+
+const zip =
+  zipMatch
+    ? zipMatch[0]
+    : '';
+
+const geo =
+  zipLookup[zip];
 
   return {
 
