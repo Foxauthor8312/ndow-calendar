@@ -225,6 +225,18 @@ button:hover{
   background:#b91c1c;
 }
 
+@keyframes spin {
+
+  from {
+    transform:rotate(0deg);
+  }
+
+  to {
+    transform:rotate(360deg);
+  }
+
+}
+	
 	@media(max-width:768px){
 
   header{
@@ -1189,6 +1201,7 @@ body{
 
 <div id="loadingOverlay" style="
   display:none;
+  flex-direction:column;
   position:fixed;
   inset:0;
   background:rgba(25,48,75,0.88);
