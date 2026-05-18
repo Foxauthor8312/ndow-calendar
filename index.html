@@ -1205,7 +1205,7 @@ body{
 	  letter-spacing:.3px;
     margin-bottom:18px;
   ">
-    Loading Calendar...
+    Verifying Instructor Access...
   </div>
 
   <div style="
@@ -1501,13 +1501,10 @@ let currentDate = new Date();
 	
 async function checkLogin(){
 
-  const status =
-    document.getElementById(
-      'loginStatus'
-    );
-
-  status.style.display =
-    'block';
+  
+  document.getElementById(
+  'loadingOverlay'
+).style.display = 'flex';
 
   const button =
     document.getElementById(
@@ -1525,11 +1522,7 @@ async function checkLogin(){
     ).value.trim();
 
   // SHOW STATUS
-  status.style.display =
-    'block';
-
-  status.innerText =
-  'Verifying instructor access...';
+  
 
 try {
 
@@ -1565,6 +1558,10 @@ await new Promise(resolve =>
   setTimeout(resolve, 1200)
 );
 
+document.getElementById(
+  'loadingOverlay'
+).style.display = 'none';
+	
 localStorage.setItem(
   'ndowAccess',
   'granted'
@@ -1812,15 +1809,7 @@ function logout(showMessage = false){
 	  
 ).style.display = 'none';
 
-document.getElementById(
-  'loginScreen'
-).style.display = 'flex';
-
-document.getElementById(
-  'userPin'
-).value = '';
-
-resetInactivityTimer();
+location.reload();
 
 }
 
