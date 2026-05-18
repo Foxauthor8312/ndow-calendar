@@ -2910,6 +2910,11 @@ async function resetPin(username){
         'helpTitle'
       ).value = topic.title;
 
+	document.getElementById(
+  'helpVisibilityRole'
+).value =
+  topic.visibility_role || 'all';
+	
       document.getElementById(
         'helpSortOrder'
       ).value = topic.sort_order;
