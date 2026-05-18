@@ -3281,7 +3281,13 @@ async function deleteHelpTopic(){
 	
 <div id="adminModal" class="modal hidden">
 
-  <div class="modal-content">
+  <div class="modal-content" style="
+  width:min(1400px,100%);
+  max-height:90vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+">
 
     <button
       class="modal-close"
@@ -3290,7 +3296,11 @@ async function deleteHelpTopic(){
       ✕
     </button>
 
-    <div class="admin-layout">
+   <div class="admin-layout" style="
+  flex:1;
+  overflow:hidden;
+  align-items:start;
+">
 
       <div class="admin-panel">
 
