@@ -1202,6 +1202,8 @@ body{
 
 </div>
 
+</div>
+
 <!-- ========================================
      START LOGIN LOADING OVERLAY
 ======================================== -->
@@ -1520,11 +1522,19 @@ let currentDate = new Date();
 
 async function checkLogin(){
 
-  document.getElementById(
-    'loadingOverlay'
-  ).style.display = 'flex';
+ document.getElementById(
+  'loadingOverlay'
+).style.display = 'flex';
 
-  const button =
+document.getElementById(
+  'loginScreen'
+).style.display = 'none';
+
+await new Promise(resolve =>
+  setTimeout(resolve, 1200)
+);
+
+const button =
     document.getElementById(
       'loginButton'
     );
