@@ -1597,12 +1597,18 @@ resetInactivityTimer();
     
   } catch(err){
 
-    console.error(err);
+  document.getElementById(
+    'loadingOverlay'
+  ).style.display = 'none';
 
-    status.innerText =
-      'Login failed';
+  console.error(err);
 
-  }
+  document.getElementById(
+    'loginError'
+  ).innerText =
+    'Invalid login';
+
+}
 }
 
 	// ========================================
