@@ -2691,9 +2691,14 @@ function resetInactivityTimer(){
 
  clearTimeout(warningTimer);
 
-document.getElementById(
-  'timeoutWarning'
-).style.display = 'none';
+	const warning =
+  document.getElementById(
+    'timeoutWarning'
+  );
+
+if(warning){
+  warning.style.display = 'none';
+};
 
 warningTimer = setTimeout(() => {
 
