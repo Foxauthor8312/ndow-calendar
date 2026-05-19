@@ -277,15 +277,10 @@ button:hover{
 
 .legend{
   display:flex;
-  flex-wrap:nowrap;
-  gap:0;
-  padding:14px 20px;
-  background:white;
-  border-bottom:1px solid #d1d5db;
-  overflow-x:auto;
-
-  justify-content:center;
+  flex-wrap:wrap;
   align-items:center;
+  gap:6px;
+  padding:8px 0;
 }
 
 .legend-item{
@@ -297,6 +292,8 @@ button:hover{
   font-weight:600;
   border-right:1px solid #d1d5db;
   background:#eef2f7;
+  white-space:nowrap;
+  flex:0 0 auto;
 }
 
 .legend-item:last-child{
