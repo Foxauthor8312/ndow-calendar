@@ -1198,71 +1198,61 @@ body{
 </div>
 	  
 <div style="
-  margin-left:20px;
-  color:#6b7280;
-  font-style:italic;
-  white-space:nowrap;
+  margin-top:12px;
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:10px;
+  font-size:13px;
 ">
 
-  <span>
-    Filter: select one or more categories — reselect to clear
+  <span style="
+    font-weight:600;
+    color:#374151;
+  ">
+    Region:
   </span>
 
-  <div style="
-    display:flex;
-    align-items:center;
-    gap:10px;
-  ">
-
-    <span style="
+  <select
+    id="regionFilter"
+    onchange="setRegionFilter()"
+    style="
+      padding:8px 10px;
+      border-radius:8px;
+      border:1px solid #d1d5db;
       font-size:13px;
-      font-weight:600;
-      color:#374151;
-    ">
-      Region:
-    </span>
+    "
+  >
 
-    <select
-      id="regionFilter"
-      onchange="setRegionFilter()"
-      style="
-        padding:8px 10px;
-        border-radius:8px;
-        border:1px solid #d1d5db;
-        font-size:13px;
-      "
-    >
+    <option value="">
+      All Regions
+    </option>
 
-      <option value="">
-        All Regions
-      </option>
+    <option value="Western">
+      Western
+    </option>
 
-      <option value="Western">
-        Western
-      </option>
+    <option value="Eastern">
+      Eastern
+    </option>
 
-      <option value="Eastern">
-        Eastern
-      </option>
+    <option value="Southern">
+      Southern
+    </option>
 
-      <option value="Southern">
-        Southern
-      </option>
-
-    </select>
-
-  </div>
+  </select>
 
 </div>
+
+<!-- ========================================
+     START CALENDAR
+======================================== -->
 <!-- ========================================
      START CALENDAR
 ======================================== -->
 
 <div class="calendar" id="calendar"></div>
 
+	
 <!-- ========================================
      START EVENT MODAL
 ======================================== -->
