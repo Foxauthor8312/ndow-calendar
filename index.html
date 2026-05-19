@@ -200,7 +200,10 @@ button:hover{
 .modal.hidden {
   display: none;
 }
-
+.hidden{
+  display:none !important;
+}
+	
 .modal-content {
   background: white;
   width: min(900px, 100%);
@@ -1692,8 +1695,7 @@ async function loadEvents(){
 
     events = data.events;
 
-	events = data.events;
-
+	
 const storedTimestamp =
   sessionStorage.getItem(
     'stableLastUpdated'
@@ -2959,8 +2961,48 @@ function closeHelpModal(){
   modal.style.display = 'none';
 
 }
+function openAdminSection(section){
+
+  document.getElementById(
+    'usersPanel'
+  ).classList.add('hidden');
+
+  document.getElementById(
+    'helpPanel'
+  ).classList.add('hidden');
+
+  document.getElementById(
+    'geoPanel'
+  ).classList.add('hidden');
+
+  if(section === 'users'){
+
+    document.getElementById(
+      'usersPanel'
+    ).classList.remove('hidden');
+
+  }
+
+  if(section === 'help'){
+
+    document.getElementById(
+      'helpPanel'
+    ).classList.remove('hidden');
+
+  }
+
+  if(section === 'geo'){
+
+    document.getElementById(
+      'geoPanel'
+    ).classList.remove('hidden');
+
+  }
+
+}
+
 	
-function (){
+function openAdminPanel(){
 
   const user = JSON.parse(
     localStorage.getItem('user')
@@ -3462,12 +3504,7 @@ async function deleteHelpTopic(){
   © 2026 Barry Mattison — NDOW Volunteer Instructor
 
 </div>
-  </div>
-
-	<!-- ========================================
-     START HELP MODAL
-======================================== -->
-
+ 
 <!-- ========================================
      START HELP MODAL
 ======================================== -->
@@ -3710,30 +3747,7 @@ async function deleteHelpTopic(){
       >
 
         <h3>Help Topic Editor</h3>
-<div
-  id="userList"
-  style="
-    max-height:300px;
-    overflow:auto;
-    font-size:14px;
-    margin-top:12px;
-    text-align:left;
-  "
-></div>
 
-</div>
-
-<div
-  class="admin-panel hidden"
-  id="helpPanel"
-  style="
-    flex:1;
-    height:100%;
-    overflow-y:auto;
-  "
->
-
-<h3>Help Topic Editor</h3>
 
 <input
   type="hidden"
