@@ -1735,23 +1735,7 @@ async function loadEvents(){
 
     events = data.events;
 
-	
-const storedTimestamp =
-  sessionStorage.getItem(
-    'stableLastUpdated'
-  );
 
-if(
-  storedTimestamp !==
-  data.lastUpdated
-){
-
-  sessionStorage.setItem(
-    'stableLastUpdated',
-    data.lastUpdated
-  );
-
-}
 
 events = events.map(event => {
 
@@ -1793,9 +1777,7 @@ document.getElementById(
   'lastUpdated'
 ).innerText =
   new Date(
-    sessionStorage.getItem(
-      'stableLastUpdated'
-    )
+    data.lastUpdated
   ).toLocaleString();
 
 renderCalendar();
