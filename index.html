@@ -2960,7 +2960,7 @@ function closeHelpModal(){
 
 }
 	
-function openAdminPanel(){
+function (){
 
   const user = JSON.parse(
     localStorage.getItem('user')
@@ -3570,16 +3570,15 @@ async function deleteHelpTopic(){
      START ADMIN MODAL
 ======================================== -->
 
-	
 <div id="adminModal" class="modal hidden">
 
   <div class="modal-content" style="
-  width:min(1400px,100%);
-  max-height:90vh;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-">
+    width:min(1400px,100%);
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  ">
 
     <button
       class="modal-close"
@@ -3588,109 +3587,129 @@ async function deleteHelpTopic(){
       ✕
     </button>
 
+    <div class="admin-layout" style="
+      flex:1;
+      overflow:hidden;
+      align-items:start;
+    ">
 
-	  
-   <div class="admin-layout" style="
-  flex:1;
-  overflow:hidden;
-  align-items:start;
-">
+      <div class="admin-sidebar" style="
+        width:220px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding-right:16px;
+      ">
 
-<div class="admin-sidebar" style="
-  width:220px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  padding-right:16px;
-">
+        <button onclick="openAdminSection('users')">
+          Users
+        </button>
 
-  <button onclick="openAdminSection('users')">
-    Users
-  </button>
+        <button onclick="openAdminSection('help')">
+          Help System
+        </button>
 
-  <button onclick="openAdminSection('help')">
-    Help System
-  </button>
+        <button onclick="openAdminSection('geo')">
+          Geographic Analytics
+        </button>
 
-  <button onclick="openAdminSection('geo')">
-    Geographic Analytics
-  </button>
+      </div>
 
-</div>
-	   
-     <div
-  class="admin-panel"
-  id="usersPanel"
->
+      <div
+        class="admin-panel"
+        id="usersPanel"
+        style="
+          flex:1;
+        "
+      >
 
         <h2>Add User</h2>
 
-    <input
-      id="adminUsername"
-      class="login-input"
-      placeholder="Username"
-      style="margin-top:14px;"
-    >
+        <input
+          id="adminUsername"
+          class="login-input"
+          placeholder="Username"
+          style="margin-top:14px;"
+        >
 
-    <input
-      id="adminPin"
-      class="login-input"
-      placeholder="PIN"
-      style="margin-top:14px;"
-    >
+        <input
+          id="adminPin"
+          class="login-input"
+          placeholder="PIN"
+          style="margin-top:14px;"
+        >
 
-<div style="
-  margin-top:8px;
-  font-size:12px;
-  color:#6b7280;
-  line-height:1.4;
-">
-  Use a 6-digit PIN. Do not use leading or trailing zeros.
-</div>
-		  
-    <select
-      id="adminRole"
-      class="contact-select"
-      style="margin-top:14px;"
-    >
+        <div style="
+          margin-top:8px;
+          font-size:12px;
+          color:#6b7280;
+          line-height:1.4;
+        ">
+          Use a 6-digit PIN. Do not use leading or trailing zeros.
+        </div>
 
-      <option value="user">
-        User
-      </option>
+        <select
+          id="adminRole"
+          class="contact-select"
+          style="margin-top:14px;"
+        >
 
-      <option value="admin">
-        Admin
-      </option>
+          <option value="user">
+            User
+          </option>
 
-    </select>
+          <option value="admin">
+            Admin
+          </option>
 
-    <button
-      style="
-        margin-top:18px;
-        width:100%;
-      "
-      onclick="addUser()"
-    >
-      Create User
-    </button>
+        </select>
 
-    <div
-      id="adminMessage"
-      style="
-        margin-top:14px;
-        font-size:14px;
-      "
-    ></div>
+        <button
+          style="
+            margin-top:18px;
+            width:100%;
+          "
+          onclick="addUser()"
+        >
+          Create User
+        </button>
 
-</div>
+        <div
+          id="adminMessage"
+          style="
+            margin-top:14px;
+            font-size:14px;
+          "
+        ></div>
 
-<<div
-  class="admin-panel hidden"
-  id="helpPanel"
->
+        <h3 style="margin-top:30px;">
+          Users
+        </h3>
 
-<h3>Users</h3>
+        <div
+          id="userList"
+          style="
+            max-height:300px;
+            overflow:auto;
+            font-size:14px;
+            margin-top:12px;
+            text-align:left;
+          "
+        ></div>
 
+      </div>
+
+      <div
+        class="admin-panel hidden"
+        id="helpPanel"
+        style="
+          flex:1;
+          height:100%;
+          overflow-y:auto;
+        "
+      >
+
+        <h3>Help Topic Editor</h3>
 <div
   id="userList"
   style="
@@ -3704,11 +3723,16 @@ async function deleteHelpTopic(){
 
 </div>
 
-<div class="admin-panel" style="
-  height:100%;
-  overflow-y:auto;
-">
-			
+<div
+  class="admin-panel hidden"
+  id="helpPanel"
+  style="
+    flex:1;
+    height:100%;
+    overflow-y:auto;
+  "
+>
+
 <h3>Help Topic Editor</h3>
 
 <input
