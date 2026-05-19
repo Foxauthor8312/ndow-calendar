@@ -1204,12 +1204,59 @@ body{
   white-space:nowrap;
   display:flex;
   align-items:center;
+  gap:16px;
 ">
-  Filter: select one or more categories — reselect to clear
-</div>
-	  
-</div>
 
+  <span>
+    Filter: select one or more categories — reselect to clear
+  </span>
+
+  <div style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+  ">
+
+    <span style="
+      font-size:13px;
+      font-weight:600;
+      color:#374151;
+    ">
+      Region:
+    </span>
+
+    <select
+      id="regionFilter"
+      onchange="setRegionFilter()"
+      style="
+        padding:8px 10px;
+        border-radius:8px;
+        border:1px solid #d1d5db;
+        font-size:13px;
+      "
+    >
+
+      <option value="">
+        All Regions
+      </option>
+
+      <option value="Western">
+        Western
+      </option>
+
+      <option value="Eastern">
+        Eastern
+      </option>
+
+      <option value="Southern">
+        Southern
+      </option>
+
+    </select>
+
+  </div>
+
+</div>
 <!-- ========================================
      START CALENDAR
 ======================================== -->
@@ -1648,6 +1695,7 @@ const categoryColors = {
 };
 	let events = [];
     let activeFilters = [];
+	let activeRegion = '';
 
 // ========================================
 // START EVENT LOADING
@@ -1978,6 +2026,17 @@ resetInactivityTimer();
 // START FILTER SYSTEM
 // ========================================
 
+function setRegionFilter(){
+
+  activeRegion =
+    document.getElementById(
+      'regionFilter'
+    ).value;
+
+  renderCalendar();
+
+}
+	
 	function toggleFilter(category){
 
   if(activeFilters.includes(category)){
@@ -2087,6 +2146,13 @@ function renderCalendar(){
 
   const dayEvents = events.filter(e => {
 
+  if(
+    activeRegion &&
+    e.region !== activeRegion
+  ){
+    return false;
+  }
+	  
   if(
     activeFilters.length > 0 &&
     !activeFilters.includes(e.category)
