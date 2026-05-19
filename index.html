@@ -2988,6 +2988,8 @@ function openAdminPanel(){
 
 }
 
+
+	
 function closeAdminPanel(){
 
   const modal = document.getElementById(
@@ -3586,13 +3588,40 @@ async function deleteHelpTopic(){
       ✕
     </button>
 
+
+	  
    <div class="admin-layout" style="
   flex:1;
   overflow:hidden;
   align-items:start;
 ">
 
-      <div class="admin-panel">
+<div class="admin-sidebar" style="
+  width:220px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding-right:16px;
+">
+
+  <button onclick="openAdminSection('users')">
+    Users
+  </button>
+
+  <button onclick="openAdminSection('help')">
+    Help System
+  </button>
+
+  <button onclick="openAdminSection('geo')">
+    Geographic Analytics
+  </button>
+
+</div>
+	   
+     <div
+  class="admin-panel"
+  id="usersPanel"
+>
 
         <h2>Add User</h2>
 
@@ -3655,7 +3684,10 @@ async function deleteHelpTopic(){
 
 </div>
 
-<div class="admin-panel">
+<<div
+  class="admin-panel hidden"
+  id="helpPanel"
+>
 
 <h3>Users</h3>
 
@@ -3795,6 +3827,46 @@ async function deleteHelpTopic(){
   "
 ></div>
 
+<div
+  class="admin-panel hidden"
+  id="geoPanel"
+>
+
+  <h2>
+    Geographic Analytics
+  </h2>
+
+  <select
+    id="regionSelect"
+    class="contact-select"
+    style="margin-top:14px;"
+  >
+    <option value="">
+      Select Region
+    </option>
+  </select>
+
+  <select
+    id="countySelect"
+    class="contact-select"
+    style="margin-top:14px;"
+  >
+    <option value="">
+      Select County
+    </option>
+  </select>
+
+  <select
+    id="citySelect"
+    class="contact-select"
+    style="margin-top:14px;"
+  >
+    <option value="">
+      Select City
+    </option>
+  </select>
+
+</div>
 </div>
 		
 </div>
