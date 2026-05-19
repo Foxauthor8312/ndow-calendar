@@ -2956,11 +2956,12 @@ function closeHelpModal(){
       'helpModal'
     );
 
-  modal.classList.add('hidden');
+ modal.classList.add('hidden');
 
   modal.style.display = 'none';
 
 }
+
 function openAdminSection(section){
 
   document.getElementById(
@@ -3001,6 +3002,48 @@ function openAdminSection(section){
 
 }
 
+function loadRegionDropdown(){
+
+  const select =
+    document.getElementById(
+      'regionSelect'
+    );
+
+  if(!select){
+    return;
+  }
+
+  select.innerHTML = `
+    <option value="">
+      Select Region
+    </option>
+  `;
+
+  Object.keys(nevadaRegions)
+    .forEach(region => {
+
+      const option =
+        document.createElement(
+          'option'
+        );
+
+      option.value = region;
+
+      option.innerText = region;
+
+      select.appendChild(option);
+
+    });
+
+}
+    document.getElementById(
+      'geoPanel'
+    ).classList.remove('hidden');
+
+  }
+
+}
+
 	
 function openAdminPanel(){
 
@@ -3027,6 +3070,8 @@ function openAdminPanel(){
    loadUsers();
 
   loadHelpTopics();
+
+	loadRegionDropdown();
 
 }
 
