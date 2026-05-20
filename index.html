@@ -3401,26 +3401,36 @@ function loadRegionDropdown(){
 	
 function openAdminPanel(){
 
-  const modal =
-    document.getElementById(
-      'adminModal'
-    );
-
-  modal.classList.remove(
-    'hidden'
+  const user = JSON.parse(
+    localStorage.getItem('user')
   );
+
+  if(!user || user.role !== 'admin'){
+
+    alert('Admin access only');
+
+    return;
+
+  }
+
+  const modal = document.getElementById(
+    'adminModal'
+  );
+
+  modal.classList.remove('hidden');
 
   modal.style.display = 'flex';
 
   loadUsers();
 
+  loadHelpTopics();
+
   loadRegionDropdown();
 
-  openAdminSection(
-    'users'
-  );
+  openAdminSection('users');
 
 }
+
 
 function closeAdminPanel(){
 
@@ -3455,6 +3465,25 @@ async function addUser(){
       'adminRole'
     ).value;
 
+		const email =
+  document.getElementById(
+    'adminEmail'
+  ).value.trim();
+
+const phone =
+  document.getElementById(
+    'adminPhone'
+  ).value.trim();
+
+const notify_email =
+  document.getElementById(
+    'adminNotifyEmail'
+  ).checked;
+
+const notify_sms =
+  document.getElementById(
+    'adminNotifySms'
+  ).checked;
   const token =
     localStorage.getItem(
       'token'
@@ -3466,15 +3495,19 @@ async function addUser(){
       'https://ndow-calendar-server.onrender.com/api/admin/add-user',
       {
         method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-          Authorization:`Bearer ${token}`
-        },
-        body:JSON.stringify({
-          username,
-          pin,
-          role
-        })
+    headers:{
+  'Content-Type':'application/json',
+  Authorization:`Bearer ${token}`
+},
+body:JSON.stringify({
+  username,
+  pin,
+  role,
+  email,
+  phone,
+  notify_email,
+  notify_sms
+})
       }
     );
 
@@ -3495,6 +3528,22 @@ async function addUser(){
       'adminPin'
     ).value = '';
 
+	document.getElementById(
+	  'adminEmail'
+		).value = '';
+	
+	document.getElementById(
+	  'adminPhone'
+	).value = '';
+	
+	document.getElementById(
+	  'adminNotifyEmail'
+	).checked = true;
+	
+	document.getElementById(
+	  'adminNotifySms'
+	).checked = false;
+	  
   } catch(err){
 
     console.error(err);
@@ -4051,6 +4100,65 @@ async function deleteHelpTopic(){
             placeholder="PIN"
             style="margin-top:14px;"
           >
+
+			<input
+  id="adminEmail"
+  class="login-input"
+  placeholder="Email Address"
+  style="margin-top:14px;"
+>
+
+<input
+  id="adminPhone"
+  class="login-input"
+  placeholder="Mobile Phone"
+  style="margin-top:14px;"
+>
+
+<div style="
+  margin-top:14px;
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+">
+
+  <label style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    color:#374151;
+  ">
+
+    <input
+      type="checkbox"
+      id="adminNotifyEmail"
+      checked
+    >
+
+    Email Notifications
+
+  </label>
+
+  <label style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    color:#374151;
+  ">
+
+    <input
+      type="checkbox"
+      id="adminNotifySms"
+    >
+
+    SMS Notifications
+
+  </label>
+
+</div>
 
           <select
             id="adminRole"
