@@ -3924,19 +3924,18 @@ async function deleteHelpTopic(){
      START ADMIN MODAL
 ======================================== -->
 
-
 <div id="adminModal" class="modal hidden">
 
- <div
-  class="modal-content"
-  style="
-    width:min(1400px,100%);
-    height:90vh;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  "
->
+  <div
+    class="modal-content"
+    style="
+      width:min(1400px,100%);
+      height:90vh;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    "
+  >
 
     <button
       class="modal-close"
@@ -3945,514 +3944,299 @@ async function deleteHelpTopic(){
       ✕
     </button>
 
-<div class="admin-layout" style="
-  flex:1;
-  overflow:hidden;
-  align-items:stretch;
-  min-height:0;
-">
+    <div
+      class="admin-layout"
+      style="
+        flex:1;
+        overflow:hidden;
+        align-items:stretch;
+        min-height:0;
+      "
+    >
+
       <!-- SIDEBAR -->
 
-      <div class="admin-sidebar" style="
-  width:220px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  padding-right:16px;
-">
-
-  <button
-    onclick="openAdminSection('users')"
-    style="
-      width:100%;
-      background:
-        linear-gradient(
-          180deg,
-          #163a63,
-          #274f84
-        );
-      color:white;
-      border:none;
-      border-radius:10px;
-      padding:14px;
-      font-weight:600;
-      cursor:pointer;
-    "
-  >
-    User Management
-  </button>
-
-  <button
-    onclick="openAdminSection('announcements')"
-    style="
-      width:100%;
-      background:
-        linear-gradient(
-          180deg,
-          #163a63,
-          #274f84
-        );
-      color:white;
-      border:none;
-      border-radius:10px;
-      padding:14px;
-      font-weight:600;
-      cursor:pointer;
-    "
-  >
-    Program Updates
-  </button>
-
-  <button
-    onclick="openAdminSection('help')"
-    style="
-      width:100%;
-      background:
-        linear-gradient(
-          180deg,
-          #163a63,
-          #274f84
-        );
-      color:white;
-      border:none;
-      border-radius:10px;
-      padding:14px;
-      font-weight:600;
-      cursor:pointer;
-    "
-  >
-    Help System
-  </button>
-
-  <button
-    onclick="openAdminSection('geo')"
-    style="
-      width:100%;
-      background:
-        linear-gradient(
-          180deg,
-          #163a63,
-          #274f84
-        );
-      color:white;
-      border:none;
-      border-radius:10px;
-      padding:14px;
-      font-weight:600;
-      cursor:pointer;
-    "
-  >
-    Geographic Analytics
-  </button>
-
-</div>
-
-      <!-- USERS -->
-
-<div
-  class="admin-panel"
-  id="usersPanel"
-  style="
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    height:100%;
-    min-height:0;
-  "
->
-
-        <h2>Add User</h2>
-
-        <input
-          id="adminUsername"
-          class="login-input"
-          placeholder="Username"
-          style="margin-top:14px;"
-        >
-
-        <input
-          id="adminPin"
-          class="login-input"
-          placeholder="PIN"
-          style="margin-top:14px;"
-        >
-
-        <select
-          id="adminRole"
-          class="contact-select"
-          style="margin-top:14px;"
-        >
-          <option value="user">
-            User
-          </option>
-
-          <option value="admin">
-            Admin
-          </option>
-        </select>
-
-        <button
-          style="
-            margin-top:18px;
-            width:100%;
-          "
-          onclick="addUser()"
-        >
-          Create User
-        </button>
-
-        <div
-          id="adminMessage"
-          style="
-            margin-top:14px;
-            font-size:14px;
-          "
-        ></div>
-
-<div style="
-  margin-top:30px;
-  display:flex;
-  flex-direction:column;
-  flex:1;
-  min-height:0;
-">
-
- <div style="
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:12px;
-">
-
-  <h3 style="
-    margin:0;
-    flex-shrink:0;
-  ">
-    Users
-  </h3>
-
-  <label style="
-    font-size:13px;
-    color:#475569;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    cursor:pointer;
-  ">
-
-    <input
-      type="checkbox"
-      id="showDisabledUsers"
-      onchange="loadUsers()"
-    >
-
-    Show Disabled
-
-  </label>
-
-</div>
-
- <div
-  id="userList"
-  style="
-    flex:1;
-    min-height:0;
-    overflow-y:auto;
-    overflow-x:hidden;
-    padding-right:6px;
-    border-top:1px solid #e5e7eb;
-    margin-top:8px;
-  "
-></div>
-
-</div>
-      <!-- ANNOUNCEMENTS -->
-<div
-  class="admin-panel"
-  id="announcementPanel"
-  style="
-    flex:1;
-    display:none;
-  "
->
-
-  <h2>
-    Program Updates
-  </h2>
-
-  <input
-    id="announcementTitleInput"
-    class="login-input"
-    placeholder="Announcement Title"
-    style="margin-top:14px;"
-  >
-
-  <textarea
-    id="announcementMessageInput"
-    style="
-      width:100%;
-      height:220px;
-      margin-top:14px;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid #d1d5db;
-      resize:vertical;
-      box-sizing:border-box;
-    "
-    placeholder="Program update..."
-  ></textarea>
-
-  <select
-    id="announcementAudienceInput"
-    class="contact-select"
-    style="margin-top:14px;"
-  >
-
-    <option value="all">
-      All Users
-    </option>
-
-    <option value="user">
-      Standard Users
-    </option>
-
-    <option value="admin">
-      Admin Only
-    </option>
-
-  </select>
-
-  <button
-    style="
-      margin-top:18px;
-      width:100%;
-    "
-    onclick="saveAnnouncement()"
-  >
-    Publish Update
-  </button>
-
-</div>
-
-<!-- HELP -->
-
-<div
-  class="admin-panel"
-  id="helpPanel"
-  style="
-    flex:1;
-    display:none;
-    overflow-y:auto;
-  "
->
-  <h2>
-    Help System
-  </h2>
-
-  <input
-    type="hidden"
-    id="helpEditId"
-  >
-
-  <input
-    id="helpCategory"
-    class="login-input"
-    placeholder="Category"
-    style="margin-top:14px;"
-  >
-
-  <input
-    id="helpTopicKey"
-    class="login-input"
-    placeholder="Topic Key"
-    style="margin-top:14px;"
-  >
-
-  <input
-    id="helpTitle"
-    class="login-input"
-    placeholder="Title"
-    style="margin-top:14px;"
-  >
-
-  <input
-    id="helpSortOrder"
-    class="login-input"
-    placeholder="Sort Order"
-    value="0"
-    style="margin-top:14px;"
-  >
-
-  <select
-    id="helpVisibilityRole"
-    class="contact-select"
-    style="margin-top:14px;"
-  >
-
-    <option value="all">
-      All Users
-    </option>
-
-    <option value="user">
-      Standard Users
-    </option>
-
-    <option value="admin">
-      Admin Only
-    </option>
-
-  </select>
-
-  <textarea
-    id="helpContent"
-    style="
-      width:100%;
-      height:220px;
-      margin-top:14px;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid #d1d5db;
-      resize:vertical;
-      font-family:Inter,sans-serif;
-      font-size:14px;
-      box-sizing:border-box;
-    "
-    placeholder="HTML help content..."
-  ></textarea>
-
-  <div style="
-    display:flex;
-    gap:10px;
-    margin-top:16px;
-  ">
-
-    <button onclick="saveHelpTopic()">
-      Save Topic
-    </button>
-
-    <button onclick="newHelpTopic()">
-      New
-    </button>
-
-    <button
-      onclick="deleteHelpTopic()"
-      style="background:#dc2626;"
-    >
-      Delete
-    </button>
-
-  </div>
-
-  <div
-    id="helpAdminMessage"
-    style="
-      margin-top:14px;
-      font-size:14px;
-    "
-  ></div>
-
-  <div
-    id="helpTopicAdminList"
-    style="
-      margin-top:20px;
-      max-height:260px;
-      overflow:auto;
-      border-top:1px solid #e5e7eb;
-      padding-top:14px;
-    "
-  ></div>
-
-</div>
-
-<!-- GEO -->
-
-<div
-  class="admin-panel"
-  id="geoPanel"
-  style="
-    flex:1;
-    display:none;
-  "
->
-
-  <h2>
-    Geographic Analytics
-  </h2>
-
-  <div style="
-    margin-top:18px;
-    color:#475569;
-    line-height:1.6;
-  ">
-    Regional analytics tools will appear here.
-  </div>
-
-</div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- HELP MODAL -->
-
-<div id="helpModal" class="modal hidden">
-
- <div
-  class="modal-content"
-  style="
-    width:min(1400px,100%);
-    height:90vh;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  ">
-
-    <button
-      class="modal-close"
-      onclick="closeHelpModal()"
-    >
-      ✕
-    </button>
-
-    <div class="admin-layout" style="
-      flex:1;
-      overflow:hidden;
-    ">
-
       <div
+        class="admin-sidebar"
         style="
-          width:320px;
-          overflow-y:auto;
-          border-right:1px solid #e5e7eb;
+          width:220px;
+          display:flex;
+          flex-direction:column;
+          gap:10px;
           padding-right:16px;
+          flex-shrink:0;
         "
       >
 
-        <h2>
-          Help Topics
-        </h2>
+        <button onclick="openAdminSection('users')">
+          User Management
+        </button>
 
-        <div id="helpTopicList"></div>
+        <button onclick="openAdminSection('announcements')">
+          Program Updates
+        </button>
+
+        <button onclick="openAdminSection('help')">
+          Help System
+        </button>
+
+        <button onclick="openAdminSection('geo')">
+          Geographic Analytics
+        </button>
 
       </div>
 
+      <!-- CONTENT AREA -->
+
       <div
-        id="helpContentArea"
         style="
           flex:1;
-          overflow-y:auto;
-          padding-left:24px;
+          display:flex;
+          flex-direction:column;
+          min-height:0;
+          overflow:hidden;
         "
       >
 
-        <div style="
-          color:#6b7280;
-          font-size:16px;
-        ">
-          Select a help topic.
+        <!-- USERS -->
+
+        <div
+          class="admin-panel"
+          id="usersPanel"
+          style="
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            overflow:hidden;
+            min-height:0;
+          "
+        >
+
+          <h2>Add User</h2>
+
+          <input
+            id="adminUsername"
+            class="login-input"
+            placeholder="Username"
+            style="margin-top:14px;"
+          >
+
+          <input
+            id="adminPin"
+            class="login-input"
+            placeholder="PIN"
+            style="margin-top:14px;"
+          >
+
+          <select
+            id="adminRole"
+            class="contact-select"
+            style="margin-top:14px;"
+          >
+            <option value="user">
+              User
+            </option>
+
+            <option value="admin">
+              Admin
+            </option>
+          </select>
+
+          <button
+            style="
+              margin-top:18px;
+              width:100%;
+            "
+            onclick="addUser()"
+          >
+            Create User
+          </button>
+
+          <div
+            id="adminMessage"
+            style="
+              margin-top:14px;
+              font-size:14px;
+            "
+          ></div>
+
+          <div style="
+            margin-top:30px;
+            display:flex;
+            flex-direction:column;
+            flex:1;
+            min-height:0;
+            overflow:hidden;
+          ">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              margin-bottom:12px;
+              flex-shrink:0;
+            ">
+
+              <h3 style="margin:0;">
+                Users
+              </h3>
+
+              <label style="
+                font-size:13px;
+                color:#475569;
+                display:flex;
+                align-items:center;
+                gap:6px;
+                cursor:pointer;
+              ">
+
+                <input
+                  type="checkbox"
+                  id="showDisabledUsers"
+                  onchange="loadUsers()"
+                >
+
+                Show Disabled
+
+              </label>
+
+            </div>
+
+            <div
+              id="userList"
+              style="
+                flex:1;
+                overflow-y:auto;
+                overflow-x:hidden;
+                min-height:0;
+                border-top:1px solid #e5e7eb;
+                padding-top:8px;
+                padding-right:6px;
+              "
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- ANNOUNCEMENTS -->
+
+        <div
+          class="admin-panel"
+          id="announcementPanel"
+          style="
+            flex:1;
+            display:none;
+            overflow-y:auto;
+          "
+        >
+
+          <h2>
+            Program Updates
+          </h2>
+
+          <input
+            id="announcementTitleInput"
+            class="login-input"
+            placeholder="Announcement Title"
+            style="margin-top:14px;"
+          >
+
+          <textarea
+            id="announcementMessageInput"
+            style="
+              width:100%;
+              height:220px;
+              margin-top:14px;
+              padding:14px;
+              border-radius:12px;
+              border:1px solid #d1d5db;
+              resize:vertical;
+              box-sizing:border-box;
+            "
+            placeholder="Program update..."
+          ></textarea>
+
+          <select
+            id="announcementAudienceInput"
+            class="contact-select"
+            style="margin-top:14px;"
+          >
+
+            <option value="all">
+              All Users
+            </option>
+
+            <option value="user">
+              Standard Users
+            </option>
+
+            <option value="admin">
+              Admin Only
+            </option>
+
+          </select>
+
+          <button
+            style="
+              margin-top:18px;
+              width:100%;
+            "
+            onclick="saveAnnouncement()"
+          >
+            Publish Update
+          </button>
+
+        </div>
+
+        <!-- HELP -->
+
+        <div
+          class="admin-panel"
+          id="helpPanel"
+          style="
+            flex:1;
+            display:none;
+            overflow-y:auto;
+          "
+        >
+
+          <h2>
+            Help System
+          </h2>
+
+          <div style="
+            color:#64748b;
+            margin-top:12px;
+          ">
+            Help content panel restored.
+          </div>
+
+        </div>
+
+        <!-- GEO -->
+
+        <div
+          class="admin-panel"
+          id="geoPanel"
+          style="
+            flex:1;
+            display:none;
+            overflow-y:auto;
+          "
+        >
+
+          <h2>
+            Geographic Analytics
+          </h2>
+
+          <div style="
+            color:#64748b;
+            margin-top:12px;
+          ">
+            Geographic analytics panel restored.
+          </div>
+
         </div>
 
       </div>
@@ -4462,62 +4246,3 @@ async function deleteHelpTopic(){
   </div>
 
 </div>
-
-<div
-  id="announcementModal"
-  style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.7);
-    z-index:9999;
-    justify-content:center;
-    align-items:center;
-  "
->
-
-  <div
-    style="
-      background:white;
-      width:90%;
-      max-width:500px;
-      border-radius:14px;
-      padding:24px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    "
-  >
-
-    <h2
-      id="announcementTitle"
-      style="
-        margin-top:0;
-      "
-    ></h2>
-
-    <div
-      id="announcementMessage"
-      style="
-        margin-top:14px;
-        line-height:1.6;
-      "
-    ></div>
-
-  </div>
-
-</div>
-
-<div
-  id="timeoutWarning"
-  style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.72);
-    z-index:999999;
-    justify-content:center;
-    align-items:center;
-  "
-></div>
-
-</body>
-</html>
