@@ -3134,21 +3134,21 @@ function closeHelpModal(){
 
 function openAdminSection(section){
 
-  document.getElementById(
-    'usersPanel'
-  ).classList.add('hidden');
-
-  document.getElementById(
-    'helpPanel'
-  ).classList.add('hidden');
-
-  document.getElementById(
-    'announcementPanel'
-  ).classList.add('hidden');
-
-  document.getElementById(
+  [
+    'usersPanel',
+    'helpPanel',
+    'announcementPanel',
     'geoPanel'
-  ).classList.add('hidden');
+  ].forEach(id => {
+
+    const panel =
+      document.getElementById(id);
+
+    if(panel){
+      panel.classList.add('hidden');
+    }
+
+  });
 
   if(section === 'users'){
 
@@ -3306,15 +3306,15 @@ async function addUser(){
       'adminMessage'
     ).innerText = data.message;
 
-loadUsers();
+    loadUsers();
 
-document.getElementById(
-  'adminUsername'
-).value = '';
+    document.getElementById(
+      'adminUsername'
+    ).value = '';
 
-document.getElementById(
-  'adminPin'
-).value = '';
+    document.getElementById(
+      'adminPin'
+    ).value = '';
 
   } catch(err){
 
@@ -3325,7 +3325,7 @@ document.getElementById(
     ).innerText =
       'Server error';
 
-   }
+  }
 
 }
 
