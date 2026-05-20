@@ -3946,11 +3946,17 @@ async function deleteHelpTopic(){
 
       <!-- USERS -->
 
-      <div
-        class="admin-panel"
-        id="usersPanel"
-        style="flex:1;"
-      >
+    <div
+  class="admin-panel"
+  id="usersPanel"
+  style="
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    min-height:0;
+  "
+>
 
         <h2>Add User</h2>
 
@@ -4004,12 +4010,18 @@ async function deleteHelpTopic(){
           Users
         </h3>
 
-        <div
-          id="userList"
-       ></div>
-
-      </div>
-
+   <div
+  id="userList"
+  style="
+    margin-top:12px;
+    flex:1;
+    overflow-y:auto;
+    min-height:0;
+    padding-right:6px;
+    border-top:1px solid #e5e7eb;
+  "
+></div>
+</div>
       <!-- ANNOUNCEMENTS -->
 
 <div
