@@ -2654,23 +2654,40 @@ function togglePassword(){
 
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener(
+  'DOMContentLoaded',
+  function(){
 
-  document.getElementById(
-    'userName'
-  ).addEventListener(
-    'focus',
-    clearLoginError
-  );
+    const userName =
+      document.getElementById(
+        'userName'
+      );
 
-  document.getElementById(
-    'userPin'
-  ).addEventListener(
-    'focus',
-    clearLoginError
-  );
+    const userPin =
+      document.getElementById(
+        'userPin'
+      );
 
-});
+    if(userName){
+
+      userName.addEventListener(
+        'focus',
+        clearLoginError
+      );
+
+    }
+
+    if(userPin){
+
+      userPin.addEventListener(
+        'focus',
+        clearLoginError
+      );
+
+    }
+
+  }
+);
 
 function clearLoginError(){
 
@@ -3205,17 +3222,40 @@ function loadRegionDropdown(){
 	
 function openAdminPanel(){
 
+  const modal =
+    document.getElementById(
+      'adminModal'
+    );
 
-	
-function closeAdminPanel(){
-
-  const modal = document.getElementById(
-    'adminModal'
+  modal.classList.remove(
+    'hidden'
   );
 
-  modal.classList.add('hidden');
+  modal.style.display = 'flex';
 
-  modal.style.display = 'none';
+  loadUsers();
+
+  loadRegionDropdown();
+
+  openAdminSection(
+    'users'
+  );
+
+}
+
+function closeAdminPanel(){
+
+  const modal =
+    document.getElementById(
+      'adminModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
 
 }
 
