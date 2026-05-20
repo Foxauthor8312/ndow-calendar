@@ -7,13 +7,27 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 />
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
- <link href="https://fonts.googleapis.com/css2?family=Inlogin-button{}ter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
- <title>NDOW Volunteer Event Calendar</title>
- <link rel="icon" type="image/png" href="favicon.png">
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<title>NDOW Volunteer Event Calendar</title>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="favicon.png"
+>
 
 <style>
 
@@ -1967,36 +1981,7 @@ document.getElementById(
   'Logged in as: ' +
   data.user.username;
 
-// ========================================
-// FORCE TIMESTAMP REFRESH
-// ========================================
 
-fetch(
-  'https://ndow-calendar-server.onrender.com/events.json?v=' + Date.now(),
-
-  {
-    cache:'no-store'
-  }
-)
-.then(res => res.json())
-.then(data => {
-
-  document.getElementById(
-    'lastUpdated'
-  ).innerText =
-    new Date(
-      data.lastUpdated
-    ).toLocaleString();
-
-})
-.catch(err => {
-
-  console.error(
-    'Timestamp refresh failed:',
-    err
-  );
-
-});
 
 // ========================================
 // LOAD EVENTS
