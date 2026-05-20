@@ -3103,13 +3103,25 @@ function renderSection(
           : 'Disable'
       ) +
 
-      '</button>' +
-
-      '<button style="margin-top:8px;margin-left:8px;" onclick="resetPin(\'' +
-
-      user.username +
-
-      '\')">Reset PIN</button>';
+    '</button>' +
+	
+	'<button style="margin-top:8px;margin-left:8px;" onclick="resetPin(\'' +
+	
+	user.username +
+	
+	'\')">Reset PIN</button>' +
+	
+	'<button style="margin-top:8px;margin-left:8px;" onclick=\'openEditUserModal(' +
+	
+	JSON.stringify(user) +
+	
+	')\'>Edit</button>';
+		
+		'<button style="margin-top:8px;margin-left:8px;" onclick=\'openEditUserModal(' +
+		
+		JSON.stringify(user) +
+		
+		')\'>Edit</button>';
 
     container.appendChild(
       div
@@ -3736,7 +3748,65 @@ async function resetPin(username){
 
 }
 
-	function renderHelpAdminList(){
+function openEditUserModal(user){
+
+  document.getElementById(
+    'editUserModal'
+  ).classList.remove('hidden');
+
+  document.getElementById(
+    'editUserModal'
+  ).style.display = 'flex';
+
+  document.getElementById(
+    'editOriginalUsername'
+  ).value = user.username;
+
+  document.getElementById(
+    'editUsername'
+  ).value = user.username || '';
+
+  document.getElementById(
+    'editEmail'
+  ).value = user.email || '';
+
+  document.getElementById(
+    'editPhone'
+  ).value = user.phone || '';
+
+  document.getElementById(
+    'editRole'
+  ).value = user.role || 'user';
+
+  document.getElementById(
+    'editNotifyEmail'
+  ).checked =
+    !!user.notify_email;
+
+  document.getElementById(
+    'editNotifySms'
+  ).checked =
+    !!user.notify_sms;
+
+  document.getElementById(
+    'editUserMessage'
+  ).innerText = '';
+
+}
+
+function closeEditUserModal(){
+
+  document.getElementById(
+    'editUserModal'
+  ).classList.add('hidden');
+
+  document.getElementById(
+    'editUserModal'
+  ).style.display = 'none';
+
+}
+
+function renderHelpAdminList(){
 
   const container =
     document.getElementById(
@@ -3795,11 +3865,11 @@ async function resetPin(username){
         'helpTitle'
       ).value = topic.title;
 
-	document.getElementById(
-  'helpVisibilityRole'
-).value =
-  topic.visibility_role || 'all';
-	
+      document.getElementById(
+        'helpVisibilityRole'
+      ).value =
+        topic.visibility_role || 'all';
+
       document.getElementById(
         'helpSortOrder'
       ).value = topic.sort_order;
@@ -3815,7 +3885,6 @@ async function resetPin(username){
   });
 
 }
-
 async function saveHelpTopic(){
 
   try {
@@ -4605,6 +4674,164 @@ async function deleteHelpTopic(){
     align-items:center;
   "
 ></div>
+<!-- ========================================
+     EDIT USER MODAL
+======================================== -->
 
+<div id="editUserModal" class="modal hidden">
+
+  <div
+    class="modal-content"
+    style="
+      max-width:520px;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeEditUserModal()"
+    >
+      ✕
+    </button>
+
+    <h2>Edit User</h2>
+
+    <input
+      type="hidden"
+      id="editOriginalUsername"
+    >
+
+    <div style="margin-top:18px;">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        id="editUsername"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Email
+      </label>
+
+      <input
+        id="editEmail"
+        type="email"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Phone
+      </label>
+
+      <input
+        id="editPhone"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Role
+      </label>
+
+      <select
+        id="editRole"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+        <option value="user">
+          User
+        </option>
+
+        <option value="admin">
+          Admin
+        </option>
+
+      </select>
+
+      <div style="
+        margin-top:12px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+      ">
+
+        <label>
+          <input
+            type="checkbox"
+            id="editNotifyEmail"
+          >
+
+          Email Notifications
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            id="editNotifySms"
+          >
+
+          SMS Notifications
+        </label>
+
+      </div>
+
+      <button
+        style="
+          margin-top:22px;
+          width:100%;
+        "
+        onclick="saveUserEdits()"
+      >
+        Save Changes
+      </button>
+
+      <div
+        id="editUserMessage"
+        style="
+          margin-top:14px;
+          font-size:14px;
+          color:#374151;
+        "
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>
