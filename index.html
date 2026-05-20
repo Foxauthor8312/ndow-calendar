@@ -1967,6 +1967,40 @@ document.getElementById(
   'Logged in as: ' +
   data.user.username;
 
+// ========================================
+// FORCE TIMESTAMP REFRESH
+// ========================================
+
+fetch(
+  'events.json?v=' + Date.now(),
+  {
+    cache:'no-store'
+  }
+)
+.then(res => res.json())
+.then(data => {
+
+  document.getElementById(
+    'lastUpdated'
+  ).innerText =
+    new Date(
+      data.lastUpdated
+    ).toLocaleString();
+
+})
+.catch(err => {
+
+  console.error(
+    'Timestamp refresh failed:',
+    err
+  );
+
+});
+
+// ========================================
+// LOAD EVENTS
+// ========================================
+
 loadEvents();
 
 resetInactivityTimer();
