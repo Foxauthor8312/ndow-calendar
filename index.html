@@ -3809,7 +3809,256 @@ async function deleteHelpTopic(){
 }
 
 </script>
+```html
+<!-- ========================================
+     START ADMIN MODAL
+======================================== -->
 
+<div id="adminModal" class="modal hidden">
+
+  <div class="modal-content" style="
+    width:min(1400px,100%);
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  ">
+
+    <button
+      class="modal-close"
+      onclick="closeAdminPanel()"
+    >
+      ✕
+    </button>
+
+    <div class="admin-layout" style="
+      flex:1;
+      overflow:hidden;
+      align-items:start;
+    ">
+
+      <!-- SIDEBAR -->
+
+      <div class="admin-sidebar" style="
+        width:220px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        padding-right:16px;
+      ">
+
+        <button onclick="openAdminSection('users')">
+          User Management
+        </button>
+
+        <button onclick="openAdminSection('announcements')">
+          Program Updates
+        </button>
+
+        <button onclick="openAdminSection('help')">
+          Help System
+        </button>
+
+        <button onclick="openAdminSection('geo')">
+          Geographic Analytics
+        </button>
+
+      </div>
+
+      <!-- USERS PANEL -->
+
+      <div
+        class="admin-panel"
+        id="usersPanel"
+        style="
+          flex:1;
+        "
+      >
+
+        <h2>Add User</h2>
+
+        <input
+          id="adminUsername"
+          class="login-input"
+          placeholder="Username"
+          style="margin-top:14px;"
+        >
+
+        <input
+          id="adminPin"
+          class="login-input"
+          placeholder="PIN"
+          style="margin-top:14px;"
+        >
+
+        <select
+          id="adminRole"
+          class="contact-select"
+          style="margin-top:14px;"
+        >
+
+          <option value="user">
+            User
+          </option>
+
+          <option value="admin">
+            Admin
+          </option>
+
+        </select>
+
+        <button
+          style="
+            margin-top:18px;
+            width:100%;
+          "
+          onclick="addUser()"
+        >
+          Create User
+        </button>
+
+        <div
+          id="adminMessage"
+          style="
+            margin-top:14px;
+            font-size:14px;
+          "
+        ></div>
+
+        <h3 style="margin-top:30px;">
+          Users
+        </h3>
+
+        <div
+          id="userList"
+          style="
+            max-height:300px;
+            overflow:auto;
+            font-size:14px;
+            margin-top:12px;
+            text-align:left;
+          "
+        ></div>
+
+      </div>
+
+      <!-- ANNOUNCEMENTS PANEL -->
+
+      <div
+        class="admin-panel"
+        id="announcementPanel"
+        style="
+          flex:1;
+          display:none;
+        "
+      >
+
+        <h2>
+          Program Updates
+        </h2>
+
+        <input
+          id="announcementTitleInput"
+          class="login-input"
+          placeholder="Announcement Title"
+          style="margin-top:14px;"
+        >
+
+        <textarea
+          id="announcementMessageInput"
+          style="
+            width:100%;
+            height:220px;
+            margin-top:14px;
+            padding:14px;
+            border-radius:12px;
+            border:1px solid #d1d5db;
+            resize:vertical;
+            box-sizing:border-box;
+          "
+          placeholder="Program update message..."
+        ></textarea>
+
+        <button
+          style="
+            margin-top:18px;
+            width:100%;
+          "
+          onclick="saveAnnouncement()"
+        >
+          Save Announcement
+        </button>
+
+      </div>
+
+      <!-- HELP PANEL -->
+
+      <div
+        class="admin-panel"
+        id="helpPanel"
+        style="
+          flex:1;
+          display:none;
+          overflow-y:auto;
+        "
+      >
+
+        <h2>
+          Help System
+        </h2>
+
+        <textarea
+          id="helpContent"
+          style="
+            width:100%;
+            height:220px;
+            margin-top:14px;
+            padding:14px;
+            border-radius:12px;
+            border:1px solid #d1d5db;
+            resize:vertical;
+            box-sizing:border-box;
+          "
+        ></textarea>
+
+      </div>
+
+      <!-- GEO PANEL -->
+
+      <div
+        class="admin-panel"
+        id="geoPanel"
+        style="
+          flex:1;
+          display:none;
+        "
+      >
+
+        <h2>
+          Geographic Analytics
+        </h2>
+
+        <select
+          id="regionSelect"
+          class="contact-select"
+          style="margin-top:14px;"
+        >
+          <option value="">
+            Select Region
+          </option>
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+
+	
  <div id="timeoutWarning" style="
   display:none;
   position:fixed;
