@@ -3841,30 +3841,98 @@ async function deleteHelpTopic(){
       <!-- SIDEBAR -->
 
       <div class="admin-sidebar" style="
-        width:220px;
-        display:flex;
-        flex-direction:column;
-        gap:10px;
-        padding-right:16px;
-      ">
+  width:220px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding-right:16px;
+">
 
-        <button onclick="openAdminSection('users')">
-          User Management
-        </button>
+  <button
+    onclick="openAdminSection('users')"
+    style="
+      width:100%;
+      background:
+        linear-gradient(
+          180deg,
+          #163a63,
+          #274f84
+        );
+      color:white;
+      border:none;
+      border-radius:10px;
+      padding:14px;
+      font-weight:600;
+      cursor:pointer;
+    "
+  >
+    User Management
+  </button>
 
-        <button onclick="openAdminSection('announcements')">
-          Program Updates
-        </button>
+  <button
+    onclick="openAdminSection('announcements')"
+    style="
+      width:100%;
+      background:
+        linear-gradient(
+          180deg,
+          #163a63,
+          #274f84
+        );
+      color:white;
+      border:none;
+      border-radius:10px;
+      padding:14px;
+      font-weight:600;
+      cursor:pointer;
+    "
+  >
+    Program Updates
+  </button>
 
-        <button onclick="openAdminSection('help')">
-          Help System
-        </button>
+  <button
+    onclick="openAdminSection('help')"
+    style="
+      width:100%;
+      background:
+        linear-gradient(
+          180deg,
+          #163a63,
+          #274f84
+        );
+      color:white;
+      border:none;
+      border-radius:10px;
+      padding:14px;
+      font-weight:600;
+      cursor:pointer;
+    "
+  >
+    Help System
+  </button>
 
-        <button onclick="openAdminSection('geo')">
-          Geographic Analytics
-        </button>
+  <button
+    onclick="openAdminSection('geo')"
+    style="
+      width:100%;
+      background:
+        linear-gradient(
+          180deg,
+          #163a63,
+          #274f84
+        );
+      color:white;
+      border:none;
+      border-radius:10px;
+      padding:14px;
+      font-weight:600;
+      cursor:pointer;
+    "
+  >
+    Geographic Analytics
+  </button>
 
-      </div>
+</div>
 
       <!-- USERS -->
 
@@ -3934,62 +4002,70 @@ async function deleteHelpTopic(){
 
       <!-- ANNOUNCEMENTS -->
 
-
-<h2>
-  Program Updates
-</h2>
-
-<input
-  id="announcementTitleInput"
-  class="login-input"
-  placeholder="Announcement Title"
-  style="margin-top:14px;"
->
-
-<textarea
-  id="announcementMessageInput"
+<div
+  class="admin-panel"
+  id="announcementPanel"
   style="
-    width:100%;
-    height:220px;
-    margin-top:14px;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #d1d5db;
-    resize:vertical;
-    box-sizing:border-box;
+    flex:1;
+    display:none;
   "
-  placeholder="Program update..."
-></textarea>
-
-<select
-  id="announcementAudienceInput"
-  class="contact-select"
-  style="margin-top:14px;"
 >
 
-  <option value="all">
-    All Users
-  </option>
+  <h2>
+    Program Updates
+  </h2>
 
-  <option value="user">
-    Standard Users
-  </option>
+  <input
+    id="announcementTitleInput"
+    class="login-input"
+    placeholder="Announcement Title"
+    style="margin-top:14px;"
+  >
 
-  <option value="admin">
-    Admin Only
-  </option>
+  <textarea
+    id="announcementMessageInput"
+    style="
+      width:100%;
+      height:220px;
+      margin-top:14px;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #d1d5db;
+      resize:vertical;
+      box-sizing:border-box;
+    "
+    placeholder="Program update..."
+  ></textarea>
 
-</select>
+  <select
+    id="announcementAudienceInput"
+    class="contact-select"
+    style="margin-top:14px;"
+  >
 
-<button
-  style="
-    margin-top:18px;
-    width:100%;
-  "
-  onclick="saveAnnouncement()"
->
-  Publish Update
-</button>
+    <option value="all">
+      All Users
+    </option>
+
+    <option value="user">
+      Standard Users
+    </option>
+
+    <option value="admin">
+      Admin Only
+    </option>
+
+  </select>
+
+  <button
+    style="
+      margin-top:18px;
+      width:100%;
+    "
+    onclick="saveAnnouncement()"
+  >
+    Publish Update
+  </button>
 
 </div>
 
@@ -4148,9 +4224,9 @@ async function deleteHelpTopic(){
 
 </div>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </div>
 
