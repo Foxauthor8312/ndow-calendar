@@ -3806,6 +3806,99 @@ function closeEditUserModal(){
 
 }
 
+async function saveUserEdits(){
+
+  const token =
+    localStorage.getItem('token');
+
+  const payload = {
+
+    originalUsername:
+      document.getElementById(
+        'editOriginalUsername'
+      ).value,
+
+    username:
+      document.getElementById(
+        'editUsername'
+      ).value.trim(),
+
+    email:
+      document.getElementById(
+        'editEmail'
+      ).value.trim(),
+
+    phone:
+      document.getElementById(
+        'editPhone'
+      ).value.trim(),
+
+    role:
+      document.getElementById(
+        'editRole'
+      ).value,
+
+    notify_email:
+      document.getElementById(
+        'editNotifyEmail'
+      ).checked,
+
+    notify_sms:
+      document.getElementById(
+        'editNotifySms'
+      ).checked
+
+  };
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/admin/update-user',
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:`Bearer ${token}`
+        },
+
+        body:JSON.stringify(payload)
+      }
+    );
+
+    const data =
+      await response.json();
+
+    document.getElementById(
+      'editUserMessage'
+    ).innerText =
+      data.message;
+
+    if(data.success){
+
+      loadUsers();
+
+      setTimeout(() => {
+
+        closeEditUserModal();
+
+      }, 800);
+
+    }
+
+  } catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'editUserMessage'
+    ).innerText =
+      'Save failed';
+
+  }
+
+}
+	
 function renderHelpAdminList(){
 
   const container =
