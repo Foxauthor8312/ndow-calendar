@@ -3948,7 +3948,7 @@ async function deleteHelpTopic(){
 
       <!-- USERS -->
 
-    <div
+<div
   class="admin-panel"
   id="usersPanel"
   style="
@@ -3956,6 +3956,7 @@ async function deleteHelpTopic(){
     display:flex;
     flex-direction:column;
     overflow:hidden;
+    height:100%;
     min-height:0;
   "
 >
@@ -4008,21 +4009,32 @@ async function deleteHelpTopic(){
           "
         ></div>
 
-        <h3 style="margin-top:30px;">
-          Users
-        </h3>
+<div style="
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-height:0;
+">
 
-   <div
-  id="userList"
-  style="
-    margin-top:12px;
-    flex:1;
-    overflow-y:auto;
-    min-height:0;
-    padding-right:6px;
-    border-top:1px solid #e5e7eb;
-  "
-></div>
+  <h3 style="
+    margin:0 0 12px 0;
+    flex-shrink:0;
+  ">
+    Users
+  </h3>
+
+  <div
+    id="userList"
+    style="
+      flex:1;
+      min-height:0;
+      overflow-y:auto;
+      padding-right:6px;
+      border-top:1px solid #e5e7eb;
+    "
+  ></div>
+
 </div>
       <!-- ANNOUNCEMENTS -->
 
