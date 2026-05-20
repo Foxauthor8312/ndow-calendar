@@ -2346,6 +2346,27 @@ calendar.appendChild(cell);
 
 }
 
+const totalCells =
+  firstDay + daysInMonth;
+
+const remaining =
+  7 - (totalCells % 7);
+
+if(remaining < 7){
+
+  for(let i = 0; i < remaining; i++){
+
+    const empty =
+      document.createElement('div');
+
+    empty.className = 'day';
+
+    calendar.appendChild(empty);
+
+  }
+
+}
+
 }
 // ========================================
 // START SESSION MANAGEMENT
