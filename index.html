@@ -4189,32 +4189,138 @@ async function deleteHelpTopic(){
 
         </div>
 
-        <!-- HELP -->
+<!-- HELP -->
 
-        <div
-          class="admin-panel"
-          id="helpPanel"
-          style="
-            flex:1;
-            display:none;
-            overflow-y:auto;
-          "
-        >
+<div
+  class="admin-panel"
+  id="helpPanel"
+  style="
+    flex:1;
+    display:none;
+    overflow-y:auto;
+  "
+>
 
-          <h2>
-            Help System
-          </h2>
+  <h2>
+    Help System
+  </h2>
 
-          <div style="
-            color:#64748b;
-            margin-top:12px;
-          ">
-            Help content panel restored.
-          </div>
+  <input
+    type="hidden"
+    id="helpEditId"
+  >
 
-        </div>
+  <input
+    id="helpCategory"
+    class="login-input"
+    placeholder="Category"
+    style="margin-top:14px;"
+  >
 
-        <!-- GEO -->
+  <input
+    id="helpTopicKey"
+    class="login-input"
+    placeholder="Topic Key"
+    style="margin-top:14px;"
+  >
+
+  <input
+    id="helpTitle"
+    class="login-input"
+    placeholder="Title"
+    style="margin-top:14px;"
+  >
+
+  <input
+    id="helpSortOrder"
+    class="login-input"
+    placeholder="Sort Order"
+    value="0"
+    style="margin-top:14px;"
+  >
+
+  <select
+    id="helpVisibilityRole"
+    class="contact-select"
+    style="margin-top:14px;"
+  >
+
+    <option value="all">
+      All Users
+    </option>
+
+    <option value="user">
+      Standard Users
+    </option>
+
+    <option value="admin">
+      Admin Only
+    </option>
+
+  </select>
+
+  <textarea
+    id="helpContent"
+    style="
+      width:100%;
+      height:220px;
+      margin-top:14px;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #d1d5db;
+      resize:vertical;
+      font-family:Inter,sans-serif;
+      font-size:14px;
+      box-sizing:border-box;
+    "
+    placeholder="HTML help content..."
+  ></textarea>
+
+  <div style="
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+  ">
+
+    <button onclick="saveHelpTopic()">
+      Save Topic
+    </button>
+
+    <button onclick="newHelpTopic()">
+      New
+    </button>
+
+    <button
+      onclick="deleteHelpTopic()"
+      style="background:#dc2626;"
+    >
+      Delete
+    </button>
+
+  </div>
+
+  <div
+    id="helpAdminMessage"
+    style="
+      margin-top:14px;
+      font-size:14px;
+    "
+  ></div>
+
+  <div
+    id="helpTopicAdminList"
+    style="
+      margin-top:20px;
+      max-height:260px;
+      overflow:auto;
+      border-top:1px solid #e5e7eb;
+      padding-top:14px;
+    "
+  ></div>
+
+</div>
+
+<!-- GEO -->
 
         <div
           class="admin-panel"
@@ -4231,10 +4337,11 @@ async function deleteHelpTopic(){
           </h2>
 
           <div style="
-            color:#64748b;
-            margin-top:12px;
+            margin-top:18px;
+            color:#475569;
+            line-height:1.6;
           ">
-            Geographic analytics panel restored.
+            Regional analytics tools will appear here.
           </div>
 
         </div>
@@ -4246,3 +4353,127 @@ async function deleteHelpTopic(){
   </div>
 
 </div>
+
+<!-- HELP MODAL -->
+
+<div id="helpModal" class="modal hidden">
+
+  <div class="modal-content" style="
+    width:min(1200px,100%);
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  ">
+
+    <button
+      class="modal-close"
+      onclick="closeHelpModal()"
+    >
+      ✕
+    </button>
+
+    <div class="admin-layout" style="
+      flex:1;
+      overflow:hidden;
+    ">
+
+      <div
+        style="
+          width:320px;
+          overflow-y:auto;
+          border-right:1px solid #e5e7eb;
+          padding-right:16px;
+        "
+      >
+
+        <h2>
+          Help Topics
+        </h2>
+
+        <div id="helpTopicList"></div>
+
+      </div>
+
+      <div
+        id="helpContentArea"
+        style="
+          flex:1;
+          overflow-y:auto;
+          padding-left:24px;
+        "
+      >
+
+        <div style="
+          color:#6b7280;
+          font-size:16px;
+        ">
+          Select a help topic.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div
+  id="announcementModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+  "
+>
+
+  <div
+    style="
+      background:white;
+      width:90%;
+      max-width:500px;
+      border-radius:14px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    "
+  >
+
+    <h2
+      id="announcementTitle"
+      style="
+        margin-top:0;
+      "
+    ></h2>
+
+    <div
+      id="announcementMessage"
+      style="
+        margin-top:14px;
+        line-height:1.6;
+      "
+    ></div>
+
+  </div>
+
+</div>
+
+<div
+  id="timeoutWarning"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.72);
+    z-index:999999;
+    justify-content:center;
+    align-items:center;
+  "
+></div>
+
+</body>
+</html>
