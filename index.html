@@ -1972,7 +1972,35 @@ document.getElementById(
 // ========================================
 
 fetch(
-  'events.json?v=' + Date.now(),
+  'https://ndow-calendar-server.onrender.com/events.json?v=' + Date.now(),
+  {
+    cache:'no-store'
+  }
+)
+.then(res => res.json())
+.then(data => {
+
+  console.log(
+    'Fresh timestamp:',
+    data.lastUpdated
+  );
+
+  document.getElementById(
+    'lastUpdated'
+  ).innerText =
+    new Date(
+      data.lastUpdated
+    ).toLocaleString();
+
+})
+.catch(err => {
+
+  console.error(
+    'Timestamp refresh failed:',
+    err
+  );
+
+});
   {
     cache:'no-store'
   }
