@@ -865,6 +865,10 @@ body{
   box-shadow:
     0 8px 24px rgba(0,0,0,.06);
 
+  min-height:0;
+
+  overflow:hidden;
+
 }
 
 
@@ -4024,16 +4028,18 @@ async function deleteHelpTopic(){
     Users
   </h3>
 
-  <div
-    id="userList"
-    style="
-      flex:1;
-      min-height:0;
-      overflow-y:auto;
-      padding-right:6px;
-      border-top:1px solid #e5e7eb;
-    "
-  ></div>
+ <div
+  id="userList"
+  style="
+    flex:1;
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding-right:6px;
+    border-top:1px solid #e5e7eb;
+    margin-top:8px;
+  "
+></div>
 
 </div>
       <!-- ANNOUNCEMENTS -->
