@@ -1998,8 +1998,20 @@ document.getElementById(
 
 document.getElementById(
   'loadingMessage'
-).innerText =
-  'Connecting to secure services...';
+).innerHTML =
+  `
+    Connecting to secure services...
+
+    <div style="
+      margin-top:10px;
+      font-size:14px;
+      color:rgba(156,203,255,0.72);
+      font-weight:400;
+      line-height:1.5;
+    ">
+      Initial startup may take up to 60 seconds while secure cloud services wake up.
+    </div>
+  `;
 
 const button =
     document.getElementById(
