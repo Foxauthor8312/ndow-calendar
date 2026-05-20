@@ -3126,6 +3126,10 @@ function openAdminSection(section){
   ).classList.add('hidden');
 
   document.getElementById(
+    'announcementPanel'
+  ).classList.add('hidden');
+
+  document.getElementById(
     'geoPanel'
   ).classList.add('hidden');
 
@@ -3145,7 +3149,15 @@ function openAdminSection(section){
 
   }
 
-    if(section === 'geo'){
+  if(section === 'announcements'){
+
+    document.getElementById(
+      'announcementPanel'
+    ).classList.remove('hidden');
+
+  }
+
+  if(section === 'geo'){
 
     document.getElementById(
       'geoPanel'
@@ -3928,26 +3940,94 @@ async function deleteHelpTopic(){
         padding-right:16px;
       ">
 
-        <button onclick="openAdminSection('users')">
-          Users
-        </button>
+        <button
+  onclick="openAdminSection('users')"
+  style="
+    width:100%;
+    background:
+      linear-gradient(
+        135deg,
+        #dbeafe,
+        #eff6ff
+      );
+    color:#1e3a8a;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-weight:600;
+  "
+>
+  User Management
+</button>
 
-        <button onclick="openAdminSection('help')">
-          Help System
-        </button>
+<button
+  onclick="openAdminSection('announcements')"
+  style="
+    width:100%;
+    background:
+      linear-gradient(
+        135deg,
+        #dbeafe,
+        #eff6ff
+      );
+    color:#1e3a8a;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-weight:600;
+  "
+>
+  Program Updates
+</button>
 
-        <button onclick="openAdminSection('geo')">
-          Geographic Analytics
-        </button>
+<button
+  onclick="openAdminSection('help')"
+  style="
+    width:100%;
+    background:
+      linear-gradient(
+        135deg,
+        #dbeafe,
+        #eff6ff
+      );
+    color:#1e3a8a;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-weight:600;
+  "
+>
+  Help System
+</button>
 
+<button
+  onclick="openAdminSection('geo')"
+  style="
+    width:100%;
+    background:
+      linear-gradient(
+        135deg,
+        #dbeafe,
+        #eff6ff
+      );
+    color:#1e3a8a;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-weight:600;
+  "
+>
+  Geographic Analytics
+</button>
       </div>
 
       <div
         class="admin-panel"
         id="usersPanel"
         style="
-          flex:1;
-        "
+  flex:1;
+  display:none;
+"
       >
 
         <h2>Add User</h2>
@@ -3997,7 +4077,9 @@ async function deleteHelpTopic(){
             width:100%;
           "
           onclick="addUser()"
-        >
+       
+		<div id="userPanel">	
+		>
           Create User
         </button>
 
@@ -4015,7 +4097,7 @@ async function deleteHelpTopic(){
 ======================================== -->
 
 <div
-  id="announcementAdminPanel"
+  id="announcementPanel"
   style="
     margin-top:28px;
     padding:18px;
@@ -4090,32 +4172,51 @@ async function deleteHelpTopic(){
      END ANNOUNCEMENT PANEL
 ======================================== -->
 		  
-        <h3 style="margin-top:30px;">
-          Users
-        </h3>
+<h3 style="margin-top:30px;">
+  Users
+</h3>
 
-        <div
-          id="userList"
-          style="
-            max-height:300px;
-            overflow:auto;
-            font-size:14px;
-            margin-top:12px;
-            text-align:left;
-          "
-        ></div>
+<div
+  id="userList"
+  style="
+    max-height:300px;
+    overflow:auto;
+    font-size:14px;
+    margin-top:12px;
+    text-align:left;
+  "
+></div>
 
-      </div>
+</div>
 
-      <div
-        class="admin-panel hidden"
-        id="helpPanel"
-        style="
-          flex:1;
-          height:100%;
-          overflow-y:auto;
-        "
-      >
+<div
+  class="admin-panel hidden"
+  id="helpPanel"
+  style="
+    display:none;
+    flex:1;
+    height:100%;
+    overflow-y:auto;
+  "
+>
+
+<h3>Help Topic Editor</h3>
+
+<input
+  type="hidden"
+  id="helpEditId"
+>
+  class="admin-panel hidden"
+ <div
+  class="admin-panel hidden"
+  id="helpPanel"
+  style="
+    display:none;
+    flex:1;
+    height:100%;
+    overflow-y:auto;
+  "
+>
 
         <h3>Help Topic Editor</h3>
 
