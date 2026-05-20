@@ -292,12 +292,13 @@ button:hover{
 
 .legend{
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   align-items:center;
   gap:6px;
-  padding:8px 0;
+  padding:8px 12px;
   width:100%;
   box-sizing:border-box;
+  overflow-x:auto;
 }
 
 .legend-item{
@@ -1212,14 +1213,12 @@ body{
 </div>
 	  
 <div style="
-  margin-top:12px;
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:13px;
-  width:100%;
-  justify-content:flex-start;
-  box-sizing:border-box;
+  margin-left:auto;
+  flex-shrink:0;
+  white-space:nowrap;
 ">
 
   <span style="
@@ -1259,7 +1258,8 @@ body{
   </select>
 
 </div>
-
+</div>
+	
 <!-- ========================================
      START CALENDAR
 ======================================== -->
