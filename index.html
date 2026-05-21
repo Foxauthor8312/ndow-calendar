@@ -124,9 +124,10 @@ button:hover{
 
 .calendar{
   display:grid;
-  grid-template-columns:repeat(7,minmax(0,1fr));
+  grid-template-columns:
+    repeat(7,minmax(0,1fr));
   grid-template-rows:32px;
-  grid-auto-rows:minmax(140px,auto);
+  grid-auto-rows:minmax(120px,1fr);
   gap:1px;
   background:#d1d5db;
   border-top:1px solid #d1d5db;
@@ -5314,5 +5315,203 @@ async function deleteHelpTopic(){
   </div>
 
 </div>
+
+	<script>
+
+const geoRegions = {
+
+  Western:[
+    'Washoe',
+    'Douglas',
+    'Churchill',
+    'Pershing',
+    'Humboldt',
+    'Mineral'
+  ],
+
+  Eastern:[
+    'Elko',
+    'Lander',
+    'Eureka',
+    'White Pine'
+  ],
+
+  Southern:[
+    'Clark',
+    'Nye',
+    'Lincoln',
+    'Esmeralda'
+  ]
+
+};
+
+const geoEventStats = {
+
+  Western:{
+    total:42,
+    categories:{
+      Education:18,
+      Conservation:9,
+      Outreach:7,
+      Training:8
+    }
+  },
+
+  Eastern:{
+    total:19,
+    categories:{
+      Education:6,
+      Conservation:5,
+      Outreach:3,
+      Training:5
+    }
+  },
+
+  Southern:{
+    total:57,
+    categories:{
+      Education:24,
+      Conservation:10,
+      Outreach:11,
+      Training:12
+    }
+  }
+
+};
+
+function loadGeoCounties(){
+
+  const region =
+    document.getElementById(
+      'geoRegionSelect'
+    ).value;
+
+  const countySelect =
+    document.getElementById(
+      'geoCountySelect'
+    );
+
+  countySelect.innerHTML = `
+    <option value="">
+      Select County
+    </option>
+  `;
+
+  if(!region){
+
+    return;
+
+  }
+
+  geoRegions[region].forEach(county => {
+
+    const option =
+      document.createElement(
+        'option'
+      );
+
+    option.value =
+      county;
+
+    option.innerText =
+      county;
+
+    countySelect.appendChild(
+      option
+    );
+
+  });
+
+  renderGeoRegionAnalysis(region);
+
+}
+
+function renderGeoRegionAnalysis(region){
+
+  const stats =
+    geoEventStats[region];
+
+  if(!stats){
+
+    return;
+
+  }
+
+  const container =
+    document.getElementById(
+      'geoRegionDetails'
+    );
+
+  const categoryHtml =
+    Object.entries(
+      stats.categories
+    )
+    .map(entry => {
+
+      return `
+
+        <div style="
+          display:flex;
+          justify-content:space-between;
+          padding:8px 0;
+          border-bottom:
+            1px solid #e5e7eb;
+        ">
+
+          <span>
+            ${entry[0]}
+          </span>
+
+          <strong>
+            ${entry[1]}
+          </strong>
+
+        </div>
+
+      `;
+
+    })
+    .join('');
+
+  container.innerHTML = `
+
+    <div style="
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:18px;
+    ">
+      ${region} Nevada
+    </div>
+
+    <div style="
+      margin-bottom:18px;
+      color:#4b5563;
+    ">
+      Event analysis by category
+      and regional activity.
+    </div>
+
+    <div style="
+      background:#f3f4f6;
+      padding:14px;
+      border-radius:12px;
+      margin-bottom:18px;
+    ">
+
+      <strong>
+        Total Events:
+      </strong>
+
+      ${stats.total}
+
+    </div>
+
+    ${categoryHtml}
+
+  `;
+
+}
+
+</script>
 </body>
 </html>
