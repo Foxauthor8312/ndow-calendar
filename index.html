@@ -1828,8 +1828,18 @@ systemStatus.warnings = [];
 
 events = events.map(event => {
 
-  const zipMatch =
-    event.location?.match(/\b\d{5}\b/);
+  const cleanedLocation =
+  (
+    event.location || ''
+  )
+    .replace(/\n/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+
+const zipMatch =
+  cleanedLocation.match(
+    /\b\d{5}(?:-\d{4})?\b/
+  );
 
   const zip =
     zipMatch
@@ -1914,7 +1924,7 @@ events = events.map(event => {
 
   date:event.date,
 
-  location:event.location,
+  location:cleanedLocation,
 
   url:event.url
 
@@ -3584,13 +3594,43 @@ function renderSystemConsole(){
 
   body.innerHTML = `
 
-    <div style="
-      font-size:28px;
-      font-weight:700;
-      margin-bottom:24px;
-    ">
-      SYSTEM CONSOLE
-    </div>
+   <div style="
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:24px;
+">
+  SYSTEM CONSOLE
+</div>
+
+<div style="
+  margin-bottom:24px;
+">
+
+  <button
+    onclick="
+      loadEvents();
+
+      setTimeout(
+        renderSystemConsole,
+        1200
+      );
+    "
+    style="
+      background:#2563eb;
+      border:none;
+      color:white;
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    "
+  >
+
+    Reprocess Events
+
+  </button>
+
+</div>
 
     <div style="
       line-height:1.9;
@@ -3673,11 +3713,13 @@ function renderSystemConsole(){
     .map(warning => `
 
       <div
-  onclick="
-    openEventModal(
-      '${warning.url}'
-    )
-  "
+onclick="
+  closeSystemConsole();
+
+  openEventModal(
+    '${warning.url}'
+  );
+"
   style="
     padding:12px;
         margin-bottom:12px;
@@ -3767,11 +3809,13 @@ function renderSystemConsole(){
     .map(warning => `
 
       <div
-  onclick="
-    openEventModal(
-      '${warning.url}'
-    )
-  "
+ onclick="
+  closeSystemConsole();
+
+  openEventModal(
+    '${warning.url}'
+  );
+"
   style="
     padding:12px;
         margin-bottom:12px;
