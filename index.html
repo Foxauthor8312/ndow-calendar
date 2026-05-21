@@ -1879,19 +1879,16 @@ async function loadEvents(){
       return;
     }
 
-    console.log(data);
-
-events = data.events;
+const data =
+  await response.json();
 
 console.log(data);
 
 events = data.events;
 
 console.log(
-  'REGIONS:',
-  events.map(
-    e => e.region
-  )
+  'EVENT COUNT:',
+  events.length
 );
 
 
@@ -2063,7 +2060,7 @@ return category;
 
 });
 
- return geo?.region || '';
+  return '';
 
 })()
 
@@ -2071,10 +2068,11 @@ return category;
 
 });
 
-	  
 document.getElementById(
   'lastUpdated'
 ).innerText =
+
+	
   new Date(
     data.lastUpdated
   ).toLocaleString();
