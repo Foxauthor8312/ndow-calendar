@@ -2494,11 +2494,16 @@ function closeModal() {
 	
 async function openEventModal(eventUrl) {
 
- modal.classList.remove("hidden");
- modal.style.display = "flex";
+  try {
 
- const event =
-  events.find(e => e.url === eventUrl);
+    modal.classList.remove("hidden");
+
+    modal.style.display = "flex";
+
+    const event =
+      events.find(
+        e => e.url === eventUrl
+      );
 
 const eventDate =
   new Date(event.date);
@@ -2561,16 +2566,20 @@ const allowRequests =
 <select
   id="contactSelect"
   class="contact-select"
-  onchange="toggleCustomEmail()">
+  onchange="toggleCustomEmail()"
+>
 
   ${categoryEmails.map(contact => {
 
     const selected =
 
-      contact.categories?.includes(
+      contact.categories &&
+      contact.categories.includes(
         event.category
       )
+
         ? 'selected'
+
         : '';
 
     return `
