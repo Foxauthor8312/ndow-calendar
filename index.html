@@ -3421,6 +3421,10 @@ function loadRegionDropdown(){
     <option value="">
       Select Region
     </option>
+
+	<option value="ALL">
+	  All Regions
+	</option>
   `;
 
   Object.keys(nevadaRegions)
@@ -5481,10 +5485,12 @@ function renderGeoRegionAnalysis(region){
       'geoRegionDetails'
     );
 
-  const regionalEvents =
-    events.filter(
-      e => e.region === region
-    );
+ const regionalEvents =
+  region === 'ALL'
+    ? events
+    : events.filter(
+        e => e.region === region
+      );
 
   if(regionalEvents.length === 0){
 
@@ -5502,7 +5508,8 @@ function renderGeoRegionAnalysis(region){
     return;
 
   }
-
+const totalEvents =
+  regionalEvents.length;
   const categoryCounts = {};
 
   regionalEvents.forEach(event => {
@@ -5542,9 +5549,14 @@ function renderGeoRegionAnalysis(region){
               ${entry[0]}
             </span>
 
-            <strong>
-              ${entry[1]}
-            </strong>
+           <strong>
+  ${entry[1]}
+  (
+    ${(
+      (entry[1] / totalEvents) * 100
+    ).toFixed(1)}%
+  )
+</strong>
 
           </div>
 
@@ -5560,7 +5572,11 @@ function renderGeoRegionAnalysis(region){
       font-weight:700;
       margin-bottom:18px;
     ">
-      ${region} Nevada
+      ${
+  region === 'ALL'
+    ? 'Statewide Event Analysis'
+    : region + ' Nevada'
+}
     </div>
 
     <div style="
