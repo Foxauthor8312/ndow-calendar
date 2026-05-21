@@ -2106,38 +2106,6 @@ async function loadEvents(){
   }
 
 }
-
-// ========================================
-// LOAD ANNOUNCEMENTS
-// ========================================
-
-loadAnnouncements(
-  JSON.parse(
-    localStorage.getItem('user')
-  ).role
-);
-} catch(err){
-
-  console.error(err);
-
-  systemStatus.workflowStatus =
-    'FAILED';
-
-  systemStatus.recentErrors.push({
-
-    timestamp:new Date()
-      .toLocaleString(),
-
-    message:err.message
-
-  });
-
-  renderCalendar();
-
-}
-
-}
-
 // loadEvents();
 
 	async function loadAnnouncements(role){
