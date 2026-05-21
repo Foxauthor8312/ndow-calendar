@@ -1723,15 +1723,44 @@ async function loadZipLookup(){
     const zip =
       columns[0]?.trim();
 
-    const city =
-      columns[1]?.trim();
+const city =
+  columns[3]?.trim();
 
-    const county =
-      columns[2]?.trim();
+const county =
+  columns[7]
+    ?.replace(' County','')
+    .trim();
 
-    const region =
-      columns[3]?.trim();
+const region = (() => {
 
+  const c =
+    county?.toLowerCase();
+
+  if([
+    'clark',
+    'lincoln',
+    'nye',
+    'esmeralda'
+  ].includes(c)){
+    return 'Southern';
+  }
+
+  if([
+    'washoe',
+    'carson city',
+    'douglas',
+    'churchill',
+    'storey',
+    'lyon',
+    'pershing',
+    'mineral'
+  ].includes(c)){
+    return 'Western';
+  }
+
+  return 'Eastern';
+
+})();
     if(!zip){
       return;
     }
