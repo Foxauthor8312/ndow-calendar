@@ -1877,17 +1877,20 @@ async function loadEvents(){
       return;
     }
 
-    const data =
-      await response.json();
-
     console.log(data);
-	console.log(
-	  'REGIONS:',
-	  events.map(
-	    e => e.region
-	  )
-	);
-    events = data.events;
+
+events = data.events;
+
+console.log(data);
+
+events = data.events;
+
+console.log(
+  'REGIONS:',
+  events.map(
+    e => e.region
+  )
+);
 
 
 
@@ -3087,9 +3090,15 @@ if(
 
   }
 
-  loadEvents();
+  (async () => {
 
-}  
+    await loadZipLookup();
+
+    await loadEvents();
+
+  })();
+
+}
 
 let inactivityTimer;
 let warningTimer;
