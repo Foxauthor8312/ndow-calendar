@@ -3759,90 +3759,122 @@ function renderSystemConsole(){
 
 </div>
 
-    <div style="
+ <div style="
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:50;
   background:#111827;
-  padding-bottom:18px;
+  padding:0 0 18px 0;
   border-bottom:1px solid #374151;
   margin-bottom:20px;
 ">
 
   <div style="
-    line-height:1.9;
-    font-size:15px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin-bottom:18px;
   ">
 
-    STATUS:
-    ${systemStatus.workflowStatus}
+    <div class="geo-card">
+      <div class="geo-title">
+        STATUS
+      </div>
+      <div class="geo-value">
+        ${systemStatus.workflowStatus}
+      </div>
+    </div>
 
-    <br>
+    <div class="geo-card">
+      <div class="geo-title">
+        EVENTS
+      </div>
+      <div class="geo-value">
+        ${systemStatus.eventsProcessed}
+      </div>
+    </div>
 
-    LAST SYNC:
-    ${
-      systemStatus.lastSync
-        ? systemStatus.lastSync
-            .toLocaleString()
-        : '--'
-    }
+    <div class="geo-card">
+      <div class="geo-title">
+        WARNINGS
+      </div>
+      <div class="geo-value">
+        ${systemStatus.warnings.length}
+      </div>
+    </div>
 
-    <br>
+    <div class="geo-card">
+      <div class="geo-title">
+        GEO MAPPED
+      </div>
+      <div class="geo-value">
+        ${systemStatus.geoMappedEvents}
+      </div>
+    </div>
 
-    SYNC DURATION:
-    ${systemStatus.syncDuration}
+    <div class="geo-card">
+      <div class="geo-title">
+        GEO FAILURES
+      </div>
+      <div class="geo-value">
+        ${systemStatus.geoFailedEvents}
+      </div>
+    </div>
 
-    <br><br>
+    <div class="geo-card">
+      <div class="geo-title">
+        UNCATEGORIZED
+      </div>
+      <div class="geo-value">
+        ${systemStatus.uncategorizedEvents}
+      </div>
+    </div>
 
-    EVENTS PROCESSED:
-    ${systemStatus.eventsProcessed}
+  </div>
 
-    <br>
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    font-size:13px;
+    color:#d1d5db;
+  ">
 
-    CATEGORIZED:
-    ${systemStatus.categorizedEvents}
+    <div>
+      LAST SYNC:
+      ${
+        systemStatus.lastSync
+          ? systemStatus.lastSync
+              .toLocaleString()
+          : '--'
+      }
+    </div>
 
-    <br>
-
-    UNCATEGORIZED:
-    ${systemStatus.uncategorizedEvents}
-
-    <br>
-
-    GEO MAPPED:
-    ${systemStatus.geoMappedEvents}
-
-    <br>
-
-    GEO FAILURES:
-    ${systemStatus.geoFailedEvents}
-
-    <br>
-
-    PARSE FAILURES:
-    ${systemStatus.parseFailures}
-
-    <br><br>
-
-    WARNINGS:
-    ${systemStatus.warnings.length}
+    <div>
+      SYNC:
+      ${systemStatus.syncDuration}
+    </div>
 
   </div>
 
 </div>
 
-  <div style="
+   <div style="
   display:grid;
-  grid-template-columns:420px 1fr;
-  gap:20px;
-  margin-top:28px;
-  max-height:60vh;
+grid-template-columns:420px 1fr;
+gap:20px;
+margin-top:28px;
+height:60vh;
+overflow:hidden;
 ">
 
 <div style="
   overflow-y:auto;
-  padding-right:8px;
-  border-right:1px solid #374151;
+padding-right:8px;
+border-right:1px solid #374151;
+height:100%;
 ">
 
   <div style="
@@ -4037,15 +4069,16 @@ onclick="
 
 </div>
 
-<div
-  id="systemPreviewPanel"
+<div id="systemPreviewPanel"
   style="
-    overflow-y:auto;
-    max-height:60vh;
-    padding:18px 22px;
-    background:#f9fafb;
+    background:#111827;
     border-radius:12px;
-    color:#111827;
+    padding:18px;
+    position:sticky;
+    top:0;
+    align-self:start;
+    overflow-y:auto;
+    max-height:100%;
   "
 >
 
