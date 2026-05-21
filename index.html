@@ -1724,7 +1724,9 @@ async function loadZipLookup(){
       columns[0]?.trim();
 
 const city =
-  columns[3]?.trim();
+  columns[3]
+    ?.replace(/"/g,'')
+    .trim();
 
 const county =
   columns[7]
