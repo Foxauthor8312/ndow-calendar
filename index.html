@@ -1153,7 +1153,14 @@ body{
   <button class="admin-button" onclick="openHelpModal()">
     Help
   </button>
-
+  <button
+    id="superuserButton"
+    class="admin-button hidden"
+    onclick="openSystemConsole()"
+  >
+    System
+  </button>
+		
 </div>
 	
 </header>
@@ -2148,7 +2155,19 @@ document.getElementById(
   'Logged in as: ' +
   data.user.username;
 
+if(
+  data.user.username
+    .toLowerCase()
+    .includes('barry')
+){
 
+  document.getElementById(
+    'superuserButton'
+  ).classList.remove(
+    'hidden'
+  );
+
+}
 
 // ========================================
 // LOAD EVENTS
@@ -3380,6 +3399,299 @@ function openAdminSection(section){
     });
 
 }
+
+function openSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  renderSystemConsole();
+
+}
+
+function closeSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
+function renderSystemConsole(){
+
+  const body =
+    document.getElementById(
+      'systemConsoleBody'
+    );
+
+  body.innerHTML = `
+
+    <div style="
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:24px;
+    ">
+      SYSTEM CONSOLE
+    </div>
+
+    <div style="
+      line-height:1.9;
+      font-size:15px;
+    ">
+
+      STATUS:
+      ${systemStatus.workflowStatus}
+
+      <br>
+
+      LAST SYNC:
+      ${
+        systemStatus.lastSync
+          ? systemStatus.lastSync
+              .toLocaleString()
+          : '--'
+      }
+
+      <br>
+
+      SYNC DURATION:
+      ${systemStatus.syncDuration}
+
+      <br><br>
+
+      EVENTS PROCESSED:
+      ${systemStatus.eventsProcessed}
+
+      <br>
+
+      CATEGORIZED:
+      ${systemStatus.categorizedEvents}
+
+      <br>
+
+      UNCATEGORIZED:
+      ${systemStatus.uncategorizedEvents}
+
+      <br>
+
+      GEO MAPPED:
+      ${systemStatus.geoMappedEvents}
+
+      <br>
+
+      GEO FAILURES:
+      ${systemStatus.geoFailedEvents}
+
+      <br>
+
+      PARSE FAILURES:
+      ${systemStatus.parseFailures}
+
+      <br><br>
+
+      WARNINGS:
+      ${systemStatus.warnings.length}
+
+    </div>
+
+    <div style="
+      margin-top:28px;
+    ">
+
+      ${systemStatus.warnings.map(warning => `
+
+        <div style="
+          padding:10px;
+          margin-bottom:10px;
+          border:1px solid #374151;
+          border-radius:8px;
+        ">
+
+          <strong>
+            ${warning.type}
+          </strong>
+
+          <br>
+
+          ${warning.title || ''}
+
+          <br>
+
+          ${warning.location || ''}
+
+        </div>
+
+      `).join('')}
+
+    </div>
+
+  `;
+
+}
+
+function openSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  renderSystemConsole();
+
+}
+
+function closeSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
+function renderSystemConsole(){
+
+  const body =
+    document.getElementById(
+      'systemConsoleBody'
+    );
+
+  body.innerHTML = `
+
+    <div style="
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:24px;
+    ">
+      SYSTEM CONSOLE
+    </div>
+
+    <div style="
+      line-height:1.9;
+      font-size:15px;
+    ">
+
+      STATUS:
+      ${systemStatus.workflowStatus}
+
+      <br>
+
+      LAST SYNC:
+      ${
+        systemStatus.lastSync
+          ? systemStatus.lastSync
+              .toLocaleString()
+          : '--'
+      }
+
+      <br>
+
+      SYNC DURATION:
+      ${systemStatus.syncDuration}
+
+      <br><br>
+
+      EVENTS PROCESSED:
+      ${systemStatus.eventsProcessed}
+
+      <br>
+
+      CATEGORIZED:
+      ${systemStatus.categorizedEvents}
+
+      <br>
+
+      UNCATEGORIZED:
+      ${systemStatus.uncategorizedEvents}
+
+      <br>
+
+      GEO MAPPED:
+      ${systemStatus.geoMappedEvents}
+
+      <br>
+
+      GEO FAILURES:
+      ${systemStatus.geoFailedEvents}
+
+      <br>
+
+      PARSE FAILURES:
+      ${systemStatus.parseFailures}
+
+      <br><br>
+
+      WARNINGS:
+      ${systemStatus.warnings.length}
+
+    </div>
+
+    <div style="
+      margin-top:28px;
+    ">
+
+      ${systemStatus.warnings.map(warning => `
+
+        <div style="
+          padding:10px;
+          margin-bottom:10px;
+          border:1px solid #374151;
+          border-radius:8px;
+        ">
+
+          <strong>
+            ${warning.type}
+          </strong>
+
+          <br>
+
+          ${warning.title || ''}
+
+          <br>
+
+          ${warning.location || ''}
+
+        </div>
+
+      `).join('')}
+
+    </div>
+
+  `;
+
+}
+
 	
 function openAdminPanel(){
 
@@ -5869,5 +6181,33 @@ ${regionTotal}
 }
 
 </script>
+<div
+  id="systemConsole"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      max-width:1000px;
+      background:#111827;
+      color:#e5e7eb;
+      font-family:monospace;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeSystemConsole()"
+    >
+      ✕
+    </button>
+
+    <div id="systemConsoleBody"></div>
+
+  </div>
+
+</div>
+	
 </body>
 </html>
