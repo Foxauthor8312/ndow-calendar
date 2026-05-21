@@ -4261,7 +4261,25 @@ function openAdminPanel(){
 
   loadRegionDropdown();
 
-  openAdminSection('users');
+// ========================================
+// INITIALIZE GEO ANALYTICS
+// ========================================
+
+const geoRegionSelect =
+  document.getElementById(
+    'geoRegionSelect'
+  );
+
+if(geoRegionSelect){
+
+  geoRegionSelect.value =
+    'Western';
+
+  loadGeoCounties();
+
+}
+	
+  openAdminSection('geo');
 
 }
 
