@@ -1933,6 +1933,45 @@ const zip =
   const geo =
     zipLookup[zip];
 
+if(
+  geo &&
+  !geo.region
+){
+
+  if([
+    'clark',
+    'lincoln',
+    'nye',
+    'esmeralda'
+  ].includes(
+    geo.county?.toLowerCase()
+  )){
+
+    geo.region = 'Southern';
+
+  } else if([
+    'washoe',
+    'douglas',
+    'churchill',
+    'lyon',
+    'storey',
+    'pershing',
+    'mineral',
+    'carson city'
+  ].includes(
+    geo.county?.toLowerCase()
+  )){
+
+    geo.region = 'Western';
+
+  } else {
+
+    geo.region = 'Eastern';
+
+  }
+
+}
+		
   return {
 
     ...event,
@@ -2024,7 +2063,7 @@ return category;
 
 });
 
- return '';
+ return geo?.region || '';
 
 })()
 
