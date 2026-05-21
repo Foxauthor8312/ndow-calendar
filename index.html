@@ -1995,7 +1995,12 @@ return category;
     systemStatus
       .geoMappedEvents++;
 
-    return geo.region || 'Unknown';
+    return ['Western','Eastern','Southern']
+  .includes(geo.region)
+
+    ? geo.region
+
+    : '';
 
   }
 
@@ -2019,7 +2024,7 @@ return category;
 
 });
 
-  return 'Unknown';
+ return '';
 
 })()
 
