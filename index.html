@@ -2554,9 +2554,10 @@ const allowRequests =
 </a>
 
 <select
-  id="contactSelect"
+  id="geoRegionSelect"
   class="contact-select"
-  onchange="toggleCustomEmail()">
+  onchange="loadGeoCounties()"
+>
 
   ${categoryEmails.map(contact => `
     <option value="${contact.email}">
@@ -4762,29 +4763,58 @@ async function deleteHelpTopic(){
     gap:16px;
   ">
 
-    <div class="geo-card">
+  <div class="geo-card">
 
-      <div class="geo-title">
-        Volunteer Regions
-      </div>
+  <div class="geo-title">
+    Event Regions
+  </div>
 
-      <div class="geo-value">
-        Western / Eastern / Southern
-      </div>
+  <select
+    id="geoRegionSelect"
+    class="contact-select"
+    onchange="loadGeoCounties()"
+    style="margin-top:12px;"
+  >
 
-    </div>
+    <option value="">
+      Select Region
+    </option>
 
-    <div class="geo-card">
+    <option value="Western">
+      Western Nevada
+    </option>
 
-      <div class="geo-title">
-        County Coverage
-      </div>
+    <option value="Eastern">
+      Eastern Nevada
+    </option>
 
-      <div class="geo-value">
-        Testing Active
-      </div>
+    <option value="Southern">
+      Southern Nevada
+    </option>
 
-    </div>
+  </select>
+
+</div>
+
+   <div class="geo-card">
+
+  <div class="geo-title">
+    County Analysis
+  </div>
+
+  <select
+    id="geoCountySelect"
+    class="contact-select"
+    style="margin-top:12px;"
+  >
+
+    <option value="">
+      Select County
+    </option>
+
+  </select>
+
+</div>
 
     <div class="geo-card">
 
@@ -4869,6 +4899,23 @@ async function deleteHelpTopic(){
 
   </div>
 
+<div
+  id="geoRegionDetails"
+  style="
+    margin-top:20px;
+    background:white;
+    border:1px solid #dbe3ec;
+    border-radius:16px;
+    padding:20px;
+    line-height:1.7;
+  "
+>
+
+  Select a region to begin
+  geo analysis.
+
+</div>
+	
 </div>
 	
 <!-- HELP -->
