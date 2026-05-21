@@ -1985,7 +1985,7 @@ return category;
     systemStatus
       .geoMappedEvents++;
 
-    return geo.region;
+    return geo.region || 'Unknown';
 
   }
 
@@ -2009,7 +2009,7 @@ return category;
 
 });
 
-  return '';
+  return 'Unknown';
 
 })()
 
