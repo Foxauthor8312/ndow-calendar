@@ -1,30 +1,59 @@
 [
   {
     "title":"Hunter Education & Shooting Sports Coordinator",
-    "email":"mgolson@ndow.org"
+    "email":"mgolson@ndow.org",
+    "categories":[
+      "Hunter Education",
+      "Advanced Hunter Education",
+      "Archery"
+    ]
   },
+
   {
     "title":"Fishing / Schools Program Coordinator",
-    "email":"abbeyc@ndow.org"
+    "email":"abbeyc@ndow.org",
+    "categories":[
+      "Fishing",
+      "School"
+    ]
   },
+
   {
     "title":"Wildlife Education Coordinator",
-    "email":"lauren.macleod@ndow.org"
+    "email":"lauren.macleod@ndow.org",
+    "categories":[
+      "Wildlife"
+    ]
   },
+
   {
     "title":"Urban Wildlife Education Coordinator",
-    "email":"claire.clarke@ndow.org"
+    "email":"claire.clarke@ndow.org",
+    "categories":[
+      "Urban Wildlife"
+    ]
   },
+
   {
     "title":"Boating Coordinator",
-    "email":"boating@example.com"
+    "email":"nduhe@ndow.org",
+    "categories":[
+      "Boating"
+    ]
   },
+
   {
     "title":"Volunteer Coordinator Conservation Education",
-    "email":"michelle.lopez@ndow.org"
+    "email":"michelle.lopez@ndow.org",
+    "categories":[
+      "Volunteer",
+      "Other"
+    ]
   },
+
   {
     "title":"Other / Custom Email",
-    "email":"custom"
+    "email":"michelle.lopez@ndow.org",
+    "categories":[]
   }
 ]
