@@ -1864,39 +1864,40 @@ const zip =
 
   if(category === 'Other'){
 
-    systemStatus
-      .uncategorizedEvents++;
+  systemStatus
+    .uncategorizedEvents++;
 
-   systemStatus.warnings.push({
+  systemStatus.warnings.push({
 
-  type:'GEO',
+    type:'CATEGORY',
 
-  index:
-    systemStatus.warnings.length + 1,
+    index:
+      systemStatus.warnings.length + 1,
 
-  title:event.title,
+    title:event.title,
 
-  date:event.date,
+    date:event.date,
 
-  location:cleanedLocation,
+    location:cleanedLocation,
 
-  url:event.url,
+    url:event.url,
 
-  raw:event
+    raw:event
 
-});
+  });
 
-  } else {
+} else {
 
-    systemStatus
-      .categorizedEvents++;
+  systemStatus
+    .categorizedEvents++;
 
-  }
+}
 
-  return category;
+return category;
 
 })(),
 
+ 
     city:
       geo?.city || '',
 
@@ -3611,35 +3612,21 @@ function renderSystemConsole(){
 ">
 
   <button
-  onclick="
-    (async () => {
-
-      this.innerText =
-        'Reprocessing...';
-
-      await loadEvents();
-
-      renderSystemConsole();
-
-      this.innerText =
-        'Reprocess Events';
-
-    })();
+  onclick="reprocessEvents()"
+  style="
+    background:#2563eb;
+    border:none;
+    color:white;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
   "
-    style="
-      background:#2563eb;
-      border:none;
-      color:white;
-      padding:10px 14px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:600;
-    "
-  >
+>
 
-    Reprocess Events
+  Reprocess Events
 
-  </button>
+</button>
 
 </div>
 
@@ -4013,6 +4000,7 @@ function previewSystemEvent(eventUrl){
   if(!event || !panel){
     return;
   }
+	
 
   panel.innerHTML = `
 
@@ -4102,6 +4090,36 @@ function previewSystemEvent(eventUrl){
   `;
 
 }
+	
+async function reprocessEvents(){
+
+  alert(
+    'Reprocessing event pipeline...'
+  );
+
+  try {
+
+    await loadEvents();
+
+    renderSystemConsole();
+
+    alert(
+      'Reprocess complete.'
+    );
+
+  } catch(err){
+
+    console.error(err);
+
+    alert(
+      'Reprocess failed.'
+    );
+
+  }
+
+}
+
+	
 	
 function openAdminPanel(){
 
