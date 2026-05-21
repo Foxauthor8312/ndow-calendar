@@ -5475,50 +5475,82 @@ function loadGeoCounties(){
 
 function renderGeoRegionAnalysis(region){
 
-  const stats =
-    geoEventStats[region];
-
-  if(!stats){
-
-    return;
-
-  }
-
   const container =
     document.getElementById(
       'geoRegionDetails'
     );
 
+  const regionalEvents =
+    events.filter(
+      e => e.region === region
+    );
+
+  if(regionalEvents.length === 0){
+
+    container.innerHTML = `
+
+      <div style="
+        color:#6b7280;
+      ">
+        No event data available
+        for this region.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  const categoryCounts = {};
+
+  regionalEvents.forEach(event => {
+
+    const category =
+      event.category || 'Other';
+
+    if(!categoryCounts[category]){
+
+      categoryCounts[category] = 0;
+
+    }
+
+    categoryCounts[category]++;
+
+  });
+
+  const sortedCategories =
+    Object.entries(categoryCounts)
+      .sort((a,b) => b[1] - a[1]);
+
   const categoryHtml =
-    Object.entries(
-      stats.categories
-    )
-    .map(entry => {
+    sortedCategories
+      .map(entry => {
 
-      return `
+        return `
 
-        <div style="
-          display:flex;
-          justify-content:space-between;
-          padding:8px 0;
-          border-bottom:
-            1px solid #e5e7eb;
-        ">
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            padding:8px 0;
+            border-bottom:
+              1px solid #e5e7eb;
+          ">
 
-          <span>
-            ${entry[0]}
-          </span>
+            <span>
+              ${entry[0]}
+            </span>
 
-          <strong>
-            ${entry[1]}
-          </strong>
+            <strong>
+              ${entry[1]}
+            </strong>
 
-        </div>
+          </div>
 
-      `;
+        `;
 
-    })
-    .join('');
+      })
+      .join('');
 
   container.innerHTML = `
 
@@ -5534,8 +5566,9 @@ function renderGeoRegionAnalysis(region){
       margin-bottom:18px;
       color:#4b5563;
     ">
-      Event analysis by category
-      and regional activity.
+      Live regional event analysis
+      based on current calendar
+      event classifications.
     </div>
 
     <div style="
@@ -5549,7 +5582,7 @@ function renderGeoRegionAnalysis(region){
         Total Events:
       </strong>
 
-      ${stats.total}
+      ${regionalEvents.length}
 
     </div>
 
