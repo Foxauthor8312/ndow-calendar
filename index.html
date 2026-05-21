@@ -3745,11 +3745,9 @@ function renderSystemConsole(){
     )
     .map(warning => `
 
-      <div
+  <div
 onclick="
-  closeSystemConsole();
-
-  openEventModal(
+  previewSystemEvent(
     '${warning.url}'
   );
 "
