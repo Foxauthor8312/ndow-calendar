@@ -5616,6 +5616,25 @@ function renderGeoRegionAnalysis(region){
       e => e.county === county
     );
 
+const region =
+  countyEvents[0]?.region;
+
+const regionalEvents =
+  events.filter(
+    e => e.region === region
+  );
+
+const regionTotal =
+  regionalEvents.length;
+
+const percentage =
+  regionTotal > 0
+    ? (
+        countyEvents.length /
+        regionTotal
+      ) * 100
+    : 0;
+			
   if(countyEvents.length === 0){
 
     container.innerHTML = `
@@ -5714,7 +5733,21 @@ function renderGeoRegionAnalysis(region){
       </strong>
 
       ${countyEvents.length}
+		<br><br>
 
+<strong>
+  Regional Share:
+</strong>
+
+${percentage.toFixed(1)}%
+
+<br><br>
+
+<strong>
+  Region Total:
+</strong>
+
+${regionTotal}
     </div>
 
     ${categoryHtml}
