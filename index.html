@@ -1844,7 +1844,6 @@ const categoryColors = {
 // START EVENT LOADING
 // ========================================
 	
-
 async function loadEvents(){
 
   const token =
@@ -1855,19 +1854,19 @@ async function loadEvents(){
     logout();
 
     return;
+
   }
 
   try {
 
     const response = await fetch(
-  'https://ndow-calendar-server.onrender.com/api/events?t=' + Date.now(),
-  {
-    headers:{
-      Authorization:
-        `Bearer ${token}`
-    }
-  }
-);
+      'https://ndow-calendar-server.onrender.com/api/events?t=' + Date.now(),
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    );
 
     if(
       response.status === 401 ||
@@ -1877,229 +1876,236 @@ async function loadEvents(){
       logout();
 
       return;
+
     }
 
-const data =
-  await response.json();
+    const data =
+      await response.json();
 
-console.log(data);
+    console.log(data);
 
-events = data.events;
+    events = data.events;
 
-console.log(
-  'EVENT COUNT:',
-  events.length
-);
+    const syncStart =
+      Date.now();
 
+    systemStatus.parseFailures = 0;
 
+    systemStatus.geoFailedEvents = 0;
 
-const syncStart = Date.now();
+    systemStatus.categorizedEvents = 0;
 
-systemStatus.parseFailures = 0;
+    systemStatus.uncategorizedEvents = 0;
 
-systemStatus.geoFailedEvents = 0;
+    systemStatus.geoMappedEvents = 0;
 
-systemStatus.categorizedEvents = 0;
+    systemStatus.warnings = [];
 
-systemStatus.uncategorizedEvents = 0;
+    events = events.map(event => {
 
-systemStatus.geoMappedEvents = 0;
+      const cleanedLocation =
+        (
+          event.location || ''
+        )
+          .replace(/\n/g,' ')
+          .replace(/\s+/g,' ')
+          .trim();
 
-systemStatus.warnings = [];
+      const zipMatch =
+        cleanedLocation.match(
+          /\b\d{5}(?:-\d{4})?\b/
+        );
 
-events = events.map(event => {
+      const zip =
+        zipMatch
+          ? zipMatch[0].substring(0,5)
+          : '';
 
-  const cleanedLocation =
-  (
-    event.location || ''
-  )
-    .replace(/\n/g,' ')
-    .replace(/\s+/g,' ')
-    .trim();
+      const geo =
+        zipLookup[zip];
 
-const zipMatch =
-  cleanedLocation.match(
-    /\b\d{5}(?:-\d{4})?\b/
-  );
-const zip =
-  zipMatch
-    ? zipMatch[0]
-        .substring(0,5)
-    : '';
+      const category =
+        classifyEvent(
+          event.title
+        );
 
-  const geo =
-    zipLookup[zip];
+      if(category === 'Other'){
 
-if(
-  geo &&
-  !geo.region
-){
+        systemStatus
+          .uncategorizedEvents++;
 
-  if([
-    'clark',
-    'lincoln',
-    'nye',
-    'esmeralda'
-  ].includes(
-    geo.county?.toLowerCase()
-  )){
+        systemStatus.warnings.push({
 
-    geo.region = 'Southern';
+          type:'CATEGORY',
 
-  } else if([
-    'washoe',
-    'douglas',
-    'churchill',
-    'lyon',
-    'storey',
-    'pershing',
-    'mineral',
-    'carson city'
-  ].includes(
-    geo.county?.toLowerCase()
-  )){
+          index:
+            systemStatus.warnings.length + 1,
 
-    geo.region = 'Western';
+          title:event.title,
 
-  } else {
+          date:event.date,
 
-    geo.region = 'Eastern';
+          location:cleanedLocation,
 
-  }
+          url:event.url,
 
-}
-		
-  return {
+          raw:event
 
-    ...event,
+        });
 
-    zip,
+      } else {
 
-    category:(() => {
+        systemStatus
+          .categorizedEvents++;
 
-  const category =
-    classifyEvent(
-      event.title
+      }
+
+      let region = '';
+
+      if(geo?.county){
+
+        const county =
+          geo.county.toLowerCase();
+
+        if([
+          'clark',
+          'lincoln',
+          'nye',
+          'esmeralda'
+        ].includes(county)){
+
+          region = 'Southern';
+
+        } else if([
+          'washoe',
+          'douglas',
+          'churchill',
+          'lyon',
+          'storey',
+          'pershing',
+          'mineral',
+          'carson city'
+        ].includes(county)){
+
+          region = 'Western';
+
+        } else {
+
+          region = 'Eastern';
+
+        }
+
+      }
+
+      if(region){
+
+        systemStatus
+          .geoMappedEvents++;
+
+      } else {
+
+        systemStatus
+          .geoFailedEvents++;
+
+        systemStatus.warnings.push({
+
+          type:'GEO',
+
+          index:
+            systemStatus.warnings.length + 1,
+
+          title:event.title,
+
+          date:event.date,
+
+          location:cleanedLocation,
+
+          url:event.url,
+
+          raw:event
+
+        });
+
+      }
+
+      return {
+
+        ...event,
+
+        zip,
+
+        category,
+
+        city:
+          geo?.city || '',
+
+        county:
+          geo?.county || '',
+
+        region
+
+      };
+
+    });
+
+    document.getElementById(
+      'lastUpdated'
+    ).innerText =
+      new Date(
+        data.lastUpdated
+      ).toLocaleString();
+
+    systemStatus.lastSync =
+      new Date();
+
+    systemStatus.syncDuration =
+      (
+        (
+          Date.now() - syncStart
+        ) / 1000
+      ).toFixed(1) + 's';
+
+    systemStatus.eventsProcessed =
+      events.length;
+
+    systemStatus.workflowStatus =
+
+      systemStatus.geoFailedEvents > 0 ||
+      systemStatus.uncategorizedEvents > 0
+
+        ? 'WARNING'
+
+        : 'HEALTHY';
+
+    renderCalendar();
+
+    loadAnnouncements(
+      JSON.parse(
+        localStorage.getItem('user')
+      ).role
     );
 
-  if(category === 'Other'){
+  } catch(err){
 
-  systemStatus
-    .uncategorizedEvents++;
+    console.error(err);
 
-  systemStatus.warnings.push({
+    systemStatus.workflowStatus =
+      'FAILED';
 
-    type:'CATEGORY',
+    systemStatus.recentErrors.push({
 
-    index:
-      systemStatus.warnings.length + 1,
+      timestamp:new Date()
+        .toLocaleString(),
 
-    title:event.title,
+      message:err.message
 
-    date:event.date,
+    });
 
-    location:cleanedLocation,
-
-    url:event.url,
-
-    raw:event
-
-  });
-
-} else {
-
-  systemStatus
-    .categorizedEvents++;
-
-}
-
-return category;
-
-})(),
-
- 
-    city:
-      geo?.city || '',
-
-    county:
-      geo?.county || '',
-
-    region:(() => {
-
-  if(geo?.region){
-
-    systemStatus
-      .geoMappedEvents++;
-
-    return ['Western','Eastern','Southern']
-  .includes(geo.region)
-
-    ? geo.region
-
-    : '';
+    renderCalendar();
 
   }
 
-  systemStatus
-    .geoFailedEvents++;
-
-  systemStatus.warnings.push({
-
-  type:'GEO',
-
-  index:
-    systemStatus.warnings.length + 1,
-
-  title:event.title,
-
-  date:event.date,
-
-  location:cleanedLocation,
-
-  url:event.url
-
-});
-
-  return '';
-
-})()
-
-  };
-
-});
-
-document.getElementById(
-  'lastUpdated'
-).innerText =
-
-	
-  new Date(
-    data.lastUpdated
-  ).toLocaleString();
-
-systemStatus.lastSync =
-  new Date();
-
-systemStatus.syncDuration =
-  (
-    (
-      Date.now() - syncStart
-    ) / 1000
-  ).toFixed(1) + 's';
-
-systemStatus.eventsProcessed =
-  events.length;
-
-systemStatus.workflowStatus =
-
-  systemStatus.geoFailedEvents > 0 ||
-  systemStatus.uncategorizedEvents > 0
-
-    ? 'WARNING'
-
-    : 'HEALTHY';
-
-renderCalendar();
+}
 
 // ========================================
 // LOAD ANNOUNCEMENTS
