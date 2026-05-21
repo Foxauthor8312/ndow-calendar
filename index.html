@@ -1721,48 +1721,68 @@ async function loadZipLookup(){
       row.split(',');
 
     const zip =
-      columns[0]?.trim();
+      columns[0]
+        ?.replace(/"/g,'')
+        .trim()
+        .padStart(5,'0');
 
-const city =
-  columns[3]
-    ?.replace(/"/g,'')
-    .trim();
+    const city =
+      columns[3]
+        ?.replace(/"/g,'')
+        .trim();
 
-const county =
-  columns[7]
-    ?.replace(' County','')
-    .trim();
+    const county =
+      columns[7]
+        ?.replace(/"/g,'')
+        .replace(' County','')
+        .replace(/\r/g,'')
+        .trim();
 
-const region = (() => {
+    const region = (() => {
 
-  const c =
-    county?.toLowerCase();
+      const c =
+        county
+          ?.replace(/county/gi,'')
+          .replace(/\r/g,'')
+          .trim()
+          .toLowerCase();
 
-  if([
-    'clark',
-    'lincoln',
-    'nye',
-    'esmeralda'
-  ].includes(c)){
-    return 'Southern';
-  }
+      if([
+        'clark',
+        'lincoln',
+        'nye',
+        'esmeralda'
+      ].includes(c)){
+        return 'Southern';
+      }
 
-  if([
-    'washoe',
-    'carson city',
-    'douglas',
-    'churchill',
-    'storey',
-    'lyon',
-    'pershing',
-    'mineral'
-  ].includes(c)){
-    return 'Western';
-  }
+      if([
+        'washoe',
+        'carson city',
+        'douglas',
+        'churchill',
+        'storey',
+        'lyon',
+        'pershing',
+        'mineral',
+        'humboldt'
+      ].includes(c)){
+        return 'Western';
+      }
 
-  return 'Eastern';
+      if([
+        'elko',
+        'lander',
+        'eureka',
+        'white pine'
+      ].includes(c)){
+        return 'Eastern';
+      }
 
-})();
+      return '';
+
+    })();
+
     if(!zip){
       return;
     }
@@ -1789,11 +1809,10 @@ const region = (() => {
 
 }
 
-	
 // ========================================
 // START EVENT CLASSIFICATION
 // ========================================
-	
+
 function classifyEvent(title = '') {
 
   const t = title.toLowerCase();
@@ -1816,19 +1835,19 @@ function classifyEvent(title = '') {
 
 const categoryColors = {
 
-  'Hunter Education':'#84cc16',          // lime green
+  'Hunter Education':'#84cc16',
 
   'Advanced Hunter Education':'#166534',
 
-  'Fishing':'#f97316',                   // orange
+  'Fishing':'#f97316',
 
-  'Wildlife':'#9333ea',                  // purple
+  'Wildlife':'#9333ea',
 
-  'Urban Wildlife':'#0ea5e9',            // teal
+  'Urban Wildlife':'#0ea5e9',
 
-  'Boating':'#6b7280',                   // gray
+  'Boating':'#6b7280',
 
-  'Volunteer':'#2563eb',                 // blue
+  'Volunteer':'#2563eb',
 
   'Archery':'#bcc9bb',
 
@@ -1836,14 +1855,15 @@ const categoryColors = {
 
   'Other':'#64748b'
 };
-	let events = [];
-    let activeFilters = [];
-	let activeRegion = '';
+
+let events = [];
+let activeFilters = [];
+let activeRegion = '';
 
 // ========================================
 // START EVENT LOADING
 // ========================================
-	
+
 async function loadEvents(){
 
   const token =
@@ -1918,7 +1938,10 @@ async function loadEvents(){
 
       const zip =
         zipMatch
-          ? zipMatch[0].substring(0,5)
+          ? zipMatch[0]
+              .substring(0,5)
+              .trim()
+              .padStart(5,'0')
           : '';
 
       const geo =
@@ -1965,7 +1988,11 @@ async function loadEvents(){
       if(geo?.county){
 
         const county =
-          geo.county.toLowerCase();
+          geo.county
+            ?.replace(/county/gi,'')
+            .replace(/\r/g,'')
+            .trim()
+            .toLowerCase();
 
         if([
           'clark',
@@ -1984,12 +2011,18 @@ async function loadEvents(){
           'storey',
           'pershing',
           'mineral',
-          'carson city'
+          'carson city',
+          'humboldt'
         ].includes(county)){
 
           region = 'Western';
 
-        } else {
+        } else if([
+          'elko',
+          'lander',
+          'eureka',
+          'white pine'
+        ].includes(county)){
 
           region = 'Eastern';
 
@@ -2047,7 +2080,7 @@ async function loadEvents(){
       };
 
     });
-
+		
     document.getElementById(
       'lastUpdated'
     ).innerText =
@@ -3333,25 +3366,13 @@ function renderSection(
           : 'Disable'
       ) +
 
-    '</button>' +
-	
-	'<button style="margin-top:8px;margin-left:8px;" onclick="resetPin(\'' +
-	
-	user.username +
-	
-	'\')">Reset PIN</button>' +
-	
-	'<button style="margin-top:8px;margin-left:8px;" onclick=\'openEditUserModal(' +
-	
-	JSON.stringify(user) +
-	
-	')\'>Edit</button>';
-		
-		'<button style="margin-top:8px;margin-left:8px;" onclick=\'openEditUserModal(' +
-		
-		JSON.stringify(user) +
-		
-		')\'>Edit</button>';
+   '</button>' +
+
+'<button style="margin-top:8px;margin-left:8px;" onclick=\'openEditUserModal(' +
+
+JSON.stringify(user) +
+
+')\'>Edit</button>';
 
     container.appendChild(
       div
