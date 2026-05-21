@@ -3412,7 +3412,7 @@ function openAdminSection(section){
 
 }
 
-function loadRegionDropdown(){
+	function loadRegionDropdown(){
 
   const select =
     document.getElementById(
@@ -3423,15 +3423,29 @@ function loadRegionDropdown(){
     return;
   }
 
-  select.innerHTML = `
-    <option value="">
-      Select Region
-    </option>
+  select.innerHTML = '';
 
-	<option value="ALL">
-	  All Regions
-	</option>
-  `;
+  // ========================================
+  // ALL REGIONS OPTION
+  // ========================================
+
+  const allOption =
+    document.createElement(
+      'option'
+    );
+
+  allOption.value = 'ALL';
+
+  allOption.innerText =
+    'All Regions';
+
+  select.appendChild(
+    allOption
+  );
+
+  // ========================================
+  // REGION OPTIONS
+  // ========================================
 
   Object.keys(nevadaRegions)
     .forEach(region => {
@@ -3445,12 +3459,13 @@ function loadRegionDropdown(){
 
       option.innerText = region;
 
-      select.appendChild(option);
+      select.appendChild(
+        option
+      );
 
     });
 
 }
-  
 	
 function openAdminPanel(){
 
