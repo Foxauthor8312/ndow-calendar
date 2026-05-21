@@ -5491,125 +5491,286 @@ function renderGeoRegionAnalysis(region){
       'geoRegionDetails'
     );
 
- const regionalEvents =
-  region === 'ALL'
-    ? events
-    : events.filter(
+  if(!container){
+    return;
+  }
+
+  let filteredEvents = [];
+
+  if(
+    !region ||
+    region === 'ALL'
+  ){
+
+    filteredEvents =
+      events.filter(
+        e => e.region
+      );
+
+  } else {
+
+    filteredEvents =
+      events.filter(
         e => e.region === region
       );
 
-  if(regionalEvents.length === 0){
-
-    container.innerHTML = `
-
-      <div style="
-        color:#6b7280;
-      ">
-        No event data available
-        for this region.
-      </div>
-
-    `;
-
-    return;
-
   }
-const totalEvents =
-  regionalEvents.length;
-  const categoryCounts = {};
 
-  regionalEvents.forEach(event => {
+  const totalEvents =
+    filteredEvents.length;
+
+  // ========================================
+  // COUNTY TOTALS
+  // ========================================
+
+  const countyTotals = {};
+
+  filteredEvents.forEach(event => {
+
+    const county =
+      event.county || 'Unknown';
+
+    if(!countyTotals[county]){
+
+      countyTotals[county] = 0;
+
+    }
+
+    countyTotals[county]++;
+
+  });
+
+  // ========================================
+  // CATEGORY TOTALS
+  // ========================================
+
+  const categoryTotals = {};
+
+  filteredEvents.forEach(event => {
 
     const category =
       event.category || 'Other';
 
-    if(!categoryCounts[category]){
+    if(!categoryTotals[category]){
 
-      categoryCounts[category] = 0;
+      categoryTotals[category] = 0;
 
     }
 
-    categoryCounts[category]++;
+    categoryTotals[category]++;
 
   });
 
-  const sortedCategories =
-    Object.entries(categoryCounts)
+  // ========================================
+  // SORTING
+  // ========================================
+
+  const sortedCounties =
+    Object.entries(countyTotals)
       .sort((a,b) => b[1] - a[1]);
 
-  const categoryHtml =
-    sortedCategories
-      .map(entry => {
+  const sortedCategories =
+    Object.entries(categoryTotals)
+      .sort((a,b) => b[1] - a[1]);
+
+  // ========================================
+  // HTML
+  // ========================================
+
+  container.innerHTML = `
+
+    <div style="
+      display:grid;
+      grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      margin-top:20px;
+    ">
+
+      <!-- TOTAL EVENTS -->
+
+      <div class="geo-card">
+
+        <div class="geo-title">
+          Total Events
+        </div>
+
+        <div class="geo-value">
+          ${totalEvents}
+        </div>
+
+      </div>
+
+      <!-- REGION -->
+
+      <div class="geo-card">
+
+        <div class="geo-title">
+          Active Region
+        </div>
+
+        <div class="geo-value">
+          ${
+            region === 'ALL' || !region
+              ? 'All Regions'
+              : region
+          }
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- COUNTY BREAKDOWN -->
+
+    <div style="
+      margin-top:28px;
+    ">
+
+      <div style="
+        font-size:20px;
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:14px;
+      ">
+        County Activity
+      </div>
+
+      ${sortedCounties.map(([county,count]) => {
+
+        const percentage =
+          totalEvents > 0
+            ? (
+                (count / totalEvents) * 100
+              ).toFixed(1)
+            : '0.0';
 
         return `
 
           <div style="
-            display:flex;
-            justify-content:space-between;
-            padding:8px 0;
-            border-bottom:
-              1px solid #e5e7eb;
+            padding:14px;
+            margin-bottom:10px;
+            background:white;
+            border:1px solid #dbe3ec;
+            border-radius:12px;
           ">
 
-            <span>
-              ${entry[0]}
-            </span>
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              gap:12px;
+              flex-wrap:wrap;
+            ">
 
-           <strong>
-  ${entry[1]}
-  (
-    ${(
-      (entry[1] / totalEvents) * 100
-    ).toFixed(1)}%
-  )
-</strong>
+              <div style="
+                font-weight:700;
+                color:#19304B;
+              ">
+                ${county} County
+              </div>
+
+              <div style="
+                color:#4b5563;
+                font-size:14px;
+              ">
+                ${count} events
+                •
+                ${percentage}% of region
+              </div>
+
+            </div>
 
           </div>
 
         `;
 
-      })
-      .join('');
-
-  container.innerHTML = `
-
-    <div style="
-      font-size:20px;
-      font-weight:700;
-      margin-bottom:18px;
-    ">
-      ${
-  region === 'ALL'
-    ? 'Statewide Event Analysis'
-    : region + ' Nevada'
-}
-    </div>
-
-    <div style="
-      margin-bottom:18px;
-      color:#4b5563;
-    ">
-      Live regional event analysis
-      based on current calendar
-      event classifications.
-    </div>
-
-    <div style="
-      background:#f3f4f6;
-      padding:14px;
-      border-radius:12px;
-      margin-bottom:18px;
-    ">
-
-      <strong>
-        Total Events:
-      </strong>
-
-      ${regionalEvents.length}
+      }).join('')}
 
     </div>
 
-    ${categoryHtml}
+    <!-- CATEGORY BREAKDOWN -->
+
+    <div style="
+      margin-top:34px;
+    ">
+
+      <div style="
+        font-size:20px;
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:14px;
+      ">
+        Category Activity
+      </div>
+
+      ${sortedCategories.map(([category,count]) => {
+
+        const percentage =
+          totalEvents > 0
+            ? (
+                (count / totalEvents) * 100
+              ).toFixed(1)
+            : '0.0';
+
+        return `
+
+          <div style="
+            padding:14px;
+            margin-bottom:10px;
+            background:white;
+            border:1px solid #dbe3ec;
+            border-radius:12px;
+          ">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              gap:12px;
+              flex-wrap:wrap;
+            ">
+
+              <div style="
+                display:flex;
+                align-items:center;
+                gap:10px;
+                font-weight:700;
+                color:#19304B;
+              ">
+
+                <div style="
+                  width:14px;
+                  height:14px;
+                  border-radius:4px;
+                  background:${
+                    categoryColors[category]
+                    || '#64748b'
+                  };
+                "></div>
+
+                ${category}
+
+              </div>
+
+              <div style="
+                color:#4b5563;
+                font-size:14px;
+              ">
+                ${count} events
+                •
+                ${percentage}% of region
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join('')}
+
+    </div>
 
   `;
 
