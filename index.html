@@ -2561,126 +2561,32 @@ const allowRequests =
 <select
   id="contactSelect"
   class="contact-select"
-  onchange="toggleCustomEmail()"
->
-
-  ${categoryEmails.map(contact => `
-    <option value="${contact.email}">
-      ${contact.title}
-    </option>
-  `).join('')}
-
-</select>
-
-<input
-  type="email"
-  id="customEmail"
-  placeholder="Enter custom email"
-  style="
-    display:none;
-    width:100%;
-    margin-top:10px;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid #d1d5db;
-  "
->
-
-${allowRequests ? `
-
-<a href="#"
-   class="request-link"
-   onclick="requestInstructor('${eventUrl}')">
-
-   Send email request to department head to be added to the selected event as an instructor
-
-</a>
-
-` : `
-
-<div style="
-  margin-top:16px;
-  color:#6b7280;
-  font-size:14px;
-">
-
-  Volunteer requests are closed for this event.
-
-</div>
-
-`}
-
-  </div>
-`;
-
-  try {
-
-   const response = await fetch(
-  'https://image-forensics-saas.onrender.com/api/event?url=' +
-  encodeURIComponent(eventUrl)
-);
-
-    const html = await response.text();
-
-    const parser = new DOMParser();
-
-    const doc = parser.parseFromString(html, "text/html");
-
-    const article =
-      doc.querySelector("article") ||
-      doc.querySelector("main");
-
-    modalBody.innerHTML = `
-      <div class="modal-body">
-        <h2>Official NDOW Event</h2>
-        <div style="
-  margin:14px 0 18px 0;
-  padding:14px;
-  background:#f3f4f6;
-  border-left:4px solid #F29647;
-  border-radius:6px;
-">
-
-  <div style="
-    font-weight:700;
-    color:#19304B;
-    margin-bottom:6px;
-  ">
-    ${event.title}
-  </div>
-
-  <div style="
-  font-size:14px;
-  color:#4b5563;
-  line-height:1.5;
-">
-  ${event.date}<br>
-  ${event.location}
-</div>
-
-</div>
-<p>
-  Additional details for this event are available on the official NDOW website.
-</p>
-
-<a href="${eventUrl}"
-   target="_blank"
-   class="official-link">
-
-   Open Official Event Page
-
-</a>
-
-<select
-  id="contactSelect"
-  class="contact-select"
   onchange="toggleCustomEmail()">
 
-  ${categoryEmails.map(contact => `
-    <option value="${contact.email}">
-      ${contact.title}
-    </option>
-  `).join('')}
+  ${categoryEmails.map(contact => {
+
+    const selected =
+
+      contact.categories?.includes(
+        event.category
+      )
+        ? 'selected'
+        : '';
+
+    return `
+
+      <option
+        value="${contact.email}"
+        ${selected}
+      >
+
+        ${contact.title}
+
+      </option>
+
+    `;
+
+  }).join('')}
 
 </select>
 
