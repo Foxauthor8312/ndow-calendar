@@ -2444,10 +2444,17 @@ document.getElementById(
   'Logged in as: ' +
   data.user.username;
 
+const superUsers = [
+  'barry',
+  'usuper'
+];
+
 if(
-  data.user.username
-    .toLowerCase()
-    .includes('barry')
+  superUsers.includes(
+    data.user.username
+      .trim()
+      .toLowerCase()
+  )
 ){
 
   document.getElementById(
@@ -3133,13 +3140,34 @@ if(
 
   if(savedUser){
 
+  document.getElementById(
+    'userDisplay'
+  ).innerText =
+    'Logged in as: ' +
+    savedUser.username;
+
+  const superUsers = [
+    'barry',
+    'usuper'
+  ];
+
+  if(
+    superUsers.includes(
+      savedUser.username
+        .trim()
+        .toLowerCase()
+    )
+  ){
+
     document.getElementById(
-      'userDisplay'
-    ).innerText =
-      'Logged in as: ' +
-      savedUser.username;
+      'superuserButton'
+    ).classList.remove(
+      'hidden'
+    );
 
   }
+
+}
 
   (async () => {
 
