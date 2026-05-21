@@ -3607,14 +3607,21 @@ function renderSystemConsole(){
 ">
 
   <button
-    onclick="
-      loadEvents();
+  onclick="
+    (async () => {
 
-      setTimeout(
-        renderSystemConsole,
-        1200
-      );
-    "
+      this.innerText =
+        'Reprocessing...';
+
+      await loadEvents();
+
+      renderSystemConsole();
+
+      this.innerText =
+        'Reprocess Events';
+
+    })();
+  "
     style="
       background:#2563eb;
       border:none;
