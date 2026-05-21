@@ -4802,17 +4802,18 @@ async function deleteHelpTopic(){
     County Analysis
   </div>
 
-  <select
-    id="geoCountySelect"
-    class="contact-select"
-    style="margin-top:12px;"
-  >
+ <select
+  id="geoCountySelect"
+  class="contact-select"
+  style="margin-top:12px;"
+  onchange="renderCountyAnalysis()"
+>
 
-    <option value="">
-      Select County
-    </option>
+  <option value="">
+    Select County
+  </option>
 
-  </select>
+</select>
 
 </div>
 
@@ -5583,6 +5584,136 @@ function renderGeoRegionAnalysis(region){
       </strong>
 
       ${regionalEvents.length}
+
+    </div>
+
+    ${categoryHtml}
+
+  `;
+
+}
+
+		function renderCountyAnalysis(){
+
+  const county =
+    document.getElementById(
+      'geoCountySelect'
+    ).value;
+
+  if(!county){
+
+    return;
+
+  }
+
+  const container =
+    document.getElementById(
+      'geoRegionDetails'
+    );
+
+  const countyEvents =
+    events.filter(
+      e => e.county === county
+    );
+
+  if(countyEvents.length === 0){
+
+    container.innerHTML = `
+
+      <div style="
+        color:#6b7280;
+      ">
+        No event data available
+        for this county.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  const categoryCounts = {};
+
+  countyEvents.forEach(event => {
+
+    const category =
+      event.category || 'Other';
+
+    if(!categoryCounts[category]){
+
+      categoryCounts[category] = 0;
+
+    }
+
+    categoryCounts[category]++;
+
+  });
+
+  const sortedCategories =
+    Object.entries(categoryCounts)
+      .sort((a,b) => b[1] - a[1]);
+
+  const categoryHtml =
+    sortedCategories
+      .map(entry => {
+
+        return `
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            padding:8px 0;
+            border-bottom:
+              1px solid #e5e7eb;
+          ">
+
+            <span>
+              ${entry[0]}
+            </span>
+
+            <strong>
+              ${entry[1]}
+            </strong>
+
+          </div>
+
+        `;
+
+      })
+      .join('');
+
+  container.innerHTML = `
+
+    <div style="
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:18px;
+    ">
+      ${county} County
+    </div>
+
+    <div style="
+      margin-bottom:18px;
+      color:#4b5563;
+    ">
+      Live county event analysis
+      based on current calendar
+      event classifications.
+    </div>
+
+    <div style="
+      background:#f3f4f6;
+      padding:14px;
+      border-radius:12px;
+      margin-bottom:18px;
+    ">
+
+      <strong>
+        Total Events:
+      </strong>
+
+      ${countyEvents.length}
 
     </div>
 
