@@ -2199,6 +2199,12 @@ function setRegionFilter(){
       'regionFilter'
     ).value;
 
+  if(activeRegion === 'ALL'){
+
+    activeRegion = '';
+
+  }
+
   renderCalendar();
 
 }
