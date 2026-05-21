@@ -1859,11 +1859,18 @@ events = events.map(event => {
 
     systemStatus.warnings.push({
 
-      type:'CATEGORY',
+  type:'CATEGORY',
 
-      title:event.title
+  index:
+    systemStatus.warnings.length + 1,
 
-    });
+  title:event.title,
+
+  date:event.date,
+
+  url:event.url
+
+});
 
   } else {
 
@@ -1898,13 +1905,20 @@ events = events.map(event => {
 
   systemStatus.warnings.push({
 
-    type:'GEO',
+  type:'GEO',
 
-    title:event.title,
+  index:
+    systemStatus.warnings.length + 1,
 
-    location:event.location
+  title:event.title,
 
-  });
+  date:event.date,
+
+  location:event.location,
+
+  url:event.url
+
+});
 
   return '';
 
@@ -3658,21 +3672,45 @@ function renderSystemConsole(){
     )
     .map(warning => `
 
-      <div style="
-        padding:12px;
+      <div
+  onclick="
+    openEventModal(
+      '${warning.url}'
+    )
+  "
+  style="
+    padding:12px;
         margin-bottom:12px;
         border:1px solid #374151;
         border-radius:8px;
         background:#1f2937;
+		cursor:pointer;
+		transition:.2s ease;
       ">
 
         <div style="
-          color:#fca5a5;
-          font-weight:700;
-          margin-bottom:6px;
-        ">
-          ${warning.title}
-        </div>
+  color:#fca5a5;
+  font-weight:700;
+  margin-bottom:6px;
+">
+
+  #${warning.index || '--'}
+
+  ·
+
+  ${warning.title}
+
+</div>
+
+<div style="
+  color:#93c5fd;
+  font-size:13px;
+  margin-bottom:6px;
+">
+
+  ${warning.date || 'No date'}
+
+</div>
 
         <div style="
           color:#d1d5db;
@@ -3703,21 +3741,45 @@ function renderSystemConsole(){
     )
     .map(warning => `
 
-      <div style="
-        padding:12px;
+      <div
+  onclick="
+    openEventModal(
+      '${warning.url}'
+    )
+  "
+  style="
+    padding:12px;
         margin-bottom:12px;
         border:1px solid #374151;
         border-radius:8px;
         background:#1f2937;
+		cursor:pointer;
+		transition:.2s ease;
       ">
 
         <div style="
-          color:#fde68a;
-          font-weight:700;
-          line-height:1.5;
-        ">
-          ${warning.title}
-        </div>
+  color:#fde68a;
+  font-weight:700;
+  line-height:1.5;
+">
+
+  #${warning.index || '--'}
+
+  ·
+
+  ${warning.title}
+
+</div>
+
+<div style="
+  color:#93c5fd;
+  font-size:13px;
+  margin-top:6px;
+">
+
+  ${warning.date || 'No date'}
+
+</div>
 
       </div>
 
