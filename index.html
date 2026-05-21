@@ -1840,11 +1840,11 @@ const zipMatch =
   cleanedLocation.match(
     /\b\d{5}(?:-\d{4})?\b/
   );
-
-  const zip =
-    zipMatch
-      ? zipMatch[0]
-      : '';
+const zip =
+  zipMatch
+    ? zipMatch[0]
+        .substring(0,5)
+    : '';
 
   const geo =
     zipLookup[zip];
