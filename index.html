@@ -3644,67 +3644,82 @@ function renderSystemConsole(){
 </div>
 
     <div style="
-      line-height:1.9;
-      font-size:15px;
-    ">
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:#111827;
+  padding-bottom:18px;
+  border-bottom:1px solid #374151;
+  margin-bottom:20px;
+">
 
-      STATUS:
-      ${systemStatus.workflowStatus}
+  <div style="
+    line-height:1.9;
+    font-size:15px;
+  ">
 
-      <br>
+    STATUS:
+    ${systemStatus.workflowStatus}
 
-      LAST SYNC:
-      ${
-        systemStatus.lastSync
-          ? systemStatus.lastSync
-              .toLocaleString()
-          : '--'
-      }
+    <br>
 
-      <br>
+    LAST SYNC:
+    ${
+      systemStatus.lastSync
+        ? systemStatus.lastSync
+            .toLocaleString()
+        : '--'
+    }
 
-      SYNC DURATION:
-      ${systemStatus.syncDuration}
+    <br>
 
-      <br><br>
+    SYNC DURATION:
+    ${systemStatus.syncDuration}
 
-      EVENTS PROCESSED:
-      ${systemStatus.eventsProcessed}
+    <br><br>
 
-      <br>
+    EVENTS PROCESSED:
+    ${systemStatus.eventsProcessed}
 
-      CATEGORIZED:
-      ${systemStatus.categorizedEvents}
+    <br>
 
-      <br>
+    CATEGORIZED:
+    ${systemStatus.categorizedEvents}
 
-      UNCATEGORIZED:
-      ${systemStatus.uncategorizedEvents}
+    <br>
 
-      <br>
+    UNCATEGORIZED:
+    ${systemStatus.uncategorizedEvents}
 
-      GEO MAPPED:
-      ${systemStatus.geoMappedEvents}
+    <br>
 
-      <br>
+    GEO MAPPED:
+    ${systemStatus.geoMappedEvents}
 
-      GEO FAILURES:
-      ${systemStatus.geoFailedEvents}
+    <br>
 
-      <br>
+    GEO FAILURES:
+    ${systemStatus.geoFailedEvents}
 
-      PARSE FAILURES:
-      ${systemStatus.parseFailures}
+    <br>
 
-      <br><br>
+    PARSE FAILURES:
+    ${systemStatus.parseFailures}
 
-      WARNINGS:
-      ${systemStatus.warnings.length}
+    <br><br>
 
-    </div>
+    WARNINGS:
+    ${systemStatus.warnings.length}
 
-   <div style="
+  </div>
+
+</div>
+
+  <div style="
   margin-top:28px;
+  max-height:55vh;
+  overflow-y:auto;
+  padding-right:8px;
 ">
 
   <div style="
