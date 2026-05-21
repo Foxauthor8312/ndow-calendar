@@ -1691,27 +1691,72 @@ const nevadaRegions = {
 
 const zipLookup = {};
 
-Object.entries(nevadaRegions)
-  .forEach(([region, counties]) => {
+async function loadZipLookup(){
 
-    Object.entries(counties)
-      .forEach(([county, cities]) => {
+  const response =
+    await fetch(
+      'zip_code_database.csv'
+    );
 
-        cities.forEach(location => {
+  const text =
+    await response.text();
 
-          zipLookup[location.zip] = {
+  const rows =
+    text.split('\n');
 
-            city: location.city,
-            county,
-            region
+  rows.shift();
 
-          };
+  Object.keys(zipLookup)
+    .forEach(key => {
+      delete zipLookup[key];
+    });
 
-        });
+  rows.forEach(row => {
 
-      });
+    if(!row.trim()){
+      return;
+    }
+
+    const columns =
+      row.split(',');
+
+    const zip =
+      columns[0]?.trim();
+
+    const city =
+      columns[1]?.trim();
+
+    const county =
+      columns[2]?.trim();
+
+    const region =
+      columns[3]?.trim();
+
+    if(!zip){
+      return;
+    }
+
+    zipLookup[zip] = {
+
+      city:
+        city || '',
+
+      county:
+        county || '',
+
+      region:
+        region || ''
+
+    };
 
   });
+
+  console.log(
+    'ZIP database loaded:',
+    Object.keys(zipLookup).length
+  );
+
+}
 
 	
 // ========================================
@@ -2329,7 +2374,9 @@ if(
 // LOAD EVENTS
 // ========================================
 
-loadEvents();
+await loadZipLookup();
+
+await loadEvents();
 
 loadAnnouncements(
   data.user.role
