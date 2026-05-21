@@ -1881,7 +1881,12 @@ async function loadEvents(){
       await response.json();
 
     console.log(data);
-
+	console.log(
+	  'REGIONS:',
+	  events.map(
+	    e => e.region
+	  )
+	);
     events = data.events;
 
 
