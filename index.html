@@ -1867,9 +1867,9 @@ const zipMatch =
     systemStatus
       .uncategorizedEvents++;
 
-    systemStatus.warnings.push({
+   systemStatus.warnings.push({
 
-  type:'CATEGORY',
+  type:'GEO',
 
   index:
     systemStatus.warnings.length + 1,
@@ -1878,7 +1878,11 @@ const zipMatch =
 
   date:event.date,
 
-  url:event.url
+  location:cleanedLocation,
+
+  url:event.url,
+
+  raw:event
 
 });
 
@@ -3792,6 +3796,17 @@ onclick="
           line-height:1.5;
         ">
           ${warning.location || 'No location'}
+
+<br><br>
+
+<pre style="
+  white-space:pre-wrap;
+  font-size:11px;
+  color:#93c5fd;
+  margin-top:8px;
+">
+${JSON.stringify(warning.raw,null,2)}
+</pre>
         </div>
 
       </div>
