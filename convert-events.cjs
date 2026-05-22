@@ -20,8 +20,15 @@ blocks.forEach(block => {
 
   if(lines.length < 3) return;
 
-  const title =
-  lines[3] || '';
+ const title =
+  lines.find(line =>
+
+    !line.includes('Date') &&
+    !line.includes('URL:') &&
+    !line.includes('NV') &&
+    line.length > 5
+
+  ) || '';
 
   let location = '';
   let dateLine = '';
@@ -35,7 +42,8 @@ blocks.forEach(block => {
     }
 
     if(
-      line.includes('Date & Times:')
+      line.toLowerCase().includes('date')
+)
     ){
       dateLine =
         lines[index + 1] || '';
@@ -43,7 +51,16 @@ blocks.forEach(block => {
 
   });
 
-  if(!dateLine) return;
+ if(!dateLine){
+
+  console.log(
+    'SKIPPED - NO DATE:',
+    lines
+  );
+
+  return;
+
+}
 
   const cleanDate =
     dateLine
@@ -55,11 +72,19 @@ blocks.forEach(block => {
   const parsedDate =
     new Date(cleanDate);
 
-  if(
-    parsedDate < new Date('2026-01-01')
-  ){
-    return;
-  }
+ if(
+  parsedDate < new Date('2026-01-01')
+){
+
+  console.log(
+    'SKIPPED - OLD/INVALID DATE:',
+    cleanDate,
+    title
+  );
+
+  return;
+
+}
 
   let category = 'Other';
 
