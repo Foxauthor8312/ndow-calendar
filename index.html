@@ -3915,29 +3915,6 @@ function openAdminSection(section){
     allOption
   );
 
-  // ========================================
-  // REGION OPTIONS
-  // ========================================
-
-  Object.keys(nevadaRegions)
-    .forEach(region => {
-
-      const option =
-        document.createElement(
-          'option'
-        );
-
-      option.value = region;
-
-      option.innerText = region;
-
-      select.appendChild(
-        option
-      );
-
-    });
-
-}
 
 function openSystemConsole(){
 
