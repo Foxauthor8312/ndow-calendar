@@ -4327,7 +4327,35 @@ async function reprocessEvents(){
   }
 
 }
+function loadRegionDropdown(){
 
+  const select =
+    document.getElementById(
+      'geoRegionSelect'
+    );
+
+  if(!select){
+    return;
+  }
+
+  select.innerHTML = `
+    <option value="all">
+      All Regions
+    </option>
+  `;
+
+  Object.keys(nevadaRegions)
+    .forEach(region => {
+
+      select.innerHTML += `
+        <option value="${region}">
+          ${region}
+        </option>
+      `;
+
+    });
+
+}
 	
 	
 function openAdminPanel(){
