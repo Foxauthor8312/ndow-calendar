@@ -2727,7 +2727,25 @@ if(
 
 
 	  
-return formatted === dateStr;
+const match =
+  formatted === dateStr;
+
+if(
+  e.title.includes('South Fork')
+){
+
+  console.log(
+    'SOUTH FORK MATCH TEST',
+    {
+      formatted,
+      dateStr,
+      match
+    }
+  );
+
+}
+
+return match;
 
 });
 
