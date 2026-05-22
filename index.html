@@ -2692,6 +2692,14 @@ function renderCalendar(){
     return false;
   }
 
+console.log(
+  'FILTER TEST',
+  e.title,
+  e.region,
+  activeRegion,
+  e.category,
+  activeFilters
+);
   const d = new Date(e.date);
 
   if(isNaN(d)) return false;
