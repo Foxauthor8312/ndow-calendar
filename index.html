@@ -1542,22 +1542,7 @@ body{
         >
           View Full Terms
         </button>
-
-        <button
-          id="acceptTermsButton"
-          disabled
-          onclick="acceptTerms()"
-        >
-          Continue
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
+acceptTerms
 <!-- ========================================
      START LOGIN LOADING OVERLAY
 ======================================== -->
@@ -3887,6 +3872,7 @@ function openAdminSection(section){
 }
 
 	function loadRegionDropdown(){
+
   const select =
     document.getElementById(
       'geoRegionSelect'
@@ -3912,8 +3898,8 @@ function openAdminSection(section){
       `;
 
     });
-  
-  }
+
+}
 
   const allOption =
     document.createElement(
@@ -5505,6 +5491,77 @@ async function deleteHelpTopic(){
 
 }
 
+function monitorTermsScroll(){
+
+  const container =
+    document.getElementById(
+      'termsScrollContainer'
+    );
+
+  const checkbox =
+    document.getElementById(
+      'termsCheckbox'
+    );
+
+  if(
+    container.scrollTop +
+    container.clientHeight >=
+    container.scrollHeight - 10
+  ){
+
+    checkbox.disabled = false;
+
+  }
+
+}
+
+function toggleTermsAcceptance(){
+
+  const checkbox =
+    document.getElementById(
+      'termsCheckbox'
+    );
+
+  const button =
+    document.getElementById(
+      'acceptTermsButton'
+    );
+
+  button.disabled =
+    !checkbox.checked;
+
+}
+
+async function acceptTerms(){
+
+  localStorage.setItem(
+    'termsAccepted',
+    'true'
+  );
+
+  document.getElementById(
+    'termsModal'
+  ).style.display = 'none';
+
+}
+
+async function checkTermsAcceptance(){
+
+  const accepted =
+    localStorage.getItem(
+      'termsAccepted'
+    );
+
+  if(accepted === 'true'){
+    return;
+  }
+
+  document.getElementById(
+    'termsModal'
+  ).style.display = 'flex';
+
+}
+	
 </script>
 
 <!-- ========================================
