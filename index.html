@@ -5557,7 +5557,8 @@ function toggleTermsAcceptance(){
 
   }
 
-}function toggleTermsAcceptance(){
+}
+	function toggleTermsAcceptance(){
 
   const checkbox =
     document.getElementById(
@@ -5595,6 +5596,29 @@ function toggleTermsAcceptance(){
 }
 
 async function acceptTerms(){
+
+  localStorage.setItem(
+    'termsAccepted',
+    'true'
+  );
+
+  const modal =
+    document.getElementById(
+      'termsModal'
+    );
+
+  if(modal){
+
+    modal.style.display =
+      'none';
+
+    modal.classList.add(
+      'hidden'
+    );
+
+  }
+
+}
 
 async function checkTermsAcceptance(){
 
@@ -6683,7 +6707,7 @@ const geoEventStats = {
 
 };
 
-function function loadGeoCounties(){
+function loadGeoCounties(){
 
   const region =
     document.getElementById(
@@ -6741,34 +6765,7 @@ function function loadGeoCounties(){
 
 }
 	
-  if(!region){
-
-    return;
-
-  }
-
-  geoRegions[region].forEach(county => {
-
-    const option =
-      document.createElement(
-        'option'
-      );
-
-    option.value =
-      county;
-
-    option.innerText =
-      county;
-
-    countySelect.appendChild(
-      option
-    );
-
-  });
-
-  renderGeoRegionAnalysis(region);
-
-}
+  
 
 function renderGeoRegionAnalysis(region){
 
