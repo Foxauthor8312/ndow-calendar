@@ -4033,6 +4033,87 @@ function closeHelpModal(){
 
 }
 
+	function openAdminSection(section){
+
+  const users =
+    document.getElementById(
+      'usersPanel'
+    );
+
+  const help =
+    document.getElementById(
+      'helpPanel'
+    );
+
+  const announcements =
+    document.getElementById(
+      'announcementPanel'
+    );
+
+  const geo =
+    document.getElementById(
+      'geoPanel'
+    );
+
+  if(users){
+    users.style.display =
+      'none';
+  }
+
+  if(help){
+    help.style.display =
+      'none';
+  }
+
+  if(announcements){
+    announcements.style.display =
+      'none';
+  }
+
+  if(geo){
+    geo.style.display =
+      'none';
+  }
+
+  if(
+    section === 'users' &&
+    users
+  ){
+    users.style.display =
+      'block';
+  }
+
+  if(
+    section === 'help' &&
+    help
+  ){
+    help.style.display =
+      'block';
+  }
+
+  if(
+    section === 'announcements' &&
+    announcements
+  ){
+
+    announcements.style.display =
+      'block';
+
+    loadAnnouncementAdminList();
+
+  }
+
+  if(
+    section === 'geo' &&
+    geo
+  ){
+    geo.style.display =
+      'block';
+  }
+
+}
+
+	
 // ========================================
 // SYSTEM CONSOLE
 // ========================================
