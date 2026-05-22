@@ -1,1 +1,6854 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+	
+<meta charset="UTF-8">
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<title>NDOW Volunteer Event Calendar</title>
+
+<link
+  rel="icon"
+  type="image/png"
+  href="favicon.png"
+>
+
+<style>
+
+/* ========================================
+   START GLOBAL STYLES
+======================================== */
+	
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#f3f4f6;
+}
+
+/* ========================================
+   START HEADER SECTION
+======================================== */
+	
+header{
+
+  background:#19304B;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+  padding:18px 20px;
+
+  border-bottom:2px solid #F29647;
+
+}
+h1{
+  margin:0;
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:white;
+}
+	
+.controls{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  color:white;
+}
+	
+.account-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.user-display{
+  color:white;
+  font-size:14px;
+  font-weight:600;
+}
+	
+.login-button{
+  background:
+    linear-gradient(
+      180deg,
+      #166534,
+      #14532d
+    ) !important;
+}
+	
+button{
+  background:#F29647;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:4px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s ease;
+}
+	
+
+button:hover{
+  opacity:.9;
+}
+
+.calendar{
+  display:grid;
+  grid-template-columns:
+    repeat(7,minmax(0,1fr));
+  grid-template-rows:32px;
+  grid-auto-rows:minmax(120px,1fr);
+  gap:1px;
+  background:#d1d5db;
+  border-top:1px solid #d1d5db;
+}
+ 
+.day-name{
+  background:#e5e7eb;
+  height:28px;
+  min-height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:16px;
+  padding:0;
+  line-height:1;
+}
+
+.day{
+  background:white;
+  min-height:140px;
+  padding:8px;
+	
+}
+
+.day-number{
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.admin-button{
+  background:#4B6B88;
+  color:white;
+}
+
+.admin-button:hover{
+  background:#3B5872;
+}
+
+.admin-panel button{
+  background:#4B6B88;
+  color:white;
+}
+
+.admin-panel button:hover{
+  background:#3B5872;
+}
+.event{
+  padding:6px;
+  border-radius:6px;
+  color:white;
+  font-size:12px;
+  margin-bottom:5px;
+  cursor:pointer;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:white;
+  width:500px;
+  border-radius:14px;
+  padding:25px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+/* MODAL */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal.hidden {
+  display: none;
+}
+.hidden{
+  display:none !important;
+}
+	
+.modal-content {
+  background: white;
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  position: relative;
+  padding: 28px;
+}
+
+.modal-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:6px;
+  background:#dc2626;
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s ease;
+}
+
+.modal-close:hover{
+  background:#b91c1c;
+}
+
+@keyframes spin {
+
+  from {
+    transform:rotate(0deg);
+  }
+
+  to {
+    transform:rotate(360deg);
+  }
+
+}
+	
+	@media(max-width:768px){
+
+  header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .controls,
+  .account-controls{
+    width:100%;
+  }
+
+  .calendar{
+    grid-template-columns:repeat(7,minmax(120px,1fr));
+    overflow-x:auto;
+  }
+
+  .legend{
+    justify-content:flex-start;
+  }
+
+}
+/* ========================================
+   START LEGEND SECTION
+======================================== */
+
+.legend{
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  gap:6px;
+  padding:8px 12px;
+  width:100%;
+  box-sizing:border-box;
+  overflow-x:auto;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  border-right:1px solid #d1d5db;
+  background:#eef2f7;
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+
+.legend-item:last-child{
+  border-right:none;
+}
+
+.legend-item{
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.legend-item:hover{
+  background:#e5e7eb;
+}
+
+.legend-item.active-filter{
+  background:#19304B;
+  color:white;
+}
+
+
+.legend-color{
+  width:14px;
+  height:14px;
+  border-radius:4px;
+  display:inline-block;
+}
+
+.hunter{
+  background:#84cc16;
+}
+
+.advanced-hunter{
+  background:#166534;
+}
+
+.fishing{
+  background:#f97316;
+}
+
+.wildlife{
+  background:#9333ea;
+}
+
+.urban-wildlife{
+  background:#0ea5e9;
+}
+
+.boating{
+  background:#6b7280;
+}
+
+.archery{
+  background:#bcc9bb;
+}
+
+.school{
+  background:#b45309;
+}
+
+.volunteer{
+  background:#2563eb;
+}
+
+.other{
+  background:#64748b;
+}  .official-link{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 18px;
+  background:#166534;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+.request-link{
+  display:block;
+  margin-top:16px;
+  padding:14px 18px;
+  background:#F29647;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+  text-align:center;
+  line-height:1.4;
+}
+  .contact-select{
+  margin-top:14px;
+  padding:10px;
+  width:100%;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  font-size:14px;
+}
+
+/* ========================================
+   START STATUS BAR SECTION
+======================================== */
+	
+.updated-bar{
+  background:#dbeafe;
+  padding:10px 20px;
+  color:#374151;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  font-weight:700;
+  border-top:1px solid #c3d4ea;
+  border-bottom:1px solid #c3d4ea;
+}
+
+.updated-section{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  white-space:nowrap;
+}
+
+#currentTime{
+  min-width:240px;
+  width:240px;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+	
+.disclaimer{
+  background:#ECECEC;
+  color:#4b5563;
+  font-size:12px;
+  line-height:1.2;
+  padding:20px;
+  border-top:1px solid #d1d5db;
+}
+.subtitle{
+	
+  color:rgba(255,255,255,0.78);
+  font-size:13px;
+  margin-top:6px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.title-block{
+  color:white;
+}
+/* ========================================
+   LOGIN SCREEN
+======================================== */
+
+.login-screen{
+
+  position:fixed;
+  inset:0;
+
+  background:#000;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:20px;
+
+  z-index:100000;
+
+}
+
+.login-box{
+
+  width:100%;
+  max-width:520px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+
+/* HEADER */
+
+.login-header{
+
+  display:flex;
+  align-items:center;
+  gap:16px;
+
+  margin-bottom:28px;
+
+}
+
+.state-outline{
+
+  width:64px;
+
+  height:auto;
+
+  opacity:.96;
+
+  margin-right:10px;
+
+}
+
+.login-title-main{
+
+  font-size:58px;
+
+  font-weight:800;
+
+  letter-spacing:-2px;
+
+  line-height:.9;
+
+  color:white;
+
+}
+
+.login-title-sub{
+
+  margin-top:4px;
+
+  font-size:18px;
+
+  font-weight:400;
+
+  color:rgba(255,255,255,.72);
+
+}
+
+/* FORM */
+
+.login-form{
+
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+
+.input-wrap,
+.password-wrap{
+
+  position:relative;
+
+  width:100%;
+
+  margin-bottom:18px;
+
+}
+
+.input-icon{
+
+  position:absolute;
+
+  left:22px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:rgba(255,255,255,.92);
+
+  font-size:20px;
+
+  z-index:5;
+
+}
+
+.login-input{
+
+  width:100% !important;
+
+  height:64px;
+
+  display:block;
+
+  padding:0 58px;
+
+  border-radius:20px;
+
+  border:1px solid rgba(140,180,255,.28);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,10,28,.98) 0%,
+      rgba(18,46,96,.95) 18%,
+      rgba(58,96,170,.90) 50%,
+      rgba(18,46,96,.95) 82%,
+      rgba(2,10,28,.98) 100%
+    );
+
+  color:white;
+
+  font-size:18px;
+
+  outline:none;
+
+  box-sizing:border-box;
+
+  appearance:none;
+
+  -webkit-appearance:none;
+
+  box-shadow:
+    inset 0 0 18px rgba(255,255,255,.05),
+    0 0 18px rgba(40,90,180,.10);
+
+}
+
+.login-input::placeholder{
+
+  color:rgba(255,255,255,.58);
+
+}
+
+.toggle-password{
+
+  position:absolute;
+
+  right:22px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:rgba(255,255,255,.92);
+
+  font-size:22px;
+
+  cursor:pointer;
+
+}
+
+/* LOGIN BUTTON */
+
+/* LOGIN BUTTON */
+
+.login-button{
+
+  width:170px;
+
+  height:52px;
+
+  margin-top:10px;
+
+  border:none;
+
+  border-radius:16px;
+
+background:
+  linear-gradient(
+    180deg,
+    #166534,
+    #14532d
+  );
+
+  color:white;
+
+  font-size:18px;
+
+  font-weight:500;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 0 20px rgba(40,90,180,.18);
+
+}
+
+
+/* LOGIN ERROR */
+
+.login-error{
+
+  margin-top:14px;
+
+  min-height:18px;
+
+  color:#fca5a5;
+
+  font-size:16px;
+
+  text-align:center;
+
+  font-weight:400;
+
+}
+
+/* HELP */
+.access-help{
+
+  width:100%;
+
+  margin:34px 0 18px;
+
+  display:flex;
+  align-items:center;
+
+  gap:16px;
+
+  color:rgba(255,255,255,.62);
+
+  font-size:15px;
+
+}
+
+.access-help::before,
+.access-help::after{
+
+  content:'';
+
+  flex:1;
+
+  height:1px;
+
+  background:rgba(255,255,255,.18);
+
+}
+
+/* ACCESS LINKS */
+
+.access-link{
+
+  width:100%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  margin-top:14px;
+
+  padding:18px 22px;
+
+  border-radius:20px;
+
+  border:1px solid rgba(140,180,255,.26);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,10,28,.98) 0%,
+      rgba(18,46,96,.95) 18%,
+      rgba(58,96,170,.90) 50%,
+      rgba(18,46,96,.95) 82%,
+      rgba(2,10,28,.98) 100%
+    );
+
+  color:white;
+
+  text-decoration:none;
+
+  box-sizing:border-box;
+
+  box-shadow:
+    inset 0 0 18px rgba(255,255,255,.04),
+    0 0 18px rgba(40,90,180,.08);
+
+}
+
+.access-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+  font-size:16px;
+
+  color:white;
+
+}
+
+.access-left i{
+
+  font-size:18px;
+
+}
+
+.access-link > i{
+
+  font-size:16px;
+
+  opacity:.92;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .login-box{
+
+    max-width:390px;
+
+  }
+
+  .login-title-main{
+
+    font-size:46px;
+
+  }
+
+  .login-title-sub{
+
+    font-size:15px;
+
+  }
+
+  .state-outline{
+
+    width:28px;
+
+  }
+
+}
+
+/* ========================================
+   START ADMIN PANEL
+======================================== */
+
+body{
+
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+
+}
+	
+.admin-layout{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:24px;
+  margin-top:20px;
+}
+
+.admin-panel{
+
+  background:white;
+
+  border:1px solid #dbe3ec;
+
+  border-radius:16px;
+
+  padding:24px;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.06);
+
+  min-height:0;
+
+  overflow:hidden;
+
+}
+
+
+.admin-panel h2,
+.admin-panel h3{
+  margin-top:0;
+}
+
+.legend-item.active-filter{
+  background:#19304B;
+  color:white;
+}
+
+.filter-note{
+  margin-left:20px;
+  background:transparent !important;
+  border-right:none !important;
+  color:#6b7280;
+  cursor:default !important;
+  font-style:italic;
+  white-space:nowrap;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+}
+
+.filter-note:hover{
+  background:transparent;
+}
+
+.geo-card{
+  background:white;
+  border:1px solid #dbe3ec;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.04);
+}
+
+.geo-title{
+  font-size:14px;
+  color:#6b7280;
+  margin-bottom:10px;
+}
+
+.geo-value{
+  font-size:18px;
+  font-weight:700;
+  color:#234e70;
+}
+	
+</style>
+</head>
+
+<body>
+
+<!-- ========================================
+     START LOGIN HTML
+======================================== -->
+
+<div id="loginScreen" class="login-screen">
+
+  <div class="login-box">
+
+    <div class="login-header">
+
+      <img
+        src="state-outline.png"
+        alt="Nevada Outline"
+        class="state-outline"
+      >
+
+      <div class="login-title-wrap">
+
+        <div class="login-title-main">
+          NDOW
+        </div>
+
+        <div class="login-title-sub">
+          Volunteer Event Calendar
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="login-form">
+
+      <div class="input-wrap">
+
+        <span class="input-icon">
+          <i class="fa-regular fa-user"></i>
+        </span>
+
+        <input
+          type="text"
+          id="userName"
+          autocomplete="off"
+          placeholder="User ID"
+          class="login-input"
+        >
+
+      </div>
+
+      <div class="password-wrap">
+
+        <span class="input-icon">
+          <i class="fa-solid fa-lock"></i>
+        </span>
+
+        <input
+          type="password"
+          id="userPin"
+          autocomplete="new-password"
+          placeholder="6-digit PIN"
+          class="login-input password-input"
+          maxlength="6"
+        >
+
+        <span
+          class="toggle-password"
+          onclick="togglePassword()"
+        >
+          <i class="fa-regular fa-eye"></i>
+        </span>
+
+      </div>
+
+      <button
+        id="loginButton"
+        onclick="checkLogin()">
+        Login
+      </button>
+
+      <div
+        id="loginStatus"
+        style="
+          display:none;
+          margin-top:12px;
+          color:#2c6e49;
+          font-size:14px;
+          text-align:center;
+        ">
+        Verifying instructor access...
+      </div>
+
+      <div id="loginError" class="login-error"></div>
+
+      <div
+        id="sessionMessage"
+        style="
+          margin-top:12px;
+          color:#fca5a5;
+          font-size:14px;
+          text-align:center;
+        "
+      ></div>
+
+      <div class="access-help">
+        Need access or forgot your PIN?
+      </div>
+
+      <a
+        href="mailto:volunteerndow@gmail.com?subject=NDOW Calendar Access Request&body=Please include:%0A%0AFull Name:%0ADepartment / Volunteer Area:%0A"
+        class="access-link"
+      >
+
+        <span class="access-left">
+
+          <i class="fa-regular fa-envelope"></i>
+
+          Request Access by Email
+
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+      <a
+        href="sms:17252870818?body=NDOW Calendar Access Request%0A%0AFull Name:%0ADepartment / Volunteer Area:"
+        class="access-link"
+      >
+
+        <span class="access-left">
+
+          <i class="fa-regular fa-comment"></i>
+
+          Request Access by Text
+
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </a>
+
+    </div>
+
+    <div style="
+      margin-top:34px;
+      width:100%;
+      text-align:center;
+      color:#9CCBFF;
+      line-height:1.6;
+      font-size:16px;
+    ">
+
+      <div>
+        A custom built application to assist the NDOW volunteer
+        in choosing events to participate in.
+      </div>
+
+      <div style="
+        margin-top:10px;
+        font-size:13px;
+        color:rgba(156,203,255,0.55);
+      ">
+        &copy; 2026 Barry Mattison,
+        NDOW Volunteer Instructor V26.09.15
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========================================
+     START MAIN APPLICATION
+======================================== -->
+	
+<div id="appContent" style="display:none;">
+
+<!-- ========================================
+     START HEADER
+======================================== -->
+
+	
+<header>
+
+ <div class="title-block">
+
+  <h1>NDOW Volunteer Event Calendar</h1>
+
+  <div class="subtitle">
+    A Volunteer-maintained Event Reference - see footnote
+  </div>
+
+</div>
+
+
+<div class="controls">
+   
+    <button onclick="prevMonth()">Previous</button>
+
+    <h2 id="monthLabel"></h2>
+
+    <button onclick="nextMonth()">Next</button>
+
+  </div>
+
+	<div class="account-controls">
+
+  <div id="userDisplay" class="user-display">
+    Logged in
+  </div>
+
+  <button onclick="logout()">
+    Logout
+  </button>
+
+  <button class="admin-button" onclick="openAdminPanel()">
+    Admin
+  </button>
+		
+  <button class="admin-button" onclick="openHelpModal()">
+    Help
+  </button>
+  <button
+    id="superuserButton"
+    class="admin-button hidden"
+    onclick="openSystemConsole()"
+  >
+    System
+  </button>
+		
+</div>
+	
+</header>
+
+<div class="updated-bar">
+
+  <div class="updated-section">
+    <strong>LAST UPDATED:</strong>
+    <span id="lastUpdated">
+      --
+    </span>
+  </div>
+
+  <div class="updated-section">
+    <strong>CURRENT DATE/TIME:</strong>
+    <span id="currentTime">
+      --
+    </span>
+  </div>
+
+</div>
+
+<!-- ========================================
+     START LEGEND
+======================================== -->
+	
+  <div class="legend">
+
+<div class="legend-item"
+     onclick="toggleFilter('Hunter Education')">
+	
+  <span class="legend-color hunter"></span>
+  Hunter Education
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Fishing')">
+  <span class="legend-color fishing"></span>
+  Fishing
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Advanced Hunter Education')">
+  <span class="legend-color advanced-hunter"></span>
+  Advanced Hunter Education
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Wildlife')">
+  <span class="legend-color wildlife"></span>
+  Wildlife
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Urban Wildlife')">
+  <span class="legend-color urban-wildlife"></span>
+  Urban Wildlife
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Archery')">
+  <span class="legend-color archery"></span>
+  Archery
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Boating')">
+  <span class="legend-color boating"></span>
+  Boating
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('School')">
+  <span class="legend-color school"></span>
+  School
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Volunteer')">
+  <span class="legend-color volunteer"></span>
+  Volunteer
+</div>
+
+<div class="legend-item"
+     onclick="toggleFilter('Other')">
+  <span class="legend-color other"></span>
+  Other
+</div>
+	  
+<div style="
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-left:auto;
+  flex-shrink:0;
+  white-space:nowrap;
+">
+
+  <span style="
+    font-weight:600;
+    color:#374151;
+  ">
+    Region:
+  </span>
+
+  <select
+  id="regionFilter"
+  onchange="setRegionFilter()"
+  style="
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+    font-size:13px;
+  "
+>
+
+  <option value="ALL">
+    All Regions
+  </option>
+
+  <option value="Western">
+    Western
+  </option>
+
+  <option value="Eastern">
+    Eastern
+  </option>
+
+  <option value="Southern">
+    Southern
+  </option>
+
+</select>
+</div>
+</div>
+	
+<!-- ========================================
+     START CALENDAR
+======================================== -->
+
+<div class="calendar" id="calendar"></div>
+
+	
+<!-- ========================================
+     START EVENT MODAL
+======================================== -->
+
+<div id="eventModal" class="modal hidden">
+
+ <div class="modal-content" style="
+  width:min(1400px,100%);
+  max-height:90vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+">
+    <button id="closeModal" class="modal-close">
+      ✕
+    </button>
+
+    <div id="modalBody">
+
+      <div class="modal-loading">
+        Loading event...
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<!-- ========================================
+     START LOGIN LOADING OVERLAY
+======================================== -->
+
+<div id="loadingOverlay" style="
+  display:none;
+  flex-direction:column;
+  position:fixed;
+  inset:0;
+  background:#000;;
+  z-index:999999;
+  align-items:center;
+  justify-content:center;
+  color:#9CCBFF;;
+  font-family:'Inter',sans-serif;
+">
+
+ <div id="loadingMessage" style="
+    font-size:26px;
+    font-weight:600;
+    letter-spacing:.3px;
+    margin-bottom:18px;
+  ">
+    Verifying Instructor Access... Please wait.
+</div>
+
+  <div style="
+    width:52px;
+    height:52px;
+    border:5px solid rgba(156,203,255,0.18);
+    border-top:5px solid #9CCBFF;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+  "></div>
+
+</div>
+
+<script>
+
+let authorizedUsers = [];
+let categoryEmails = [];
+
+const systemStatus = {
+
+  workflowStatus:'STARTING',
+
+  lastSync:null,
+
+  syncDuration:null,
+
+  eventsProcessed:0,
+
+  categorizedEvents:0,
+
+  uncategorizedEvents:0,
+
+  geoMappedEvents:0,
+
+  geoFailedEvents:0,
+
+  parseFailures:0,
+
+  warnings:[],
+
+  recentErrors:[]
+
+};
+
+// ========================================
+// START CATEGORY RULES
+// ========================================
+const CATEGORY_RULES = {
+
+  'Hunter Education': [
+    'hunter ed'
+  ],
+
+  'Advanced Hunter Education': [
+    'clays',
+    'rso',
+    'crossbow',
+    '.22',
+    'rifle',
+    'shotgun',
+    'muzzleloader',
+    'skeet',
+    'trap',
+    'dutch',
+    'oven',
+    'field day',
+    'bowhunter',
+    'maintenance',
+    'firearm',
+    'nra',
+    'ams'
+  ],
+
+  'Fishing': [
+    'fishing',
+    'flies',
+    'angling',
+    'fly casting',
+    'float',
+    'kayak',
+    'carp',
+    'intermediate fly',
+    'ranger day',
+    'sntu',
+    'rodeo',
+    'pike out',
+    'cops',
+	'rods',
+    'rod repairs',
+	'trout',
+    'bobbers'
+  ],
+
+  'School': [
+    'school',
+    'career',
+    'tic',
+    'kyn',
+    'hatchery',
+    'steam',
+    'alamo',
+    '4h',
+    'know your nevada',
+	'ccsd',
+    'eco'
+  ],
+
+  'Archery': [
+    'nasp',
+    'intro to archery',
+    'bai',
+    'bait'
+  ],
+
+   'Urban Wildlife': [
+    'urban wildlife',
+    'urban education',
+    'living with',
+    'urban ed'
+  ],
+
+  'Wildlife': [
+    'wildlife',
+    'skins',
+    'table',
+	'table chat',
+    'chat',
+    'wild',
+    'bird',
+    'burrows',
+    'nests',
+    'bats',
+    'skulls',
+    'reptile',
+    'snake',
+    'bat walk',
+	'migratory',
+    'animal',
+    'owl'
+  ],
+
+    'Boating': [
+    'boat',
+    'boating'
+  ],
+
+  'Volunteer': [
+    'volunteer',
+    'instructor',
+    'volunteer meeting',
+    'volunteer training',
+    'academy'
+  ]
+};
+
+
+const nevadaRegions = {
+  Western: {
+    Humboldt: [
+      { city: "Winnemucca", zip: "89445" },
+      { city: "Golconda", zip: "89414" },
+      { city: "Denio", zip: "89404" },
+      { city: "McDermitt", zip: "89421" },
+      { city: "Orovada", zip: "89425" },
+      { city: "Paradise Valley", zip: "89426" },
+      { city: "Valmy", zip: "89438" },
+      { city: "Humboldt", zip: "89446" }
+    ],
+
+    Pershing: [
+      { city: "Lovelock", zip: "89419" },
+      { city: "Imlay", zip: "89418" }
+    ],
+
+    Washoe: [
+      { city: "Reno", zip: "89501" },
+      { city: "Reno", zip: "89502" },
+      { city: "Reno", zip: "89503" },
+      { city: "Reno", zip: "89506" },
+      { city: "Reno", zip: "89508" },
+      { city: "Reno", zip: "89509" },
+      { city: "Reno", zip: "89511" },
+      { city: "Reno", zip: "89519" },
+      { city: "Reno", zip: "89521" },
+      { city: "Reno", zip: "89523" },
+      { city: "Sparks", zip: "89431" },
+      { city: "Sparks", zip: "89433" },
+      { city: "Sparks", zip: "89434" },
+      { city: "Sparks", zip: "89436" },
+      { city: "Spanish Springs", zip: "89441" },
+      { city: "Sun Valley", zip: "89433" },
+      { city: "Incline Village", zip: "89450" },
+      { city: "Crystal Bay", zip: "89402" },
+      { city: "Gerlach", zip: "89412" },
+      { city: "Empire", zip: "89405" },
+      { city: "Wadsworth", zip: "89442" },
+      { city: "Verdi", zip: "89439" }
+    ],
+
+    Churchill: [
+      { city: "Fallon", zip: "89406" },
+      { city: "Fallon", zip: "89407" },
+      { city: "Naval Air Station Fallon", zip: "89496" }
+    ],
+
+    Douglas: [
+      { city: "Minden", zip: "89423" },
+      { city: "Gardnerville", zip: "89410" },
+      { city: "Genoa", zip: "89411" },
+      { city: "Zephyr Cove", zip: "89448" },
+      { city: "Stateline", zip: "89449" },
+      { city: "Gardnerville Ranchos", zip: "89460" },
+      { city: "Topaz", zip: "89413" },
+      { city: "Wellington", zip: "89444" }
+    ],
+
+    Mineral: [
+      { city: "Hawthorne", zip: "89415" },
+      { city: "Luning", zip: "89420" },
+      { city: "Mina", zip: "89422" },
+      { city: "Schurz", zip: "89427" }
+    ]
+  },
+
+  Eastern: {
+    Elko: [
+      { city: "Elko", zip: "89801" },
+      { city: "Elko", zip: "89802" },
+      { city: "Elko", zip: "89803" },
+      { city: "Carlin", zip: "89822" },
+      { city: "Wells", zip: "89835" },
+      { city: "West Wendover", zip: "89883" },
+      { city: "Spring Creek", zip: "89815" },
+      { city: "Jackpot", zip: "89825" },
+      { city: "Mountain City", zip: "89831" },
+      { city: "Jarbidge", zip: "89826" },
+      { city: "Owyhee", zip: "89832" },
+      { city: "Tuscarora", zip: "89834" },
+      { city: "Deeth", zip: "89823" },
+      { city: "Lamoille", zip: "89828" }
+    ],
+
+    Lander: [
+      { city: "Battle Mountain", zip: "89820" },
+      { city: "Austin", zip: "89310" }
+    ],
+
+    Eureka: [
+      { city: "Eureka", zip: "89316" }
+    ],
+
+    "White Pine": [
+      { city: "Ely", zip: "89301" },
+      { city: "Baker", zip: "89311" },
+      { city: "Duckwater", zip: "89314" },
+      { city: "Lund", zip: "89317" },
+      { city: "McGill", zip: "89318" },
+      { city: "Ruth", zip: "89319" }
+    ]
+  },
+
+  Southern: {
+    Esmeralda: [
+      { city: "Goldfield", zip: "89013" },
+      { city: "Dyer", zip: "89010" },
+      { city: "Silverpeak", zip: "89047" }
+    ],
+
+    Nye: [
+      { city: "Pahrump", zip: "89048" },
+      { city: "Pahrump", zip: "89041" },
+      { city: "Tonopah", zip: "89049" },
+      { city: "Amargosa Valley", zip: "89020" },
+      { city: "Beatty", zip: "89003" },
+      { city: "Crystal", zip: "89060" },
+      { city: "Mercury", zip: "89023" },
+      { city: "Round Mountain", zip: "89045" }
+    ],
+
+    Lincoln: [
+      { city: "Caliente", zip: "89008" },
+      { city: "Pioche", zip: "89043" },
+      { city: "Panaca", zip: "89042" },
+      { city: "Alamo", zip: "89001" },
+      { city: "Hiko", zip: "89017" }
+    ],
+
+    Clark: [
+      { city: "Las Vegas", zip: "89101" },
+      { city: "Las Vegas", zip: "89102" },
+      { city: "Las Vegas", zip: "89103" },
+      { city: "Las Vegas", zip: "89104" },
+      { city: "Las Vegas", zip: "89106" },
+      { city: "Las Vegas", zip: "89107" },
+      { city: "Las Vegas", zip: "89108" },
+      { city: "Las Vegas", zip: "89109" },
+      { city: "Las Vegas", zip: "89110" },
+      { city: "Las Vegas", zip: "89113" },
+      { city: "Las Vegas", zip: "89117" },
+      { city: "Las Vegas", zip: "89118" },
+      { city: "Las Vegas", zip: "89119" },
+      { city: "Las Vegas", zip: "89121" },
+      { city: "Las Vegas", zip: "89123" },
+      { city: "North Las Vegas", zip: "89030" },
+      { city: "North Las Vegas", zip: "89031" },
+      { city: "North Las Vegas", zip: "89032" },
+      { city: "North Las Vegas", zip: "89084" },
+      { city: "Henderson", zip: "89002" },
+      { city: "Henderson", zip: "89011" },
+      { city: "Henderson", zip: "89012" },
+      { city: "Henderson", zip: "89014" },
+      { city: "Henderson", zip: "89015" },
+      { city: "Henderson", zip: "89052" },
+      { city: "Boulder City", zip: "89005" },
+      { city: "Mesquite", zip: "89027" },
+      { city: "Laughlin", zip: "89029" },
+      { city: "Overton", zip: "89040" },
+      { city: "Searchlight", zip: "89046" },
+      { city: "Indian Springs", zip: "89018" },
+      { city: "Jean", zip: "89019" },
+      { city: "Moapa", zip: "89025" },
+      { city: "Bunkerville", zip: "89007" }
+    ]
+  }
+};
+
+// ========================================
+// BUILD ZIP LOOKUP INDEX
+// ========================================
+
+const zipLookup = {};
+
+async function loadZipLookup(){
+
+  const response =
+    await fetch(
+      'zip_code_database.csv'
+    );
+
+  const text =
+    await response.text();
+
+  const rows =
+    text.split('\n');
+
+  rows.shift();
+
+  Object.keys(zipLookup)
+    .forEach(key => {
+      delete zipLookup[key];
+    });
+
+  rows.forEach(row => {
+
+    if(!row.trim()){
+      return;
+    }
+
+    const columns =
+      row.split(',');
+
+    const zip =
+      columns[0]
+        ?.replace(/"/g,'')
+        .trim()
+        .padStart(5,'0');
+
+    const city =
+      columns[3]
+        ?.replace(/"/g,'')
+        .trim();
+
+    const county =
+      columns[7]
+        ?.replace(/"/g,'')
+        .replace(' County','')
+        .replace(/\r/g,'')
+        .trim();
+
+    const region = (() => {
+
+      const c =
+        county
+          ?.replace(/county/gi,'')
+          .replace(/\r/g,'')
+          .trim()
+          .toLowerCase();
+
+      if([
+        'clark',
+        'lincoln',
+        'nye',
+        'esmeralda'
+      ].includes(c)){
+        return 'Southern';
+      }
+
+      if([
+        'washoe',
+        'carson city',
+        'douglas',
+        'churchill',
+        'storey',
+        'lyon',
+        'pershing',
+        'mineral',
+        'humboldt'
+      ].includes(c)){
+        return 'Western';
+      }
+
+      if([
+        'elko',
+        'lander',
+        'eureka',
+        'white pine'
+      ].includes(c)){
+        return 'Eastern';
+      }
+
+      return '';
+
+    })();
+
+    if(!zip){
+      return;
+    }
+
+    zipLookup[zip] = {
+
+      city:
+        city || '',
+
+      county:
+        county || '',
+
+      region:
+        region || ''
+
+    };
+
+  });
+
+  console.log(
+    'ZIP database loaded:',
+    Object.keys(zipLookup).length
+  );
+
+}
+
+// ========================================
+// START EVENT CLASSIFICATION
+// ========================================
+
+function classifyEvent(title = '') {
+
+  const t = title.toLowerCase();
+
+  for (const category in CATEGORY_RULES) {
+
+    const keywords = CATEGORY_RULES[category];
+
+    const matched = keywords.some(keyword =>
+      t.includes(keyword.toLowerCase())
+    );
+
+    if (matched) {
+      return category;
+    }
+  }
+
+  return 'Other';
+}
+
+const categoryColors = {
+
+  'Hunter Education':'#84cc16',
+
+  'Advanced Hunter Education':'#166534',
+
+  'Fishing':'#f97316',
+
+  'Wildlife':'#9333ea',
+
+  'Urban Wildlife':'#0ea5e9',
+
+  'Boating':'#6b7280',
+
+  'Volunteer':'#2563eb',
+
+  'Archery':'#bcc9bb',
+
+  'School':'#b45309',
+
+  'Other':'#64748b'
+};
+
+let events = [];
+let activeFilters = [];
+let activeRegion = '';
+
+// ========================================
+// START EVENT LOADING
+// ========================================
+
+async function loadEvents(){
+
+  const token =
+    localStorage.getItem('token');
+
+  if(!token){
+
+    logout();
+
+    return;
+
+  }
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/events?t=' + Date.now(),
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    );
+
+    if(
+      response.status === 401 ||
+      response.status === 403
+    ){
+
+      logout();
+
+      return;
+
+    }
+
+    const data =
+      await response.json();
+
+    console.log(data);
+
+    events = data.events;
+
+    const syncStart =
+      Date.now();
+
+    systemStatus.parseFailures = 0;
+
+    systemStatus.geoFailedEvents = 0;
+
+    systemStatus.categorizedEvents = 0;
+
+    systemStatus.uncategorizedEvents = 0;
+
+    systemStatus.geoMappedEvents = 0;
+
+    systemStatus.warnings = [];
+
+    events = events.map(event => {
+
+      const cleanedLocation =
+        (
+          event.location || ''
+        )
+          .replace(/\n/g,' ')
+          .replace(/\s+/g,' ')
+          .trim();
+
+      const zipMatch =
+        cleanedLocation.match(
+          /\b\d{5}(?:-\d{4})?\b/
+        );
+
+      const zip =
+        zipMatch
+          ? zipMatch[0]
+              .substring(0,5)
+              .trim()
+              .padStart(5,'0')
+          : '';
+
+      const geo =
+        zipLookup[zip];
+
+      const category =
+        classifyEvent(
+          event.title
+        );
+
+      if(category === 'Other'){
+
+        systemStatus
+          .uncategorizedEvents++;
+
+        systemStatus.warnings.push({
+
+          type:'CATEGORY',
+
+          index:
+            systemStatus.warnings.length + 1,
+
+          title:event.title,
+
+          date:event.date,
+
+          location:cleanedLocation,
+
+          url:event.url,
+
+          raw:event
+
+        });
+
+      } else {
+
+        systemStatus
+          .categorizedEvents++;
+
+      }
+
+      let region = '';
+
+      if(geo?.county){
+
+        const county =
+          geo.county
+            ?.replace(/county/gi,'')
+            .replace(/\r/g,'')
+            .trim()
+            .toLowerCase();
+
+        if([
+          'clark',
+          'lincoln',
+          'nye',
+          'esmeralda'
+        ].includes(county)){
+
+          region = 'Southern';
+
+        } else if([
+          'washoe',
+          'douglas',
+          'churchill',
+          'lyon',
+          'storey',
+          'pershing',
+          'mineral',
+          'carson city',
+          'humboldt'
+        ].includes(county)){
+
+          region = 'Western';
+
+        } else if([
+          'elko',
+          'lander',
+          'eureka',
+          'white pine'
+        ].includes(county)){
+
+          region = 'Eastern';
+
+        }
+
+      }
+
+      if(region){
+
+        systemStatus
+          .geoMappedEvents++;
+
+      } else {
+
+        systemStatus
+          .geoFailedEvents++;
+
+        systemStatus.warnings.push({
+
+          type:'GEO',
+
+          index:
+            systemStatus.warnings.length + 1,
+
+          title:event.title,
+
+          date:event.date,
+
+          location:cleanedLocation,
+
+          url:event.url,
+
+          raw:event
+
+        });
+
+      }
+
+      return {
+
+        ...event,
+
+        zip,
+
+        category,
+
+        city:
+          geo?.city || '',
+
+        county:
+          geo?.county || '',
+
+        region
+
+      };
+
+    });
+		
+    document.getElementById(
+      'lastUpdated'
+    ).innerText =
+      new Date(
+        data.lastUpdated
+      ).toLocaleString();
+
+    systemStatus.lastSync =
+      new Date();
+
+    systemStatus.syncDuration =
+      (
+        (
+          Date.now() - syncStart
+        ) / 1000
+      ).toFixed(1) + 's';
+
+    systemStatus.eventsProcessed =
+      events.length;
+
+    systemStatus.workflowStatus =
+
+      systemStatus.geoFailedEvents > 0 ||
+      systemStatus.uncategorizedEvents > 0
+
+        ? 'WARNING'
+
+        : 'HEALTHY';
+
+    renderCalendar();
+
+    loadAnnouncements(
+      JSON.parse(
+        localStorage.getItem('user')
+      ).role
+    );
+
+  } catch(err){
+
+    console.error(err);
+
+    systemStatus.workflowStatus =
+      'FAILED';
+
+    systemStatus.recentErrors.push({
+
+      timestamp:new Date()
+        .toLocaleString(),
+
+      message:err.message
+
+    });
+
+    renderCalendar();
+
+  }
+
+}
+// loadEvents();
+
+	async function loadAnnouncements(role){
+
+  try {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/announcements',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const announcements =
+      await response.json();
+
+    if(
+      announcements.length > 0
+    ){
+
+      showAnnouncementPopup(
+        announcements[0]
+      );
+
+    }
+
+  } catch(err){
+
+    console.error(
+      'Announcement load failed',
+      err
+    );
+
+  }
+
+}
+
+function showAnnouncement(title,message){
+
+  if(
+    localStorage.getItem(
+      'dismissedAnnouncement'
+    ) === title
+  ){
+    return;
+  }
+
+  document.getElementById(
+    'announcementTitle'
+  ).innerText = title;
+
+  document.getElementById(
+    'announcementMessage'
+  ).innerHTML = `
+    ${message}
+
+    <div style="
+      margin-top:24px;
+      display:flex;
+      gap:10px;
+    ">
+
+      <button
+        onclick="dismissAnnouncement('${title}')"
+        style="
+          flex:1;
+          background:#374151;
+        "
+      >
+        Dismiss
+      </button>
+
+      <button
+        onclick="closeAnnouncement()"
+        style="
+          flex:1;
+        "
+      >
+        Close
+      </button>
+
+    </div>
+  `;
+
+  document.getElementById(
+    'announcementModal'
+  ).style.display = 'flex';
+
+}
+
+function closeAnnouncement(){
+
+  document.getElementById(
+    'announcementModal'
+  ).style.display =
+    'none';
+
+}
+
+	function dismissAnnouncement(title){
+
+  localStorage.setItem(
+    'dismissedAnnouncement',
+    title
+  );
+
+  closeAnnouncement();
+
+}
+ 
+fetch('emails.json')
+  .then(res => res.json())
+  .then(data => {
+
+    categoryEmails = data;
+
+   })
+  .catch(err => {
+
+    console.error(
+      'Email config failed',
+      err
+    );
+
+  });
+
+  
+let currentDate = new Date();
+// ========================================
+// START AUTHENTICATION
+// ========================================
+async function wakeServer(){
+
+  const wakeUrl =
+    'https://ndow-calendar-server.onrender.com/api/help/topics';
+
+  for(let i = 0; i < 5; i++){
+
+    try {
+
+      const response =
+        await fetch(wakeUrl);
+
+      if(response.ok){
+
+        return true;
+
+      }
+
+    } catch(err){
+
+      console.log(
+        'Server waking...',
+        i + 1
+      );
+
+    }
+
+    await new Promise(resolve =>
+      setTimeout(resolve, 3000)
+    );
+
+  }
+
+  return false;
+
+}
+	
+async function checkLogin(){
+
+document.getElementById(
+  'loadingOverlay'
+).style.display = 'flex';
+
+document.getElementById(
+  'loadingMessage'
+).innerHTML =
+  `
+    Connecting to secure services...
+
+    <div style="
+      margin-top:10px;
+      font-size:14px;
+      color:rgba(156,203,255,0.72);
+      font-weight:400;
+      line-height:1.5;
+    ">
+      Initial startup may take up to 60 seconds while secure cloud services wake up.
+    </div>
+  `;
+
+const button =
+    document.getElementById(
+      'loginButton'
+    );
+  const name =
+    document.getElementById(
+      'userName'
+    ).value.trim();
+
+  const pin =
+    document.getElementById(
+      'userPin'
+    ).value.trim();
+
+  // SHOW STATUS
+  
+
+try {
+
+  const response =
+    await fetch(
+  'https://ndow-calendar-server.onrender.com/api/login',
+  {
+
+    method:'POST',
+
+    headers:{
+      'Content-Type':
+        'application/json'
+    },
+
+    body:JSON.stringify({
+  username:name,
+  pin
+})
+  });
+
+    const data =
+	await response.json();
+
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Verifying account permissions...';
+
+if(!data.success){
+
+  throw new Error(
+    'Invalid login'
+  );
+
+}
+
+if(data.user.role === 'admin'){
+
+  document.getElementById(
+    'loadingMessage'
+  ).innerText =
+    'Loading administrator dashboard...';
+
+} else {
+
+  document.getElementById(
+    'loadingMessage'
+  ).innerText =
+    'Loading volunteer calendar...';
+
+}
+await new Promise(resolve =>
+  setTimeout(resolve, 1200)
+);
+
+document.getElementById(
+  'loadingOverlay'
+).style.display = 'none';
+	
+localStorage.setItem(
+  'ndowAccess',
+  'granted'
+);
+localStorage.setItem(
+  'token',
+  data.token
+);
+
+	
+localStorage.setItem(
+  'user',
+  JSON.stringify(data.user)
+);
+
+document.getElementById(
+  'loginScreen'
+).style.display = 'none';
+
+document.getElementById(
+  'appContent'
+).style.display = 'block';
+
+document.getElementById(
+  'userDisplay'
+).innerText =
+  'Logged in as: ' +
+  data.user.username;
+
+const superUsers = [
+  'barry',
+  'usuper'
+];
+
+if(
+  superUsers.includes(
+    data.user.username
+      .trim()
+      .toLowerCase()
+  )
+){
+
+  document.getElementById(
+    'superuserButton'
+  ).classList.remove(
+    'hidden'
+  );
+
+}
+
+// ========================================
+// LOAD EVENTS
+// ========================================
+
+await loadZipLookup();
+
+await loadEvents();
+
+loadAnnouncements(
+  data.user.role
+);
+
+resetInactivityTimer();
+    
+ } catch(err){
+
+  document.getElementById(
+    'loadingOverlay'
+  ).style.display = 'none';
+
+  console.error(err);
+
+  if(err instanceof TypeError){
+
+    document.getElementById(
+      'loginError'
+    ).innerText =
+      'Connecting to secure server... please try again.';
+
+  } else {
+
+    document.getElementById(
+      'loginError'
+    ).innerText =
+      'Invalid login';
+
+  }
+}
+}
+	// ========================================
+// START FILTER SYSTEM
+// ========================================
+
+function setRegionFilter(){
+
+  activeRegion =
+    document.getElementById(
+      'regionFilter'
+    ).value;
+
+  if(activeRegion === 'ALL'){
+
+    activeRegion = '';
+
+  }
+
+  renderCalendar();
+
+}
+	
+	function toggleFilter(category){
+
+  if(activeFilters.includes(category)){
+
+    activeFilters =
+      activeFilters.filter(
+        c => c !== category
+      );
+
+  } else {
+
+    activeFilters.push(category);
+
+  }
+
+  document
+    .querySelectorAll('.legend-item')
+    .forEach(item => {
+
+      item.classList.remove(
+        'active-filter'
+      );
+
+      const label =
+        item.innerText.trim();
+
+      if(
+        activeFilters.includes(label)
+      ){
+        item.classList.add(
+          'active-filter'
+        );
+      }
+
+    });
+
+  renderCalendar();
+}
+// ========================================
+// START CALENDAR RENDERING
+// ========================================
+	
+	
+function renderCalendar(){
+
+  const calendar =
+    document.getElementById('calendar');
+
+  calendar.innerHTML = '';
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+
+  const monthNames = [
+    'January','February','March','April',
+    'May','June','July','August',
+    'September','October','November','December'
+  ];
+
+  document.getElementById('monthLabel').innerText =
+    monthNames[month] + ' ' + year;
+
+  const firstDay =
+    new Date(year, month, 1).getDay();
+
+  const daysInMonth =
+    new Date(year, month + 1, 0).getDate();
+
+  const dayNames = [
+    'Sun','Mon','Tue','Wed',
+    'Thu','Fri','Sat'
+  ];
+
+  dayNames.forEach(name => {
+
+    const div = document.createElement('div');
+
+    div.className = 'day-name';
+
+    div.innerText = name;
+
+    calendar.appendChild(div);
+
+  });
+
+  for(let i = 0; i < firstDay; i++){
+
+    const empty = document.createElement('div');
+
+    empty.className = 'day';
+
+    calendar.appendChild(empty);
+
+  }
+
+  for(let day = 1; day <= daysInMonth; day++){
+
+    const cell = document.createElement('div');
+
+    cell.className = 'day';
+
+    cell.innerHTML =
+      `<div class="day-number">${day}</div>`;
+
+    const dateStr =
+      `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+
+  const dayEvents = events.filter(e => {
+
+  if(
+    activeRegion &&
+    e.region !== activeRegion
+  ){
+    return false;
+  }
+	  
+  if(
+    activeFilters.length > 0 &&
+    !activeFilters.includes(e.category)
+  ){
+    return false;
+  }
+
+  const d = new Date(e.date);
+
+  if(isNaN(d)) return false;
+
+  const formatted =
+    d.toISOString().split('T')[0];
+
+  return formatted === dateStr;
+
+});
+
+   dayEvents.forEach(event => {
+
+  const div = document.createElement('div');
+
+  div.className = 'event';
+    
+  console.log(event.category);
+    
+ const category =
+  event.category
+    .trim()
+    .toLowerCase();
+
+console.log(event);
+    
+div.style.background =
+  categoryColors[event.category]
+  || categoryColors['Other'];
+
+if(event.category === 'Archery'){
+  div.style.color = '#111827';
+}
+	   
+  div.innerText = event.title;
+
+  div.onclick = () => openEventModal(event.url);
+
+  cell.appendChild(div);
+
+});
+
+calendar.appendChild(cell);
+
+}
+
+const totalCells =
+  firstDay + daysInMonth;
+
+const remaining =
+  7 - (totalCells % 7);
+
+if(remaining < 7){
+
+  for(let i = 0; i < remaining; i++){
+
+    const empty =
+      document.createElement('div');
+
+    empty.className = 'day';
+
+    calendar.appendChild(empty);
+
+  }
+
+}
+
+}
+// ========================================
+// START SESSION MANAGEMENT
+// ========================================
+
+	
+function logout(showMessage = false){
+
+  localStorage.removeItem(
+    'ndowAccess'
+  );
+
+  localStorage.removeItem(
+    'user'
+  );
+
+  localStorage.removeItem(
+    'token'
+  );
+
+  document.getElementById(
+    'userDisplay'
+  ).innerText = 'Logged in';
+
+  if(showMessage){
+
+    sessionStorage.setItem(
+      'ndowLoggedOut',
+      'inactive'
+    );
+
+  }
+
+  document.getElementById(
+  'appContent'
+	  
+).style.display = 'none';
+
+location.reload();
+
+}
+
+function updateCurrentTime(){
+
+  const now = new Date();
+
+  document.getElementById(
+    'currentTime'
+  ).innerText =
+     now.toLocaleString();
+}
+
+setInterval(
+  updateCurrentTime,
+  1000
+);
+
+updateCurrentTime();
+	
+function nextMonth(){
+
+  currentDate.setMonth(
+    currentDate.getMonth() + 1
+  );
+
+  renderCalendar();
+
+}
+
+function prevMonth(){
+
+  currentDate.setMonth(
+    currentDate.getMonth() - 1
+  );
+
+  renderCalendar();
+
+}
+
+const modal = document.getElementById("eventModal");
+const modalBody = document.getElementById("modalBody");
+
+document.getElementById("closeModal")
+  .addEventListener("click", closeModal);
+
+function closeModal() {
+  modal.classList.add("hidden");
+  modal.style.display = "none";
+}
+// ========================================
+// START EVENT MODAL SYSTEM
+// ========================================
+
+	
+async function openEventModal(eventUrl) {
+
+  try {
+
+    modal.classList.remove("hidden");
+
+    modal.style.display = "flex";
+
+    const event =
+      events.find(
+        e => e.url === eventUrl
+      );
+
+const eventDate =
+  new Date(event.date);
+
+const now =
+  new Date();
+
+const oneDayAfter =
+  new Date(eventDate);
+
+oneDayAfter.setDate(
+  oneDayAfter.getDate() + 1
+);
+
+const allowRequests =
+  now <= oneDayAfter;
+ 
+ modalBody.innerHTML = `
+  <div class="modal-body">
+
+    <h2>Official NDOW Event</h2>
+    <div style="
+  margin:14px 0 18px 0;
+  padding:14px;
+  background:#f3f4f6;
+  border-left:4px solid #F29647;
+  border-radius:6px;
+">
+
+  <div style="
+    font-weight:700;
+    color:#19304B;
+    margin-bottom:6px;
+  ">
+    ${event.title}
+  </div>
+
+  <div style="
+  font-size:14px;
+  color:#4b5563;
+  line-height:1.5;
+">
+  ${event.date}<br>
+  ${event.location}
+</div>
+
+</div>
+    <p>
+      Additional details for this event are available on the official NDOW website.
+    </p>
+
+    <a href="${eventUrl}"
+   target="_blank"
+   class="official-link">
+
+   Open Official Event Page
+
+</a>
+
+<select
+  id="contactSelect"
+  class="contact-select"
+  onchange="toggleCustomEmail()"
+>
+
+  ${categoryEmails.map(contact => {
+
+    const selected =
+
+      contact.categories &&
+      contact.categories.includes(
+        event.category
+      )
+
+        ? 'selected'
+
+        : '';
+
+    return `
+
+      <option
+        value="${contact.email}"
+        ${selected}
+      >
+
+        ${contact.title}
+
+      </option>
+
+    `;
+
+  }).join('')}
+
+</select>
+
+<input
+  type="email"
+  id="customEmail"
+  placeholder="Enter custom email"
+  style="
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+  "
+>
+
+${allowRequests ? `
+
+<a href="#"
+   class="request-link"
+   onclick="requestInstructor('${eventUrl}')">
+
+   Send email request to department head to be added to the selected event as an instructor
+
+</a>
+
+` : `
+
+<div style="
+  margin-top:16px;
+  color:#6b7280;
+  font-size:14px;
+">
+
+  Volunteer requests are closed for this event.
+
+</div>
+
+`}
+      </div>
+    `;
+
+  } catch (err) {
+
+    modalBody.innerHTML = `
+      <div style="padding:40px;text-align:center;">
+        Failed to load event.
+      </div>
+    `;
+  }
+}
+function toggleCustomEmail(){
+
+  const select =
+    document.getElementById(
+      'contactSelect'
+    );
+
+  const custom =
+    document.getElementById(
+      'customEmail'
+    );
+
+  custom.style.display =
+    select.value === 'custom'
+      ? 'block'
+      : 'none';
+}
+
+function togglePassword(){
+
+  const input =
+    document.getElementById(
+      'userPin'
+    );
+
+  input.type =
+    input.type === 'password'
+      ? 'text'
+      : 'password';
+
+}
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function(){
+
+    const userName =
+      document.getElementById(
+        'userName'
+      );
+
+    const userPin =
+      document.getElementById(
+        'userPin'
+      );
+
+    if(userName){
+
+      userName.addEventListener(
+        'focus',
+        clearLoginError
+      );
+
+    }
+
+    if(userPin){
+
+      userPin.addEventListener(
+        'focus',
+        clearLoginError
+      );
+
+    }
+
+  }
+);
+
+function clearLoginError(){
+
+  document.getElementById(
+    'loginError'
+  ).innerText = '';
+
+}
+
+function requestInstructor(eventUrl){
+
+  const event =
+    events.find(e => e.url === eventUrl);
+
+  if(!event) return;
+
+  const subject =
+	  
+  encodeURIComponent(
+    'Instructor Request - ' + event.title
+  );
+
+const body =
+  encodeURIComponent(
+
+`Hello,
+
+I would like to be added as an instructor for this event.
+
+Event:
+${event.title}
+Date:
+${event.date}
+Location:
+${event.location}
+
+${event.url}
+
+Thank you.
+
+This message is intended only for the named recipient. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.`
+
+    );
+
+let recipient =
+  document.getElementById(
+    'contactSelect'
+  ).value;
+
+if(recipient === 'custom'){
+
+  recipient =
+    document.getElementById(
+      'customEmail'
+    ).value.trim();
+}
+
+window.location.href =
+  `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+}
+
+if(
+  sessionStorage.getItem(
+    'ndowLoggedOut'
+  ) === 'inactive'
+){
+
+ const sessionMessage =
+  document.getElementById(
+    'sessionMessage'
+  );
+
+if(sessionMessage){
+
+  sessionMessage.innerText =
+    'You have been logged out due to inactivity. Log back in to resume your session.';
+
+}
+
+  sessionStorage.removeItem(
+    'ndowLoggedOut'
+  );
+
+}
+
+if(
+  localStorage.getItem(
+    'ndowAccess'
+  ) === 'granted'
+){
+
+  document.getElementById(
+    'loginScreen'
+  ).style.display = 'none';
+
+  document.getElementById(
+    'appContent'
+  ).style.display = 'block';
+
+  const savedUser =
+    JSON.parse(
+      localStorage.getItem(
+        'user'
+      )
+    );
+
+  if(savedUser){
+
+  document.getElementById(
+    'userDisplay'
+  ).innerText =
+    'Logged in as: ' +
+    savedUser.username;
+
+  const superUsers = [
+    'barry',
+    'usuper'
+  ];
+
+  if(
+    superUsers.includes(
+      savedUser.username
+        .trim()
+        .toLowerCase()
+    )
+  ){
+
+    document.getElementById(
+      'superuserButton'
+    ).classList.remove(
+      'hidden'
+    );
+
+  }
+
+}
+
+  (async () => {
+
+    await loadZipLookup();
+
+    await loadEvents();
+
+  })();
+
+}
+
+let inactivityTimer;
+let warningTimer;
+
+function resetInactivityTimer(){
+
+ clearTimeout(warningTimer);
+
+	const warning =
+  document.getElementById(
+    'timeoutWarning'
+  );
+
+if(warning){
+  warning.style.display = 'none';
+};
+
+warningTimer = setTimeout(() => {
+
+  document.getElementById(
+    'timeoutWarning'
+  ).style.display = 'flex';
+
+}, 1000 * 60 * 14);
+  clearTimeout(inactivityTimer);
+
+  inactivityTimer = setTimeout(() => {
+
+    logout(true);
+
+  }, 1000 * 60 * 15);
+
+}
+
+[
+  'click',
+  'mousemove',
+  'keydown',
+  'scroll',
+  'touchstart'
+].forEach(event => {
+
+  document.addEventListener(
+    event,
+    resetInactivityTimer
+  );
+
+});
+
+function stayLoggedIn(){
+
+  document.getElementById(
+    'timeoutWarning'
+  ).style.display = 'none';
+
+  resetInactivityTimer();
+
+}
+
+	// ========================================
+// START ADMIN SYSTEM
+// ========================================
+ 
+async function loadUsers(){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/admin/users',
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    );
+
+    const data =
+      await response.json();
+
+    if(!data.success){
+
+      return;
+
+    }
+
+    const container =
+      document.getElementById(
+        'userList'
+      );
+
+  container.innerHTML = '';
+
+const showDisabled =
+  document.getElementById(
+    'showDisabledUsers'
+  )?.checked;
+
+const admins =
+  data.users.filter(
+    user =>
+      user.role === 'admin' &&
+      (
+        showDisabled ||
+        Number(user.disabled) !== 1
+      )
+  );
+
+const standardUsers =
+  data.users.filter(
+    user =>
+      user.role !== 'admin' &&
+      (
+        showDisabled ||
+        Number(user.disabled) !== 1
+      )
+  );
+
+function renderSection(
+  title,
+  users
+){
+
+  if(users.length === 0){
+    return;
+  }
+
+  const heading =
+    document.createElement('div');
+
+  heading.style.marginTop =
+    '18px';
+
+  heading.style.marginBottom =
+    '10px';
+
+  heading.style.fontWeight =
+    '700';
+
+  heading.style.color =
+    '#19304B';
+
+  heading.innerText =
+    title;
+
+  container.appendChild(
+    heading
+  );
+
+  users.forEach(user => {
+
+    const div =
+      document.createElement(
+        'div'
+      );
+
+    div.style.padding =
+      '10px';
+
+    div.style.borderBottom =
+      '1px solid #e5e7eb';
+
+    div.style.borderRadius =
+      '8px';
+
+    div.style.marginBottom =
+      '6px';
+
+    div.style.background =
+      Number(user.disabled) === 1
+        ? '#fee2e2'
+        : '#f8fafc';
+
+    div.innerHTML =
+      '<strong>' +
+
+      user.username +
+
+      '</strong><br>' +
+
+      'Role: ' +
+
+      user.role +
+
+      '<br>Status: ' +
+
+      (
+        Number(user.disabled || 0) === 1
+          ? 'Disabled'
+          : 'Active'
+      ) +
+
+      '<br><button style="margin-top:8px;" onclick="toggleUser(\'' +
+
+      user.username +
+
+      '\',' +
+
+      (
+        Number(user.disabled || 0) === 1
+          ? 'false'
+          : 'true'
+      ) +
+
+      ')">' +
+
+      (
+        Number(user.disabled || 0) === 1
+          ? 'Enable'
+          : 'Disable'
+      ) +
+
+   '</button>' +
+
+'<button style="margin-top:8px;margin-left:8px;" onclick=\'openEditUserModal(' +
+
+JSON.stringify(user) +
+
+')\'>Edit</button>';
+
+    container.appendChild(
+      div
+    );
+
+  });
+
+}
+
+renderSection(
+  'Administrators',
+  admins
+);
+
+renderSection(
+  'Users',
+  standardUsers
+);
+
+  } catch(err){
+
+    console.error(err);
+
+  }
+
+}
+
+let helpTopics = [];
+
+async function loadHelpTopics(){
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/help/topics',
+    );
+
+    const data =
+      await response.json();
+
+    if(!data.success){
+
+      return;
+
+    }
+
+    const currentUser = JSON.parse(
+  localStorage.getItem('user')
+);
+
+helpTopics = data.topics.filter(topic => {
+
+  if(topic.visibility_role === 'all'){
+
+    return true;
+
+  }
+
+  if(topic.visibility_role === 'admin'){
+
+    return currentUser?.role === 'admin';
+
+  }
+
+  if(topic.visibility_role === 'user'){
+
+    return currentUser?.role === 'user';
+
+  }
+
+  return true;
+
+});
+
+    renderHelpTopics();
+
+  } catch(err){
+
+    console.error(err);
+
+  }
+
+}
+
+function renderHelpTopics(){
+
+  const container =
+    document.getElementById(
+      'helpTopicList'
+    );
+
+  container.innerHTML = '';
+
+  helpTopics.forEach(topic => {
+
+    const div =
+      document.createElement('div');
+
+    div.style.padding = '14px';
+    div.style.marginBottom = '10px';
+    div.style.borderRadius = '10px';
+    div.style.background = 'white';
+    div.style.cursor = 'pointer';
+    div.style.border = '1px solid #dbe3ec';
+
+    div.innerHTML = `
+      <div style="
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:4px;
+      ">
+        ${topic.title}
+      </div>
+
+      <div style="
+        font-size:12px;
+        color:#6b7280;
+      ">
+        ${topic.category}
+      </div>
+    `;
+
+    div.onclick = () =>
+      openHelpTopic(
+        topic.topic_key
+      );
+
+       container.appendChild(div);
+
+  });
+
+  renderHelpAdminList();
+
+}
+function openHelpTopic(topicKey){
+
+  const topic =
+    helpTopics.find(
+      t => t.topic_key === topicKey
+    );
+
+  if(!topic){
+
+    return;
+
+  }
+
+  document.getElementById(
+    'helpContentArea'
+  ).innerHTML = `
+    <div style="
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:22px;
+      color:#19304B;
+    ">
+      ${topic.title}
+    </div>
+
+    <div style="
+      line-height:1.8;
+      font-size:16px;
+    ">
+      ${topic.content}
+    </div>
+  `;
+
+}
+
+async function openHelpModal(){
+
+  const modal =
+    document.getElementById(
+      'helpModal'
+    );
+
+  modal.classList.remove('hidden');
+
+  modal.style.display = 'flex';
+
+  await loadHelpTopics();
+
+}
+
+function closeHelpModal(){
+
+  const modal =
+    document.getElementById(
+      'helpModal'
+    );
+
+ modal.classList.add('hidden');
+
+  modal.style.display = 'none';
+
+}
+
+function openAdminSection(section){
+
+  const users =
+    document.getElementById(
+      'usersPanel'
+    );
+
+  const help =
+    document.getElementById(
+      'helpPanel'
+    );
+
+  const announcements =
+    document.getElementById(
+      'announcementPanel'
+    );
+
+  const geo =
+    document.getElementById(
+      'geoPanel'
+    );
+
+  if(users){
+    users.style.display = 'none';
+  }
+
+  if(help){
+    help.style.display = 'none';
+  }
+
+  if(announcements){
+    announcements.style.display = 'none';
+  }
+
+  if(geo){
+    geo.style.display = 'none';
+  }
+
+  if(section === 'users' && users){
+    users.style.display = 'block';
+  }
+
+  if(section === 'help' && help){
+    help.style.display = 'block';
+  }
+
+ if(section === 'announcements' && announcements){
+
+  announcements.style.display = 'block';
+
+  loadAnnouncementAdminList();
+
+}
+
+  if(section === 'geo' && geo){
+    geo.style.display = 'block';
+  }
+
+}
+
+	function loadRegionDropdown(){
+
+  const select =
+    document.getElementById(
+      'regionSelect'
+    );
+
+  if(!select){
+    return;
+  }
+
+  select.innerHTML = '';
+
+  // ========================================
+  // ALL REGIONS OPTION
+  // ========================================
+
+  const allOption =
+    document.createElement(
+      'option'
+    );
+
+  allOption.value = 'ALL';
+
+  allOption.innerText =
+    'All Regions';
+
+  select.appendChild(
+    allOption
+  );
+
+  // ========================================
+  // REGION OPTIONS
+  // ========================================
+
+  Object.keys(nevadaRegions)
+    .forEach(region => {
+
+      const option =
+        document.createElement(
+          'option'
+        );
+
+      option.value = region;
+
+      option.innerText = region;
+
+      select.appendChild(
+        option
+      );
+
+    });
+
+}
+
+function openSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  renderSystemConsole();
+
+}
+
+function closeSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
+function renderSystemConsole(){
+
+  const body =
+    document.getElementById(
+      'systemConsoleBody'
+    );
+
+  body.innerHTML = `
+
+   <div style="
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:24px;
+">
+  SYSTEM CONSOLE
+</div>
+
+<div style="
+  margin-bottom:24px;
+">
+
+  <button
+  onclick="reprocessEvents()"
+  style="
+    background:#2563eb;
+    border:none;
+    color:white;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+  "
+>
+
+  Reprocess Events
+
+</button>
+
+</div>
+
+ <div style="
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#111827;
+  padding:0 0 18px 0;
+  border-bottom:1px solid #374151;
+  margin-bottom:20px;
+">
+
+  <div style="
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin-bottom:18px;
+  ">
+
+    <div class="geo-card">
+      <div class="geo-title">
+        STATUS
+      </div>
+      <div class="geo-value">
+        ${systemStatus.workflowStatus}
+      </div>
+    </div>
+
+    <div class="geo-card">
+      <div class="geo-title">
+        EVENTS
+      </div>
+      <div class="geo-value">
+        ${systemStatus.eventsProcessed}
+      </div>
+    </div>
+
+    <div class="geo-card">
+      <div class="geo-title">
+        WARNINGS
+      </div>
+      <div class="geo-value">
+        ${systemStatus.warnings.length}
+      </div>
+    </div>
+
+    <div class="geo-card">
+      <div class="geo-title">
+        GEO MAPPED
+      </div>
+      <div class="geo-value">
+        ${systemStatus.geoMappedEvents}
+      </div>
+    </div>
+
+    <div class="geo-card">
+      <div class="geo-title">
+        GEO FAILURES
+      </div>
+      <div class="geo-value">
+        ${systemStatus.geoFailedEvents}
+      </div>
+    </div>
+
+    <div class="geo-card">
+      <div class="geo-title">
+        UNCATEGORIZED
+      </div>
+      <div class="geo-value">
+        ${systemStatus.uncategorizedEvents}
+      </div>
+    </div>
+
+  </div>
+
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    font-size:13px;
+    color:#d1d5db;
+  ">
+
+    <div>
+      LAST SYNC:
+      ${
+        systemStatus.lastSync
+          ? systemStatus.lastSync
+              .toLocaleString()
+          : '--'
+      }
+    </div>
+
+    <div>
+      SYNC:
+      ${systemStatus.syncDuration}
+    </div>
+
+  </div>
+
+</div>
+
+   <div style="
+  display:grid;
+grid-template-columns:420px 1fr;
+gap:20px;
+margin-top:28px;
+height:60vh;
+overflow:hidden;
+">
+
+<div style="
+  overflow-y:auto;
+padding-right:8px;
+border-right:1px solid #374151;
+height:100%;
+">
+
+  <div style="
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:18px;
+    color:#fbbf24;
+  ">
+    GEO FAILURES
+  </div>
+
+  ${systemStatus.warnings
+    .filter(
+      warning =>
+        warning.type === 'GEO'
+    )
+    .map(warning => `
+
+  <div
+onclick="
+  previewSystemEvent(
+    '${warning.url}'
+  );
+"
+  style="
+    padding:12px;
+        margin-bottom:12px;
+        border:1px solid #374151;
+        border-radius:8px;
+        background:#1f2937;
+		cursor:pointer;
+		transition:.2s ease;
+      ">
+
+        <div style="
+  color:#fca5a5;
+  font-weight:700;
+  margin-bottom:6px;
+">
+
+  #${warning.index || '--'}
+
+  ·
+
+  ${warning.title}
+
+</div>
+
+<div style="
+  color:#93c5fd;
+  font-size:13px;
+  margin-top:6px;
+">
+
+  ${warning.date || 'No date'}
+
+</div>
+
+<button
+  onclick="
+    event.stopPropagation();
+    suggestCategoryRule(
+      '${warning.title
+        .replace(/'/g, "\\'")
+      }'
+    );
+  "
+  style="
+    margin-top:10px;
+    padding:8px 12px;
+    background:#2563eb;
+    border:none;
+    border-radius:6px;
+    color:white;
+    font-size:12px;
+    cursor:pointer;
+  "
+>
+
+  + Add Classification Rule
+
+</button>
+
+        <div style="
+          color:#d1d5db;
+          font-size:14px;
+          line-height:1.5;
+        ">
+          ${warning.location || 'No location'}
+
+<br><br>
+
+<pre style="
+  white-space:pre-wrap;
+  font-size:11px;
+  color:#93c5fd;
+  margin-top:8px;
+">
+${JSON.stringify(warning.raw,null,2)}
+</pre>
+        </div>
+
+      </div>
+
+    `).join('')}
+
+  <div style="
+    font-size:20px;
+    font-weight:700;
+    margin-top:34px;
+    margin-bottom:18px;
+    color:#93c5fd;
+  ">
+    UNCATEGORIZED EVENTS
+  </div>
+
+  ${systemStatus.warnings
+    .filter(
+      warning =>
+        warning.type === 'CATEGORY'
+    )
+    .map(warning => `
+
+      <div
+onclick="
+  previewSystemEvent(
+    '${warning.url}'
+  );
+"
+  style="
+    padding:12px;
+        margin-bottom:12px;
+        border:1px solid #374151;
+        border-radius:8px;
+        background:#1f2937;
+		cursor:pointer;
+		transition:.2s ease;
+      ">
+
+        <div style="
+  color:#fde68a;
+  font-weight:700;
+  line-height:1.5;
+">
+
+  #${warning.index || '--'}
+
+  ·
+
+  ${warning.title}
+
+</div>
+
+<div style="
+  color:#93c5fd;
+  font-size:13px;
+  margin-top:6px;
+">
+
+  ${warning.date || 'No date'}
+
+</div>
+
+<button
+  onclick="
+    event.stopPropagation();
+    suggestCategoryRule(
+      '${warning.title
+        .replace(/'/g, "\\'")
+      }'
+    );
+  "
+  style="
+    margin-top:10px;
+    padding:8px 12px;
+    background:#2563eb;
+    border:none;
+    border-radius:6px;
+    color:white;
+    font-size:12px;
+    cursor:pointer;
+  "
+>
+
+  + Add Classification Rule
+
+</button>
+
+      </div>
+
+  `).join('')}
+
+</div>
+
+<div id="systemPreviewPanel"
+  style="
+    background:#111827;
+    border-radius:12px;
+    padding:18px;
+    position:sticky;
+    top:0;
+    align-self:start;
+    overflow-y:auto;
+    max-height:100%;
+  "
+>
+
+  <div style="
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.8;
+  ">
+
+    Select an event from the diagnostics list.
+
+  </div>
+
+</div>
+
+</div>
+
+  `;
+
+}
+
+function suggestCategoryRule(title){
+
+  const keyword =
+    prompt(
+      'Enter keyword or phrase to classify:\n\n' +
+      title
+    );
+
+  if(!keyword){
+    return;
+  }
+
+  const category =
+    prompt(
+      'Assign keyword to category:\n\n' +
+      Object.keys(
+        CATEGORY_RULES
+      ).join('\n')
+    );
+
+  if(
+    !category ||
+    !CATEGORY_RULES[category]
+  ){
+
+    alert(
+      'Invalid category.'
+    );
+
+    return;
+
+  }
+
+  CATEGORY_RULES[category]
+    .push(
+      keyword.toLowerCase()
+    );
+
+  alert(
+    'Rule added.\n\n' +
+    keyword +
+    ' → ' +
+    category
+  );
+
+  console.log(
+    CATEGORY_RULES
+  );
+
+}
+
+function previewSystemEvent(eventUrl){
+
+  const panel =
+    document.getElementById(
+      'systemPreviewPanel'
+    );
+
+  const event =
+    events.find(
+      e => e.url === eventUrl
+    );
+
+  if(!event || !panel){
+    return;
+  }
+	
+
+  panel.innerHTML = `
+
+    <div style="
+      font-size:24px;
+      font-weight:700;
+      margin-bottom:18px;
+      color:#111827;
+      line-height:1.4;
+    ">
+
+      ${event.title}
+
+    </div>
+
+    <div style="
+      color:#2563eb;
+      margin-bottom:18px;
+      line-height:1.8;
+    ">
+
+      ${event.date}
+
+      <br>
+
+      ${event.location}
+
+    </div>
+
+    <div style="
+      margin-bottom:18px;
+      line-height:1.8;
+      color:#374151;
+    ">
+
+      <strong>
+        Category:
+      </strong>
+
+      ${event.category}
+
+      <br>
+
+      <strong>
+        Region:
+      </strong>
+
+      ${event.region || 'Unmapped'}
+
+      <br>
+
+      <strong>
+        County:
+      </strong>
+
+      ${event.county || 'Unknown'}
+
+      <br>
+
+      <strong>
+        ZIP:
+      </strong>
+
+      ${event.zip || 'Missing'}
+
+    </div>
+
+    <a
+      href="${event.url}"
+      target="_blank"
+      style="
+        display:inline-block;
+        margin-top:14px;
+        background:#2563eb;
+        color:white;
+        padding:12px 18px;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:600;
+      "
+    >
+
+      Open Official Event
+
+    </a>
+
+  `;
+
+}
+	
+async function reprocessEvents(){
+
+  alert(
+    'Reprocessing event pipeline...'
+  );
+
+  try {
+
+    await loadEvents();
+
+    renderSystemConsole();
+
+    alert(
+      'Reprocess complete.'
+    );
+
+  } catch(err){
+
+    console.error(err);
+
+    alert(
+      'Reprocess failed.'
+    );
+
+  }
+
+}
+
+	
+	
+function openAdminPanel(){
+
+  const user = JSON.parse(
+    localStorage.getItem('user')
+  );
+
+  if(!user || user.role !== 'admin'){
+
+    alert('Admin access only');
+
+    return;
+
+  }
+
+  const modal = document.getElementById(
+    'adminModal'
+  );
+
+  modal.classList.remove('hidden');
+
+  modal.style.display = 'flex';
+
+  loadUsers();
+
+  loadHelpTopics();
+
+  loadRegionDropdown();
+
+// ========================================
+// INITIALIZE GEO ANALYTICS
+// ========================================
+
+const geoRegionSelect =
+  document.getElementById(
+    'geoRegionSelect'
+  );
+
+if(geoRegionSelect){
+
+  geoRegionSelect.value =
+    'Western';
+
+  loadGeoCounties();
+
+}
+	
+  openAdminSection('geo');
+
+}
+
+
+function closeAdminPanel(){
+
+  const modal =
+    document.getElementById(
+      'adminModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
+async function addUser(){
+
+  const username =
+    document.getElementById(
+      'adminUsername'
+    ).value.trim();
+
+  const pin =
+    document.getElementById(
+      'adminPin'
+    ).value.trim();
+
+  const role =
+    document.getElementById(
+      'adminRole'
+    ).value;
+
+		const email =
+  document.getElementById(
+    'adminEmail'
+  ).value.trim();
+
+const phone =
+  document.getElementById(
+    'adminPhone'
+  ).value.trim();
+
+const notify_email =
+  document.getElementById(
+    'adminNotifyEmail'
+  ).checked;
+
+const notify_sms =
+  document.getElementById(
+    'adminNotifySms'
+  ).checked;
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/admin/add-user',
+      {
+        method:'POST',
+    headers:{
+  'Content-Type':'application/json',
+  Authorization:`Bearer ${token}`
+},
+body:JSON.stringify({
+  username,
+  pin,
+  role,
+  email,
+  phone,
+  notify_email,
+  notify_sms
+})
+      }
+    );
+
+    const data =
+      await response.json();
+
+    document.getElementById(
+      'adminMessage'
+    ).innerText = data.message;
+
+    loadUsers();
+
+    document.getElementById(
+      'adminUsername'
+    ).value = '';
+
+    document.getElementById(
+      'adminPin'
+    ).value = '';
+
+	document.getElementById(
+	  'adminEmail'
+		).value = '';
+	
+	document.getElementById(
+	  'adminPhone'
+	).value = '';
+	
+	document.getElementById(
+	  'adminNotifyEmail'
+	).checked = true;
+	
+	document.getElementById(
+	  'adminNotifySms'
+	).checked = false;
+	  
+  } catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'adminMessage'
+    ).innerText =
+      'Server error';
+
+  }
+
+}
+
+async function saveAnnouncement(){
+
+  try {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const title =
+      document.getElementById(
+        'announcementTitleInput'
+      ).value.trim();
+
+    const message =
+      document.getElementById(
+        'announcementMessageInput'
+      ).value.trim();
+
+    const audience =
+      document.getElementById(
+        'announcementAudienceInput'
+      ).value;
+
+    const sendEmail =
+      document.getElementById(
+        'announcementSendEmail'
+      ).checked;
+
+    if(
+      !title ||
+      !message
+    ){
+
+      alert(
+        'Please complete all fields.'
+      );
+
+      return;
+    }
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/announcements',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+
+            title,
+            message,
+            audience,
+            sendEmail
+
+          })
+
+        }
+      );
+
+    const data =
+      await response.json();
+
+   if(data.success){
+
+  loadAnnouncementAdminList();
+
+  alert(
+    sendEmail
+      ? 'Announcement published and notifications sent.'
+      : 'Announcement published.'
+  );
+
+      document.getElementById(
+        'announcementTitleInput'
+      ).value = '';
+
+      document.getElementById(
+        'announcementMessageInput'
+      ).value = '';
+
+    } else {
+
+      alert(
+        data.message ||
+        'Failed to publish.'
+      );
+
+    }
+
+  } catch(err){
+
+    console.error(err);
+
+    alert(
+      'Announcement error.'
+    );
+
+  }
+}
+
+async function deactivateAnnouncement(id){
+
+  const confirmed =
+    confirm(
+      'Deactivate this announcement?'
+    );
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+  try {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/announcements/deactivate',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+            id
+          })
+
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(data.success){
+
+      loadAnnouncementAdminList();
+
+    } else {
+
+      alert(
+        data.message ||
+        'Failed to deactivate'
+      );
+
+    }
+
+  } catch(err){
+
+    console.error(err);
+
+    alert(
+      'Deactivate failed'
+    );
+
+  }
+
+}
+
+async function loadAnnouncementAdminList(){
+
+  try {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/announcements',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const announcements =
+      await response.json();
+
+    const container =
+      document.getElementById(
+        'announcementAdminList'
+      );
+
+    if(!container){
+
+      return;
+
+    }
+
+    container.innerHTML = '';
+
+    announcements.forEach(item => {
+
+      console.log(item);
+
+      const div =
+        document.createElement('div');
+
+      div.style.padding = '14px';
+
+      div.style.border =
+        '1px solid #dbe3ec';
+
+      div.style.borderRadius =
+        '12px';
+
+      div.style.background =
+        'white';
+
+      div.innerHTML = `
+
+        <div style="
+          font-weight:700;
+          font-size:16px;
+        ">
+          ${item.title}
+        </div>
+
+        <div style="
+          margin-top:6px;
+          font-size:13px;
+          color:#6b7280;
+        ">
+          Audience:
+          ${item.audience}
+        </div>
+
+        <div style="
+          margin-top:10px;
+          font-size:14px;
+          line-height:1.5;
+          white-space:pre-wrap;
+        ">
+          ${item.message}
+        </div>
+
+        <button
+          style="
+            margin-top:14px;
+            background:#dc2626;
+          "
+          onclick="deactivateAnnouncement('${item.id}')"
+        >
+          Deactivate
+        </button>
+
+      `;
+
+      container.appendChild(div);
+
+    });
+
+  } catch(err){
+
+    console.error(err);
+
+  }
+
+}
+
+
+	
+async function toggleUser(
+  username,
+  disabled
+){
+
+const currentUser =
+  JSON.parse(
+    localStorage.getItem('user')
+  );
+
+if(currentUser.username === username){
+
+  alert(
+    'You cannot disable yourself'
+  );
+
+  return;
+
+}
+  const token =
+    localStorage.getItem('token');
+
+  await fetch(
+    'https://ndow-calendar-server.onrender.com/api/admin/toggle-user',
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        Authorization:`Bearer ${token}`
+      },
+      body:JSON.stringify({
+        username,
+        disabled
+      })
+    }
+  );
+
+  loadUsers();
+
+}
+
+async function resetPin(username){
+
+  const newPin =
+    prompt(
+      'Enter new 6-digit PIN for ' +
+      username
+    );
+
+  if(!newPin){
+
+    return;
+
+  }
+
+  const token =
+    localStorage.getItem('token');
+
+  const response = await fetch(
+    'https://ndow-calendar-server.onrender.com/api/admin/reset-pin',
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        Authorization:`Bearer ${token}`
+      },
+      body:JSON.stringify({
+        username,
+        pin:newPin
+      })
+    }
+  );
+
+  const data =
+    await response.json();
+
+  alert(data.message);
+
+}
+
+function openEditUserModal(user){
+
+  document.getElementById(
+    'editUserModal'
+  ).classList.remove('hidden');
+
+  document.getElementById(
+    'editUserModal'
+  ).style.display = 'flex';
+
+  document.getElementById(
+    'editOriginalUsername'
+  ).value = user.username;
+
+  document.getElementById(
+    'editUsername'
+  ).value = user.username || '';
+
+  document.getElementById(
+    'editEmail'
+  ).value = user.email || '';
+
+  document.getElementById(
+    'editPhone'
+  ).value = user.phone || '';
+
+  document.getElementById(
+    'editRole'
+  ).value = user.role || 'user';
+
+  document.getElementById(
+    'editNotifyEmail'
+  ).checked =
+    !!user.notify_email;
+
+  document.getElementById(
+    'editNotifySms'
+  ).checked =
+    !!user.notify_sms;
+
+  document.getElementById(
+    'editUserMessage'
+  ).innerText = '';
+
+}
+
+function closeEditUserModal(){
+
+  document.getElementById(
+    'editUserModal'
+  ).classList.add('hidden');
+
+  document.getElementById(
+    'editUserModal'
+  ).style.display = 'none';
+
+}
+
+async function saveUserEdits(){
+
+  const token =
+    localStorage.getItem('token');
+
+  const payload = {
+
+    originalUsername:
+      document.getElementById(
+        'editOriginalUsername'
+      ).value,
+
+    username:
+      document.getElementById(
+        'editUsername'
+      ).value.trim(),
+
+    email:
+      document.getElementById(
+        'editEmail'
+      ).value.trim(),
+
+    phone:
+      document.getElementById(
+        'editPhone'
+      ).value.trim(),
+
+    role:
+      document.getElementById(
+        'editRole'
+      ).value,
+
+    notify_email:
+      document.getElementById(
+        'editNotifyEmail'
+      ).checked,
+
+    notify_sms:
+      document.getElementById(
+        'editNotifySms'
+      ).checked
+
+  };
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/admin/update-user',
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:`Bearer ${token}`
+        },
+
+        body:JSON.stringify(payload)
+      }
+    );
+
+    const data =
+      await response.json();
+
+    document.getElementById(
+      'editUserMessage'
+    ).innerText =
+      data.message;
+
+    if(data.success){
+
+      loadUsers();
+
+      setTimeout(() => {
+
+        closeEditUserModal();
+
+      }, 800);
+
+    }
+
+  } catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'editUserMessage'
+    ).innerText =
+      'Save failed';
+
+  }
+
+}
+	
+function renderHelpAdminList(){
+
+  const container =
+    document.getElementById(
+      'helpTopicAdminList'
+    );
+
+  if(!container){
+
+    return;
+
+  }
+
+  container.innerHTML = '';
+
+  helpTopics.forEach(topic => {
+
+    const div =
+      document.createElement('div');
+
+    div.style.padding = '10px';
+    div.style.marginBottom = '8px';
+    div.style.border = '1px solid #dbe3ec';
+    div.style.borderRadius = '10px';
+    div.style.cursor = 'pointer';
+    div.style.background = 'white';
+
+    div.innerHTML = `
+      <strong>
+        ${topic.title}
+      </strong>
+
+      <div style="
+        font-size:12px;
+        color:#6b7280;
+        margin-top:4px;
+      ">
+        ${topic.category}
+      </div>
+    `;
+
+    div.onclick = () => {
+
+      document.getElementById(
+        'helpEditId'
+      ).value = topic.id;
+
+      document.getElementById(
+        'helpCategory'
+      ).value = topic.category;
+
+      document.getElementById(
+        'helpTopicKey'
+      ).value = topic.topic_key;
+
+      document.getElementById(
+        'helpTitle'
+      ).value = topic.title;
+
+      document.getElementById(
+        'helpVisibilityRole'
+      ).value =
+        topic.visibility_role || 'all';
+
+      document.getElementById(
+        'helpSortOrder'
+      ).value = topic.sort_order;
+
+      document.getElementById(
+        'helpContent'
+      ).value = topic.content;
+
+    };
+
+    container.appendChild(div);
+
+  });
+
+}
+async function saveHelpTopic(){
+
+  try {
+
+    const payload = {
+
+      id:
+        document.getElementById(
+          'helpEditId'
+        ).value,
+
+      category:
+        document.getElementById(
+          'helpCategory'
+        ).value,
+
+      topic_key:
+        document.getElementById(
+          'helpTopicKey'
+        ).value,
+
+      title:
+        document.getElementById(
+          'helpTitle'
+        ).value,
+
+      sort_order:
+        document.getElementById(
+          'helpSortOrder'
+        ).value,
+
+	  visibility_role:
+	    document.getElementById(
+         'helpVisibilityRole'
+         ).value,
+		
+      content:
+        document.getElementById(
+          'helpContent'
+        ).value
+
+    };
+
+    const response =
+      await fetch(
+       'https://ndow-calendar-server.onrender.com/api/help/save',
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':
+              'application/json'
+          },
+          body:JSON.stringify(payload)
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(data.success){
+
+      document.getElementById(
+        'helpAdminMessage'
+      ).innerText =
+        'Topic saved';
+
+      await loadHelpTopics();
+
+      renderHelpAdminList();
+
+    }
+
+  } catch(err){
+
+    console.error(err);
+
+  }
+
+}
+
+function newHelpTopic(){
+
+  document.getElementById(
+    'helpEditId'
+  ).value = '';
+
+  document.getElementById(
+    'helpCategory'
+  ).value = '';
+
+  document.getElementById(
+    'helpTopicKey'
+  ).value = '';
+
+  document.getElementById(
+    'helpTitle'
+  ).value = '';
+
+document.getElementById(
+  'helpVisibilityRole'
+).value = 'all';
+	
+  document.getElementById(
+    'helpSortOrder'
+  ).value = '0';
+
+  document.getElementById(
+    'helpContent'
+  ).value = '';
+
+}
+
+async function deleteHelpTopic(){
+
+  const id =
+    document.getElementById(
+      'helpEditId'
+    ).value;
+
+  if(!id){
+
+    return;
+
+  }
+
+  if(
+    !confirm(
+      'Delete this help topic?'
+    )
+  ){
+
+    return;
+
+  }
+
+  try {
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/help/delete',
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':
+              'application/json'
+          },
+          body:JSON.stringify({
+            id
+          })
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(data.success){
+
+      newHelpTopic();
+
+      await loadHelpTopics();
+
+      renderHelpAdminList();
+
+    }
+
+  } catch(err){
+
+    console.error(err);
+
+  }
+
+}
+
+</script>
+
+<!-- ========================================
+     START ADMIN MODAL
+======================================== -->
+
+<div id="adminModal" class="modal hidden">
+
+  <div
+    class="modal-content"
+    style="
+      width:min(1400px,100%);
+      height:90vh;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeAdminPanel()"
+    >
+      ✕
+    </button>
+
+    <div
+      class="admin-layout"
+      style="
+        flex:1;
+        overflow:hidden;
+        align-items:stretch;
+        min-height:0;
+      "
+    >
+
+      <!-- SIDEBAR -->
+
+      <div
+        class="admin-sidebar"
+        style="
+          width:220px;
+          display:flex;
+          flex-direction:column;
+          gap:10px;
+          padding-right:16px;
+          flex-shrink:0;
+        "
+      >
+
+        <button onclick="openAdminSection('users')">
+          User Management
+        </button>
+
+        <button onclick="openAdminSection('announcements')">
+          Program Updates
+        </button>
+
+        <button onclick="openAdminSection('help')">
+          Help System
+        </button>
+
+        <button onclick="openAdminSection('geo')">
+          Geographic Analytics
+        </button>
+
+      </div>
+
+      <!-- CONTENT AREA -->
+
+      <!-- CONTENT AREA -->
+
+<div
+  style="
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+    overflow:hidden;
+  "
+>
+
+        <!-- USERS -->
+
+        <div
+  class="admin-panel"
+  id="usersPanel"
+  style="
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    min-height:0;
+  "
+>
+
+          <h2>Add User</h2>
+
+          <input
+            id="adminUsername"
+            class="login-input"
+            placeholder="Username"
+            style="margin-top:14px;"
+          >
+
+          <input
+            id="adminPin"
+            class="login-input"
+            placeholder="PIN"
+            style="margin-top:14px;"
+          >
+
+			<input
+  id="adminEmail"
+  class="login-input"
+  placeholder="Email Address"
+  style="margin-top:14px;"
+>
+
+<input
+  id="adminPhone"
+  class="login-input"
+  placeholder="Mobile Phone"
+  style="margin-top:14px;"
+>
+
+<div style="
+  margin-top:14px;
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+">
+
+  <label style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    color:#374151;
+  ">
+
+    <input
+      type="checkbox"
+      id="adminNotifyEmail"
+      checked
+    >
+
+    Email Notifications
+
+  </label>
+
+  <label style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    color:#374151;
+  ">
+
+    <input
+      type="checkbox"
+      id="adminNotifySms"
+    >
+
+    SMS Notifications
+
+  </label>
+
+</div>
+
+          <select
+            id="adminRole"
+            class="contact-select"
+            style="margin-top:14px;"
+          >
+            <option value="user">
+              User
+            </option>
+
+            <option value="admin">
+              Admin
+            </option>
+          </select>
+
+          <button
+            style="
+              margin-top:18px;
+              width:100%;
+            "
+            onclick="addUser()"
+          >
+            Create User
+          </button>
+
+          <div
+            id="adminMessage"
+            style="
+              margin-top:14px;
+              font-size:14px;
+            "
+          ></div>
+
+          <div style="
+            margin-top:30px;
+            display:flex;
+            flex-direction:column;
+            flex:1;
+            min-height:0;
+            overflow:hidden;
+          ">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              margin-bottom:12px;
+              flex-shrink:0;
+            ">
+
+              <h3 style="margin:0;">
+                Users
+              </h3>
+
+              <label style="
+                font-size:13px;
+                color:#475569;
+                display:flex;
+                align-items:center;
+                gap:6px;
+                cursor:pointer;
+              ">
+
+                <input
+                  type="checkbox"
+                  id="showDisabledUsers"
+                  onchange="loadUsers()"
+                >
+
+                Show Disabled
+
+              </label>
+
+            </div>
+
+           <div
+			  id="userList"
+			  style="
+			    height:420px;
+			    overflow-y:auto;
+			    overflow-x:hidden;
+			    border-top:1px solid #e5e7eb;
+			    padding-top:8px;
+			    padding-right:6px;
+			  "
+			></div>
+
+          </div>
+
+        </div>
+
+        <!-- ANNOUNCEMENTS -->
+
+        <div
+          class="admin-panel"
+          id="announcementPanel"
+          style="
+            flex:1;
+            display:none;
+            overflow-y:auto;
+          "
+        >
+
+          <h2>
+            Program Updates
+          </h2>
+
+          <input
+            id="announcementTitleInput"
+            class="login-input"
+            placeholder="Announcement Title"
+            style="margin-top:14px;"
+          >
+
+          <textarea
+            id="announcementMessageInput"
+            style="
+              width:100%;
+              height:220px;
+              margin-top:14px;
+              padding:14px;
+              border-radius:12px;
+              border:1px solid #d1d5db;
+              resize:vertical;
+              box-sizing:border-box;
+            "
+            placeholder="Program update..."
+          ></textarea>
+
+          <select
+            id="announcementAudienceInput"
+            class="contact-select"
+            style="margin-top:14px;"
+          >
+
+            <option value="all">
+              All Users
+            </option>
+
+            <option value="user">
+              Standard Users
+            </option>
+
+            <option value="admin">
+              Admin Only
+            </option>
+
+         </select>
+
+<label style="
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:14px;
+  font-weight:600;
+">
+
+  <input
+    type="checkbox"
+    id="announcementSendEmail"
+    checked
+  >
+
+  Send Email Notification
+
+</label>
+
+<button
+  style="
+    margin-top:18px;
+    width:100%;
+  "
+  onclick="saveAnnouncement()"
+>
+  Publish Update
+</button>
+
+<div style="
+  margin-top:34px;
+  border-top:1px solid #dbe3ec;
+  padding-top:24px;
+">
+
+  <h3 style="
+    margin-bottom:18px;
+  ">
+    Published Updates
+  </h3>
+
+  <div
+    id="announcementAdminList"
+    style="
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    "
+  ></div>
+
+</div>
+
+</div>
+
+<!-- GEO ANALYSIS -->
+
+<div
+  class="admin-panel"
+  id="geoPanel"
+  style="
+    flex:1;
+    display:none;
+    overflow-y:auto;
+  "
+>
+
+  <h2>
+    Geo Analysis
+  </h2>
+
+  <div style="
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:
+      repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+  ">
+
+  <div class="geo-card">
+
+  <div class="geo-title">
+    Event Regions
+  </div>
+
+  <select
+    id="geoRegionSelect"
+    class="contact-select"
+    onchange="loadGeoCounties()"
+    style="margin-top:12px;"
+  >
+
+    <option value="">
+      Select Region
+    </option>
+
+    <option value="Western">
+      Western Nevada
+    </option>
+
+    <option value="Eastern">
+      Eastern Nevada
+    </option>
+
+    <option value="Southern">
+      Southern Nevada
+    </option>
+
+  </select>
+
+</div>
+
+   <div class="geo-card">
+
+  <div class="geo-title">
+    County Analysis
+  </div>
+
+ <select
+  id="geoCountySelect"
+  class="contact-select"
+  style="margin-top:12px;"
+  onchange="renderCountyAnalysis()"
+>
+
+  <option value="">
+    Select County
+  </option>
+
+</select>
+
+</div>
+
+    <div class="geo-card">
+
+      <div class="geo-title">
+        Zip Code Mapping
+      </div>
+
+      <div class="geo-value">
+        Enabled
+      </div>
+
+    </div>
+
+    <div class="geo-card">
+
+      <div class="geo-title">
+        Event Heat Mapping
+      </div>
+
+      <div class="geo-value">
+        Planned
+      </div>
+
+    </div>
+
+    <div class="geo-card">
+
+      <div class="geo-title">
+        Regional Notifications
+      </div>
+
+      <div class="geo-value">
+        In Development
+      </div>
+
+    </div>
+
+    <div class="geo-card">
+
+      <div class="geo-title">
+        Volunteer Density
+      </div>
+
+      <div class="geo-value">
+        Evaluation Phase
+      </div>
+
+    </div>
+
+  </div>
+
+  <div style="
+    margin-top:28px;
+    background:white;
+    border:1px solid #dbe3ec;
+    border-radius:16px;
+    padding:22px;
+    line-height:1.7;
+  ">
+
+    <div style="
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:14px;
+    ">
+      Geo Analysis Status
+    </div>
+
+    <div style="
+      color:#4b5563;
+    ">
+
+      Geo analysis tools are currently
+      being tested targeted information
+	  about events by region, county, etc.
+
+      Additional visualization and
+      mapping tools will be added
+      incrementally during testing.
+
+    </div>
+
+  </div>
+
+<div
+  id="geoRegionDetails"
+  style="
+    margin-top:20px;
+    background:white;
+    border:1px solid #dbe3ec;
+    border-radius:16px;
+    padding:20px;
+    line-height:1.7;
+  "
+>
+
+  Select a region to begin
+  geo analysis.
+
+</div>
+	
+</div>
+	
+<!-- HELP -->
+
+<div
+  class="admin-panel"
+  id="helpPanel"
+  style="
+    flex:1;
+    display:none;
+    overflow-y:auto;
+  "
+>
+
+  <h2>
+    Help System
+  </h2>
+
+  <input
+    type="hidden"
+    id="helpEditId"
+  >
+
+  <input
+    id="helpCategory"
+    class="login-input"
+    placeholder="Category"
+    style="margin-top:14px;"
+  >
+
+  <input
+    id="helpTopicKey"
+    class="login-input"
+    placeholder="Topic Key"
+    style="margin-top:14px;"
+  >
+
+  <input
+    id="helpTitle"
+    class="login-input"
+    placeholder="Title"
+    style="margin-top:14px;"
+  >
+
+  <input
+    id="helpSortOrder"
+    class="login-input"
+    placeholder="Sort Order"
+    value="0"
+    style="margin-top:14px;"
+  >
+
+  <select
+    id="helpVisibilityRole"
+    class="contact-select"
+    style="margin-top:14px;"
+  >
+
+    <option value="all">
+      All Users
+    </option>
+
+    <option value="user">
+      Standard Users
+    </option>
+
+    <option value="admin">
+      Admin Only
+    </option>
+
+  </select>
+
+  <textarea
+    id="helpContent"
+    style="
+      width:100%;
+      height:220px;
+      margin-top:14px;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #d1d5db;
+      resize:vertical;
+      font-family:Inter,sans-serif;
+      font-size:14px;
+      box-sizing:border-box;
+    "
+    placeholder="HTML help content..."
+  ></textarea>
+
+  <div style="
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+  ">
+
+    <button onclick="saveHelpTopic()">
+      Save Topic
+    </button>
+
+    <button onclick="newHelpTopic()">
+      New
+    </button>
+
+    <button
+      onclick="deleteHelpTopic()"
+      style="background:#dc2626;"
+    >
+      Delete
+    </button>
+
+  </div>
+
+  <div
+    id="helpAdminMessage"
+    style="
+      margin-top:14px;
+      font-size:14px;
+    "
+  ></div>
+
+  <div
+    id="helpTopicAdminList"
+    style="
+      margin-top:20px;
+      max-height:260px;
+      overflow:auto;
+      border-top:1px solid #e5e7eb;
+      padding-top:14px;
+    "
+  ></div>
+
+</div>
+
+<!-- GEO -->
+
+        <div
+          class="admin-panel"
+          id="geoPanel"
+          style="
+            flex:1;
+            display:none;
+            overflow-y:auto;
+          "
+        >
+
+          <h2>
+            Geographic Analytics
+          </h2>
+
+          <div style="
+            margin-top:18px;
+            color:#475569;
+            line-height:1.6;
+          ">
+            Regional analytics tools will appear here.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- HELP MODAL -->
+
+<div id="helpModal" class="modal hidden">
+
+  <div class="modal-content" style="
+    width:min(1200px,100%);
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  ">
+
+    <button
+      class="modal-close"
+      onclick="closeHelpModal()"
+    >
+      ✕
+    </button>
+
+    <div class="admin-layout" style="
+      flex:1;
+      overflow:hidden;
+    ">
+
+      <div
+        style="
+          width:320px;
+          overflow-y:auto;
+          border-right:1px solid #e5e7eb;
+          padding-right:16px;
+        "
+      >
+
+        <h2>
+          Help Topics
+        </h2>
+
+        <div id="helpTopicList"></div>
+
+      </div>
+
+      <div
+        id="helpContentArea"
+        style="
+          flex:1;
+          overflow-y:auto;
+          padding-left:24px;
+        "
+      >
+
+        <div style="
+          color:#6b7280;
+          font-size:16px;
+        ">
+          Select a help topic.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div
+  id="announcementModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+  "
+>
+
+  <div
+    style="
+      background:white;
+      width:90%;
+      max-width:500px;
+      border-radius:14px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    "
+  >
+
+    <h2
+      id="announcementTitle"
+      style="
+        margin-top:0;
+      "
+    ></h2>
+
+    <div
+      id="announcementMessage"
+      style="
+        margin-top:14px;
+        line-height:1.6;
+      "
+    ></div>
+
+  </div>
+
+</div>
+
+<div
+  id="timeoutWarning"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.72);
+    z-index:999999;
+    justify-content:center;
+    align-items:center;
+  "
+></div>
+<!-- ========================================
+     EDIT USER MODAL
+======================================== -->
+
+<div id="editUserModal" class="modal hidden">
+
+  <div
+    class="modal-content"
+    style="
+      max-width:520px;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeEditUserModal()"
+    >
+      ✕
+    </button>
+
+    <h2>Edit User</h2>
+
+    <input
+      type="hidden"
+      id="editOriginalUsername"
+    >
+
+    <div style="margin-top:18px;">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        id="editUsername"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Email
+      </label>
+
+      <input
+        id="editEmail"
+        type="email"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Phone
+      </label>
+
+      <input
+        id="editPhone"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Role
+      </label>
+
+      <select
+        id="editRole"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+        <option value="user">
+          User
+        </option>
+
+        <option value="admin">
+          Admin
+        </option>
+
+      </select>
+
+      <div style="
+        margin-top:12px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+      ">
+
+        <label>
+          <input
+            type="checkbox"
+            id="editNotifyEmail"
+          >
+
+          Email Notifications
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            id="editNotifySms"
+          >
+
+          SMS Notifications
+        </label>
+
+      </div>
+
+      <button
+        style="
+          margin-top:22px;
+          width:100%;
+        "
+        onclick="saveUserEdits()"
+      >
+        Save Changes
+      </button>
+
+      <div
+        id="editUserMessage"
+        style="
+          margin-top:14px;
+          font-size:14px;
+          color:#374151;
+        "
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+	<script>
+
+const geoRegions = {
+
+  Western:[
+    'Washoe',
+    'Douglas',
+    'Churchill',
+    'Pershing',
+    'Humboldt',
+    'Mineral'
+  ],
+
+  Eastern:[
+    'Elko',
+    'Lander',
+    'Eureka',
+    'White Pine'
+  ],
+
+  Southern:[
+    'Clark',
+    'Nye',
+    'Lincoln',
+    'Esmeralda'
+  ]
+
+};
+
+const geoEventStats = {
+
+  Western:{
+    total:42,
+    categories:{
+      Education:18,
+      Conservation:9,
+      Outreach:7,
+      Training:8
+    }
+  },
+
+  Eastern:{
+    total:19,
+    categories:{
+      Education:6,
+      Conservation:5,
+      Outreach:3,
+      Training:5
+    }
+  },
+
+  Southern:{
+    total:57,
+    categories:{
+      Education:24,
+      Conservation:10,
+      Outreach:11,
+      Training:12
+    }
+  }
+
+};
+
+function loadGeoCounties(){
+
+  const region =
+    document.getElementById(
+      'geoRegionSelect'
+    ).value;
+
+  const countySelect =
+    document.getElementById(
+      'geoCountySelect'
+    );
+
+  countySelect.innerHTML = `
+    <option value="">
+      Select County
+    </option>
+  `;
+
+  if(!region){
+
+    return;
+
+  }
+
+  geoRegions[region].forEach(county => {
+
+    const option =
+      document.createElement(
+        'option'
+      );
+
+    option.value =
+      county;
+
+    option.innerText =
+      county;
+
+    countySelect.appendChild(
+      option
+    );
+
+  });
+
+  renderGeoRegionAnalysis(region);
+
+}
+
+function renderGeoRegionAnalysis(region){
+
+  const container =
+    document.getElementById(
+      'geoRegionDetails'
+    );
+
+  if(!container){
+    return;
+  }
+
+  let filteredEvents = [];
+
+  if(
+    !region ||
+    region === 'ALL'
+  ){
+
+    filteredEvents =
+      events.filter(
+        e => e.region
+      );
+
+  } else {
+
+    filteredEvents =
+      events.filter(
+        e => e.region === region
+      );
+
+  }
+
+  const totalEvents =
+    filteredEvents.length;
+
+  // ========================================
+  // COUNTY TOTALS
+  // ========================================
+
+  const countyTotals = {};
+
+  filteredEvents.forEach(event => {
+
+    const county =
+      event.county || 'Unknown';
+
+    if(!countyTotals[county]){
+
+      countyTotals[county] = 0;
+
+    }
+
+    countyTotals[county]++;
+
+  });
+
+  // ========================================
+  // CATEGORY TOTALS
+  // ========================================
+
+  const categoryTotals = {};
+
+  filteredEvents.forEach(event => {
+
+    const category =
+      event.category || 'Other';
+
+    if(!categoryTotals[category]){
+
+      categoryTotals[category] = 0;
+
+    }
+
+    categoryTotals[category]++;
+
+  });
+
+  // ========================================
+  // SORTING
+  // ========================================
+
+  const sortedCounties =
+    Object.entries(countyTotals)
+      .sort((a,b) => b[1] - a[1]);
+
+  const sortedCategories =
+    Object.entries(categoryTotals)
+      .sort((a,b) => b[1] - a[1]);
+
+  // ========================================
+  // HTML
+  // ========================================
+
+  container.innerHTML = `
+
+    <div style="
+      display:grid;
+      grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      margin-top:20px;
+    ">
+
+      <!-- TOTAL EVENTS -->
+
+      <div class="geo-card">
+
+        <div class="geo-title">
+          Total Events
+        </div>
+
+        <div class="geo-value">
+          ${totalEvents}
+        </div>
+
+      </div>
+
+      <!-- REGION -->
+
+      <div class="geo-card">
+
+        <div class="geo-title">
+          Active Region
+        </div>
+
+        <div class="geo-value">
+          ${
+            region === 'ALL' || !region
+              ? 'All Regions'
+              : region
+          }
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- COUNTY BREAKDOWN -->
+
+    <div style="
+      margin-top:28px;
+    ">
+
+      <div style="
+        font-size:20px;
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:14px;
+      ">
+        County Activity
+      </div>
+
+      ${sortedCounties.map(([county,count]) => {
+
+        const percentage =
+          totalEvents > 0
+            ? (
+                (count / totalEvents) * 100
+              ).toFixed(1)
+            : '0.0';
+
+        return `
+
+          <div style="
+            padding:14px;
+            margin-bottom:10px;
+            background:white;
+            border:1px solid #dbe3ec;
+            border-radius:12px;
+          ">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              gap:12px;
+              flex-wrap:wrap;
+            ">
+
+              <div style="
+                font-weight:700;
+                color:#19304B;
+              ">
+                ${county} County
+              </div>
+
+              <div style="
+                color:#4b5563;
+                font-size:14px;
+              ">
+                ${count} events
+                •
+                ${percentage}% of region
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join('')}
+
+    </div>
+
+    <!-- CATEGORY BREAKDOWN -->
+
+    <div style="
+      margin-top:34px;
+    ">
+
+      <div style="
+        font-size:20px;
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:14px;
+      ">
+        Category Activity
+      </div>
+
+      ${sortedCategories.map(([category,count]) => {
+
+        const percentage =
+          totalEvents > 0
+            ? (
+                (count / totalEvents) * 100
+              ).toFixed(1)
+            : '0.0';
+
+        return `
+
+          <div style="
+            padding:14px;
+            margin-bottom:10px;
+            background:white;
+            border:1px solid #dbe3ec;
+            border-radius:12px;
+          ">
+
+            <div style="
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              gap:12px;
+              flex-wrap:wrap;
+            ">
+
+              <div style="
+                display:flex;
+                align-items:center;
+                gap:10px;
+                font-weight:700;
+                color:#19304B;
+              ">
+
+                <div style="
+                  width:14px;
+                  height:14px;
+                  border-radius:4px;
+                  background:${
+                    categoryColors[category]
+                    || '#64748b'
+                  };
+                "></div>
+
+                ${category}
+
+              </div>
+
+              <div style="
+                color:#4b5563;
+                font-size:14px;
+              ">
+                ${count} events
+                •
+                ${percentage}% of region
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join('')}
+
+    </div>
+
+  `;
+
+}
+
+		function renderCountyAnalysis(){
+
+  const county =
+    document.getElementById(
+      'geoCountySelect'
+    ).value;
+
+  if(!county){
+
+    return;
+
+  }
+
+  const container =
+    document.getElementById(
+      'geoRegionDetails'
+    );
+
+  const countyEvents =
+    events.filter(
+      e => e.county === county
+    );
+
+const region =
+  countyEvents[0]?.region;
+
+const regionalEvents =
+  events.filter(
+    e => e.region === region
+  );
+
+const regionTotal =
+  regionalEvents.length;
+
+const percentage =
+  regionTotal > 0
+    ? (
+        countyEvents.length /
+        regionTotal
+      ) * 100
+    : 0;
+			
+  if(countyEvents.length === 0){
+
+    container.innerHTML = `
+
+      <div style="
+        color:#6b7280;
+      ">
+        No event data available
+        for this county.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  const categoryCounts = {};
+
+  countyEvents.forEach(event => {
+
+    const category =
+      event.category || 'Other';
+
+    if(!categoryCounts[category]){
+
+      categoryCounts[category] = 0;
+
+    }
+
+    categoryCounts[category]++;
+
+  });
+
+  const sortedCategories =
+    Object.entries(categoryCounts)
+      .sort((a,b) => b[1] - a[1]);
+
+  const categoryHtml =
+    sortedCategories
+      .map(entry => {
+
+        return `
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            padding:8px 0;
+            border-bottom:
+              1px solid #e5e7eb;
+          ">
+
+            <span>
+              ${entry[0]}
+            </span>
+
+            <strong>
+              ${entry[1]}
+            </strong>
+
+          </div>
+
+        `;
+
+      })
+      .join('');
+
+  container.innerHTML = `
+
+    <div style="
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:18px;
+    ">
+      ${county} County
+    </div>
+
+    <div style="
+      margin-bottom:18px;
+      color:#4b5563;
+    ">
+      Live county event analysis
+      based on current calendar
+      event classifications.
+    </div>
+
+    <div style="
+      background:#f3f4f6;
+      padding:14px;
+      border-radius:12px;
+      margin-bottom:18px;
+    ">
+
+      <strong>
+        Total Events:
+      </strong>
+
+      ${countyEvents.length}
+		<br><br>
+
+<strong>
+  Regional Share:
+</strong>
+
+${percentage.toFixed(1)}%
+
+<br><br>
+
+<strong>
+  Region Total:
+</strong>
+
+${regionTotal}
+    </div>
+
+    ${categoryHtml}
+
+  `;
+
+}
+
+</script>
+<div
+  id="systemConsole"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      max-width:1000px;
+      background:#111827;
+      color:#e5e7eb;
+      font-family:monospace;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeSystemConsole()"
+    >
+      ✕
+    </button>
+
+    <div id="systemConsoleBody"></div>
+
+  </div>
+
+</div>
+	
+</body>
+</html>
