@@ -4028,28 +4028,30 @@ async function openHelpModal(){
   modal.style.display =
     'flex';
 
-  renderSystemConsole();
+  function renderSystemConsole(){
 
-}
-function closeSystemConsole(){
-
-  const modal =
-    document.getElementById(
-      'systemConsole'
-    );
-
-  if(!modal){
-    return;
-  }
-
-  modal.classList.add(
-    'hidden'
+  console.log(
+    'renderSystemConsole running'
   );
 
-  modal.style.display =
-    'none';
+  const body =
+    document.getElementById(
+      'systemConsoleBody'
+    );
 
-}
+  console.log(body);
+
+  if(!body){
+
+    console.error(
+      'systemConsoleBody missing'
+    );
+
+    return;
+
+  }
+
+ 
 function closeHelpModal(){
 
   const modal =
