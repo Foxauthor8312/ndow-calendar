@@ -1546,21 +1546,21 @@ body{
 
     </button>
 
-    <button
-      id="acceptTermsButton"
-      onclick="acceptTerms()"
-      style="
-        background:#f59e0b;
-        color:white;
-        padding:10px 18px;
-        border:none;
-        border-radius:8px;
-        font-weight:600;
-        cursor:pointer;
-        opacity:.5;
-        pointer-events:none;
-      "
-    >
+  <button
+  id="acceptTermsButton"
+  disabled
+  onclick="acceptTerms()"
+  style="
+    background:#f59e0b;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    opacity:.5;
+  "
+>
 
       Continue
 
@@ -5534,14 +5534,13 @@ function toggleTermsAcceptance(){
       'acceptTermsButton'
     );
 
-  if(
-    !checkbox ||
-    !button
-  ){
+  if(!checkbox || !button){
     return;
   }
 
   if(checkbox.checked){
+
+    button.disabled = false;
 
     button.style.opacity = '1';
 
@@ -5549,6 +5548,8 @@ function toggleTermsAcceptance(){
       'auto';
 
   }else{
+
+    button.disabled = true;
 
     button.style.opacity = '.5';
 
