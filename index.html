@@ -3887,21 +3887,33 @@ function openAdminSection(section){
 }
 
 	function loadRegionDropdown(){
-
   const select =
     document.getElementById(
-      'regionSelect'
+      'geoRegionSelect'
     );
 
   if(!select){
     return;
   }
 
-  select.innerHTML = '';
+  select.innerHTML = `
+    <option value="all">
+      All Regions
+    </option>
+  `;
 
-  // ========================================
-  // ALL REGIONS OPTION
-  // ========================================
+  Object.keys(nevadaRegions)
+    .forEach(region => {
+
+      select.innerHTML += `
+        <option value="${region}">
+          ${region}
+        </option>
+      `;
+
+    });
+  
+  }
 
   const allOption =
     document.createElement(
