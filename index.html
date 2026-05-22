@@ -4198,49 +4198,51 @@ function renderSystemConsole(){
 
   }
 
-  body.innerHTML = `
+  body.innerHTML =
+    '<div style="' +
+    'background:#111827;' +
+    'color:white;' +
+    'padding:24px;' +
+    'border-radius:12px;' +
+    'min-height:300px;' +
+    '">' +
 
-    <div style="
-      background:#111827;
-      color:white;
-      padding:24px;
-      border-radius:12px;
-      min-height:300px;
-    ">
+    '<div style="' +
+    'font-size:28px;' +
+    'font-weight:700;' +
+    'margin-bottom:24px;' +
+    '">' +
 
-      <div style="
-        font-size:28px;
-        font-weight:700;
-        margin-bottom:24px;
-      ">
-        SYSTEM CONSOLE
-      </div>
+    'SYSTEM CONSOLE' +
 
-      <div style="
-        color:#d1d5db;
-        line-height:1.7;
-      ">
-        System console restored successfully.
-      </div>
+    '</div>' +
 
-      <button
-        onclick="reprocessEvents()"
-        style="
-          margin-top:20px;
-          background:#2563eb;
-          border:none;
-          color:white;
-          padding:10px 16px;
-          border-radius:8px;
-          cursor:pointer;
-        "
-      >
-        Reprocess Events
-      </button>
+    '<div style="' +
+    'color:#d1d5db;' +
+    'line-height:1.7;' +
+    '">' +
 
-    </div>
+    'System console restored successfully.' +
 
-  `;
+    '</div>' +
+
+    '<button ' +
+    'onclick="reprocessEvents()" ' +
+    'style="' +
+    'margin-top:20px;' +
+    'background:#2563eb;' +
+    'border:none;' +
+    'color:white;' +
+    'padding:10px 16px;' +
+    'border-radius:8px;' +
+    'cursor:pointer;' +
+    '">' +
+
+    'Reprocess Events' +
+
+    '</button>' +
+
+    '</div>';
 
 }
 	
