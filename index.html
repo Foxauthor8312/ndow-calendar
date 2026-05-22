@@ -1929,7 +1929,7 @@ async function loadEvents(){
 
     console.log(data);
 
-    events = data.events;
+    events = data.events || [];
 
     const syncStart =
       Date.now();
@@ -1946,31 +1946,50 @@ async function loadEvents(){
 
     systemStatus.warnings = [];
 
-    events = events.map(event => {
+   events = events.map(event => {
 
-      const cleanedLocation =
-        (
-          event.location || ''
-        )
-          .replace(/\n/g,' ')
-          .replace(/\s+/g,' ')
-          .trim();
+const rawLocation =
+  (
+    event.location || ''
+  )
+    .replace(/\n/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
 
-      const zipMatch =
-        cleanedLocation.match(
-          /\b\d{5}(?:-\d{4})?\b/
-        );
+const zipMatch =
+  rawLocation.match(
+    /\b\d{5}(?:-\d{4})?\b/
+  );
 
-      const zip =
-        zipMatch
-          ? zipMatch[0]
-              .substring(0,5)
-              .trim()
-              .padStart(5,'0')
-          : '';
+const zip =
+  zipMatch
+    ? zipMatch[0]
+        .substring(0,5)
+        .trim()
+        .padStart(5,'0')
+    : '';
 
-      const geo =
-        zipLookup[zip];
+const cleanedLocation =
+  rawLocation
+
+    // remove ZIP codes
+    .replace(/\b\d{5}(?:-\d{4})?\b/g,'')
+
+    // remove NV / Nevada
+    .replace(/\bNV\b/gi,'')
+    .replace(/\bNevada\b/gi,'')
+
+    // remove commas
+    .replace(/,/g,' ')
+
+    // collapse spaces
+    .replace(/\s+/g,' ')
+
+    // trim
+    .trim();
+
+const geo =
+  zipLookup[zip];
 
       const category =
         classifyEvent(
