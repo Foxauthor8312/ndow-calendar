@@ -1,178 +1,133 @@
-.hidden {
-  display:none !important;
-}
+// ========================================
+// TERMS VERSION
+// ========================================
 
-.terms-modal {
+const TERMS_VERSION = '1.0';
 
-  position:fixed !important;
+// ========================================
+// CHECK TERMS ACCEPTANCE
+// ========================================
 
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+async function checkTermsAcceptance(){
 
-  width:100vw;
-  height:100vh;
+  return new Promise(resolve => {
 
-  background:rgba(0,0,0,.88);
+    const user = JSON.parse(
+      localStorage.getItem('user')
+    );
 
-  z-index:999999;
+    if(!user){
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+      resolve();
 
-  padding:24px;
+      return;
 
-}
+    }
 
-.terms-content {
+    const accepted =
+      localStorage.getItem(
+        'termsAccepted_' +
+        user.username
+      );
 
-  width:min(920px,100%);
-  height:min(88vh,920px);
+    if(
+      accepted === TERMS_VERSION
+    ){
 
-  background:#111827;
+      resolve();
 
-  color:#f9fafb;
+      return;
 
-  border-radius:18px;
+    }
 
-  overflow:hidden;
+    window.termsResolve = resolve;
 
-  display:flex;
-  flex-direction:column;
+    document.getElementById(
+      'termsModal'
+    ).classList.remove(
+      'hidden'
+    );
 
-  border:1px solid #374151;
-
-  box-shadow:
-    0 0 50px rgba(0,0,0,.65);
-
-}
-
-.terms-content h2 {
-
-  margin:0;
-
-  padding:24px;
-
-  background:#0f172a;
-
-  color:white;
-
-  font-size:26px;
-
-  border-bottom:1px solid #374151;
+  });
 
 }
 
-.terms-scroll-container {
+// ========================================
+// MONITOR TERMS SCROLL
+// ========================================
 
-  flex:1;
+function monitorTermsScroll(){
 
-  overflow-y:auto;
+  const container =
+    document.getElementById(
+      'termsScrollContainer'
+    );
 
-  padding:28px;
+  const checkbox =
+    document.getElementById(
+      'termsCheckbox'
+    );
 
-  background:#111827;
+  const reachedBottom =
+    container.scrollTop +
+    container.clientHeight >=
+    container.scrollHeight - 20;
 
-  color:#f3f4f6;
+  if(reachedBottom){
 
-  line-height:1.9;
+    checkbox.disabled = false;
 
-  font-size:15px;
-
-}
-
-.terms-scroll-container p {
-
-  color:#e5e7eb;
-
-  margin-bottom:20px;
-
-}
-
-.terms-scroll-container h3 {
-
-  margin-top:32px;
-  margin-bottom:12px;
-
-  color:#93c5fd;
+  }
 
 }
 
-.terms-footer {
+// ========================================
+// TOGGLE TERMS ACCEPTANCE
+// ========================================
 
-  padding:22px 26px;
+function toggleTermsAcceptance(){
 
-  background:#0f172a;
+  const checked =
+    document.getElementById(
+      'termsCheckbox'
+    ).checked;
 
-  border-top:1px solid #374151;
-
-  display:flex;
-  flex-direction:column;
-
-  gap:18px;
-
-}
-
-.terms-checkbox-row {
-
-  display:flex;
-
-  gap:12px;
-
-  align-items:flex-start;
-
-  line-height:1.7;
-
-  color:#f3f4f6;
+  document.getElementById(
+    'acceptTermsButton'
+  ).disabled = !checked;
 
 }
 
-.terms-checkbox-row input {
+// ========================================
+// ACCEPT TERMS
+// ========================================
 
-  margin-top:4px;
+async function acceptTerms(){
 
-  transform:scale(1.15);
+  const user = JSON.parse(
+    localStorage.getItem('user')
+  );
 
-}
+  if(!user){
+    return;
+  }
 
-.terms-buttons {
+  localStorage.setItem(
+    'termsAccepted_' +
+    user.username,
+    TERMS_VERSION
+  );
 
-  display:flex;
+  document.getElementById(
+    'termsModal'
+  ).classList.add(
+    'hidden'
+  );
 
-  justify-content:flex-end;
+  if(window.termsResolve){
 
-}
+    window.termsResolve();
 
-#acceptTermsButton {
-
-  background:#2563eb;
-
-  color:white;
-
-  border:none;
-
-  padding:12px 24px;
-
-  border-radius:10px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-}
-
-#acceptTermsButton:hover {
-
-  background:#1d4ed8;
-
-}
-
-#acceptTermsButton:disabled {
-
-  opacity:.45;
-
-  cursor:not-allowed;
+  }
 
 }
