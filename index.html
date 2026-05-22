@@ -1931,6 +1931,11 @@ async function loadEvents(){
 
     events = data.events || [];
 
+console.log(
+  'RAW EVENT COUNT:',
+  events.length
+);
+	  
     const syncStart =
       Date.now();
 
@@ -2124,6 +2129,18 @@ const geo =
       };
 
     });
+
+	  console.log(
+  'TOTAL EVENTS AFTER MAP:',
+  events.length
+);
+
+console.log(
+  'BOULDER EVENTS AFTER MAP:',
+  events.filter(e =>
+    e.title.includes('Boulder')
+  )
+);
 		
     document.getElementById(
       'lastUpdated'
