@@ -4177,10 +4177,16 @@ function closeSystemConsole(){
 
 function renderSystemConsole(){
 
+  console.log(
+    'renderSystemConsole running'
+  );
+
   const body =
     document.getElementById(
       'systemConsoleBody'
     );
+
+  console.log(body);
 
   if(!body){
 
@@ -4237,6 +4243,7 @@ function renderSystemConsole(){
   `;
 
 }
+	
 function suggestCategoryRule(title){
 
   const keyword =
