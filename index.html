@@ -4028,28 +4028,37 @@ async function openHelpModal(){
   modal.style.display =
     'flex';
 
-  function renderSystemConsole(){
-
-  console.log(
-    'renderSystemConsole running'
-  );
+function renderSystemConsole(){
 
   const body =
     document.getElementById(
       'systemConsoleBody'
     );
 
-  console.log(body);
-
   if(!body){
-
-    console.error(
-      'systemConsoleBody missing'
-    );
-
     return;
-
   }
+
+  body.innerHTML = `
+
+    <div style="
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:24px;
+    ">
+      SYSTEM CONSOLE
+    </div>
+
+    <div style="
+      color:#d1d5db;
+      line-height:1.7;
+    ">
+      System console temporarily restored.
+    </div>
+
+  `;
+
+}
 
  
 function closeHelpModal(){
