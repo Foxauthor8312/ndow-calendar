@@ -3964,214 +3964,6 @@ function renderHelpTopics(){
 }
 
 // ========================================
-// OPEN HELP TOPIC
-// ========================================
-
-function openHelpTopic(topicKey){
-
-  const topic =
-    helpTopics.find(
-      t => t.topic_key === topicKey
-    );
-
-  if(!topic){
-    return;
-  }
-
-  const content =
-    document.getElementById(
-      'helpContentArea'
-    );
-
-  if(!content){
-    return;
-  }
-
-  content.innerHTML = `
-
-    <div style="
-      font-size:28px;
-      font-weight:700;
-      margin-bottom:22px;
-      color:#19304B;
-    ">
-      ${topic.title}
-    </div>
-
-    <div style="
-      line-height:1.8;
-      font-size:16px;
-      color:#374151;
-    ">
-      ${topic.content}
-    </div>
-
-  `;
-
-}
-
-// ========================================
-// HELP MODAL
-// ========================================
-
-async function openHelpModal(){
-
-  const modal =
-    document.getElementById(
-      'helpModal'
-    );
-
-  if(!modal){
-    return;
-  }
-
-  modal.classList.remove(
-    'hidden'
-  );
-
-  modal.style.display =
-    'flex';
-
-  await loadHelpTopics();
-
-}
-function closeHelpModal(){
-
-  const modal =
-    document.getElementById(
-      'helpModal'
-    );
-
-  if(!modal){
-    return;
-  }
-
-  modal.classList.add(
-    'hidden'
-  );
-
-  modal.style.display =
-    'none';
-
-}
-
-	function openAdminSection(section){
-
-  const users =
-    document.getElementById(
-      'usersPanel'
-    );
-
-  const help =
-    document.getElementById(
-      'helpPanel'
-    );
-
-  const announcements =
-    document.getElementById(
-      'announcementPanel'
-    );
-
-  const geo =
-    document.getElementById(
-      'geoPanel'
-    );
-
-  if(users){
-    users.style.display =
-      'none';
-  }
-
-  if(help){
-    help.style.display =
-      'none';
-  }
-
-  if(announcements){
-    announcements.style.display =
-      'none';
-  }
-
-  if(geo){
-    geo.style.display =
-      'none';
-  }
-
-  if(
-    section === 'users' &&
-    users
-  ){
-    users.style.display =
-      'block';
-  }
-
-  if(
-    section === 'help' &&
-    help
-  ){
-    help.style.display =
-      'block';
-  }
-
-  if(
-    section === 'announcements' &&
-    announcements
-  ){
-
-    announcements.style.display =
-      'block';
-
-    loadAnnouncementAdminList();
-
-  }
-
-  if(
-    section === 'geo' &&
-    geo
-  ){
-    geo.style.display =
-      'block';
-  }
-
-}
-
-	
-// ========================================
-// SYSTEM CONSOLE
-// ========================================
-
-function openSystemConsole(){
-
-  console.log(
-    'openSystemConsole fired'
-  );
-
-  const modal =
-    document.getElementById(
-      'systemConsole'
-    );
-
-  console.log(modal);
-
-  if(!modal){
-
-    console.error(
-      'systemConsole missing'
-    );
-
-    return;
-
-  }
-
-  modal.classList.remove(
-    'hidden'
-  );
-
-  modal.style.display =
-    'flex';
-
-  modal.style.zIndex =
-    '999999';
 
   renderSystemConsole();
 
@@ -4199,28 +3991,61 @@ function closeSystemConsole(){
 
 function renderSystemConsole(){
 
-  console.log(
-    'renderSystemConsole running'
-  );
-
   const body =
     document.getElementById(
       'systemConsoleBody'
     );
 
-  console.log(body);
-
   if(!body){
     return;
   }
 
-  body.innerHTML =
-    '<h1 style="color:white;">SYSTEM TEST</h1>';
+  body.innerHTML = '';
+
+  const title =
+    document.createElement('h1');
+
+  title.innerText =
+    'SYSTEM CONSOLE';
+
+  title.style.color =
+    'white';
+
+  title.style.fontSize =
+    '28px';
+
+  body.appendChild(title);
+
+  const text =
+    document.createElement('div');
+
+  text.innerText =
+    'System console operational.';
+
+  text.style.color =
+    '#d1d5db';
+
+  text.style.marginTop =
+    '20px';
+
+  body.appendChild(text);
+
+  const button =
+    document.createElement('button');
+
+  button.innerText =
+    'Reprocess Events';
+
+  button.style.marginTop =
+    '20px';
+
+  button.onclick =
+    reprocessEvents;
+
+  body.appendChild(button);
 
 }
 
-
-	
 function suggestCategoryRule(title){
 
   const keyword =
@@ -7052,9 +6877,7 @@ ${regionTotal}
 
     <div
       id="systemConsoleBody"
-      style="
-        min-height:500px;
-      "
+      style="min-height:500px;"
     ></div>
 
   </div>
