@@ -60,3 +60,37 @@
   background:#0f172a;
 
 }
+
+.terms-checkbox-row {
+
+  display:flex;
+
+  gap:12px;
+
+  align-items:flex-start;
+
+  line-height:1.7;
+
+  color:#f3f4f6;
+
+}
+
+.terms-buttons {
+
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:12px;
+
+  margin-top:18px;
+
+}
+
+#acceptTermsButton:disabled {
+
+  opacity:.45;
+
+  cursor:not-allowed;
+
+}
