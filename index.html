@@ -12,7 +12,7 @@
 <link
   rel="preconnect"
   href="https://fonts.googleapis.com"
->
+>f
 
 <link
   rel="preconnect"
@@ -1160,6 +1160,7 @@ body{
     Help
   </button>
   <button
+	  
     id="superuserButton"
     class="admin-button hidden"
     onclick="openSystemConsole()"
@@ -4031,39 +4032,31 @@ function closeHelpModal(){
 
 }
 
-  // ========================================
+// ========================================
 // SYSTEM CONSOLE
 // ========================================
 
 function openSystemConsole(){
 
-  const adminModal =
-    document.getElementById(
-      'adminModal'
-    );
-
-  if(adminModal){
-    adminModal.style.display =
-      'none';
-  }
-
-  const helpModal =
-    document.getElementById(
-      'helpModal'
-    );
-
-  if(helpModal){
-    helpModal.style.display =
-      'none';
-  }
+  console.log(
+    'openSystemConsole fired'
+  );
 
   const modal =
     document.getElementById(
       'systemConsole'
     );
 
+  console.log(modal);
+
   if(!modal){
+
+    console.error(
+      'systemConsole missing'
+    );
+
     return;
+
   }
 
   modal.classList.remove(
@@ -4072,6 +4065,9 @@ function openSystemConsole(){
 
   modal.style.display =
     'flex';
+
+  modal.style.zIndex =
+    '999999';
 
   renderSystemConsole();
 
@@ -4105,40 +4101,56 @@ function renderSystemConsole(){
     );
 
   if(!body){
+
+    console.error(
+      'systemConsoleBody missing'
+    );
+
     return;
+
   }
 
   body.innerHTML = `
 
     <div style="
-      font-size:28px;
-      font-weight:700;
-      margin-bottom:24px;
+      background:#111827;
+      color:white;
+      padding:24px;
+      border-radius:12px;
+      min-height:300px;
     ">
-      SYSTEM CONSOLE
-    </div>
 
-    <div style="
-      color:#d1d5db;
-      line-height:1.7;
-    ">
-      System console restored successfully.
-    </div>
+      <div style="
+        font-size:28px;
+        font-weight:700;
+        margin-bottom:24px;
+      ">
+        SYSTEM CONSOLE
+      </div>
 
-    <button
-      onclick="reprocessEvents()"
-      style="
-        margin-top:20px;
-        background:#2563eb;
-        border:none;
-        color:white;
-        padding:10px 16px;
-        border-radius:8px;
-        cursor:pointer;
-      "
-    >
-      Reprocess Events
-    </button>
+      <div style="
+        color:#d1d5db;
+        line-height:1.7;
+      ">
+        System console restored successfully.
+      </div>
+
+      <button
+        onclick="reprocessEvents()"
+        style="
+          margin-top:20px;
+          background:#2563eb;
+          border:none;
+          color:white;
+          padding:10px 16px;
+          border-radius:8px;
+          cursor:pointer;
+        "
+      >
+        Reprocess Events
+      </button>
+
+    </div>
 
   `;
 
