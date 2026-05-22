@@ -1,4 +1,3 @@
-
 // ========================================
 // TERMS VERSION
 // ========================================
@@ -11,31 +10,45 @@ const TERMS_VERSION = '1.0';
 
 async function checkTermsAcceptance(){
 
-  const user = JSON.parse(
-    localStorage.getItem('user')
-  );
+  return new Promise(resolve => {
 
-  if(!user){
-    return;
-  }
-
-  const accepted =
-    localStorage.getItem(
-      'termsAccepted_' +
-      user.username
+    const user = JSON.parse(
+      localStorage.getItem('user')
     );
 
-  if(
-    accepted === TERMS_VERSION
-  ){
-    return;
-  }
+    if(!user){
 
-  document.getElementById(
-    'termsModal'
-  ).classList.remove(
-    'hidden'
-  );
+      resolve();
+
+      return;
+
+    }
+
+    const accepted =
+      localStorage.getItem(
+        'termsAccepted_' +
+        user.username
+      );
+
+    if(
+      accepted === TERMS_VERSION
+    ){
+
+      resolve();
+
+      return;
+
+    }
+
+    window.termsResolve = resolve;
+
+    document.getElementById(
+      'termsModal'
+    ).classList.remove(
+      'hidden'
+    );
+
+  });
 
 }
 
@@ -110,5 +123,11 @@ async function acceptTerms(){
   ).classList.add(
     'hidden'
   );
+
+  if(window.termsResolve){
+
+    window.termsResolve();
+
+  }
 
 }
