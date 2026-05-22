@@ -3818,14 +3818,49 @@ function openHelpTopic(topicKey){
 
 async function openHelpModal(){
 
+  const adminModal =
+    document.getElementById(
+      'adminModal'
+    );
+
+  if(adminModal){
+
+    adminModal.classList.add(
+      'hidden'
+    );
+
+    adminModal.style.display =
+      'none';
+
+  }
+
+  const systemConsole =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  if(systemConsole){
+
+    systemConsole.classList.add(
+      'hidden'
+    );
+
+    systemConsole.style.display =
+      'none';
+
+  }
+
   const modal =
     document.getElementById(
       'helpModal'
     );
 
-  modal.classList.remove('hidden');
+  modal.classList.remove(
+    'hidden'
+  );
 
-  modal.style.display = 'flex';
+  modal.style.display =
+    'flex';
 
   await loadHelpTopics();
 
@@ -3882,24 +3917,42 @@ function openAdminSection(section){
     geo.style.display = 'none';
   }
 
-  if(section === 'users' && users){
-    users.style.display = 'block';
+  if(
+    section === 'users' &&
+    users
+  ){
+    users.style.display =
+      'block';
   }
 
-  if(section === 'help' && help){
-    help.style.display = 'block';
+  if(
+    section === 'help' &&
+    help
+  ){
+    help.style.display =
+      'block';
   }
 
- if(section === 'announcements' && announcements){
+  if(
+    section === 'announcements' &&
+    announcements
+  ){
 
-  announcements.style.display = 'block';
+    announcements.style.display =
+      'block';
 
-  loadAnnouncementAdminList();
+    loadAnnouncementAdminList();
 
-}
+  }
 
-  if(section === 'geo' && geo){
-    geo.style.display = 'block';
+  if(
+    section === 'geo' &&
+    geo
+  ){
+
+    geo.style.display =
+      'block';
+
   }
 
 }
@@ -3937,6 +3990,38 @@ function openAdminSection(section){
   
 
 function openSystemConsole(){
+
+  const helpModal =
+    document.getElementById(
+      'helpModal'
+    );
+
+  if(helpModal){
+
+    helpModal.classList.add(
+      'hidden'
+    );
+
+    helpModal.style.display =
+      'none';
+
+  }
+
+  const adminModal =
+    document.getElementById(
+      'adminModal'
+    );
+
+  if(adminModal){
+
+    adminModal.classList.add(
+      'hidden'
+    );
+
+    adminModal.style.display =
+      'none';
+
+  }
 
   const modal =
     document.getElementById(
@@ -4552,13 +4637,49 @@ function openAdminPanel(){
 
   }
 
-  const modal = document.getElementById(
-    'adminModal'
+  const helpModal =
+    document.getElementById(
+      'helpModal'
+    );
+
+  if(helpModal){
+
+    helpModal.classList.add(
+      'hidden'
+    );
+
+    helpModal.style.display =
+      'none';
+
+  }
+
+  const systemConsole =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  if(systemConsole){
+
+    systemConsole.classList.add(
+      'hidden'
+    );
+
+    systemConsole.style.display =
+      'none';
+
+  }
+
+  const modal =
+    document.getElementById(
+      'adminModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
   );
 
-  modal.classList.remove('hidden');
-
-  modal.style.display = 'flex';
+  modal.style.display =
+    'flex';
 
   loadUsers();
 
@@ -4566,32 +4687,27 @@ function openAdminPanel(){
 
   loadRegionDropdown();
 
-// ========================================
-// INITIALIZE GEO ANALYTICS
-// ========================================
+  const geoRegionSelect =
+    document.getElementById(
+      'geoRegionSelect'
+    );
 
-const geoRegionSelect =
-  document.getElementById(
-    'geoRegionSelect'
+  if(geoRegionSelect){
+
+    geoRegionSelect.value =
+      'all';
+
+    loadGeoCounties();
+
+    renderGeoRegionAnalysis(
+      'all'
+    );
+
+  }
+
+  openAdminSection(
+    'users'
   );
-
-const selectedCounty =
-  document.getElementById(
-    'geoCountySelect'
-  ).value;
-	
-if(geoRegionSelect){
-
-  geoRegionSelect.value =
-    'all';
-
-  loadGeoCounties();
-
-  renderGeoRegionAnalysis('all');
-
-}
-	
-  openAdminSection('geo');
 
 }
 
