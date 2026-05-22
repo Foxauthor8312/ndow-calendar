@@ -940,7 +940,22 @@ body{
 <!-- ========================================
      START LOGIN HTML
 ======================================== -->
+<script>
 
+localStorage.setItem(
+  'ndowAccess',
+  'granted'
+);
+
+localStorage.setItem(
+  'user',
+  JSON.stringify({
+    username:'barry',
+    role:'admin'
+  })
+);
+
+</script>
 <div id="loginScreen" class="login-screen">
 
   <div class="login-box">
