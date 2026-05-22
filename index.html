@@ -4007,7 +4007,27 @@ async function openHelpModal(){
   modal.style.display =
     'flex';
 
-  await loadHelpTopics();
+ await loadHelpTopics();
+
+}
+
+function closeHelpModal(){
+
+  const modal =
+    document.getElementById(
+      'helpModal'
+    );
+
+  if(!modal){
+    return;
+  }
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
 
 }
 
