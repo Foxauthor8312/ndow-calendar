@@ -40,14 +40,12 @@ blocks.forEach(block => {
     ){
       location = line;
     }
-
-    if(
-      line.toLowerCase().includes('date')
-)
-    ){
-      dateLine =
-        lines[index + 1] || '';
-    }
+if(
+  line.toLowerCase().includes('date')
+){
+  dateLine =
+    lines[index + 1] || '';
+}
 
   });
 
