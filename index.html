@@ -1335,9 +1335,213 @@ body{
 
     </div>
 
-  </div>
+ </div>
 
 </div>
+
+</div>
+
+<!-- ========================================
+     TERMS OF SERVICE MODAL
+======================================== -->
+
+<div
+  id="termsModal"
+  class="terms-modal hidden"
+>
+
+  <div class="terms-content">
+
+    <h2>
+      Terms of Service
+    </h2>
+
+    <div
+      id="termsScrollContainer"
+      class="terms-scroll-container"
+      onscroll="monitorTermsScroll()"
+    >
+
+      <div style="
+        line-height:1.8;
+        font-size:15px;
+        color:#e5e7eb;
+      ">
+
+        <div style="
+          margin-bottom:22px;
+          font-size:18px;
+          font-weight:700;
+          color:white;
+        ">
+          NDOW Volunteer Event Calendar
+        </div>
+
+        <p>
+          First-time users are required to
+          review and acknowledge these
+          Terms of Service before accessing
+          the NDOW Volunteer Event Calendar
+          platform.
+        </p>
+
+        <p>
+          Continued use of the platform
+          constitutes acknowledgement and
+          acceptance of these operational
+          use guidelines.
+        </p>
+
+        <h3 style="
+          margin-top:30px;
+          color:#9CCBFF;
+        ">
+          Independent Platform Notice
+        </h3>
+
+        <p>
+          This platform is independently
+          developed and is not an official
+          Nevada Department of Wildlife
+          (NDOW) product, service, or
+          information system.
+        </p>
+
+        <p>
+          The system is intended solely
+          as a volunteer-operated
+          coordination and event visibility
+          tool utilizing publicly displayed
+          event information.
+        </p>
+
+        <p>
+          The platform does not interfere
+          with, modify, access, bypass,
+          or invade any portion of the
+          official NDOW web application
+          or operational infrastructure.
+        </p>
+
+        <p>
+          The system does not retain
+          personal volunteer data,
+          private registration information,
+          or confidential NDOW records.
+        </p>
+
+        <p>
+          Information processed by the
+          platform is limited to publicly
+          displayed event-related data
+          or operationally authorized
+          information made available
+          through official event interfaces.
+        </p>
+
+        <h3 style="
+          margin-top:30px;
+          color:#9CCBFF;
+        ">
+          Authorized Use
+        </h3>
+
+        <p>
+          Access to this platform is
+          restricted to approved users
+          for legitimate operational or
+          volunteer coordination purposes.
+        </p>
+
+        <p>
+          Users agree to use the platform
+          responsibly and professionally.
+        </p>
+
+        <h3 style="
+          margin-top:30px;
+          color:#9CCBFF;
+        ">
+          Event Information Disclaimer
+        </h3>
+
+        <p>
+          Event information may change
+          without notice. Users should
+          continue to rely upon official
+          NDOW resources for authoritative
+          event information, registrations,
+          and operational direction.
+        </p>
+
+        <h3 style="
+          margin-top:30px;
+          color:#9CCBFF;
+        ">
+          Privacy & Responsible Use
+        </h3>
+
+        <p>
+          Users agree to handle any
+          operational information
+          responsibly and avoid
+          unauthorized redistribution
+          of operational data.
+        </p>
+
+        <div style="
+          margin-top:40px;
+          padding:18px;
+          border:1px solid #374151;
+          border-radius:10px;
+          background:#111827;
+        ">
+
+          End of Terms of Service
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="terms-footer">
+
+      <label class="terms-checkbox-row">
+
+        <input
+          type="checkbox"
+          id="termsCheckbox"
+          disabled
+          onchange="toggleTermsAcceptance()"
+        >
+
+        <span>
+          I have read and agree to the
+          NDOW Volunteer Event Calendar
+          Terms of Service and acknowledge
+          that this platform is independently
+          developed and utilizes publicly
+          displayed event information.
+        </span>
+
+      </label>
+
+      <div class="terms-buttons">
+
+        <button
+          id="acceptTermsButton"
+          disabled
+          onclick="acceptTerms()"
+        >
+          Continue
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
