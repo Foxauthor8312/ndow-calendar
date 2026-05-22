@@ -3990,40 +3990,18 @@ function openHelpTopic(topicKey){
 
 async function openHelpModal(){
 
-  const adminModal =
-    document.getElementById(
-      'adminModal'
-    );
-
-  if(adminModal){
-    adminModal.style.display =
-      'none';
-  }
-
-  const systemConsole =
-    document.getElementById(
-      'systemConsole'
-    );
-
-  if(systemConsole){
-    systemConsole.style.display =
-      'none';
-  }
-
   const modal =
     document.getElementById(
       'helpModal'
     );
 
   if(!modal){
-
-    console.error(
-      'helpModal missing'
-    );
-
     return;
-
   }
+
+  modal.classList.remove(
+    'hidden'
+  );
 
   modal.style.display =
     'flex';
@@ -4032,6 +4010,46 @@ async function openHelpModal(){
 
 }
 
+  function openSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  if(!modal){
+    return;
+  }
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  renderSystemConsole();
+
+}
+function closeSystemConsole(){
+
+  const modal =
+    document.getElementById(
+      'systemConsole'
+    );
+
+  if(!modal){
+    return;
+  }
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
 function closeHelpModal(){
 
   const modal =
@@ -4039,15 +4057,18 @@ function closeHelpModal(){
       'helpModal'
     );
 
-  if(modal){
-
-    modal.style.display =
-      'none';
-
+  if(!modal){
+    return;
   }
 
-}
+  modal.classList.add(
+    'hidden'
+  );
 
+  modal.style.display =
+    'none';
+
+}
 // ========================================
 // ADMIN SECTION SWITCHER
 // ========================================
