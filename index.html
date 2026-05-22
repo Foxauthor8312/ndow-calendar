@@ -1509,74 +1509,70 @@ body{
     </div>
 
     <div class="terms-footer">
-      <label class="terms-checkbox-row">
 
-        <input
-          type="checkbox"
-          id="termsCheckbox"
-          onchange="toggleTermsAcceptance()"
-        >
+  <label class="terms-checkbox-row">
 
-        <span>
-          I have read and agree to the
-          NDOW Volunteer Event Calendar
-          Terms of Service and acknowledge
-          that this platform is independently
-          developed and utilizes publicly
-          displayed event information.
-        </span>
+    <input
+      type="checkbox"
+      id="termsCheckbox"
+      onchange="toggleTermsAcceptance()"
+    >
 
-      </label>
+    <span>
+      I have read and agree to the
+      NDOW Volunteer Event Calendar
+      Terms of Service and acknowledge
+      that this platform is independently
+      developed and utilizes publicly
+      displayed event information.
+    </span>
 
-      <button
-        id="acceptTermsButton"
-        onclick="acceptTerms()"
-        style="
-          margin-top:18px;
-          margin-left:auto;
-          display:block;
-          background:#f59e0b;
-          color:white;
-          padding:10px 18px;
-          border:none;
-          border-radius:8px;
-          font-weight:600;
-          cursor:pointer;
-          opacity:.5;
-          pointer-events:none;
-        "
-      >
+  </label>
 
-        Continue
+  <div class="terms-buttons">
 
-      </button>
-		  
-        <span>
-          I have read and agree to the
-          NDOW Volunteer Event Calendar
-          Terms of Service and acknowledge
-          that this platform is independently
-          developed and utilizes publicly
-          displayed event information.
-        </span>
+    <button
+      onclick="
+        window.open(
+          'NDOW_Terms_of_Use.docx'
+        )
+      "
+      style="
+        margin-right:auto;
+      "
+    >
 
-      </label>
+      View Full Terms
 
-      <div class="terms-buttons">
+    </button>
 
-        <button
-          onclick="
-            window.open(
-              'NDOW_Terms_of_Use.docx'
-            )
-          "
-          style="
-            margin-right:auto;
-          "
-        >
-          View Full Terms
-        </button>
+    <button
+      id="acceptTermsButton"
+      onclick="acceptTerms()"
+      style="
+        background:#f59e0b;
+        color:white;
+        padding:10px 18px;
+        border:none;
+        border-radius:8px;
+        font-weight:600;
+        cursor:pointer;
+        opacity:.5;
+        pointer-events:none;
+      "
+    >
 
+      Continue
+
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
 <!-- ========================================
      START LOGIN LOADING OVERLAY
 ======================================== -->
@@ -5538,20 +5534,58 @@ function toggleTermsAcceptance(){
       'acceptTermsButton'
     );
 
-    if(
-    checkbox.checked
+  if(
+    !checkbox ||
+    !button
   ){
+    return;
+  }
 
-    button.style.opacity =
-      '1';
+  if(checkbox.checked){
+
+    button.style.opacity = '1';
 
     button.style.pointerEvents =
       'auto';
 
   }else{
 
-    button.style.opacity =
-      '.5';
+    button.style.opacity = '.5';
+
+    button.style.pointerEvents =
+      'none';
+
+  }
+
+}function toggleTermsAcceptance(){
+
+  const checkbox =
+    document.getElementById(
+      'termsCheckbox'
+    );
+
+  const button =
+    document.getElementById(
+      'acceptTermsButton'
+    );
+
+  if(
+    !checkbox ||
+    !button
+  ){
+    return;
+  }
+
+  if(checkbox.checked){
+
+    button.style.opacity = '1';
+
+    button.style.pointerEvents =
+      'auto';
+
+  }else{
+
+    button.style.opacity = '.5';
 
     button.style.pointerEvents =
       'none';
@@ -5561,17 +5595,6 @@ function toggleTermsAcceptance(){
 }
 
 async function acceptTerms(){
-
-  localStorage.setItem(
-    'termsAccepted',
-    'true'
-  );
-
-  document.getElementById(
-    'termsModal'
-  ).style.display = 'none';
-
-}
 
 async function checkTermsAcceptance(){
 
