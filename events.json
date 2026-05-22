@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T18:21:57.848Z",
+  "lastUpdated": "2026-05-22T20:33:20.865Z",
   "events": [
     {
       "title": "Know Your Nevada - L1 - Taylor ES (4 classes) UNLISTED",
@@ -173,22 +173,13 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4484"
     },
     {
-      "title": "NASP Virtual Tournament - The Meadows School PRIVATE EVENT",
-      "category": "Other",
-      "date": "Mar 16, 2026",
-      "time": "10:00AM - 11:30AM",
-      "location": "Las Vegas, NV 89128",
-      "description": "NASP Virtual Tournament - The Meadows School PRIVATE EVENT - Las Vegas, NV 89128",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4487"
-    },
-    {
       "title": "NASP Virtual Tournament- Las Vegas Academy PRIVATE EVENT",
       "category": "Other",
       "date": "Mar 16, 2026",
       "time": "10:00AM - 11:00AM",
       "location": "Las Vegas, NV 89101",
       "description": "NASP Virtual Tournament- Las Vegas Academy PRIVATE EVENT - Las Vegas, NV 89101",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4478"
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4497"
     },
     {
       "title": "TIC Release - Smith HS UNLISTED",
@@ -215,7 +206,16 @@
       "time": "10:00AM - 11:00AM",
       "location": "Las Vegas, NV 89101",
       "description": "NASP Virtual Tournament- Las Vegas Academy PRIVATE EVENT - Las Vegas, NV 89101",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4497"
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4478"
+    },
+    {
+      "title": "NASP Virtual Tournament - The Meadows School PRIVATE EVENT",
+      "category": "Other",
+      "date": "Mar 16, 2026",
+      "time": "10:00AM - 11:30AM",
+      "location": "Las Vegas, NV 89128",
+      "description": "NASP Virtual Tournament - The Meadows School PRIVATE EVENT - Las Vegas, NV 89128",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4487"
     },
     {
       "title": "TIC Field Stations - Collins/Cunningham PRIVATE EVENT",
@@ -362,24 +362,6 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4589"
     },
     {
-      "title": "Hunter Education",
-      "category": "Hunter Education",
-      "date": "Mar 21, 2026",
-      "time": "8:00AM - 5:00PM",
-      "location": "Carson City, NV 89701",
-      "description": "Hunter Education - Carson City, NV 89701",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4444"
-    },
-    {
-      "title": "Hunter Education",
-      "category": "Hunter Education",
-      "date": "Mar 21, 2026",
-      "time": "8:00AM - 5:00PM",
-      "location": "Ely, NV 89301",
-      "description": "Hunter Education - Ely, NV 89301",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4413"
-    },
-    {
       "title": "Bowhunter Education Field Day",
       "category": "Bowhunter",
       "date": "Mar 21, 2026",
@@ -393,18 +375,27 @@
       "category": "Hunter Education",
       "date": "Mar 21, 2026",
       "time": "8:00AM - 5:00PM",
+      "location": "Ely, NV 89301",
+      "description": "Hunter Education - Ely, NV 89301",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4413"
+    },
+    {
+      "title": "Hunter Education",
+      "category": "Hunter Education",
+      "date": "Mar 21, 2026",
+      "time": "8:00AM - 5:00PM",
       "location": "Reno, NV 89508",
       "description": "Hunter Education - Reno, NV 89508",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4443"
     },
     {
-      "title": "Advanced Fly-Tying PRIVATE EVENT",
+      "title": "Hunter Education",
       "category": "Hunter Education",
       "date": "Mar 21, 2026",
-      "time": "9:00AM - 3:00PM",
-      "location": "Elko, NV 89801",
-      "description": "Advanced Fly-Tying PRIVATE EVENT - Elko, NV 89801",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4442"
+      "time": "8:00AM - 5:00PM",
+      "location": "Carson City, NV 89701",
+      "description": "Hunter Education - Carson City, NV 89701",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4444"
     },
     {
       "title": "Hunter Education",
@@ -414,6 +405,15 @@
       "location": "Tonopah, NV 89049",
       "description": "Hunter Education - Tonopah, NV 89049",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4469"
+    },
+    {
+      "title": "Advanced Fly-Tying PRIVATE EVENT",
+      "category": "Hunter Education",
+      "date": "Mar 21, 2026",
+      "time": "9:00AM - 3:00PM",
+      "location": "Elko, NV 89801",
+      "description": "Advanced Fly-Tying PRIVATE EVENT - Elko, NV 89801",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4442"
     },
     {
       "title": "Wetlands Art Day",
@@ -438,9 +438,9 @@
       "category": "Hunter Education",
       "date": "Mar 22, 2026",
       "time": "8:00AM - 5:00PM",
-      "location": "Elko, NV 89801",
-      "description": "Hunter Education - Elko, NV 89801",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4411"
+      "location": "Winnemucca, NV 89445",
+      "description": "Hunter Education - Winnemucca, NV 89445",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4445"
     },
     {
       "title": "Hunter Education",
@@ -449,7 +449,7 @@
       "time": "9:00AM - 5:00PM",
       "location": "Virginia City, NV 89440",
       "description": "Hunter Education - Virginia City, NV 89440",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4445"
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4411"
     },
     {
       "title": "Ladies Fly Fishing",
@@ -654,18 +654,18 @@
       "category": "Hunter Education",
       "date": "Mar 28, 2026",
       "time": "8:00AM - 5:00PM",
-      "location": "Fallon, NV 89406",
-      "description": "Hunter Education - Fallon, NV 89406",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4447"
+      "location": "Las Vegas, NV 89131",
+      "description": "Hunter Education - Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4397"
     },
     {
       "title": "Hunter Education",
       "category": "Hunter Education",
       "date": "Mar 28, 2026",
       "time": "8:00AM - 5:00PM",
-      "location": "Las Vegas, NV 89131",
-      "description": "Hunter Education - Las Vegas, NV 89131",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4397"
+      "location": "Fallon, NV 89406",
+      "description": "Hunter Education - Fallon, NV 89406",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4447"
     },
     {
       "title": "Spring Blooms & Wildlife Walk PRIVATE EVENT",
@@ -674,7 +674,7 @@
       "time": "8:00AM - 9:30AM",
       "location": "Las Vegas, NV 89131",
       "description": "Spring Blooms & Wildlife Walk PRIVATE EVENT - Las Vegas, NV 89131",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4544"
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4543"
     },
     {
       "title": "Hunter Education UNLISTED",
@@ -701,16 +701,7 @@
       "time": "8:00AM - 9:30AM",
       "location": "Las Vegas, NV 89131",
       "description": "Spring Blooms & Wildlife Walk PRIVATE EVENT - Las Vegas, NV 89131",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4543"
-    },
-    {
-      "title": "BAI Instructor Certification PRIVATE EVENT",
-      "category": "Other",
-      "date": "Mar 28, 2026",
-      "time": "9:00AM - 1:00PM",
-      "location": "Las Vegas, NV 89131",
-      "description": "BAI Instructor Certification PRIVATE EVENT - Las Vegas, NV 89131",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4441"
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4544"
     },
     {
       "title": "Hunter Education PRIVATE EVENT",
@@ -720,6 +711,15 @@
       "location": "Hiko, NV 89017",
       "description": "Hunter Education PRIVATE EVENT - Hiko, NV 89017",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4470"
+    },
+    {
+      "title": "BAI Instructor Certification PRIVATE EVENT",
+      "category": "Other",
+      "date": "Mar 28, 2026",
+      "time": "9:00AM - 1:00PM",
+      "location": "Las Vegas, NV 89131",
+      "description": "BAI Instructor Certification PRIVATE EVENT - Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4441"
     },
     {
       "title": "Desert Shores Spring Derby PRIVATE EVENT",
@@ -767,15 +767,6 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4424"
     },
     {
-      "title": "Sprin Break Youth Hands on Outdoor Days",
-      "category": "Other",
-      "date": "Mar 31, 2026",
-      "time": "8:00AM - 5:00PM",
-      "location": "Verdi, NV 89439",
-      "description": "Sprin Break Youth Hands on Outdoor Days - Verdi, NV 89439",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4453"
-    },
-    {
       "title": "Spring Break Youth Hands on Outdoor Days",
       "category": "Other",
       "date": "Mar 31, 2026",
@@ -783,6 +774,15 @@
       "location": "Verdi, NV 89439",
       "description": "Spring Break Youth Hands on Outdoor Days - Verdi, NV 89439",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4454"
+    },
+    {
+      "title": "Sprin Break Youth Hands on Outdoor Days",
+      "category": "Other",
+      "date": "Mar 31, 2026",
+      "time": "8:00AM - 5:00PM",
+      "location": "Verdi, NV 89439",
+      "description": "Sprin Break Youth Hands on Outdoor Days - Verdi, NV 89439",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4453"
     },
     {
       "title": "WILD Week: Become a Biologist",
@@ -830,15 +830,6 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4541"
     },
     {
-      "title": "WILD Week: Animal Tracks",
-      "category": "Wildlife",
-      "date": "Apr 02, 2026",
-      "time": "9:00AM - 12:00PM",
-      "location": "Elko, NV 89801",
-      "description": "WILD Week: Animal Tracks - Elko, NV 89801",
-      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4426"
-    },
-    {
       "title": "Career Fair PRIVATE EVENT",
       "category": "Other",
       "date": "Apr 02, 2026",
@@ -846,6 +837,15 @@
       "location": "Las Vegas, NV 89106",
       "description": "Career Fair PRIVATE EVENT - Las Vegas, NV 89106",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4545"
+    },
+    {
+      "title": "WILD Week: Animal Tracks",
+      "category": "Wildlife",
+      "date": "Apr 02, 2026",
+      "time": "9:00AM - 12:00PM",
+      "location": "Elko, NV 89801",
+      "description": "WILD Week: Animal Tracks - Elko, NV 89801",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4426"
     },
     {
       "title": "Archery and Firearms Maintenance PRIVATE EVENT",
@@ -2385,6 +2385,24 @@
       "location": "Las Vegas, NV 89131",
       "description": "Living with Wildlife - Nocturnal Animals - Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4433"
+    },
+    {
+      "title": "Living with Wildlife - Solera at Stallion Mountain PRIVATE EVENT",
+      "category": "Wildlife",
+      "date": "Jan 11, 2027",
+      "time": "10:00AM - 11:00AM",
+      "location": "Las Vegas, NV 89122",
+      "description": "Living with Wildlife - Solera at Stallion Mountain PRIVATE EVENT - Las Vegas, NV 89122",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4671"
+    },
+    {
+      "title": "Living with Wildlife - Sun City Summerlin PRIVATE EVENT",
+      "category": "Wildlife",
+      "date": "Feb 05, 2027",
+      "time": "10:00AM - 11:00AM",
+      "location": "Las Vegas, NV 89134",
+      "description": "Living with Wildlife - Sun City Summerlin PRIVATE EVENT - Las Vegas, NV 89134",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4670"
     }
   ]
 }
