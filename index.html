@@ -4580,12 +4580,19 @@ const geoRegionSelect =
     'geoRegionSelect'
   );
 
+const selectedCounty =
+  document.getElementById(
+    'geoCountySelect'
+  ).value;
+	
 if(geoRegionSelect){
 
   geoRegionSelect.value =
-    'Western';
+    'all';
 
   loadGeoCounties();
+
+  renderGeoRegionAnalysis('all');
 
 }
 	
@@ -5891,7 +5898,10 @@ async function deleteHelpTopic(){
   <select
     id="geoRegionSelect"
     class="contact-select"
-    onchange="loadGeoCounties()"
+    onchange="
+      loadGeoCounties();
+      renderGeoRegionAnalysis(this.value);
+    "
     style="margin-top:12px;"
   >
 
@@ -5925,11 +5935,18 @@ async function deleteHelpTopic(){
   id="geoCountySelect"
   class="contact-select"
   style="margin-top:12px;"
-  onchange="renderCountyAnalysis()"
+  onchange="
+    renderGeoRegionAnalysis(
+      document.getElementById(
+        'geoRegionSelect'
+      ).value
+    );
+  "
 >
 
   <option value="">
     Select County
+
   </option>
 
 </select>
@@ -6558,12 +6575,48 @@ function loadGeoCounties(){
       'geoCountySelect'
     );
 
+  if(!countySelect){
+    return;
+  }
+
   countySelect.innerHTML = `
-    <option value="">
-      Select County
+    <option value="all">
+      All Counties
     </option>
   `;
 
+  let counties = [];
+
+  if(region === 'all'){
+
+    Object.values(geoRegions)
+      .forEach(regionCounties => {
+
+        counties.push(
+          ...regionCounties
+        );
+
+      });
+
+  }else{
+
+    counties =
+      geoRegions[region] || [];
+
+  }
+
+  counties.forEach(county => {
+
+    countySelect.innerHTML += `
+      <option value="${county}">
+        ${county}
+      </option>
+    `;
+
+  });
+
+}
+	
   if(!region){
 
     return;
@@ -6604,26 +6657,43 @@ function renderGeoRegionAnalysis(region){
     return;
   }
 
-  let filteredEvents = [];
+  const selectedCounty =
+  document.getElementById(
+    'geoCountySelect'
+  ).value;
 
-  if(
-    !region ||
-    region === 'ALL'
-  ){
+let filteredEvents = [];
 
-    filteredEvents =
-      events.filter(
-        e => e.region
-      );
+if(
+  !region ||
+  region === 'all'
+){
 
-  } else {
+  filteredEvents =
+    events.filter(
+      e => e.region
+    );
 
-    filteredEvents =
-      events.filter(
-        e => e.region === region
-      );
+}else{
 
-  }
+  filteredEvents =
+    events.filter(
+      e => e.region === region
+    );
+
+}
+
+if(
+  selectedCounty &&
+  selectedCounty !== 'all'
+){
+
+  filteredEvents =
+    filteredEvents.filter(
+      e => e.county === selectedCounty
+    );
+
+}
 
   const totalEvents =
     filteredEvents.length;
