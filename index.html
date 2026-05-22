@@ -3825,10 +3825,6 @@ async function openHelpModal(){
 
   if(adminModal){
 
-    adminModal.classList.add(
-      'hidden'
-    );
-
     adminModal.style.display =
       'none';
 
@@ -3841,10 +3837,6 @@ async function openHelpModal(){
 
   if(systemConsole){
 
-    systemConsole.classList.add(
-      'hidden'
-    );
-
     systemConsole.style.display =
       'none';
 
@@ -3854,10 +3846,6 @@ async function openHelpModal(){
     document.getElementById(
       'helpModal'
     );
-
-  modal.classList.remove(
-    'hidden'
-  );
 
   modal.style.display =
     'flex';
@@ -3873,9 +3861,8 @@ function closeHelpModal(){
       'helpModal'
     );
 
- modal.classList.add('hidden');
-
-  modal.style.display = 'none';
+  modal.style.display =
+    'none';
 
 }
 
@@ -3991,22 +3978,6 @@ function openAdminSection(section){
 
 function openSystemConsole(){
 
-  const helpModal =
-    document.getElementById(
-      'helpModal'
-    );
-
-  if(helpModal){
-
-    helpModal.classList.add(
-      'hidden'
-    );
-
-    helpModal.style.display =
-      'none';
-
-  }
-
   const adminModal =
     document.getElementById(
       'adminModal'
@@ -4014,11 +3985,19 @@ function openSystemConsole(){
 
   if(adminModal){
 
-    adminModal.classList.add(
-      'hidden'
+    adminModal.style.display =
+      'none';
+
+  }
+
+  const helpModal =
+    document.getElementById(
+      'helpModal'
     );
 
-    adminModal.style.display =
+  if(helpModal){
+
+    helpModal.style.display =
       'none';
 
   }
@@ -4027,10 +4006,6 @@ function openSystemConsole(){
     document.getElementById(
       'systemConsole'
     );
-
-  modal.classList.remove(
-    'hidden'
-  );
 
   modal.style.display =
     'flex';
@@ -4045,10 +4020,6 @@ function closeSystemConsole(){
     document.getElementById(
       'systemConsole'
     );
-
-  modal.classList.add(
-    'hidden'
-  );
 
   modal.style.display =
     'none';
