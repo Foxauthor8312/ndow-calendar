@@ -4189,14 +4189,13 @@ function renderSystemConsole(){
   console.log(body);
 
   if(!body){
-
-    console.error(
-      'systemConsoleBody missing'
-    );
-
     return;
-
   }
+
+  body.innerHTML =
+    '<h1 style="color:white;">SYSTEM TEST</h1>';
+
+}
 
   body.innerHTML =
     '<div style="' +
