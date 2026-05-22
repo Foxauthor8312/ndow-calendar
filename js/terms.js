@@ -43,10 +43,9 @@ async function checkTermsAcceptance(){
     window.termsResolve = resolve;
 
     document.getElementById(
-      'termsModal'
-    ).classList.remove(
-      'hidden'
-    );
+  'termsModal'
+).style.display =
+  'block';
 
   });
 
@@ -119,10 +118,9 @@ async function acceptTerms(){
   );
 
   document.getElementById(
-    'termsModal'
-  ).classList.add(
-    'hidden'
-  );
+  'termsModal'
+).style.display =
+  'none';
 
   if(window.termsResolve){
 
