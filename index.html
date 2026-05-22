@@ -1515,7 +1515,6 @@ body{
         <input
           type="checkbox"
           id="termsCheckbox"
-          disabled
           onchange="toggleTermsAcceptance()"
         >
 
@@ -5506,8 +5505,25 @@ function toggleTermsAcceptance(){
       'acceptTermsButton'
     );
 
-  button.disabled =
-    !checkbox.checked;
+    if(
+    checkbox.checked
+  ){
+
+    button.style.opacity =
+      '1';
+
+    button.style.pointerEvents =
+      'auto';
+
+  }else{
+
+    button.style.opacity =
+      '.5';
+
+    button.style.pointerEvents =
+      'none';
+
+  }
 
 }
 
