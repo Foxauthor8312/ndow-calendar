@@ -1751,17 +1751,17 @@ async function loadZipLookup(){
         .trim()
         .padStart(5,'0');
 
-    const city =
-      columns[3]
-        ?.replace(/"/g,'')
-        .trim();
+    cconst city =
+  columns[1]
+    ?.replace(/"/g,'')
+    .trim();
 
-    const county =
-      columns[7]
-        ?.replace(/"/g,'')
-        .replace(' County','')
-        .replace(/\r/g,'')
-        .trim();
+const county =
+  columns[2]
+    ?.replace(/"/g,'')
+    .replace(' County','')
+    .replace(/\r/g,'')
+    .trim();
 
     const region = (() => {
 
