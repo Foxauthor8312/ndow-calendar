@@ -6563,7 +6563,7 @@ const geoEventStats = {
 
 };
 
-function loadGeoCounties(){
+function function loadGeoCounties(){
 
   const region =
     document.getElementById(
@@ -6589,11 +6589,13 @@ function loadGeoCounties(){
 
   if(region === 'all'){
 
-    Object.values(geoRegions)
-      .forEach(regionCounties => {
+    Object.keys(nevadaRegions)
+      .forEach(regionName => {
 
         counties.push(
-          ...regionCounties
+          ...Object.keys(
+            nevadaRegions[regionName]
+          )
         );
 
       });
@@ -6601,7 +6603,9 @@ function loadGeoCounties(){
   }else{
 
     counties =
-      geoRegions[region] || [];
+      Object.keys(
+        nevadaRegions[region] || {}
+      );
 
   }
 
