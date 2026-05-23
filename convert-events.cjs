@@ -84,43 +84,6 @@ if(
 
 }
 
-  let category = 'Other';
-
-  if(
-  title.includes('Hunter')
-  ||
-  title.includes('Advanced')
-){
-  category = 'Hunter Education';
-}
-
-  if(title.includes('Fishing')){
-    category = 'Fishing';
-  }
-
-  if(
-    title.includes('Wildlife') ||
-    title.includes('WILD')
-  ){
-    category = 'Wildlife';
-  }
-
-  if(title.includes('Archery')){
-    category = 'Archery';
-  }
-
-  if(title.includes('Bowhunter')){
-    category = 'Bowhunter';
-  }
-
-  if(title.includes('Boating')){
-    category = 'Boating';
-  }
-
-  if(title.includes('Schools')){
-    category = 'Schools';
-  }
-
 const urlLine = lines.find(
   line => line.startsWith('URL:')
 );
@@ -134,7 +97,7 @@ const url =
 
   title,
 
-  category,
+  category: '',
 
   date:
     cleanDate.split(' ')[0] + ' ' +
