@@ -2591,7 +2591,10 @@ if(!data.success){
 
 }
 
-if(data.user.role === 'admin'){
+if(
+  user.role === 'admin' ||
+  user.role === 'superuser'
+)
 
   document.getElementById(
     'loadingMessage'
@@ -3677,10 +3680,10 @@ const showDisabled =
 const admins =
   data.users.filter(
     user =>
-      user.role === 'admin' &&
       (
-        showDisabled ||
-        Number(user.disabled) !== 1
+        user.role === 'admin' ||
+        user.role === 'superuser'
+      ) &&
       )
   );
 
@@ -3853,11 +3856,14 @@ helpTopics = data.topics.filter(topic => {
 
   }
 
-  if(topic.visibility_role === 'admin'){
+ if(topic.visibility_role === 'admin'){
 
-    return currentUser?.role === 'admin';
+  return (
+    currentUser?.role === 'admin' ||
+    currentUser?.role === 'superuser'
+  );
 
-  }
+}
 
   if(topic.visibility_role === 'user'){
 
