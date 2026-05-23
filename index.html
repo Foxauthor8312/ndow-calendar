@@ -2691,7 +2691,7 @@ function renderOverrides(){
       row.style.marginBottom =
         '8px';
 
-      row.innerHTML = `
+            row.innerHTML = `
 
         <div style="
           display:flex;
@@ -2746,7 +2746,6 @@ function overrideCategory(
   title,
   category
 ){
-
   localStorage.setItem(
     'categoryOverride_' +
     title,
@@ -2767,6 +2766,8 @@ function overrideCategory(
   renderOverrides();
 
   renderCalendar();
+
+}
 
 // ========================================
 // START CALENDAR RENDERING
