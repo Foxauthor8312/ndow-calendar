@@ -2621,8 +2621,15 @@ if(
   );
 
 }
+	console.log(
+  'BEFORE LOAD EVENTS'
+);
 	
 await loadEvents();
+
+	console.log(
+  'AFTER LOAD EVENTS'
+);
 
 	localStorage.setItem(
   'ndowAccess',
