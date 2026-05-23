@@ -1951,7 +1951,9 @@ console.log(
 
     systemStatus.warnings = [];
 
-   events = events.map(event => {
+   eevents = events.map(event => {
+
+  try {
 
 const rawLocation =
   (
@@ -2125,7 +2127,6 @@ const geo =
         });
 
       }
-
       return {
 
         ...event,
@@ -2144,8 +2145,22 @@ const geo =
 
       };
 
-    });
+  } catch(err){
 
+    console.log(
+      'MAP FAILURE',
+      event,
+      err
+    );
+
+    return null;
+
+  }
+
+});
+events = events.filter(Boolean);
+
+	  
 	  console.log(
   'TOTAL EVENTS AFTER MAP:',
   events.length
