@@ -2855,20 +2855,32 @@ function overrideCategory(
   title,
   category
 ){
+
   localStorage.setItem(
     'categoryOverride_' +
     title,
     category
   );
 
-  events.forEach(event => {
+  events = events.map(event => {
 
-    if(event.title === title){
+    const overriddenCategory =
+      localStorage.getItem(
+        'categoryOverride_' +
+        event.title
+      );
 
-      event.category =
-        category;
+    return {
 
-    }
+      ...event,
+
+      category:
+        overriddenCategory ||
+        classifyEvent(
+          event.title
+        )
+
+    };
 
   });
 
