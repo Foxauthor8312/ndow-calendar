@@ -2644,17 +2644,8 @@ document.getElementById(
   'Logged in as: ' +
   data.user.username;
 
-const superUsers = [
-  'barry',
-  'usuper'
-];
-
 if(
-  superUsers.includes(
-    data.user.username
-      .trim()
-      .toLowerCase()
-  )
+  data.user.role === 'superuser'
 ){
 
   document.getElementById(
@@ -3558,18 +3549,9 @@ if(
     'Logged in as: ' +
     savedUser.username;
 
-  const superUsers = [
-    'barry',
-    'usuper'
-  ];
-
   if(
-    superUsers.includes(
-      savedUser.username
-        .trim()
-        .toLowerCase()
-    )
-  ){
+  data.user.role === 'superuser'
+){
 
     document.getElementById(
       'superuserButton'
@@ -5456,6 +5438,24 @@ async function saveUserEdits(){
       ).checked
 
   };
+const currentUser =
+  JSON.parse(
+    localStorage.getItem('user')
+  );
+
+if(
+  payload.role === 'superuser' &&
+  currentUser.role !== 'superuser'
+){
+
+  alert(
+    'Only superusers can assign superuser access.'
+  );
+
+  return;
+
+}
+	
 
   try {
 
@@ -6055,6 +6055,10 @@ function overrideCategory(
             <option value="admin">
               Admin
             </option>
+
+			  <option value="superuser">
+  			  Superuser
+			</option>
           </select>
 
           <button
