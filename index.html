@@ -2708,42 +2708,6 @@ async function checkLogin(){
 // LOAD EVENTS
 // ========================================
 
-
-await loadZipLookup();
-
-await loadEvents();
-
-loadAnnouncements(
-  data.user.role
-);
-
-resetInactivityTimer();
-    
- } catch(err){
-
-  document.getElementById(
-    'loadingOverlay'
-  ).style.display = 'none';
-
-  console.error(err);
-
-  if(err instanceof TypeError){
-
-    document.getElementById(
-      'loginError'
-    ).innerText =
-      'Connecting to secure server... please try again.';
-
-  } else {
-
-    document.getElementById(
-      'loginError'
-    ).innerText =
-      'Invalid login';
-
-  }
-}
-
 	function setRegionFilter(){
 
   activeRegion =
@@ -2754,9 +2718,20 @@ resetInactivityTimer();
   renderCalendar();
 
 }
-	// ========================================
+// ========================================
 // START FILTER SYSTEM
 // ========================================
+
+function setRegionFilter(){
+
+  activeRegion =
+    document.getElementById(
+      'regionFilter'
+    ).value;
+
+  renderCalendar();
+
+}
 
 function toggleFilter(category){
 
