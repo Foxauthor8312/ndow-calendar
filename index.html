@@ -2925,39 +2925,12 @@ function renderCalendar(){
     return false;
   }
 
-console.log(
-  'FILTER TEST',
-  e.title,
-  e.region,
-  activeRegion,
-  e.category,
-  activeFilters
-);
   const d = new Date(e.date);
 
   if(isNaN(d)) return false;
 
   const formatted =
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-
-if(
-  e.title.includes('South Fork')
-){
-
-  console.log(
-    'SOUTH FORK TEST',
-    {
-      title:e.title,
-      rawDate:e.date,
-      parsed:d,
-      formatted,
-      dateStr,
-      match:formatted === dateStr
-    }
-  );
-
-}
-
 
 	  
 const match =
