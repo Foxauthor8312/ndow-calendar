@@ -5716,6 +5716,10 @@ function overrideCategory(
           Geographic Analytics
         </button>
 
+	  	<button onclick="openAdminSection('category')">
+			 Category Overrides
+		</button>
+
       </div>
 
       <!-- CONTENT AREA -->
@@ -5907,40 +5911,49 @@ function overrideCategory(
 			  "
 			></div>
 
-<hr style="margin:20px 0;">
-
-<h3>
-  Category Overrides
-</h3>
-
-<input
-  type="text"
-  id="overrideSearch"
-  placeholder="Search event..."
-  oninput="renderOverrides()"
-  style="
-    width:100%;
-    padding:8px;
-    margin-bottom:10px;
-  "
->
-
-<div
-  id="overrideList"
-  style="
-    height:600px;
-    overflow-y:auto;
-    overflow-x:hidden;
-    border-top:1px solid #e5e7eb;
-    padding-top:8px;
-    padding-right:6px;
-  "
-></div>
 
           </div>
 
         </div>
 
+<!-- CATEGORY OVERRIDES -->
+
+<div
+  id="categoryPanel"
+  class="admin-panel hidden"
+>
+
+  <h2>
+    Category Overrides
+  </h2>
+
+  <input
+    type="text"
+    id="overrideSearch"
+    placeholder="Search event..."
+    oninput="renderOverrides()"
+    style="
+      width:100%;
+      padding:8px;
+      margin-bottom:12px;
+    "
+  >
+
+  <div
+    id="overrideList"
+    style="
+      height:600px;
+      overflow-y:auto;
+      overflow-x:hidden;
+      border-top:1px solid #e5e7eb;
+      padding-top:8px;
+      padding-right:6px;
+    "
+  ></div>
+
+</div>
+
+	
         <!-- ANNOUNCEMENTS -->
 
         <div
