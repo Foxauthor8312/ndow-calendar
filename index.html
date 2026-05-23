@@ -2019,9 +2019,13 @@ const geo =
 let region = '';	  
 
       const category =
-        classifyEvent(
-          event.title
-        );
+  localStorage.getItem(
+    'categoryOverride_' +
+    event.title
+  ) ||
+  classifyEvent(
+    event.title
+  );
 
       if(category === 'Other'){
 
