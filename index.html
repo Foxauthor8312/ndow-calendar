@@ -2158,6 +2158,19 @@ const geo =
 
 });
 events = events.filter(Boolean);
+	  
+	  console.log(
+  'POST MAP COUNT:',
+  events.length
+);
+
+console.log(
+  'POST MAP FRIDAY FLIES:',
+  events.filter(e =>
+    e.title.includes('Friday Flies')
+  )
+);
+
 
 	  
 	  console.log(
