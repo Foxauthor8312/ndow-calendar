@@ -114,8 +114,39 @@ if(
 }
 const sourceId =
   url?.match(/\/(\d+)(?:\/)?$/)?.[1] || null;
+
+if (!sourceId) {
+
+  console.log(
+    'SKIPPED EVENT (NO SOURCE ID):',
+    title,
+    url
+  );
+
+  return;
+}
+
+events.push({
+
+  id: sourceId,
+
+  sourceId,
+
+  sourceUrl: url,
   
  events.push({
+
+  id: sourceId,
+
+  sourceId,
+
+  sourceUrl: url,
+
+  title,
+
+  category: '',
+
+  date,
 
   title,
 
@@ -142,6 +173,24 @@ const sourceId =
 });
 
 });
+
+const dedupedEvents =
+  Object.values(
+
+    events.reduce((acc, event) => {
+
+      if (!event.id) {
+        return acc;
+      }
+
+      acc[event.id] = event;
+
+      return acc;
+
+    }, {})
+
+  );
+
 
 fs.writeFileSync(
   './events.json',
