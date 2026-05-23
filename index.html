@@ -2764,9 +2764,9 @@ function overrideCategory(
 
   });
 
-  renderCalendar();
+  renderOverrides();
 
-}
+  renderCalendar();
 
 // ========================================
 // START CALENDAR RENDERING
@@ -5532,7 +5532,7 @@ async function deleteHelpTopic(){
 
     }
 
-  } catch(err){
+   } catch(err){
 
     console.error(err);
 
@@ -5540,7 +5540,141 @@ async function deleteHelpTopic(){
 
 }
 
+const CATEGORY_OPTIONS = [
+
+  'Hunter Education',
+
+  'Advanced Hunter Education',
+
+  'Fishing',
+
+  'Wildlife',
+
+  'Urban Wildlife',
+
+  'Archery',
+
+  'Boating',
+
+  'School',
+
+  'Volunteer',
+
+  'Other'
+
+];
+
+function renderOverrides(){
+
+  const search =
+    document.getElementById(
+      'overrideSearch'
+    ).value.toLowerCase();
+
+  const container =
+    document.getElementById(
+      'overrideList'
+    );
+
+  container.innerHTML = '';
+
+  events
+    .filter(e =>
+      e.title
+        .toLowerCase()
+        .includes(search)
+    )
+    .slice(0,100)
+    .forEach(event => {
+
+      const row =
+        document.createElement('div');
+
+      row.style.marginBottom =
+        '8px';
+
+      row.innerHTML = `
+
+        <div style="
+          display:flex;
+          gap:10px;
+          align-items:center;
+        ">
+
+          <div style="
+            flex:1;
+            font-size:12px;
+          ">
+            ${event.title}
+          </div>
+
+          <select
+            onchange="
+              overrideCategory(
+                '${event.title.replace(/'/g,"\\'")}',
+                this.value
+              )
+            "
+          >
+
+            ${CATEGORY_OPTIONS.map(
+              c => `
+                <option
+                  value="${c}"
+                  ${
+                    c === event.category
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  ${c}
+                </option>
+              `
+            ).join('')}
+
+          </select>
+
+        </div>
+
+      `;
+
+      container.appendChild(row);
+
+    });
+
+}
+
+function overrideCategory(
+  title,
+  category
+){
+
+  localStorage.setItem(
+    'categoryOverride_' +
+    title,
+    category
+  );
+
+  events.forEach(event => {
+
+    if(event.title === title){
+
+      event.category =
+        category;
+
+    }
+
+  });
+
+  renderCalendar();
+
+}
+
 </script>
+
+<!-- ========================================
+     START ADMIN MODAL
+======================================== -->
 
 <!-- ========================================
      START ADMIN MODAL
