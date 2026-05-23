@@ -1936,16 +1936,7 @@ async function loadEvents(){
     const data =
       await response.json();
 
-    console.log(data);
-
     events = data.events || [];
-const rawBoulder =
-  data.events.filter(e =>
-    JSON.stringify(e)
-      .toLowerCase()
-      .includes('boulder')
-  );
-
  
     const syncStart =
       Date.now();
