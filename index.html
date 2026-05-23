@@ -2488,9 +2488,18 @@ async function wakeServer(){
 	
 async function checkLogin(){
 
-document.getElementById(
-  'loadingOverlay'
-).style.display = 'flex';
+const overlay =
+  document.getElementById(
+    'loadingOverlay'
+  );
+
+overlay.style.display = 'flex';
+
+overlay.style.visibility =
+  'visible';
+
+overlay.style.opacity =
+  '1';
 
 document.getElementById(
   'loadingMessage'
@@ -2546,9 +2555,19 @@ try {
 const data =
   await response.json();
 
-document.getElementById(
-  'loadingOverlay'
-).style.display = 'flex';
+const overlay =
+  document.getElementById(
+    'loadingOverlay'
+  );
+
+overlay.style.display =
+  'flex';
+
+overlay.style.visibility =
+  'visible';
+
+overlay.style.opacity =
+  '1';
 
 document.getElementById(
   'loadingMessage'
@@ -2557,9 +2576,14 @@ document.getElementById(
 
 if(!data.success){
 
-  document.getElementById(
-    'loadingOverlay'
-  ).style.display = 'none';
+  overlay.style.display =
+    'none';
+
+  overlay.style.visibility =
+    'hidden';
+
+  overlay.style.opacity =
+    '0';
 
   throw new Error(
     'Invalid login'
@@ -2646,9 +2670,14 @@ localStorage.setItem(
   'granted'
 );
 
-document.getElementById(
-  'loadingOverlay'
-).style.display = 'none';
+overlay.style.display =
+  'none';
+
+overlay.style.visibility =
+  'hidden';
+
+overlay.style.opacity =
+  '0';
 
 
 
@@ -2775,16 +2804,27 @@ events
         .includes(search);
 
     const selectedFilter =
-      document.getElementById(
-        'overrideFilter'
-      )?.value || 'ALL';
+  document.getElementById(
+    'overrideFilter'
+  )?.value || 'ALL';
 
-    if(
-      selectedFilter !== 'ALL' &&
-      e.category !== selectedFilter
-    ){
-      return false;
-    }
+const effectiveCategory =
+  e.category ||
+  localStorage.getItem(
+    'categoryOverride_' +
+    e.title
+  ) ||
+  classifyEvent(
+    e.title
+  ) ||
+  'Other';
+
+if(
+  selectedFilter !== 'ALL' &&
+  effectiveCategory !== selectedFilter
+){
+  return false;
+}
 
     return matchesSearch;
 
