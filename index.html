@@ -2059,9 +2059,7 @@ const geo =
 
       }
 
-      let region = '';
-
-      if(geo?.county){
+           if(geo?.county){
 
         const county =
           geo.county
@@ -2103,6 +2101,52 @@ const geo =
           region = 'Eastern';
 
         }
+
+      }
+
+      // ========================================
+      // FALLBACK REGION LOOKUP
+      // ========================================
+
+      if(!region){
+
+        const locationText =
+          (
+            cleanedLocation +
+            ' ' +
+            (geo?.city || '') +
+            ' ' +
+            zip
+          )
+          .toLowerCase();
+
+        Object.entries(
+          nevadaRegions
+        ).forEach(([regionName,counties]) => {
+
+          Object.values(counties).forEach(cities => {
+
+            cities.forEach(entry => {
+
+              if(
+                locationText.includes(
+                  entry.city.toLowerCase()
+                )
+                ||
+                locationText.includes(
+                  entry.zip
+                )
+              ){
+
+                region = regionName;
+
+              }
+
+            });
+
+          });
+
+        });
 
       }
 
