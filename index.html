@@ -4814,13 +4814,19 @@ function openAdminPanel(){
     localStorage.getItem('user')
   );
 
-  if(!user || user.role !== 'admin'){
+if(
+  !user ||
+  (
+    user.role !== 'admin' &&
+    user.role !== 'superuser'
+  )
+){
 
-    alert('Admin access only');
+  alert('Admin access only');
 
-    return;
+  return;
 
-  }
+}
 
   const modal = document.getElementById(
     'adminModal'
