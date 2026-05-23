@@ -3901,6 +3901,11 @@ function openAdminSection(section){
     document.getElementById(
       'geoPanel'
     );
+  const category =
+    document.getElementById(
+      'categoryPanel'
+    );
+	
 
   if(users){
     users.style.display = 'none';
@@ -3917,6 +3922,11 @@ function openAdminSection(section){
   if(geo){
     geo.style.display = 'none';
   }
+
+  if(category){
+    category.style.display = 'none';
+  }
+	
 
   if(section === 'users' && users){
     users.style.display = 'block';
@@ -3937,7 +3947,14 @@ function openAdminSection(section){
   if(section === 'geo' && geo){
     geo.style.display = 'block';
   }
+  if(section === 'category' && category){
 
+    category.style.display =
+      'block';
+
+    renderOverrides();
+
+  }
 }
 
 	function loadRegionDropdown(){
@@ -5192,6 +5209,8 @@ function closeEditUserModal(){
   document.getElementById(
     'editUserModal'
   ).style.display = 'none';
+
+	
 
 }
 
