@@ -1939,23 +1939,19 @@ async function loadEvents(){
     console.log(data);
 
     events = data.events || [];
+const rawBoulder =
+  data.events.filter(e =>
+    JSON.stringify(e)
+      .toLowerCase()
+      .includes('boulder')
+  );
 
 console.warn(
-  'RAW API FREE FISHING =====',
-  data.events.filter(e =>
-    e.title &&
-    e.title.includes(
-      'Free Fishing Day'
-    )
-  )
+  'RAW BOULDER EVENTS =====',
+  rawBoulder
 );
-
-	  
-console.log(
-  'RAW EVENT COUNT:',
-  data.events.length
-);
-	  
+ 
+ 
     const syncStart =
       Date.now();
 
@@ -1973,6 +1969,8 @@ console.log(
 
    events = events.map(event => {
 
+
+	   
   try {
 
 const rawLocation =
@@ -2022,22 +2020,6 @@ const geo =
         classifyEvent(
           event.title
         );
-
-	   if(
-  event.title.includes('Free Fishing Day')
-){
-
-  console.log(
-    'FREE FISHING MAP',
-    {
-      title:event.title,
-      category,
-      zip,
-      geo,
-    }
-  );
-
-}
 
       if(category === 'Other'){
 
@@ -2242,7 +2224,16 @@ events = events.filter(Boolean);
   events.length
 );
 
-	
+console.warn(
+  'POST MAP BOULDER EVENTS =====',
+  events.filter(e =>
+    e.location &&
+    e.location.includes(
+      'Boulder'
+    )
+  )
+);
+	  
     document.getElementById(
       'lastUpdated'
     ).innerText =
@@ -2262,24 +2253,6 @@ events = events.filter(Boolean);
 
     systemStatus.eventsProcessed =
       events.length;
-
-    console.log(
-      'VISIBLE EVENT',
-      events.find(e =>
-        e.title.includes(
-          'Friday Flies'
-        )
-      )
-    );
-
-    console.log(
-      'MISSING EVENT',
-      events.find(e =>
-        e.title.includes(
-          'Free Fishing Day'
-        )
-      )
-    );
 	  
     systemStatus.workflowStatus =
 
