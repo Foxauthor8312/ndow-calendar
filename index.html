@@ -1946,11 +1946,6 @@ const rawBoulder =
       .includes('boulder')
   );
 
-console.warn(
-  'RAW BOULDER EVENTS =====',
-  rawBoulder
-);
- 
  
     const syncStart =
       Date.now();
@@ -2967,21 +2962,6 @@ if(
 	  
 const match =
   formatted === dateStr;
-
-if(
-  e.title.includes('South Fork')
-){
-
-  console.log(
-    'SOUTH FORK MATCH TEST',
-    {
-      formatted,
-      dateStr,
-      match
-    }
-  );
-
-}
 
 return match;
 
