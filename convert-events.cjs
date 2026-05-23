@@ -137,7 +137,7 @@ if (!sourceId) {
 
   title,
 
-  category: 'Event',
+ category: ''
 
   date:
     cleanDate.split(' ')[0] + ' ' +
