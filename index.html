@@ -1118,7 +1118,7 @@ body{
         color:rgba(156,203,255,0.55);
       ">
         &copy; 2026 Barry Mattison,
-        NDOW Volunteer Instructor V26.09.15
+        NDOW Volunteer Instructor V26.09.19
       </div>
 
     </div>
@@ -1397,43 +1397,6 @@ body{
   </div>
 
 </div>
-
-</div>
-
-<!-- ========================================
-     START LOGIN LOADING OVERLAY
-======================================== -->
-
-<div id="loadingOverlay" style="
-  display:none;
-  flex-direction:column;
-  position:fixed;
-  inset:0;
-  background:#000;;
-  z-index:999999;
-  align-items:center;
-  justify-content:center;
-  color:#9CCBFF;;
-  font-family:'Inter',sans-serif;
-">
-
- <div id="loadingMessage" style="
-    font-size:26px;
-    font-weight:600;
-    letter-spacing:.3px;
-    margin-bottom:18px;
-  ">
-    Verifying Instructor Access... Please wait.
-</div>
-
-  <div style="
-    width:52px;
-    height:52px;
-    border:5px solid rgba(156,203,255,0.18);
-    border-top:5px solid #9CCBFF;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-  "></div>
 
 </div>
 
@@ -2546,10 +2509,7 @@ document.getElementById(
     </div>
   `;
 
-const button =
-    document.getElementById(
-      'loginButton'
-    );
+
   const name =
     document.getElementById(
       'userName'
@@ -2681,8 +2641,6 @@ if(
 
 }
 
-await loadEvents();
-
 localStorage.setItem(
   'ndowAccess',
   'granted'
@@ -2692,17 +2650,7 @@ document.getElementById(
   'loadingOverlay'
 ).style.display = 'none';
 
-function setRegionFilter(){
 
-  selectedRegion =
-    document.getElementById(
-      'regionFilter'
-    ).value;
-
-  renderCalendar();
-
-}
-	
 
 // ========================================
 // LOAD EVENTS
@@ -2742,6 +2690,17 @@ resetInactivityTimer();
 
   }
 }
+}
+
+	function setRegionFilter(){
+
+  activeRegion =
+    document.getElementById(
+      'regionFilter'
+    ).value;
+
+  renderCalendar();
+
 }
 	// ========================================
 // START FILTER SYSTEM
@@ -3016,16 +2975,13 @@ function renderCalendar(){
 
   const dayEvents = events.filter(e => {
 
- if(
+  if(
   activeRegion &&
-  (!e.region ||
-   e.region !== activeRegion)
+  activeRegion !== 'ALL' &&
+  e.region !== activeRegion
 ){
   return false;
 }
-
-
-
 	  
   if(
     activeFilters.length > 0 &&
@@ -3034,13 +2990,7 @@ function renderCalendar(){
     return false;
   }
 	  
-  if(
-  activeRegion &&
-  activeRegion !== 'ALL' &&
-  e.region !== activeRegion
-  ){
-  return false;
-  }
+ 
 	  
   const d = new Date(e.date);
 
