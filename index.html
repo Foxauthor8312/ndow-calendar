@@ -2567,23 +2567,23 @@ await new Promise(resolve =>
   setTimeout(resolve, 1200)
 );
 
-document.getElementById(
-  'loadingOverlay'
-).style.display = 'none';
-	
-localStorage.setItem(
-  'ndowAccess',
-  'granted'
-);
 localStorage.setItem(
   'token',
   data.token
 );
 
-	
 localStorage.setItem(
   'user',
   JSON.stringify(data.user)
+);
+
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Loading NDOW event calendar...';
+
+await new Promise(resolve =>
+  setTimeout(resolve, 300)
 );
 
 document.getElementById(
@@ -2594,7 +2594,8 @@ document.getElementById(
   'appContent'
 ).style.display = 'block';
 
-document.getElementById(
+
+	document.getElementById(
   'userDisplay'
 ).innerText =
   'Logged in as: ' +
@@ -2620,6 +2621,20 @@ if(
   );
 
 }
+	
+await loadEvents();
+
+	localStorage.setItem(
+  'ndowAccess',
+  'granted'
+);
+
+document.getElementById(
+  'loadingOverlay'
+).style.display = 'none';
+	
+
+
 
 // ========================================
 // LOAD EVENTS
