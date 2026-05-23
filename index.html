@@ -295,12 +295,6 @@ button:hover{
 
 }
 
-	<div style="
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#111827;
-">
 /* ========================================
    START LEGEND SECTION
 ======================================== */
@@ -1315,9 +1309,13 @@ body{
 <!-- ========================================
      START CALENDAR
 ======================================== -->
-	</div>
 
-<div class="calendar" id="calendar"></div>
+<div style="
+  height:calc(100vh - 220px);
+  overflow-y:auto;
+">
+  <div class="calendar" id="calendar"></div>
+</div>
 
 	
 <!-- ========================================
