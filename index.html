@@ -2208,6 +2208,24 @@ events = events.filter(Boolean);
     systemStatus.eventsProcessed =
       events.length;
 
+    console.log(
+      'VISIBLE EVENT',
+      events.find(e =>
+        e.title.includes(
+          'Friday Flies'
+        )
+      )
+    );
+
+    console.log(
+      'MISSING EVENT',
+      events.find(e =>
+        e.title.includes(
+          'Free Fishing Day'
+        )
+      )
+    );
+	  
     systemStatus.workflowStatus =
 
       systemStatus.geoFailedEvents > 0 ||
