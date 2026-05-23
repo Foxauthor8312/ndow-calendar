@@ -1105,6 +1105,35 @@ body{
 
 </div>
 
+	<div
+  id="loadingOverlay"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(17,24,39,0.92);
+    z-index:99999;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:white;
+    font-size:18px;
+  "
+>
+
+  <div class="spinner"></div>
+
+  <div
+    id="loadingMessage"
+    style="
+      margin-top:18px;
+      font-weight:600;
+    "
+  >
+    Loading NDOW Calendar...
+  </div>
+
+</div>
 <!-- ========================================
      START MAIN APPLICATION
 ======================================== -->
@@ -2532,8 +2561,12 @@ try {
 })
   });
 
-    const data =
-	await response.json();
+const data =
+  await response.json();
+
+document.getElementById(
+  'loadingOverlay'
+).style.display = 'flex';
 
 document.getElementById(
   'loadingMessage'
@@ -2541,6 +2574,10 @@ document.getElementById(
   'Verifying account permissions...';
 
 if(!data.success){
+
+  document.getElementById(
+    'loadingOverlay'
+  ).style.display = 'none';
 
   throw new Error(
     'Invalid login'
@@ -2563,6 +2600,7 @@ if(data.user.role === 'admin'){
     'Loading volunteer calendar...';
 
 }
+
 await new Promise(resolve =>
   setTimeout(resolve, 1200)
 );
@@ -2594,8 +2632,7 @@ document.getElementById(
   'appContent'
 ).style.display = 'block';
 
-
-	document.getElementById(
+document.getElementById(
   'userDisplay'
 ).innerText =
   'Logged in as: ' +
@@ -2621,17 +2658,10 @@ if(
   );
 
 }
-	console.log(
-  'BEFORE LOAD EVENTS'
-);
-	
+
 await loadEvents();
 
-	console.log(
-  'AFTER LOAD EVENTS'
-);
-
-	localStorage.setItem(
+localStorage.setItem(
   'ndowAccess',
   'granted'
 );
