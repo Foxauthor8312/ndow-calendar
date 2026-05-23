@@ -3688,6 +3688,9 @@ const admins =
         user.role === 'admin' ||
         user.role === 'superuser'
       ) &&
+      (
+        showDisabled ||
+        Number(user.disabled) !== 1
       )
   );
 
