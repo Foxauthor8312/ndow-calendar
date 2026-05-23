@@ -2001,6 +2001,23 @@ const geo =
           event.title
         );
 
+	   if(
+  event.title.includes('Free Fishing Day')
+){
+
+  console.log(
+    'FREE FISHING MAP',
+    {
+      title:event.title,
+      category,
+      zip,
+      geo,
+      region
+    }
+  );
+
+}
+
       if(category === 'Other'){
 
         systemStatus
