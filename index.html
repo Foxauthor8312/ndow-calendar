@@ -1940,6 +1940,17 @@ async function loadEvents(){
 
     events = data.events || [];
 
+console.warn(
+  'RAW API FREE FISHING =====',
+  data.events.filter(e =>
+    e.title &&
+    e.title.includes(
+      'Free Fishing Day'
+    )
+  )
+);
+
+	  
 console.log(
   'RAW EVENT COUNT:',
   data.events.length
