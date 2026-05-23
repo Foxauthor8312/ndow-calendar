@@ -137,7 +137,7 @@ if (!sourceId) {
 
   title,
 
- category: ''
+ category: '',
 
   date:
     cleanDate.split(' ')[0] + ' ' +
