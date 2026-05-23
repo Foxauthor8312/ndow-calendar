@@ -2618,24 +2618,7 @@ resetInactivityTimer();
 // START FILTER SYSTEM
 // ========================================
 
-function setRegionFilter(){
-
-  activeRegion =
-    document.getElementById(
-      'regionFilter'
-    ).value;
-
-  if(activeRegion === 'ALL'){
-
-    activeRegion = '';
-
-  }
-
-  renderCalendar();
-
-}
-	
-	function toggleFilter(category){
+function toggleFilter(category){
 
   if(activeFilters.includes(category)){
 
@@ -2649,6 +2632,15 @@ function setRegionFilter(){
     activeFilters.push(category);
 
   }
+
+  console.log(
+    'ACTIVE FILTERS:',
+    activeFilters
+  );
+
+  renderCalendar();
+
+}
 
   document
     .querySelectorAll('.legend-item')
