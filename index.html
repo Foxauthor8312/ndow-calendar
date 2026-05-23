@@ -2110,12 +2110,18 @@ const geo =
 
           type:'GEO',
 
-          index:
+                   index:
             systemStatus.warnings.length + 1,
 
           title:event.title,
 
           date:event.date,
+
+          region:
+            event.region || '',
+
+          category:
+            event.category || 'Other',
 
           location:cleanedLocation,
 
@@ -2738,12 +2744,16 @@ function renderCalendar(){
 
   const dayEvents = events.filter(e => {
 
-  if(
-    activeRegion &&
-    e.region !== activeRegion
-  ){
-    return false;
-  }
+ if(
+  activeRegion &&
+  (!e.region ||
+   e.region !== activeRegion)
+){
+  return false;
+}
+
+
+
 	  
   if(
     activeFilters.length > 0 &&
