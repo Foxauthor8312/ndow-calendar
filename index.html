@@ -2192,24 +2192,25 @@ location:cleanedLocation,
         });
 
       }
-      return {
+    return {
 
-        ...event,
+  ...event,
 
-        zip,
+  zip,
 
-        category,
+  category:
+    category || 'Other',
 
-        city:
-          geo?.city || '',
+  city:
+    geo?.city || '',
 
-        county:
-          geo?.county || '',
+  county:
+    geo?.county || '',
 
-        region
+  region
 
-      };
-
+};
+	  
  } catch(err){
 
   console.error(
