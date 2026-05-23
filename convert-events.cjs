@@ -126,14 +126,7 @@ if (!sourceId) {
   return;
 }
 
-events.push({
-
-  id: sourceId,
-
-  sourceId,
-
-  sourceUrl: url,
-  
+ 
  events.push({
 
   id: sourceId,
@@ -141,12 +134,6 @@ events.push({
   sourceId,
 
   sourceUrl: url,
-
-  title,
-
-  category: '',
-
-  date,
 
   title,
 
@@ -198,7 +185,7 @@ fs.writeFileSync(
     {
       lastUpdated:
         new Date().toISOString(),
-      events
+      events: dedupedEvents
     },
     null,
     2
@@ -207,6 +194,6 @@ fs.writeFileSync(
 
 console.log(
   'Created events.json with',
-  events.length,
+  dedupedEvents.length,
   'events'
 );
