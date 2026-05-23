@@ -3684,7 +3684,8 @@ const showDisabled =
 const admins =
   data.users.filter(
     user =>
-      (
+  
+		(
         user.role === 'admin' ||
         user.role === 'superuser'
       ) &&
@@ -3694,10 +3695,14 @@ const admins =
       )
   );
 
-const standardUsers =
+const visibleUsers =
   data.users.filter(
     user =>
-      user.role !== 'admin' &&
+      (
+        user.role === 'user' ||
+        user.role === 'admin' ||
+        user.role === 'superuser'
+      ) &&
       (
         showDisabled ||
         Number(user.disabled) !== 1
