@@ -1431,7 +1431,9 @@ const CATEGORY_RULES = {
 	  'dutch oven',
 	  'wild harvest',
 	  'sporting clays',
-    'ams'
+	  'crossbow',
+	  'crossbows'
+      'ams'
   ],
 
   'Fishing': [
@@ -1461,7 +1463,10 @@ const CATEGORY_RULES = {
 	  'bass',
 	  'lake mead hatchery',
 	  'hatchery',
-    'bobbers'
+      'bobbers',
+	  'flies',
+   	  'fly-fishing',
+	  'fly fishing'
   ],
 
   'School': [
@@ -1520,7 +1525,12 @@ const CATEGORY_RULES = {
 	  'talks',
 	  'trail talks',
 	  'scavenger hunt',
-    'owl'
+      'owl',
+	  'bird',
+'birding',
+'birds',
+'reptile',
+'bats'
   ],
 
     'Boating': [
@@ -2170,27 +2180,7 @@ events = events.filter(Boolean);
   events.length
 );
 
-console.log(
-  'POST MAP FRIDAY FLIES:',
-  events.filter(e =>
-    e.title.includes('Friday Flies')
-  )
-);
-
-
-	  
-	  console.log(
-  'TOTAL EVENTS AFTER MAP:',
-  events.length
-);
-
-console.log(
-  'BOULDER EVENTS AFTER MAP:',
-  events.filter(e =>
-    e.title.includes('Boulder')
-  )
-);
-		
+	
     document.getElementById(
       'lastUpdated'
     ).innerText =
