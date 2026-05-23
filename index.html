@@ -2692,6 +2692,17 @@ document.getElementById(
   'loadingOverlay'
 ).style.display = 'none';
 
+function setRegionFilter(){
+
+  selectedRegion =
+    document.getElementById(
+      'regionFilter'
+    ).value;
+
+  renderCalendar();
+
+}
+	
 
 // ========================================
 // LOAD EVENTS
