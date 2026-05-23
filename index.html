@@ -3033,7 +3033,15 @@ function renderCalendar(){
   ){
     return false;
   }
-
+	  
+  if(
+  activeRegion &&
+  activeRegion !== 'ALL' &&
+  e.region !== activeRegion
+  ){
+  return false;
+  }
+	  
   const d = new Date(e.date);
 
   if(isNaN(d)) return false;
