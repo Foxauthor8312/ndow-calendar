@@ -2592,9 +2592,9 @@ if(!data.success){
 }
 
 if(
-  user.role === 'admin' ||
-  user.role === 'superuser'
-)
+  data.user.role === 'admin' ||
+  data.user.role === 'superuser'
+){
 
   document.getElementById(
     'loadingMessage'
