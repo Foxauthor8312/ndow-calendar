@@ -2123,17 +2123,24 @@ const geo =
                    index:
             systemStatus.warnings.length + 1,
 
-          title:event.title,
+title:event.title,
 
-          date:event.date,
+date:event.date,
 
-          region:
-            event.region || '',
+region:
+  event.region || '',
 
-          category:
-            event.category || 'Other',
+category:
+  localStorage.getItem(
+    'categoryOverride_' +
+    event.title
+  )
+  ||
+  event.category
+  ||
+  'Other',
 
-          location:cleanedLocation,
+location:cleanedLocation,
 
           url:event.url,
 
@@ -2628,10 +2635,6 @@ function toggleFilter(category){
     activeFilters
   );
 
-  renderCalendar();
-
-}
-
   document
     .querySelectorAll('.legend-item')
     .forEach(item => {
@@ -2646,19 +2649,156 @@ function toggleFilter(category){
       if(
         activeFilters.includes(label)
       ){
+
         item.classList.add(
           'active-filter'
         );
+
       }
 
     });
 
   renderCalendar();
 
+}
+
+function renderOverrides(){
+
+  const search =
+    document.getElementById(
+      'overrideSearch'
+    ).value.toLowerCase();
+
+  const container =
+    document.getElementById(
+      'overrideList'
+    );
+
+  container.innerHTML = '';
+
+  events
+    .filter(e =>
+      e.title
+        .toLowerCase()
+        .includes(search)
+    )
+    .slice(0,100)
+    .forEach(event => {
+
+      const row =
+        document.createElement('div');
+
+      row.style.marginBottom =
+        '8px';
+
+      row.innerHTML = `
+
+        <div style="
+          display:flex;
+          gap:10px;
+          align-items:center;
+        ">
+
+          <div style="
+            flex:1;
+            font-size:12px;
+          ">
+            ${event.title}
+          </div>
+
+          <select
+            onchange="
+              overrideCategory(
+                '${event.title.replace(/'/g,"\\'")}',
+                this.value
+              )
+            "
+          >
+
+            ${CATEGORY_OPTIONS.map(
+              c => `
+                <option
+                  value="${c}"
+                  ${
+                    c === event.category
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  ${c}
+                </option>
+              `
+            ).join('')}
+
+          </select>
+
+        </div>
+
+      `;
+
+      container.appendChild(row);
+
+    });
+
+}
+
+function overrideCategory(
+  title,
+  category
+){
+
+  localStorage.setItem(
+    'categoryOverride_' +
+    title,
+    category
+  );
+
+  events.forEach(event => {
+
+    if(event.title === title){
+
+      event.category =
+        category;
+
+    }
+
+  });
+
+  renderCalendar();
+
+}
+
 // ========================================
 // START CALENDAR RENDERING
 // ========================================
+
 	
+	
+const CATEGORY_OPTIONS = [
+
+  'Hunter Education',
+
+  'Advanced Hunter Education',
+
+  'Fishing',
+
+  'Wildlife',
+
+  'Urban Wildlife',
+
+  'Archery',
+
+  'Boating',
+
+  'School',
+
+  'Volunteer',
+
+  'Other'
+
+];
+
+function renderCalendar(){
 	
 function renderCalendar(){
 
@@ -5639,7 +5779,7 @@ async function deleteHelpTopic(){
                   onchange="loadUsers()"
                 >
 
-                Show Disabled
+                 Show Disabled
 
               </label>
 
@@ -5656,6 +5796,32 @@ async function deleteHelpTopic(){
 			    padding-right:6px;
 			  "
 			></div>
+
+<hr style="margin:20px 0;">
+
+<h3>
+  Category Overrides
+</h3>
+
+<input
+  type="text"
+  id="overrideSearch"
+  placeholder="Search event..."
+  oninput="renderOverrides()"
+  style="
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+  "
+>
+
+<div
+  id="overrideList"
+  style="
+    max-height:400px;
+    overflow:auto;
+  "
+></div>
 
           </div>
 
