@@ -4516,7 +4516,79 @@ onclick="
   + Add Classification Rule
 
 </button>
+<div style="
+  margin-top:8px;
+">
 
+<select
+  onclick="event.stopPropagation();"
+onchange="
+  overrideCategory(
+    '${warning.title.replace(/'/g,"\\'")}',
+    this.value
+  );
+  renderCalendar();
+"
+
+  style="
+    width:100%;
+    padding:6px;
+    border-radius:6px;
+    border:1px solid #334155;
+    background:#0f172a;
+    color:white;
+    font-size:12px;
+    margin-top:6px;
+  "
+>
+
+  <option value="">
+    Assign Category...
+  </option>
+
+  <option value="Hunter Education">
+    Hunter Education
+  </option>
+
+  <option value="Fishing">
+    Fishing
+  </option>
+
+  <option value="Advanced Hunter Education">
+    Advanced Hunter Education
+  </option>
+
+  <option value="Wildlife">
+    Wildlife
+  </option>
+
+  <option value="Urban Wildlife">
+    Urban Wildlife
+  </option>
+
+  <option value="Archery">
+    Archery
+  </option>
+
+  <option value="Boating">
+    Boating
+  </option>
+
+  <option value="School">
+    School
+  </option>
+
+  <option value="Volunteer">
+    Volunteer
+  </option>
+
+  <option value="Other">
+    Other
+  </option>
+
+</select>
+
+</div>
       </div>
 
   `).join('')}
