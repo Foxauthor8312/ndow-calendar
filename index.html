@@ -5445,7 +5445,8 @@ const currentUser =
 
 if(
   payload.role === 'superuser' &&
-  currentUser.role !== 'superuser'
+  currentUser.role !== 'superuser' &&
+  currentUser.username !== payload.originalUsername
 ){
 
   alert(
