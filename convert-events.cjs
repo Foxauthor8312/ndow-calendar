@@ -93,6 +93,27 @@ const url =
     ? urlLine.replace('URL:', '').trim()
     : '';
 
+if(
+  title.includes('Boulder')
+  ||
+  title.includes('Free Fishing')
+){
+
+  console.log(
+    'CONVERTER DEBUG =====',
+    {
+      title,
+      cleanDate,
+      parsedDate,
+      location,
+      url,
+      lines
+    }
+  );
+
+}
+
+  
  events.push({
 
   title,
