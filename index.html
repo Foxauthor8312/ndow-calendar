@@ -2670,6 +2670,10 @@ async function checkLogin(){
       'loadingOverlay'
     );
 
+await new Promise(resolve =>
+  setTimeout(resolve, 800)
+);
+	
   overlay.style.display =
     'flex';
 
