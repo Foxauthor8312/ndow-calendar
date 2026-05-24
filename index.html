@@ -2896,16 +2896,7 @@ async function checkLogin(){
 // LOAD EVENTS
 // ========================================
 
-	function setRegionFilter(){
 
-  activeRegion =
-    document.getElementById(
-      'regionFilter'
-    ).value;
-
-  renderCalendar();
-
-}
 // ========================================
 // START FILTER SYSTEM
 // ========================================
@@ -3962,25 +3953,14 @@ const showDisabled =
 const admins =
   data.users.filter(
     user =>
-  
-		(
-        user.role === 'admin' ||
-        user.role === 'superuser'
-      ) &&
-      (
-        showDisabled ||
-        Number(user.disabled) !== 1
-      )
+      user.role === 'admin' ||
+      user.role === 'superuser'
   );
 
 const standardUsers =
   data.users.filter(
     user =>
-      user.role === 'user' &&
-      (
-        showDisabled ||
-        Number(user.disabled) !== 1
-      )
+      user.role === 'user'
   );
 
 function renderSection(
