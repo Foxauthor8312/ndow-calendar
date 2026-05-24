@@ -2824,12 +2824,7 @@ setTimeout(() => {
       setTimeout(resolve, 100)
     );
 
-    localStorage.setItem(
-      'token',
-      data.token
-    );
-
-localStorage.setItem(
+  localStorage.setItem(
   'token',
   data.token
 );
@@ -2839,7 +2834,14 @@ localStorage.setItem(
   JSON.stringify(data.user)
 );
 
-await loadUsers();
+if(
+  data.user.role === 'admin' ||
+  data.user.role === 'superuser'
+){
+
+  await loadUsers();
+
+}
 
     if(
       data.user.role === 'superuser'
