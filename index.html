@@ -129,6 +129,7 @@ button:hover{
   grid-template-rows:32px;
   grid-auto-rows:minmax(120px,1fr);
   gap:1px;
+  align-items:start;
   background:#d1d5db;
   border-top:1px solid #d1d5db;
 }
@@ -491,13 +492,13 @@ button:hover{
 	
 .disclaimer{
   background:#ECECEC;
-  color:#4b5563;
-  font-size:11px;
+  color:#1f2937;
+  font-size:13px;
   line-height:1.5;
-  padding:14px 24px;
+  padding:20px;
   border-top:1px solid #d1d5db;
-  text-align:left;
 }
+	
 .subtitle{
 	
   color:rgba(255,255,255,0.78);
@@ -1479,16 +1480,31 @@ body{
 </div>
 	
 <!-- ========================================
+     <!-- ========================================
      START CALENDAR
 ======================================== -->
 
 <div style="
-  min-height:calc(100vh - 220px);
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
 ">
-  <div class="calendar" id="calendar"></div>
+
+  <div
+    class="calendar"
+    id="calendar"
+    style="
+      flex:1;
+      overflow:auto;
+      min-height:0;
+      align-items:start;
+    "
+  ></div>
+
 </div>
 
-	
 <!-- ========================================
      START EVENT MODAL
 ======================================== -->
@@ -1502,6 +1518,7 @@ body{
   display:flex;
   flex-direction:column;
 ">
+
     <button id="closeModal" class="modal-close">
       ✕
     </button>
@@ -1515,8 +1532,6 @@ body{
     </div>
 
   </div>
-
-</div>
 
 </div>
 
@@ -4120,9 +4135,7 @@ div.innerHTML = `
 
  <button
   style="margin-top:8px;margin-left:8px;"
-  onclick="openEditUserModalByName(
-    '${user.username}'
-  )"
+  onclick='openEditUserModal(${JSON.stringify(user)})'
 >
   Edit
 </button>
