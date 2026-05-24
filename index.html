@@ -574,17 +574,18 @@ button:hover{
 
 }
 
-.state-outline{
+.site-logo{
+  width:58px;
+  height:auto;
+  object-fit:contain;
+  margin-right:12px;
+}
 
-  width:120px;
-  max-width: 100%;
-  height: auto;
-  opacity:.96;
-  margin-right:10px;
-
-  animation:
-    statePulse 3.5s ease-in-out infinite;
-
+.login-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
 }
 
 	@keyframes statePulse{
@@ -1049,28 +1050,28 @@ body{
 
   <div class="login-box">
 
-    <div class="login-header">
+  <div class="login-header">
 
-     <img
-  src="ndowvolunteer-logo.png"
-  alt="NDOW Volunteer"
-  class="site-logo"
->
+  <img
+    src="ndowvolunteer-logo.png"
+    alt="NDOW Volunteer"
+    class="site-logo"
+  >
 
-      <div class="login-title-wrap">
+  <div class="login-title-wrap">
 
-        <div class="login-title-main">
-          NDOW
-        </div>
-
-        <div class="login-title-sub">
-          Volunteer Event Calendar
-        </div>
-
-      </div>
-
+    <div class="login-title-main">
+      NDOW
     </div>
 
+    <div class="login-title-sub">
+      Volunteer Event Calendar
+    </div>
+
+  </div>
+
+</div>
+	  
     <div class="login-form">
 
       <div class="input-wrap">
