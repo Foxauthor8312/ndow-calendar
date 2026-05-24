@@ -2972,43 +2972,44 @@ function renderOverrides(){
     );
 
   container.innerHTML = '';
-events
-  .filter(e => {
 
-    const matchesSearch =
-      e.title
-        .toLowerCase()
-        .includes(search);
+  const selectedFilter =
+    document.getElementById(
+      'overrideFilter'
+    )?.value || 'ALL';
 
-    const selectedFilter =
-  document.getElementById(
-    'overrideFilter'
-  )?.value || 'ALL';
+  events
+    .filter(event => {
 
-const effectiveCategory =
-  e.category ||
-  localStorage.getItem(
-    'categoryOverride_' +
-    e.title
-  ) ||
-  classifyEvent(
-    e.title
-  ) ||
-  'Other';
+      const matchesSearch =
+        (event.title || '')
+          .toLowerCase()
+          .includes(search);
 
-if(
-  selectedFilter !== 'ALL' &&
-  effectiveCategory !== selectedFilter
-){
-  return false;
-}
+      const effectiveCategory =
+        localStorage.getItem(
+          'categoryOverride_' +
+          event.title
+        ) ||
+        event.category ||
+        classifyEvent(
+          event.title
+        ) ||
+        'Other';
 
-    return matchesSearch;
+      if(
+        selectedFilter !== 'ALL' &&
+        effectiveCategory !== selectedFilter
+      ){
+        return false;
+      }
 
-  })
+      return matchesSearch;
 
-	
+    })
+
     .slice(0,100)
+
     .forEach(event => {
 
       const row =
@@ -3017,7 +3018,7 @@ if(
       row.style.marginBottom =
         '8px';
 
-            row.innerHTML = `
+      row.innerHTML = `
 
         <div style="
           display:flex;
@@ -3035,7 +3036,7 @@ if(
           <select
             onchange="
               overrideCategory(
-                '${event.title.replace(/'/g,"\\'")}',
+                '${event.title.replace(/'/g,"\\\\'")}',
                 this.value
               )
             "
@@ -3043,16 +3044,18 @@ if(
 
             ${CATEGORY_OPTIONS.map(
               c => `
+
                 <option
                   value="${c}"
                   ${
-                    c === event.category
+                    c === effectiveCategory
                       ? 'selected'
                       : ''
                   }
                 >
                   ${c}
                 </option>
+
               `
             ).join('')}
 
@@ -3095,7 +3098,8 @@ function overrideCategory(
         overriddenCategory ||
         classifyEvent(
           event.title
-        )
+        ) ||
+        'Other'
 
     };
 
