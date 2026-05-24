@@ -2780,6 +2780,19 @@ async function checkLogin(){
 
     }
 
+
+document.getElementById(
+  'loginScreen'
+).style.opacity = '0';
+
+setTimeout(() => {
+
+  document.getElementById(
+    'loginScreen'
+  ).style.display = 'none';
+
+}, 150);
+	  
     document.getElementById(
       'loginScreen'
     ).style.display = 'none';
@@ -3956,18 +3969,6 @@ async function loadUsers(){
       return;
 
     }
-document.getElementById(
-  'loginScreen'
-).style.opacity = '0';
-
-setTimeout(() => {
-
-  document.getElementById(
-    'loginScreen'
-  ).style.display = 'none';
-
-}, 150);
-
 
     const container =
       document.getElementById(
