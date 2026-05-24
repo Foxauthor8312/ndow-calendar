@@ -2749,29 +2749,31 @@ await new Promise(resolve =>
     ).innerText =
       'Verifying account permissions...';
 
-    if(!data.success){
+  if(!data.success){
 
-      overlay.style.display =
-        'none';
+  overlay.style.display =
+    'none';
 
-      overlay.style.visibility =
-        'hidden';
+  overlay.style.visibility =
+    'hidden';
 
-      overlay.style.opacity =
-        '0';
+  overlay.style.opacity =
+    '0';
 
-      throw new Error(
-        'Invalid login'
-      );
+  throw new Error(
+    'Invalid login'
+  );
 
-    }
-	document.getElementById(
-     'loginScreen'
-   ).style.display = 'none';
+}
 
-  document.getElementById(
-    'appContent'
-  ).style.display = 'block';
+document.getElementById(
+  'loginScreen'
+).style.display = 'none';
+
+document.getElementById(
+  'appContent'
+).style.display = 'block';
+	  
     if(
       data.user.role === 'admin' ||
       data.user.role === 'superuser'
