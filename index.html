@@ -3197,6 +3197,8 @@ function renderCalendar(){
     calendar.appendChild(empty);
 
   }
+	const renderedTitles =
+  new Set();
 
   for(let day = 1; day <= daysInMonth; day++){
 
@@ -3276,6 +3278,7 @@ const match =
 return match;
 
 });
+	  
 dayEvents.forEach(event => {
 
   try {
@@ -3311,6 +3314,9 @@ dayEvents.forEach(event => {
       openEventModal(event.url);
 
     cell.appendChild(div);
+	  renderedTitles.add(
+  event.title + '|' + event.date
+);
 
   } catch(err){
 
@@ -3348,6 +3354,25 @@ if(remaining < 7){
   }
 
 }
+
+const missingEvents =
+  events.filter(event => {
+
+    return !renderedTitles.has(
+      event.title + '|' + event.date
+    );
+
+  });
+
+console.log(
+  'MISSING EVENTS:',
+  missingEvents
+);
+
+console.log(
+  'MISSING COUNT:',
+  missingEvents.length
+);
 
 }
 // ========================================
