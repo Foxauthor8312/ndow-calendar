@@ -1989,24 +1989,39 @@ const county =
 
 function classifyEvent(title = '') {
 
-  const t = title.toLowerCase();
+  if(
+    !title ||
+    typeof title !== 'string'
+  ){
+    return 'Other';
+  }
 
-  for (const category in CATEGORY_RULES) {
+  const t =
+    title.toLowerCase();
 
-    const keywords = CATEGORY_RULES[category];
+  for(
+    const category in CATEGORY_RULES
+  ){
 
-    const matched = keywords.some(keyword =>
-      t.includes(keyword.toLowerCase())
-    );
+    const keywords =
+      CATEGORY_RULES[category];
 
-    if (matched) {
+    const matched =
+      keywords.some(keyword =>
+        t.includes(
+          keyword.toLowerCase()
+        )
+      );
+
+    if(matched){
       return category;
     }
+
   }
 
   return 'Other';
-}
 
+}
 const categoryColors = {
 
   'Hunter Education':'#84cc16',
@@ -2143,14 +2158,13 @@ const geo =
   zipLookup[zip];
 
 let region = '';	  
-
-      const category =
+const category =
   localStorage.getItem(
     'categoryOverride_' +
-    event.title
+    (event.title || '')
   ) ||
   classifyEvent(
-    event.title
+    event.title || ''
   );
 
       if(category === 'Other'){
