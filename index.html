@@ -2809,17 +2809,15 @@ setTimeout(() => {
 
   document.getElementById(
     'loginScreen'
-  ).style.display = 'none';
+  ).style.display =
+    'none';
 
-}, 150);
-	  
-    document.getElementById(
-      'loginScreen'
-    ).style.display = 'none';
+  document.getElementById(
+    'appContent'
+  ).style.display =
+    'block';
 
-    document.getElementById(
-      'appContent'
-    ).style.display = 'block';
+}, 80);
 
     if(
       data.user.role === 'admin' ||
