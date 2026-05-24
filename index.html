@@ -2877,20 +2877,20 @@ if(
 
 if(
   data.user.role === 'superuser'
-)
+){
 
-      document.getElementById(
-        'superuserButton'
-      ).classList.remove(
-        'hidden'
-      );
+  document.getElementById(
+    'superuserButton'
+  ).classList.remove(
+    'hidden'
+  );
 
-    }
+}
 
-    localStorage.setItem(
-      'ndowAccess',
-      'granted'
-    );
+localStorage.setItem(
+  'ndowAccess',
+  'granted'
+);
 
     document.getElementById(
       'loadingMessage'
