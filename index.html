@@ -3355,8 +3355,23 @@ if(remaining < 7){
 
 }
 
-const missingEvents =
+const currentMonthEvents =
   events.filter(event => {
+
+    const d =
+      new Date(
+        event.date + ' 12:00:00'
+      );
+
+    return (
+      d.getMonth() === month &&
+      d.getFullYear() === year
+    );
+
+  });
+
+const missingEvents =
+  currentMonthEvents.filter(event => {
 
     return !renderedTitles.has(
       event.title + '|' + event.date
