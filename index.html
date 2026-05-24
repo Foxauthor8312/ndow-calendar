@@ -3249,12 +3249,12 @@ const isToday =
   String(e.date || '')
     .trim();
 
-const dateMatch =
-  rawDate.match(
-    /^(\d{4})-(\d{2})-(\d{2})/
+const safeDate =
+  new Date(
+    rawDate + ' 12:00:00'
   );
 
-if(!dateMatch){
+if(isNaN(safeDate)){
 
   console.error(
     'BAD DATE:',
@@ -3267,7 +3267,7 @@ if(!dateMatch){
 }
 
 const formatted =
-  `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
+  `${safeDate.getFullYear()}-${String(safeDate.getMonth() + 1).padStart(2,'0')}-${String(safeDate.getDate()).padStart(2,'0')}`;
 
 	  
 const match =
