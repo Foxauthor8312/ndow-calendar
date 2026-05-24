@@ -272,50 +272,6 @@ button:hover{
 
 }
 
-@keyframes deerRun{
-
-  0%{
-
-    transform:
-      translateX(0)
-      scaleX(1);
-
-  }
-
-  49%{
-
-    transform:
-      translateX(calc(100vw + 140px))
-      scaleX(1);
-
-  }
-
-  50%{
-
-    transform:
-      translateX(calc(100vw + 140px))
-      scaleX(-1);
-
-  }
-
-  99%{
-
-    transform:
-      translateX(0)
-      scaleX(-1);
-
-  }
-
-  100%{
-
-    transform:
-      translateX(0)
-      scaleX(1);
-
-  }
-
-}
-
 @media(max-width:768px){
 
   header{
@@ -1190,23 +1146,6 @@ body{
   <div class="spinner"></div>
 
   <div
-    id="loadingWildlife"
-    style="
-      position:absolute;
-      bottom:90px;
-      left:-120px;
-      font-size:52px;
-      opacity:.82;
-      animation:
-        deerRun 12s linear infinite;
-      pointer-events:none;
-      user-select:none;
-    "
-  >
-    🦌
-  </div>
-
-  <div
     id="loadingMessage"
     style="
       margin-top:18px;
@@ -1215,6 +1154,20 @@ body{
   >
     Loading NDOW Calendar...
   </div>
+
+	<div
+  id="wildlifeFact"
+  style="
+    margin-top:18px;
+    max-width:500px;
+    text-align:center;
+    color:#93c5fd;
+    font-size:14px;
+    line-height:1.6;
+    opacity:.9;
+    padding:0 24px;
+  "
+></div>
 
 </div>
 <!-- ========================================
@@ -2507,6 +2460,70 @@ fetch('emails.json')
 
   
 let currentDate = new Date();
+
+	const wildlifeFacts = [
+
+  'Nevada has more mountain ranges than any other U.S. state.',
+
+  'Nevada is home to over 890 wildlife species.',
+
+  'Mule deer migrations in Nevada can exceed 100 miles.',
+
+  'Nevada contains more than 300 mountain ranges.',
+
+  'Lahontan cutthroat trout are Nevada’s state fish.',
+
+  'Desert bighorn sheep can survive long periods without water.',
+
+  'Nevada has over 100 wildlife management areas and access sites.',
+
+  'The NDOW volunteer network supports education, conservation, and outreach statewide.'
+
+];
+
+	let wildlifeFactInterval;
+
+function startWildlifeFacts(){
+
+  let index = 0;
+
+  const factElement =
+    document.getElementById(
+      'wildlifeFact'
+    );
+
+  if(!factElement){
+    return;
+  }
+
+  factElement.innerText =
+    wildlifeFacts[0];
+
+  wildlifeFactInterval =
+    setInterval(() => {
+
+      index++;
+
+      if(
+        index >= wildlifeFacts.length
+      ){
+        index = 0;
+      }
+
+      factElement.innerText =
+        wildlifeFacts[index];
+
+    }, 5000);
+
+}
+
+function stopWildlifeFacts(){
+
+  clearInterval(
+    wildlifeFactInterval
+  );
+
+}
 // ========================================
 // START AUTHENTICATION
 // ========================================
@@ -2563,6 +2580,8 @@ async function checkLogin(){
 
   overlay.style.opacity =
     '1';
+
+	startWildlifeFacts();
 
   document.getElementById(
     'loadingMessage'
