@@ -2581,8 +2581,13 @@ async function checkLogin(){
   overlay.style.opacity =
     '1';
 
-	startWildlifeFacts();
+startWildlifeFacts();
 
+await new Promise(resolve =>
+  setTimeout(resolve, 50)
+);
+
+	
   document.getElementById(
     'loadingMessage'
   ).innerHTML =
@@ -2656,7 +2661,13 @@ async function checkLogin(){
       );
 
     }
+	document.getElementById(
+     'loginScreen'
+   ).style.display = 'none';
 
+  document.getElementById(
+    'appContent'
+  ).style.display = 'block';
     if(
       data.user.role === 'admin' ||
       data.user.role === 'superuser'
@@ -3748,6 +3759,7 @@ async function loadUsers(){
       return;
 
     }
+
 
     const container =
       document.getElementById(
