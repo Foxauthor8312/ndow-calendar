@@ -155,6 +155,45 @@ button:hover{
   box-sizing:border-box;
 }
 
+	.day.today{
+
+  border:2px solid #fbbf24;
+
+  box-shadow:
+    inset 0 0 0 1px #fbbf24,
+    0 0 12px rgba(251,191,36,0.35);
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(251,191,36,0.12),
+      white
+    );
+
+  position:relative;
+
+}
+
+.day.today::after{
+
+  content:'TODAY';
+
+  position:absolute;
+
+  top:4px;
+  right:6px;
+
+  font-size:9px;
+
+  font-weight:700;
+
+  color:#f59e0b;
+
+  letter-spacing:.08em;
+
+}
+	
+
 .day-number{
   font-weight:bold;
   margin-bottom:8px;
@@ -3108,9 +3147,25 @@ function renderCalendar(){
 
     cell.className = 'day';
 
+	  const today =
+  new Date();
+
+const isToday =
+  day === today.getDate() &&
+  month === today.getMonth() &&
+  year === today.getFullYear();
+
     cell.innerHTML =
       `<div class="day-number">${day}</div>`;
 
+	if(isToday){
+
+  cell.classList.add(
+    'today'
+  );
+
+}
+	  
     const dateStr =
       `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
 
