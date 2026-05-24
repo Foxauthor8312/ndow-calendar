@@ -2816,16 +2816,17 @@ async function checkLogin(){
       data.token
     );
 
-    localStorage.setItem(
-      'user',
-      JSON.stringify(data.user)
-    );
+localStorage.setItem(
+  'token',
+  data.token
+);
 
-    document.getElementById(
-      'userDisplay'
-    ).innerText =
-      'Logged in as: ' +
-      data.user.username;
+localStorage.setItem(
+  'user',
+  JSON.stringify(data.user)
+);
+
+await loadUsers();
 
     if(
       data.user.role === 'superuser'
