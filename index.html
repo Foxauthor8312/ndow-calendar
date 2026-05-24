@@ -131,10 +131,15 @@ button:hover{
   gap:1px;
   background:#d1d5db;
   border-top:1px solid #d1d5db;
+
+  height:100%;
+
   overflow-y:auto;
   overflow-x:hidden;
-  height:100%;
+
   align-content:start;
+
+  min-height:0;
 }
  
 .day-name{
@@ -1366,143 +1371,185 @@ body{
   </div>
 
 </div>
-<div style="
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:white;
-  border-bottom:1px solid #d1d5db;
-">
-<!-- ========================================
-     START LEGEND
-======================================== -->
-	
-  <div class="legend">
-
-<div class="legend-item"
-     onclick="toggleFilter('Hunter Education')">
-	
-  <span class="legend-color hunter"></span>
-  Hunter Education
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Fishing')">
-  <span class="legend-color fishing"></span>
-  Fishing
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Advanced Hunter Education')">
-  <span class="legend-color advanced-hunter"></span>
-  Advanced Hunter Education
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Wildlife')">
-  <span class="legend-color wildlife"></span>
-  Wildlife
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Urban Wildlife')">
-  <span class="legend-color urban-wildlife"></span>
-  Urban Wildlife
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Archery')">
-  <span class="legend-color archery"></span>
-  Archery
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Boating')">
-  <span class="legend-color boating"></span>
-  Boating
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('School')">
-  <span class="legend-color school"></span>
-  School
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Volunteer')">
-  <span class="legend-color volunteer"></span>
-  Volunteer
-</div>
-
-<div class="legend-item"
-     onclick="toggleFilter('Other')">
-  <span class="legend-color other"></span>
-  Other
-</div>
-	  
-<div style="
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-left:auto;
-  flex-shrink:0;
-  white-space:nowrap;
-">
-
-  <span style="
-    font-weight:600;
-    color:#374151;
-  ">
-    Region:
-  </span>
-
-  <select
-  id="regionFilter"
-  onchange="setRegionFilter()"
+<div
+  id="calendarShell"
   style="
-    padding:8px 10px;
-    border-radius:8px;
-    border:1px solid #d1d5db;
-    font-size:13px;
+    height:calc(100vh - 170px);
+    max-height:calc(100vh - 170px);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    background:white;
+    min-height:0;
   "
 >
 
-  <option value="ALL">
-    All Regions
-  </option>
+  <!-- ========================================
+       START STICKY FILTER BAR
+  ======================================== -->
 
-  <option value="Western">
-    Western
-  </option>
+  <div style="
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    border-bottom:1px solid #d1d5db;
+    flex-shrink:0;
+  ">
 
-  <option value="Eastern">
-    Eastern
-  </option>
+    <!-- ========================================
+         START LEGEND
+    ======================================== -->
 
-  <option value="Southern">
-    Southern
-  </option>
+    <div class="legend">
 
-</select>
-</div>
-</div>
-	
-<!-- ========================================
-     <!-- ========================================
-     START CALENDAR
-======================================== -->
+      <div class="legend-item"
+           onclick="toggleFilter('Hunter Education')">
 
-<div style="
-  height:calc(100vh - 170px);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-">
+        <span class="legend-color hunter"></span>
+        Hunter Education
 
-  <div
-    class="calendar"
-    id="calendar"
-  ></div>
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Fishing')">
+
+        <span class="legend-color fishing"></span>
+        Fishing
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Advanced Hunter Education')">
+
+        <span class="legend-color advanced-hunter"></span>
+        Advanced Hunter Education
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Wildlife')">
+
+        <span class="legend-color wildlife"></span>
+        Wildlife
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Urban Wildlife')">
+
+        <span class="legend-color urban-wildlife"></span>
+        Urban Wildlife
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Archery')">
+
+        <span class="legend-color archery"></span>
+        Archery
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Boating')">
+
+        <span class="legend-color boating"></span>
+        Boating
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('School')">
+
+        <span class="legend-color school"></span>
+        School
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Volunteer')">
+
+        <span class="legend-color volunteer"></span>
+        Volunteer
+
+      </div>
+
+      <div class="legend-item"
+           onclick="toggleFilter('Other')">
+
+        <span class="legend-color other"></span>
+        Other
+
+      </div>
+
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-left:auto;
+        flex-shrink:0;
+        white-space:nowrap;
+      ">
+
+        <span style="
+          font-weight:600;
+          color:#374151;
+        ">
+          Region:
+        </span>
+
+        <select
+          id="regionFilter"
+          onchange="setRegionFilter()"
+          style="
+            padding:8px 10px;
+            border-radius:8px;
+            border:1px solid #d1d5db;
+            font-size:13px;
+          "
+        >
+
+          <option value="ALL">
+            All Regions
+          </option>
+
+          <option value="Western">
+            Western
+          </option>
+
+          <option value="Eastern">
+            Eastern
+          </option>
+
+          <option value="Southern">
+            Southern
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ========================================
+       START CALENDAR
+  ======================================== -->
+
+  <div style="
+    flex:1;
+    min-height:0;
+    overflow:hidden;
+  ">
+
+    <div
+      class="calendar"
+      id="calendar"
+    ></div>
+
+  </div>
 
 </div>
 
