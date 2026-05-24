@@ -584,6 +584,52 @@ button:hover{
 
   margin-right:10px;
 
+  animation:
+    statePulse 3.5s ease-in-out infinite;
+
+}
+
+	@keyframes statePulse{
+
+  0%{
+
+    transform:scale(1);
+
+    opacity:.82;
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(242,150,71,0)
+      );
+
+  }
+
+  50%{
+
+    transform:scale(1.06);
+
+    opacity:1;
+
+    filter:
+      drop-shadow(
+        0 0 16px rgba(242,150,71,.55)
+      );
+
+  }
+
+  100%{
+
+    transform:scale(1);
+
+    opacity:.82;
+
+    filter:
+      drop-shadow(
+        0 0 0 rgba(242,150,71,0)
+      );
+
+  }
+
 }
 
 .login-title-main{
