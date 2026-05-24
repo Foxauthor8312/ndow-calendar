@@ -3245,12 +3245,29 @@ const isToday =
 	  
  
 	  
-  const d = new Date(e.date);
+ const rawDate =
+  String(e.date || '')
+    .trim();
 
-  if(isNaN(d)) return false;
+const dateMatch =
+  rawDate.match(
+    /^(\d{4})-(\d{2})-(\d{2})/
+  );
 
-  const formatted =
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+if(!dateMatch){
+
+  console.error(
+    'BAD DATE:',
+    e.date,
+    e
+  );
+
+  return false;
+
+}
+
+const formatted =
+  `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
 
 	  
 const match =
