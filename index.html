@@ -3825,27 +3825,37 @@ if(
       )
     );
 
-  if(
-    savedUser.role === 'superuser'
-  ){
+  if(savedUser){
 
     document.getElementById(
-      'superuserButton'
-    ).classList.remove(
-      'hidden'
-    );
+      'userDisplay'
+    ).innerText =
+      'Logged in as: ' +
+      savedUser.username;
+
+    if(
+      savedUser.role === 'superuser'
+    ){
+
+      document.getElementById(
+        'superuserButton'
+      ).classList.remove(
+        'hidden'
+      );
+
+    }
 
   }
 
+  (async () => {
+
+    await loadZipLookup();
+
+    await loadEvents();
+
+  })();
+
 }
-
-(async () => {
-
-  await loadZipLookup();
-
-  await loadEvents();
-
-})();
 
 let inactivityTimer;
 let warningTimer;
