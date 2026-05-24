@@ -4087,13 +4087,8 @@ async function loadUsers(){
             : '#f8fafc';
 
 div.innerHTML = `
-
 <strong>${user.username}</strong><br>
-
-Role: ${user.role}
-
-<br>
-
+Role: ${user.role}<br>
 Status:
 ${
   Number(user.disabled || 0) === 1
@@ -4105,14 +4100,11 @@ ${
 
 <button
   style="margin-top:8px;"
-  onclick="toggleUser(
-    '${user.username}',
-    ${
-      Number(user.disabled || 0) === 1
-        ? 'false'
-        : 'true'
-    }
-  )"
+  onclick="toggleUser('${user.username}', ${
+    Number(user.disabled || 0) === 1
+      ? false
+      : true
+  })"
 >
   ${
     Number(user.disabled || 0) === 1
@@ -4123,15 +4115,11 @@ ${
 
 <button
   style="margin-top:8px;margin-left:8px;"
-  onclick='openEditUserModal(
-    ${JSON.stringify(user)}
-  )'
+  onclick='openEditUserModal(${JSON.stringify(user)})'
 >
   Edit
 </button>
-
 `;
-
         container.appendChild(
           div
         );
