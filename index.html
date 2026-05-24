@@ -271,8 +271,52 @@ button:hover{
   }
 
 }
-	
-	@media(max-width:768px){
+
+@keyframes deerRun{
+
+  0%{
+
+    transform:
+      translateX(0)
+      scaleX(1);
+
+  }
+
+  49%{
+
+    transform:
+      translateX(calc(100vw + 140px))
+      scaleX(1);
+
+  }
+
+  50%{
+
+    transform:
+      translateX(calc(100vw + 140px))
+      scaleX(-1);
+
+  }
+
+  99%{
+
+    transform:
+      translateX(0)
+      scaleX(-1);
+
+  }
+
+  100%{
+
+    transform:
+      translateX(0)
+      scaleX(1);
+
+  }
+
+}
+
+@media(max-width:768px){
 
   header{
     flex-direction:column;
@@ -1144,6 +1188,23 @@ body{
 >
 
   <div class="spinner"></div>
+
+  <div
+    id="loadingWildlife"
+    style="
+      position:absolute;
+      bottom:90px;
+      left:-120px;
+      font-size:52px;
+      opacity:.82;
+      animation:
+        deerRun 12s linear infinite;
+      pointer-events:none;
+      user-select:none;
+    "
+  >
+    🦌
+  </div>
 
   <div
     id="loadingMessage"
@@ -3695,14 +3756,10 @@ const admins =
       )
   );
 
-const visibleUsers =
+const standardUsers =
   data.users.filter(
     user =>
-      (
-        user.role === 'user' ||
-        user.role === 'admin' ||
-        user.role === 'superuser'
-      ) &&
+      user.role === 'user' &&
       (
         showDisabled ||
         Number(user.disabled) !== 1
