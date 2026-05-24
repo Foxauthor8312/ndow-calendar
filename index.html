@@ -2331,43 +2331,44 @@ location:cleanedLocation,
         });
 
       }
-    return {
 
-  ...event,
+      return {
 
-  zip,
+        ...event,
 
-  category:
-    category || 'Other',
+        zip,
 
-  city:
-    geo?.city || '',
+        category:
+          category || 'Other',
 
-  county:
-    geo?.county || '',
+        city:
+          geo?.city || '',
 
-  region
+        county:
+          geo?.county || '',
 
-};
-	  
- } catch(err){
+        region
 
-  console.error(
-    'MAP FAILURE =====',
-    {
-      title:event?.title,
-      url:event?.url,
-      location:event?.location,
-      date:event?.date,
-      error:err
+      };
+
+    } catch(err){
+
+      console.error(
+        'MAP FAILURE =====',
+        {
+          title:event?.title,
+          url:event?.url,
+          location:event?.location,
+          date:event?.date,
+          error:err
+        }
+      );
+
+      return null;
+
     }
-  );
 
-  return null;
-
-}
-
-});
+  });
 events = events.filter(Boolean);
 	  
 	  console.log(
