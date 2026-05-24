@@ -1474,8 +1474,7 @@ body{
 ======================================== -->
 
 <div style="
-  height:calc(100vh - 220px);
-  overflow-y:auto;
+  min-height:calc(100vh - 220px);
 ">
   <div class="calendar" id="calendar"></div>
 </div>
@@ -3848,15 +3847,17 @@ if(
 
 }
 
-  (async () => {
+(async () => {
 
-    await loadZipLookup();
+  await loadZipLookup();
+
+  requestAnimationFrame(async () => {
 
     await loadEvents();
 
-  })();
+  });
 
-}
+})();
 
 let inactivityTimer;
 let warningTimer;
