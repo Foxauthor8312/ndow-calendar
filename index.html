@@ -2683,10 +2683,10 @@ async function checkLogin(){
       'loadingOverlay'
     );
 
-await new Promise(resolve =>
-  setTimeout(resolve, 800)
-);
-	
+  await new Promise(resolve =>
+    setTimeout(resolve, 800)
+  );
+
   overlay.style.display =
     'flex';
 
@@ -2696,17 +2696,16 @@ await new Promise(resolve =>
   overlay.style.opacity =
     '1';
 
-startWildlifeFacts();
+  startWildlifeFacts();
 
-await new Promise(resolve =>
-  setTimeout(resolve, 1200)
-);
+  await new Promise(resolve =>
+    setTimeout(resolve, 1200)
+  );
 
-	
   document.getElementById(
-  'loadingMessage'
-).innerText =
-  'Connecting to secure services...\n\nInitial startup may take up to 60 seconds while secure cloud services wake up.';
+    'loadingMessage'
+  ).innerText =
+    'Connecting to secure services...\n\nInitial startup may take up to 60 seconds while secure cloud services wake up.';
 
   const name =
     document.getElementById(
@@ -2748,31 +2747,31 @@ await new Promise(resolve =>
     ).innerText =
       'Verifying account permissions...';
 
-  if(!data.success){
+    if(!data.success){
 
-  overlay.style.display =
-    'none';
+      overlay.style.display =
+        'none';
 
-  overlay.style.visibility =
-    'hidden';
+      overlay.style.visibility =
+        'hidden';
 
-  overlay.style.opacity =
-    '0';
+      overlay.style.opacity =
+        '0';
 
-  throw new Error(
-    'Invalid login'
-  );
+      throw new Error(
+        'Invalid login'
+      );
 
-}
+    }
 
-document.getElementById(
-  'loginScreen'
-).style.display = 'none';
+    document.getElementById(
+      'loginScreen'
+    ).style.display = 'none';
 
-document.getElementById(
-  'appContent'
-).style.display = 'block';
-	  
+    document.getElementById(
+      'appContent'
+    ).style.display = 'block';
+
     if(
       data.user.role === 'admin' ||
       data.user.role === 'superuser'
@@ -2806,15 +2805,15 @@ document.getElementById(
       JSON.stringify(data.user)
     );
 
-      document.getElementById(
+    document.getElementById(
       'userDisplay'
     ).innerText =
       'Logged in as: ' +
       data.user.username;
 
     if(
-     savedUser.role === 'superuser'
-    )
+      data.user.role === 'superuser'
+    ){
 
       document.getElementById(
         'superuserButton'
