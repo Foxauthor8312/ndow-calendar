@@ -1,0 +1,100 @@
+name: Update NDOW Telemetry
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout frontend repo
+      - name: Checkout frontend repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      # Setup Node
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Generate telemetry
+      - name: Generate events.json
+        run: |
+          node scripts/updateTelemetry.js
+
+      # Commit frontend changes
+      - name: Commit frontend changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/events.json
+
+          if git diff --cached --quiet; then
+            echo "No frontend changes"
+          else
+            git commit -m "chore: update telemetry events"
+            git push
+          fi
+
+      # Clone backend repo
+      - name: Clone backend repo
+        run: |
+          git clone https://${{ secrets.SERVER_REPO_PAT }}@github.com/YOUR_GITHUB_USERNAME/ndow-calendar-server.git server-repo
+
+      # Sync telemetry file
+      - name: Sync events.json to backend repo
+        run: |
+          mkdir -p server-repo/data
+          cp data/events.json server-repo/data/events.json
+
+      # Commit backend changes
+      - name: Commit backend changes
+        run: |
+          cd server-repo
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/events.json
+
+          if git diff --cached --quiet; then
+            echo "No backend changes"
+          else
+            git commit -m "chore: sync telemetry events"
+            git push
+          fi
+
+      # Verify hashes match
+      - name: Verify telemetry hashes
+        run: |
+          FRONTEND_HASH=$(sha256sum data/events.json | awk '{print $1}')
+          BACKEND_HASH=$(sha256sum server-repo/data/events.json | awk '{print $1}')
+
+          echo "Frontend hash: $FRONTEND_HASH"
+          echo "Backend hash:  $BACKEND_HASH"
+
+          if [ "$FRONTEND_HASH" != "$BACKEND_HASH" ]; then
+            echo "Hash mismatch detected"
+            exit 1
+          fi
+
+      # Workflow summary
+      - name: Workflow summary
+        run: |
+          echo "## NDOW Telemetry Sync" >> $GITHUB_STEP_SUMMARY
+          echo "Frontend and backend telemetry are synchronized." >> $GITHUB_STEP_SUMMARY
