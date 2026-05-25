@@ -2250,6 +2250,24 @@ async function loadEvents(){
 	
 	}
 
+console.log(
+  'METRICS LOADED:',
+  {
+    rawBlocks:
+      systemStatus.rawBlocks,
+
+    skippedOldEvents:
+      systemStatus.skippedOldEvents,
+
+    invalidEvents:
+      systemStatus.invalidEvents,
+
+    finalEvents:
+      systemStatus.finalEvents
+  }
+);
+	  
+
 	  document.getElementById(
   'lastUpdated'
 ).innerText =
