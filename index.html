@@ -2459,12 +2459,10 @@ events = events.filter(Boolean);
 );
 
   
-    document.getElementById(
-      'lastUpdated'
-    ).innerText =
-      new Date(
-        data.lastUpdated
-      ).toLocaleString();
+   document.getElementById(
+  'lastUpdated'
+).innerText =
+  new Date().toLocaleString();
 
     systemStatus.lastSync =
       new Date();
