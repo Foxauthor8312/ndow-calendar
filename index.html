@@ -2239,6 +2239,8 @@ async function loadEvents(){
 
     systemStatus.uncategorizedEvents = 0;
 
+	 systemStatus.rejectedEvents = []; 
+
     systemStatus.geoMappedEvents = 0;
 
     systemStatus.warnings = [];
@@ -2505,9 +2507,59 @@ location:cleanedLocation,
     }
 
   });
-events = events.filter(Boolean);
+
 	  
-	  console.log(
+const rejectedEvents = [];
+
+events = events.filter(event => {
+
+  if(!event){
+
+    rejectedEvents.push({
+      reason:'Null event object'
+    });
+
+    return false;
+
+  }
+
+  if(!event.title){
+
+    rejectedEvents.push({
+      reason:'Missing title',
+      event
+    });
+
+    return false;
+
+  }
+
+  if(!event.date){
+
+    rejectedEvents.push({
+      reason:'Missing date',
+      event
+    });
+
+    return false;
+
+  }
+
+  return true;
+
+});
+
+
+	  
+systemStatus.rejectedEvents =
+  rejectedEvents;
+
+console.log(
+  'REJECTED EVENTS:',
+  rejectedEvents
+);
+
+console.log(
   'POST MAP COUNT:',
   events.length
 );
