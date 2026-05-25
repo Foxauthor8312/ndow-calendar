@@ -2970,6 +2970,20 @@ localStorage.setItem(
 
     await loadEvents();
 
+document.getElementById(
+  'loginScreen'
+).style.display =
+  'none';
+
+overlay.style.display =
+  'flex';
+
+overlay.style.visibility =
+  'visible';
+
+overlay.style.opacity =
+  '1';
+	  
     document.getElementById(
       'loadingMessage'
     ).innerText =
