@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-25T13:36:57.106Z",
+  "lastUpdated": "2026-05-25T13:42:10.043Z",
   "events": [
     {
       "id": "4394",
@@ -170,6 +170,18 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4407"
     },
     {
+      "id": "4408",
+      "sourceId": "4408",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4408",
+      "title": "Introduction to Shooting Sporting Clays",
+      "category": "Event",
+      "date": "Apr 04, 2026",
+      "time": "7:00AM - 11:00AM",
+      "location": "Las Vegas, NV 89131",
+      "description": "Introduction to Shooting Sporting Clays - Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4408"
+    },
+    {
       "id": "4409",
       "sourceId": "4409",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4409",
@@ -200,9 +212,9 @@
       "title": "Hunter Education",
       "category": "Event",
       "date": "Mar 22, 2026",
-      "time": "9:00AM - 5:00PM",
-      "location": "Virginia City, NV 89440",
-      "description": "Hunter Education - Virginia City, NV 89440",
+      "time": "8:00AM - 5:00PM",
+      "location": "Elko, NV 89801",
+      "description": "Hunter Education - Elko, NV 89801",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4411"
     },
     {
@@ -614,6 +626,18 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4445"
     },
     {
+      "id": "4446",
+      "sourceId": "4446",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4446",
+      "title": "Hunter Education",
+      "category": "Event",
+      "date": "Mar 22, 2026",
+      "time": "9:00AM - 5:00PM",
+      "location": "Virginia City, NV 89440",
+      "description": "Hunter Education - Virginia City, NV 89440",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4446"
+    },
+    {
       "id": "4447",
       "sourceId": "4447",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4447",
@@ -804,6 +828,18 @@
       "location": "Spring Creek , NV 89511",
       "description": "KYN Lesson 2 - Jordan PRIVATE EVENT - Spring Creek , NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4462"
+    },
+    {
+      "id": "4463",
+      "sourceId": "4463",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4463",
+      "title": "YOUTH Registration: Save Comins Lake Pike-Out",
+      "category": "Event",
+      "date": "May 09, 2026",
+      "time": "7:00AM - 2:00PM",
+      "location": "Ely , NV 89301",
+      "description": "YOUTH Registration: Save Comins Lake Pike-Out - Ely , NV 89301",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4463"
     },
     {
       "id": "4464",
@@ -1255,10 +1291,10 @@
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4503",
       "title": "Friday Flies- Boulder City",
       "category": "Event",
-      "date": "Apr 04, 2026",
-      "time": "7:00AM - 11:00AM",
-      "location": "Las Vegas, NV 89131",
-      "description": "Friday Flies- Boulder City - Las Vegas, NV 89131",
+      "date": "Apr 03, 2026",
+      "time": "6:00PM - 7:30PM",
+      "location": "Boulder City, NV 89005",
+      "description": "Friday Flies- Boulder City - Boulder City, NV 89005",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4503"
     },
     {
@@ -1860,6 +1896,18 @@
       "location": "Las Vegas, NV 89131",
       "description": "NRA Range Safety Officer UNLISTED - Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4553"
+    },
+    {
+      "id": "4554",
+      "sourceId": "4554",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4554",
+      "title": "Hunter Education",
+      "category": "Event",
+      "date": "Apr 25, 2026",
+      "time": "8:00AM - 5:00PM",
+      "location": "Yerington, NV 89447",
+      "description": "Hunter Education - Yerington, NV 89447",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4554"
     },
     {
       "id": "4555",
@@ -2575,10 +2623,10 @@
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4618",
       "title": "Skins & Skulls (Nielsen) PRIVATE EVENT",
       "category": "Event",
-      "date": "May 09, 2026",
-      "time": "7:00AM - 2:00PM",
-      "location": "Ely , NV 89301",
-      "description": "Skins & Skulls (Nielsen) PRIVATE EVENT - Ely , NV 89301",
+      "date": "May 07, 2026",
+      "time": "1:00PM - 2:00PM",
+      "location": "Ely, NV 89301",
+      "description": "Skins & Skulls (Nielsen) PRIVATE EVENT - Ely, NV 89301",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4618"
     },
     {
@@ -3038,6 +3086,18 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4659"
     },
     {
+      "id": "4660",
+      "sourceId": "4660",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4660",
+      "title": "■ Registration Open 100 of 100 seats remaining",
+      "category": "Event",
+      "date": "Jun 25, 2026",
+      "time": "11:00AM - 11:30AM",
+      "location": "Las Vegas, NV 89109",
+      "description": "■ Registration Open 100 of 100 seats remaining - Las Vegas, NV 89109",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4660"
+    },
+    {
       "id": "4661",
       "sourceId": "4661",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4661",
@@ -3092,9 +3152,9 @@
       "title": "Trail Talks, Creatures, and Clues - Wildlife Discovery Hike (Island Lake)",
       "category": "Event",
       "date": "Jun 25, 2026",
-      "time": "11:00AM - 11:30AM",
-      "location": "Las Vegas, NV 89109",
-      "description": "Trail Talks, Creatures, and Clues - Wildlife Discovery Hike (Island Lake) - Las Vegas, NV 89109",
+      "time": "9:00AM - 12:30PM",
+      "location": "Lamoille, NV 89815",
+      "description": "Trail Talks, Creatures, and Clues - Wildlife Discovery Hike (Island Lake) - Lamoille, NV 89815",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4665"
     },
     {
