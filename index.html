@@ -2848,23 +2848,40 @@ console.log(
     }
 
 
-document.getElementById(
-  'loginScreen'
-).style.opacity = '0';
+const loginScreen =
+  document.getElementById(
+    'loginScreen'
+  );
+
+const appContent =
+  document.getElementById(
+    'appContent'
+  );
+
+loginScreen.style.opacity = '0';
 
 setTimeout(() => {
 
-  document.getElementById(
-    'loginScreen'
-  ).style.display =
+  loginScreen.style.display =
     'none';
 
-  document.getElementById(
-    'appContent'
-  ).style.display =
+  appContent.style.display =
     'block';
 
-}, 80);
+  appContent.style.opacity =
+    '0';
+
+  appContent.style.transition =
+    'opacity .25s ease';
+
+  requestAnimationFrame(() => {
+
+    appContent.style.opacity =
+      '1';
+
+  });
+
+}, 180);
 
     if(
       data.user.role === 'admin' ||
@@ -2965,9 +2982,35 @@ localStorage.setItem(
     ).innerText =
       'Finalizing startup...';
 
-    await new Promise(resolve =>
-      setTimeout(resolve, 80)
-    );
+await new Promise(resolve =>
+  setTimeout(resolve, 80)
+);
+
+stopWildlifeFacts();
+
+overlay.style.opacity =
+  '0';
+
+setTimeout(() => {
+
+  overlay.style.display =
+    'none';
+
+  overlay.style.visibility =
+    'hidden';
+
+}, 250);
+
+} catch(err){
+
+  console.error(err);
+
+  stopWildlifeFacts();
+
+  overlay.style.opacity =
+    '0';
+
+  setTimeout(() => {
 
     overlay.style.display =
       'none';
@@ -2975,28 +3018,12 @@ localStorage.setItem(
     overlay.style.visibility =
       'hidden';
 
-    overlay.style.opacity =
-      '0';
+  }, 250);
 
-  } catch(err){
-
-    console.error(err);
-
-    overlay.style.display =
-      'none';
-
-    overlay.style.visibility =
-      'hidden';
-
-    overlay.style.opacity =
-      '0';
-
-    document.getElementById(
-      'loginError'
-    ).innerText =
-      'Login failed';
-
-  }
+  document.getElementById(
+    'loginError'
+  ).innerText =
+    'Login failed';
 
 }
 
