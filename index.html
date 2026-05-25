@@ -3740,15 +3740,65 @@ function logout(showMessage = false){
 
   }
 
+const overlay =
   document.getElementById(
+    'loadingOverlay'
+  );
+
+overlay.innerHTML = `
+
+  <div style="
+    text-align:center;
+    max-width:700px;
+    padding:40px;
+  ">
+
+    <h1 style="
+      font-size:32px;
+      margin-bottom:24px;
+    ">
+      Thank you for being an NDOW volunteer.
+    </h1>
+
+    <p style="
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:40px;
+    ">
+      Your dedication to Nevada wildlife,
+      conservation, and public service
+      is greatly appreciated.
+    </p>
+
+    <img
+      src="ndow-logo.png"
+      style="
+        width:180px;
+        opacity:0.95;
+      "
+    />
+
+  </div>
+
+`;
+
+overlay.style.display =
+  'flex';
+
+overlay.style.opacity =
+  '1';
+
+document.getElementById(
   'appContent'
-	  
 ).style.display = 'none';
 
-location.reload();
+setTimeout(() => {
+
+  location.reload();
+
+}, 4500);
 
 }
-
 function updateCurrentTime(){
 
   const now = new Date();
