@@ -4349,6 +4349,11 @@ async function loadHelpTopics(){
     const topics =
       await response.json();
 
+	console.log(
+	  'HELP TOPICS:',
+	  topics
+	);
+	  
     topicList.innerHTML = '';
 
     topics.forEach(topic => {
