@@ -4261,7 +4261,9 @@ container.appendChild(
 
   }
 
-}function openHelpTopic(topic){
+}
+
+function openHelpTopic(topic){
 
   document.getElementById(
     'helpContentArea'
@@ -4274,7 +4276,6 @@ container.appendChild(
     ">
       ${topic.title}
     </div>
-
     <div style="
       line-height:1.8;
       font-size:16px;
@@ -4284,6 +4285,7 @@ container.appendChild(
   `;
 
 }
+
 async function loadHelpTopics(){
 
   const topicList =
