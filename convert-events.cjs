@@ -86,9 +86,10 @@ blocks.forEach((block, index) => {
       .trim();
 
 const normalizedDate =
-  cleanDate
-    .split(' - ')[0]
-    .trim();
+  cleanDate.replace(
+    /\s-\s\d{1,2}:\d{2}(AM|PM)$/i,
+    ''
+  );
 
 const parsedDate =
   new Date(normalizedDate);
