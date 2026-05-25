@@ -2224,6 +2224,9 @@ async function loadEvents(){
 
     events = data.events || [];
 
+	systemStatus.finalEvents =
+  events.length;
+
 	  document.getElementById(
   'lastUpdated'
 ).innerText =
@@ -2244,6 +2247,12 @@ async function loadEvents(){
     systemStatus.geoMappedEvents = 0;
 
     systemStatus.warnings = [];
+
+	systemStatus.rawScrapedEvents = 0;
+	systemStatus.rawBlocks = 0;
+	systemStatus.skippedOldEvents = 0;
+	systemStatus.invalidEvents = 0;
+	systemStatus.finalEvents = 0;
 
    events = events.map(event => {
 
