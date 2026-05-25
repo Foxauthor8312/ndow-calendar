@@ -4518,8 +4518,12 @@ function openAdminSection(section){
 	
 
   if(section === 'users' && users){
-    users.style.display = 'block';
-  }
+
+  users.style.display = 'block';
+
+  loadUsers();
+
+}
 
  if(section === 'help' && help){
 
