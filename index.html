@@ -2223,6 +2223,9 @@ async function loadEvents(){
       await response.json();
 
 	events = data.events || [];
+
+	const originalEventCount =
+	  events.length;
 	
 	if(data.metrics){
 	
@@ -2236,7 +2239,9 @@ async function loadEvents(){
 	    data.metrics.invalidEvents || 0;
 	
 	  systemStatus.finalEvents =
-	    data.metrics.finalEvents || 0;
+		  data.metrics.finalEvents
+		  ||
+		  originalEventCount;
 	
 	} else {
 	
@@ -2602,7 +2607,7 @@ console.log(
       ).toFixed(1) + 's';
 
     systemStatus.eventsProcessed =
-      events.length;
+	  systemStatus.finalEvents;
 	  
     systemStatus.workflowStatus =
 
