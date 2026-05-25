@@ -2169,7 +2169,11 @@ async function loadEvents(){
       await response.json();
 
     events = data.events || [];
- 
+
+	  document.getElementById(
+  'lastUpdated'
+).innerText =
+  new Date().toLocaleString();
     const syncStart =
       Date.now();
 
