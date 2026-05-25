@@ -2292,9 +2292,23 @@ console.log(
 	  'PRE MAP COUNT:',
 	  events.length
 	);
+	  const beforeMapTitles =
+  events.map(e => e.title);
 
 	 events = events.map(event => {
+const afterMapTitles =
+  events.map(e => e.title);
 
+const missingTitles =
+  beforeMapTitles.filter(
+    title =>
+      !afterMapTitles.includes(title)
+  );
+
+console.log(
+  'MISSING EVENT TITLES:',
+  missingTitles
+);
 
 	   
   try {
