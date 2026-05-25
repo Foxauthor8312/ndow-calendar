@@ -2287,7 +2287,11 @@ console.log(
 
     systemStatus.geoMappedEvents = 0;
 
-    systemStatus.warnings = [];
+	systemStatus.warnings = [];
+	  console.log(
+	  'PRE MAP COUNT:',
+	  events.length
+	);
 
 	 events = events.map(event => {
 
@@ -2552,6 +2556,10 @@ location:cleanedLocation,
 
   });
 
+console.log(
+  'POST MAP RAW:',
+  events.length
+);
 	  
 const rejectedEvents = [];
 
