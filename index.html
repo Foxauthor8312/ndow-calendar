@@ -4356,7 +4356,10 @@ async function loadHelpTopics(){
 	  
     topicList.innerHTML = '';
 
-    topics.forEach(topic => {
+    const topicArray =
+ 	 topics.topics || topics;
+
+	 topicArray.forEach(topic => {
 
       const item =
         document.createElement('div');
@@ -4410,7 +4413,7 @@ async function loadHelpTopics(){
 
     });
 
-    if(topics.length > 0){
+    if(topicArray.length > 0){
 
       topicList.firstChild.click();
 
