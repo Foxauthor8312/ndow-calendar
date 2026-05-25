@@ -2938,12 +2938,27 @@ async function checkLogin(){
     'flex';
 
   overlay.style.visibility =
-    'visible';
-
+  'visible';
+	
   overlay.style.opacity =
-    '1';
-
-  startWildlifeFacts();
+	  '1';
+	
+  overlay.style.background =
+	  '#000';
+  
+  overlay.style.color =
+	  '#fff';
+	
+  overlay.style.justifyContent =
+	  'center';
+	
+  overlay.style.alignItems =
+	  'center';
+	
+  overlay.style.flexDirection =
+	  'column';
+	
+   startWildlifeFacts();
 
   await new Promise(resolve =>
     setTimeout(resolve, 150)
