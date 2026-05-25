@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-25T13:21:57.776Z",
+  "lastUpdated": "2026-05-25T13:28:09.127Z",
   "events": [
     {
       "id": "4394",
@@ -1812,6 +1812,18 @@
       "location": "Reno, NV 89512",
       "description": "Hunter Education UNLISTED - Reno, NV 89512",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4549"
+    },
+    {
+      "id": "4550",
+      "sourceId": "4550",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4550",
+      "title": "2026 Volunteer Instructor Academy UNLISTED",
+      "category": "Event",
+      "date": "May 15, 2026",
+      "time": "8:00AM - May 17, 2026 1:00PM",
+      "location": "Yerington, NV 89447",
+      "description": "2026 Volunteer Instructor Academy UNLISTED - Yerington, NV 89447",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4550"
     },
     {
       "id": "4551",
