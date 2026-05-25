@@ -2296,19 +2296,6 @@ console.log(
   events.map(e => e.title);
 
 	 events = events.map(event => {
-const afterMapTitles =
-  events.map(e => e.title);
-
-const missingTitles =
-  beforeMapTitles.filter(
-    title =>
-      !afterMapTitles.includes(title)
-  );
-
-console.log(
-  'MISSING EVENT TITLES:',
-  missingTitles
-);
 
 	   
   try {
@@ -2574,6 +2561,21 @@ console.log(
   'POST MAP RAW:',
   events.length
 );
+
+const afterMapTitles =
+  events.map(e => e.title);
+
+const missingTitles =
+  beforeMapTitles.filter(
+    title =>
+      !afterMapTitles.includes(title)
+  );
+
+console.log(
+  'MISSING EVENT TITLES:',
+  missingTitles
+);
+	  
 	  
 const rejectedEvents = [];
 
