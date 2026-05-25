@@ -4521,13 +4521,13 @@ function openAdminSection(section){
     users.style.display = 'block';
   }
 
-    if(section === 'help' && help){
+ if(section === 'help' && help){
 
-    help.style.display = 'block';
+  help.style.display = 'block';
 
-    loadHelpTopics();
+  renderHelpAdminList();
 
-  }
+}
 
  if(section === 'announcements' && announcements){
 
