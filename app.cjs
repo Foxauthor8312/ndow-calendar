@@ -160,10 +160,10 @@ const fs = require('fs');
     }
 
     combinedText +=
-      '\n\n' +
-      events.join(
-        '\n\n====================\n\n'
-      );
+  '\n\n====================\n\n' +
+  events.join(
+    '\n\n====================\n\n'
+  );
 
     console.log(
       'Scraped',
