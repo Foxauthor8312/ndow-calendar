@@ -4343,7 +4343,7 @@ container.appendChild(
 function openHelpTopic(topic){
 
   document.getElementById(
-    helpContent
+    'helpContentArea'
   ).innerHTML = `
     <div style="
       font-size:28px;
@@ -4353,11 +4353,14 @@ function openHelpTopic(topic){
     ">
       ${topic.title}
     </div>
+
     <div style="
       line-height:1.8;
       font-size:16px;
+      color:#374151;
+      white-space:pre-wrap;
     ">
-      ${topic.content}
+      ${topic.content || ''}
     </div>
   `;
 
