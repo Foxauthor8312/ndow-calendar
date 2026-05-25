@@ -2222,10 +2222,28 @@ async function loadEvents(){
     const data =
       await response.json();
 
-    events = data.events || [];
-
-	systemStatus.finalEvents =
-  events.length;
+	events = data.events || [];
+	
+	if(data.metrics){
+	
+	  systemStatus.rawBlocks =
+	    data.metrics.rawBlocks || 0;
+	
+	  systemStatus.skippedOldEvents =
+	    data.metrics.skippedOldEvents || 0;
+	
+	  systemStatus.invalidEvents =
+	    data.metrics.invalidEvents || 0;
+	
+	  systemStatus.finalEvents =
+	    data.metrics.finalEvents || 0;
+	
+	} else {
+	
+	  systemStatus.finalEvents =
+	    events.length;
+	
+	}
 
 	  document.getElementById(
   'lastUpdated'
@@ -2248,13 +2266,7 @@ async function loadEvents(){
 
     systemStatus.warnings = [];
 
-	systemStatus.rawScrapedEvents = 0;
-	systemStatus.rawBlocks = 0;
-	systemStatus.skippedOldEvents = 0;
-	systemStatus.invalidEvents = 0;
-	systemStatus.finalEvents = 0;
-
-   events = events.map(event => {
+	 events = events.map(event => {
 
 
 	   
