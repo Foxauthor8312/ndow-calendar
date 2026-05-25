@@ -2702,9 +2702,10 @@ async function loadAnnouncements(role){
     announcements.length > 0
   ){
 
-    showAnnouncementPopup(
-      announcements[0]
-    );
+ showAnnouncement(
+  announcements[0].title,
+  announcements[0].message
+);
 
   }
 
