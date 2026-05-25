@@ -1401,6 +1401,37 @@ body{
          START LEGEND
     ======================================== -->
 
+<div style="
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 12px 0 12px;
+  font-weight:700;
+  color:#19304B;
+">
+
+  Calendar Legends
+
+  <span
+    onclick="showContextHelp('calendar_legends')"
+    style="
+      cursor:pointer;
+      color:#2563eb;
+      font-size:14px;
+      border:1px solid #2563eb;
+      border-radius:50%;
+      width:18px;
+      height:18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    "
+  >
+    ?
+  </span>
+
+</div>
+	  
     <div class="legend">
 
       <div class="legend-item"
@@ -1492,12 +1523,35 @@ body{
         white-space:nowrap;
       ">
 
-        <span style="
-          font-weight:600;
-          color:#374151;
-        ">
-          Region:
-        </span>
+       <span style="
+  font-weight:600;
+  color:#374151;
+  display:flex;
+  align-items:center;
+  gap:6px;
+">
+  Region:
+
+  <span
+    onclick="showContextHelp('region_filter')"
+    style="
+      cursor:pointer;
+      color:#2563eb;
+      font-size:12px;
+      border:1px solid #2563eb;
+      border-radius:50%;
+      width:16px;
+      height:16px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:white;
+    "
+  >
+    ?
+  </span>
+
+</span>
 
         <select
           id="regionFilter"
