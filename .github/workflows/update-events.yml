@@ -48,4 +48,10 @@ jobs:
 
           git diff --cached --quiet || git commit -m "Auto-update NDOW events"
 
-          git push
+          for i in 1 2 3; do
+  git push && break
+
+  echo "Push failed. Retrying in 30 seconds..."
+
+  sleep 30
+done
