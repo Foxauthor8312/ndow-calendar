@@ -2695,50 +2695,8 @@ console.log(
 
 async function loadAnnouncements(role){
 
-  let announcements = [];
-
-  try {
-
-    const token =
-      localStorage.getItem(
-        'token'
-      );
-
-    setServerLoading(true);
-
-    document.getElementById(
-      'loadingOverlay'
-    ).style.display = 'flex';
-
-    const response = await fetch(
-      'https://ndow-calendar-server.onrender.com/api/events?t=' + Date.now(),
-      {
-        headers:{
-          Authorization:`Bearer ${token}`
-        }
-      }
-    );
-
-    announcements =
-      await response.json();
-
-    setServerLoading(false);
-
-    document.getElementById(
-      'loadingOverlay'
-    ).style.display = 'none';
-
-  } catch(err){
-
-    console.error(err);
-
-    setServerLoading(false);
-
-    document.getElementById(
-      'loadingOverlay'
-    ).style.display = 'none';
-
-  }
+  const announcements =
+    events || [];
 
   if(
     announcements.length > 0
