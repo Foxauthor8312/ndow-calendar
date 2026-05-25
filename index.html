@@ -4486,11 +4486,14 @@ async function loadHelpTopics(){
 
     });
 
-    if(topicArray.length > 0){
+   if(
+  topics.length > 0 &&
+  !window.contextHelpActive
+){
 
-      topicList.firstChild.click();
+  topicList.firstChild.click();
 
-    }
+}
 
   } catch(err){
 
@@ -4549,10 +4552,14 @@ modal.classList.remove(
 modal.style.display =
   'flex';
 
+window.contextHelpActive =
+  true;
+	  
 loadHelpTopics().then(() => {
 
   openHelpTopic(topic);
-
+window.contextHelpActive =
+  false;
 });
 
   })
