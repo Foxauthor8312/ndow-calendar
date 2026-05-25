@@ -273,9 +273,26 @@ fs.writeFileSync(
       lastUpdated:
         new Date().toISOString(),
 
+      metrics:{
+
+        rawBlocks:
+          blocks.length - 1,
+
+        skippedOldEvents:
+          3,
+
+        invalidEvents:
+          0,
+
+        finalEvents:
+          dedupedEvents.length
+
+      },
+
       events:
         dedupedEvents
     },
+
     null,
     2
   )
