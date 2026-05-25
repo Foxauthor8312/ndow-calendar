@@ -1285,6 +1285,54 @@ body{
 
 </div>
 
+<div
+  id="wildlifeFact"
+  ...
+></div>
+
+<div id="logoutMessage" style="display:none;">
+
+  <div style="
+    text-align:center;
+    max-width:700px;
+    padding:40px;
+  ">
+
+    <h1 style="
+      font-size:32px;
+      margin-bottom:24px;
+    ">
+      Thank you for being an NDOW volunteer.
+    </h1>
+
+    <p style="
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:40px;
+    ">
+      Your dedication to Nevada wildlife,
+      conservation, and public service
+      is greatly appreciated.
+    </p>
+
+    <img
+      src="ndow-logo.png"
+      style="
+        width:180px;
+        opacity:0.95;
+      "
+    />
+
+  </div>
+
+</div>
+
+</div>
+
+<!-- ========================================
+     START MAIN APPLICATION
+======================================== -->
+	
 <!-- ========================================
      START MAIN APPLICATION
 ======================================== -->
@@ -3760,42 +3808,10 @@ const overlay =
     'loadingOverlay'
   );
 
-overlay.innerHTML = `
-
-  <div style="
-    text-align:center;
-    max-width:700px;
-    padding:40px;
-  ">
-
-    <h1 style="
-      font-size:32px;
-      margin-bottom:24px;
-    ">
-      Thank you for being an NDOW volunteer.
-    </h1>
-
-    <p style="
-      font-size:20px;
-      line-height:1.6;
-      margin-bottom:40px;
-    ">
-      Your dedication to Nevada wildlife,
-      conservation, and public service
-      is greatly appreciated.
-    </p>
-
-    <img
-      src="ndow-logo.png"
-      style="
-        width:180px;
-        opacity:0.95;
-      "
-    />
-
-  </div>
-
-`;
+document.getElementById(
+  'logoutMessage'
+).style.display =
+  'block';
 
 overlay.style.display =
   'flex';
@@ -3814,6 +3830,7 @@ setTimeout(() => {
 }, 4500);
 
 }
+	
 function updateCurrentTime(){
 
   const now = new Date();
