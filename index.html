@@ -2615,7 +2615,9 @@ console.log(
 
     renderCalendar();
 
-    loadAnnouncements(
+	renderSystemConsole();
+
+	loadAnnouncements(
       JSON.parse(
         localStorage.getItem('user')
       ).role
