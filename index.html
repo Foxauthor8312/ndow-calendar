@@ -4284,7 +4284,149 @@ container.appendChild(
   `;
 
 }
+async function loadHelpTopics(){
 
+  const topicList =
+    document.getElementById(
+      'helpTopicList'
+    );
+
+  const helpContent =
+    document.getElementById(
+      'helpContent'
+    );
+
+  if(
+    !topicList ||
+    !helpContent
+  ){
+    return;
+  }
+
+  topicList.innerHTML = `
+    <div style="
+      padding:16px;
+      color:#6b7280;
+      font-size:14px;
+    ">
+      Loading help topics...
+    </div>
+  `;
+
+  helpContent.innerHTML = `
+    <div style="
+      padding:24px;
+      color:#6b7280;
+    ">
+      Select a help topic from the left.
+    </div>
+  `;
+
+  try {
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/help/topics',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const topics =
+      await response.json();
+
+    topicList.innerHTML = '';
+
+    topics.forEach(topic => {
+
+      const item =
+        document.createElement('div');
+
+      item.style.padding =
+        '14px 16px';
+
+      item.style.borderBottom =
+        '1px solid #e5e7eb';
+
+      item.style.cursor =
+        'pointer';
+
+      item.style.fontWeight =
+        '600';
+
+      item.style.color =
+        '#19304B';
+
+      item.innerText =
+        topic.title;
+
+      item.onclick = () => {
+
+        helpContent.innerHTML = `
+          <div style="
+            padding:24px;
+          ">
+
+            <h2 style="
+              margin-top:0;
+              color:#19304B;
+            ">
+              ${topic.title}
+            </h2>
+
+            <div style="
+              line-height:1.7;
+              color:#374151;
+              white-space:pre-wrap;
+            ">
+              ${topic.content || ''}
+            </div>
+
+          </div>
+        `;
+
+      };
+
+      topicList.appendChild(item);
+
+    });
+
+    if(topics.length > 0){
+
+      topicList.firstChild.click();
+
+    }
+
+  } catch(err){
+
+    console.error(
+      'HELP LOAD FAILED:',
+      err
+    );
+
+    topicList.innerHTML = `
+      <div style="
+        padding:16px;
+        color:#dc2626;
+        font-size:14px;
+      ">
+        Failed to load help topics.
+      </div>
+    `;
+
+  }
+
+}
+
+	
 async function openHelpModal(){
 
   const modal =
