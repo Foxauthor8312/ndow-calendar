@@ -9,6 +9,22 @@ const blocks = raw.split(
   '===================='
 );
 
+blocks.forEach((block, index) => {
+
+  if(
+    block.trim().length < 20
+  ){
+
+    console.log(
+      'TINY BLOCK:',
+      index,
+      block
+    );
+
+  }
+
+});
+
 console.log(
   'RAW BLOCK COUNT:',
   blocks.length
