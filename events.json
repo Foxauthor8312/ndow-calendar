@@ -1,5 +1,11 @@
 {
-  "lastUpdated": "2026-05-25T13:42:10.043Z",
+  "lastUpdated": "2026-05-25T14:21:52.900Z",
+  "metrics": {
+    "rawBlocks": 272,
+    "skippedOldEvents": 3,
+    "invalidEvents": 0,
+    "finalEvents": 269
+  },
   "events": [
     {
       "id": "4394",
