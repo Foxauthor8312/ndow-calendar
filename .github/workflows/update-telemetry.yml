@@ -42,7 +42,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/events.json
+          git add events.json
 
           if git diff --cached --quiet; then
             echo "No frontend changes"
@@ -55,12 +55,11 @@ jobs:
       - name: Clone backend repo
         run: |
           git clone https://x-access-token:${{ secrets.SERVER_REPO_PAT }}@github.com/Foxauthor8312/ndow-calendar-server.git server-repo
-
+     
       # Sync telemetry file
       - name: Sync events.json to backend repo
         run: |
-          mkdir -p server-repo/data
-          cp data/events.json server-repo/data/events.json
+          cp events.json server-repo/events.json
 
       # Commit backend changes
       - name: Commit backend changes
@@ -70,7 +69,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/events.json
+          git add events.json
 
           if git diff --cached --quiet; then
             echo "No backend changes"
@@ -82,8 +81,8 @@ jobs:
       # Verify hashes match
       - name: Verify telemetry hashes
         run: |
-          FRONTEND_HASH=$(sha256sum data/events.json | awk '{print $1}')
-          BACKEND_HASH=$(sha256sum server-repo/data/events.json | awk '{print $1}')
+          FRONTEND_HASH=$(sha256sum events.json | awk '{print $1}')
+          BACKEND_HASH=$(sha256sum server-repo/events.json | awk '{print $1}')
 
           echo "Frontend hash: $FRONTEND_HASH"
           echo "Backend hash:  $BACKEND_HASH"
