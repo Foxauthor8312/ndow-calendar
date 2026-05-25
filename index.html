@@ -2885,10 +2885,13 @@ setTimeout(() => {
 
 }, 180);
 
-    if(
-      data.user.role === 'admin' ||
-      data.user.role === 'superuser'
-    ){
+ if(
+  data.user &&
+  (
+    data.user.role === 'admin' ||
+    data.user.role === 'superuser'
+  )
+){
 
       document.getElementById(
         'loadingMessage'
