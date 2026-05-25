@@ -4513,7 +4513,59 @@ async function loadHelpTopics(){
 
 }
 
-	
+function showContextHelp(topicKey){
+
+  fetch(
+    'https://ndow-calendar-server.onrender.com/api/help/topics'
+  )
+  .then(response => response.json())
+  .then(data => {
+
+    const topics =
+      data.topics || data;
+
+    const topic =
+      topics.find(
+        t => t.topic_key === topicKey
+      );
+
+    if(!topic){
+      console.log(
+        'HELP TOPIC NOT FOUND:',
+        topicKey
+      );
+      return;
+    }
+
+   const modal =
+  document.getElementById(
+    'helpModal'
+  );
+
+modal.classList.remove(
+  'hidden'
+);
+
+modal.style.display =
+  'flex';
+
+loadHelpTopics().then(() => {
+
+  openHelpTopic(topic);
+
+});
+
+  })
+  .catch(err => {
+
+    console.error(
+      'CONTEXT HELP ERROR:',
+      err
+    );
+
+  });
+
+}	
 async function openHelpModal(){
 
   const modal =
