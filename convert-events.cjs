@@ -85,19 +85,17 @@ blocks.forEach((block, index) => {
       .replace('MDT', '')
       .trim();
 
-const normalizedDate =
-  cleanDate
-    .replace(
-      /\s-\s\d{1,2}:\d{2}(AM|PM)$/i,
-      ''
-    )
-    .replace(
-      /(\d)(AM|PM)/i,
-      '$1 $2'
-    );
+  const normalizedDate =
+    cleanDate
+      .split(' - ')[0]
+      .replace(
+        /(\d)(AM|PM)/i,
+        '$1 $2'
+      )
+      .trim();
 
-const parsedDate =
-  new Date(normalizedDate);
+  const parsedDate =
+    new Date(normalizedDate);
 
   if(
     isNaN(parsedDate.getTime())
