@@ -4270,7 +4270,7 @@ container.appendChild(
 function openHelpTopic(topic){
 
   document.getElementById(
-    'helpContentArea'
+    helpContent
   ).innerHTML = `
     <div style="
       font-size:28px;
@@ -4297,10 +4297,10 @@ async function loadHelpTopics(){
       'helpTopicList'
     );
 
-  const helpContent =
-    document.getElementById(
-      'helpContent'
-    );
+ const helpContent =
+  document.getElementById(
+    'helpContentArea'
+  );
 
   if(
     !topicList ||
