@@ -50,12 +50,16 @@ const fs = require('fs');
   await page.goto(
     'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
     {
-      waitUntil:'domcontentloaded',
+      waitUntil:'networkidle2'
       timeout:60000
     }
   );
 
   await page.waitForSelector('body');
+
+  await new Promise(resolve =>
+  setTimeout(resolve, 2500)
+);
 
   // auto login if needed
   if(await page.$('input[type="password"]')){
