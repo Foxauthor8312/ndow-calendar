@@ -179,13 +179,13 @@ const fs = require('fs');
 
     for(const event of events){
 
-  // TEMP DEBUG FILTER
-  if(
-    !event.url.includes('/4667') &&
-    !event.url.includes('/4662')
-  ){
-    continue;
-  }
+      // TEMP DEBUG FILTER
+      if(
+        !event.url.includes('/4667') &&
+        !event.url.includes('/4662')
+      ){
+        continue;
+      }
 
       console.log(
         'Checking instructors for:',
@@ -211,7 +211,74 @@ const fs = require('fs');
           setTimeout(resolve, 4000)
         );
 
-        const instructors =
+        const instructorData =
+          await page.evaluate(() => {
+
+            const text =
+              document.body.innerText;
+
+            const section =
+              text.split(
+                'ASSIGNED INSTRUCTORS'
+              )[1];
+
+            if(!section){
+              return [];
+            }
+
+            const lines =
+              section
+                .split('\n')
+                .map(line => line.trim())
+                .filter(Boolean);
+
+            const instructorData = [];
+
+            for(let i = 0; i < lines.length; i++){
+
+              const line =
+                lines[i];
+
+              if(
+                line.includes('PRIMARY') ||
+                line.includes('ASSISTANT')
+              ){
+
+                const parts =
+                  line.split(' ');
+
+                const role =
+                  parts.pop();
+
+                const name =
+                  parts.join(' ');
+
+                const email =
+                  lines[i + 1] || '';
+
+                instructorData.push({
+
+                  name,
+                  role,
+                  email
+
+                });
+
+              }
+
+              if(
+                line.includes(
+                  'Add Another Instructor'
+                )
+              ){
+                break;
+              }
+
+            }
+
+            return instructorData;
+
+          });
 
         combinedText +=
 
@@ -222,7 +289,11 @@ const fs = require('fs');
 
           '\n\nINSTRUCTORS:\n\n' +
 
-          instructors +
+          JSON.stringify(
+            instructorData,
+            null,
+            2
+          ) +
 
           '\n\nEVENT DATA:\n\n' +
 
