@@ -212,11 +212,6 @@ const fs = require('fs');
         );
 
         const instructors =
-          await page.evaluate(() => {
-
-            return document.body.innerText;
-
-          });
 
         combinedText +=
 
