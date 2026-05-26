@@ -100,7 +100,7 @@ const fs = require('fs');
   console.log('Session saved.');
   console.log('Starting fast scrape...');
 
-  let combinedText = '';
+  let allEvents = [];
   let currentPage = 1;
 
   while (true) {
@@ -156,7 +156,8 @@ const fs = require('fs');
 
             url,
             instructorUrl,
-            text: card.innerText
+            text: card.innerText,
+            instructors: []
 
           });
 
@@ -178,14 +179,6 @@ const fs = require('fs');
     }
 
     for(const event of events){
-
-      // TEMP DEBUG FILTER
-      if(
-        !event.url.includes('/4667') &&
-        !event.url.includes('/4662')
-      ){
-        continue;
-      }
 
       console.log(
         'Checking instructors for:',
@@ -280,24 +273,8 @@ const fs = require('fs');
 
           });
 
-        combinedText +=
-
-          '\n\n====================\n\n' +
-
-          'URL: ' +
-          event.url +
-
-          '\n\nINSTRUCTORS:\n\n' +
-
-          JSON.stringify(
-            instructorData,
-            null,
-            2
-          ) +
-
-          '\n\nEVENT DATA:\n\n' +
-
-          event.text;
+        event.instructors =
+          instructorData;
 
       } catch(err){
 
@@ -308,18 +285,9 @@ const fs = require('fs');
 
         console.log(err);
 
-        combinedText +=
-
-          '\n\n====================\n\n' +
-
-          'URL: ' +
-          event.url +
-
-          '\n\n' +
-
-          event.text;
-
       }
+
+      allEvents.push(event);
 
     }
 
@@ -336,10 +304,16 @@ const fs = require('fs');
 
   fs.writeFileSync(
     'all-events.txt',
-    combinedText
+    JSON.stringify(
+      allEvents,
+      null,
+      2
+    )
   );
 
-  console.log('DONE!');
+  console.log(
+    'Instructor enrichment complete.'
+  );
 
   try {
 
