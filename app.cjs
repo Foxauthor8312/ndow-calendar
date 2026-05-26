@@ -50,26 +50,12 @@ const fs = require('fs');
   await page.goto(
     'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
     {
-      waitUntil:'networkidle2',
+      waitUntil:'domcontentloaded',
       timeout:60000
     }
   );
 
   await page.waitForSelector('body');
-  await page.waitForSelector(
-  'table',
-  {
-    timeout:10000
-  }
-);
-
-await new Promise(resolve =>
-  setTimeout(resolve, 3000)
-);
-
-  await new Promise(resolve =>
-  setTimeout(resolve, 2500)
-);
 
   // auto login if needed
   if(await page.$('input[type="password"]')){
@@ -93,7 +79,7 @@ await new Promise(resolve =>
     );
 
     await page.waitForNavigation({
-      waitUntil:'domcontentloaded',
+      waitUntil:'networkidle2',
       timeout:60000
     });
 
@@ -131,7 +117,7 @@ await new Promise(resolve =>
     await page.goto(
       pageUrl,
       {
-        waitUntil:'domcontentloaded',
+        waitUntil:'networkidle2',
         timeout:60000
       }
     );
@@ -203,7 +189,7 @@ await new Promise(resolve =>
         await page.goto(
           event.instructorUrl,
           {
-            waitUntil:'domcontentloaded',
+            waitUntil:'networkidle2',
             timeout:60000
           }
         );
@@ -212,43 +198,15 @@ await new Promise(resolve =>
           'body'
         );
 
+        // allow dynamic content to render
+        await new Promise(resolve =>
+          setTimeout(resolve, 4000)
+        );
+
         const instructors =
           await page.evaluate(() => {
 
-            const rows =
-              Array.from(
-                document.querySelectorAll('table tr')
-              );
-
-            return rows.map(row => {
-
-              const cells =
-                row.querySelectorAll('td');
-
-              if(cells.length < 3){
-                return null;
-              }
-
-              return {
-
-                name:
-                  cells[0]
-                    ?.innerText
-                    ?.trim(),
-
-                role:
-                  cells[1]
-                    ?.innerText
-                    ?.trim(),
-
-                username:
-                  cells[2]
-                    ?.innerText
-                    ?.trim()
-
-              };
-
-            }).filter(Boolean);
+            return document.body.innerText;
 
           });
 
@@ -259,15 +217,11 @@ await new Promise(resolve =>
           'URL: ' +
           event.url +
 
-          '\n\nINSTRUCTORS:\n' +
+          '\n\nINSTRUCTORS:\n\n' +
 
-          JSON.stringify(
-            instructors,
-            null,
-            2
-          ) +
+          instructors +
 
-          '\n\n' +
+          '\n\nEVENT DATA:\n\n' +
 
           event.text;
 
@@ -277,6 +231,8 @@ await new Promise(resolve =>
           'Instructor scrape failed:',
           event.url
         );
+
+        console.log(err);
 
         combinedText +=
 
