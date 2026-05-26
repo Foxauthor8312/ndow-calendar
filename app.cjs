@@ -56,6 +56,16 @@ const fs = require('fs');
   );
 
   await page.waitForSelector('body');
+  await page.waitForSelector(
+  'table',
+  {
+    timeout:10000
+  }
+);
+
+await new Promise(resolve =>
+  setTimeout(resolve, 3000)
+);
 
   await new Promise(resolve =>
   setTimeout(resolve, 2500)
@@ -207,7 +217,7 @@ const fs = require('fs');
 
             const rows =
               Array.from(
-                document.querySelectorAll('tr')
+                document.querySelectorAll('table tr')
               );
 
             return rows.map(row => {
