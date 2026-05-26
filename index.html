@@ -4057,83 +4057,38 @@ ${allowRequests ? `
     `;
   }
 }
-function toggleCustomEmail(){
 
-  const select =
-    document.getElementById(
-      'contactSelect'
+	
+	
+function requestInstructor(eventUrl){
+
+  const event =
+    events.find(e => e.url === eventUrl);
+
+  if(!event) return;
+
+  const subject =
+    encodeURIComponent(
+      'Instructor Request - ' + event.title
     );
 
-  const custom =
-    document.getElementById(
-      'customEmail'
-    );
+  const username =
+    localStorage.getItem(
+      'user'
+    ) || 'Unknown';
 
-  custom.style.display =
-    select.value === 'custom'
-      ? 'block'
-      : 'none';
-}
+  const email =
+    localStorage.getItem(
+      'email'
+    ) || 'Not provided';
 
-function togglePassword(){
+  const phone =
+    localStorage.getItem(
+      'phone'
+    ) || 'Not provided';
 
-  const input =
-    document.getElementById(
-      'userPin'
-    );
-
-  input.type =
-    input.type === 'password'
-      ? 'text'
-      : 'password';
-
-}
-
-document.addEventListener(
-  'DOMContentLoaded',
-  function(){
-
-    const userName =
-      document.getElementById(
-        'userName'
-      );
-
-    const userPin =
-      document.getElementById(
-        'userPin'
-      );
-
-    if(userName){
-
-      userName.addEventListener(
-        'focus',
-        clearLoginError
-      );
-
-    }
-
-    if(userPin){
-
-      userPin.addEventListener(
-        'focus',
-        clearLoginError
-      );
-
-    }
-
-  }
-);
-
-function clearLoginError(){
-
-  document.getElementById(
-    'loginError'
-  ).innerText = '';
-
-}
-
-const body =
-  encodeURIComponent(
+  const body =
+    encodeURIComponent(
 
 `Hello,
 
@@ -4163,22 +4118,24 @@ Thank you.
 
 This message is intended only for the named recipient. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.`
 
-);
-let recipient =
-  document.getElementById(
-    'contactSelect'
-  ).value;
+    );
 
-if(recipient === 'custom'){
-
-  recipient =
+  let recipient =
     document.getElementById(
-      'customEmail'
-    ).value.trim();
-}
+      'contactSelect'
+    ).value;
 
-window.location.href =
-  `mailto:${recipient}?subject=${subject}&body=${body}`;
+  if(recipient === 'custom'){
+
+    recipient =
+      document.getElementById(
+        'customEmail'
+      ).value.trim();
+
+  }
+
+  window.location.href =
+    `mailto:${recipient}?subject=${subject}&body=${body}`;
 
 }
 
