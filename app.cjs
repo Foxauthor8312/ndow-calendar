@@ -5,7 +5,10 @@ const fs = require('fs');
 
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
+    ]
   });
 
   const page = await browser.newPage();
@@ -21,9 +24,13 @@ const fs = require('fs');
       type === 'image' ||
       type === 'font'
     ){
+
       req.abort();
+
     } else {
+
       req.continue();
+
     }
 
   });
@@ -79,6 +86,7 @@ const fs = require('fs');
     console.log(
       'Login successful.'
     );
+
   }
 
   const cookies =
@@ -114,40 +122,49 @@ const fs = require('fs');
       }
     );
 
-   
-  const events = await page.evaluate(() => {
+    const events =
+      await page.evaluate(() => {
 
-  const cards =
-    document.querySelectorAll('article');
+        const cards =
+          document.querySelectorAll(
+            'article'
+          );
 
-  if(cards.length === 0){
-    return [];
-  }
+        if(cards.length === 0){
+          return [];
+        }
 
-  const results = [];
+        const results = [];
 
-      cards.forEach(card => {
+        cards.forEach(card => {
 
-        const linkEl =
-          card.querySelector('a');
+          const linkEl =
+            card.querySelector('a');
 
-        const rawHref =
-          linkEl?.getAttribute('href') || '';
+          const rawHref =
+            linkEl?.getAttribute('href') || '';
 
-        const url =
-          rawHref.startsWith('http')
-            ? rawHref
-            : 'https://nevada.events.licensing.app' + rawHref;
+          const url =
+            rawHref.startsWith('http')
+              ? rawHref
+              : 'https://nevada.events.licensing.app' + rawHref;
 
-        results.push(
-          'URL: ' + url + '\n\n' + card.innerText
-        );
+          const instructorUrl =
+            url + '/event_instructors';
+
+          results.push({
+
+            url,
+            instructorUrl,
+            text: card.innerText
+
+          });
+
+        });
+
+        return results;
 
       });
-
-      return results;
-
-    });
 
     // STOP when no events found
     if(events.length === 0){
@@ -157,13 +174,110 @@ const fs = require('fs');
       );
 
       break;
+
     }
 
-    combinedText +=
-  '\n\n====================\n\n' +
-  events.join(
-    '\n\n====================\n\n'
-  );
+    for(const event of events){
+
+      console.log(
+        'Checking instructors for:',
+        event.url
+      );
+
+      try {
+
+        await page.goto(
+          event.instructorUrl,
+          {
+            waitUntil:'domcontentloaded',
+            timeout:60000
+          }
+        );
+
+        await page.waitForSelector(
+          'body'
+        );
+
+        const instructors =
+          await page.evaluate(() => {
+
+            const rows =
+              Array.from(
+                document.querySelectorAll('tr')
+              );
+
+            return rows.map(row => {
+
+              const cells =
+                row.querySelectorAll('td');
+
+              if(cells.length < 3){
+                return null;
+              }
+
+              return {
+
+                name:
+                  cells[0]
+                    ?.innerText
+                    ?.trim(),
+
+                role:
+                  cells[1]
+                    ?.innerText
+                    ?.trim(),
+
+                username:
+                  cells[2]
+                    ?.innerText
+                    ?.trim()
+
+              };
+
+            }).filter(Boolean);
+
+          });
+
+        combinedText +=
+
+          '\n\n====================\n\n' +
+
+          'URL: ' +
+          event.url +
+
+          '\n\nINSTRUCTORS:\n' +
+
+          JSON.stringify(
+            instructors,
+            null,
+            2
+          ) +
+
+          '\n\n' +
+
+          event.text;
+
+      } catch(err){
+
+        console.log(
+          'Instructor scrape failed:',
+          event.url
+        );
+
+        combinedText +=
+
+          '\n\n====================\n\n' +
+
+          'URL: ' +
+          event.url +
+
+          '\n\n' +
+
+          event.text;
+
+      }
+
+    }
 
     console.log(
       'Scraped',
@@ -207,7 +321,9 @@ const fs = require('fs');
 
   } catch(err){
 
-    console.log('Logout skipped.');
+    console.log(
+      'Logout skipped.'
+    );
 
   }
 
