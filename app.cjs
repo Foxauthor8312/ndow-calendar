@@ -179,6 +179,14 @@ const fs = require('fs');
 
     for(const event of events){
 
+  // TEMP DEBUG FILTER
+  if(
+    !event.url.includes('/4667') &&
+    !event.url.includes('/4662')
+  ){
+    continue;
+  }
+
       console.log(
         'Checking instructors for:',
         event.url
