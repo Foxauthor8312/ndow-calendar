@@ -50,7 +50,7 @@ const fs = require('fs');
   await page.goto(
     'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
     {
-      waitUntil:'networkidle2'
+      waitUntil:'networkidle2',
       timeout:60000
     }
   );
