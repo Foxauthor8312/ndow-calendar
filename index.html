@@ -4132,56 +4132,10 @@ function clearLoginError(){
 
 }
 
-function requestInstructor(eventUrl){
-
-  const event =
-    events.find(e => e.url === eventUrl);
-
-  if(!event) return;
-
-  const subject =
-	  
-  encodeURIComponent(
-    'Instructor Request - ' + event.title
-  );
-
-const username =
-  localStorage.getItem(
-    'user'
-  ) || 'Unknown';
-
-	const email =
-  localStorage.getItem(
-    'email'
-  ) || 'Not provided';
-
-const phone =
-  localStorage.getItem(
-    'phone'
-  ) || 'Not provided';
-
 const body =
   encodeURIComponent(
 
 `Hello,
-
-I would like to be added as an instructor for this event.
-
-Username:
-${username}
-
-Event:
-${event.title}
-Date:
-${event.date}
-Location:
-${event.location}
-
-${event.url}
-
-Thank you.
-
-T`Hello,
 
 I would like to be added as an instructor for this event.
 
@@ -4210,7 +4164,6 @@ Thank you.
 This message is intended only for the named recipient. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.`
 
 );
-
 let recipient =
   document.getElementById(
     'contactSelect'
