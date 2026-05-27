@@ -1074,8 +1074,6 @@ body{
 
 <!-- ========================================
      START LOGIN HTML
-<!-- ========================================
-     START LOGIN HTML
 ======================================== -->
 
 <div id="loginScreen" class="login-screen">
@@ -2747,11 +2745,7 @@ console.log(
 
 	renderSystemConsole();
 
-	loadAnnouncements(
-      JSON.parse(
-        localStorage.getItem('user')
-      ).role
-    );
+	await loadAnnouncements();
 
   } catch(err){
 
@@ -2778,19 +2772,7 @@ console.log(
 
 async function loadAnnouncements(role){
 
-  const announcements =
-    events || [];
-
-  if(
-    announcements.length > 0
-  ){
-
- showAnnouncement(
-  announcements[0].title,
-  announcements[0].message
-);
-
-  }
+  return;
 
 }
 
@@ -3331,12 +3313,7 @@ function toggleFilter(category){
 
   }
 
-  console.log(
-    'ACTIVE FILTERS:',
-    activeFilters
-  );
-
-  document
+    document
     .querySelectorAll('.legend-item')
     .forEach(item => {
 
@@ -3688,16 +3665,14 @@ dayEvents.forEach(event => {
 
     div.className = 'event';
 
-    console.log(event.category);
-
+    
     const category =
   String(
     event.category || ''
   )
     .trim();
 
-    console.log(event);
-
+    
     div.style.background =
       categoryColors[event.category]
       || categoryColors['Other'];
@@ -3779,15 +3754,6 @@ const missingEvents =
 
   });
 
-console.log(
-  'MISSING EVENTS:',
-  missingEvents
-);
-
-console.log(
-  'MISSING COUNT:',
-  missingEvents.length
-);
 
 }
 // ========================================
@@ -3914,6 +3880,22 @@ async function openEventModal(eventUrl) {
       events.find(
         e => e.url === eventUrl
       );
+if(!event){
+
+  modalBody.innerHTML = `
+    <div style="
+      padding:24px;
+      color:#dc2626;
+      font-weight:700;
+    ">
+      Event could not be loaded.
+    </div>
+  `;
+
+  return;
+
+}
+	  
 
 const eventDate =
   new Date(event.date);
