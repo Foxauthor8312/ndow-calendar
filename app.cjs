@@ -311,26 +311,26 @@ const fs = require('fs');
 
       try {
 
-        await page.goto(
-          event.instructorUrl,
-          {
-            waitUntil:
-              'domcontentloaded',
+  await page.goto(
+  event.instructorUrl,
+  {
+    waitUntil:
+      'networkidle2',
 
-            timeout:60000
-          }
-        );
+    timeout:60000
+  }
+);
 
         await page.waitForSelector(
           'body'
         );
 
-        await new Promise(resolve =>
-          setTimeout(
-            resolve,
-            1500
-          )
-        );
+       await new Promise(resolve =>
+        setTimeout(
+        resolve,
+        4000
+    )
+  );
 
         const instructorData =
           await page.evaluate(() => {
