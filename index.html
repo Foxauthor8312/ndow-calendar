@@ -3722,248 +3722,210 @@ if(!rawDate){
 
 }
 
-		if(!rawDate){
-		
-		  console.error(
-		    'NO RAW DATE:',
-		    event
-		  );
-		
-		  return false;
-		
-		}
+if(!rawDate){
 
-        const safeDate =
-         new Date(rawDate);
+  console.error(
+    'NO RAW DATE:',
+    event
+  );
 
-        if(
-          isNaN(safeDate)
-        ){
+  return false;
 
-          console.error(
-            'BAD EVENT DATE:',
-            event
-          );
+}
 
-          return false;
+const safeDate =
+  new Date(rawDate);
 
-        }
+if(
+  isNaN(safeDate)
+){
 
-        const formatted =
+  console.error(
+    'BAD EVENT DATE:',
+    event
+  );
 
-          safeDate
-            .toISOString()
-            .split('T')[0];
+  return false;
 
-        return (
-          formatted === dateStr
-        );
+}
 
-      });
+const formatted =
 
-    dayEvents.forEach(event => {
+  safeDate
+    .toISOString()
+    .split('T')[0];
 
-      try {
+return (
+  formatted === dateStr
+);
 
-        const div =
-          document.createElement('div');
+});
 
-        div.className =
-          'event';
+dayEvents.forEach(event => {
 
-        const category =
+  try {
 
-          String(
-            event.category || ''
-          )
-          .trim();
+    const div =
+      document.createElement('div');
 
-        div.style.background =
+    div.className =
+      'event';
 
-          categoryColors[category]
+    const category =
 
-          ||
+      String(
+        event.category || ''
+      )
+      .trim();
 
-          categoryColors['Other'];
+    div.style.background =
 
-        if(
-          category === 'Archery'
-        ){
+      categoryColors[category]
 
-          div.style.color =
-            '#111827';
+      ||
 
-        }
+      categoryColors['Other'];
 
-const cleanTitle =
-
-  String(
-    event.title || ''
-  )
-
-  .replace(/^[A-Z][a-z]{2}\s+\d{1,2}\s*/,'')
-
-  .split('Location:')[0]
-
-  .split('Taught by:')[0]
-
-  .split('Date & Times:')[0]
-
-  .replace(/■.*$/,'')
-
-  .replace(/\n+/g,' ')
-
-  .replace(/\s+/g,' ')
-
-  .trim();
-		  
-const instructorText =
-
-  Array.isArray(
-    event.instructors
-  )
-
-    ? event.instructors.join(' ')
-
-    : String(
-        event.instructors || ''
-      );
-
-const currentUsername =
-
-  JSON.parse(
-    localStorage.getItem('user') || '{}'
-  )
-
-  .username
-
-  ?.toLowerCase()
-
-  ?.trim()
-
-  || '';
-
-const isInstructor =
-
-  instructorText
-    .toLowerCase()
-    .includes(
-      currentUsername
-    );
-
-        div.innerHTML = `
-
-          <div style="
-            display:flex;
-            align-items:center;
-            gap:4px;
-            overflow:hidden;
-          ">
-
-            ${
-              isInstructor
-                ? `
-                  <span style="
-                    color:black;
-                    font-size:10px;
-                    flex-shrink:0;
-                  ">
-                    &#9733;
-                  </span>
-                `
-                : ''
-            }
-
-            <span style="
-			  overflow:hidden;
-			  text-overflow:ellipsis;
-			  white-space:nowrap;
-			  display:flex;
-			  align-items:center;
-			  gap:4px;
-			  width:100%;
-			">
-			  <span style="
-			    overflow:hidden;
-			    text-overflow:ellipsis;
-			    white-space:nowrap;
-			  ">
-			    ${cleanTitle}
-			  </span>
-
-  ${
-    isInstructor
-      ? `
-        <span style="
-          color:#000;
-          font-size:10px;
-          flex-shrink:0;
-        ">
-          &#9733;
-        </span>
-      `
-      : ''
-  }
-
-</span>
-
-          </div>
-
-        `;
-
-        div.title =
-          cleanTitle;
-
-        div.onclick = () =>
-          openEventModal(
-            event.url
-          );
-
-        cell.appendChild(div);
-
-      } catch(err){
-
-        console.error(
-          'RENDER FAILURE:',
-          event,
-          err
-        );
-
-      }
-
-    });
-
-    calendar.appendChild(cell);
-
-  }
-
-  const totalCells =
-    firstDay + daysInMonth;
-
-  const remaining =
-    7 - (totalCells % 7);
-
-  if(remaining < 7){
-
-    for(
-      let i = 0;
-      i < remaining;
-      i++
+    if(
+      category === 'Archery'
     ){
 
-      const empty =
-        document.createElement('div');
-
-      empty.className =
-        'day';
-
-      calendar.appendChild(empty);
+      div.style.color =
+        '#111827';
 
     }
+
+    const cleanTitle =
+
+      String(
+        event.title || ''
+      )
+
+      .replace(/^[A-Z][a-z]{2}\s+\d{1,2}\s*/,'')
+
+      .split('Location:')[0]
+
+      .split('Taught by:')[0]
+
+      .split('Date & Times:')[0]
+
+      .replace(/■.*$/,'')
+
+      .replace(/\n+/g,' ')
+
+      .replace(/\s+/g,' ')
+
+      .trim();
+
+    const instructorText =
+
+      Array.isArray(
+        event.instructors
+      )
+
+        ? event.instructors.join(' ')
+
+        : String(
+            event.instructors || ''
+          );
+
+    const currentUsername =
+
+      JSON.parse(
+        localStorage.getItem('user') || '{}'
+      )
+
+      .username
+
+      ?.toLowerCase()
+
+      ?.trim()
+
+      || '';
+
+    const isInstructor =
+
+      instructorText
+        .toLowerCase()
+        .includes(
+          currentUsername
+        );
+
+    div.innerHTML = `
+
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:4px;
+        overflow:hidden;
+      ">
+
+        <span style="
+          overflow:hidden;
+          text-overflow:ellipsis;
+          white-space:nowrap;
+          display:block;
+          width:100%;
+        ">
+          ${cleanTitle}${
+            isInstructor
+              ? ' ★'
+              : ''
+          }
+        </span>
+
+      </div>
+
+    `;
+
+    div.title =
+      cleanTitle;
+
+    div.onclick = () =>
+      openEventModal(
+        event.url
+      );
+
+    cell.appendChild(div);
+
+  } catch(err){
+
+    console.error(
+      'RENDER FAILURE:',
+      event,
+      err
+    );
+
+  }
+
+});
+
+const totalCells =
+  firstDay + daysInMonth;
+
+const remaining =
+  7 - (totalCells % 7);
+
+if(remaining < 7){
+
+  for(
+    let i = 0;
+    i < remaining;
+    i++
+  ){
+
+    const empty =
+      document.createElement('div');
+
+    empty.className =
+      'day';
+
+    calendar.appendChild(empty);
 
   }
 
 }
+
 // ========================================
 // START SESSION MANAGEMENT
 // ========================================
