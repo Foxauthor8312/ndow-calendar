@@ -48,6 +48,7 @@ jobs:
             echo "No frontend changes"
           else
             git commit -m "chore: update telemetry events"
+            git pull --rebase
             git push
           fi
 
@@ -75,7 +76,8 @@ jobs:
             echo "No backend changes"
           else
             git commit -m "chore: sync telemetry events"
-            git push
+            git pull --rebase
+            git pushh
           fi
 
       # Verify hashes match
