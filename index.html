@@ -4550,9 +4550,9 @@ div.innerHTML = `
     }
   </button>
 
- <button
+<button
   style="margin-top:8px;margin-left:8px;"
-  onclick='openEditUserModal(${JSON.stringify(user)})'
+  onclick="openEditUserModalByUsername('${user.username}')"
 >
   Edit
 </button>
@@ -4591,6 +4591,37 @@ container.appendChild(
 
 }
 
+function openEditUserModalByUsername(username){
+
+  const token =
+    localStorage.getItem('token');
+
+  fetch(
+    'https://ndow-calendar-server.onrender.com/api/admin/users',
+    {
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    }
+  )
+  .then(r => r.json())
+  .then(data => {
+
+    const user =
+      data.users.find(
+        u => u.username === username
+      );
+
+    if(user){
+
+      openEditUserModal(user);
+
+    }
+
+  });
+
+}
+	
 function openHelpTopic(topic){
 
   document.getElementById(
