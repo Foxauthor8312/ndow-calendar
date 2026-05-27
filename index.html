@@ -445,6 +445,19 @@ button:hover{
   border-radius:8px;
   font-weight:bold;
 }
+
+.event-instructors{
+
+  margin-top:10px;
+
+  font-size:14px;
+
+  line-height:1.5;
+
+  color:#374151;
+
+}
+	
 .request-link{
   display:block;
   margin-top:16px;
@@ -3950,19 +3963,209 @@ const allowRequests =
     ${event.title}
   </div>
 
-  <div style="
+<div style="
   font-size:14px;
   color:#4b5563;
   line-height:1.5;
 ">
   ${event.date}<br>
   ${event.location}
+  ${
+  Array.isArray(event.instructors) &&
+
+  event.instructors.some(i =>
+
+    i.email &&
+    currentUser &&
+    currentUser.email &&
+
+    i.email.toLowerCase() ===
+    currentUser.email.toLowerCase()
+
+  )
+
+    ? `
+
+      <div style="
+        margin-top:10px;
+        display:inline-block;
+        padding:6px 10px;
+        background:#dbeafe;
+        color:#1d4ed8;
+        border-radius:999px;
+        font-size:12px;
+        font-weight:700;
+      ">
+        YOU ARE AN INSTRUCTOR FOR THIS EVENT
+      </div>
+
+    `
+
+    : ''
+}
 </div>
 
-</div>
-    <p>
-      Additional details for this event are available on the official NDOW website.
-    </p>
+${
+  Array.isArray(event.instructors) &&
+  event.instructors.length
+
+    ? `
+
+      <div class="event-instructors">
+
+        <strong>Instructors:</strong>
+
+        ${event.instructors
+          .map(i => i.name)
+          .join(', ')}
+
+      </div>
+
+    `
+
+    : ''
+}
+
+${
+  Array.isArray(event.instructors) &&
+  event.instructors.length
+
+    ? `
+
+      <div style="
+        margin-top:14px;
+        padding:12px;
+        background:#f3f4f6;
+        border-radius:10px;
+      ">
+
+        <div style="
+          font-weight:700;
+          margin-bottom:8px;
+          color:#19304B;
+        ">
+          Instructors
+        </div>
+
+        ${event.instructors.map(instructor => `
+
+          <div style="
+            margin-bottom:10px;
+            font-size:14px;
+            line-height:1.5;
+            color:#374151;
+          ">
+
+            <div style="
+              font-weight:600;
+              color:#111827;
+            ">
+              ${instructor.name || ''}
+            </div>
+
+            ${
+              instructor.role
+                ? `
+                  <div>
+                    ${instructor.role}
+                  </div>
+                `
+                : ''
+            }
+
+            ${
+              instructor.email
+                ? `
+                  <div>
+                    ${instructor.email}
+                  </div>
+                `
+                : ''
+            }
+
+          </div>
+
+        `).join('')}
+
+      </div>
+
+    `
+
+    : ''
+}
+
+<p>
+  Additional details for this event are available on the official NDOW website.
+</p>
+${
+  Array.isArray(event.instructors) &&
+  event.instructors.length
+
+    ? `
+
+      <div style="
+        margin-top:18px;
+        margin-bottom:18px;
+      ">
+
+        <div style="
+          font-size:18px;
+          font-weight:700;
+          color:#19304B;
+          margin-bottom:12px;
+        ">
+          Instructors
+        </div>
+
+        ${event.instructors.map(instructor => `
+
+          <div style="
+            padding:12px;
+            margin-bottom:10px;
+            background:#f3f4f6;
+            border-radius:12px;
+            line-height:1.6;
+          ">
+
+            <div style="
+              font-weight:700;
+              color:#111827;
+            ">
+              ${instructor.name || ''}
+            </div>
+
+            ${
+              instructor.role
+                ? `
+                  <div>
+                    ${instructor.role}
+                  </div>
+                `
+                : ''
+            }
+
+            ${
+              instructor.email
+                ? `
+                  <div style="
+                    color:#2563eb;
+                  ">
+                    ${instructor.email}
+                  </div>
+                `
+                : ''
+            }
+
+          </div>
+
+        `).join('')}
+
+      </div>
+
+    `
+
+    : ''
+}
 
     <a href="${eventUrl}"
    target="_blank"
@@ -5502,7 +5705,50 @@ function previewSystemEvent(eventUrl){
       line-height:1.4;
     ">
 
-      ${event.title}
+     ${event.title}
+
+${
+  Array.isArray(event.instructors) &&
+
+  event.instructors.some(i =>
+
+    i.email &&
+    currentUser &&
+    currentUser.email &&
+
+    i.email.toLowerCase() ===
+    currentUser.email.toLowerCase()
+
+${
+  Array.isArray(event.instructors) &&
+
+  event.instructors.some(i =>
+
+    i.email &&
+    currentUser &&
+    currentUser.email &&
+
+    i.email.toLowerCase() ===
+    currentUser.email.toLowerCase()
+
+  )
+
+    ? `
+
+      <span style="
+        display:inline-block;
+        width:12px;
+        height:12px;
+        background:#2563eb;
+        border-radius:50%;
+        margin-left:10px;
+        vertical-align:middle;
+      "></span>
+
+    `
+
+    : ''
+}
 
     </div>
 
@@ -5514,11 +5760,76 @@ function previewSystemEvent(eventUrl){
 
       ${event.date}
 
-      <br>
+            <br>
 
-      ${event.location}
+            ${event.location}
+
+      ${
+        Array.isArray(event.instructors) &&
+
+        event.instructors.some(i =>
+
+          i.email &&
+          currentUser &&
+          currentUser.email &&
+
+          i.email.toLowerCase() ===
+          currentUser.email.toLowerCase()
+
+        )
+
+          ? `
+
+            <div style="
+              margin-top:12px;
+              display:inline-block;
+              padding:6px 12px;
+              background:#dbeafe;
+              color:#1d4ed8;
+              border-radius:999px;
+              font-size:12px;
+              font-weight:700;
+            ">
+              YOU ARE AN INSTRUCTOR FOR THIS EVENT
+            </div>
+
+          `
+
+          : ''
+      }
 
     </div>
+
+    ${
+      event.instructors &&
+      event.instructors.length
+
+        ? `
+
+          <div style="
+            margin-bottom:18px;
+            padding:12px;
+            background:#eff6ff;
+            border:1px solid #bfdbfe;
+            border-radius:12px;
+            color:#1e3a8a;
+            font-size:14px;
+            font-weight:600;
+          ">
+
+            ${event.instructors.length}
+            instructor${
+              event.instructors.length !== 1
+                ? 's'
+                : ''
+            } assigned to this event
+
+          </div>
+
+        `
+
+        : ''
+    }
 
     <div style="
       margin-bottom:18px;
@@ -5526,7 +5837,7 @@ function previewSystemEvent(eventUrl){
       color:#374151;
     ">
 
-      <strong>
+           <strong>
         Category:
       </strong>
 
@@ -5534,13 +5845,175 @@ function previewSystemEvent(eventUrl){
 
       <br>
 
+      ${
+        Array.isArray(event.instructors) &&
+        event.instructors.some(i =>
+
+          i.email &&
+          currentUser &&
+          currentUser.email &&
+
+          i.email.toLowerCase() ===
+          currentUser.email.toLowerCase()
+
+        )
+
+          ? `
+
+            <div style="
+              margin-top:10px;
+              margin-bottom:10px;
+              display:inline-block;
+              padding:6px 12px;
+              background:#dbeafe;
+              color:#1d4ed8;
+              border-radius:999px;
+              font-size:12px;
+              font-weight:700;
+            ">
+              YOU ARE AN INSTRUCTOR FOR THIS EVENT
+            </div>
+
+            <br>
+
+          `
+
+          : ''
+      }
+
+		${
+  Array.isArray(event.instructors) &&
+  event.instructors.length
+
+    ? `
+
       <strong>
+        Instructor Count:
+      </strong>
+
+      ${event.instructors.length}
+
+      <br>
+
+    `
+
+    : ''
+}
+		
+           <strong>
         Region:
       </strong>
 
       ${event.region || 'Unmapped'}
 
       <br>
+
+      ${
+        Array.isArray(event.instructors) &&
+        event.instructors.length
+
+          ? `
+
+            <strong>
+              Instructor Count:
+            </strong>
+
+            ${event.instructors.length}
+
+            <br>
+
+          `
+
+          : ''
+      }
+
+	  ${
+  event.url
+
+    ? `
+
+      <strong>
+        Event Link:
+      </strong>
+
+      <a
+        href="${event.url}"
+        target="_blank"
+        style="
+          color:#2563eb;
+          text-decoration:none;
+          font-weight:600;
+        "
+      >
+        Open Official Event
+      </a>
+
+      <br><br>
+
+    `
+
+    : ''
+}
+
+	  ${
+  Array.isArray(event.instructors) &&
+  event.instructors.length
+
+    ? `
+
+      <strong>
+        Instructors:
+      </strong>
+
+      <br><br>
+
+      ${event.instructors.map(instructor => `
+
+        <div style="
+          margin-bottom:12px;
+          padding:10px;
+          background:#f3f4f6;
+          border-radius:10px;
+        ">
+
+          <div style="
+            font-weight:700;
+            color:#111827;
+            margin-bottom:4px;
+          ">
+            ${instructor.name || ''}
+          </div>
+
+          ${
+            instructor.role
+              ? `
+                <div>
+                  ${instructor.role}
+                </div>
+              `
+              : ''
+          }
+
+          ${
+            instructor.email
+              ? `
+                <div>
+                  ${instructor.email}
+                </div>
+              `
+              : ''
+          }
+
+        </div>
+
+      `).join('')}
+
+      <br>
+
+    `
+
+    : ''
+}
 
       <strong>
         County:
