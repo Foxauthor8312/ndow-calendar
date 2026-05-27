@@ -77,7 +77,7 @@ jobs:
           else
             git commit -m "chore: sync telemetry events"
             git pull --rebase
-            git pushh
+            git push
           fi
 
       # Verify hashes match
