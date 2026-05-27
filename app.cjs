@@ -1,3 +1,6 @@
+# Complete Corrected `app.cjs`
+
+```js
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
@@ -302,68 +305,62 @@ const fs = require('fs');
     // ENRICH INSTRUCTORS
     //
 
-   for(const event of events){
+    for(const event of events){
 
-  console.log(
-    'Checking instructors for:',
-    event.url
-  );
-
-  try {
-
-    const instructorPage =
-      await browser.newPage();
-
-    if(fs.existsSync('session.json')){
-
-      const cookies = JSON.parse(
-        fs.readFileSync(
-          'session.json'
-        )
+      console.log(
+        'Checking instructors for:',
+        event.url
       );
 
-      await instructorPage.setCookie(
-        ...cookies
-      );
+      try {
 
-    }
+        const instructorPage =
+          await browser.newPage();
 
-    await instructorPage.goto(
-      event.instructorUrl,
-      {
-        waitUntil:
-          'networkidle2',
+        if(fs.existsSync('session.json')){
 
-        timeout:60000
-      }
-    );
+          const cookies = JSON.parse(
+            fs.readFileSync(
+              'session.json'
+            )
+          );
 
-    await new Promise(resolve =>
-      setTimeout(
-        resolve,
-        4000
-      )
-    );
-        await page.waitForSelector(
+          await instructorPage.setCookie(
+            ...cookies
+          );
+
+        }
+
+        await instructorPage.goto(
+          event.instructorUrl,
+          {
+            waitUntil:
+              'networkidle2',
+
+            timeout:60000
+          }
+        );
+
+        await instructorPage.waitForSelector(
           'body'
         );
 
-       await new Promise(resolve =>
-        setTimeout(
-        resolve,
-        4000
-    )
-  );
+        await new Promise(resolve =>
+          setTimeout(
+            resolve,
+            4000
+          )
+        );
 
         const rawText =
-  await page.evaluate(() =>
-    document.body.innerText
-  );
+          await instructorPage.evaluate(() =>
+            document.body.innerText
+          );
 
-console.log(rawText);
+        console.log(rawText);
 
-const instructorData =
-  await page.evaluate(() => {
+        const instructorData =
+          await instructorPage.evaluate(() => {
 
             const text =
               document.body
@@ -459,6 +456,8 @@ const instructorData =
           'Instructor count:',
           instructorData.length
         );
+
+        await instructorPage.close();
 
       } catch(err){
 
@@ -564,3 +563,4 @@ const instructorData =
   process.exit(0);
 
 })();
+```
