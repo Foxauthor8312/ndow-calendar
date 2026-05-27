@@ -69,41 +69,58 @@ if(!cleanDate){
 
   events.push({
 
-    id: sourceId,
+  id: sourceId,
 
-    sourceId,
+  sourceId,
 
-    sourceUrl:
-      event.url,
+  sourceUrl:
+    event.url,
 
-    title:
-      event.title || '',
+  title:
+    event.title || '',
 
-    category:
-      event.category || 'Event',
+  category:
+    event.category || 'Event',
 
-    date:
-      event.date || '',
+  date:
+    event.date || '',
 
-    time:
-      event.time || '',
+  time:
+    event.time || '',
 
-    location:
-      event.location || '',
+  location:
+    event.location || '',
 
-    description:
-      event.description || '',
+  description:
+    event.description || '',
 
-    url:
-      event.url,
+  url:
+    event.url,
 
-    instructors:
-      event.instructors || [],
+  instructors:
+    Array.isArray(event.instructors)
+      ? event.instructors
+      : [],
 
-    enrichment:
-      event.enrichment || {}
+  enrichment:
+    event.enrichment || {},
 
-  });
+  metadata:
+    event.metadata || {},
+
+  region:
+    event.region || '',
+
+  county:
+    event.county || '',
+
+  city:
+    event.city || '',
+
+  zip:
+    event.zip || ''
+
+});
 
 });
 
