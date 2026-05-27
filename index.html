@@ -2662,44 +2662,13 @@ const rejectedEvents = [];
 
 events = events.filter(event => {
 
-  if(!event){
-
-    rejectedEvents.push({
-      reason:'Null event object'
-    });
-
-    return false;
-
-  }
-
-  if(!event.title){
-
-    rejectedEvents.push({
-      reason:'Missing title',
-      event
-    });
-
-    return false;
-
-  }
-
-  if(!event.date){
-
-    rejectedEvents.push({
-      reason:'Missing date',
-      event
-    });
-
-    return false;
-
-  }
-
-  return true;
+  return (
+    event &&
+    event.title
+  );
 
 });
 
-
-	  
 systemStatus.rejectedEvents =
   rejectedEvents;
 
@@ -2711,6 +2680,11 @@ console.log(
 console.log(
   'POST MAP COUNT:',
   events.length
+);
+
+console.log(
+  'FIRST EVENT:',
+  events[0]
 );
 
   
