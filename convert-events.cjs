@@ -11,8 +11,24 @@ const raw = fs.readFileSync(
   'utf8'
 );
 
-const parsedEvents =
-  JSON.parse(raw);
+let parsedEvents = [];
+
+try {
+
+  parsedEvents =
+    JSON.parse(raw);
+
+} catch(err){
+
+  console.log(
+    'FAILED TO PARSE all-events.txt'
+  );
+
+  console.log(err);
+
+  process.exit(1);
+
+}
 
 const normalizedEvents =
   parsedEvents.map(
