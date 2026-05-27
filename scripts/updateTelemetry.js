@@ -5,6 +5,120 @@ const raw = fs.readFileSync(
   'utf8'
 );
 
+const parsed =
+  JSON.parse(raw);
+
+console.log(
+  'RAW EVENT COUNT:',
+  parsed.length
+);
+
+const events = [];
+
+parsed.forEach(event => {
+
+  if(
+    !event.url
+  ){
+
+    console.log(
+      'SKIPPED EVENT (NO URL):',
+      event.title
+    );
+
+    return;
+
+  }
+
+  const cleanDate =
+    (event.date || '')
+      .replace('PST', '')
+      .replace('PDT', '')
+      .replace('MDT', '')
+      .trim();
+
+  const parsedDate =
+    new Date(cleanDate);
+
+  if(
+    isNaN(parsedDate.getTime())
+  ){
+
+    console.log(
+      'SKIPPED - INVALID DATE:',
+      {
+        title: event.title,
+        cleanDate
+      }
+    );
+
+    return;
+
+  }
+
+  if(
+    parsedDate < new Date('2026-01-01')
+  ){
+
+    console.log(
+      'SKIPPED - OLD DATE:',
+      {
+        title: event.title,
+        cleanDate
+      }
+    );
+
+    return;
+
+  }
+
+  const sourceId =
+    event.url?.match(
+      /\/(\d+)(?:\/)?$/
+    )?.[1]
+    ||
+    `fallback_${events.length}`;
+
+  events.push({
+
+    id: sourceId,
+
+    sourceId,
+
+    sourceUrl:
+      event.url,
+
+    title:
+      event.title || '',
+
+    category:
+      event.category || 'Event',
+
+    date:
+      event.date || '',
+
+    time:
+      event.time || '',
+
+    location:
+      event.location || '',
+
+    description:
+      event.description || '',
+
+    url:
+      event.url,
+
+    instructors:
+      event.instructors || [],
+
+    enrichment:
+      event.enrichment || {}
+
+  });
+
+});
+
 console.log(
   'EVENT COUNT BEFORE DEDUPE:',
   events.length
@@ -31,8 +145,8 @@ const dedupedEvents =
         console.log(
           'DUPLICATE EVENT ID:',
           {
-            id:event.id,
-            title:event.title
+            id: event.id,
+            title: event.title
           }
         );
 
@@ -53,18 +167,19 @@ console.log(
 
 fs.writeFileSync(
   './events.json',
+
   JSON.stringify(
     {
       lastUpdated:
         new Date().toISOString(),
 
-      metrics:{
+      metrics: {
 
         rawBlocks:
           parsed.length,
 
         skippedOldEvents:
-          3,
+          0,
 
         invalidEvents:
           0,
@@ -76,6 +191,7 @@ fs.writeFileSync(
 
       events:
         dedupedEvents
+
     },
 
     null,
