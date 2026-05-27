@@ -3661,7 +3661,7 @@ console.error(
   e
 );
 
-  return true;
+  return false;
 
 }
 
@@ -3670,10 +3670,9 @@ const formatted =
     .toISOString()
     .split('T')[0];
 
-const match =
-  formatted === dateStr;
-
-return match;
+return (
+  formatted === dateStr
+);
 
 });
 	  
