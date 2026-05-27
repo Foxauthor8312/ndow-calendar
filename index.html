@@ -4063,9 +4063,39 @@ async function openEventModal(eventUrl) {
       events.find(
         e => e.url === eventUrl
       );
-if(!event){
+	if(!event){
 
   modalBody.innerHTML = `
+    <div style="
+      padding:24px;
+      color:#dc2626;
+      font-weight:700;
+    ">
+      Event could not be loaded.
+    </div>
+  `;
+
+  return;
+
+}
+
+const eventDate =
+  new Date(event.date);
+
+const now =
+  new Date();
+
+const oneDayAfter =
+  new Date(eventDate);
+
+oneDayAfter.setDate(
+  oneDayAfter.getDate() + 1
+);
+
+const allowRequests =
+  now <= oneDayAfter;
+
+modalBody.innerHTML = `
   <div class="modal-body">
 
     <h2>Official NDOW Event</h2>
@@ -4238,63 +4268,67 @@ if(!event){
       Additional details for this event are available on the official NDOW website.
     </p>
 
-  </div>
+    <a href="${eventUrl}"
+       target="_blank"
+       class="official-link">
 
-  <select
-	 id="contactSelect"
-	 class="contact-select"
-	 onchange="toggleCustomEmail()"
-  >
+       Open Official Event Page
 
-${categoryEmails.map(contact => {
+    </a>
 
-    const selected =
+    <select
+      id="contactSelect"
+      class="contact-select"
+      onchange="toggleCustomEmail()"
+    >
 
-      contact.categories &&
-      contact.categories.includes(
-        event.category
-      )
+      ${categoryEmails.map(contact => {
 
-        ? 'selected'
+        const selected =
 
-        : '';
+          contact.categories &&
+          contact.categories.includes(
+            event.category
+          )
 
-    return `
+            ? 'selected'
 
-      <option
-        value="${contact.email}"
-        ${selected}
-      >
+            : '';
 
-        ${contact.title}
+        return `
 
-      </option>
+          <option
+            value="${contact.email}"
+            ${selected}
+          >
 
-    `;
+            ${contact.title}
 
-  }).join('')}
+          </option>
 
-</select>
+        `;
 
-`;
+      }).join('')}
 
-<input
-  type="email"
-  id="customEmail"
-  placeholder="Enter custom email"
-  style="
-    display:none;
-    width:100%;
-    margin-top:10px;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid #d1d5db;
-  "
->
+    </select>
 
-${
-  allowRequests
-    ? `
+    <input
+      type="email"
+      id="customEmail"
+      placeholder="Enter custom email"
+      style="
+        display:none;
+        width:100%;
+        margin-top:10px;
+        padding:10px;
+        border-radius:8px;
+        border:1px solid #d1d5db;
+      "
+    >
+
+    ${
+      allowRequests
+        ? `
 
 <a href="#"
    class="request-link"
@@ -4305,7 +4339,7 @@ ${
 </a>
 
 `
-    : `
+        : `
 
 <div style="
   margin-top:16px;
@@ -4318,23 +4352,12 @@ ${
 </div>
 
 `
-}
+    }
 
-</div>
+  </div>
 `;
-
-  } catch (err) {
-
-    modalBody.innerHTML = `
-      <div style="padding:40px;text-align:center;">
-        Failed to load event.
-      </div>
-    `;
-
-  }
-
-}	
-function requestInstructor(eventUrl){
+	  
+  function requestInstructor(eventUrl){
 
 
   const event =
