@@ -5627,7 +5627,29 @@ function previewSystemEvent(eventUrl){
   if(!event || !panel){
     return;
   }
-	
+
+  const isInstructor =
+    Array.isArray(event.instructors) &&
+
+    event.instructors.some(i =>
+
+      (
+        i.email || ''
+      )
+      .trim()
+      .toLowerCase()
+
+      ===
+
+      (
+        JSON.parse(
+          localStorage.getItem('user')
+        )?.email || ''
+      )
+      .trim()
+      .toLowerCase()
+
+    );
 
   panel.innerHTML = `
 
@@ -5642,41 +5664,8 @@ function previewSystemEvent(eventUrl){
       ${event.title}
 
       ${
-        Array.isArray(event.instructors) &&
 
-        event.instructors.some(i =>
-
-          i.email &&
-          JSON.parse(localStorage.getItem('user')) &&
-          JSON.parse(localStorage.getItem('user'))?.email &&
-
-          i.email.toLowerCase() ===
-              i.email &&
-      JSON.parse(localStorage.getItem('user')) &&
-      JSON.parse(localStorage.getItem('user'))?.email &&
-
-      i.email.toLowerCase() ===
-      (
-  JSON.parse(
-    localStorage.getItem('user')
-  )?.email || ''
-).trim().toLowerCase()
-
-    )
-
-      ? `
-
-        <div style="
-          margin-top:10px;
-          display:inline-block;
-          padding:6px 10px;
-          background:#dbeafe;
-          color:#1d4ed8;
-          border-radius:999px;
-          font-size:12px;
-          font-weight:700;
-
-        )
+        isInstructor
 
           ? `
 
@@ -5693,6 +5682,7 @@ function previewSystemEvent(eventUrl){
           `
 
           : ''
+
       }
 
     </div>
@@ -5710,41 +5700,8 @@ function previewSystemEvent(eventUrl){
       ${event.location}
 
       ${
-        Array.isArray(event.instructors) &&
 
-        event.instructors.some(i =>
-
-          i.email &&
-          JSON.parse(localStorage.getItem('user')) &&
-          JSON.parse(localStorage.getItem('user'))?.email &&
-
-          i.email.toLowerCase() ===
-              i.email &&
-      JSON.parse(localStorage.getItem('user')) &&
-      JSON.parse(localStorage.getItem('user'))?.email &&
-
-      i.email.toLowerCase() ===
-      (
-  JSON.parse(
-    localStorage.getItem('user')
-  )?.email || ''
-).trim().toLowerCase()
-
-    )
-
-      ? `
-
-        <div style="
-          margin-top:10px;
-          display:inline-block;
-          padding:6px 10px;
-          background:#dbeafe;
-          color:#1d4ed8;
-          border-radius:999px;
-          font-size:12px;
-          font-weight:700;
-
-        )
+        isInstructor
 
           ? `
 
@@ -5758,12 +5715,15 @@ function previewSystemEvent(eventUrl){
               font-size:12px;
               font-weight:700;
             ">
+
               YOU ARE AN INSTRUCTOR FOR THIS EVENT
+
             </div>
 
           `
 
           : ''
+
       }
 
     </div>
@@ -5804,6 +5764,7 @@ function previewSystemEvent(eventUrl){
       line-height:1.8;
       color:#374151;
     ">
+`;
 
       <strong>
         Category:
