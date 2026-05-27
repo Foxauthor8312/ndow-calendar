@@ -2580,7 +2580,7 @@ const category =
         systemStatus
           .geoMappedEvents++;
 
-   } else {
+ } else {
 
   systemStatus
     .geoFailedEvents++;
@@ -2604,12 +2604,24 @@ const category =
     region:
       event.region || '',
 
+    category:
+      localStorage.getItem(
+        'categoryOverride_' +
+        event.title
+      )
+      ||
+      event.category
+      ||
+      'Other',
+
     location:
       cleanedLocation,
 
-    url:event.url,
+    url:
+      event.url,
 
-    raw:event
+    raw:
+      event
 
   });
 
@@ -2619,38 +2631,6 @@ const category =
   );
 
 }
-
-          type:'GEO',
-
-                   index:
-            systemStatus.warnings.length + 1,
-
-title:event.title,
-
-date:event.date,
-
-region:
-  event.region || '',
-
-category:
-  localStorage.getItem(
-    'categoryOverride_' +
-    event.title
-  )
-  ||
-  event.category
-  ||
-  'Other',
-
-location:cleanedLocation,
-
-          url:event.url,
-
-          raw:event
-
-        });
-
-      }
 
 const normalizedTitle =
 
