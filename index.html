@@ -3694,7 +3694,23 @@ dayEvents.forEach(event => {
 
     }
 
-    div.innerText = event.title;
+    const cleanTitle =
+  (event.title || '')
+    .split('Date & Times:')[0]
+    .replace(/\n+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+
+div.innerHTML = `
+  <div style="
+    font-size:11px;
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:2px;
+  ">
+    ${cleanTitle}
+  </div>
+`;
 
     div.onclick = () =>
       openEventModal(event.url);
