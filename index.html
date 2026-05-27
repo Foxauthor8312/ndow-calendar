@@ -3622,10 +3622,14 @@ if (
 ) {
 
   console.error(
-    'BAD DATE:',
-    e.date,
-    e
-  );
+  'BAD DATE VALUE:',
+  JSON.stringify(e.date)
+);
+
+console.error(
+  'BAD EVENT:',
+  e
+);
 
   return false;
 
