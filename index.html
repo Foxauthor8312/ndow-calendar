@@ -3822,15 +3822,19 @@ dayEvents.forEach(event => {
 
     const instructorText =
 
-      Array.isArray(
-        event.instructors
-      )
+  Array.isArray(
+    event.instructors
+  )
 
-        ? event.instructors.join(' ')
+    ? event.instructors
+        .map(i =>
+          `${i.name || ''} ${i.email || ''}`
+        )
+        .join(' ')
 
-        : String(
-            event.instructors || ''
-          );
+    : String(
+        event.instructors || ''
+      );
 
     const currentUsername =
 
