@@ -152,14 +152,48 @@ const fs = require('fs');
           const instructorUrl =
             url + '/event_instructors';
 
-          results.push({
+          const lines =
+  card.innerText
+    .split('\n')
+    .map(line => line.trim())
+    .filter(Boolean);
 
-            url,
-            instructorUrl,
-            text: card.innerText,
-            instructors: []
+const title =
+  lines[0] || '';
 
-          });
+const dateIndex =
+  lines.findIndex(line =>
+    line.toLowerCase() === 'date'
+  );
+
+const date =
+  dateIndex >= 0
+    ? lines[dateIndex + 1] || ''
+    : '';
+
+const location =
+  lines.find(line =>
+    line.includes('NV')
+  ) || '';
+
+results.push({
+
+  title,
+
+  date,
+
+  location,
+
+  url,
+
+  instructorUrl,
+
+  text:
+    card.innerText,
+
+  instructors: []
+
+});
 
         });
 
