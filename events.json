@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-05-27T05:46:30.099Z",
+  "lastUpdated": "2026-05-27T07:06:27.361Z",
   "metrics": {
-    "rawBlocks": 0,
-    "skippedOldEvents": 3,
+    "rawBlocks": 273,
+    "skippedOldEvents": 0,
     "invalidEvents": 0,
     "finalEvents": 0
   },
