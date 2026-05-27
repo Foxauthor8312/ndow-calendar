@@ -5,7 +5,6 @@ const raw = fs.readFileSync(
   'utf8'
 );
 
-EVENT COUNT BEFORE DEDUPE
 console.log(
   'EVENT COUNT BEFORE DEDUPE:',
   events.length
