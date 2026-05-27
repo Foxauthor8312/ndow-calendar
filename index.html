@@ -3671,8 +3671,7 @@ const formatted =
     .split('T')[0];
 
 const match =
-  formatted === dateStr ||
-e.date === dateStr;
+  formatted === dateStr;
 
 return match;
 
@@ -3724,16 +3723,6 @@ const cleanTitle =
   .trim();
 	  
 const isInstructor =
-  (
-    event.instructors || []
-  ).some(name =>
-    name
-      .toLowerCase()
-      .includes(
-        currentUser.username
-          .toLowerCase()
-      )
-  );
 
 div.innerHTML = `
   <div style="
