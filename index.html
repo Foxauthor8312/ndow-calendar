@@ -3860,30 +3860,41 @@ dayEvents.forEach(event => {
 
     div.innerHTML = `
 
-      <div style="
-        display:flex;
-        align-items:center;
-        gap:4px;
-        overflow:hidden;
-      ">
+  <div style="
+    display:flex;
+    align-items:center;
+    gap:4px;
+    overflow:hidden;
+  ">
 
-        <span style="
-          overflow:hidden;
-          text-overflow:ellipsis;
-          white-space:nowrap;
-          display:block;
-          width:100%;
-        ">
-          ${cleanTitle}${
-            isInstructor
-              ? ' ★'
-              : ''
-          }
-        </span>
+    ${
+      isInstructor
+        ? `
+          <span style="
+            color:#000;
+            font-size:10px;
+            flex-shrink:0;
+            font-weight:700;
+          ">
+            ★
+          </span>
+        `
+        : ''
+    }
 
-      </div>
+    <span style="
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      display:block;
+      width:100%;
+    ">
+      ${cleanTitle}
+    </span>
 
-    `;
+  </div>
+
+`;
 
     div.title =
       cleanTitle;
