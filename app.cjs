@@ -188,83 +188,21 @@ const fs = require('fs');
           const text =
             card.innerText || '';
 
-          const lines =
-            text
-              .split('\n')
-              .map(line =>
-                line.trim()
-              )
-              .filter(Boolean);
-
-          const title =
-            lines.find(line =>
-
-              line.length > 5 &&
-
-              !line
-                .toLowerCase()
-                .includes('date') &&
-
-              !line
-                .toLowerCase()
-                .includes('location')
-
-            ) || '';
-
-          const dateIndex =
-            lines.findIndex(line =>
-
-              line
-                .toLowerCase()
-                .includes('date')
-
-            );
-
-          const date =
-            dateIndex >= 0
-              ? (
-                  lines[
-                    dateIndex + 1
-                  ] || ''
-                )
-              : '';
-
-          const location =
-            lines.find(line =>
-
-              line.includes('NV') ||
-
-              line.includes(
-                'Nevada'
-              )
-
-            ) || '';
-
           results.push({
 
-            title,
-
-            date,
-
-            location,
-
+            title: text,
+            date: '',
+            location: '',
             url,
-
             instructorUrl,
-
             text,
-
             instructors: [],
-
             enrichment: {
-
               scrapedAt:
                 new Date()
                   .toISOString(),
-
               source:
                 'ndow-scraper-v2'
-
             }
 
           });
@@ -297,9 +235,12 @@ const fs = require('fs');
         event.url
       );
 
-      try {
+      console.log(
+        'INSTRUCTOR URL:',
+        event.instructorUrl
+      );
 
-        
+      try {
 
         await page.goto(
           event.instructorUrl,
@@ -322,13 +263,6 @@ const fs = require('fs');
           )
         );
 
-        const rawText =
-          await page.evaluate(() =>
-            document.body.innerText
-          );
-
-        console.log(rawText);
-
         const instructorData =
           await page.evaluate(() => {
 
@@ -336,16 +270,24 @@ const fs = require('fs');
               document.body
                 .innerText;
 
-            const section =
-              text.split(
-                'ASSIGNED INSTRUCTORS'
-              )[1];
+            const lowerText =
+              text.toLowerCase();
 
-            if(!section){
+            const splitIndex =
+              lowerText.indexOf(
+                'assigned instructors'
+              );
+
+            if(splitIndex === -1){
 
               return [];
 
             }
+
+            const section =
+              text.substring(
+                splitIndex
+              );
 
             const lines =
               section
@@ -367,20 +309,20 @@ const fs = require('fs');
               const line =
                 lines[i];
 
+              const lowerLine =
+                line.toLowerCase();
+
               if(
-
-                line.includes(
-                  'PRIMARY'
+                lowerLine.includes(
+                  'primary'
                 ) ||
-
-                line.includes(
-                  'ASSISTANT'
+                lowerLine.includes(
+                  'assistant'
                 )
-
               ){
 
                 const parts =
-                  line.split(' ');
+                  line.split(/\s+/);
 
                 const role =
                   parts.pop();
@@ -388,28 +330,30 @@ const fs = require('fs');
                 const name =
                   parts.join(' ');
 
-                const email =
-                  lines[i + 1] || '';
+                let email = '';
+
+                if(
+                  lines[i + 1] &&
+                  lines[i + 1].includes('@')
+                ){
+
+                  email =
+                    lines[i + 1];
+
+                }
 
                 instructorData.push({
 
-                  name,
+                  name:
+                    name.trim(),
 
-                  role,
+                  role:
+                    role.trim(),
 
-                  email
+                  email:
+                    email.trim()
 
                 });
-
-              }
-
-              if(
-                line.includes(
-                  'Add Another Instructor'
-                )
-              ){
-
-                break;
 
               }
 
@@ -427,7 +371,6 @@ const fs = require('fs');
           instructorData.length
         );
 
-        
       } catch(err){
 
         console.log(
@@ -439,29 +382,9 @@ const fs = require('fs');
 
       }
 
-      if(
-
-        !event.title ||
-
-        !event.date
-
-      ){
-
-        console.log(
-          'INCOMPLETE EVENT:',
-          event.url
-        );
-
-      }
-
       allEvents.push(event);
 
     }
-
-    console.log(
-      'Completed page:',
-      currentPage
-    );
 
     currentPage++;
 
@@ -480,44 +403,6 @@ const fs = require('fs');
   console.log(
     'Instructor enrichment complete.'
   );
-
-  try {
-
-    await page.goto(
-      'https://nevada.events.licensing.app/logout',
-      {
-        waitUntil:'networkidle2',
-        timeout:60000
-      }
-    );
-
-    console.log(
-      'Logged out.'
-    );
-
-    if(
-      fs.existsSync(
-        'session.json'
-      )
-    ){
-
-      fs.unlinkSync(
-        'session.json'
-      );
-
-      console.log(
-        'Session cookies cleared.'
-      );
-
-    }
-
-  } catch(err){
-
-    console.log(
-      'Logout skipped.'
-    );
-
-  }
 
   await browser.close();
 
