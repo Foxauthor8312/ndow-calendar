@@ -31,30 +31,18 @@ parsed.forEach(event => {
   }
 
   const cleanDate =
-    (event.date || '')
-      .replace('PST', '')
-      .replace('PDT', '')
-      .replace('MDT', '')
-      .trim();
+  (event.date || '').trim();
 
-  const parsedDate =
-    new Date(cleanDate);
+if(!cleanDate){
 
-  if(
-    isNaN(parsedDate.getTime())
-  ){
+  console.log(
+    'SKIPPED - NO DATE:',
+    event.title
+  );
 
-    console.log(
-      'SKIPPED - INVALID DATE:',
-      {
-        title: event.title,
-        cleanDate
-      }
-    );
+  return;
 
-    return;
-
-  }
+}
 
   if(
     parsedDate < new Date('2026-01-01')
