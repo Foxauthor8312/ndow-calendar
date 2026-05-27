@@ -3009,13 +3009,30 @@ async function checkLogin(){
   );
 
   overlay.style.display =
-    'flex';
+  'flex';
 
-  overlay.style.visibility =
+overlay.style.visibility =
   'visible';
-	
-  overlay.style.opacity =
-	  '1';
+
+overlay.style.opacity =
+  '1';
+
+overlay.style.zIndex =
+  '999999';
+
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Connecting to secure services...';
+
+document.getElementById(
+  'wildlifeFact'
+).innerText =
+  'Preparing NDOW volunteer systems...';
+
+await new Promise(resolve =>
+  requestAnimationFrame(resolve)
+);
 	
   overlay.style.background =
 	  '#000';
