@@ -3694,12 +3694,24 @@ dayEvents.forEach(event => {
 
     }
 
-    const cleanTitle =
+const cleanTitle =
   (event.title || '')
     .split('Date & Times:')[0]
     .replace(/\n+/g,' ')
     .replace(/\s+/g,' ')
     .trim();
+
+const isInstructor =
+  (
+    event.instructors || []
+  ).some(name =>
+    name
+      .toLowerCase()
+      .includes(
+        currentUser.username
+          .toLowerCase()
+      )
+  );
 
 div.innerHTML = `
   <div style="
@@ -3707,11 +3719,22 @@ div.innerHTML = `
     font-weight:700;
     line-height:1.2;
     margin-bottom:2px;
+    display:flex;
+    align-items:center;
+    gap:4px;
   ">
-    ${cleanTitle}
+    ${
+      isInstructor
+        ? '<span style="color:black;">★</span>'
+        : ''
+    }
+
+    <span>
+      ${cleanTitle}
+    </span>
+
   </div>
 `;
-
     div.onclick = () =>
       openEventModal(event.url);
 
