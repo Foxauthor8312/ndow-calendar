@@ -4356,10 +4356,22 @@ modalBody.innerHTML = `
 `
     }
 
-  </div>
+   </div>
 `;
-	  
-  function requestInstructor(eventUrl){
+
+  } catch (err) {
+
+    modalBody.innerHTML = `
+      <div style="padding:40px;text-align:center;">
+        Failed to load event.
+      </div>
+    `;
+
+  }
+
+}
+
+function requestInstructor(eventUrl){
 
 
   const event =
