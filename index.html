@@ -3875,14 +3875,37 @@ const isInstructor =
             }
 
             <span style="
-              overflow:hidden;
-              text-overflow:ellipsis;
-              white-space:nowrap;
-              display:block;
-              width:100%;
-            ">
-              ${cleanTitle}
-            </span>
+			  overflow:hidden;
+			  text-overflow:ellipsis;
+			  white-space:nowrap;
+			  display:flex;
+			  align-items:center;
+			  gap:4px;
+			  width:100%;
+			">
+			  <span style="
+			    overflow:hidden;
+			    text-overflow:ellipsis;
+			    white-space:nowrap;
+			  ">
+			    ${cleanTitle}
+			  </span>
+
+  ${
+    isInstructor
+      ? `
+        <span style="
+          color:#000;
+          font-size:10px;
+          flex-shrink:0;
+        ">
+          &#9733;
+        </span>
+      `
+      : ''
+  }
+
+</span>
 
           </div>
 
