@@ -285,14 +285,17 @@ button:hover{
   display:none !important;
 }
 	
-.modal-content {
-  background: white;
-  width: min(900px, 100%);
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 14px;
-  position: relative;
-  padding: 28px;
+.modal-content{
+  position:relative;
+  background:#fff;
+  width:86%;
+  max-width:980px;
+  max-height:82vh;
+  overflow-y:auto;
+  margin:3vh auto;
+  border-radius:12px;
+  padding:14px 18px;
+  box-sizing:border-box;
 }
 
 .modal-close{
@@ -3792,24 +3795,28 @@ if(!rawDate){
 
         }
 
-        const cleanTitle =
+const cleanTitle =
 
-          String(
-            event.title || ''
-          )
+  String(
+    event.title || ''
+  )
 
-          .split('Location:')[0]
+  .replace(/^[A-Z][a-z]{2}\s+\d{1,2}\s*/,'')
 
-          .split('Taught by:')[0]
+  .split('Location:')[0]
 
-          .split('Date & Times:')[0]
+  .split('Taught by:')[0]
 
-          .replace(/\n+/g,' ')
+  .split('Date & Times:')[0]
 
-          .replace(/\s+/g,' ')
+  .replace(/■.*$/,'')
 
-          .trim();
+  .replace(/\n+/g,' ')
 
+  .replace(/\s+/g,' ')
+
+  .trim();
+		  
 const instructorText =
 
   Array.isArray(
@@ -3861,7 +3868,7 @@ const isInstructor =
                     font-size:10px;
                     flex-shrink:0;
                   ">
-                    ★
+                    &#9733;
                   </span>
                 `
                 : ''
@@ -6015,21 +6022,22 @@ function previewSystemEvent(eventUrl){
         Instructors:
       </strong>
 
-      <br><br>
+      <br>
 
       ${event.instructors.map(instructor => `
 
-        <div style="
-          margin-bottom:12px;
-          padding:10px;
-          background:#f3f4f6;
-          border-radius:10px;
-        ">
+       <div style="
+		  margin-bottom:6px;
+		  padding:6px 8px;
+		  background:#f3f4f6;
+		  border-radius:8px;
+		  line-height:1.15;
+		">
 
           <div style="
             font-weight:700;
             color:#111827;
-            margin-bottom:4px;
+            margin-bottom:2px;
           ">
             ${instructor.name || ''}
           </div>
@@ -6058,7 +6066,6 @@ function previewSystemEvent(eventUrl){
 
       `).join('')}
 
-      <br>
 
     `
 
