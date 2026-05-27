@@ -3822,11 +3822,17 @@ const instructorText =
 
 const currentUsername =
 
-  String(
-    currentUser?.username || ''
+  JSON.parse(
+    localStorage.getItem('user') || '{}'
   )
-  .toLowerCase()
-  .trim();
+
+  .username
+
+  ?.toLowerCase()
+
+  ?.trim()
+
+  || '';
 
 const isInstructor =
 
