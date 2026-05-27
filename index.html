@@ -2580,12 +2580,45 @@ const category =
         systemStatus
           .geoMappedEvents++;
 
-      } else {
+   } else {
 
-        systemStatus
-          .geoFailedEvents++;
+  systemStatus
+    .geoFailedEvents++;
 
-        systemStatus.warnings.push({
+  console.log(
+    'ADDING GEO WARNING:',
+    event.title
+  );
+
+  systemStatus.warnings.push({
+
+    type:'GEO',
+
+    index:
+      systemStatus.warnings.length + 1,
+
+    title:event.title,
+
+    date:event.date,
+
+    region:
+      event.region || '',
+
+    location:
+      cleanedLocation,
+
+    url:event.url,
+
+    raw:event
+
+  });
+
+  console.log(
+    'TOTAL WARNINGS:',
+    systemStatus.warnings.length
+  );
+
+}
 
           type:'GEO',
 
