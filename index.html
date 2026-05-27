@@ -3607,7 +3607,23 @@ const safeDate =
     rawDate + ' 12:00:00'
   );
 
-if(isNaN(safeDate)){
+if (
+  typeof e.date !== 'string'
+) {
+
+  e.date =
+    String(
+      e.date || ''
+    );
+
+}
+
+const safeDate =
+  new Date(e.date);
+
+if (
+  isNaN(safeDate)
+) {
 
   console.error(
     'BAD DATE:',
@@ -3620,15 +3636,14 @@ if(isNaN(safeDate)){
 }
 
 const formatted =
-  `${safeDate.getFullYear()}-${String(safeDate.getMonth() + 1).padStart(2,'0')}-${String(safeDate.getDate()).padStart(2,'0')}`;
+  safeDate
+    .toISOString()
+    .split('T')[0];
 
-	  
 const match =
   formatted === dateStr;
 
 return match;
-
-});
 	  
 dayEvents.forEach(event => {
 
