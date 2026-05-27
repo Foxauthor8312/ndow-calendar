@@ -3961,7 +3961,11 @@ const allowRequests =
       JSON.parse(localStorage.getItem('user'))?.email &&
 
       i.email.toLowerCase() ===
-      currentUser.email.toLowerCase()
+      (
+  JSON.parse(
+    localStorage.getItem('user')
+  )?.email || ''
+).trim().toLowerCase()
 
     )
 
@@ -5642,7 +5646,30 @@ function previewSystemEvent(eventUrl){
           JSON.parse(localStorage.getItem('user'))?.email &&
 
           i.email.toLowerCase() ===
-          currentUser.email.toLowerCase()
+              i.email &&
+      JSON.parse(localStorage.getItem('user')) &&
+      JSON.parse(localStorage.getItem('user'))?.email &&
+
+      i.email.toLowerCase() ===
+      (
+  JSON.parse(
+    localStorage.getItem('user')
+  )?.email || ''
+).trim().toLowerCase()
+
+    )
+
+      ? `
+
+        <div style="
+          margin-top:10px;
+          display:inline-block;
+          padding:6px 10px;
+          background:#dbeafe;
+          color:#1d4ed8;
+          border-radius:999px;
+          font-size:12px;
+          font-weight:700;
 
         )
 
@@ -5687,7 +5714,30 @@ function previewSystemEvent(eventUrl){
           JSON.parse(localStorage.getItem('user'))?.email &&
 
           i.email.toLowerCase() ===
-          currentUser.email.toLowerCase()
+              i.email &&
+      JSON.parse(localStorage.getItem('user')) &&
+      JSON.parse(localStorage.getItem('user'))?.email &&
+
+      i.email.toLowerCase() ===
+      (
+  JSON.parse(
+    localStorage.getItem('user')
+  )?.email || ''
+).trim().toLowerCase()
+
+    )
+
+      ? `
+
+        <div style="
+          margin-top:10px;
+          display:inline-block;
+          padding:6px 10px;
+          background:#dbeafe;
+          color:#1d4ed8;
+          border-radius:999px;
+          font-size:12px;
+          font-weight:700;
 
         )
 
