@@ -3695,12 +3695,25 @@ dayEvents.forEach(event => {
     }
 
 const cleanTitle =
-  (event.title || '')
-    .split('Date & Times:')[0]
-    .replace(/\n+/g,' ')
-    .replace(/\s+/g,' ')
-    .trim();
 
+  (
+    event.title || ''
+  )
+
+  .split('■')[0]
+
+  .split('Location:')[0]
+
+  .split('Taught by:')[0]
+
+  .split('Date & Times:')[0]
+
+  .replace(/\n+/g,' ')
+
+  .replace(/\s+/g,' ')
+
+  .trim();
+	  
 const isInstructor =
   (
     event.instructors || []
