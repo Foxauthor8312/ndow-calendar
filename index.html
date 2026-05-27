@@ -3602,10 +3602,6 @@ const isToday =
   String(e.date || '')
     .trim();
 
-const safeDate =
-  new Date(
-    rawDate + ' 12:00:00'
-  );
 
 if (
   typeof e.date !== 'string'
