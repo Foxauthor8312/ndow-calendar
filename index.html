@@ -4064,183 +4064,177 @@ async function openEventModal(eventUrl) {
 if(!event){
 
   modalBody.innerHTML = `
-    <div style="
-      padding:24px;
-      color:#dc2626;
-      font-weight:700;
-    ">
-      Event could not be loaded.
-    </div>
-  `;
-
-  return;
-
-}
-	  
-
-const eventDate =
-  new Date(event.date);
-
-const now =
-  new Date();
-
-const oneDayAfter =
-  new Date(eventDate);
-
-oneDayAfter.setDate(
-  oneDayAfter.getDate() + 1
-);
-
-const allowRequests =
-  now <= oneDayAfter;
- 
- modalBody.innerHTML = `
   <div class="modal-body">
 
- <h2>Official NDOW Event</h2>
+    <h2>Official NDOW Event</h2>
 
-<div style="
-  margin:14px 0 18px 0;
-  padding:14px;
-  background:#f3f4f6;
-  border-left:4px solid #F29647;
-  border-radius:6px;
-">
-
-  <div style="
-    margin-bottom:6px;
-    font-size:13px;
-    font-weight:700;
-    color:#374151;
-  ">
-    Event #: ${event.id}
-  </div>
-
-  <div style="
-    font-weight:700;
-    color:#19304B;
-    margin-bottom:6px;
-  ">
-    ${event.title}
-  </div>
-
-<div style="
-  font-size:14px;
-  color:#4b5563;
-  line-height:1.5;
-">
-  ${event.date}<br>
-  ${event.location}
-
-  ${
-    Array.isArray(event.instructors) &&
-
-    event.instructors.some(i =>
-
-      i.email &&
-      JSON.parse(localStorage.getItem('user')) &&
-      JSON.parse(localStorage.getItem('user'))?.email &&
-
-      i.email.toLowerCase() ===
-      (
-  JSON.parse(
-    localStorage.getItem('user')
-  )?.email || ''
-).trim().toLowerCase()
-
-    )
-
-      ? `
-
-        <div style="
-          margin-top:10px;
-          display:inline-block;
-          padding:6px 10px;
-          background:#dbeafe;
-          color:#1d4ed8;
-          border-radius:999px;
-          font-size:12px;
-          font-weight:700;
-        ">
-          YOU ARE AN INSTRUCTOR FOR THIS EVENT
-        </div>
-
-      `
-
-      : ''
-  }
-
-</div>
-
-${
-  Array.isArray(event.instructors) &&
-  event.instructors.length
-
-    ? `
+    <div style="
+      margin:14px 0 18px 0;
+      padding:14px;
+      background:#f3f4f6;
+      border-left:4px solid #F29647;
+      border-radius:6px;
+    ">
 
       <div style="
-        margin-top:18px;
-        margin-bottom:18px;
+        margin-bottom:6px;
+        font-size:13px;
+        font-weight:700;
+        color:#374151;
       ">
+        Event #: ${event.id}
+      </div>
 
-        <div style="
-          font-size:18px;
-          font-weight:700;
-          color:#19304B;
-          margin-bottom:12px;
-        ">
-          Instructors (${event.instructors.length})
-        </div>
+      <div style="
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:6px;
+      ">
+        ${event.title}
+      </div>
 
-        ${event.instructors.map(instructor => `
+      <div style="
+        font-size:14px;
+        color:#4b5563;
+        line-height:1.5;
+      ">
+        ${event.date}<br>
+        ${event.location}
 
-          <div style="
-            padding:12px;
-            margin-bottom:10px;
-            background:#f3f4f6;
-            border-radius:12px;
-            line-height:1.6;
-          ">
+        ${
+          Array.isArray(event.instructors) &&
 
-            <div style="
-              font-weight:700;
-              color:#111827;
-            ">
-              ${instructor.name || ''}
-            </div>
+          event.instructors.some(i =>
 
-            ${
-              instructor.role
-                ? `
-                  <div>
-                    ${instructor.role}
-                  </div>
-                `
-                : ''
-            }
+            i.email &&
+            JSON.parse(localStorage.getItem('user')) &&
+            JSON.parse(localStorage.getItem('user'))?.email &&
 
-            ${
-              instructor.email
-                ? `
-                  <div style="
-                    color:#2563eb;
-                  ">
-                    ${instructor.email}
-                  </div>
-                `
-                : ''
-            }
+            i.email.toLowerCase() ===
+            (
+              JSON.parse(
+                localStorage.getItem('user')
+              )?.email || ''
+            ).trim().toLowerCase()
 
-          </div>
+          )
 
-        `).join('')}
+            ? `
+
+              <div style="
+                margin-top:10px;
+                display:inline-block;
+                padding:6px 10px;
+                background:#dbeafe;
+                color:#1d4ed8;
+                border-radius:999px;
+                font-size:12px;
+                font-weight:700;
+              ">
+                YOU ARE AN INSTRUCTOR FOR THIS EVENT
+              </div>
+
+            `
+
+            : ''
+        }
 
       </div>
 
-    `
+      ${
+        Array.isArray(event.instructors) &&
+        event.instructors.length
 
-    : ''
-}
+          ? `
+
+            <div style="
+              margin-top:18px;
+              margin-bottom:18px;
+            ">
+
+              <div style="
+                font-size:18px;
+                font-weight:700;
+                color:#19304B;
+                margin-bottom:12px;
+              ">
+                Instructors (${event.instructors.length})
+              </div>
+
+              ${event.instructors.map(instructor => `
+
+                <div style="
+                  padding:12px;
+                  margin-bottom:10px;
+                  background:#f3f4f6;
+                  border-radius:12px;
+                  line-height:1.6;
+                ">
+
+                  <div style="
+                    font-weight:700;
+                    color:#111827;
+                  ">
+                    ${instructor.name || ''}
+                  </div>
+
+                  ${
+                    instructor.role
+                      ? `
+                        <div>
+                          ${instructor.role}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                  ${
+                    instructor.email
+                      ? `
+                        <div style="
+                          color:#2563eb;
+                        ">
+                          ${instructor.email}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+
+              `).join('')}
+
+            </div>
+
+          `
+
+          : ''
+      }
+
+    </div>
+
+    <a
+      href="${event.url}"
+      target="_blank"
+      style="
+        display:inline-block;
+        margin-top:14px;
+        background:#2563eb;
+        color:white;
+        padding:12px 18px;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:600;
+      "
+    >
+
+      Open Official Event
+
+    </a>
+
+  </div>
+
+`;
 
 <p>
   Additional details for this event are available on the official NDOW website.
