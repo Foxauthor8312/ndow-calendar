@@ -3906,7 +3906,9 @@ const totalCells =
 const remaining =
   7 - (totalCells % 7);
 
-if(remaining < 7){
+if(
+  remaining < 7
+){
 
   for(
     let i = 0;
@@ -3915,12 +3917,16 @@ if(remaining < 7){
   ){
 
     const empty =
-      document.createElement('div');
+      document.createElement(
+        'div'
+      );
 
     empty.className =
       'day';
 
-    calendar.appendChild(empty);
+    calendar.appendChild(
+      empty
+    );
 
   }
 
