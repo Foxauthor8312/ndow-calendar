@@ -2610,29 +2610,47 @@ location:cleanedLocation,
 
       }
 
+const normalizedTitle =
+
+  String(
+    event.title || ''
+  )
+
+  .replace(/\n+/g,' ')
+
+  .replace(/\s+/g,' ')
+
+  .trim();
+
+const extractedDate =
+
+  normalizedTitle.match(
+    /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+\d{4}/i
+  );
+
+const finalDate =
+
+  String(
+    event.date || ''
+  ).trim()
+
+  ||
+
+  (
+    extractedDate
+      ? extractedDate[0]
+      : ''
+  );
+
 return {
 
   ...event,
 
+  title:
+    normalizedTitle,
+
   date:
-
-    event.date ||
-
-    (
-      (
-        event.title || ''
-      )
-
-      .replace(/\n+/g, ' ')
-
-      .match(
-        /Date\s*&\s*Times:\s*([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/i
-      )
-
-      ?.[1]
-
-      || ''
-    ),
+    finalDate,
 
   zip,
 
@@ -3527,15 +3545,17 @@ const CATEGORY_OPTIONS = [
 ];
 
 function renderCalendar(){
-	
 
   const calendar =
     document.getElementById('calendar');
 
   calendar.innerHTML = '';
 
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+  const year =
+    currentDate.getFullYear();
+
+  const month =
+    currentDate.getMonth();
 
   const monthNames = [
     'January','February','March','April',
@@ -3543,7 +3563,9 @@ function renderCalendar(){
     'September','October','November','December'
   ];
 
-  document.getElementById('monthLabel').innerText =
+  document.getElementById(
+    'monthLabel'
+  ).innerText =
     monthNames[month] + ' ' + year;
 
   const firstDay =
@@ -3559,11 +3581,14 @@ function renderCalendar(){
 
   dayNames.forEach(name => {
 
-    const div = document.createElement('div');
+    const div =
+      document.createElement('div');
 
-    div.className = 'day-name';
+    div.className =
+      'day-name';
 
-    div.innerText = name;
+    div.innerText =
+      name;
 
     calendar.appendChild(div);
 
@@ -3571,253 +3596,326 @@ function renderCalendar(){
 
   for(let i = 0; i < firstDay; i++){
 
-    const empty = document.createElement('div');
-
-    empty.className = 'day';
-
-    calendar.appendChild(empty);
-
-  }
-	const renderedTitles =
-  new Set();
-
-  for(let day = 1; day <= daysInMonth; day++){
-
-    const cell = document.createElement('div');
-
-    cell.className = 'day';
-
-	  const today =
-  new Date();
-
-const isToday =
-  day === today.getDate() &&
-  month === today.getMonth() &&
-  year === today.getFullYear();
-
-    cell.innerHTML =
-      `<div class="day-number">${day}</div>`;
-
-	if(isToday){
-
-  cell.classList.add(
-    'today'
-  );
-
-}
-	  
-    const dateStr =
-      `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-
-  const dayEvents = events.filter(e => {
-
-  if(
-  activeRegion &&
-  activeRegion !== 'ALL' &&
-  e.region !== activeRegion
-){
-  return false;
-}
-	  
-  if(
-    activeFilters.length > 0 &&
-    !activeFilters.includes(e.category)
-  ){
-    return false;
-  }
-	  
- 
-	  
- const rawDate =
-  String(e.date || '')
-    .trim();
-
-
-if (
-  typeof e.date !== 'string'
-) {
-
-  e.date =
-    String(
-      e.date || ''
-    );
-
-}
-
-const safeDate =
-  new Date(e.date);
-
-if (
-  isNaN(safeDate)
-) {
-
-  console.error(
-  'BAD DATE VALUE:',
-  JSON.stringify(e.date)
-);
-
-console.error(
-  'BAD EVENT:',
-  e
-);
-
-  return false;
-
-}
-
-const formatted =
-  safeDate
-    .toISOString()
-    .split('T')[0];
-
-return (
-  formatted === dateStr
-);
-
-});
-	  
-dayEvents.forEach(event => {
-
-  try {
-
-    const div =
-      document.createElement('div');
-
-    div.className = 'event';
-
-    
-    const category =
-  String(
-    event.category || ''
-  )
-    .trim();
-
-    
-    div.style.background =
-      categoryColors[event.category]
-      || categoryColors['Other'];
-
-    if(event.category === 'Archery'){
-
-      div.style.color = '#111827';
-
-    }
-
-const cleanTitle =
-
-  (
-    event.title || ''
-  )
-
-   .split('Location:')[0]
-
-  .split('Taught by:')[0]
-
-  .split('Date & Times:')[0]
-
-  .replace(/\n+/g,' ')
-
-  .replace(/\s+/g,' ')
-
-  .trim();
-	  
-const isInstructor =
-
-div.innerHTML = `
-  <div style="
-    font-size:10px;
-    font-weight:700;
-    line-height:1.2;
-    margin-bottom:2px;
-    display:flex;
-    align-items:center;
-    gap:4px;
-  ">
-    ${
-      isInstructor
-        ? '<span style="color:black;">★</span>'
-        : ''
-    }
-
-    <span>
-      ${cleanTitle}
-    </span>
-
-  </div>
-`;
-
-
-	 div.title =
-	  cleanTitle; 
-    div.onclick = () =>
-      openEventModal(event.url);
-
-    cell.appendChild(div);
-	  renderedTitles.add(
-  event.title + '|' + event.date
-);
-
-  } catch(err){
-
-    console.error(
-      'RENDER EVENT FAILURE:',
-      event,
-      err
-    );
-
-  }
-
-});
-
-calendar.appendChild(cell);
-
-}
-
-const totalCells =
-  firstDay + daysInMonth;
-
-const remaining =
-  7 - (totalCells % 7);
-
-if(remaining < 7){
-
-  for(let i = 0; i < remaining; i++){
-
     const empty =
       document.createElement('div');
 
-    empty.className = 'day';
+    empty.className =
+      'day';
 
     calendar.appendChild(empty);
 
   }
 
-}
+  for(
+    let day = 1;
+    day <= daysInMonth;
+    day++
+  ){
 
-const currentMonthEvents =
-  events.filter(event => {
+    const cell =
+      document.createElement('div');
 
-    const d =
-      new Date(
-        event.date + ' 12:00:00'
+    cell.className =
+      'day';
+
+    const today =
+      new Date();
+
+    const isToday =
+
+      day === today.getDate()
+
+      &&
+
+      month === today.getMonth()
+
+      &&
+
+      year === today.getFullYear();
+
+    if(isToday){
+
+      cell.classList.add(
+        'today'
       );
 
-    return (
-      d.getMonth() === month &&
-      d.getFullYear() === year
+    }
+
+    const dayNumber =
+      document.createElement('div');
+
+    dayNumber.className =
+      'day-number';
+
+    dayNumber.innerText =
+      day;
+
+    cell.appendChild(dayNumber);
+
+    const dateStr =
+
+      `${year}-${String(month + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+
+    const dayEvents =
+      events.filter(event => {
+
+        if(!event){
+          return false;
+        }
+
+        if(
+          activeRegion &&
+          activeRegion !== 'ALL' &&
+          event.region !== activeRegion
+        ){
+          return false;
+        }
+
+        if(
+          activeFilters.length > 0 &&
+          !activeFilters.includes(
+            event.category
+          )
+        ){
+          return false;
+        }
+
+        let rawDate =
+
+          String(
+            event.date || ''
+          )
+          .trim();
+
+        if(!rawDate){
+
+          const titleText =
+
+            String(
+              event.title || ''
+            )
+
+            .replace(/\n+/g,' ')
+            .replace(/\s+/g,' ')
+            .trim();
+
+          const extracted =
+
+            titleText.match(
+              /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+\d{4}/i
+            );
+
+          if(extracted){
+
+            rawDate =
+              extracted[0];
+
+          }
+
+        }
+
+        if(!rawDate){
+          return false;
+        }
+
+        const safeDate =
+          new Date(
+            rawDate + ' 12:00:00'
+          );
+
+        if(
+          isNaN(safeDate)
+        ){
+
+          console.error(
+            'BAD EVENT DATE:',
+            event
+          );
+
+          return false;
+
+        }
+
+        const formatted =
+
+          safeDate
+            .toISOString()
+            .split('T')[0];
+
+        return (
+          formatted === dateStr
+        );
+
+      });
+
+    dayEvents.forEach(event => {
+
+      try {
+
+        const div =
+          document.createElement('div');
+
+        div.className =
+          'event';
+
+        const category =
+
+          String(
+            event.category || ''
+          )
+          .trim();
+
+        div.style.background =
+
+          categoryColors[category]
+
+          ||
+
+          categoryColors['Other'];
+
+        if(
+          category === 'Archery'
+        ){
+
+          div.style.color =
+            '#111827';
+
+        }
+
+        const cleanTitle =
+
+          String(
+            event.title || ''
+          )
+
+          .split('Location:')[0]
+
+          .split('Taught by:')[0]
+
+          .split('Date & Times:')[0]
+
+          .replace(/\n+/g,' ')
+
+          .replace(/\s+/g,' ')
+
+          .trim();
+
+const instructorText =
+
+  Array.isArray(
+    event.instructors
+  )
+
+    ? event.instructors.join(' ')
+
+    : String(
+        event.instructors || ''
+      );
+
+const currentUsername =
+
+  String(
+    currentUser?.username || ''
+  )
+  .toLowerCase()
+  .trim();
+
+const isInstructor =
+
+  instructorText
+    .toLowerCase()
+    .includes(
+      currentUsername
     );
 
-  });
+        div.innerHTML = `
 
-const missingEvents =
-  currentMonthEvents.filter(event => {
+          <div style="
+            display:flex;
+            align-items:center;
+            gap:4px;
+            overflow:hidden;
+          ">
 
-    return !renderedTitles.has(
-      event.title + '|' + event.date
-    );
+            ${
+              isInstructor
+                ? `
+                  <span style="
+                    color:black;
+                    font-size:10px;
+                    flex-shrink:0;
+                  ">
+                    ★
+                  </span>
+                `
+                : ''
+            }
 
-  });
+            <span style="
+              overflow:hidden;
+              text-overflow:ellipsis;
+              white-space:nowrap;
+              display:block;
+              width:100%;
+            ">
+              ${cleanTitle}
+            </span>
 
+          </div>
+
+        `;
+
+        div.title =
+          cleanTitle;
+
+        div.onclick = () =>
+          openEventModal(
+            event.url
+          );
+
+        cell.appendChild(div);
+
+      } catch(err){
+
+        console.error(
+          'RENDER FAILURE:',
+          event,
+          err
+        );
+
+      }
+
+    });
+
+    calendar.appendChild(cell);
+
+  }
+
+  const totalCells =
+    firstDay + daysInMonth;
+
+  const remaining =
+    7 - (totalCells % 7);
+
+  if(remaining < 7){
+
+    for(
+      let i = 0;
+      i < remaining;
+      i++
+    ){
+
+      const empty =
+        document.createElement('div');
+
+      empty.className =
+        'day';
+
+      calendar.appendChild(empty);
+
+    }
+
+  }
 
 }
 // ========================================
