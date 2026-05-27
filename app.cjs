@@ -332,8 +332,15 @@ const fs = require('fs');
     )
   );
 
-        const instructorData =
-          await page.evaluate(() => {
+        const rawText =
+  await page.evaluate(() =>
+    document.body.innerText
+  );
+
+console.log(rawText);
+
+const instructorData =
+  await page.evaluate(() => {
 
             const text =
               document.body
