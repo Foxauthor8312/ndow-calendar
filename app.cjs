@@ -1,6 +1,3 @@
-# Complete Corrected `app.cjs`
-
-```js
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
@@ -68,10 +65,6 @@ const fs = require('fs');
     'body'
   );
 
-  //
-  // AUTO LOGIN
-  //
-
   if(
     await page.$(
       'input[type="password"]'
@@ -106,10 +99,6 @@ const fs = require('fs');
     );
 
   }
-
-  //
-  // SAVE SESSION
-  //
 
   const cookies =
     await page.cookies();
@@ -300,10 +289,6 @@ const fs = require('fs');
       'Events found:',
       events.length
     );
-
-    //
-    // ENRICH INSTRUCTORS
-    //
 
     for(const event of events){
 
@@ -498,10 +483,6 @@ const fs = require('fs');
 
   }
 
-  //
-  // SAVE EVENTS
-  //
-
   fs.writeFileSync(
     'all-events.txt',
 
@@ -515,10 +496,6 @@ const fs = require('fs');
   console.log(
     'Instructor enrichment complete.'
   );
-
-  //
-  // LOGOUT
-  //
 
   try {
 
@@ -563,4 +540,3 @@ const fs = require('fs');
   process.exit(0);
 
 })();
-```
