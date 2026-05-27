@@ -3953,8 +3953,6 @@ const allowRequests =
     Event #: ${event.id}
   </div>
 
-
-
   <div style="
     font-weight:700;
     color:#19304B;
@@ -3970,133 +3968,43 @@ const allowRequests =
 ">
   ${event.date}<br>
   ${event.location}
+
   ${
-  Array.isArray(event.instructors) &&
+    Array.isArray(event.instructors) &&
 
-  event.instructors.some(i =>
+    event.instructors.some(i =>
 
-    i.email &&
-    currentUser &&
-    currentUser.email &&
+      i.email &&
+      JSON.parse(localStorage.getItem('user')) &&
+      JSON.parse(localStorage.getItem('user'))?.email &&
 
-    i.email.toLowerCase() ===
-    currentUser.email.toLowerCase()
+      i.email.toLowerCase() ===
+      currentUser.email.toLowerCase()
 
-  )
+    )
 
-    ? `
-
-      <div style="
-        margin-top:10px;
-        display:inline-block;
-        padding:6px 10px;
-        background:#dbeafe;
-        color:#1d4ed8;
-        border-radius:999px;
-        font-size:12px;
-        font-weight:700;
-      ">
-        YOU ARE AN INSTRUCTOR FOR THIS EVENT
-      </div>
-
-    `
-
-    : ''
-}
-</div>
-
-${
-  Array.isArray(event.instructors) &&
-  event.instructors.length
-
-    ? `
-
-      <div class="event-instructors">
-
-        <strong>Instructors:</strong>
-
-        ${event.instructors
-          .map(i => i.name)
-          .join(', ')}
-
-      </div>
-
-    `
-
-    : ''
-}
-
-${
-  Array.isArray(event.instructors) &&
-  event.instructors.length
-
-    ? `
-
-      <div style="
-        margin-top:14px;
-        padding:12px;
-        background:#f3f4f6;
-        border-radius:10px;
-      ">
+      ? `
 
         <div style="
+          margin-top:10px;
+          display:inline-block;
+          padding:6px 10px;
+          background:#dbeafe;
+          color:#1d4ed8;
+          border-radius:999px;
+          font-size:12px;
           font-weight:700;
-          margin-bottom:8px;
-          color:#19304B;
         ">
-          Instructors
+          YOU ARE AN INSTRUCTOR FOR THIS EVENT
         </div>
 
-        ${event.instructors.map(instructor => `
+      `
 
-          <div style="
-            margin-bottom:10px;
-            font-size:14px;
-            line-height:1.5;
-            color:#374151;
-          ">
+      : ''
+  }
 
-            <div style="
-              font-weight:600;
-              color:#111827;
-            ">
-              ${instructor.name || ''}
-            </div>
+</div>
 
-            ${
-              instructor.role
-                ? `
-                  <div>
-                    ${instructor.role}
-                  </div>
-                `
-                : ''
-            }
-
-            ${
-              instructor.email
-                ? `
-                  <div>
-                    ${instructor.email}
-                  </div>
-                `
-                : ''
-            }
-
-          </div>
-
-        `).join('')}
-
-      </div>
-
-    `
-
-    : ''
-}
-
-<p>
-  Additional details for this event are available on the official NDOW website.
-</p>
 ${
   Array.isArray(event.instructors) &&
   event.instructors.length
@@ -4114,7 +4022,7 @@ ${
           color:#19304B;
           margin-bottom:12px;
         ">
-          Instructors
+          Instructors (${event.instructors.length})
         </div>
 
         ${event.instructors.map(instructor => `
@@ -4167,7 +4075,11 @@ ${
     : ''
 }
 
-    <a href="${eventUrl}"
+<p>
+  Additional details for this event are available on the official NDOW website.
+</p>
+
+<a href="${eventUrl}"
    target="_blank"
    class="official-link">
 
@@ -5705,50 +5617,38 @@ function previewSystemEvent(eventUrl){
       line-height:1.4;
     ">
 
-     ${event.title}
+      ${event.title}
 
-${
-  Array.isArray(event.instructors) &&
+      ${
+        Array.isArray(event.instructors) &&
 
-  event.instructors.some(i =>
+        event.instructors.some(i =>
 
-    i.email &&
-    currentUser &&
-    currentUser.email &&
+          i.email &&
+          JSON.parse(localStorage.getItem('user')) &&
+          JSON.parse(localStorage.getItem('user'))?.email &&
 
-    i.email.toLowerCase() ===
-    currentUser.email.toLowerCase()
+          i.email.toLowerCase() ===
+          currentUser.email.toLowerCase()
 
-${
-  Array.isArray(event.instructors) &&
+        )
 
-  event.instructors.some(i =>
+          ? `
 
-    i.email &&
-    currentUser &&
-    currentUser.email &&
+            <span style="
+              display:inline-block;
+              width:12px;
+              height:12px;
+              background:#2563eb;
+              border-radius:50%;
+              margin-left:10px;
+              vertical-align:middle;
+            "></span>
 
-    i.email.toLowerCase() ===
-    currentUser.email.toLowerCase()
+          `
 
-  )
-
-    ? `
-
-      <span style="
-        display:inline-block;
-        width:12px;
-        height:12px;
-        background:#2563eb;
-        border-radius:50%;
-        margin-left:10px;
-        vertical-align:middle;
-      "></span>
-
-    `
-
-    : ''
-}
+          : ''
+      }
 
     </div>
 
@@ -5760,9 +5660,9 @@ ${
 
       ${event.date}
 
-            <br>
+      <br>
 
-            ${event.location}
+      ${event.location}
 
       ${
         Array.isArray(event.instructors) &&
@@ -5770,8 +5670,8 @@ ${
         event.instructors.some(i =>
 
           i.email &&
-          currentUser &&
-          currentUser.email &&
+          JSON.parse(localStorage.getItem('user')) &&
+          JSON.parse(localStorage.getItem('user'))?.email &&
 
           i.email.toLowerCase() ===
           currentUser.email.toLowerCase()
@@ -5837,74 +5737,11 @@ ${
       color:#374151;
     ">
 
-           <strong>
+      <strong>
         Category:
       </strong>
 
       ${event.category}
-
-      <br>
-
-      ${
-        Array.isArray(event.instructors) &&
-        event.instructors.some(i =>
-
-          i.email &&
-          currentUser &&
-          currentUser.email &&
-
-          i.email.toLowerCase() ===
-          currentUser.email.toLowerCase()
-
-        )
-
-          ? `
-
-            <div style="
-              margin-top:10px;
-              margin-bottom:10px;
-              display:inline-block;
-              padding:6px 12px;
-              background:#dbeafe;
-              color:#1d4ed8;
-              border-radius:999px;
-              font-size:12px;
-              font-weight:700;
-            ">
-              YOU ARE AN INSTRUCTOR FOR THIS EVENT
-            </div>
-
-            <br>
-
-          `
-
-          : ''
-      }
-
-		${
-  Array.isArray(event.instructors) &&
-  event.instructors.length
-
-    ? `
-
-      <strong>
-        Instructor Count:
-      </strong>
-
-      ${event.instructors.length}
-
-      <br>
-
-    `
-
-    : ''
-}
-		
-           <strong>
-        Region:
-      </strong>
-
-      ${event.region || 'Unmapped'}
 
       <br>
 
@@ -5927,34 +5764,41 @@ ${
           : ''
       }
 
-	  ${
-  event.url
-
-    ? `
-
       <strong>
-        Event Link:
+        Region:
       </strong>
 
-      <a
-        href="${event.url}"
-        target="_blank"
-        style="
-          color:#2563eb;
-          text-decoration:none;
-          font-weight:600;
-        "
-      >
-        Open Official Event
-      </a>
+      ${event.region || 'Unmapped'}
 
-      <br><br>
+      <br>
 
-    `
+      ${
+        event.url
 
-    : ''
-}
+          ? `
 
+            <strong>
+              Event Link:
+            </strong>
+
+            <a
+              href="${event.url}"
+              target="_blank"
+              style="
+                color:#2563eb;
+                text-decoration:none;
+                font-weight:600;
+              "
+            >
+              Open Official Event
+            </a>
+
+            <br><br>
+
+          `
+
+          : ''
+      }
 	  ${
   Array.isArray(event.instructors) &&
   event.instructors.length
