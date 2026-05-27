@@ -38,14 +38,20 @@ const fs = require('fs');
   if(fs.existsSync('session.json')){
 
     const cookies = JSON.parse(
-      fs.readFileSync('session.json')
+      fs.readFileSync(
+        'session.json'
+      )
     );
 
-    await page.setCookie(...cookies);
+    await page.setCookie(
+      ...cookies
+    );
 
   }
 
-  console.log('Opening NDOW...');
+  console.log(
+    'Opening NDOW...'
+  );
 
   await page.goto(
     'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
@@ -55,10 +61,19 @@ const fs = require('fs');
     }
   );
 
-  await page.waitForSelector('body');
+  await page.waitForSelector(
+    'body'
+  );
 
-  // auto login if needed
-  if(await page.$('input[type="password"]')){
+  //
+  // AUTO LOGIN
+  //
+
+  if(
+    await page.$(
+      'input[type="password"]'
+    )
+  ){
 
     console.log(
       'Login required...'
@@ -89,21 +104,34 @@ const fs = require('fs');
 
   }
 
+  //
+  // SAVE SESSION
+  //
+
   const cookies =
     await page.cookies();
 
   fs.writeFileSync(
     'session.json',
-    JSON.stringify(cookies, null, 2)
+    JSON.stringify(
+      cookies,
+      null,
+      2
+    )
   );
 
-  console.log('Session saved.');
-  console.log('Starting fast scrape...');
+  console.log(
+    'Session saved.'
+  );
+
+  console.log(
+    'Starting enriched scrape...'
+  );
 
   let allEvents = [];
   let currentPage = 1;
 
-  while (true) {
+  while(true){
 
     const pageUrl =
       'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events?filter%5Bevents_program_id%5D=&ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending&ordering%5Border_by%5D%5B%5D=desc&page=' +
@@ -111,15 +139,20 @@ const fs = require('fs');
       '&size=50';
 
     console.log(
-      'Opening page ' + currentPage
+      'Opening page:',
+      currentPage
     );
 
     await page.goto(
       pageUrl,
       {
-        waitUntil:'networkidle2',
+        waitUntil:'domcontentloaded',
         timeout:60000
       }
+    );
+
+    await page.waitForSelector(
+      'body'
     );
 
     const events =
@@ -131,7 +164,9 @@ const fs = require('fs');
           );
 
         if(cards.length === 0){
+
           return [];
+
         }
 
         const results = [];
@@ -142,58 +177,105 @@ const fs = require('fs');
             card.querySelector('a');
 
           const rawHref =
-            linkEl?.getAttribute('href') || '';
+            linkEl?.getAttribute(
+              'href'
+            ) || '';
 
           const url =
-            rawHref.startsWith('http')
+            rawHref.startsWith(
+              'http'
+            )
               ? rawHref
-              : 'https://nevada.events.licensing.app' + rawHref;
+              : 'https://nevada.events.licensing.app' +
+                rawHref;
 
           const instructorUrl =
-            url + '/event_instructors';
+            url +
+            '/event_instructors';
+
+          const text =
+            card.innerText || '';
 
           const lines =
-  card.innerText
-    .split('\n')
-    .map(line => line.trim())
-    .filter(Boolean);
+            text
+              .split('\n')
+              .map(line =>
+                line.trim()
+              )
+              .filter(Boolean);
 
-const title =
-  lines[0] || '';
+          const title =
+            lines.find(line =>
 
-const dateIndex =
-  lines.findIndex(line =>
-    line.toLowerCase() === 'date'
-  );
+              line.length > 5 &&
 
-const date =
-  dateIndex >= 0
-    ? lines[dateIndex + 1] || ''
-    : '';
+              !line
+                .toLowerCase()
+                .includes('date') &&
 
-const location =
-  lines.find(line =>
-    line.includes('NV')
-  ) || '';
+              !line
+                .toLowerCase()
+                .includes('location')
 
-results.push({
+            ) || '';
 
-  title,
+          const dateIndex =
+            lines.findIndex(line =>
 
-  date,
+              line
+                .toLowerCase()
+                .includes('date')
 
-  location,
+            );
 
-  url,
+          const date =
+            dateIndex >= 0
+              ? (
+                  lines[
+                    dateIndex + 1
+                  ] || ''
+                )
+              : '';
 
-  instructorUrl,
+          const location =
+            lines.find(line =>
 
-  text:
-    card.innerText,
+              line.includes('NV') ||
 
-  instructors: []
+              line.includes(
+                'Nevada'
+              )
 
-});
+            ) || '';
+
+          results.push({
+
+            title,
+
+            date,
+
+            location,
+
+            url,
+
+            instructorUrl,
+
+            text,
+
+            instructors: [],
+
+            enrichment: {
+
+              scrapedAt:
+                new Date()
+                  .toISOString(),
+
+              source:
+                'ndow-scraper-v2'
+
+            }
+
+          });
 
         });
 
@@ -201,7 +283,6 @@ results.push({
 
       });
 
-    // STOP when no events found
     if(events.length === 0){
 
       console.log(
@@ -211,6 +292,15 @@ results.push({
       break;
 
     }
+
+    console.log(
+      'Events found:',
+      events.length
+    );
+
+    //
+    // ENRICH INSTRUCTORS
+    //
 
     for(const event of events){
 
@@ -224,7 +314,9 @@ results.push({
         await page.goto(
           event.instructorUrl,
           {
-            waitUntil:'networkidle2',
+            waitUntil:
+              'domcontentloaded',
+
             timeout:60000
           }
         );
@@ -233,16 +325,19 @@ results.push({
           'body'
         );
 
-        // allow dynamic content to render
         await new Promise(resolve =>
-          setTimeout(resolve, 1500)
-);
+          setTimeout(
+            resolve,
+            1500
+          )
+        );
 
         const instructorData =
           await page.evaluate(() => {
 
             const text =
-              document.body.innerText;
+              document.body
+                .innerText;
 
             const section =
               text.split(
@@ -250,25 +345,41 @@ results.push({
               )[1];
 
             if(!section){
+
               return [];
+
             }
 
             const lines =
               section
                 .split('\n')
-                .map(line => line.trim())
+                .map(line =>
+                  line.trim()
+                )
                 .filter(Boolean);
 
-            const instructorData = [];
+            const instructorData =
+              [];
 
-            for(let i = 0; i < lines.length; i++){
+            for(
+              let i = 0;
+              i < lines.length;
+              i++
+            ){
 
               const line =
                 lines[i];
 
               if(
-                line.includes('PRIMARY') ||
-                line.includes('ASSISTANT')
+
+                line.includes(
+                  'PRIMARY'
+                ) ||
+
+                line.includes(
+                  'ASSISTANT'
+                )
+
               ){
 
                 const parts =
@@ -286,7 +397,9 @@ results.push({
                 instructorData.push({
 
                   name,
+
                   role,
+
                   email
 
                 });
@@ -298,7 +411,9 @@ results.push({
                   'Add Another Instructor'
                 )
               ){
+
                 break;
+
               }
 
             }
@@ -309,6 +424,11 @@ results.push({
 
         event.instructors =
           instructorData;
+
+        console.log(
+          'Instructor count:',
+          instructorData.length
+        );
 
       } catch(err){
 
@@ -321,14 +441,27 @@ results.push({
 
       }
 
+      if(
+
+        !event.title ||
+
+        !event.date
+
+      ){
+
+        console.log(
+          'INCOMPLETE EVENT:',
+          event.url
+        );
+
+      }
+
       allEvents.push(event);
 
     }
 
     console.log(
-      'Scraped',
-      events.length,
-      'events from page',
+      'Completed page:',
       currentPage
     );
 
@@ -336,8 +469,13 @@ results.push({
 
   }
 
+  //
+  // SAVE EVENTS
+  //
+
   fs.writeFileSync(
     'all-events.txt',
+
     JSON.stringify(
       allEvents,
       null,
@@ -349,6 +487,10 @@ results.push({
     'Instructor enrichment complete.'
   );
 
+  //
+  // LOGOUT
+  //
+
   try {
 
     await page.goto(
@@ -359,11 +501,19 @@ results.push({
       }
     );
 
-    console.log('Logged out.');
+    console.log(
+      'Logged out.'
+    );
 
-    if(fs.existsSync('session.json')){
+    if(
+      fs.existsSync(
+        'session.json'
+      )
+    ){
 
-      fs.unlinkSync('session.json');
+      fs.unlinkSync(
+        'session.json'
+      );
 
       console.log(
         'Session cookies cleared.'
@@ -380,6 +530,7 @@ results.push({
   }
 
   await browser.close();
+
   process.exit(0);
 
 })();
