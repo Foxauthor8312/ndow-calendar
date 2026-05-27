@@ -299,24 +299,9 @@ const fs = require('fs');
 
       try {
 
-        const instructorPage =
-          await browser.newPage();
+        
 
-        if(fs.existsSync('session.json')){
-
-          const cookies = JSON.parse(
-            fs.readFileSync(
-              'session.json'
-            )
-          );
-
-          await instructorPage.setCookie(
-            ...cookies
-          );
-
-        }
-
-        await instructorPage.goto(
+        await page.goto(
           event.instructorUrl,
           {
             waitUntil:
@@ -326,7 +311,7 @@ const fs = require('fs');
           }
         );
 
-        await instructorPage.waitForSelector(
+        await page.waitForSelector(
           'body'
         );
 
@@ -338,14 +323,14 @@ const fs = require('fs');
         );
 
         const rawText =
-          await instructorPage.evaluate(() =>
+          await page.evaluate(() =>
             document.body.innerText
           );
 
         console.log(rawText);
 
         const instructorData =
-          await instructorPage.evaluate(() => {
+          await page.evaluate(() => {
 
             const text =
               document.body
@@ -442,8 +427,7 @@ const fs = require('fs');
           instructorData.length
         );
 
-        await instructorPage.close();
-
+        
       } catch(err){
 
         console.log(
