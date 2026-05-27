@@ -5540,15 +5540,30 @@ onclick="
     '${warning.url}'
   );
 "
-  style="
-    padding:12px;
-        margin-bottom:12px;
-        border:1px solid #374151;
-        border-radius:8px;
-        background:#1f2937;
-		cursor:pointer;
-		transition:.2s ease;
-      ">
+ style="
+  padding:12px;
+  margin-bottom:12px;
+
+  border:1px solid #374151;
+  border-radius:8px;
+
+  background:#1f2937;
+
+  cursor:pointer;
+  transition:.2s ease;
+
+  display:block;
+  width:100%;
+
+  box-sizing:border-box;
+
+  overflow:hidden;
+
+  word-break:break-word;
+  overflow-wrap:anywhere;
+
+  flex-shrink:0;
+">
 
         <div style="
   color:#fca5a5;
@@ -5790,8 +5805,15 @@ onchange="
     position:relative;
     top:0;
     align-self:start;
+
     overflow-y:auto;
-    max-height:100%;
+    overflow-x:hidden;
+
+    max-height:70vh;
+    min-height:0;
+
+    word-break:break-word;
+    overflow-wrap:anywhere;
   "
 >
 
@@ -5799,6 +5821,9 @@ onchange="
     color:#6b7280;
     font-size:15px;
     line-height:1.8;
+
+    word-break:break-word;
+    overflow-wrap:anywhere;
   ">
 
     Select an event from the diagnostics list.
