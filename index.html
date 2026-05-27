@@ -3661,7 +3661,7 @@ console.error(
   e
 );
 
-  return false;
+  return true;
 
 }
 
@@ -3671,7 +3671,8 @@ const formatted =
     .split('T')[0];
 
 const match =
-  formatted === dateStr;
+  formatted === dateStr ||
+e.date === dateStr;
 
 return match;
 
