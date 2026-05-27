@@ -302,25 +302,48 @@ const fs = require('fs');
     // ENRICH INSTRUCTORS
     //
 
-    for(const event of events){
+   for(const event of events){
 
-      console.log(
-        'Checking instructors for:',
-        event.url
+  console.log(
+    'Checking instructors for:',
+    event.url
+  );
+
+  try {
+
+    const instructorPage =
+      await browser.newPage();
+
+    if(fs.existsSync('session.json')){
+
+      const cookies = JSON.parse(
+        fs.readFileSync(
+          'session.json'
+        )
       );
 
-      try {
+      await instructorPage.setCookie(
+        ...cookies
+      );
 
-  await page.goto(
-  event.instructorUrl,
-  {
-    waitUntil:
-      'networkidle2',
+    }
 
-    timeout:60000
-  }
-);
+    await instructorPage.goto(
+      event.instructorUrl,
+      {
+        waitUntil:
+          'networkidle2',
 
+        timeout:60000
+      }
+    );
+
+    await new Promise(resolve =>
+      setTimeout(
+        resolve,
+        4000
+      )
+    );
         await page.waitForSelector(
           'body'
         );
