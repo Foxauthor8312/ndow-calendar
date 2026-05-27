@@ -13,116 +13,85 @@ console.log(
   parsed.length
 );
 
-const events = [];
+const events =
+  parsed.map((event, index) => {
 
-parsed.forEach(event => {
+    const sourceId =
 
-  if(
-    !event.url
-  ){
+      event.id ||
 
-    console.log(
-      'SKIPPED EVENT (NO URL):',
-      event.title
-    );
+      event.sourceId ||
 
-    return;
+      event.url?.match(
+        /\/(\d+)(?:\/)?$/
+      )?.[1]
 
-  }
+      ||
 
-  const cleanDate =
-  (event.date || '').trim();
+      `fallback_${index}`;
 
-if(!cleanDate){
+    return {
 
-  console.log(
-    'SKIPPED - NO DATE:',
-    event.title
-  );
+      id:
+        sourceId,
 
-  return;
+      sourceId:
+        sourceId,
 
-}
+      sourceUrl:
+        event.sourceUrl ||
+        event.url ||
+        '',
 
-  if(
-    parsedDate < new Date('2026-01-01')
-  ){
+      title:
+        event.title || '',
 
-    console.log(
-      'SKIPPED - OLD DATE:',
-      {
-        title: event.title,
-        cleanDate
-      }
-    );
+      category:
+        event.category || 'Event',
 
-    return;
+      date:
+        event.date || '',
 
-  }
+      time:
+        event.time || '',
 
-  const sourceId =
-    event.url?.match(
-      /\/(\d+)(?:\/)?$/
-    )?.[1]
-    ||
-    `fallback_${events.length}`;
+      location:
+        event.location || '',
 
-  events.push({
+      description:
+        event.description || '',
 
-  id: sourceId,
+      url:
+        event.url || '',
 
-  sourceId,
+      instructors:
+        Array.isArray(
+          event.instructors
+        )
+          ? event.instructors
+          : [],
 
-  sourceUrl:
-    event.url,
+      enrichment:
+        event.enrichment || {},
 
-  title:
-    event.title || '',
+      metadata:
+        event.metadata || {},
 
-  category:
-    event.category || 'Event',
+      region:
+        event.region || '',
 
-  date:
-    event.date || '',
+      county:
+        event.county || '',
 
-  time:
-    event.time || '',
+      city:
+        event.city || '',
 
-  location:
-    event.location || '',
+      zip:
+        event.zip || ''
 
-  description:
-    event.description || '',
+    };
 
-  url:
-    event.url,
-
-  instructors:
-    Array.isArray(event.instructors)
-      ? event.instructors
-      : [],
-
-  enrichment:
-    event.enrichment || {},
-
-  metadata:
-    event.metadata || {},
-
-  region:
-    event.region || '',
-
-  county:
-    event.county || '',
-
-  city:
-    event.city || '',
-
-  zip:
-    event.zip || ''
-
-});
-
-});
+  });
 
 console.log(
   'EVENT COUNT BEFORE DEDUPE:',
@@ -157,7 +126,8 @@ const dedupedEvents =
 
       }
 
-      acc[event.id] = event;
+      acc[event.id] =
+        event;
 
       return acc;
 
