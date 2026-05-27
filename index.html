@@ -4123,7 +4123,9 @@ ${
   "
 >
 
-${allowRequests ? `
+${
+  allowRequests
+    ? `
 
 <a href="#"
    class="request-link"
@@ -4133,7 +4135,8 @@ ${allowRequests ? `
 
 </a>
 
-` : `
+`
+    : `
 
 <div style="
   margin-top:16px;
@@ -4145,9 +4148,11 @@ ${allowRequests ? `
 
 </div>
 
-`}
-      </div>
-    `;
+`
+}
+
+</div>
+`;
 
   } catch (err) {
 
@@ -4156,12 +4161,12 @@ ${allowRequests ? `
         Failed to load event.
       </div>
     `;
-  }
-}
 
-	
-	
+  }
+
+}	
 function requestInstructor(eventUrl){
+
 
   const event =
     events.find(e => e.url === eventUrl);
