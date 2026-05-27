@@ -153,6 +153,16 @@ console.log(
   dedupedEvents.length
 );
 
+console.log(
+  'FINAL EVENTS SAMPLE:',
+  dedupedEvents.slice(0,3)
+);
+
+console.log(
+  'FINAL EVENT COUNT:',
+  dedupedEvents.length
+);
+
 fs.writeFileSync(
   './events.json',
 
