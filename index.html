@@ -4240,15 +4240,13 @@ if(!event){
 
   </div>
 
-`;
+  <select
+	 id="contactSelect"
+	 class="contact-select"
+	 onchange="toggleCustomEmail()"
+  >
 
-<select
-  id="contactSelect"
-  class="contact-select"
-  onchange="toggleCustomEmail()"
->
-
-  ${categoryEmails.map(contact => {
+${categoryEmails.map(contact => {
 
     const selected =
 
@@ -4277,6 +4275,8 @@ if(!event){
   }).join('')}
 
 </select>
+
+`;
 
 <input
   type="email"
