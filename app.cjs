@@ -235,8 +235,8 @@ results.push({
 
         // allow dynamic content to render
         await new Promise(resolve =>
-          setTimeout(resolve, 4000)
-        );
+          setTimeout(resolve, 1500)
+);
 
         const instructorData =
           await page.evaluate(() => {
