@@ -3702,26 +3702,34 @@ function renderCalendar(){
           const extracted =
 
             titleText.match(
-              /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+\d{4}/i
+				/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}\b/i
             );
 
           if(extracted){
 
-            rawDate =
-              extracted[0];
+            const currentYear =
+				  new Date().getFullYear();
+			
+			rawDate =
+			  `${extracted[0]}, ${currentYear}`;
 
           }
 
         }
 
-        if(!rawDate){
-          return false;
-        }
+		if(!rawDate){
+		
+		  console.error(
+		    'NO RAW DATE:',
+		    event
+		  );
+		
+		  return false;
+		
+		}
 
         const safeDate =
-          new Date(
-            rawDate + ' 12:00:00'
-          );
+         new Date(rawDate);
 
         if(
           isNaN(safeDate)
