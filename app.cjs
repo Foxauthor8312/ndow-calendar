@@ -268,8 +268,7 @@ for(const event of events){
       }
     );
 
-    ...
-
+   
         const instructorData =
           await page.evaluate(() => {
 
