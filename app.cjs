@@ -223,45 +223,52 @@ const fs = require('fs');
 
     }
 
-    console.log(
-      'Events found:',
-      events.length
+  console.log(
+  'Events found:',
+  events.length
+);
+
+for(const event of events){
+
+  const isCompleted =
+    event.title.includes(
+      'Event Completed'
     );
 
-    for(const event of events){
+  if(isCompleted){
 
-      console.log(
-        'Checking instructors for:',
-        event.url
-      );
+    console.log(
+      'SKIPPING COMPLETED EVENT:',
+      event.url
+    );
 
-      console.log(
-        'INSTRUCTOR URL:',
-        event.instructorUrl
-      );
+    allEvents.push(event);
 
-      try {
+    continue;
 
-        await page.goto(
-          event.instructorUrl,
-          {
-            waitUntil:
-              'networkidle2',
+  }
 
-            timeout:60000
-          }
-        );
+  console.log(
+    'Checking instructors for:',
+    event.url
+  );
 
-        await page.waitForSelector(
-          'body'
-        );
+  console.log(
+    'INSTRUCTOR URL:',
+    event.instructorUrl
+  );
 
-        await new Promise(resolve =>
-          setTimeout(
-            resolve,
-            4000
-          )
-        );
+  try {
+
+    await page.goto(
+      event.instructorUrl,
+      {
+        waitUntil:'networkidle2',
+        timeout:60000
+      }
+    );
+
+    ...
 
         const instructorData =
           await page.evaluate(() => {
