@@ -2,23 +2,23 @@ name: Update NDOW Events
 
 on:
   schedule:
-
     # Runs nightly around 10 PM Pacific
     - cron: '23 5 * * *'
 
   workflow_dispatch:
 
+concurrency:
+  group: ndow-events
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
-
   update-events:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
@@ -40,12 +40,15 @@ jobs:
 
       - name: Commit updated files
         run: |
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add events.json all-events.txt
 
-          git diff --cached --quiet || git commit -m "Auto-update NDOW events"
+          git diff --cached --quiet && exit 0
 
-          git push || (echo "Retrying push in 30 seconds..." && sleep 30 && git push) || (echo "Final retry in 30 seconds..." && sleep 30 && git push)
+          git commit -m "Auto-update NDOW events"
+
+          git pull --rebase origin main
+
+          git push origin main
