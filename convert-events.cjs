@@ -60,6 +60,23 @@ fs.writeFileSync(
   )
 );
 
+const event4567Deduped =
+  dedupedEvents.find(
+    e => e.id === '4567'
+  );
+
+console.log(
+  'EVENT 4567 IN DEDUPED ARRAY:'
+);
+
+console.log(
+  JSON.stringify(
+    event4567Deduped,
+    null,
+    2
+  )
+);
+
 const written =
   JSON.parse(
     fs.readFileSync(
@@ -68,7 +85,7 @@ const written =
     )
   );
 
-const event4567 =
+const event4567Written =
   written.events.find(
     e => e.id === '4567'
   );
@@ -79,14 +96,8 @@ console.log(
 
 console.log(
   JSON.stringify(
-    event4567,
+    event4567Written,
     null,
     2
   )
-);
-
-console.log(
-  'Created events.json with',
-  dedupedEvents.length,
-  'events'
 );
