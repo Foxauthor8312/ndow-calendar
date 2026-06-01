@@ -266,6 +266,18 @@ if(timeMatch){
       .replace(/\s+/g,' ')
       .trim();
 
+  const dateMatch =
+    event.time.match(
+      /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
+    );
+
+  if(dateMatch){
+
+    event.date =
+      dateMatch[1];
+
+  }
+
 }
 
 if(instructorMatch){
