@@ -2620,6 +2620,17 @@ const category =
 
 }
 
+console.log(
+  'GEO FAILED:',
+  {
+    id: event.id,
+    title: event.title,
+    location: cleanedLocation,
+    zip,
+    region
+  }
+);
+
 systemStatus
   .geoFailedEvents++;
 
