@@ -4534,18 +4534,16 @@ modalBody.innerHTML = `
 
 }
 
-function requestInstructor(eventUrl){
-
+async function requestInstructor(eventUrl){
 
   const event =
-    events.find(e => e.url === eventUrl);
-
-  if(!event) return;
-
-  const subject =
-    encodeURIComponent(
-      'Instructor Request - ' + event.title
+    events.find(
+      e => e.url === eventUrl
     );
+
+  if(!event){
+    return;
+  }
 
   const username =
     localStorage.getItem(
@@ -4555,45 +4553,12 @@ function requestInstructor(eventUrl){
   const email =
     localStorage.getItem(
       'email'
-    ) || 'Not provided';
+    ) || '';
 
   const phone =
     localStorage.getItem(
       'phone'
-    ) || 'Not provided';
-
-  const body =
-    encodeURIComponent(
-
-`Hello,
-
-I would like to be added as an instructor for this event.
-
-Username:
-${username}
-
-Email:
-${email}
-
-Phone:
-${phone}
-
-Event:
-${event.title}
-
-Date:
-${event.date}
-
-Location:
-${event.location}
-
-${event.url}
-
-Thank you.
-
-This message is intended only for the named recipient. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.`
-
-    );
+    ) || '';
 
   let recipient =
     document.getElementById(
@@ -4609,8 +4574,85 @@ This message is intended only for the named recipient. If you are not the intend
 
   }
 
-  window.location.href =
-    `mailto:${recipient}?subject=${subject}&body=${body}`;
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+  try {
+
+    const response =
+      await fetch(
+
+'https://ndow-calendar-server.onrender.com/api/instructor-request',
+
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+
+            applicant_name:
+              username,
+
+            applicant_email:
+              email,
+
+            applicant_phone:
+              phone,
+
+            coordinator_email:
+              recipient,
+
+            event_title:
+              event.title,
+
+            event_date:
+              event.date,
+
+            event_location:
+              event.location,
+
+            event_url:
+              event.url
+
+          })
+
+        }
+
+      );
+
+    const result =
+      await response.json();
+
+    if(!result.success){
+
+      throw new Error(
+        'Request failed'
+      );
+
+    }
+
+    alert(
+      'Instructor request submitted successfully.'
+    );
+
+  } catch(err){
+
+    console.error(err);
+
+    alert(
+      'Failed to submit instructor request.'
+    );
+
+  }
 
 }
 
