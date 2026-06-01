@@ -4447,34 +4447,39 @@ modalBody.innerHTML = `
       onchange="toggleCustomEmail()"
     >
 
-      ${categoryEmails.map(contact => {
+     ${categoryEmails.map(contact => {
 
-        const selected =
+  const selected =
 
-          contact.categories &&
-          contact.categories.includes(
-            event.category
-          )
+    contact.categories &&
+    contact.categories.includes(
+      event.category
+    )
 
-            ? 'selected'
+      ? 'selected'
 
-            : '';
+      : '';
 
-        return `
+  return `
 
-          <option
-            value="${contact.email}"
-            ${selected}
-          >
+    <option
+      value="${contact.email}"
+      ${selected}
+    >
 
-            ${contact.title}
+      ${contact.title}
 
-          </option>
+    </option>
 
-        `;
+  `;
 
-      }).join('')}
+}).join('')}
 
+<option value="custom">
+
+  Custom / Other
+
+</option>
     </select>
 
     <input
