@@ -4534,6 +4534,29 @@ modalBody.innerHTML = `
 
 }
 
+function toggleCustomEmail(){
+
+  const select =
+    document.getElementById(
+      'contactSelect'
+    );
+
+  const custom =
+    document.getElementById(
+      'customEmail'
+    );
+
+  if(!select || !custom){
+    return;
+  }
+
+  custom.style.display =
+    select.value === 'custom'
+      ? 'block'
+      : 'none';
+
+}
+	
 async function requestInstructor(eventUrl){
 
   const event =
