@@ -230,71 +230,71 @@ const fs = require('fs');
 
 for(const event of events){
 
-  const isCompleted =
-    event.title.includes(
-      'Event Completed'
-    );
+  const text =
+  event.title || '';
 
-  if(isCompleted){
+const locationMatch =
+  text.match(
+    /Location:\s*([\s\S]*?)(?:\s*Taught by:|\s*Date\s*&\s*Times:)/i
+  );
+
+const timeMatch =
+  text.match(
+    /Date\s*&\s*Times:\s*([\s\S]*?)\s*View$/i
+  );
+
+const instructorMatch =
+  text.match(
+    /Taught by:\s*([\s\S]*?)(?:\s*Date\s*&\s*Times:|$)/i
+  );
+
+if(locationMatch){
+
+  event.location =
+    locationMatch[1]
+      .replace(/\n+/g,' ')
+      .replace(/\s+/g,' ')
+      .trim();
+
+}
+
+if(timeMatch){
+
+  event.time =
+    timeMatch[1]
+      .replace(/\n+/g,' ')
+      .replace(/\s+/g,' ')
+      .trim();
+
+}
+
+if(instructorMatch){
+
+  event.instructors = [
+    {
+      name:
+        instructorMatch[1]
+          .replace(/\n+/g,' ')
+          .replace(/\s+/g,' ')
+          .trim(),
+      role:'PRIMARY',
+      email:''
+    }
+  ];
+
+}
+
+const isCompleted =
+  event.title.includes(
+    'Event Completed'
+  );
+
+if(isCompleted){
 
   console.log(
     'SKIPPING INSTRUCTOR PAGE:',
     event.url
   );
-
-  const text =
-    event.title || '';
-
-  const locationMatch =
-    text.match(
-      /Location:\s*([\s\S]*?)\s*Taught by:/i
-    );
-
-  const timeMatch =
-    text.match(
-      /Date\s*&\s*Times:\s*([\s\S]*?)\s*View$/i
-    );
-
-  const instructorMatch =
-    text.match(
-      /Taught by:\s*([\s\S]*?)\s*Date\s*&\s*Times:/i
-    );
-
-  if(locationMatch){
-
-    event.location =
-      locationMatch[1]
-        .replace(/\n+/g,' ')
-        .replace(/\s+/g,' ')
-        .trim();
-
-  }
-
-  if(timeMatch){
-
-    event.time =
-      timeMatch[1]
-        .replace(/\n+/g,' ')
-        .replace(/\s+/g,' ')
-        .trim();
-
-  }
-
-  if(instructorMatch){
-
-    event.instructors = [
-      {
-        name:
-          instructorMatch[1]
-            .replace(/\n+/g,' ')
-            .replace(/\s+/g,' ')
-            .trim(),
-        role:'PRIMARY',
-        email:''
-      }
-    ];
-
-  }
 
   allEvents.push(event);
 
