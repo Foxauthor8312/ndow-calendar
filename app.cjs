@@ -237,16 +237,70 @@ for(const event of events){
 
   if(isCompleted){
 
-    console.log(
-      'SKIPPING COMPLETED EVENT:',
-      event.url
+  console.log(
+    'SKIPPING INSTRUCTOR PAGE:',
+    event.url
+  );
+
+  const text =
+    event.title || '';
+
+  const locationMatch =
+    text.match(
+      /Location:\s*([\s\S]*?)\s*Taught by:/i
     );
 
-    allEvents.push(event);
+  const timeMatch =
+    text.match(
+      /Date\s*&\s*Times:\s*([\s\S]*?)\s*View$/i
+    );
 
-    continue;
+  const instructorMatch =
+    text.match(
+      /Taught by:\s*([\s\S]*?)\s*Date\s*&\s*Times:/i
+    );
+
+  if(locationMatch){
+
+    event.location =
+      locationMatch[1]
+        .replace(/\n+/g,' ')
+        .replace(/\s+/g,' ')
+        .trim();
 
   }
+
+  if(timeMatch){
+
+    event.time =
+      timeMatch[1]
+        .replace(/\n+/g,' ')
+        .replace(/\s+/g,' ')
+        .trim();
+
+  }
+
+  if(instructorMatch){
+
+    event.instructors = [
+      {
+        name:
+          instructorMatch[1]
+            .replace(/\n+/g,' ')
+            .replace(/\s+/g,' ')
+            .trim(),
+        role:'PRIMARY',
+        email:''
+      }
+    ];
+
+  }
+
+  allEvents.push(event);
+
+  continue;
+
+}
 
   console.log(
     'Checking instructors for:',
