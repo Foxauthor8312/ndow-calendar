@@ -2606,13 +2606,22 @@ const category =
 
  } else {
 
-  systemStatus
-    .geoFailedEvents++;
+ if(event.id === '4567'){
 
   console.log(
-    'ADDING GEO WARNING:',
-    event.title
+    'GEO FAILURE CHECK',
+    {
+      eventRegion: event.region,
+      mappedRegion: region,
+      geo,
+      zip
+    }
   );
+
+}
+
+systemStatus
+  .geoFailedEvents++;
 
   systemStatus.warnings.push({
 
