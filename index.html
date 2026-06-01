@@ -2408,6 +2408,26 @@ const rawLocation =
     .replace(/\s+/g,' ')
     .trim();
 
+if(
+  event.id === '4567'
+){
+
+  console.log(
+    '4567 LOCATION IN MAP:',
+    JSON.stringify(
+      event.location
+    )
+  );
+
+  console.log(
+    '4567 RAW LOCATION:',
+    JSON.stringify(
+      rawLocation
+    )
+  );
+
+}
+
 const zipMatch =
   rawLocation.match(
     /\b\d{5}(?:-\d{4})?\b/
