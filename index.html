@@ -2664,7 +2664,7 @@ const finalDate =
       : ''
   );
 
-return {
+const mappedEvent = {
 
   ...event,
 
@@ -2675,13 +2675,13 @@ return {
     finalDate,
 
   time:
-    event.time || '',
+    event.time,
 
   location:
-    event.location || '',
+    event.location,
 
   instructors:
-    event.instructors || [],
+    event.instructors,
 
   zip,
 
@@ -2697,6 +2697,19 @@ return {
   region
 
 };
+
+if(
+  event.id === '4567'
+){
+
+  console.log(
+    'MAPPED 4567:',
+    mappedEvent
+  );
+
+}
+
+return mappedEvent;
 
     } catch(err){
 
