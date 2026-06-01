@@ -42,7 +42,6 @@ const dedupedEvents =
 
 fs.writeFileSync(
   './events.json',
-
   JSON.stringify(
     {
       lastUpdated:
@@ -55,9 +54,32 @@ fs.writeFileSync(
 
       events:
         dedupedEvents
-
     },
+    null,
+    2
+  )
+);
 
+const written =
+  JSON.parse(
+    fs.readFileSync(
+      './events.json',
+      'utf8'
+    )
+  );
+
+const event4567 =
+  written.events.find(
+    e => e.id === '4567'
+  );
+
+console.log(
+  'EVENT 4567 AFTER WRITE:'
+);
+
+console.log(
+  JSON.stringify(
+    event4567,
     null,
     2
   )
