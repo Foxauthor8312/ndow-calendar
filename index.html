@@ -2307,7 +2307,17 @@ async function loadEvents(){
       await response.json();
 
 	events = data.events || [];
+	  
+    const event4513 =
+     events.find(
+     e => e.id === '4513'
+    );
 
+    console.log(
+     '4513 FROM SERVER:',
+     event4513
+   );
+	  
 	const originalEventCount =
 	  events.length;
 	
