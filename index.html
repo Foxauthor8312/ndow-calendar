@@ -7008,7 +7008,11 @@ function openEditUserModal(user){
   document.getElementById(
     'editPhone'
   ).value = user.phone || '';
-
+ 
+  document.getElementById(
+    'editNdowId'
+  ).value = user.ndow_id || '';
+	
   document.getElementById(
     'editRole'
   ).value = user.role || 'user';
@@ -7050,42 +7054,48 @@ async function saveUserEdits(){
 
   const payload = {
 
-    originalUsername:
-      document.getElementById(
-        'editOriginalUsername'
-      ).value,
+  originalUsername:
+    document.getElementById(
+      'editOriginalUsername'
+    ).value,
 
-    username:
-      document.getElementById(
-        'editUsername'
-      ).value.trim(),
+  username:
+    document.getElementById(
+      'editUsername'
+    ).value.trim(),
 
-    email:
-      document.getElementById(
-        'editEmail'
-      ).value.trim(),
+  email:
+    document.getElementById(
+      'editEmail'
+    ).value.trim(),
 
-    phone:
-      document.getElementById(
-        'editPhone'
-      ).value.trim(),
+  phone:
+    document.getElementById(
+      'editPhone'
+    ).value.trim(),
 
-    role:
-      document.getElementById(
-        'editRole'
-      ).value,
+  ndow_id:
+    document.getElementById(
+      'editNdowId'
+    ).value.trim(),
 
-    notify_email:
-      document.getElementById(
-        'editNotifyEmail'
-      ).checked,
+  role:
+    document.getElementById(
+      'editRole'
+    ).value,
 
-    notify_sms:
-      document.getElementById(
-        'editNotifySms'
-      ).checked
+  notify_email:
+    document.getElementById(
+      'editNotifyEmail'
+    ).checked,
 
-  };
+  notify_sms:
+    document.getElementById(
+      'editNotifySms'
+    ).checked
+
+};
+	
 const currentUser =
   JSON.parse(
     localStorage.getItem('user')
