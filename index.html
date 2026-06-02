@@ -5485,15 +5485,94 @@ async function loadInstructorRequests(){
     return;
   }
 
-  list.innerHTML = `
-    <div style="
-      padding:12px;
-      color:#374151;
-    ">
-      Instructor request loader
-      not yet implemented.
-    </div>
-  `;
+  list.innerHTML =
+    '<div style="padding:12px;">Loading...</div>';
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+   const response =
+    await fetch(
+    'https://ndow-calendar-server.onrender.com/api/admin/instructor-requests',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(
+      !data.success ||
+      !data.requests
+    ){
+
+      list.innerHTML =
+        '<div style="padding:12px;">No requests found.</div>';
+
+      return;
+
+    }
+
+    list.innerHTML =
+      data.requests.map(r => `
+
+        <div style="
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          padding:10px;
+          margin-bottom:10px;
+          background:#fff;
+        ">
+
+          <div>
+            <strong>
+              ${r.event_title}
+            </strong>
+          </div>
+
+          <div>
+            ${r.event_date}
+          </div>
+
+          <div>
+            ${r.event_location}
+          </div>
+
+          <div>
+            ${r.applicant_email}
+          </div>
+
+          <div>
+            ${r.applicant_phone}
+          </div>
+
+          <div>
+            Status:
+            <strong>
+              ${r.status}
+            </strong>
+          </div>
+
+        </div>
+
+      `).join('');
+
+  }catch(err){
+
+    console.error(err);
+
+    list.innerHTML =
+      '<div style="padding:12px;color:red;">Failed to load requests.</div>';
+
+  }
 
 }
 	
