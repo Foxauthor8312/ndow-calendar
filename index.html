@@ -1104,6 +1104,32 @@ body{
 #loginScreen{
   transition:opacity .15s ease;
 }
+
+.adminStatBadge{
+  padding:6px 12px;
+  border-radius:999px;
+  background:#e5e7eb;
+  font-weight:600;
+  font-size:12px;
+}
+
+.adminStatBadge.pending{
+  background:#fef3c7;
+}
+
+.adminStatBadge.approved{
+  background:#dcfce7;
+}
+
+.adminStatBadge.rejected{
+  background:#fee2e2;
+}
+
+.adminStatBadge.waitlisted{
+  background:#dbeafe;
+}
+
+</style>	
 	
 </style>
 </head>
@@ -5521,49 +5547,151 @@ async function loadInstructorRequests(){
 
     }
 
-    list.innerHTML =
-      data.requests.map(r => `
+    const pending =
+  data.requests.filter(
+    r => (r.status || '').toLowerCase() === 'pending'
+  ).length;
+
+const approved =
+  data.requests.filter(
+    r => (r.status || '').toLowerCase() === 'approved'
+  ).length;
+
+const rejected =
+  data.requests.filter(
+    r => (r.status || '').toLowerCase() === 'rejected'
+  ).length;
+
+const waitlisted =
+  data.requests.filter(
+    r => (r.status || '').toLowerCase() === 'waitlisted'
+  ).length;
+
+list.innerHTML = `
+
+  <div style="
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+  ">
+
+    <div class="adminStatBadge">
+      All ${data.requests.length}
+    </div>
+
+    <div class="adminStatBadge pending">
+      Pending ${pending}
+    </div>
+
+    <div class="adminStatBadge approved">
+      Approved ${approved}
+    </div>
+
+    <div class="adminStatBadge rejected">
+      Rejected ${rejected}
+    </div>
+
+    <div class="adminStatBadge waitlisted">
+      Waitlisted ${waitlisted}
+    </div>
+
+  </div>
+
+  ${data.requests.map(r => {
+
+    const status =
+      (r.status || 'Pending');
+
+    let badgeColor =
+      '#f59e0b';
+
+    let borderColor =
+      '#f59e0b';
+
+    if(
+      status.toLowerCase() ===
+      'approved'
+    ){
+      badgeColor = '#16a34a';
+      borderColor = '#16a34a';
+    }
+
+    if(
+      status.toLowerCase() ===
+      'rejected'
+    ){
+      badgeColor = '#dc2626';
+      borderColor = '#dc2626';
+    }
+
+    if(
+      status.toLowerCase() ===
+      'waitlisted'
+    ){
+      badgeColor = '#2563eb';
+      borderColor = '#2563eb';
+    }
+
+    return `
+
+      <div style="
+        border-left:6px solid ${borderColor};
+        border-radius:8px;
+        padding:12px;
+        margin-bottom:10px;
+        background:#fff;
+        box-shadow:
+          0 1px 3px rgba(0,0,0,.08);
+      ">
 
         <div style="
-          border:1px solid #d1d5db;
-          border-radius:8px;
-          padding:10px;
-          margin-bottom:10px;
-          background:#fff;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          margin-bottom:8px;
         ">
 
-          <div>
-            <strong>
-              ${r.event_title}
-            </strong>
-          </div>
+          <strong>
+            ${r.event_title}
+          </strong>
 
-          <div>
-            ${r.event_date}
-          </div>
-
-          <div>
-            ${r.event_location}
-          </div>
-
-          <div>
-            ${r.applicant_email}
-          </div>
-
-          <div>
-            ${r.applicant_phone}
-          </div>
-
-          <div>
-            Status:
-            <strong>
-              ${r.status}
-            </strong>
-          </div>
+          <span style="
+            background:${badgeColor};
+            color:white;
+            padding:4px 10px;
+            border-radius:999px;
+            font-size:11px;
+            font-weight:700;
+          ">
+            ${status}
+          </span>
 
         </div>
 
-      `).join('');
+        <div>
+          📅 ${r.event_date || ''}
+        </div>
+
+        <div>
+          📍 ${r.event_location || ''}
+        </div>
+
+        <div>
+          ✉️ ${r.applicant_email || ''}
+        </div>
+
+        <div>
+          📞 ${r.applicant_phone || ''}
+        </div>
+
+      </div>
+
+    `;
+
+  }).join('')}
+
+`;
 
   }catch(err){
 
