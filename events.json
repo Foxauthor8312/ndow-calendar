@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-06-01T11:05:58.206Z",
+  "lastUpdated": "2026-06-02T09:47:49.864Z",
   "metrics": {
-    "finalEvents": 313
+    "finalEvents": 336
   },
   "events": [
     {
@@ -28,7 +28,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -57,7 +57,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -86,7 +86,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -110,7 +110,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -139,7 +139,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -168,7 +168,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -197,7 +197,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -226,7 +226,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -255,7 +255,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:18.318Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -284,7 +284,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -313,7 +313,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -342,7 +342,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -366,7 +366,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -395,7 +395,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -424,7 +424,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -453,7 +453,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -482,7 +482,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -511,7 +511,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -540,7 +540,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -569,7 +569,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -598,7 +598,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -627,7 +627,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.958Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -656,7 +656,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -685,7 +685,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -714,7 +714,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -743,7 +743,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -772,7 +772,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:18.318Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -801,7 +801,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -830,7 +830,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -859,7 +859,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -888,7 +888,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -917,7 +917,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -946,7 +946,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -975,7 +975,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1004,7 +1004,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1028,7 +1028,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1052,7 +1052,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1076,7 +1076,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1100,7 +1100,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1124,7 +1124,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1148,7 +1148,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1172,7 +1172,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1201,7 +1201,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1210,22 +1210,27 @@
       "id": "4437",
       "sourceId": "4437",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4437",
-      "title": "May 31 Hunter Education ■ Events Results Pending 25 of 30 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Florentino Almazan Date & Times: May 31, 2026 8:00AM - 5:00PM PDT View",
+      "title": "May 31 Hunter Education ■ Event Completed 25 of 30 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Florentino Almazan Date & Times: May 31, 2026 8:00AM - 5:00PM PDT View",
       "category": "Event",
       "date": "2026-05-31",
       "time": "May 31, 2026 8:00AM - 5:00PM PDT",
       "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
-      "description": "May 31 Hunter Education ■ Events Results Pending 25 of 30 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Florentino Almazan Date & Times: May 31, 2026 8:00AM - 5:00PM PDT View - Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "description": "May 31 Hunter Education ■ Event Completed 25 of 30 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Florentino Almazan Date & Times: May 31, 2026 8:00AM - 5:00PM PDT View - Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4437",
       "instructors": [
         {
           "name": "Florentino Almazan",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1254,7 +1259,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1263,22 +1268,27 @@
       "id": "4439",
       "sourceId": "4439",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4439",
-      "title": "May 29 Introduction to Crossbows ■ Events Results Pending Location: Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: May 31, 2026 8:00AM - 1:00PM PDT View",
+      "title": "May 29 Introduction to Crossbows ■ Event Completed Location: Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: May 31, 2026 8:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-31",
       "time": "May 31, 2026 8:00AM - 1:00PM PDT",
       "location": "Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131",
-      "description": "May 29 Introduction to Crossbows ■ Events Results Pending Location: Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: May 31, 2026 8:00AM - 1:00PM PDT View - Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131",
+      "description": "May 29 Introduction to Crossbows ■ Event Completed Location: Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: May 31, 2026 8:00AM - 1:00PM PDT View - Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4439",
       "instructors": [
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1307,7 +1317,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1336,7 +1346,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1365,7 +1375,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1394,7 +1404,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1423,7 +1433,36 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4445",
+      "sourceId": "4445",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4445",
+      "title": "Mar 22 Hunter Education ■ Event Completed 2 of 25 seats remaining Location: Humboldt Shooting Range Winnemucca Mountain Winnemucca, NV 89445 Taught by: LARRY C ALLEN Date & Times: Mar 22, 2026 8:00AM - 5:00PM PDT View",
+      "category": "Event",
+      "date": "2026-03-22",
+      "time": "Mar 22, 2026 8:00AM - 5:00PM PDT",
+      "location": "Humboldt Shooting Range Winnemucca Mountain Winnemucca, NV 89445",
+      "description": "Mar 22 Hunter Education ■ Event Completed 2 of 25 seats remaining Location: Humboldt Shooting Range Winnemucca Mountain Winnemucca, NV 89445 Taught by: LARRY C ALLEN Date & Times: Mar 22, 2026 8:00AM - 5:00PM PDT View - Humboldt Shooting Range Winnemucca Mountain Winnemucca, NV 89445",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4445",
+      "instructors": [
+        {
+          "name": "LARRY C ALLEN",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1452,7 +1491,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1481,7 +1520,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1510,7 +1549,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1539,7 +1578,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1568,7 +1607,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1597,7 +1636,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1626,7 +1665,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1650,7 +1689,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1679,7 +1718,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1703,7 +1742,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1732,7 +1771,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1761,7 +1800,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1790,7 +1829,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1819,7 +1858,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1848,7 +1887,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1877,7 +1916,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1906,7 +1945,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1935,7 +1974,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1964,7 +2003,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1993,7 +2032,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2022,7 +2061,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2051,7 +2090,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2075,7 +2114,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2104,7 +2143,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2133,7 +2172,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2157,7 +2196,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2186,7 +2225,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:18.318Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2215,7 +2254,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2244,7 +2283,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2273,7 +2312,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2312,7 +2351,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2341,7 +2380,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2370,7 +2409,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2399,7 +2438,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2423,7 +2462,36 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4483",
+      "sourceId": "4483",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4483",
+      "title": "Apr 25 Hunter Education ■ Event Completed Location: Verdi Community Library & Nature Center 270 Bridge St Verdi, NV 89439 Taught by: NICHOLAS R MAUS Date & Times: Apr 25, 2026 8:00AM - 5:00PM PDT View",
+      "category": "Event",
+      "date": "2026-04-25",
+      "time": "Apr 25, 2026 8:00AM - 5:00PM PDT",
+      "location": "Verdi Community Library & Nature Center 270 Bridge St Verdi, NV 89439",
+      "description": "Apr 25 Hunter Education ■ Event Completed Location: Verdi Community Library & Nature Center 270 Bridge St Verdi, NV 89439 Taught by: NICHOLAS R MAUS Date & Times: Apr 25, 2026 8:00AM - 5:00PM PDT View - Verdi Community Library & Nature Center 270 Bridge St Verdi, NV 89439",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4483",
+      "instructors": [
+        {
+          "name": "NICHOLAS R MAUS",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:45:18.318Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2452,7 +2520,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2481,7 +2549,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2510,7 +2578,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2534,7 +2602,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2563,7 +2631,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2592,7 +2660,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2621,7 +2689,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2650,7 +2718,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2679,7 +2747,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2708,7 +2776,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2737,7 +2805,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2766,7 +2834,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2795,7 +2863,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2824,7 +2892,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2848,7 +2916,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2877,7 +2945,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2906,7 +2974,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2935,7 +3003,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2959,7 +3027,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2988,7 +3056,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3017,7 +3085,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3046,7 +3114,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3075,7 +3143,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3104,7 +3172,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3133,7 +3201,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3162,7 +3230,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3191,7 +3259,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3220,7 +3288,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3249,7 +3317,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3273,7 +3341,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3382,7 +3450,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3411,7 +3479,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3440,7 +3508,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3469,7 +3537,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3498,7 +3566,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3527,7 +3595,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3556,7 +3624,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3585,7 +3653,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3614,7 +3682,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3638,7 +3706,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3662,7 +3730,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3691,7 +3759,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3720,7 +3788,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3749,7 +3817,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3778,7 +3846,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3807,7 +3875,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3836,7 +3904,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3865,7 +3933,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3894,7 +3962,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3923,7 +3991,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3952,7 +4020,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3981,7 +4049,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4010,7 +4078,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4039,7 +4107,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4068,7 +4136,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4097,7 +4165,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4126,7 +4194,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4155,7 +4223,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4179,7 +4247,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4203,7 +4271,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4232,7 +4300,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4261,7 +4329,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4290,7 +4358,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4314,7 +4382,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4343,7 +4411,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4372,7 +4440,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4401,7 +4469,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4430,7 +4498,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4459,7 +4527,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4483,7 +4551,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4507,7 +4575,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4531,7 +4599,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4560,7 +4628,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4589,7 +4657,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4613,7 +4681,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4622,22 +4690,27 @@
       "id": "4559",
       "sourceId": "4559",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4559",
-      "title": "May 29 Ruby Valley School - Fly Fishing Demo PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833 Taught by: STEVEN C ALEXANDER Date & Times: May 29, 2026 8:00AM - 12:00PM PDT View",
+      "title": "May 29 Ruby Valley School - Fly Fishing Demo PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833 Taught by: STEVEN C ALEXANDER Date & Times: May 29, 2026 8:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-05-29",
       "time": "May 29, 2026 8:00AM - 12:00PM PDT",
       "location": "Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833",
-      "description": "May 29 Ruby Valley School - Fly Fishing Demo PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833 Taught by: STEVEN C ALEXANDER Date & Times: May 29, 2026 8:00AM - 12:00PM PDT View - Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833",
+      "description": "May 29 Ruby Valley School - Fly Fishing Demo PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833 Taught by: STEVEN C ALEXANDER Date & Times: May 29, 2026 8:00AM - 12:00PM PDT View - Ruby Lake National Wildlife Refuge Ruby Valley Ruby Valley, NV 89833",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4559",
       "instructors": [
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4666,7 +4739,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4695,7 +4768,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4724,7 +4797,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4753,7 +4826,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4782,7 +4855,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4811,7 +4884,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4840,7 +4913,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4869,7 +4942,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4898,7 +4971,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4927,7 +5000,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4951,7 +5024,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4980,7 +5053,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5009,7 +5082,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.957Z",
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5033,7 +5106,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5057,7 +5130,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5081,7 +5154,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5105,7 +5178,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5129,7 +5202,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5153,7 +5226,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5182,7 +5255,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5211,7 +5284,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5235,7 +5308,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5259,7 +5332,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5283,7 +5356,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5312,7 +5385,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5336,7 +5409,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5395,7 +5468,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5424,7 +5497,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5453,7 +5526,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5482,7 +5555,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5511,7 +5584,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5540,7 +5613,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5569,7 +5642,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5598,7 +5671,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.261Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5627,7 +5700,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5656,7 +5729,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:18.958Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5680,7 +5753,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5704,7 +5777,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5728,7 +5801,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5752,7 +5825,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5781,7 +5854,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5810,7 +5883,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5839,7 +5912,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5863,7 +5936,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5892,7 +5965,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5921,7 +5994,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5950,7 +6023,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.815Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5979,7 +6052,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:18.318Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6008,7 +6081,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6037,7 +6110,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6066,7 +6139,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6090,7 +6163,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6114,7 +6187,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6143,7 +6216,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6172,7 +6245,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6201,7 +6274,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6225,7 +6298,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6254,7 +6327,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6283,7 +6356,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6312,7 +6385,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6341,7 +6414,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6370,7 +6443,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6379,12 +6452,12 @@
       "id": "4623",
       "sourceId": "4623",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4623",
-      "title": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Registration Open 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View",
+      "title": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Registration Closed 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-06-02",
       "time": "Jun 02, 2026 10:00AM - 12:00PM PDT",
       "location": "Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
-      "description": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Registration Open 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View - Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
+      "description": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Registration Closed 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View - Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4623",
       "instructors": [
         {
@@ -6409,7 +6482,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6438,7 +6511,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6467,7 +6540,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6491,7 +6564,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6515,7 +6588,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6544,7 +6617,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6573,7 +6646,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6597,7 +6670,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6621,7 +6694,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6645,7 +6718,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6674,7 +6747,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6698,7 +6771,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6707,12 +6780,12 @@
       "id": "4638",
       "sourceId": "4638",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4638",
-      "title": "Jul 9 Intro to Shooting - .22 Rifle ■ Registration Closed 12 of 12 seats remaining Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View",
+      "title": "Jul 9 Intro to Shooting - .22 Rifle ■ Registration Open 1 of 12 seats remaining Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View",
       "category": "Event",
       "date": "2026-07-09",
       "time": "Jul 09, 2026 4:30PM - 6:30PM PDT",
       "location": "Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801",
-      "description": "Jul 9 Intro to Shooting - .22 Rifle ■ Registration Closed 12 of 12 seats remaining Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View - Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801",
+      "description": "Jul 9 Intro to Shooting - .22 Rifle ■ Registration Open 1 of 12 seats remaining Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View - Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4638",
       "instructors": [
         {
@@ -6722,7 +6795,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6746,7 +6819,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6775,7 +6848,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6799,7 +6872,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6823,7 +6896,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6852,7 +6925,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6901,7 +6974,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6925,7 +6998,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6994,7 +7067,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7023,7 +7096,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7052,7 +7125,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7076,7 +7149,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7100,7 +7173,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7124,7 +7197,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7148,7 +7221,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7172,7 +7245,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7196,7 +7269,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7220,7 +7293,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7244,7 +7317,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7268,7 +7341,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7292,7 +7365,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7321,7 +7394,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7345,7 +7418,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7394,7 +7467,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7403,12 +7476,12 @@
       "id": "4662",
       "sourceId": "4662",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4662",
-      "title": "Jun 13 Free Fishing Day 2026 - Boulder City ■ Registration Open 261 of 300 seats remaining Location: Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 13, 2026 7:00AM - 10:00AM PDT View",
+      "title": "Jun 13 Free Fishing Day 2026 - Boulder City ■ Registration Open 254 of 300 seats remaining Location: Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 13, 2026 7:00AM - 10:00AM PDT View",
       "category": "Event",
       "date": "2026-06-13",
       "time": "Jun 13, 2026 7:00AM - 10:00AM PDT",
       "location": "Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005",
-      "description": "Jun 13 Free Fishing Day 2026 - Boulder City ■ Registration Open 261 of 300 seats remaining Location: Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 13, 2026 7:00AM - 10:00AM PDT View - Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005",
+      "description": "Jun 13 Free Fishing Day 2026 - Boulder City ■ Registration Open 254 of 300 seats remaining Location: Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 13, 2026 7:00AM - 10:00AM PDT View - Boulder City Pond (Veterans Memorial Park) 1650 Buchannan Blvd. Boulder City, NV 89005",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4662",
       "instructors": [
         {
@@ -7442,6 +7515,16 @@
           "enrichment": {}
         },
         {
+          "name": "Jeanette Bennett",
+          "role": "ASSISTANT",
+          "email": "dena.minnie70@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
           "name": "Abbey Czarnecki",
           "role": "PRIMARY",
           "email": "abbey.czar@gmail.com",
@@ -7453,7 +7536,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7482,7 +7565,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7506,7 +7589,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7530,7 +7613,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7559,7 +7642,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7608,7 +7691,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7617,12 +7700,12 @@
       "id": "4668",
       "sourceId": "4668",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4668",
-      "title": "Jun 6 Kids Carp Derby - Lahontan Reservoir ■ Registration Open 168 of 200 seats remaining Location: Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406 Taught by: Jan A Nemec Date & Times: Jun 06, 2026 8:00AM - 12:00PM PDT View",
+      "title": "Jun 6 Kids Carp Derby - Lahontan Reservoir ■ Registration Open 159 of 200 seats remaining Location: Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406 Taught by: Jan A Nemec Date & Times: Jun 06, 2026 8:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-06-06",
       "time": "Jun 06, 2026 8:00AM - 12:00PM PDT",
       "location": "Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406",
-      "description": "Jun 6 Kids Carp Derby - Lahontan Reservoir ■ Registration Open 168 of 200 seats remaining Location: Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406 Taught by: Jan A Nemec Date & Times: Jun 06, 2026 8:00AM - 12:00PM PDT View - Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406",
+      "description": "Jun 6 Kids Carp Derby - Lahontan Reservoir ■ Registration Open 159 of 200 seats remaining Location: Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406 Taught by: Jan A Nemec Date & Times: Jun 06, 2026 8:00AM - 12:00PM PDT View - Lahontan Reservoir - Churchill County Day Use Area 16856 Karen Rd Fallon, NV 89406",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4668",
       "instructors": [
         {
@@ -7632,7 +7715,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7656,7 +7739,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7680,7 +7763,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7704,7 +7787,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7733,7 +7816,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7757,7 +7840,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7781,7 +7864,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7820,7 +7903,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7844,7 +7927,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7868,7 +7951,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7892,7 +7975,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7916,7 +7999,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7940,7 +8023,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7964,7 +8047,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7988,7 +8071,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8012,7 +8095,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8036,7 +8119,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:05:42.543Z",
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8060,7 +8143,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8084,7 +8167,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8108,7 +8191,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8132,7 +8215,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.490Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8156,7 +8239,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8165,12 +8248,12 @@
       "id": "4690",
       "sourceId": "4690",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4690",
-      "title": "Jun 13 Reno Kids Free Fishing Day - Idlewild Park ■ Registration Open 150 of 150 seats remaining Location: Idlewild Park 2055 Idlewild Dr Reno, NV 89509 Taught by: Jan A Nemec Date & Times: Jun 13, 2026 8:00AM - 12:00PM PDT View",
+      "title": "Jun 13 Reno Kids Free Fishing Day - Idlewild Park ■ Registration Open 149 of 150 seats remaining Location: Idlewild Park 2055 Idlewild Dr Reno, NV 89509 Taught by: Jan A Nemec Date & Times: Jun 13, 2026 8:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-06-13",
       "time": "Jun 13, 2026 8:00AM - 12:00PM PDT",
       "location": "Idlewild Park 2055 Idlewild Dr Reno, NV 89509",
-      "description": "Jun 13 Reno Kids Free Fishing Day - Idlewild Park ■ Registration Open 150 of 150 seats remaining Location: Idlewild Park 2055 Idlewild Dr Reno, NV 89509 Taught by: Jan A Nemec Date & Times: Jun 13, 2026 8:00AM - 12:00PM PDT View - Idlewild Park 2055 Idlewild Dr Reno, NV 89509",
+      "description": "Jun 13 Reno Kids Free Fishing Day - Idlewild Park ■ Registration Open 149 of 150 seats remaining Location: Idlewild Park 2055 Idlewild Dr Reno, NV 89509 Taught by: Jan A Nemec Date & Times: Jun 13, 2026 8:00AM - 12:00PM PDT View - Idlewild Park 2055 Idlewild Dr Reno, NV 89509",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4690",
       "instructors": [
         {
@@ -8180,7 +8263,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8204,7 +8287,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8228,7 +8311,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8237,22 +8320,27 @@
       "id": "4693",
       "sourceId": "4693",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4693",
-      "title": "May 4 KYN Brown - L1 - King UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 9:00AM - 10:00AM PDT View",
+      "title": "May 4 KYN Brown - L1 - King UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 9:00AM - 10:00AM PDT View",
       "category": "Event",
       "date": "2026-05-04",
       "time": "May 04, 2026 9:00AM - 10:00AM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 4 KYN Brown - L1 - King UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 9:00AM - 10:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 4 KYN Brown - L1 - King UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 9:00AM - 10:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4693",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.320Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8261,22 +8349,27 @@
       "id": "4694",
       "sourceId": "4694",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4694",
-      "title": "May 11 KYN Brown - L2 - King UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 9:00AM - 10:00AM PDT View",
+      "title": "May 11 KYN Brown - L2 - King UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 9:00AM - 10:00AM PDT View",
       "category": "Event",
       "date": "2026-05-11",
       "time": "May 11, 2026 9:00AM - 10:00AM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 11 KYN Brown - L2 - King UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 9:00AM - 10:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 11 KYN Brown - L2 - King UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 9:00AM - 10:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4694",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8285,22 +8378,27 @@
       "id": "4695",
       "sourceId": "4695",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4695",
-      "title": "May 26 KYN Brown - L3 - King UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 9:00AM - 10:00AM PDT View",
+      "title": "May 26 KYN Brown - L3 - King UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 9:00AM - 10:00AM PDT View",
       "category": "Event",
       "date": "2026-05-26",
       "time": "May 26, 2026 9:00AM - 10:00AM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 26 KYN Brown - L3 - King UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 9:00AM - 10:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 26 KYN Brown - L3 - King UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 9:00AM - 10:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4695",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8309,22 +8407,27 @@
       "id": "4696",
       "sourceId": "4696",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4696",
-      "title": "May 4 KYN Brown - L1 - Thomsen UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 10:00AM - 11:00AM PDT View",
+      "title": "May 4 KYN Brown - L1 - Thomsen UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 10:00AM - 11:00AM PDT View",
       "category": "Event",
       "date": "2026-05-04",
       "time": "May 04, 2026 10:00AM - 11:00AM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 4 KYN Brown - L1 - Thomsen UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 10:00AM - 11:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 4 KYN Brown - L1 - Thomsen UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 10:00AM - 11:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4696",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8333,22 +8436,27 @@
       "id": "4697",
       "sourceId": "4697",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4697",
-      "title": "May 11 KYN Brown - L2 - Thomsen UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 10:00AM - 11:00AM PDT View",
+      "title": "May 11 KYN Brown - L2 - Thomsen UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 10:00AM - 11:00AM PDT View",
       "category": "Event",
       "date": "2026-05-11",
       "time": "May 11, 2026 10:00AM - 11:00AM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 11 KYN Brown - L2 - Thomsen UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 10:00AM - 11:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 11 KYN Brown - L2 - Thomsen UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 10:00AM - 11:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4697",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8357,22 +8465,27 @@
       "id": "4698",
       "sourceId": "4698",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4698",
-      "title": "May 26 KYN Brown - L3 - Thomsen UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 10:00AM - 11:00AM PDT View",
+      "title": "May 26 KYN Brown - L3 - Thomsen UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 10:00AM - 11:00AM PDT View",
       "category": "Event",
       "date": "2026-05-26",
       "time": "May 26, 2026 10:00AM - 11:00AM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 26 KYN Brown - L3 - Thomsen UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 10:00AM - 11:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 26 KYN Brown - L3 - Thomsen UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 10:00AM - 11:00AM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4698",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8381,22 +8494,27 @@
       "id": "4699",
       "sourceId": "4699",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4699",
-      "title": "May 4 KYN Brown - Lesson 1 - Perry UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 11:00AM - 12:00PM PDT View",
+      "title": "May 4 KYN Brown - Lesson 1 - Perry UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 11:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-05-04",
       "time": "May 04, 2026 11:00AM - 12:00PM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 4 KYN Brown - Lesson 1 - Perry UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 11:00AM - 12:00PM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 4 KYN Brown - Lesson 1 - Perry UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 04, 2026 11:00AM - 12:00PM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4699",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8405,22 +8523,27 @@
       "id": "4700",
       "sourceId": "4700",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4700",
-      "title": "May 11 KYN Brown - L2 - Perry UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 11:00AM - 12:00PM PDT View",
+      "title": "May 11 KYN Brown - L2 - Perry UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 11:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-05-11",
       "time": "May 11, 2026 11:00AM - 12:00PM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 11 KYN Brown - L2 - Perry UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 11:00AM - 12:00PM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 11 KYN Brown - L2 - Perry UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 11, 2026 11:00AM - 12:00PM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4700",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8429,22 +8552,27 @@
       "id": "4701",
       "sourceId": "4701",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4701",
-      "title": "May 26 KYN Brown - L3 - Perry UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 11:00AM - 12:00PM PDT View",
+      "title": "May 26 KYN Brown - L3 - Perry UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 11:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-05-26",
       "time": "May 26, 2026 11:00AM - 12:00PM PDT",
       "location": "Brown Elementary School 13815 Spelling Court Reno, NV 89511",
-      "description": "May 26 KYN Brown - L3 - Perry UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 11:00AM - 12:00PM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
+      "description": "May 26 KYN Brown - L3 - Perry UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Brown Elementary School 13815 Spelling Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: May 26, 2026 11:00AM - 12:00PM PDT View - Brown Elementary School 13815 Spelling Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4701",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8468,7 +8596,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8477,22 +8605,27 @@
       "id": "4703",
       "sourceId": "4703",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4703",
-      "title": "May 14 KYN Spanish Springs ES - L2 - 4 classes UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 14, 2026 9:00AM - 1:00PM PDT View",
+      "title": "May 14 KYN Spanish Springs ES - L2 - 4 classes UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 14, 2026 9:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-14",
       "time": "May 14, 2026 9:00AM - 1:00PM PDT",
       "location": "Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
-      "description": "May 14 KYN Spanish Springs ES - L2 - 4 classes UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 14, 2026 9:00AM - 1:00PM PDT View - Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
+      "description": "May 14 KYN Spanish Springs ES - L2 - 4 classes UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 14, 2026 9:00AM - 1:00PM PDT View - Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4703",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8501,22 +8634,27 @@
       "id": "4704",
       "sourceId": "4704",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4704",
-      "title": "May 21 KYN Spanish Springs ES - L3 - 4 classes UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 21, 2026 9:00AM - 1:00PM PDT View",
+      "title": "May 21 KYN Spanish Springs ES - L3 - 4 classes UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 21, 2026 9:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-21",
       "time": "May 21, 2026 9:00AM - 1:00PM PDT",
       "location": "Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
-      "description": "May 21 KYN Spanish Springs ES - L3 - 4 classes UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 21, 2026 9:00AM - 1:00PM PDT View - Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
+      "description": "May 21 KYN Spanish Springs ES - L3 - 4 classes UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 21, 2026 9:00AM - 1:00PM PDT View - Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4704",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.221Z",
+        "scrapedAt": "2026-06-02T09:45:42.424Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8525,22 +8663,27 @@
       "id": "4705",
       "sourceId": "4705",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4705",
-      "title": "May 7 KYN Spanish Springs ES - L1 - 4 classes UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 07, 2026 9:00AM - 1:00PM PDT View",
+      "title": "May 7 KYN Spanish Springs ES - L1 - 4 classes UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 07, 2026 9:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-07",
       "time": "May 07, 2026 9:00AM - 1:00PM PDT",
       "location": "Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
-      "description": "May 7 KYN Spanish Springs ES - L1 - 4 classes UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 07, 2026 9:00AM - 1:00PM PDT View - Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
+      "description": "May 7 KYN Spanish Springs ES - L1 - 4 classes UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 07, 2026 9:00AM - 1:00PM PDT View - Spanish Springs Elementary School 100 Marilyn Mae Drive Sparks, NV 89436",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4705",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8549,22 +8692,27 @@
       "id": "4706",
       "sourceId": "4706",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4706",
-      "title": "Apr 29 Hunsberger Watershed Lesson UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Apr 29, 2026 12:00PM - 1:00PM PDT View",
+      "title": "Apr 29 Hunsberger Watershed Lesson UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Apr 29, 2026 12:00PM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-04-29",
       "time": "Apr 29, 2026 12:00PM - 1:00PM PDT",
       "location": "Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511",
-      "description": "Apr 29 Hunsberger Watershed Lesson UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Apr 29, 2026 12:00PM - 1:00PM PDT View - Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511",
+      "description": "Apr 29 Hunsberger Watershed Lesson UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Apr 29, 2026 12:00PM - 1:00PM PDT View - Ted Hunsberger Elementary School 2505 Crossbow Court Reno, NV 89511",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4706",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8573,22 +8721,27 @@
       "id": "4707",
       "sourceId": "4707",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4707",
-      "title": "May 19 Owl Week lesson and Pellet Dissection UNLISTED ■ Events Results Pending 499 of 499 seats remaining Location: Excel Christian School 850 Baring Blvd Sparks, NV 89434 Taught by: Margaret Stewart Lord Date & Times: May 19, 2026 11:00AM - 1:00PM PDT View",
+      "title": "May 19 Owl Week lesson and Pellet Dissection UNLISTED ■ Event Completed 499 of 499 seats remaining Location: Excel Christian School 850 Baring Blvd Sparks, NV 89434 Taught by: Margaret Stewart Lord Date & Times: May 19, 2026 11:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-19",
       "time": "May 19, 2026 11:00AM - 1:00PM PDT",
       "location": "Excel Christian School 850 Baring Blvd Sparks, NV 89434",
-      "description": "May 19 Owl Week lesson and Pellet Dissection UNLISTED ■ Events Results Pending 499 of 499 seats remaining Location: Excel Christian School 850 Baring Blvd Sparks, NV 89434 Taught by: Margaret Stewart Lord Date & Times: May 19, 2026 11:00AM - 1:00PM PDT View - Excel Christian School 850 Baring Blvd Sparks, NV 89434",
+      "description": "May 19 Owl Week lesson and Pellet Dissection UNLISTED ■ Event Completed 499 of 499 seats remaining Location: Excel Christian School 850 Baring Blvd Sparks, NV 89434 Taught by: Margaret Stewart Lord Date & Times: May 19, 2026 11:00AM - 1:00PM PDT View - Excel Christian School 850 Baring Blvd Sparks, NV 89434",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4707",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8597,22 +8750,27 @@
       "id": "4708",
       "sourceId": "4708",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4708",
-      "title": "Apr 30 Wildlife Forensics Program PRIVATE EVENT ■ Events Results Pending 2000 of 2000 seats remaining Location: Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512 Taught by: Margaret Stewart Lord Date & Times: Apr 30, 2026 1:00PM - 3:00PM PDT View",
+      "title": "Apr 30 Wildlife Forensics Program PRIVATE EVENT ■ Event Completed 2000 of 2000 seats remaining Location: Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512 Taught by: Margaret Stewart Lord Date & Times: Apr 30, 2026 1:00PM - 3:00PM PDT View",
       "category": "Event",
       "date": "2026-04-30",
       "time": "Apr 30, 2026 1:00PM - 3:00PM PDT",
       "location": "Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512",
-      "description": "Apr 30 Wildlife Forensics Program PRIVATE EVENT ■ Events Results Pending 2000 of 2000 seats remaining Location: Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512 Taught by: Margaret Stewart Lord Date & Times: Apr 30, 2026 1:00PM - 3:00PM PDT View - Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512",
+      "description": "Apr 30 Wildlife Forensics Program PRIVATE EVENT ■ Event Completed 2000 of 2000 seats remaining Location: Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512 Taught by: Margaret Stewart Lord Date & Times: Apr 30, 2026 1:00PM - 3:00PM PDT View - Debbie Smith CTE Academy High School 880 Sutro St Reno, NV 89512",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4708",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8641,7 +8799,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8650,22 +8808,27 @@
       "id": "4710",
       "sourceId": "4710",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4710",
-      "title": "Apr 14 GSSN Troop 8 Project Meeting PRIVATE EVENT ■ Events Results Pending 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 14, 2026 5:00PM - 7:00PM PDT View",
+      "title": "Apr 14 GSSN Troop 8 Project Meeting PRIVATE EVENT ■ Event Completed 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 14, 2026 5:00PM - 7:00PM PDT View",
       "category": "Event",
       "date": "2026-04-14",
       "time": "Apr 14, 2026 5:00PM - 7:00PM PDT",
       "location": "Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
-      "description": "Apr 14 GSSN Troop 8 Project Meeting PRIVATE EVENT ■ Events Results Pending 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 14, 2026 5:00PM - 7:00PM PDT View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "description": "Apr 14 GSSN Troop 8 Project Meeting PRIVATE EVENT ■ Event Completed 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 14, 2026 5:00PM - 7:00PM PDT View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4710",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:29.509Z",
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8674,22 +8837,27 @@
       "id": "4711",
       "sourceId": "4711",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4711",
-      "title": "Mar 3 GSSN Troop 8 Preliminary Project Meeting PRIVATE EVENT ■ Events Results Pending 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Mar 03, 2026 6:00PM - 8:00PM PST View",
+      "title": "Mar 3 GSSN Troop 8 Preliminary Project Meeting PRIVATE EVENT ■ Event Completed 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Mar 03, 2026 6:00PM - 8:00PM PST View",
       "category": "Event",
       "date": "2026-03-03",
       "time": "Mar 03, 2026 6:00PM - 8:00PM PST",
       "location": "Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
-      "description": "Mar 3 GSSN Troop 8 Preliminary Project Meeting PRIVATE EVENT ■ Events Results Pending 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Mar 03, 2026 6:00PM - 8:00PM PST View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "description": "Mar 3 GSSN Troop 8 Preliminary Project Meeting PRIVATE EVENT ■ Event Completed 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Mar 03, 2026 6:00PM - 8:00PM PST View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4711",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:03.260Z",
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8698,22 +8866,27 @@
       "id": "4712",
       "sourceId": "4712",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4712",
-      "title": "Apr 26 Farm Day UNLISTED ■ Events Results Pending 2000 of 2000 seats remaining Location: Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 26, 2026 10:00AM - 1:00PM PDT View",
+      "title": "Apr 26 Farm Day UNLISTED ■ Event Completed 2000 of 2000 seats remaining Location: Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 26, 2026 10:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-04-26",
       "time": "Apr 26, 2026 10:00AM - 1:00PM PDT",
       "location": "Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503",
-      "description": "Apr 26 Farm Day UNLISTED ■ Events Results Pending 2000 of 2000 seats remaining Location: Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 26, 2026 10:00AM - 1:00PM PDT View - Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503",
+      "description": "Apr 26 Farm Day UNLISTED ■ Event Completed 2000 of 2000 seats remaining Location: Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Apr 26, 2026 10:00AM - 1:00PM PDT View - Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4712",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:03:45.859Z",
+        "scrapedAt": "2026-06-02T09:45:18.319Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8722,22 +8895,27 @@
       "id": "4713",
       "sourceId": "4713",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4713",
-      "title": "May 13 Wildlife Wednesday - Habitats and Microorganisms UNLISTED ■ Events Results Pending 500 of 500 seats remaining Location: Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 13, 2026 6:00PM - 7:30PM PDT View",
+      "title": "May 13 Wildlife Wednesday - Habitats and Microorganisms UNLISTED ■ Event Completed 500 of 500 seats remaining Location: Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 13, 2026 6:00PM - 7:30PM PDT View",
       "category": "Event",
       "date": "2026-05-13",
       "time": "May 13, 2026 6:00PM - 7:30PM PDT",
       "location": "Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436",
-      "description": "May 13 Wildlife Wednesday - Habitats and Microorganisms UNLISTED ■ Events Results Pending 500 of 500 seats remaining Location: Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 13, 2026 6:00PM - 7:30PM PDT View - Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436",
+      "description": "May 13 Wildlife Wednesday - Habitats and Microorganisms UNLISTED ■ Event Completed 500 of 500 seats remaining Location: Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: May 13, 2026 6:00PM - 7:30PM PDT View - Lazy 5 Regional Park 7100 Pyramid Way Sparks, NV 89436",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4713",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": ""
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:12.220Z",
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8746,13 +8924,100 @@
       "id": "4714",
       "sourceId": "4714",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4714",
-      "title": "May 29 NWEA Water Palooza UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431 Taught by: Margaret Stewart Lord Date & Times: May 29, 2026 9:00AM - 1:00PM PDT View",
+      "title": "May 29 NWEA Water Palooza UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431 Taught by: Margaret Stewart Lord Date & Times: May 29, 2026 9:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-29",
       "time": "May 29, 2026 9:00AM - 1:00PM PDT",
       "location": "Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431",
-      "description": "May 29 NWEA Water Palooza UNLISTED ■ Events Results Pending 1000 of 1000 seats remaining Location: Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431 Taught by: Margaret Stewart Lord Date & Times: May 29, 2026 9:00AM - 1:00PM PDT View - Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431",
+      "description": "May 29 NWEA Water Palooza UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431 Taught by: Margaret Stewart Lord Date & Times: May 29, 2026 9:00AM - 1:00PM PDT View - Agnes Risley Elementary School 1900 Sullivan Lane Sparks, NV 89431",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4714",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4715",
+      "sourceId": "4715",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4715",
+      "title": "May 19 Lake Mead Hatchery Visitor Center PRIVATE EVENT ■ Event Completed 30 of 30 seats remaining Location: Lake Mead Hatchery Visitors Center 245 lakeshore Dr Boulder City, NV 89005 Taught by: Jeanette Schmid Bennett Date & Times: May 19, 2026 9:00AM - 12:30PM PDT View",
+      "category": "Event",
+      "date": "2026-05-19",
+      "time": "May 19, 2026 9:00AM - 12:30PM PDT",
+      "location": "Lake Mead Hatchery Visitors Center 245 lakeshore Dr Boulder City, NV 89005",
+      "description": "May 19 Lake Mead Hatchery Visitor Center PRIVATE EVENT ■ Event Completed 30 of 30 seats remaining Location: Lake Mead Hatchery Visitors Center 245 lakeshore Dr Boulder City, NV 89005 Taught by: Jeanette Schmid Bennett Date & Times: May 19, 2026 9:00AM - 12:30PM PDT View - Lake Mead Hatchery Visitors Center 245 lakeshore Dr Boulder City, NV 89005",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4715",
+      "instructors": [
+        {
+          "name": "Jeanette Schmid Bennett",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:45:42.423Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4716",
+      "sourceId": "4716",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4716",
+      "title": "Mar 24 TIC Release - St. Albert's UNLISTED ■ Event Completed 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Mar 24, 2026 10:00AM - 12:00PM PDT View",
+      "category": "Event",
+      "date": "2026-03-24",
+      "time": "Mar 24, 2026 10:00AM - 12:00PM PDT",
+      "location": "Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "description": "Mar 24 TIC Release - St. Albert's UNLISTED ■ Event Completed 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Mar 24, 2026 10:00AM - 12:00PM PDT View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4716",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:44:48.752Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4717",
+      "sourceId": "4717",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4717",
+      "title": "Oct 14 KYN Westergard - Pfaff - L1 UNLISTED ■ Canceled 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 14, 2026 12:00PM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2026-10-14",
+      "time": "Oct 14, 2026 12:00PM - 1:00PM PDT",
+      "location": "George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "description": "Oct 14 KYN Westergard - Pfaff - L1 UNLISTED ■ Canceled 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 14, 2026 12:00PM - 1:00PM PDT View - George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4717",
       "instructors": [
         {
           "name": "Margaret Stewart Lord",
@@ -8761,7 +9026,459 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-01T11:04:47.489Z",
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4718",
+      "sourceId": "4718",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4718",
+      "title": "Oct 21 KYN Westergard - Pfaff - L2 UNLISTED ■ Canceled 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 21, 2026 12:00PM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2026-10-21",
+      "time": "Oct 21, 2026 12:00PM - 1:00PM PDT",
+      "location": "George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "description": "Oct 21 KYN Westergard - Pfaff - L2 UNLISTED ■ Canceled 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 21, 2026 12:00PM - 1:00PM PDT View - George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4718",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4719",
+      "sourceId": "4719",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4719",
+      "title": "Oct 28 KYN Westergard - Pfaff - L3 UNLISTED ■ Canceled 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 28, 2026 12:00PM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2026-10-28",
+      "time": "Oct 28, 2026 12:00PM - 1:00PM PDT",
+      "location": "George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "description": "Oct 28 KYN Westergard - Pfaff - L3 UNLISTED ■ Canceled 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 28, 2026 12:00PM - 1:00PM PDT View - George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4719",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4720",
+      "sourceId": "4720",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4720",
+      "title": "Oct 14 KYN Westergard - Pfaff - L1 UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 14, 2025 12:00PM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2025-10-14",
+      "time": "Oct 14, 2025 12:00PM - 1:00PM PDT",
+      "location": "George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "description": "Oct 14 KYN Westergard - Pfaff - L1 UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 14, 2025 12:00PM - 1:00PM PDT View - George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4720",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4721",
+      "sourceId": "4721",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4721",
+      "title": "Oct 21 KYN Westergard - Pfaff - L2 UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 21, 2025 12:00PM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2025-10-21",
+      "time": "Oct 21, 2025 12:00PM - 1:00PM PDT",
+      "location": "George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "description": "Oct 21 KYN Westergard - Pfaff - L2 UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 21, 2025 12:00PM - 1:00PM PDT View - George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4721",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4722",
+      "sourceId": "4722",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4722",
+      "title": "Oct 28 KYN Westergard - Pfaff - L3 UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 28, 2025 12:00PM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2025-10-28",
+      "time": "Oct 28, 2025 12:00PM - 1:00PM PDT",
+      "location": "George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "description": "Oct 28 KYN Westergard - Pfaff - L3 UNLISTED ■ Event Completed 1000 of 1000 seats remaining Location: George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523 Taught by: Margaret Stewart Lord Date & Times: Oct 28, 2025 12:00PM - 1:00PM PDT View - George Westergard Elementary School 1785 Ambassador Dr Reno, NV 89523",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4722",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:44:32.075Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4723",
+      "sourceId": "4723",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4723",
+      "title": "Apr 15 Spanish Springs Career Fair PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs High School 1065 Eagle Canyon Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: Apr 15, 2026 10:00AM - 2:00PM PDT View",
+      "category": "Event",
+      "date": "2026-04-15",
+      "time": "Apr 15, 2026 10:00AM - 2:00PM PDT",
+      "location": "Spanish Springs High School 1065 Eagle Canyon Drive Sparks, NV 89436",
+      "description": "Apr 15 Spanish Springs Career Fair PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Spanish Springs High School 1065 Eagle Canyon Drive Sparks, NV 89436 Taught by: Margaret Stewart Lord Date & Times: Apr 15, 2026 10:00AM - 2:00PM PDT View - Spanish Springs High School 1065 Eagle Canyon Drive Sparks, NV 89436",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4723",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:45:02.814Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4724",
+      "sourceId": "4724",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4724",
+      "title": "Jun 17 PLPT Camp - Hides, skulls, and tracks PRIVATE EVENT ■ Registration Open 200 of 200 seats remaining Location: Pyramid Lake Paiute Tribe Camp Facility 1 Ranch Road Fernley, NV 89442 Taught by: Margaret Stewart Lord Date & Times: Jun 17, 2026 10:00AM - 12:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-17",
+      "time": "Jun 17, 2026 10:00AM - 12:00PM PDT",
+      "location": "Pyramid Lake Paiute Tribe Camp Facility 1 Ranch Road Fernley, NV 89442",
+      "description": "Jun 17 PLPT Camp - Hides, skulls, and tracks PRIVATE EVENT ■ Registration Open 200 of 200 seats remaining Location: Pyramid Lake Paiute Tribe Camp Facility 1 Ranch Road Fernley, NV 89442 Taught by: Margaret Stewart Lord Date & Times: Jun 17, 2026 10:00AM - 12:00PM PDT View - Pyramid Lake Paiute Tribe Camp Facility 1 Ranch Road Fernley, NV 89442",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4724",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4725",
+      "sourceId": "4725",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4725",
+      "title": "Jun 24 Herpetology Event - City of Reno UNLISTED ■ Registration Open 100 of 100 seats remaining Location: Huffaker Park 1160 E Huffaker Ln Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Jun 24, 2026 10:00AM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-24",
+      "time": "Jun 24, 2026 10:00AM - 1:00PM PDT",
+      "location": "Huffaker Park 1160 E Huffaker Ln Reno, NV 89511",
+      "description": "Jun 24 Herpetology Event - City of Reno UNLISTED ■ Registration Open 100 of 100 seats remaining Location: Huffaker Park 1160 E Huffaker Ln Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Jun 24, 2026 10:00AM - 1:00PM PDT View - Huffaker Park 1160 E Huffaker Ln Reno, NV 89511",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4725",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4726",
+      "sourceId": "4726",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4726",
+      "title": "Jun 30 Doral Academy Summer Camp Owl Program PRIVATE EVENT ■ Registration Open 1000 of 1000 seats remaining Location: Doral Academy Northern Nevada 200 DeSpain Lane Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Jun 30, 2026 1:00PM - 4:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-30",
+      "time": "Jun 30, 2026 1:00PM - 4:00PM PDT",
+      "location": "Doral Academy Northern Nevada 200 DeSpain Lane Reno, NV 89511",
+      "description": "Jun 30 Doral Academy Summer Camp Owl Program PRIVATE EVENT ■ Registration Open 1000 of 1000 seats remaining Location: Doral Academy Northern Nevada 200 DeSpain Lane Reno, NV 89511 Taught by: Margaret Stewart Lord Date & Times: Jun 30, 2026 1:00PM - 4:00PM PDT View - Doral Academy Northern Nevada 200 DeSpain Lane Reno, NV 89511",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4726",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:46:09.205Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4727",
+      "sourceId": "4727",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4727",
+      "title": "Jul 9 Pond Week - Discovery Room UNLISTED ■ Registration Open 2000 of 2000 seats remaining Location: Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Jul 09, 2026 8:00AM - Jul 10, 2026 12:00PM View",
+      "category": "Event",
+      "date": "2026-07-09",
+      "time": "Jul 09, 2026 8:00AM - Jul 10, 2026 12:00PM",
+      "location": "Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503",
+      "description": "Jul 9 Pond Week - Discovery Room UNLISTED ■ Registration Open 2000 of 2000 seats remaining Location: Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Jul 09, 2026 8:00AM - Jul 10, 2026 12:00PM View - Rancho San Rafael Regional Park 1595 N Sierra St Reno, NV 89503",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4727",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4728",
+      "sourceId": "4728",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4728",
+      "title": "Jul 17 MTOYOSC - Wildlife Education UNLISTED ■ Registration Open 200 of 200 seats remaining Location: Winnemucca Ranch Winnemucca Ranch Rd Reno, NV 89510 Taught by: Margaret Stewart Lord Date & Times: Jul 17, 2026 9:00AM - Jul 19, 2026 12:00PM View",
+      "category": "Event",
+      "date": "2026-07-17",
+      "time": "Jul 17, 2026 9:00AM - Jul 19, 2026 12:00PM",
+      "location": "Winnemucca Ranch Winnemucca Ranch Rd Reno, NV 89510",
+      "description": "Jul 17 MTOYOSC - Wildlife Education UNLISTED ■ Registration Open 200 of 200 seats remaining Location: Winnemucca Ranch Winnemucca Ranch Rd Reno, NV 89510 Taught by: Margaret Stewart Lord Date & Times: Jul 17, 2026 9:00AM - Jul 19, 2026 12:00PM View - Winnemucca Ranch Winnemucca Ranch Rd Reno, NV 89510",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4728",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4729",
+      "sourceId": "4729",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4729",
+      "title": "Jul 21 Summer Reading - Hides and skulls ■ Registration Open 100 of 100 seats remaining Location: Churchill County Library 553 S Maine St Fallon, NV 89406 Taught by: Margaret Stewart Lord Date & Times: Jul 21, 2026 2:00PM - 3:00PM PDT View",
+      "category": "Event",
+      "date": "2026-07-21",
+      "time": "Jul 21, 2026 2:00PM - 3:00PM PDT",
+      "location": "Churchill County Library 553 S Maine St Fallon, NV 89406",
+      "description": "Jul 21 Summer Reading - Hides and skulls ■ Registration Open 100 of 100 seats remaining Location: Churchill County Library 553 S Maine St Fallon, NV 89406 Taught by: Margaret Stewart Lord Date & Times: Jul 21, 2026 2:00PM - 3:00PM PDT View - Churchill County Library 553 S Maine St Fallon, NV 89406",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4729",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4730",
+      "sourceId": "4730",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4730",
+      "title": "Jul 23 Primrose School Field Trip PRIVATE EVENT ■ Registration Open 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Jul 23, 2026 10:00AM - 12:00PM PDT View",
+      "category": "Event",
+      "date": "2026-07-23",
+      "time": "Jul 23, 2026 10:00AM - 12:00PM PDT",
+      "location": "Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "description": "Jul 23 Primrose School Field Trip PRIVATE EVENT ■ Registration Open 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Jul 23, 2026 10:00AM - 12:00PM PDT View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4730",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4731",
+      "sourceId": "4731",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4731",
+      "title": "Jul 28 Sparks Rec Summer Camp Field Trip PRIVATE EVENT ■ Registration Open 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Jul 28, 2026 10:00AM - 12:00PM PDT View",
+      "category": "Event",
+      "date": "2026-07-28",
+      "time": "Jul 28, 2026 10:00AM - 12:00PM PDT",
+      "location": "Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "description": "Jul 28 Sparks Rec Summer Camp Field Trip PRIVATE EVENT ■ Registration Open 50 of 50 seats remaining Location: Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503 Taught by: Margaret Stewart Lord Date & Times: Jul 28, 2026 10:00AM - 12:00PM PDT View - Oxbow Nature Study Area 3100 Dickerson Road Reno, NV 89503",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4731",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4732",
+      "sourceId": "4732",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4732",
+      "title": "Aug 1 Hides and Skulls - Historical Society UNLISTED ■ Registration Open 200 of 200 seats remaining Location: Carson Valley Museum and Cultural Center 1477 US Highway 395 N Gardnerville, NV 89410 Taught by: Margaret Stewart Lord Date & Times: Aug 01, 2026 11:00AM - 2:00PM PDT View",
+      "category": "Event",
+      "date": "2026-08-01",
+      "time": "Aug 01, 2026 11:00AM - 2:00PM PDT",
+      "location": "Carson Valley Museum and Cultural Center 1477 US Highway 395 N Gardnerville, NV 89410",
+      "description": "Aug 1 Hides and Skulls - Historical Society UNLISTED ■ Registration Open 200 of 200 seats remaining Location: Carson Valley Museum and Cultural Center 1477 US Highway 395 N Gardnerville, NV 89410 Taught by: Margaret Stewart Lord Date & Times: Aug 01, 2026 11:00AM - 2:00PM PDT View - Carson Valley Museum and Cultural Center 1477 US Highway 395 N Gardnerville, NV 89410",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4732",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.276Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4733",
+      "sourceId": "4733",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4733",
+      "title": "Sep 11 Urban Roots Teaching Farm - Hides and skulls UNLISTED ■ Registration Open 50 of 50 seats remaining Location: Urban Roots 1700 East Second Street Reno, NV 89502 Taught by: Margaret Stewart Lord Date & Times: Sep 11, 2026 9:00AM - 11:00AM PDT View",
+      "category": "Event",
+      "date": "2026-09-11",
+      "time": "Sep 11, 2026 9:00AM - 11:00AM PDT",
+      "location": "Urban Roots 1700 East Second Street Reno, NV 89502",
+      "description": "Sep 11 Urban Roots Teaching Farm - Hides and skulls UNLISTED ■ Registration Open 50 of 50 seats remaining Location: Urban Roots 1700 East Second Street Reno, NV 89502 Taught by: Margaret Stewart Lord Date & Times: Sep 11, 2026 9:00AM - 11:00AM PDT View - Urban Roots 1700 East Second Street Reno, NV 89502",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4733",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4734",
+      "sourceId": "4734",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4734",
+      "title": "Sep 18 Urban Roots Teaching Farm - Hides and skulls 2 UNLISTED ■ Registration Open 50 of 50 seats remaining Location: Urban Roots 1700 East Second Street Reno, NV 89502 Taught by: Margaret Stewart Lord Date & Times: Sep 18, 2026 9:00AM - 11:00AM PDT View",
+      "category": "Event",
+      "date": "2026-09-18",
+      "time": "Sep 18, 2026 9:00AM - 11:00AM PDT",
+      "location": "Urban Roots 1700 East Second Street Reno, NV 89502",
+      "description": "Sep 18 Urban Roots Teaching Farm - Hides and skulls 2 UNLISTED ■ Registration Open 50 of 50 seats remaining Location: Urban Roots 1700 East Second Street Reno, NV 89502 Taught by: Margaret Stewart Lord Date & Times: Sep 18, 2026 9:00AM - 11:00AM PDT View - Urban Roots 1700 East Second Street Reno, NV 89502",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4734",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4735",
+      "sourceId": "4735",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4735",
+      "title": "Sep 19 Animal Ark Education Expo UNLISTED ■ Registration Open 1000 of 1000 seats remaining Location: Animal Ark Wildlife Sanctuary 1265 Deerlodge Rd Reno, NV 89508 Taught by: Margaret Stewart Lord Date & Times: Sep 19, 2026 10:00AM - 3:00PM PDT View",
+      "category": "Event",
+      "date": "2026-09-19",
+      "time": "Sep 19, 2026 10:00AM - 3:00PM PDT",
+      "location": "Animal Ark Wildlife Sanctuary 1265 Deerlodge Rd Reno, NV 89508",
+      "description": "Sep 19 Animal Ark Education Expo UNLISTED ■ Registration Open 1000 of 1000 seats remaining Location: Animal Ark Wildlife Sanctuary 1265 Deerlodge Rd Reno, NV 89508 Taught by: Margaret Stewart Lord Date & Times: Sep 19, 2026 10:00AM - 3:00PM PDT View - Animal Ark Wildlife Sanctuary 1265 Deerlodge Rd Reno, NV 89508",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4735",
+      "instructors": [
+        {
+          "name": "Margaret Stewart Lord",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-02T09:47:06.277Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
