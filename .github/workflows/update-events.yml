@@ -2,8 +2,17 @@ name: Update NDOW Events
 
 on:
   schedule:
-    # Runs nightly around 10 PM Pacific
-    - cron: '23 5 * * *'
+    # 10:15 AM Pacific
+    - cron: '15 17 * * *'
+
+    # 12:15 PM Pacific
+    - cron: '15 19 * * *'
+
+    # 2:15 PM Pacific
+    - cron: '15 21 * * *'
+
+    # 4:15 PM Pacific
+    - cron: '15 23 * * *'
 
   workflow_dispatch:
 
