@@ -8545,7 +8545,7 @@ function overrideCategory(
   <div
     class="modal-content"
     style="
-      max-width:520px;
+      max-width:620px;
     "
   >
 
@@ -8616,7 +8616,24 @@ function overrideCategory(
           box-sizing:border-box;
         "
       >
+      <label>
+        NDOW ID
+      </label>
 
+		<input
+		  id="editNdowId"
+		  style="
+		    width:100%;
+		    padding:10px;
+		    margin-top:6px;
+		    margin-bottom:14px;
+		    border:1px solid #d1d5db;
+		    border-radius:8px;
+		    box-sizing:border-box;
+		  "
+		>
+
+		
       <label>
         Role
       </label>
@@ -8634,13 +8651,17 @@ function overrideCategory(
         "
       >
 
-        <option value="user">
-          User
-        </option>
-
-        <option value="admin">
-          Admin
-        </option>
+		<option value="user">
+		  User
+		</option>
+		
+		<option value="admin">
+		  Admin
+		</option>
+		
+		<option value="superuser">
+		  Superuser
+		</option>
 
       </select>
 
