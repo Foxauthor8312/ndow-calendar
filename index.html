@@ -5603,6 +5603,46 @@ list.innerHTML = `
 
   </div>
 
+    <div style="
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+  ">
+
+    <button
+      class="requestFilterBtn"
+      onclick="filterInstructorRequests('all')">
+      All
+    </button>
+
+    <button
+      class="requestFilterBtn"
+      onclick="filterInstructorRequests('pending')">
+      Pending
+    </button>
+
+    <button
+      class="requestFilterBtn"
+      onclick="filterInstructorRequests('approved')">
+      Approved
+    </button>
+
+    <button
+      class="requestFilterBtn"
+      onclick="filterInstructorRequests('rejected')">
+      Rejected
+    </button>
+
+    <button
+      class="requestFilterBtn"
+      onclick="filterInstructorRequests('waitlisted')">
+      Waitlisted
+    </button>
+
+  </div>
+
+
   ${data.requests.map(r => {
 
     const status =
@@ -5638,17 +5678,20 @@ list.innerHTML = `
       borderColor = '#2563eb';
     }
 
-    return `
+return `
 
-      <div style="
-        border-left:6px solid ${borderColor};
-        border-radius:8px;
-        padding:12px;
-        margin-bottom:10px;
-        background:#fff;
-        box-shadow:
-          0 1px 3px rgba(0,0,0,.08);
-      ">
+      <div
+        class="instructorRequestCard"
+        data-status="${status.toLowerCase()}"
+        style="
+          border-left:6px solid ${borderColor};
+          border-radius:8px;
+          padding:12px;
+          margin-bottom:10px;
+          background:#fff;
+          box-shadow:
+            0 1px 3px rgba(0,0,0,.08);
+        ">
 
         <div style="
           display:flex;
@@ -5706,6 +5749,38 @@ list.innerHTML = `
       '<div style="padding:12px;color:red;">Failed to load requests.</div>';
 
   }
+
+}
+function filterInstructorRequests(status){
+
+  const cards =
+    document.querySelectorAll(
+      '.instructorRequestCard'
+    );
+
+  cards.forEach(card => {
+
+    if(status === 'all'){
+
+      card.style.display = '';
+
+      return;
+
+    }
+
+    if(
+      card.dataset.status === status
+    ){
+
+      card.style.display = '';
+
+    }else{
+
+      card.style.display = 'none';
+
+    }
+
+  });
 
 }
 	
