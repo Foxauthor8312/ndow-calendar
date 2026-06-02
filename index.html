@@ -5717,22 +5717,68 @@ return `
 
         </div>
 
-        <div>
-          📅 ${r.event_date || ''}
-        </div>
+<div style="
+  color:#374151;
+  margin-bottom:8px;
+">
+  ✉️ ${r.applicant_email || ''}
+</div>
 
-        <div>
-          📍 ${r.event_location || ''}
-        </div>
+<button
+  onclick="toggleRequestDetails(${r.id})"
+  style="
+    border:none;
+    background:#e5e7eb;
+    border-radius:6px;
+    padding:6px 10px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:500;
+  ">
+  Details
+</button>
 
-        <div>
-          ✉️ ${r.applicant_email || ''}
-        </div>
+<div
+  id="requestDetails_${r.id}"
+  style="
+    display:none;
+    margin-top:10px;
+    border-top:1px solid #e5e7eb;
+    padding-top:10px;
+  ">
 
-        <div>
-          📞 ${r.applicant_phone || ''}
-        </div>
+  <div>
+    📅 ${r.event_date || ''}
+  </div>
 
+  <div>
+    📍 ${r.event_location || ''}
+  </div>
+
+  <div>
+    📞 ${r.applicant_phone || ''}
+  </div>
+
+  <div>
+    👤 ${r.applicant_name || ''}
+  </div>
+
+  <div>
+    📧 Coordinator:
+    ${r.coordinator_email || ''}
+  </div>
+
+  <div style="
+    margin-top:8px;
+  ">
+    <a
+      href="${r.event_url || '#'}"
+      target="_blank">
+      View Event
+    </a>
+  </div>
+
+</div>
       </div>
 
     `;
@@ -5753,6 +5799,24 @@ return `
 }
 function filterInstructorRequests(status){
 
+	function toggleRequestDetails(id){
+
+  const details =
+    document.getElementById(
+      'requestDetails_' + id
+    );
+
+  if(!details){
+    return;
+  }
+
+  details.style.display =
+    details.style.display === 'none'
+      ? 'block'
+      : 'none';
+
+}
+	
   const cards =
     document.querySelectorAll(
       '.instructorRequestCard'
