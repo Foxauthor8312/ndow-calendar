@@ -5474,6 +5474,29 @@ if(section === 'category' && category){
 
 }
 
+async function loadInstructorRequests(){
+
+  const list =
+    document.getElementById(
+      'instructorRequestsList'
+    );
+
+  if(!list){
+    return;
+  }
+
+  list.innerHTML = `
+    <div style="
+      padding:12px;
+      color:#374151;
+    ">
+      Instructor request loader
+      not yet implemented.
+    </div>
+  `;
+
+}
+	
 	function loadRegionDropdown(){
 
   const select =
