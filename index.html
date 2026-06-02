@@ -5532,13 +5532,18 @@ async function loadInstructorRequests(){
         }
       );
 
-    const data =
-      await response.json();
+const data =
+  await response.json();
 
-    if(
-      !data.success ||
-      !data.requests
-    ){
+console.log(
+  'Instructor Request Sample:',
+  data.requests?.[0]
+);
+
+if(
+  !data.success ||
+  !data.requests
+){
 
       list.innerHTML =
         '<div style="padding:12px;">No requests found.</div>';
