@@ -5388,10 +5388,20 @@ function openAdminSection(section){
     document.getElementById(
       'categoryPanel'
     );
+
+  const instructorRequests =
+  document.getElementById(
+    'instructorRequestsPanel'
+  );	
 	
 
   if(users){
     users.style.display = 'none';
+  }
+
+  if(instructorRequests){
+    instructorRequests.style.display =
+    'none';
   }
 
   if(help){
@@ -5426,6 +5436,67 @@ function openAdminSection(section){
   renderHelpAdminList();
 
 }
+
+if(section === 'users' && users){
+
+  users.style.display = 'block';
+
+  loadUsers();
+
+}
+
+if(
+  section === 'instructorRequests' &&
+  instructorRequests
+){
+
+  instructorRequests.style.display =
+    'block';
+
+  loadInstructorRequests();
+
+}	
+
+ if(section === 'help' && help){
+
+  help.style.display = 'block';
+
+  renderHelpAdminList();
+
+}
+
+ if(section === 'announcements' && announcements){
+
+  announcements.style.display = 'block';
+
+  loadAnnouncementAdminList();
+
+}
+
+  if(section === 'geo' && geo){
+    geo.style.display = 'block';
+  }
+  if(section === 'category' && category){
+
+    category.style.display =
+      'block';
+
+    renderOverrides();
+
+  }
+
+if(
+  section === 'instructorRequests' &&
+  instructorRequests
+){
+
+  instructorRequests.style.display =
+    'block';
+
+  loadInstructorRequests();
+
+}
+}	
 
  if(section === 'announcements' && announcements){
 
@@ -7598,9 +7669,6 @@ function overrideCategory(
 
 </script>
 
-<!-- ========================================
-     START ADMIN MODAL
-======================================== -->
 
 <!-- ========================================
      START ADMIN MODAL
@@ -7653,6 +7721,10 @@ function overrideCategory(
           Users
         </button>
 
+		 <button onclick="openAdminSection('instructorRequests')">
+         Requests
+         </button> 
+
         <button onclick="openAdminSection('announcements')">
           Updates
         </button>
@@ -7685,7 +7757,7 @@ function overrideCategory(
 
         <!-- USERS -->
 
-        <div
+ <div
   class="admin-panel"
   id="usersPanel"
   style="
@@ -7878,7 +7950,31 @@ function overrideCategory(
 
           </div>
 
-        </div>
+ </div>
+
+<!-- INSTRUCTOR REQUESTS -->
+
+<div
+  class="admin-panel"
+  id="instructorRequestsPanel"
+  style="
+    flex:1;
+    display:none;
+    overflow-y:auto;
+  "
+>
+
+  <h2>
+    Instructor Requests
+  </h2>
+
+  <div
+    id="instructorRequestsList"
+  >
+    Loading...
+  </div>
+
+</div>
 
 <!-- CATEGORY OVERRIDES -->
 
