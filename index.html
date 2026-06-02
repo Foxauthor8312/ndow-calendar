@@ -6537,6 +6537,11 @@ const phone =
     'adminPhone'
   ).value.trim();
 
+const ndow_id =
+  document.getElementById(
+    'adminNdowId'
+  ).value.trim();	
+
 const notify_email =
   document.getElementById(
     'adminNotifyEmail'
@@ -6567,6 +6572,7 @@ body:JSON.stringify({
   role,
   email,
   phone,
+  ndow_id,
   notify_email,
   notify_sms
 })
@@ -7705,6 +7711,13 @@ function overrideCategory(
   style="margin-top:14px;"
 >
 
+<input
+  id="adminNdowId"
+  class="login-input"
+  placeholder="NDOW ID"
+  style="margin-top:14px;"
+>
+			
 <div style="
   margin-top:14px;
   display:flex;
