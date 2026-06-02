@@ -5421,22 +5421,6 @@ function openAdminSection(section){
   }
 	
 
-  if(section === 'users' && users){
-
-  users.style.display = 'block';
-
-  loadUsers();
-
-}
-
- if(section === 'help' && help){
-
-  help.style.display = 'block';
-
-  renderHelpAdminList();
-
-}
-
 if(section === 'users' && users){
 
   users.style.display = 'block';
@@ -5455,9 +5439,9 @@ if(
 
   loadInstructorRequests();
 
-}	
+}
 
- if(section === 'help' && help){
+if(section === 'help' && help){
 
   help.style.display = 'block';
 
@@ -5465,7 +5449,7 @@ if(
 
 }
 
- if(section === 'announcements' && announcements){
+if(section === 'announcements' && announcements){
 
   announcements.style.display = 'block';
 
@@ -5473,50 +5457,21 @@ if(
 
 }
 
-  if(section === 'geo' && geo){
-    geo.style.display = 'block';
-  }
-  if(section === 'category' && category){
+if(section === 'geo' && geo){
 
-    category.style.display =
-      'block';
+  geo.style.display = 'block';
 
-    renderOverrides();
+}
 
-  }
+if(section === 'category' && category){
 
-if(
-  section === 'instructorRequests' &&
-  instructorRequests
-){
-
-  instructorRequests.style.display =
+  category.style.display =
     'block';
 
-  loadInstructorRequests();
-
-}
-}	
-
- if(section === 'announcements' && announcements){
-
-  announcements.style.display = 'block';
-
-  loadAnnouncementAdminList();
+  renderOverrides();
 
 }
 
-  if(section === 'geo' && geo){
-    geo.style.display = 'block';
-  }
-  if(section === 'category' && category){
-
-    category.style.display =
-      'block';
-
-    renderOverrides();
-
-  }
 }
 
 	function loadRegionDropdown(){
