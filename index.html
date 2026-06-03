@@ -7800,6 +7800,10 @@ document.getElementById(
 
 /* PHASE 5 START */
 
+// ========================================
+// HELP ADMIN - TEMPLATES
+// ========================================
+
 const helpCategoryOrders = {
 
   'Getting Started':100,
@@ -7925,7 +7929,9 @@ Additional Information`
 
 };
 
-/* PHASE 5 END */
+// ========================================
+// HELP ADMIN - AUTO GENERATED TOPIC KEY
+// ========================================
 
 document.addEventListener(
   'DOMContentLoaded',
@@ -7936,33 +7942,37 @@ document.addEventListener(
         'helpTitle'
       );
 
-    if(!title){
-      return;
+    if(title){
+
+      title.addEventListener(
+        'input',
+        function(){
+
+          document.getElementById(
+            'helpTopicKey'
+          ).value =
+            this.value
+              .toLowerCase()
+              .replace(
+                /[^a-z0-9]+/g,
+                '_'
+              )
+              .replace(
+                /^_|_$/g,
+                ''
+              );
+
+        }
+      );
+
     }
-
-    title.addEventListener(
-      'input',
-      function(){
-
-        document.getElementById(
-          'helpTopicKey'
-        ).value =
-          this.value
-            .toLowerCase()
-            .replace(
-              /[^a-z0-9]+/g,
-              '_'
-            )
-            .replace(
-              /^_|_$/g,
-              ''
-            );
-
-      }
-    );
 
   }
 );
+
+// ========================================
+// END HELP ADMIN HELPERS
+// ========================================
 
 async function renderHelpAdminList(){
 
@@ -9048,59 +9058,6 @@ function overrideCategory(
   "
 >
 
-document.addEventListener(
-  'DOMContentLoaded',
-  () => {
-
-    const category =
-      document.getElementById(
-        'helpCategory'
-      );
-
-    if(!category){
-      return;
-    }
-
-    category.addEventListener(
-      'change',
-      function(){
-
-        document.getElementById(
-          'helpSortOrder'
-        ).value =
-          helpCategoryOrders[
-            this.value
-          ] || 100;
-
-        const content =
-          document.getElementById(
-            'helpContent'
-          );
-
-        if(
-          !content.value.trim()
-        ){
-
-          content.value =
-            helpTemplates[
-              this.value
-            ] || '';
-
-        }
-
-      }
-    );
-
-  }
-);
-	
-<div style="
-  font-size:13px;
-  font-weight:600;
-  margin-top:14px;
-">
-  Help Topic Title
-</div>
 
 <input
   id="helpTitle"
