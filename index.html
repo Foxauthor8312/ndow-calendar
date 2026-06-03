@@ -3773,8 +3773,8 @@ function renderCalendar(){
     new Date(year, month + 1, 0).getDate();
 
   const dayNames = [
-    'Sun','Mon','Tue','Wed',
-    'Thu','Fri','Sat'
+    'Sunday','Monday','Tuesday','Wednesday',
+    'Thursday','Friday','Saturday'
   ];
 
   dayNames.forEach(name => {
@@ -5120,7 +5120,7 @@ function openHelpTopic(topic){
     'helpContentArea'
   ).innerHTML = `
     <div style="
-      font-size:28px;
+      font-size:24px;
       font-weight:700;
       margin-bottom:22px;
       color:#19304B;
@@ -5129,8 +5129,8 @@ function openHelpTopic(topic){
     </div>
 
     <div style="
-      line-height:1.8;
-      font-size:16px;
+      line-height:1.6;
+      font-size:14px;
       color:#374151;
       white-space:pre-wrap;
     ">
@@ -5215,7 +5215,7 @@ async function loadHelpTopics(){
         document.createElement('div');
 
       item.style.padding =
-        '14px 16px';
+        '10px 14px';
 
       item.style.borderBottom =
         '1px solid #e5e7eb';
@@ -5225,6 +5225,9 @@ async function loadHelpTopics(){
 
       item.style.fontWeight =
         '600';
+	
+	  item.style.fontSize =
+        '14px';
 
       item.style.color =
         '#19304B';
@@ -5246,11 +5249,12 @@ async function loadHelpTopics(){
               ${topic.title}
             </h2>
 
-            <div style="
-              line-height:1.7;
-              color:#374151;
-              white-space:pre-wrap;
-            ">
+         <div style="
+             line-height:1.6;
+             font-size:14px;
+             color:#374151;
+             white-space:pre-wrap;
+         ">
               ${topic.content || ''}
             </div>
 
