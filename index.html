@@ -7772,16 +7772,195 @@ function newHelpTopic(){
 document.getElementById(
   'helpVisibilityRole'
 ).value = 'all';
-	
-  document.getElementById(
-    'helpSortOrder'
-  ).value = '0';
 
-  document.getElementById(
-    'helpContent'
-  ).value = '';
+document.getElementById(
+  'helpCategory'
+).value =
+  'Getting Started';
 
-}
+document.getElementById(
+  'helpSortOrder'
+).value =
+  helpCategoryOrders[
+    'Getting Started'
+  ];
+
+document.getElementById(
+  'helpContent'
+).value =
+  helpTemplates[
+    'Getting Started'
+  ];
+
+document.getElementById(
+  'helpTopicKey'
+).value = '';
+
+/* PHASE 5 START */
+
+const helpCategoryOrders = {
+
+  'Getting Started':100,
+  'Calendar Features':200,
+  'Region Filters':300,
+  'Instructor Requests':400,
+  'User Accounts':500,
+  'Volunteer Information':600,
+  'Announcements':700,
+  'Administrator Functions':800,
+  'Troubleshooting':900,
+  'FAQ':1000,
+  'Program Updates':1100
+
+};
+
+const helpTemplates = {
+
+  'Getting Started':
+`Overview
+
+Requirements
+
+Steps
+
+Additional Notes`,
+
+  'Calendar Features':
+`Feature Overview
+
+Purpose
+
+How To Use
+
+Tips
+
+Additional Notes`,
+
+  'Region Filters':
+`Overview
+
+Available Regions
+
+How To Filter
+
+Expected Results
+
+Additional Notes`,
+
+  'Instructor Requests':
+`Purpose
+
+When To Use This
+
+Steps
+
+Expected Result
+
+Additional Notes`,
+
+  'User Accounts':
+`Overview
+
+Requirements
+
+Steps
+
+Administrator Notes`,
+
+  'Volunteer Information':
+`Program Overview
+
+Requirements
+
+Participation Steps
+
+Additional Notes`,
+
+  'Announcements':
+`Announcement Purpose
+
+Audience
+
+Message Content
+
+Additional Notes`,
+
+  'Administrator Functions':
+`Purpose
+
+Required Permissions
+
+Procedure
+
+Warnings
+
+Additional Notes`,
+
+  'Troubleshooting':
+`Problem
+
+Possible Causes
+
+Resolution Steps
+
+Additional Information`,
+
+  'FAQ':
+`Question
+
+Answer
+
+Additional Information`,
+
+  'Program Updates':
+`Update Summary
+
+Effective Date
+
+Changes
+
+Additional Information`
+
+};
+
+/* PHASE 5 END */
+
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+
+    const title =
+      document.getElementById(
+        'helpTitle'
+      );
+
+    if(!title){
+      return;
+    }
+
+    title.addEventListener(
+      'input',
+      function(){
+
+        document.getElementById(
+          'helpTopicKey'
+        ).value =
+          this.value
+            .toLowerCase()
+            .replace(
+              /[^a-z0-9]+/g,
+              '_'
+            )
+            .replace(
+              /^_|_$/g,
+              ''
+            );
+
+      }
+    );
+
+  }
+);
 
 async function renderHelpAdminList(){
 
@@ -8800,34 +8979,145 @@ function overrideCategory(
     id="helpEditId"
   >
 
-  <input
-    id="helpCategory"
-    class="login-input"
-    placeholder="Category"
-    style="margin-top:14px;"
-  >
+<select
+  id="helpCategory"
+  class="contact-select"
+  style="margin-top:14px;"
+>
 
-  <input
-    id="helpTopicKey"
-    class="login-input"
-    placeholder="Topic Key"
-    style="margin-top:14px;"
-  >
+  <option value="">
+    Select Category
+  </option>
 
-  <input
-    id="helpTitle"
-    class="login-input"
-    placeholder="Title"
-    style="margin-top:14px;"
-  >
+  <option value="Getting Started">
+    Getting Started
+  </option>
 
-  <input
-    id="helpSortOrder"
-    class="login-input"
-    placeholder="Sort Order"
-    value="0"
-    style="margin-top:14px;"
-  >
+  <option value="Calendar Features">
+    Calendar Features
+  </option>
+
+  <option value="Region Filters">
+    Region Filters
+  </option>
+
+  <option value="Instructor Requests">
+    Instructor Requests
+  </option>
+
+  <option value="User Accounts">
+    User Accounts
+  </option>
+
+  <option value="Volunteer Information">
+    Volunteer Information
+  </option>
+
+  <option value="Announcements">
+    Announcements
+  </option>
+
+  <option value="Administrator Functions">
+    Administrator Functions
+  </option>
+
+  <option value="Troubleshooting">
+    Troubleshooting
+  </option>
+
+  <option value="FAQ">
+    FAQ
+  </option>
+
+  <option value="Program Updates">
+    Program Updates
+  </option>
+
+</select>
+
+<input
+  id="helpTopicKey"
+  class="login-input"
+  placeholder="Auto Generated"
+  readonly
+  style="
+    margin-top:14px;
+    background:#f3f4f6;
+  "
+>
+
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+
+    const category =
+      document.getElementById(
+        'helpCategory'
+      );
+
+    if(!category){
+      return;
+    }
+
+    category.addEventListener(
+      'change',
+      function(){
+
+        document.getElementById(
+          'helpSortOrder'
+        ).value =
+          helpCategoryOrders[
+            this.value
+          ] || 100;
+
+        const content =
+          document.getElementById(
+            'helpContent'
+          );
+
+        if(
+          !content.value.trim()
+        ){
+
+          content.value =
+            helpTemplates[
+              this.value
+            ] || '';
+
+        }
+
+      }
+    );
+
+  }
+);
+	
+<div style="
+  font-size:13px;
+  font-weight:600;
+  margin-top:14px;
+">
+  Help Topic Title
+</div>
+
+<input
+  id="helpTitle"
+  class="login-input"
+  placeholder="Enter help topic title"
+  style="margin-top:4px;"
+>
+
+<input
+  id="helpSortOrder"
+  class="login-input"
+  placeholder="Display Order (Auto)"
+  value="100"
+  readonly
+  style="
+    margin-top:14px;
+    background:#f3f4f6;
+  "
+>
 
   <select
     id="helpVisibilityRole"
@@ -8863,7 +9153,7 @@ function overrideCategory(
       font-size:14px;
       box-sizing:border-box;
     "
-    placeholder="HTML help content..."
+    placeholder="Select a category to load a template..."
   ></textarea>
 
   <div style="
@@ -8880,6 +9170,8 @@ function overrideCategory(
       New
     </button>
 
+	  
+	  
     <button
       onclick="deleteHelpTopic()"
       style="background:#dc2626;"
