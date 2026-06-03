@@ -6592,39 +6592,7 @@ function suggestCategoryRule(title){
 
 }
 
-const currentUser =
-  JSON.parse(
-    localStorage.getItem(
-      'user'
-    )
-  );
 
-const isInstructor =
-  Array.isArray(
-    event.instructors
-  ) &&
-  event.instructors.some(
-    i =>
-      (i.email || '')
-        .trim()
-        .toLowerCase()
-      ===
-      (currentUser?.email || '')
-        .trim()
-        .toLowerCase()
-  );
-
-console.log(
-  'INSTRUCTOR CHECK',
-  {
-    eventId: event.id,
-    userEmail: currentUser?.email,
-    instructors: event.instructors,
-    isInstructor
-  }
-);
-
-panel.innerHTML = `
 
   <div style="
     font-size:24px;
