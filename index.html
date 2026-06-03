@@ -6592,80 +6592,67 @@ function suggestCategoryRule(title){
 
 }
 
-function previewSystemEvent(eventUrl){
+const currentUser =
+  JSON.parse(
+    localStorage.getItem(
+      'user'
+    )
+  );
 
-  const panel =
-    document.getElementById(
-      'systemPreviewPanel'
-    );
-
-  const event =
-    events.find(
-      e => e.url === eventUrl
-    );
-
-  if(!event || !panel){
-    return;
-  }
-
-  const isInstructor =
-    Array.isArray(event.instructors) &&
-
-    event.instructors.some(i =>
-
-      (
-        i.email || ''
-      )
-      .trim()
-      .toLowerCase()
-
+const isInstructor =
+  Array.isArray(
+    event.instructors
+  ) &&
+  event.instructors.some(
+    i =>
+      (i.email || '')
+        .trim()
+        .toLowerCase()
       ===
+      (currentUser?.email || '')
+        .trim()
+        .toLowerCase()
+  );
 
-      (
-        JSON.parse(
-          localStorage.getItem('user')
-        )?.email || ''
-      )
-      .trim()
-      .toLowerCase()
+console.log(
+  'INSTRUCTOR CHECK',
+  {
+    eventId: event.id,
+    userEmail: currentUser?.email,
+    instructors: event.instructors,
+    isInstructor
+  }
+);
 
-    );
+panel.innerHTML = `
 
-  panel.innerHTML = `
+  <div style="
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:18px;
+    color:#111827;
+    line-height:1.4;
+  ">
 
-    <div style="
-      font-size:24px;
-      font-weight:700;
-      margin-bottom:18px;
-      color:#111827;
-      line-height:1.4;
-    ">
+    ${event.title}
 
-      ${event.title}
+    ${
+      isInstructor
+        ? `
+          <span style="
+            display:inline-block;
+            width:12px;
+            height:12px;
+            background:#2563eb;
+            border-radius:50%;
+            margin-left:10px;
+            vertical-align:middle;
+          "></span>
+        `
+        : ''
+    }
 
-      ${
-
-        isInstructor
-
-          ? `
-
-            <span style="
-              display:inline-block;
-              width:12px;
-              height:12px;
-              background:#2563eb;
-              border-radius:50%;
-              margin-left:10px;
-              vertical-align:middle;
-            "></span>
-
-          `
-
-          : ''
-
-      }
-
-    </div>
+  </div>
 
     <div style="
       color:#2563eb;
