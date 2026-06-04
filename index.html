@@ -9522,6 +9522,8 @@ geographic analysis.
 
 	<script>
 
+let showAllCounties = false;
+		
 const geoRegions = {
 
   Western:[
@@ -9644,6 +9646,22 @@ function loadGeoCounties(){
 
 }
 
+function toggleCountyView(){
+
+  showAllCounties =
+    !showAllCounties;
+
+  const region =
+    document.getElementById(
+      'geoRegionSelect'
+    ).value;
+
+  renderGeoRegionAnalysis(
+    region
+  );
+
+}
+		
 function renderGeoRegionAnalysis(region){
 
   const container =
@@ -9751,6 +9769,11 @@ function renderGeoRegionAnalysis(region){
     Object.entries(categoryTotals)
       .sort((a,b) => b[1] - a[1]);
 
+  const visibleCounties =
+  showAllCounties
+    ? sortedCounties
+    : sortedCounties.slice(0,5);	
+
   // ========================================
   // HTML
   // ========================================
@@ -9800,7 +9823,7 @@ function renderGeoRegionAnalysis(region){
         County Activity
       </div>
 
-      ${sortedCounties.map(([county,count]) => {
+        ${visibleCounties.map(([county,count]) => {
 
         const percentage =
           totalEvents > 0
@@ -9850,6 +9873,25 @@ function renderGeoRegionAnalysis(region){
         `;
 
       }).join('')}
+
+      <div style="
+        margin-top:12px;
+      ">
+
+        <button
+          class="admin-btn"
+          onclick="toggleCountyView()"
+        >
+
+          ${
+            showAllCounties
+              ? 'Show Top Counties'
+              : 'Show All Counties'
+          }
+
+        </button>
+
+      </div>
 
     </div>
 
