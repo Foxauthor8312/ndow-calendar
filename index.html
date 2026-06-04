@@ -8951,66 +8951,138 @@ function overrideCategory(
 
 </select>
 
-<input
-  id="helpTopicKey"
-  class="login-input"
-  placeholder="Topic Key (generated automatically)"
-  readonly
-  style="
-    margin-top:14px;
-    background:#f3f4f6;
-  "
->
-
 <div style="
-  margin-top:8px;
-  font-size:12px;
-  color:#6b7280;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px;
 ">
-  Unique topic identifier used by context help buttons.
+
+  <div>
+
+    <label style="
+      display:block;
+      margin-bottom:6px;
+      font-size:12px;
+      font-weight:600;
+      color:#374151;
+    ">
+      placeholder="Generated automatically"
+    </label>
+
+    <input
+      id="helpTopicKey"
+      class="login-input"
+      readonly
+      placeholder="generated_topic_key"
+      style="
+        margin-top:0;
+        background:#f3f4f6;
+      "
+    >
+
+  </div>
+
+  <div>
+
+    <label style="
+      display:block;
+      margin-bottom:6px;
+      font-size:12px;
+      font-weight:600;
+      color:#374151;
+    ">
+      placeholder="Example: Creating an Event"
+    </label>
+
+    <input
+      id="helpTitle"
+      class="login-input"
+      placeholder="Enter topic title..."
+      style="
+        margin-top:0;
+        background:white;
+        color:#111827;
+      "
+    >
+
+  </div>
+
 </div>
-
-<label style="
-  display:block;
-  margin-top:16px;
-  margin-bottom:6px;
-  font-size:13px;
-  font-weight:600;
-  color:#374151;
-">
-  Topic Title
-</label>
-
-<input
-  id="helpTitle"
-  class="login-input"
-  placeholder="Example: Creating an Event"
-  style="
-    margin-top:4px;
-    background:white;
-    color:#111827;
-  "
->
 
 <div style="
   margin-top:6px;
   font-size:12px;
   color:#6b7280;
 ">
-  This is the title users will see in the Help system.
+  Unique topic identifier used by context help buttons.
 </div>
 
-<input
-  id="helpSortOrder"
-  class="login-input"
-  placeholder="Display Order (Auto)"
-  value="100"
-  readonly
-  style="
-    margin-top:14px;
-    background:#f3f4f6;
-  "
->
+<div style="
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px;
+">
+
+  <div>
+
+    <label style="
+      display:block;
+      margin-bottom:6px;
+      font-size:12px;
+      font-weight:600;
+      color:#374151;
+    ">
+      Sort Order
+    </label>
+
+    <input
+      id="helpSortOrder"
+      class="login-input"
+      value="100"
+      readonly
+      style="
+        margin-top:0;
+        background:#f3f4f6;
+      "
+    >
+
+  </div>
+
+  <div>
+
+    <label style="
+      display:block;
+      margin-bottom:6px;
+      font-size:12px;
+      font-weight:600;
+      color:#374151;
+    ">
+      Visible To
+    </label>
+
+    <select
+      id="helpVisibilityRole"
+      class="contact-select"
+      style="margin-top:0;"
+    >
+      <option value="all">
+        All Users
+      </option>
+
+      <option value="user">
+        Standard Users
+      </option>
+
+      <option value="admin">
+        Admin Only
+      </option>
+    </select>
+
+  </div>
+
+</div>
 
 <div style="
   margin-top:6px;
@@ -9020,48 +9092,31 @@ function overrideCategory(
   Lower numbers appear higher in the topic list.
 </div>
 
-<select
-  id="helpVisibilityRole"
-  class="contact-select"
-  style="margin-top:14px;"
->
-  <option value="all">
-    All Users
-  </option>
-
-  <option value="user">
-    Standard Users
-  </option>
-
-  <option value="admin">
-    Admin Only
-  </option>
-</select>
-
 <div style="
-  margin-top:6px;
+  margin-top:16px;
+  margin-bottom:6px;
   font-size:12px;
-  color:#6b7280;
+  font-weight:600;
+  color:#374151;
 ">
-  Controls who can view this help topic.
+  Topic Content
 </div>
-	
-  <textarea
-    id="helpContent"
-    style="
-      width:100%;
-      height:220px;
-      margin-top:14px;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid #d1d5db;
-      resize:vertical;
-      font-family:Inter,sans-serif;
-      font-size:14px;
-      box-sizing:border-box;
-    "
-    placeholder="Enter instructions, procedures, troubleshooting steps, links, notes, and guidance for users."
-  ></textarea>
+
+<textarea
+  id="helpContent"
+  style="
+    width:100%;
+    height:180px;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    resize:vertical;
+    font-family:Inter,sans-serif;
+    font-size:14px;
+    box-sizing:border-box;
+  "
+  placeholder="Enter instructions, procedures, troubleshooting steps, links, notes, and guidance for users."
+></textarea>
 
   <div style="
     display:flex;
