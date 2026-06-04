@@ -8833,29 +8833,11 @@ function overrideCategory(
     
   </div>
 
-<div
-  id="geoSummary"
-  style="
-    margin-top:24px;
-    background:#f8fafc;
-    border:1px solid #dbe3ec;
-    border-radius:12px;
-    padding:18px;
-    color:#475569;
-    font-size:14px;
-  "
->
-
-Select a region and county to view
-event distribution and geographic analytics.
-
-</div>
-
 
 <div
   id="geoRegionDetails"
   style="
-    margin-top:20px;
+    margin-top:12px;
     background:white;
     border:1px solid #dbe3ec;
     border-radius:16px;
@@ -9761,52 +9743,38 @@ function renderGeoRegionAnalysis(region){
 
   container.innerHTML = `
 
-    <div style="
-      display:grid;
-      grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
-      gap:20px;
-      margin-top:20px;
-    ">
+<div style="
+  margin-top:16px;
+">
 
-      <!-- TOTAL EVENTS -->
+  <div style="
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  ">
 
-      <div class="geo-card">
+  <div class="adminStatBadge">
+    ${totalEvents} Events
+  </div>
 
-        <div class="geo-title">
-          Total Events
-        </div>
+  <div class="adminStatBadge">
 
-        <div class="geo-value">
-          ${totalEvents}
-        </div>
+    ${
+      region === 'ALL' || !region
+        ? 'All Regions'
+        : region + ' Region'
+    }
 
-      </div>
+  </div>
 
-      <!-- REGION -->
-
-      <div class="geo-card">
-
-        <div class="geo-title">
-          Active Region
-        </div>
-
-        <div class="geo-value">
-          ${
-            region === 'ALL' || !region
-              ? 'All Regions'
-              : region
-          }
-        </div>
-
-      </div>
+</div>
 
     </div>
 
     <!-- COUNTY BREAKDOWN -->
 
     <div style="
-      margin-top:28px;
+      margin-top:12px;
     ">
 
       <div style="
