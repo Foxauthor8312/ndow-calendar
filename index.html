@@ -8789,21 +8789,21 @@ function overrideCategory(
     style="margin-top:12px;"
   >
 
-    <option value="">
-      Select Region
-    </option>
+<option value="ALL" selected>
+  All Regions
+</option>
 
-    <option value="Western">
-      Western Nevada
-    </option>
+<option value="Western">
+  Western Nevada
+</option>
 
-    <option value="Eastern">
-      Eastern Nevada
-    </option>
+<option value="Eastern">
+  Eastern Nevada
+</option>
 
-    <option value="Southern">
-      Southern Nevada
-    </option>
+<option value="Southern">
+  Southern Nevada
+</option>
 
   </select>
 
@@ -9582,7 +9582,6 @@ const geoEventStats = {
   }
 
 };
-
 function loadGeoCounties(){
 
   const region =
@@ -9595,6 +9594,26 @@ function loadGeoCounties(){
       'geoCountySelect'
     );
 
+  if(region === 'ALL'){
+
+    countySelect.value = '';
+
+    countySelect.disabled = true;
+
+    countySelect.innerHTML = `
+      <option value="">
+        County selection unavailable
+      </option>
+    `;
+
+    renderGeoAnalytics();
+
+    return;
+
+  }
+
+  countySelect.disabled = false;
+
   countySelect.innerHTML = `
     <option value="">
       Select County
@@ -9602,9 +9621,7 @@ function loadGeoCounties(){
   `;
 
   if(!region){
-
     return;
-
   }
 
   geoRegions[region].forEach(county => {
@@ -9614,11 +9631,8 @@ function loadGeoCounties(){
         'option'
       );
 
-    option.value =
-      county;
-
-    option.innerText =
-      county;
+    option.value = county;
+    option.innerText = county;
 
     countySelect.appendChild(
       option
