@@ -262,11 +262,11 @@ button:hover{
 
 #adminSidebar button{
 
-  background:#8FA7BF;
+  background:#DCE6F0;
 
   color:#19304B;
 
-  border:1px solid #6B85A1;
+  border:1px solid #B8C8D8;
 
   font-weight:600;
 
@@ -277,14 +277,11 @@ button:hover{
   background:#B5C5D6;
 
 }
-	.admin-nav-active{
-
+.admin-nav-active{
   background:#19304B !important;
-
   color:white !important;
-
-  border:1px solid #19304B !important;
-
+  border-left:4px solid #60A5FA !important;
+  font-weight:700 !important;
 }
 
 .event{
@@ -8960,13 +8957,38 @@ function overrideCategory(
   "
 >
 
+<div style="
+  margin-top:8px;
+  font-size:12px;
+  color:#6b7280;
+">
+  Unique topic identifier used by context help buttons.
+</div>
+
+<label style="
+  display:block;
+  margin-top:16px;
+  margin-bottom:6px;
+  font-size:13px;
+  font-weight:600;
+  color:#374151;
+">
+  Topic Title
+</label>
 
 <input
   id="helpTitle"
   class="login-input"
-  placeholder="Topic Title (what users will see)"
-  style="margin-top:4px;"
+  placeholder="Example: Creating an Event"
 >
+
+<div style="
+  margin-top:6px;
+  font-size:12px;
+  color:#6b7280;
+">
+  This is the title users will see in the Help system.
+</div>
 
 <input
   id="helpSortOrder"
@@ -8980,26 +9002,40 @@ function overrideCategory(
   "
 >
 
-  <select
-    id="helpVisibilityRole"
-    class="contact-select"
-    style="margin-top:14px;"
-  >
+<div style="
+  margin-top:6px;
+  font-size:12px;
+  color:#6b7280;
+">
+  Lower numbers appear higher in the topic list.
+</div>
 
-    <option value="all">
-      All Users
-    </option>
+<select
+  id="helpVisibilityRole"
+  class="contact-select"
+  style="margin-top:14px;"
+>
+  <option value="all">
+    All Users
+  </option>
 
-    <option value="user">
-      Standard Users
-    </option>
+  <option value="user">
+    Standard Users
+  </option>
 
-    <option value="admin">
-      Admin Only
-    </option>
+  <option value="admin">
+    Admin Only
+  </option>
+</select>
 
-  </select>
-
+<div style="
+  margin-top:6px;
+  font-size:12px;
+  color:#6b7280;
+">
+  Controls who can view this help topic.
+</div>
+	
   <textarea
     id="helpContent"
     style="
@@ -9027,12 +9063,10 @@ function overrideCategory(
       Save Topic
     </button>
 
-    <button onclick="newHelpTopic()">
-      New
-    </button>
-
-	  
-	  
+	<button onclick="newHelpTopic()">
+	  New Topic
+	</button>
+  
     <button
       onclick="deleteHelpTopic()"
       style="background:#dc2626;"
@@ -9052,10 +9086,25 @@ function overrideCategory(
 
 <div style="
   margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   font-weight:600;
   color:#111827;
 ">
-  Topics In Selected Category
+  <span>
+    Topics In Selected Category
+  </span>
+
+  <span
+    id="helpTopicCount"
+    style="
+      font-size:12px;
+      color:#6b7280;
+      font-weight:500;
+    "
+  >
+  </span>
 </div>
 
 <div
