@@ -3238,6 +3238,44 @@ async function wakeServer(){
 
 }
 
+	function togglePassword(){
+
+  const pinInput =
+    document.getElementById(
+      'userPin'
+    );
+
+  const eyeIcon =
+    document.querySelector(
+      '.toggle-password i'
+    );
+
+  if(!pinInput){
+    return;
+  }
+
+  if(pinInput.type === 'password'){
+
+    pinInput.type = 'text';
+
+    if(eyeIcon){
+      eyeIcon.className =
+        'fa-regular fa-eye-slash';
+    }
+
+  } else {
+
+    pinInput.type = 'password';
+
+    if(eyeIcon){
+      eyeIcon.className =
+        'fa-regular fa-eye';
+    }
+
+  }
+
+}
+	
 async function checkLogin(){
 
   const overlay =
