@@ -9684,6 +9684,24 @@ function renderGeoRegionAnalysis(region){
   // COUNTY TOTALS
   // ========================================
 
+  filteredEvents
+  .filter(e => !e.county)
+  .forEach(e => {
+
+    console.log(
+      'UNKNOWN COUNTY',
+      {
+        title: e.title,
+        location: e.location,
+        zip: e.zip,
+        city: e.city,
+        county: e.county,
+        region: e.region
+      }
+    );
+
+  });
+	
   const countyTotals = {};
 
   filteredEvents.forEach(event => {
