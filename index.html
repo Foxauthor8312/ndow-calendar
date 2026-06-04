@@ -7585,16 +7585,26 @@ document.getElementById(
 const helpCategoryOrders = {
 
   'Getting Started':100,
-  'Calendar Features':200,
-  'Region Filters':300,
-  'Instructor Requests':400,
+
+  'Calendar & Events':200,
+
+  'Instructor Management':300,
+
+  'Volunteer Management':400,
+
   'User Accounts':500,
-  'Volunteer Information':600,
-  'Announcements':700,
-  'Administrator Functions':800,
+
+  'Announcements':600,
+
+  'Help System':700,
+
+  'Administration':800,
+
   'Troubleshooting':900,
+
   'FAQ':1000,
-  'Program Updates':1100
+
+  'System Updates':1100
 
 };
 
@@ -7609,36 +7619,30 @@ Steps
 
 Additional Notes`,
 
-  'Calendar Features':
-`Feature Overview
+  'Calendar & Events':
+`Overview
 
 Purpose
 
-How To Use
-
-Tips
+Steps
 
 Additional Notes`,
 
-  'Region Filters':
-`Overview
-
-Available Regions
-
-How To Filter
-
-Expected Results
-
-Additional Notes`,
-
-  'Instructor Requests':
+  'Instructor Management':
 `Purpose
 
-When To Use This
+Requirements
 
 Steps
 
-Expected Result
+Additional Notes`,
+
+  'Volunteer Management':
+`Overview
+
+Requirements
+
+Steps
 
 Additional Notes`,
 
@@ -7651,15 +7655,6 @@ Steps
 
 Administrator Notes`,
 
-  'Volunteer Information':
-`Program Overview
-
-Requirements
-
-Participation Steps
-
-Additional Notes`,
-
   'Announcements':
 `Announcement Purpose
 
@@ -7669,7 +7664,16 @@ Message Content
 
 Additional Notes`,
 
-  'Administrator Functions':
+  'Help System':
+`Purpose
+
+Steps
+
+Examples
+
+Additional Notes`,
+
+  'Administration':
 `Purpose
 
 Required Permissions
@@ -7696,7 +7700,7 @@ Answer
 
 Additional Information`,
 
-  'Program Updates':
+  'System Updates':
 `Update Summary
 
 Effective Date
@@ -8760,55 +8764,70 @@ function overrideCategory(
   "
 >
 
-  <h2>
-    Help System
-  </h2>
+<h2>
+  Help Topic Manager
+</h2>
 
-  <input
-    type="hidden"
-    id="helpEditId"
-  >
+<div style="
+  color:#6b7280;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:14px;
+">
+  Create, edit, organize, and publish help topics for users and administrators.
+  Select a category, enter a title, and the topic key will be generated automatically.
+</div>
+
+<input
+  type="hidden"
+  id="helpEditId"
+>
 
 <select
   id="helpCategory"
   class="contact-select"
   style="margin-top:14px;"
+  onchange="renderHelpAdminList()"
 >
 
   <option value="">
-    Select Category
+    Select Help Category...
   </option>
 
   <option value="Getting Started">
     Getting Started
   </option>
 
-  <option value="Calendar Features">
-    Calendar Features
+  <option value="Calendar">
+    Calendar
   </option>
 
-  <option value="Region Filters">
-    Region Filters
+  <option value="Events">
+    Events
   </option>
 
-  <option value="Instructor Requests">
-    Instructor Requests
+  <option value="Volunteer Management">
+    Volunteer Management
   </option>
 
-  <option value="User Accounts">
-    User Accounts
+  <option value="Instructor Management">
+    Instructor Management
   </option>
 
-  <option value="Volunteer Information">
-    Volunteer Information
+  <option value="Users & Accounts">
+    Users & Accounts
   </option>
 
   <option value="Announcements">
     Announcements
   </option>
 
-  <option value="Administrator Functions">
-    Administrator Functions
+  <option value="Administration">
+    Administration
+  </option>
+
+  <option value="Reports & Analytics">
+    Reports & Analytics
   </option>
 
   <option value="Troubleshooting">
@@ -8819,16 +8838,12 @@ function overrideCategory(
     FAQ
   </option>
 
-  <option value="Program Updates">
-    Program Updates
-  </option>
-
 </select>
 
 <input
   id="helpTopicKey"
   class="login-input"
-  placeholder="Auto Generated"
+  placeholder="Topic Key (generated automatically)"
   readonly
   style="
     margin-top:14px;
@@ -8840,7 +8855,7 @@ function overrideCategory(
 <input
   id="helpTitle"
   class="login-input"
-  placeholder="Enter help topic title"
+  placeholder="Topic Title (what users will see)"
   style="margin-top:4px;"
 >
 
@@ -8890,7 +8905,7 @@ function overrideCategory(
       font-size:14px;
       box-sizing:border-box;
     "
-    placeholder="Select a category to load a template..."
+    placeholder="Enter instructions, procedures, troubleshooting steps, links, notes, and guidance for users."
   ></textarea>
 
   <div style="
@@ -8926,16 +8941,24 @@ function overrideCategory(
     "
   ></div>
 
-  <div
-    id="helpTopicAdminList"
-    style="
-      margin-top:20px;
-      max-height:260px;
-      overflow:auto;
-      border-top:1px solid #e5e7eb;
-      padding-top:14px;
-    "
-  ></div>
+<div style="
+  margin-top:20px;
+  font-weight:600;
+  color:#111827;
+">
+  Topics In Selected Category
+</div>
+
+<div
+  id="helpTopicAdminList"
+  style="
+    margin-top:8px;
+    max-height:260px;
+    overflow:auto;
+    border-top:1px solid #e5e7eb;
+    padding-top:14px;
+  "
+></div>
 
 </div>
 
