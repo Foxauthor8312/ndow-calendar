@@ -5449,10 +5449,46 @@ function openAdminSection(section){
     geo.style.display = 'none';
   }
 
-  if(category){
-    category.style.display = 'none';
-  }
-	
+if(category){
+  category.style.display = 'none';
+}
+
+/* ACTIVE SIDEBAR BUTTON */
+
+document
+  .querySelectorAll(
+    '#adminSidebar button'
+  )
+  .forEach(btn =>
+    btn.classList.remove(
+      'admin-nav-active'
+    )
+  );
+
+const buttonMap = {
+  users: 'adminUsersBtn',
+  instructorRequests:
+    'adminRequestsBtn',
+  announcements:
+    'adminUpdatesBtn',
+  help: 'adminHelpBtn',
+  geo: 'adminAnalyticsBtn',
+  category:
+    'adminCategoriesBtn'
+};
+
+const activeBtn =
+  document.getElementById(
+    buttonMap[section]
+  );
+
+if(activeBtn){
+  activeBtn.classList.add(
+    'admin-nav-active'
+  );
+}
+
+/* END ACTIVE SIDEBAR BUTTON */
 
 if(section === 'users' && users){
 
@@ -8113,63 +8149,42 @@ function overrideCategory(
       "
     >
 
-      <!-- SIDEBAR -->
+/* ACTIVE SIDEBAR BUTTON */
 
-      <div
- style="
-  width:145px;
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-  padding-right:6px;
-  flex-shrink:0;
-"
-      >
+document
+  .querySelectorAll(
+    '#adminSidebar button'
+  )
+  .forEach(btn =>
+    btn.classList.remove(
+      'admin-nav-active'
+    )
+  );
 
-<button
-  id="adminUsersBtn"
-  onclick="openAdminSection('users')"
->
-  Users
-</button>
+const buttonMap = {
+  users: 'adminUsersBtn',
+  instructorRequests:
+    'adminRequestsBtn',
+  announcements:
+    'adminUpdatesBtn',
+  help: 'adminHelpBtn',
+  geo: 'adminAnalyticsBtn',
+  category:
+    'adminCategoriesBtn'
+};
 
-<button
-  id="adminRequestsBtn"
-  onclick="openAdminSection('instructorRequests')"
->
-  Requests
-</button>
+const activeBtn =
+  document.getElementById(
+    buttonMap[section]
+  );
 
-<button
-  id="adminUpdatesBtn"
-  onclick="openAdminSection('announcements')"
->
-  Updates
-</button>
+if(activeBtn){
+  activeBtn.classList.add(
+    'admin-nav-active'
+  );
+}
 
-<button
-  id="adminHelpBtn"
-  onclick="openAdminSection('help')"
->
-  Help
-</button>
-
-<button
-  id="adminAnalyticsBtn"
-  onclick="openAdminSection('geo')"
->
-  Analytics
-</button>
-
-<button
-  id="adminCategoriesBtn"
-  onclick="openAdminSection('category')"
->
-  Categories
-</button>
-      </div>
-
-      <!-- CONTENT AREA -->
+/* END ACTIVE SIDEBAR BUTTON */
 
 <div
   style="
