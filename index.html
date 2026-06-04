@@ -258,6 +258,17 @@ button:hover{
 .admin-panel button:hover{
   background:#24384B;
 }
+
+.admin-nav-active{
+
+  background:#19304B !important;
+
+  color:white !important;
+
+  border-color:#19304B !important;
+
+}
+
 .event{
   padding:2px 4px;
   border-radius:6px;
@@ -8149,42 +8160,63 @@ function overrideCategory(
       "
     >
 
-/* ACTIVE SIDEBAR BUTTON */
+<!-- SIDEBAR -->
 
-document
-  .querySelectorAll(
-    '#adminSidebar button'
-  )
-  .forEach(btn =>
-    btn.classList.remove(
-      'admin-nav-active'
-    )
-  );
+<div
+  id="adminSidebar"
+  style="
+    width:145px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    padding-right:6px;
+    flex-shrink:0;
+  "
+>
 
-const buttonMap = {
-  users: 'adminUsersBtn',
-  instructorRequests:
-    'adminRequestsBtn',
-  announcements:
-    'adminUpdatesBtn',
-  help: 'adminHelpBtn',
-  geo: 'adminAnalyticsBtn',
-  category:
-    'adminCategoriesBtn'
-};
+<button
+  id="adminUsersBtn"
+  onclick="openAdminSection('users')"
+>
+  Users
+</button>
 
-const activeBtn =
-  document.getElementById(
-    buttonMap[section]
-  );
+<button
+  id="adminRequestsBtn"
+  onclick="openAdminSection('instructorRequests')"
+>
+  Requests
+</button>
 
-if(activeBtn){
-  activeBtn.classList.add(
-    'admin-nav-active'
-  );
-}
+<button
+  id="adminUpdatesBtn"
+  onclick="openAdminSection('announcements')"
+>
+  Updates
+</button>
 
-/* END ACTIVE SIDEBAR BUTTON */
+<button
+  id="adminHelpBtn"
+  onclick="openAdminSection('help')"
+>
+  Help
+</button>
+
+<button
+  id="adminAnalyticsBtn"
+  onclick="openAdminSection('geo')"
+>
+  Analytics
+</button>
+
+<button
+  id="adminCategoriesBtn"
+  onclick="openAdminSection('category')"
+>
+  Categories
+</button>
+
+</div>
 
 <div
   style="
