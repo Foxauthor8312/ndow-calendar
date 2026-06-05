@@ -9727,12 +9727,37 @@ function renderGeoRegionAnalysis(region){
 	
   const countyTotals = {};
 
+  if(region === 'ALL'){
+
+    Object.values(geoRegions)
+      .flat()
+      .forEach(county => {
+
+        countyTotals[county] = 0;
+
+      });
+
+  } else if(
+    region &&
+    geoRegions[region]
+  ){
+
+    geoRegions[region].forEach(county => {
+
+      countyTotals[county] = 0;
+
+    });
+
+  }
+
   filteredEvents.forEach(event => {
 
     const county =
       event.county || 'Unknown';
 
-    if(!countyTotals[county]){
+    if(
+      countyTotals[county] === undefined
+    ){
 
       countyTotals[county] = 0;
 
