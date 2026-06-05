@@ -8896,6 +8896,17 @@ function overrideCategory(
       onchange="loadGeoCounties()"
     >
 
+    <button
+      class="action-btn"
+      style="
+        margin-top:10px;
+        width:100%;
+      "
+      onclick="clearGeoDates()"
+    >
+      Reset Filters
+    </button>
+
   </div>
 
   </div>
@@ -9651,6 +9662,23 @@ const geoEventStats = {
   }
 
 };
+		
+};
+
+function clearGeoDates(){
+
+  document.getElementById(
+    'geoStartDate'
+  ).value = '';
+
+  document.getElementById(
+    'geoEndDate'
+  ).value = '';
+
+  loadGeoCounties();
+
+}
+		
 function loadGeoCounties(){
 
   const region =
