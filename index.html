@@ -4415,15 +4415,34 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-	function openHoursModal(){
+function openHoursModal(){
 
-  console.log(
-    'Selected Event:',
-    selectedEvent
-  );
+  if(!selectedEvent){
+
+    alert(
+      'No event selected.'
+    );
+
+    return;
+
+  }
 
   alert(
-    'Volunteer Hours Form Coming Next'
+
+`Event:
+${selectedEvent.title}
+
+Date:
+${selectedEvent.date}
+
+Location:
+${selectedEvent.location}
+
+County:
+${selectedEvent.county || 'Unknown'}
+
+Region:
+${selectedEvent.region || 'Unknown'}`
   );
 
 }
@@ -4475,6 +4494,12 @@ const oneDayAfter =
 oneDayAfter.setDate(
   oneDayAfter.getDate() + 1
 );
+
+const eventStart =
+  new Date(event.date);
+
+const allowHours =
+  now >= eventStart;
 
 const allowRequests =
   now <= oneDayAfter;
@@ -4635,25 +4660,27 @@ modalBody.innerHTML = `
     </div>
 
     <a
-      href="${event.url}"
-      target="_blank"
-      style="
-        display:inline-block;
-        margin-top:14px;
-        background:#2563eb;
-        color:white;
-        padding:12px 18px;
-        border-radius:8px;
-        text-decoration:none;
-        font-weight:600;
-      "
-    >
+  href="${event.url}"
+  target="_blank"
+  style="
+    display:inline-block;
+    margin-top:14px;
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+  "
+>
 
-      Open Official Event
+  Open Official Event
 
-    </a>
+</a>
 
-     <button
+${allowHours ? `
+
+<button
   onclick="openHoursModal()"
   style="
     display:block;
@@ -4670,6 +4697,28 @@ modalBody.innerHTML = `
 >
   Log Volunteer Hours
 </button>
+
+` : `
+
+<div style="
+  margin-top:12px;
+  padding:12px;
+  background:#fef3c7;
+  border-radius:8px;
+  color:#92400e;
+  font-size:14px;
+  text-align:center;
+">
+  Volunteer hours may be entered after the event begins.
+</div>
+
+`}
+
+<select
+  id="contactSelect"
+  class="contact-select"
+  onchange="toggleCustomEmail()"
+>
  
     <select
       id="contactSelect"
