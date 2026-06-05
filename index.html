@@ -4723,13 +4723,228 @@ function calculateHours(){
 
 function showHoursConfirmation(){
 
-  console.log(
-    'showHoursConfirmation fired'
-  );
+  const start =
+    document.getElementById(
+      'hoursStart'
+    ).value;
 
-  alert(
-    'showHoursConfirmation fired'
-  );
+  const end =
+    document.getElementById(
+      'hoursEnd'
+    ).value;
+
+  const breakMinutes =
+    Number(
+      document.getElementById(
+        'hoursBreak'
+      ).value || 0
+    );
+
+  const travelHours =
+    Number(
+      document.getElementById(
+        'travelHours'
+      ).value || 0
+    );
+
+  const mileage =
+    Number(
+      document.getElementById(
+        'mileage'
+      ).value || 0
+    );
+
+  const travelNotes =
+    document.getElementById(
+      'travelNotes'
+    ).value || '';
+
+  const activityNotes =
+    document.getElementById(
+      'activityNotes'
+    ).value || '';
+
+  const startDate =
+    new Date(`2000-01-01T${start}`);
+
+  const endDate =
+    new Date(`2000-01-01T${end}`);
+
+  let volunteerHours =
+    (endDate - startDate)
+    / 3600000;
+
+  volunteerHours -=
+    breakMinutes / 60;
+
+  const serviceValue =
+    volunteerHours * 56;
+
+  document.getElementById(
+    'hoursModalContent'
+  ).innerHTML = `
+
+    <h3 style="
+      margin-top:0;
+      margin-bottom:20px;
+    ">
+      Confirm Your Volunteer Hours
+    </h3>
+
+    <div style="
+      background:#f3f4f6;
+      padding:14px;
+      border-radius:8px;
+      margin-bottom:18px;
+    ">
+
+      <strong>Event:</strong>
+      ${selectedEvent.title || ''}
+
+      <br><br>
+
+      <strong>Date:</strong>
+      ${selectedEvent.date || ''}
+
+      <br><br>
+
+      <strong>Location:</strong>
+      ${selectedEvent.location || ''}
+
+    </div>
+
+    <div style="
+      display:grid;
+      gap:8px;
+      margin-bottom:20px;
+    ">
+
+      <div>
+        Start Time:
+        <strong>${start}</strong>
+      </div>
+
+      <div>
+        End Time:
+        <strong>${end}</strong>
+      </div>
+
+      <div>
+        Break Minutes:
+        <strong>${breakMinutes}</strong>
+      </div>
+
+      <div>
+        Travel Hours:
+        <strong>${travelHours}</strong>
+      </div>
+
+      <div>
+        Mileage:
+        <strong>${mileage}</strong>
+      </div>
+
+    </div>
+
+    <div style="
+      margin-bottom:16px;
+    ">
+      <strong>Travel Notes</strong>
+      <br>
+      ${travelNotes || 'None'}
+    </div>
+
+    <div style="
+      margin-bottom:20px;
+    ">
+      <strong>Activity Notes</strong>
+      <br>
+      ${activityNotes || 'None'}
+    </div>
+
+    <div style="
+      background:#ecfdf5;
+      padding:14px;
+      border-radius:8px;
+      margin-bottom:20px;
+    ">
+
+      <strong>
+        Volunteer Hours:
+      </strong>
+
+      ${volunteerHours.toFixed(2)}
+
+      <br><br>
+
+      <strong>
+        Service Value:
+      </strong>
+
+      $${serviceValue.toFixed(2)}
+
+    </div>
+
+    <label style="
+      display:flex;
+      gap:10px;
+      margin-bottom:20px;
+      align-items:flex-start;
+    ">
+
+      <input
+        type="checkbox"
+        id="certifyHours"
+        onchange="
+          document.getElementById(
+            'saveHoursBtn'
+          ).disabled =
+          !this.checked;
+        "
+      >
+
+      <span>
+        I certify these hours are accurate.
+      </span>
+
+    </label>
+
+    <div style="
+      background:#fef3c7;
+      color:#92400e;
+      padding:12px;
+      border-radius:8px;
+      margin-bottom:20px;
+      font-size:14px;
+    ">
+      Reminder:
+      You must still enter your volunteer
+      hours in the official NDOW Volunteer
+      System event page to receive
+      official volunteer credit.
+    </div>
+
+    <div style="
+      display:flex;
+      gap:10px;
+    ">
+
+      <button
+        onclick="openHoursModal()"
+      >
+        Edit Entry
+      </button>
+
+      <button
+        id="saveHoursBtn"
+        disabled
+      >
+        Confirm & Save
+      </button>
+
+    </div>
+
+  `;
 
 }
 
