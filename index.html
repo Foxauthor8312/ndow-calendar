@@ -8853,28 +8853,51 @@ function overrideCategory(
 
 </div>
 
-   <div class="geo-card">
+  <div class="geo-card">
 
-  <div class="geo-title">
-    County Analysis
+    <div class="geo-title">
+      County Analysis
+    </div>
+
+    <select
+      id="geoCountySelect"
+      class="contact-select"
+      style="margin-top:12px;"
+      onchange="renderCountyAnalysis()"
+    >
+
+      <option value="">
+        Select County
+      </option>
+
+    </select>
+
   </div>
 
- <select
-  id="geoCountySelect"
-  class="contact-select"
-  style="margin-top:12px;"
-  onchange="renderCountyAnalysis()"
->
+  <div class="geo-card">
 
-  <option value="">
-    Select County
-  </option>
+    <div class="geo-title">
+      Date Range
+    </div>
 
-</select>
+    <input
+      type="date"
+      id="geoStartDate"
+      class="contact-select"
+      style="margin-top:12px;"
+      onchange="loadGeoCounties()"
+    >
 
-</div>
+    <input
+      type="date"
+      id="geoEndDate"
+      class="contact-select"
+      style="margin-top:10px;"
+      onchange="loadGeoCounties()"
+    >
 
-    
+  </div>
+
   </div>
 
 
@@ -9717,29 +9740,65 @@ function renderGeoRegionAnalysis(region){
     return;
   }
 
-  let filteredEvents = [];
+const startDate =
+  document.getElementById(
+    'geoStartDate'
+  )?.value;
 
-  if(
-    !region ||
-    region === 'ALL'
-  ){
+const endDate =
+  document.getElementById(
+    'geoEndDate'
+  )?.value;
 
-    filteredEvents =
-      events.filter(
-        e => e.region
-      );
+let filteredEvents = [];
 
-  } else {
+if(
+  !region ||
+  region === 'ALL'
+){
 
-    filteredEvents =
-      events.filter(
-        e => e.region === region
-      );
+  filteredEvents =
+    events.filter(
+      e => e.region
+    );
 
-  }
+} else {
 
-  const totalEvents =
-    filteredEvents.length;
+  filteredEvents =
+    events.filter(
+      e => e.region === region
+    );
+
+}
+
+if(startDate){
+
+  const start =
+    new Date(startDate);
+
+  filteredEvents =
+    filteredEvents.filter(
+      e => new Date(e.date) >= start
+    );
+
+}
+
+if(endDate){
+
+  const end =
+    new Date(
+      endDate + 'T23:59:59'
+    );
+
+  filteredEvents =
+    filteredEvents.filter(
+      e => new Date(e.date) <= end
+    );
+
+}
+
+const totalEvents =
+  filteredEvents.length;
 
   // ========================================
   // COUNTY TOTALS
