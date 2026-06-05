@@ -4516,7 +4516,15 @@ function openHoursModal(){
           style="width:100%;"
         ></textarea>
       </label>
-
+	  
+	<label>
+	  Activity Notes
+	  <textarea
+	    id="activityNotes"
+	    rows="4"
+	    style="width:100%;"
+	  ></textarea>
+	</label>
     </div>
 
     <div
@@ -4556,12 +4564,13 @@ function openHoursModal(){
         Cancel
       </button>
 
-      <button
-        id="continueHoursBtn"
-        disabled
-      >
-        Continue
-      </button>
+     <button
+		  id="continueHoursBtn"
+		  disabled
+		  onclick="showHoursConfirmation()"
+		>
+		  Continue
+		</button>
 
     </div>
 
@@ -4608,7 +4617,7 @@ function openHoursModal(){
     });
 
 }
-	function calculateHours(){
+function calculateHours(){
 
   const start =
     document.getElementById(
@@ -4697,6 +4706,15 @@ function openHoursModal(){
   button.disabled = false;
 
 }
+
+/* ADD NEW FUNCTION HERE */
+
+function showHoursConfirmation(){
+
+  // confirmation code
+
+}
+
 // ========================================
 // START EVENT MODAL SYSTEM
 // ========================================
