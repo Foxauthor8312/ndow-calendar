@@ -47,6 +47,10 @@ jobs:
       - name: Run converter
         run: node convert-events.cjs
 
+      - name: Create timestamp
+        run: |
+          echo "{\"lastUpdated\":\"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\"}" > last-updated.json
+
       - name: Commit updated files
         run: |
           git config user.name "github-actions[bot]"
