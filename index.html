@@ -5102,7 +5102,21 @@ async function loadUsers(){
         heading
       );
 
-      users.forEach(user => {
+     users.forEach(user => {
+
+		  if(
+		    !showDisabled &&
+		    Number(user.disabled || 0) === 1
+		  ){
+		    return;
+		  }
+		
+		  const div =
+		    document.createElement(
+		      'div'
+		    );
+
+		
 
         const div =
           document.createElement(
