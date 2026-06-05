@@ -4659,7 +4659,7 @@ modalBody.innerHTML = `
 
     </div>
 
-    <a
+  <a
   href="${event.url}"
   target="_blank"
   style="
@@ -4678,55 +4678,13 @@ modalBody.innerHTML = `
 
 </a>
 
-${allowHours ? `
-
-<button
-  onclick="openHoursModal()"
-  style="
-    display:block;
-    width:100%;
-    margin-top:12px;
-    background:#166534;
-    color:white;
-    padding:12px 18px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
-  "
->
-  Log Volunteer Hours
-</button>
-
-` : `
-
-<div style="
-  margin-top:12px;
-  padding:12px;
-  background:#fef3c7;
-  border-radius:8px;
-  color:#92400e;
-  font-size:14px;
-  text-align:center;
-">
-  Volunteer hours may be entered after the event begins.
-</div>
-
-`}
-
 <select
   id="contactSelect"
   class="contact-select"
   onchange="toggleCustomEmail()"
 >
- 
-    <select
-      id="contactSelect"
-      class="contact-select"
-      onchange="toggleCustomEmail()"
-    >
 
-     ${categoryEmails.map(contact => {
+${categoryEmails.map(contact => {
 
   const selected =
 
@@ -4759,25 +4717,26 @@ ${allowHours ? `
   Custom / Other
 
 </option>
-    </select>
 
-    <input
-      type="email"
-      id="customEmail"
-      placeholder="Enter custom email"
-      style="
-        display:none;
-        width:100%;
-        margin-top:10px;
-        padding:10px;
-        border-radius:8px;
-        border:1px solid #d1d5db;
-      "
-    >
+</select>
 
-    ${
-      allowRequests
-        ? `
+<input
+  type="email"
+  id="customEmail"
+  placeholder="Enter custom email"
+  style="
+    display:none;
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+  "
+>
+
+${
+  allowRequests
+    ? `
 
 <a href="#"
    class="request-link"
@@ -4788,7 +4747,7 @@ ${allowHours ? `
 </a>
 
 `
-        : `
+    : `
 
 <div style="
   margin-top:16px;
@@ -4801,9 +4760,49 @@ ${allowHours ? `
 </div>
 
 `
-    }
+}
 
-   </div>
+<hr style="
+  margin:20px 0;
+  border:none;
+  border-top:1px solid #e5e7eb;
+">
+
+${allowHours ? `
+
+<button
+  onclick="openHoursModal()"
+  style="
+    display:block;
+    width:100%;
+    background:#166534;
+    color:white;
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+  "
+>
+  Log Volunteer Hours
+</button>
+
+` : `
+
+<div style="
+  padding:12px;
+  background:#fef3c7;
+  border-radius:8px;
+  color:#92400e;
+  font-size:14px;
+  text-align:center;
+">
+  Volunteer hours may be entered after the event begins.
+</div>
+
+`}
+
+</div>
 `;
 
   } catch (err) {
