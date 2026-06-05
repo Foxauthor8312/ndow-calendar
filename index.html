@@ -4419,31 +4419,282 @@ function openHoursModal(){
 
   if(!selectedEvent){
 
-    alert(
-      'No event selected.'
-    );
+    alert('No event selected.');
 
     return;
 
   }
 
-  alert(
+  const modal =
+    document.getElementById(
+      'hoursModal'
+    );
 
-`Event:
-${selectedEvent.title}
+  const content =
+    document.getElementById(
+      'hoursModalContent'
+    );
 
-Date:
-${selectedEvent.date}
+  content.innerHTML = `
 
-Location:
-${selectedEvent.location}
+    <div style="margin-bottom:18px;">
 
-County:
-${selectedEvent.county || 'Unknown'}
+      <strong>Event:</strong>
+      ${selectedEvent.title || ''}
 
-Region:
-${selectedEvent.region || 'Unknown'}`
-  );
+      <br><br>
+
+      <strong>Date:</strong>
+      ${selectedEvent.date || ''}
+
+      <br><br>
+
+      <strong>Location:</strong>
+      ${selectedEvent.location || ''}
+
+    </div>
+
+    <div style="display:grid;gap:12px;">
+
+      <label>
+        Start Time
+        <input
+          type="time"
+          id="hoursStart"
+          style="width:100%;"
+        >
+      </label>
+
+      <label>
+        End Time
+        <input
+          type="time"
+          id="hoursEnd"
+          style="width:100%;"
+        >
+      </label>
+
+      <label>
+        Break Minutes
+        <input
+          type="number"
+          id="hoursBreak"
+          value="0"
+          min="0"
+          style="width:100%;"
+        >
+      </label>
+
+      <label>
+        Travel Hours
+        <input
+          type="number"
+          id="travelHours"
+          value="0"
+          min="0"
+          step=".25"
+          style="width:100%;"
+        >
+      </label>
+
+      <label>
+        Mileage
+        <input
+          type="number"
+          id="mileage"
+          value="0"
+          min="0"
+          style="width:100%;"
+        >
+      </label>
+
+      <label>
+        Travel Notes
+        <textarea
+          id="travelNotes"
+          rows="3"
+          style="width:100%;"
+        ></textarea>
+      </label>
+
+    </div>
+
+    <div
+      id="hoursSummary"
+      style="
+        margin-top:20px;
+        padding:12px;
+        background:#f3f4f6;
+        border-radius:8px;
+      "
+    >
+      Volunteer Hours: 0.00
+      <br>
+      Service Value: $0.00
+    </div>
+
+    <div
+      id="hoursError"
+      style="
+        margin-top:12px;
+        color:#dc2626;
+        font-weight:600;
+      "
+    ></div>
+
+    <div
+      style="
+        display:flex;
+        gap:10px;
+        margin-top:20px;
+      "
+    >
+
+      <button
+        onclick="closeHoursModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="continueHoursBtn"
+        disabled
+      >
+        Continue
+      </button>
+
+    </div>
+
+  `;
+
+  modal.style.display = 'flex';
+
+  attachHoursCalculations();
+
+}
+
+	function closeHoursModal(){
+
+  document.getElementById(
+    'hoursModal'
+  ).style.display = 'none';
+
+}
+	function attachHoursCalculations(){
+
+  const start =
+    document.getElementById(
+      'hoursStart'
+    );
+
+  const end =
+    document.getElementById(
+      'hoursEnd'
+    );
+
+  const breakField =
+    document.getElementById(
+      'hoursBreak'
+    );
+
+  [start,end,breakField]
+    .forEach(el => {
+
+      el.addEventListener(
+        'input',
+        calculateHours
+      );
+
+    });
+
+}
+	function calculateHours(){
+
+  const start =
+    document.getElementById(
+      'hoursStart'
+    ).value;
+
+  const end =
+    document.getElementById(
+      'hoursEnd'
+    ).value;
+
+  const breakMinutes =
+    Number(
+      document.getElementById(
+        'hoursBreak'
+      ).value || 0
+    );
+
+  const error =
+    document.getElementById(
+      'hoursError'
+    );
+
+  const summary =
+    document.getElementById(
+      'hoursSummary'
+    );
+
+  const button =
+    document.getElementById(
+      'continueHoursBtn'
+    );
+
+  error.textContent = '';
+
+  button.disabled = true;
+
+  if(!start || !end){
+
+    return;
+
+  }
+
+  const startDate =
+    new Date(`2000-01-01T${start}`);
+
+  const endDate =
+    new Date(`2000-01-01T${end}`);
+
+  if(endDate <= startDate){
+
+    error.textContent =
+      'End time must be after start time.';
+
+    return;
+
+  }
+
+  let hours =
+    (endDate - startDate)
+    / 3600000;
+
+  hours -=
+    breakMinutes / 60;
+
+  if(hours <= 0){
+
+    error.textContent =
+      'Volunteer hours must be greater than zero.';
+
+    return;
+
+  }
+
+  const value =
+    hours * 56;
+
+  summary.innerHTML = `
+    Volunteer Hours:
+    ${hours.toFixed(2)}
+    <br>
+    Service Value:
+    $${value.toFixed(2)}
+  `;
+
+  button.disabled = false;
 
 }
 // ========================================
@@ -10436,7 +10687,41 @@ ${regionTotal}
   </p>
 
 </div>
+<div
+  id="hoursModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:99999;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+  "
+>
 
+  <div
+    style="
+      background:white;
+      width:100%;
+      max-width:700px;
+      border-radius:12px;
+      padding:24px;
+      max-height:90vh;
+      overflow:auto;
+    "
+  >
+
+    <h2 style="margin-top:0;">
+      Volunteer Hours Entry
+    </h2>
+
+    <div id="hoursModalContent"></div>
+
+  </div>
+
+</div>
 	
 </body>
 </html>
