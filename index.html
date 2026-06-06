@@ -2407,6 +2407,7 @@ let activeFilters = [];
 let activeRegion = '';
 let selectedEvent = null;
 let submittedHoursRecord = null;
+let volunteerTotals = null;
 
 // ========================================
 // START EVENT LOADING
@@ -5150,6 +5151,8 @@ async function openEventModal(eventUrl) {
 
 	submittedHoursRecord = null;
 
+	submittedHoursRecord = null;
+
 try {
 
   const user =
@@ -5190,6 +5193,36 @@ try {
       result.record;
 
   }
+
+  const totalsResponse =
+  await fetch(
+
+`https://ndow-calendar-server.onrender.com/api/volunteer-totals/${user.ndow_id}`,
+
+    {
+
+      headers: {
+
+        Authorization:
+          `Bearer ${token}`
+
+      }
+
+    }
+
+  );
+
+const totalsResult =
+  await totalsResponse.json();
+
+if(
+  totalsResult.success
+){
+
+  volunteerTotals =
+    totalsResult;
+
+}
 
 } catch(err){
 
@@ -5544,6 +5577,49 @@ ${allowHours ? (
     ${submittedHoursRecord
       .approval_status || 'Submitted'}
   </div>
+
+  ${
+  volunteerTotals
+    ? `
+
+<hr style="
+  margin:12px 0;
+  border:none;
+  border-top:1px solid #86efac;
+">
+
+<div style="
+  font-weight:700;
+  margin-bottom:8px;
+">
+  ${volunteerTotals.year}
+  Volunteer Totals
+</div>
+
+<div>
+  Hours:
+  ${Number(
+    volunteerTotals.totals.hours || 0
+  ).toFixed(2)}
+</div>
+
+<div>
+  Miles:
+  ${Number(
+    volunteerTotals.totals.mileage || 0
+  ).toFixed(0)}
+</div>
+
+<div>
+  Service Value:
+  $${Number(
+    volunteerTotals.totals.serviceValue || 0
+  ).toFixed(2)}
+</div>
+
+`
+    : ''
+}
 
 </div>
 
