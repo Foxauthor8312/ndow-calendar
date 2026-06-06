@@ -5589,32 +5589,34 @@ ${allowHours ? (
 ">
 
 <div style="
-  font-weight:700;
-  margin-bottom:8px;
+  font-size:12px;
+  margin-top:6px;
 ">
-  ${volunteerTotals.year}
-  Volunteer Totals
-</div>
 
-<div>
-  Hours:
+  <strong>
+    ${volunteerTotals.year} Totals
+  </strong>
+
+  |
+  Hrs:
   ${Number(
     volunteerTotals.totals.hours || 0
   ).toFixed(2)}
-</div>
 
-<div>
-  Miles:
+  |
+
+  Mi:
   ${Number(
     volunteerTotals.totals.mileage || 0
   ).toFixed(0)}
-</div>
 
-<div>
-  Service Value:
-  $${Number(
+  |
+
+  $
+  ${Number(
     volunteerTotals.totals.serviceValue || 0
-  ).toFixed(2)}
+  ).toFixed(0)}
+
 </div>
 
 `
