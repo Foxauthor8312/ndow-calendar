@@ -2409,6 +2409,10 @@ let selectedEvent = null;
 let submittedHoursRecord = null;
 let volunteerTotals = null;
 
+const SERVICE_VALUE_RATE =
+  56.55;
+
+
 // ========================================
 // START EVENT LOADING
 // ========================================
@@ -4708,7 +4712,7 @@ function calculateHours(){
   }
 
   const value =
-    hours * 56;
+  hours * SERVICE_VALUE_RATE;
 
   summary.innerHTML = `
     Volunteer Hours:
@@ -4780,7 +4784,8 @@ function showHoursConfirmation(){
     breakMinutes / 60;
 
   const serviceValue =
-    volunteerHours * 56;
+  volunteerHours *
+  SERVICE_VALUE_RATE;
 
 window.pendingHoursEntry = {
 
@@ -5360,25 +5365,31 @@ modalBody.innerHTML = `
               margin-bottom:18px;
             ">
 
-	  <div style="
-	    font-size:15px;
-	    font-weight:700;
-	    color:#19304B;
-	    margin-bottom:8px;
-	  ">
-	    Instructors (${event.instructors.length})
-	  </div>
-
-              ${event.instructors.map(instructor => `
-
-  <div style="
-    padding:6px 8px;
-    margin-bottom:6px;
-    background:#f3f4f6;
-    border-radius:8px;
-    line-height:1.2;
-    font-size:13px;
-  ">
+	<div style="
+	  font-size:15px;
+	  font-weight:700;
+	  color:#19304B;
+	  margin-bottom:8px;
+	">
+	  Instructors (${event.instructors.length})
+	</div>
+	
+	<div style="
+	  max-height:120px;
+	  overflow-y:auto;
+	  padding-right:4px;
+	">
+	
+	${event.instructors.map(instructor => `
+	
+	<div style="
+	  padding:6px 8px;
+	  margin-bottom:6px;
+	  background:#f3f4f6;
+	  border-radius:8px;
+	  line-height:1.2;
+	  font-size:13px;
+	">
 
     <div style="
       font-weight:700;
@@ -5517,7 +5528,7 @@ ${
     : `
 
 <div style="
-  margin-top:16px;
+  margin-top:14px;
   color:#6b7280;
   font-size:14px;
 ">
@@ -5530,7 +5541,7 @@ ${
 }
 
 <hr style="
-  margin:20px 0;
+  margin:12px 0;
   border:none;
   border-top:1px solid #e5e7eb;
 ">
@@ -5542,22 +5553,25 @@ ${allowHours ? (
     ? `
 
 <div style="
-  padding:12px;
-  background:#ecfdf5;
-  border:1px solid #16a34a;
-  border-radius:8px;
+    padding:8px;
+	background:#ecfdf5;
+	border:1px solid #16a34a;
+	border-radius:6px;
+	font-size:12px;
+	line-height:1.25;
 ">
 
   <div style="
     color:#166534;
     font-weight:700;
-    margin-bottom:8px;
+    margin-bottom:3px;
+    font-size:12px;
   ">
     ✓ Hours Submitted
   </div>
 
   <div>
-    Volunteer Hours:
+    Hours:
     ${Number(
       submittedHoursRecord
         .volunteer_hours || 0
@@ -5565,7 +5579,7 @@ ${allowHours ? (
   </div>
 
   <div>
-    Service Value:
+    Value:
     $${Number(
       submittedHoursRecord
         .service_value || 0
@@ -5583,14 +5597,14 @@ ${allowHours ? (
     ? `
 
 <hr style="
-  margin:12px 0;
+  margin:4px 0;
   border:none;
   border-top:1px solid #86efac;
 ">
 
 <div style="
-  font-size:12px;
-  margin-top:6px;
+  font-size:11px;
+  margin-top:2px;
 ">
 
   <strong>
