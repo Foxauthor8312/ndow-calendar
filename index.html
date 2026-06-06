@@ -2486,38 +2486,57 @@ const response = await fetch(
 
     }
 
-    const data =
-      await response.json();
+   const data =
+  await response.json();
 
-	events = data.events || [];
-	loadLastUpdated();
+const rawEventCount =
+  (data.events || []).length;
 
-	  
-	const originalEventCount =
-	  events.length;
+events =
+  (data.events || [])
+  .filter(event => {
+
+    const text = `
+      ${event.title || ''}
+      ${event.description || ''}
+    `.toLowerCase();
+
+    return !text.includes(
+      'canceled'
+    );
+
+  });
+
+console.log(
+  'Cancelled Events Removed:',
+  rawEventCount - events.length
+);
+
+loadLastUpdated();
+
+const originalEventCount =
+  events.length;
 	
 	if(data.metrics){
-	
-	  systemStatus.rawBlocks =
-	    data.metrics.rawBlocks || 0;
-	
-	  systemStatus.skippedOldEvents =
-	    data.metrics.skippedOldEvents || 0;
-	
-	  systemStatus.invalidEvents =
-	    data.metrics.invalidEvents || 0;
-	
-	  systemStatus.finalEvents =
-		  data.metrics.finalEvents
-		  ||
-		  originalEventCount;
-	
-	} else {
-	
-	  systemStatus.finalEvents =
-	    events.length;
-	
-	}
+
+  systemStatus.rawBlocks =
+    data.metrics.rawBlocks || 0;
+
+  systemStatus.skippedOldEvents =
+    data.metrics.skippedOldEvents || 0;
+
+  systemStatus.invalidEvents =
+    data.metrics.invalidEvents || 0;
+
+  systemStatus.finalEvents =
+    events.length;
+
+} else {
+
+  systemStatus.finalEvents =
+    events.length;
+
+}
 
 console.log(
   'METRICS LOADED:',
