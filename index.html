@@ -6317,7 +6317,9 @@ async function loadHelpTopics(){
 
   helpContent.innerHTML = `
     <div style="
-      padding:24px;
+      padding:16px;
+      overflow-y:auto;
+	  max-height:65vh;
       color:#6b7280;
     ">
       Select a help topic from the left.
@@ -6381,45 +6383,47 @@ async function loadHelpTopics(){
       item.innerText =
         topic.title;
 
-      item.onclick = () => {
+item.onclick = () => {
 
-        helpContent.innerHTML = `
-          <div style="
-            padding:24px;
-          ">
+  helpContent.innerHTML = `
+    <div style="
+      padding:16px;
+      overflow-y:auto;
+      max-height:65vh;
+    ">
 
-            <h2 style="
-              margin-top:0;
-              color:#19304B;
-            ">
-              ${topic.title}
-            </h2>
+      <h2 style="
+        margin-top:0;
+        margin-bottom:12px;
+        color:#19304B;
+        font-size:22px;
+      ">
+        ${topic.title}
+      </h2>
 
-         <div style="
-             line-height:1.6;
-             font-size:14px;
-             color:#374151;
-             white-space:pre-wrap;
-         ">
-              ${topic.content || ''}
-            </div>
+      <div style="
+        line-height:1.6;
+        font-size:14px;
+        color:#374151;
+        white-space:pre-wrap;
+      ">
+        ${topic.content || ''}
+      </div>
 
-          </div>
-        `;
+    </div>
+  `;
 
-      };
+};
 
       topicList.appendChild(item);
 
     });
 
-   if(
-  topics.length > 0 &&
+if(
+  topicArray.length > 0 &&
   !window.contextHelpActive
 ){
-
   topicList.firstChild.click();
-
 }
 
   } catch(err){
