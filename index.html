@@ -4715,12 +4715,18 @@ function calculateHours(){
   hours * SERVICE_VALUE_RATE;
 
   summary.innerHTML = `
-    Volunteer Hours:
-    ${hours.toFixed(2)}
-    <br>
-    Service Value:
-    $${value.toFixed(2)}
-  `;
+  Volunteer Hours:
+  ${hours.toFixed(2)}
+  <br>
+  Service Value:
+  $${value.toLocaleString(
+    'en-US',
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  )}
+`;
 
   button.disabled = false;
 
@@ -4940,7 +4946,13 @@ window.pendingHoursEntry = {
         Service Value:
       </strong>
 
-      $${serviceValue.toFixed(2)}
+      $${serviceValue.toLocaleString(
+		  'en-US',
+		  {
+		    minimumFractionDigits: 2,
+		    maximumFractionDigits: 2
+		  }
+  )}
 
     </div>
 
