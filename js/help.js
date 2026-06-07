@@ -244,12 +244,14 @@ function formatHelpContent(
 
       html += `
         <h3 style="
-          margin-top:24px;
-          margin-bottom:10px;
-          color:#19304B;
-          border-bottom:1px solid #e5e7eb;
-          padding-bottom:4px;
-        ">
+		  margin-top:18px;
+		  margin-bottom:6px;
+		  color:#19304B;
+		  border-bottom:1px solid #e5e7eb;
+		  padding-bottom:2px;
+		  font-size:18px;
+		  font-weight:600;
+		">
           ${line}
         </h3>
       `;
@@ -259,10 +261,11 @@ function formatHelpContent(
     }
 
     html += `
-      <p style="
-        margin:0 0 14px 0;
-        line-height:1.8;
-      ">
+	<p style="
+	  margin:0 0 8px 0;
+	  line-height:1.5;
+	  font-size:14px;
+	">
         ${line}
       </p>
     `;
