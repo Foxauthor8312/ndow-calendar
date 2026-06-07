@@ -6054,33 +6054,41 @@ if(
 let inactivityTimer;
 let warningTimer;
 
+const SESSION_TIMEOUT_MINUTES = 30;
+const WARNING_MINUTES = 25;
+
 function resetInactivityTimer(){
 
- clearTimeout(warningTimer);
-
-	const warning =
-  document.getElementById(
-    'timeoutWarning'
-  );
-
-if(warning){
-  warning.style.display = 'none';
-};
-
-warningTimer = setTimeout(() => {
-
-  document.getElementById(
-    'timeoutWarning'
-  ).style.display = 'flex';
-
-}, 1000 * 60 * 14);
+  clearTimeout(warningTimer);
   clearTimeout(inactivityTimer);
+
+  const warning =
+    document.getElementById(
+      'timeoutWarning'
+    );
+
+  if(warning){
+    warning.style.display = 'none';
+  }
+
+  warningTimer = setTimeout(() => {
+
+    const warning =
+      document.getElementById(
+        'timeoutWarning'
+      );
+
+    if(warning){
+      warning.style.display = 'flex';
+    }
+
+  }, 1000 * 60 * WARNING_MINUTES);
 
   inactivityTimer = setTimeout(() => {
 
     logout(true);
 
-  }, 1000 * 60 * 15);
+  }, 1000 * 60 * SESSION_TIMEOUT_MINUTES);
 
 }
 
@@ -6103,9 +6111,14 @@ resetInactivityTimer();
 
 function stayLoggedIn(){
 
-  document.getElementById(
-    'timeoutWarning'
-  ).style.display = 'none';
+  const warning =
+    document.getElementById(
+      'timeoutWarning'
+    );
+
+  if(warning){
+    warning.style.display = 'none';
+  }
 
   resetInactivityTimer();
 
