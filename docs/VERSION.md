@@ -1,6 +1,6 @@
 Current Version
 
-26.1.5.1
+26.1.5.2
 
 Release Date
 
@@ -12,7 +12,16 @@ Current Focus
 * event_assignments Architecture
 * Compact Dashboard Layout
 
-Recent Release (26.1.5.1)
+Recent Release (26.1.5.2)
+
+Highlights
+
+* Updated footer styling to a low-emphasis informational format.
+* Reduced footer font size and adjusted spacing.
+* Confirmed version display functionality.
+* Maintained independent calendar scrolling architecture.
+
+Previous Release (26.1.5.1)
 
 Highlights
 
