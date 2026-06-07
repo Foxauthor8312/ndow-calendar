@@ -163,18 +163,48 @@ function formatHelpContent(
 
   let startIndex = 0;
 
-  // Remove duplicate title if first line matches topic title
-
   if(
     topicTitle &&
     lines.length > 0 &&
     lines[0].toLowerCase() ===
       topicTitle.toLowerCase()
   ){
+
+    html += `
+      <div style="
+        font-size:22px;
+        font-weight:700;
+        color:#19304B;
+        margin-bottom:16px;
+      ">
+        ${lines[0]}
+      </div>
+    `;
+
     startIndex = 1;
+
   }
 
   let inList = false;
+
+  const sectionHeadings = [
+    'overview',
+    'requirements',
+    'steps',
+    'additional notes',
+    'purpose',
+    'request statuses',
+    'request filters',
+    'request details',
+    'archiving requests',
+    'administrative recommendations',
+    'question',
+    'answer',
+    'warnings',
+    'changes',
+    'effective date',
+    'additional information'
+  ];
 
   for(
     let i = startIndex;
@@ -197,15 +227,15 @@ function formatHelpContent(
 
     }
 
-    // Bullet items
-
     if(line.startsWith('* ')){
 
       if(!inList){
 
         html += `
           <ul style="
-            margin:8px 0 16px 24px;
+            margin:6px 0 10px 20px;
+            font-size:14px;
+            line-height:1.5;
           ">
         `;
 
@@ -230,30 +260,24 @@ function formatHelpContent(
 
     }
 
-    const nextLine =
-      lines[i + 1]
-        ? lines[i + 1].trim()
-        : '';
-
-    // Section heading
-    // Heading followed by blank line
-
     if(
-      nextLine === ''
+      sectionHeadings.includes(
+        line.toLowerCase()
+      )
     ){
 
       html += `
-        <h3 style="
-		  margin-top:18px;
-		  margin-bottom:6px;
-		  color:#19304B;
-		  border-bottom:1px solid #e5e7eb;
-		  padding-bottom:2px;
-		  font-size:18px;
-		  font-weight:600;
-		">
+        <div style="
+          font-size:14px;
+          font-weight:700;
+          color:#19304B;
+          margin-top:16px;
+          margin-bottom:6px;
+          border-bottom:1px solid #DBE3EC;
+          padding-bottom:4px;
+        ">
           ${line}
-        </h3>
+        </div>
       `;
 
       continue;
@@ -261,13 +285,15 @@ function formatHelpContent(
     }
 
     html += `
-	<p style="
-	  margin:0 0 8px 0;
-	  line-height:1.5;
-	  font-size:14px;
-	">
+      <div style="
+        font-size:14px;
+        font-weight:400;
+        color:#374151;
+        line-height:1.6;
+        margin-bottom:8px;
+      ">
         ${line}
-      </p>
+      </div>
     `;
 
   }
@@ -304,7 +330,7 @@ function renderHelpTopicList(
       document.createElement('div');
 
     item.style.padding =
-      '12px 14px';
+      '8px 12px';
 
     item.style.borderBottom =
       '1px solid #e5e7eb';
@@ -316,7 +342,7 @@ function renderHelpTopicList(
       '600';
 
     item.style.fontSize =
-      '14px';
+      '13px';
 
     item.style.color =
       '#19304B';
