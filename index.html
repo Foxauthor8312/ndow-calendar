@@ -4494,26 +4494,17 @@ document.getElementById(
   'wildlifeFact'
 ).style.display =
   'none';
-	
-document.querySelector(
-  '#loadingOverlay .spinner'
-).style.display =
-  'none';
 
-document.getElementById(
-  'loadingMessage'
-).style.display =
-  'none';
+const logoutMessage =
+  document.getElementById(
+    'logoutMessage'
+  );
 
-document.getElementById(
-  'wildlifeFact'
-).style.display =
-  'none';
-
-document.getElementById(
-  'logoutMessage'
-).style.display =
+logoutMessage.style.display =
   'flex';
+
+logoutMessage.style.visibility =
+  'visible';
 
 overlay.style.display =
   'flex';
@@ -4529,7 +4520,7 @@ setTimeout(() => {
 
   location.reload();
 
-}, 4500);
+}, 2500);
 
 }
 	
