@@ -7264,6 +7264,31 @@ async function loadDashboard(){
 
 </div>
 
+${user.role === 'admin' ||
+  user.role === 'superuser'
+  ? `
+
+<div class="dashboard-section">
+
+  <h3 class="dashboard-section-title">
+    Administrator Tools
+  </h3>
+
+  <div class="dashboard-tool-list">
+
+    <button
+      id="releaseManagerBtn"
+      class="admin-button">
+      Release Manager
+    </button>
+
+  </div>
+
+</div>
+
+`
+  : ''}
+
 `;
 
   }catch(err){
