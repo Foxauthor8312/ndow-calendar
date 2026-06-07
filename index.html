@@ -2456,13 +2456,6 @@ const categoryColors = {
 };
 
 // ========================================
-// APPLICATION INFO
-// ========================================
-
-const APP_VERSION =
-  '26.1.5.1';
-
-// ========================================
 // GLOBAL DATA
 // ========================================
 
@@ -3556,12 +3549,42 @@ const versionDisplay =
     'versionDisplay'
   );
 
-if(versionDisplay){
+async function loadVersion(){
 
-  versionDisplay.innerText =
-    APP_VERSION;
+  try{
 
-}	
+    const response =
+      await fetch('version.json');
+
+    const versionData =
+      await response.json();
+
+    if(versionDisplay){
+
+      versionDisplay.innerText =
+        versionData.version;
+
+    }
+
+  }catch(error){
+
+    console.error(
+      'Failed to load version information',
+      error
+    );
+
+    if(versionDisplay){
+
+      versionDisplay.innerText =
+        '?';
+
+    }
+
+  }
+
+}
+
+loadVersion();
 
   appContent.style.opacity =
     '0';
