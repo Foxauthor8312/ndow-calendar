@@ -25,7 +25,7 @@ Bug fixes and small improvements.
 
 ---
 
-## Version 1.5.0
+## Version 26.1.5.0
 
 Date: 2026-06-07
 
@@ -56,7 +56,7 @@ Documentation
 
 ---
 
-## Version 1.4.0
+## Version 26.1.4.0
 
 Date: YYYY-MM-DD
 
@@ -71,7 +71,7 @@ Fixes
 
 6/7/26
 
-* Version 26.xx.xx
+* Version 26.1.5.1
 
 HELP SYSTEM
 - Extracted Help functionality from index.html into js/help.js
