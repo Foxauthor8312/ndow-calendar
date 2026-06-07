@@ -5666,16 +5666,18 @@ ${Number(
 |
 
 Volunteer Value:
-$${Number(
+$${Math.round(
   volunteerTotals.totals.serviceValue || 0
-).toLocaleString(
-  undefined,
-  {
-    maximumFractionDigits: 0
-  }
 )}
 
 </div>
+
+`
+    : ''
+}
+
+</div>
+
 `
 
     : `
