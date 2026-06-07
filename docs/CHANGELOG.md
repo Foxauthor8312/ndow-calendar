@@ -92,3 +92,16 @@ UI
 Documentation
 
 * Updated ...
+
+* ## v26.1.5.2
+
+### User Interface Improvements
+
+* Refined footer styling to function as low-emphasis informational content.
+* Reduced footer font size and adjusted line spacing for improved readability.
+* Updated footer presentation to align with NDOW Portal Style Guide.
+* Confirmed version display renders correctly in footer.
+* Preserved independent calendar scrolling architecture.
+* Header, status bar, legends, region filters, and day names remain fixed while calendar grid scrolls independently.
+* Footer remains visible below calendar content and outside scrollable grid area.
+
