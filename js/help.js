@@ -145,6 +145,140 @@ if(
 
 }
 
+function formatHelpContent(
+  content,
+  topicTitle = ''
+){
+
+  if(!content){
+    return '';
+  }
+
+  const lines =
+    content
+      .split('\n')
+      .map(line => line.trim());
+
+  let html = '';
+
+  let startIndex = 0;
+
+  // Remove duplicate title if first line matches topic title
+
+  if(
+    topicTitle &&
+    lines.length > 0 &&
+    lines[0].toLowerCase() ===
+      topicTitle.toLowerCase()
+  ){
+    startIndex = 1;
+  }
+
+  let inList = false;
+
+  for(
+    let i = startIndex;
+    i < lines.length;
+    i++
+  ){
+
+    const line = lines[i];
+
+    if(!line){
+
+      if(inList){
+
+        html += '</ul>';
+        inList = false;
+
+      }
+
+      continue;
+
+    }
+
+    // Bullet items
+
+    if(line.startsWith('* ')){
+
+      if(!inList){
+
+        html += `
+          <ul style="
+            margin:8px 0 16px 24px;
+          ">
+        `;
+
+        inList = true;
+
+      }
+
+      html += `
+        <li>
+          ${line.substring(2)}
+        </li>
+      `;
+
+      continue;
+
+    }
+
+    if(inList){
+
+      html += '</ul>';
+      inList = false;
+
+    }
+
+    const nextLine =
+      lines[i + 1]
+        ? lines[i + 1].trim()
+        : '';
+
+    // Section heading
+    // Heading followed by blank line
+
+    if(
+      nextLine === ''
+    ){
+
+      html += `
+        <h3 style="
+          margin-top:24px;
+          margin-bottom:10px;
+          color:#19304B;
+          border-bottom:1px solid #e5e7eb;
+          padding-bottom:4px;
+        ">
+          ${line}
+        </h3>
+      `;
+
+      continue;
+
+    }
+
+    html += `
+      <p style="
+        margin:0 0 14px 0;
+        line-height:1.8;
+      ">
+        ${line}
+      </p>
+    `;
+
+  }
+
+  if(inList){
+
+    html += '</ul>';
+
+  }
+
+  return html;
+
+}
+
 function renderHelpTopicList(
   topics
 ){
@@ -218,21 +352,15 @@ function renderHelpTopicList(
           max-width:900px;
         ">
 
-          <h2 style="
-            margin-top:0;
-            margin-bottom:16px;
-            color:#19304B;
-          ">
-            ${topic.title}
-          </h2>
-
           <div style="
             line-height:1.8;
             font-size:15px;
             color:#374151;
-            white-space:pre-wrap;
           ">
-            ${topic.content || ''}
+            ${formatHelpContent(
+             topic.content,
+             topic.title
+          )}
           </div>
 
         </div>
@@ -270,21 +398,15 @@ function openHelpTopic(topic){
       max-width:900px;
     ">
 
-      <h2 style="
-        margin-top:0;
-        margin-bottom:16px;
-        color:#19304B;
-      ">
-        ${topic.title}
-      </h2>
-
       <div style="
         line-height:1.8;
         font-size:15px;
         color:#374151;
-        white-space:pre-wrap;
       ">
-        ${topic.content || ''}
+		${formatHelpContent(
+		  topic.content,
+		  topic.title
+)}
       </div>
 
     </div>
