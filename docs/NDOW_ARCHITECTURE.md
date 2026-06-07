@@ -27,6 +27,21 @@ Volunteers are the primary users of the system.
 
 ---
 
+## Front End Architecture
+
+6/7/26
+Help Module
+File: js/help.js
+
+Responsibilities:
+- Help Center rendering
+- Topic search
+- Context-sensitive help
+- Help administration support
+- Help content formatting
+
+---
+
 ## Admin
 
 Includes all Volunteer permissions plus:
