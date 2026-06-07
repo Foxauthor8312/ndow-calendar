@@ -1472,55 +1472,68 @@ body{
     "
   ></div>
 
-  <div
-    id="logoutMessage"
-    style="
-      display:none;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      height:100%;
-      width:100%;
-      color:#7fb069;
-      animation:fadeIn .8s ease;
-      position:absolute;
-      inset:0;
-      background:#000;
-    "
-  >
+<div
+  id="logoutMessage"
+  style="
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    height:100%;
+    width:100%;
+    color:#f3f4f6;
+    animation:fadeIn .6s ease;
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      180deg,
+      #1f2937 0%,
+      #111827 100%
+    );
+    padding:40px;
+    box-sizing:border-box;
+  "
+>
 
-    <div style="
-      font-size:38px;
-      font-weight:700;
-      margin-bottom:28px;
-      letter-spacing:.04em;
-      max-width:900px;
-      line-height:1.4;
-    ">
-      Thank you for being an NDOW volunteer.
-    </div>
+<div style="
+  font-size:30px;
+  font-weight:700;
+  margin-bottom:18px;
+  text-align:center;
+">
+  You Have Been Logged Out
+</div>
 
-    <div style="
-      font-size:22px;
-      max-width:760px;
-      line-height:1.8;
-      margin-bottom:42px;
-      opacity:.92;
-    ">
-      Your dedication to Nevada wildlife,
-      conservation, and public service
-      is greatly appreciated.
-    </div>
+<div style="
+  font-size:17px;
+  line-height:1.7;
+  max-width:700px;
+  text-align:center;
+  margin:0 auto 28px auto;
+  color:#d1d5db;
+">
+  Thank you for supporting Nevada wildlife,
+  conservation education, and volunteer programs.
+</div>
 
-    <img
-      src="ndowvolunteer-logo.png"
-      style="
-        width:210px;
-        opacity:.96;
-        filter:drop-shadow(0 0 12px rgba(255,255,255,.12));
-      "
-    />
+<img
+  src="ndowvolunteer-logo.png"
+  style="
+    width:120px;
+    margin-bottom:24px;
+    opacity:.95;
+  "
+/>
+
+<div style="
+  font-size:14px;
+  color:#9ca3af;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+">
+  Returning to Sign In...
+</div>
 
   </div>
 
@@ -4467,10 +4480,40 @@ const overlay =
     'loadingOverlay'
   );
 
+document.querySelector(
+  '#loadingOverlay .spinner'
+).style.display =
+  'none';
+
+document.getElementById(
+  'loadingMessage'
+).style.display =
+  'none';
+
+document.getElementById(
+  'wildlifeFact'
+).style.display =
+  'none';
+	
+document.querySelector(
+  '#loadingOverlay .spinner'
+).style.display =
+  'none';
+
+document.getElementById(
+  'loadingMessage'
+).style.display =
+  'none';
+
+document.getElementById(
+  'wildlifeFact'
+).style.display =
+  'none';
+
 document.getElementById(
   'logoutMessage'
 ).style.display =
-  'block';
+  'flex';
 
 overlay.style.display =
   'flex';
