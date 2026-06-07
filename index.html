@@ -1919,6 +1919,7 @@ body{
 
 <div class="footer-version">
   v<span id="versionDisplay"></span>
+  <span id="versionTime"></span>
 </div>
 
 </footer>
@@ -3574,15 +3575,41 @@ async function loadVersion(){
     const result =
       await response.json();
 
-    if(
-      result.success &&
-      versionDisplay
-    ){
+if(
+  result.success &&
+  versionDisplay
+){
 
-      versionDisplay.innerText =
-        result.release.version;
+  versionDisplay.innerText =
+    result.release.version;
 
-    }
+  const versionTime =
+    document.getElementById(
+      'versionTime'
+    );
+
+  if(versionTime){
+
+    const timestamp =
+      new Date(
+        result.release.release_timestamp
+      );
+
+    versionTime.innerText =
+      ' • ' +
+      timestamp.toLocaleString(
+        [],
+        {
+          month:'numeric',
+          day:'numeric',
+          hour:'numeric',
+          minute:'2-digit'
+        }
+      );
+
+  }
+
+}
 
   } catch(error){
 
