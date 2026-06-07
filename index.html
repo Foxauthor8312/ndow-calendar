@@ -7162,7 +7162,7 @@ function closeDashboard(){
    RELEASE MANAGER
 ======================================== */
 
-function openReleaseManager(){
+async function openReleaseManager(){
 
   const modal =
     document.getElementById(
@@ -7175,6 +7175,8 @@ function openReleaseManager(){
 
   modal.style.display =
     'flex';
+
+  await loadReleaseManager();
 
 }
 
@@ -7191,6 +7193,51 @@ function closeReleaseManager(){
 
   modal.style.display =
     'none';
+
+}
+
+async function loadReleaseManager(){
+
+  try{
+
+    const response =
+      await fetch(
+        `${API_BASE_URL}/api/releases/current`
+      );
+
+    const release =
+      await response.json();
+
+    document.getElementById(
+      'releaseVersionDisplay'
+    ).textContent =
+      release.version || '';
+
+    document.getElementById(
+      'releaseTitleDisplay'
+    ).textContent =
+      release.title || '';
+
+    document.getElementById(
+      'releaseFocusDisplay'
+    ).textContent =
+      release.current_focus || '';
+
+    document.getElementById(
+      'releaseNotesDisplay'
+    ).textContent =
+      release.release_notes || '';
+
+  }catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'releaseVersionDisplay'
+    ).textContent =
+      'Failed to load release information';
+
+  }
 
 }
 
