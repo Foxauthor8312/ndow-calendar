@@ -7158,6 +7158,42 @@ function closeDashboard(){
 
 }
 
+/* ========================================
+   RELEASE MANAGER
+======================================== */
+
+function openReleaseManager(){
+
+  const modal =
+    document.getElementById(
+      'releaseManagerModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+}
+
+function closeReleaseManager(){
+
+  const modal =
+    document.getElementById(
+      'releaseManagerModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
 async function loadDashboard(){
 
   const container =
@@ -7276,9 +7312,10 @@ ${user.role === 'admin' ||
 
   <div class="dashboard-tool-list">
 
-    <button
-      id="releaseManagerBtn"
-      class="admin-button">
+<button
+  id="releaseManagerBtn"
+  class="admin-button"
+  onclick="openReleaseManager()">
       Release Manager
     </button>
 
@@ -10177,6 +10214,46 @@ geographic analysis.
     <div id="dashboardContent">
 
       Loading...
+
+    </div>
+
+  </div>
+
+</div>
+
+	<!-- ========================================
+     RELEASE MANAGER MODAL
+======================================== -->
+
+<div
+  id="releaseManagerModal"
+  class="modal hidden"
+>
+
+  <div class="modal-content" style="
+    width:min(900px,100%);
+    max-height:90vh;
+    overflow:hidden;
+    padding:24px;
+  ">
+
+    <button
+      class="modal-close"
+      onclick="closeReleaseManager()"
+    >
+      ✕
+    </button>
+
+    <h2 style="
+      margin:0 0 24px 0;
+    ">
+      Release Manager
+    </h2>
+
+    <div id="releaseManagerContent">
+
+      Release Manager Module
+      Coming Soon
 
     </div>
 
