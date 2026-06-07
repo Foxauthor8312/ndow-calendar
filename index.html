@@ -619,13 +619,38 @@ button:hover{
   font-variant-numeric:tabular-nums;
 }
 	
-.disclaimer{
-  background:#ECECEC;
-  color:#1f2937;
-  font-size:13px;
-  line-height:1.5;
-  padding:20px;
-  border-top:1px solid #d1d5db;
+.footer{
+
+  padding:8px 10px;
+
+  border-top:1px solid #DBE3EC;
+
+  background:#F8FAFC;
+
+  flex-shrink:0;
+
+}
+
+.footer-text{
+
+  font-size:11px;
+
+  color:#9CA3AF;
+
+  line-height:1.25;
+
+}
+
+.footer-version{
+
+  margin-top:4px;
+
+  font-size:10px;
+
+  color:#9CA3AF;
+
+  font-weight:400;
+
 }
 	
 .subtitle{
@@ -1871,11 +1896,19 @@ body{
 
 </div>
 
-<div class="disclaimer">
+<footer class="footer">
 
-  NDOWVolunteer.com and the Volunteer Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW volunteers and authorized users only and is not intended for general public use. An authorized NDOW volunteer login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in volunteer activities is voluntary. © 2026 Barry Mattison — NDOW Volunteer Instructor. All rights reserved.
+  <div class="footer-text">
 
+    NDOWVolunteer.com and the Volunteer Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW volunteers and authorized users only and is not intended for general public use. An authorized NDOW volunteer login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in volunteer activities is voluntary. © 2026 Barry Mattison — NDOW Volunteer Instructor. All rights reserved.
+
+  </div>
+
+<div class="footer-version">
+  v<span id="versionDisplay"></span>
 </div>
+
+</footer>
 
 <script>
 
@@ -2422,6 +2455,17 @@ const categoryColors = {
   'Other':'#64748b'
 };
 
+// ========================================
+// APPLICATION INFO
+// ========================================
+
+const APP_VERSION =
+  '26.1.5.1';
+
+// ========================================
+// GLOBAL DATA
+// ========================================
+
 let events = [];
 let activeFilters = [];
 let activeRegion = '';
@@ -2431,7 +2475,6 @@ let volunteerTotals = null;
 
 const SERVICE_VALUE_RATE =
   56.55;
-
 
 // ========================================
 // START EVENT LOADING
@@ -3507,6 +3550,18 @@ setTimeout(() => {
 
  appContent.style.display =
   'flex';
+
+const versionDisplay =
+  document.getElementById(
+    'versionDisplay'
+  );
+
+if(versionDisplay){
+
+  versionDisplay.innerText =
+    APP_VERSION;
+
+}	
 
   appContent.style.opacity =
     '0';
