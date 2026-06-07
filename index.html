@@ -3564,21 +3564,6 @@ const versionDisplay =
 
 async function loadVersion(){
 
-  try{
-
-    const response =
-      await fetch('version.json');
-
-    const versionData =
-      await response.json();
-
-    if(versionDisplay){
-
-      versionDisplay.innerText =
-        versionData.version;
-
-    }
-
   }catch(error){
 
     console.error(
