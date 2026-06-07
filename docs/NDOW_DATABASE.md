@@ -1,253 +1,283 @@
-# NDOW Architecture
+# NDOW Database
 
 ## Purpose
 
-The NDOW Volunteer Portal is a volunteer management platform designed to support volunteers, administrators, and system operators through a unified interface.
+This document defines the database structure used by the NDOW Volunteer Portal.
 
-The system prioritizes user-specific information, operational efficiency, and administrative oversight while maintaining a clear separation of responsibilities.
-
----
-
-# User Access Levels
-
-User roles determine system access.
-
-## Volunteer
-
-Permissions:
-
-- View calendar
-- View event details
-- Request participation
-- Enter volunteer hours
-- View personal dashboard
-- View personal activity
-
-Volunteers are the primary users of the system.
+The database supports user management, volunteer participation, event tracking, approvals, communications, and future dashboard functionality.
 
 ---
 
-## Admin
+# Design Principles
 
-Includes all Volunteer permissions plus:
+1. Store data once whenever possible.
 
-- Approve volunteer hours
-- Review event submissions
-- Manage users
-- Manage announcements
-- Manage help topics
-- Manage requests
-- Access Admin Panel
+2. Use relationships rather than duplicate data.
 
-Admins manage volunteers and event operations.
+3. Preserve historical records.
+
+4. Support dashboard reporting.
+
+5. Support future automation and notifications.
 
 ---
 
-## SuperUser
-
-Includes all Admin permissions plus:
-
-- Access System Console
-- Execute workflows
-- Reprocess event pipelines
-- Run calendar updates
-- Manage system-level functions
-
-SuperUsers manage platform operations.
-
----
-
-# Event Participation
-
-Event participation is independent of user access level.
-
-A Volunteer, Admin, or SuperUser may participate in events.
-
-Participation is defined by assignment type.
-
----
-
-## Primary Instructor
-
-Responsibilities:
-
-- Review event details
-- Edit event information
-- Verify attendance
-- Submit event for approval
-- Enter volunteer hours
-
-Primary Instructors are responsible for event management.
-
----
-
-## Assistant Instructor
-
-Responsibilities:
-
-- Enter volunteer hours
-
-Assistant Instructors participate in events but do not manage event records.
-
----
-
-# System Organization
-
-The platform is organized into three functional areas.
-
-## Dashboard
+# users
 
 Purpose:
 
-User information.
+Stores user accounts and system permissions.
 
-Examples:
+Key Fields:
 
-- Impact Summary
-- Upcoming Events
-- Recent Activity
-- Personal Statistics
+- id
+- username
+- password_hash
+- email
+- phone
+- ndow_id
+- role
+- notify_email
+- notify_sms
+- disabled
 
-The Dashboard answers:
+Role Values:
 
-"What do I need to know?"
+- volunteer
+- admin
+- superuser
+
+Used By:
+
+- Login
+- Permissions
+- Dashboard
+- Notifications
+- Admin Panel
 
 ---
 
-## Admin
+# volunteer_hours
 
 Purpose:
 
-Management functions.
+Stores volunteer participation records.
 
-Examples:
+Each record represents a volunteer's participation in an event.
 
-- User Management
+Key Fields:
+
+- id
+- user_id
+- ndow_id
+- event_id
+- event_name
+- program
+- county
+- region
+- event_date
+- location
+- start_time
+- end_time
+- volunteer_hours
+- mileage
+- service_value
+- approval_status
+- submitted_at
+
+Approval Status:
+
+- submitted
+- approved
+- rejected
+
+Used By:
+
+- Volunteer Dashboard
 - Hour Approvals
-- Announcements
-- Help Topics
-- Requests
-
-The Admin area answers:
-
-"What needs to be managed?"
+- Reports
+- Volunteer Totals
 
 ---
 
-## System
+# announcements
 
 Purpose:
 
-Operational functions.
+Stores system announcements displayed to users.
 
-Examples:
+Key Fields:
 
-- Workflow Status
-- Calendar Updates
-- Reprocessing
-- System Health
+- id
+- title
+- message
+- active
+- created_at
 
-The System area answers:
+Used By:
 
-"What needs to be operated?"
-
----
-
-# Dashboard Philosophy
-
-The Dashboard is always:
-
-"My Dashboard"
-
-The Dashboard is never:
-
-- Admin Dashboard
-- Instructor Dashboard
-- System Dashboard
-
-Content may change based on role and event assignments, but the Dashboard remains user-centric.
+- Dashboard
+- Announcement Panel
 
 ---
 
-# Current Dashboard Design
-
-## Impact Summary
-
-Displays:
-
-- Events
-- Hours
-- Miles
-- Volunteer Value
-
----
-
-## Upcoming Events
-
-Displays:
-
-- Next 7 days only
-- Compact scrollable list
-- Event assignment indicators
-- Opens existing event modal
-
----
-
-## Recent Activity
-
-Displays:
-
-- Recently completed events
-- Submitted hours
-- Personal participation history
-
----
-
-# Future Event Assignment Model
+# help_topics
 
 Purpose:
 
-Provide rapid lookup of user-event relationships.
+Stores help documentation available within the portal.
 
-Table:
+Key Fields:
 
-event_assignments
+- id
+- category
+- topic_key
+- title
+- content
+- sort_order
+- active
 
-Fields:
+Used By:
 
+- Help System
+- Admin Help Editor
+
+---
+
+# instructor_requests
+
+Purpose:
+
+Stores volunteer requests related to event participation.
+
+Key Fields:
+
+- id
+- event_id
+- user_id
+- status
+- notes
+- submitted_at
+
+Status Values:
+
+- pending
+- approved
+- rejected
+
+Used By:
+
+- Volunteer Requests
+- Admin Review
+
+---
+
+# event_assignments (Planned)
+
+Purpose:
+
+Stores instructor assignments extracted from event data.
+
+This table exists to provide rapid dashboard lookups and future notification support.
+
+Key Fields:
+
+- id
 - event_id
 - event_name
 - event_date
 - email
 - assignment_type
+- created_at
+- updated_at
 
 Assignment Types:
 
 - PRIMARY
 - ASSISTANT
 
+Used By:
+
+- Upcoming Events
+- Dashboard Personalization
+- Notifications
+- Instructor Activity Reporting
+
 ---
 
-# Architecture Principles
+# Derived Data
 
-1. User access determines permissions.
+The following values are calculated from volunteer_hours:
 
-2. Event assignments determine responsibilities.
+Volunteer Totals
 
-3. Dashboard displays user information.
+- Events
+- Hours
+- Mileage
+- Volunteer Value
 
-4. Admin manages operations.
+Current Endpoint:
 
-5. System manages platform functions.
+/api/volunteer-totals/:ndowId
 
-6. Precompute data whenever possible.
+Returned Values:
 
-7. Avoid repeated scanning of large datasets.
+{
+  events,
+  hours,
+  mileage,
+  serviceValue
+}
 
-8. Reuse existing interfaces whenever practical.
+---
 
-9. Maintain a clear separation between user, admin, and system responsibilities.
+# Future Dashboard Data Sources
 
-10. Every feature should answer:
+Impact Summary
 
-"How does this help the logged-in user?"
+Source:
+
+volunteer_hours
+
+---
+
+Upcoming Events
+
+Source:
+
+event_assignments
+
+---
+
+Recent Activity
+
+Source:
+
+volunteer_hours
+
+---
+
+Notifications
+
+Source:
+
+event_assignments
+announcements
+
+---
+
+# Future Database Goals
+
+1. Support dashboard personalization.
+
+2. Support automated notifications.
+
+3. Support instructor activity reporting.
+
+4. Support volunteer analytics.
+
+5. Support NDOW operational reporting.
+
+6. Minimize repeated processing of event data.
+
+7. Maintain clear relationships between users, events, and participation records.
