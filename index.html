@@ -1554,15 +1554,24 @@ body{
 </button>
 		
   <button class="admin-button" onclick="openHelpModal()">
-    Help
-  </button>
-  <button
-    id="superuserButton"
-    class="admin-button hidden"
-    onclick="openSystemConsole()"
-  >
-    System
-  </button>
+  Help
+</button>
+
+<button
+  id="dashboardButton"
+  class="admin-button"
+  onclick="openDashboard()"
+>
+  My Dashboard
+</button>
+
+<button
+  id="superuserButton"
+  class="admin-button hidden"
+  onclick="openSystemConsole()"
+>
+  System
+</button>
 		
 </div>
 	
@@ -7177,6 +7186,165 @@ function filterInstructorRequests(status){
 
 }
 
+function openDashboard(){
+
+  const modal =
+    document.getElementById(
+      'dashboardModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  loadDashboard();
+
+}
+
+function closeDashboard(){
+
+  const modal =
+    document.getElementById(
+      'dashboardModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
+async function loadDashboard(){
+
+  const container =
+    document.getElementById(
+      'dashboardContent'
+    );
+
+  container.innerHTML =
+    'Loading...';
+
+  try{
+
+    const user =
+      JSON.parse(
+        localStorage.getItem(
+          'user'
+        ) || '{}'
+      );
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+
+`https://ndow-calendar-server.onrender.com/api/volunteer-totals/${user.ndow_id}`,
+
+        {
+
+          headers: {
+
+            Authorization:
+              `Bearer ${token}`
+
+          }
+
+        }
+
+      );
+
+    const result =
+      await response.json();
+
+    if(!result.success){
+
+      throw new Error(
+        'Dashboard load failed'
+      );
+
+    }
+
+    container.innerHTML = `
+
+<div style="
+  display:grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+  gap:16px;
+">
+
+  <div class="geo-card">
+    <div class="geo-title">
+      Events
+    </div>
+    <div class="geo-value">
+      ${result.totals.events || 0}
+    </div>
+  </div>
+
+  <div class="geo-card">
+    <div class="geo-title">
+      Hours
+    </div>
+    <div class="geo-value">
+      ${Number(
+        result.totals.hours || 0
+      ).toFixed(1)}
+    </div>
+  </div>
+
+  <div class="geo-card">
+    <div class="geo-title">
+      Miles
+    </div>
+    <div class="geo-value">
+      ${Number(
+        result.totals.mileage || 0
+      ).toFixed(0)}
+    </div>
+  </div>
+
+  <div class="geo-card">
+    <div class="geo-title">
+      Volunteer Value
+    </div>
+    <div class="geo-value">
+      $${Number(
+        result.totals.serviceValue || 0
+      ).toLocaleString()}
+    </div>
+  </div>
+
+</div>
+
+`;
+
+  }catch(err){
+
+    console.error(err);
+
+    container.innerHTML = `
+      <div style="
+        color:#dc2626;
+        font-weight:600;
+      ">
+        Failed to load dashboard.
+      </div>
+    `;
+
+  }
+
+}	
+	
 function openSystemConsole(){
 
   const modal =
@@ -7210,6 +7378,8 @@ function closeSystemConsole(){
     'none';
 
 }
+
+
 
 function renderSystemConsole(){
 
@@ -10474,16 +10644,45 @@ geographic analysis.
 
 <div
   id="timeoutWarning"
-  style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.72);
-    z-index:999999;
-    justify-content:center;
-    align-items:center;
-  "
+  ...
 ></div>
+
+<!-- ========================================
+     DASHBOARD MODAL
+======================================== -->
+
+<div id="dashboardModal" class="modal hidden">
+
+  <div class="modal-content" style="
+    width:min(900px,100%);
+    max-height:90vh;
+    overflow:hidden;
+    padding:24px;
+  ">
+
+    <button
+      class="modal-close"
+      onclick="closeDashboard()"
+    >
+      ✕
+    </button>
+
+    <h2 style="
+      margin:0 0 24px 0;
+    ">
+      My Volunteer Dashboard
+    </h2>
+
+    <div id="dashboardContent">
+
+      Loading...
+
+    </div>
+
+  </div>
+
+</div>
+
 <!-- ========================================
      EDIT USER MODAL
 ======================================== -->
