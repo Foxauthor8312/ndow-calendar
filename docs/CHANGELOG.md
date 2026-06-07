@@ -68,6 +68,24 @@ Fixes
 
 * Fixed ...
 
+* Version 26.xx.xx
+
+HELP SYSTEM
+- Extracted Help functionality from index.html into js/help.js
+- Added Help topic search
+- Added active topic highlighting
+- Improved Help Center layout and scrolling
+- Added automatic Help content formatting
+- Fixed Context Help topic highlighting
+
+CALENDAR
+- Updated calendar layout so header, status bar,
+  legends, region filter, and day names remain visible
+- Calendar grid now scrolls independently
+
+UI
+- Began Help module alignment with NDOW Style Guide
+
 Documentation
 
 * Updated ...
