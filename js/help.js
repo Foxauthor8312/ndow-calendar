@@ -484,9 +484,32 @@ window.contextHelpActive =
 	  
 loadHelpTopics().then(() => {
 
-  openHelpTopic(topic);
-window.contextHelpActive =
-  false;
+  const topicItems =
+    document.querySelectorAll(
+      '#helpTopicList > div'
+    );
+
+  const matchingItem =
+    Array.from(topicItems)
+      .find(
+        item =>
+          item.innerText.trim() ===
+          topic.title
+      );
+
+  if(matchingItem){
+
+    matchingItem.click();
+
+  } else {
+
+    openHelpTopic(topic);
+
+  }
+
+  window.contextHelpActive =
+    false;
+
 });
 
   })
