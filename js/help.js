@@ -66,77 +66,63 @@ async function loadHelpTopics(){
 	  
     topicList.innerHTML = '';
 
-    const topicArray =
- 	 topics.topics || topics;
+const topicArray =
+  topics.topics || topics;
 
-	 topicArray.forEach(topic => {
+window.helpTopics =
+  topicArray;
 
-      const item =
-        document.createElement('div');
+renderHelpTopicList(
+  topicArray
+);
 
-      item.style.padding =
-        '10px 14px';
-
-      item.style.borderBottom =
-        '1px solid #e5e7eb';
-
-      item.style.cursor =
-        'pointer';
-
-      item.style.fontWeight =
-        '600';
-	
-	  item.style.fontSize =
-        '14px';
-
-      item.style.color =
-        '#19304B';
-
-      item.innerText =
-        topic.title;
-
-item.onclick = () => {
-
-  helpContent.innerHTML = `
-    <div style="
-      padding:16px;
-      overflow-y:auto;
-      max-height:65vh;
-    ">
-
-      <h2 style="
-        margin-top:0;
-        margin-bottom:12px;
-        color:#19304B;
-        font-size:22px;
-      ">
-        ${topic.title}
-      </h2>
-
-      <div style="
-        line-height:1.6;
-        font-size:14px;
-        color:#374151;
-        white-space:pre-wrap;
-      ">
-        ${topic.content || ''}
-      </div>
-
-    </div>
-  `;
-
-};
-
-      topicList.appendChild(item);
-
-    });
+const searchBox =
+  document.getElementById(
+    'helpSearch'
+  );
 
 if(
-  topicArray.length > 0 &&
-  !window.contextHelpActive
+  searchBox &&
+  !searchBox.dataset.bound
 ){
-  topicList.firstChild.click();
+
+  searchBox.dataset.bound =
+    'true';
+
+  searchBox.addEventListener(
+    'input',
+    function(){
+
+      const search =
+        this.value
+          .toLowerCase()
+          .trim();
+
+      const filtered =
+        topicArray.filter(
+          topic =>
+            (topic.title || '')
+              .toLowerCase()
+              .includes(search)
+            ||
+            (topic.content || '')
+              .toLowerCase()
+              .includes(search)
+            ||
+            (topic.category || '')
+              .toLowerCase()
+              .includes(search)
+        );
+
+      renderHelpTopicList(
+        filtered
+      );
+
+    }
+  );
+
 }
+
 
   } catch(err){
 
@@ -156,6 +142,153 @@ if(
     `;
 
   }
+
+}
+
+function renderHelpTopicList(
+  topics
+){
+
+  const topicList =
+    document.getElementById(
+      'helpTopicList'
+    );
+
+  const helpContent =
+    document.getElementById(
+      'helpContentArea'
+    );
+
+  topicList.innerHTML = '';
+
+  topics.forEach(topic => {
+
+    const item =
+      document.createElement('div');
+
+    item.style.padding =
+      '12px 14px';
+
+    item.style.borderBottom =
+      '1px solid #e5e7eb';
+
+    item.style.cursor =
+      'pointer';
+
+    item.style.fontWeight =
+      '600';
+
+    item.style.fontSize =
+      '14px';
+
+    item.style.color =
+      '#19304B';
+
+    item.style.borderLeft =
+      '4px solid transparent';
+
+    item.innerText =
+      topic.title;
+
+    item.onclick = () => {
+
+      document
+        .querySelectorAll(
+          '#helpTopicList > div'
+        )
+        .forEach(el => {
+
+          el.style.background =
+            '';
+
+          el.style.borderLeft =
+            '4px solid transparent';
+
+        });
+
+      item.style.background =
+        '#eef4ff';
+
+      item.style.borderLeft =
+        '4px solid #19304B';
+
+      helpContent.innerHTML = `
+        <div style="
+          padding:16px;
+          max-width:900px;
+        ">
+
+          <h2 style="
+            margin-top:0;
+            margin-bottom:16px;
+            color:#19304B;
+          ">
+            ${topic.title}
+          </h2>
+
+          <div style="
+            line-height:1.8;
+            font-size:15px;
+            color:#374151;
+            white-space:pre-wrap;
+          ">
+            ${topic.content || ''}
+          </div>
+
+        </div>
+      `;
+
+    };
+
+    topicList.appendChild(item);
+
+  });
+
+  if(
+    topics.length > 0 &&
+    topicList.firstChild
+  ){
+    topicList.firstChild.click();
+  }
+
+}
+
+function openHelpTopic(topic){
+
+  const helpContent =
+    document.getElementById(
+      'helpContentArea'
+    );
+
+  if(!helpContent){
+    return;
+  }
+
+  helpContent.innerHTML = `
+    <div style="
+      padding:16px;
+      max-width:900px;
+    ">
+
+      <h2 style="
+        margin-top:0;
+        margin-bottom:16px;
+        color:#19304B;
+      ">
+        ${topic.title}
+      </h2>
+
+      <div style="
+        line-height:1.8;
+        font-size:15px;
+        color:#374151;
+        white-space:pre-wrap;
+      ">
+        ${topic.content || ''}
+      </div>
+
+    </div>
+  `;
 
 }
 
@@ -737,3 +870,14 @@ async function deleteHelpTopic(){
   }
 
 }
+
+window.loadHelpTopics = loadHelpTopics;
+window.showContextHelp = showContextHelp;
+window.openHelpTopic = openHelpTopic;
+window.openHelpModal = openHelpModal;
+window.closeHelpModal = closeHelpModal;
+
+window.saveHelpTopic = saveHelpTopic;
+window.newHelpTopic = newHelpTopic;
+window.renderHelpAdminList = renderHelpAdminList;
+window.deleteHelpTopic = deleteHelpTopic;
