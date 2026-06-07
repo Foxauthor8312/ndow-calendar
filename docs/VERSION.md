@@ -1,6 +1,6 @@
 Current Version
 
-1.5.1
+26.1.5.1
 
 Release Date
 
@@ -12,7 +12,7 @@ Current Focus
 * event_assignments Architecture
 * Compact Dashboard Layout
 
-Recent Release (1.5.1)
+Recent Release (26.1.5.1)
 
 Highlights
 
