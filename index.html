@@ -5638,38 +5638,44 @@ ${allowHours ? (
   margin-top:2px;
 ">
 
-  <strong>
-    ${volunteerTotals.year} Totals
-  </strong>
+ <strong>
+  ${volunteerTotals.year} Totals
+</strong>
 
-  |
-  Hrs:
-  ${Number(
-    volunteerTotals.totals.hours || 0
-  ).toFixed(2)}
+|
 
-  |
+Events:
+${Number(
+  volunteerTotals.totals.events || 0
+).toFixed(0)}
 
-  Mi:
-  ${Number(
-    volunteerTotals.totals.mileage || 0
-  ).toFixed(0)}
+|
 
-  |
+Hours:
+${Number(
+  volunteerTotals.totals.hours || 0
+).toFixed(2)}
 
-  $
-  ${Number(
-    volunteerTotals.totals.serviceValue || 0
-  ).toFixed(0)}
+|
+
+Miles:
+${Number(
+  volunteerTotals.totals.mileage || 0
+).toFixed(0)}
+
+|
+
+Volunteer Value:
+$${Number(
+  volunteerTotals.totals.serviceValue || 0
+).toLocaleString(
+  undefined,
+  {
+    maximumFractionDigits: 0
+  }
+)}
 
 </div>
-
-`
-    : ''
-}
-
-</div>
-
 `
 
     : `
