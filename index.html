@@ -43,6 +43,9 @@ body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:#f3f4f6;
+
+  height:100vh;
+  overflow:hidden;
 }
 
 /* ========================================
@@ -1504,7 +1507,16 @@ body{
 	
 
 
-<div id="appContent" style="display:none;">
+<div
+  id="appContent"
+  style="
+    display:none;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  "
+>
 
 <!-- ========================================
      START HEADER
@@ -1596,9 +1608,10 @@ body{
 </div>
 <div
   id="calendarShell"
+<div
+  id="calendarShell"
   style="
-    height:calc(100vh - 170px);
-    max-height:calc(100vh - 170px);
+    flex:1;
     display:flex;
     flex-direction:column;
     overflow:hidden;
