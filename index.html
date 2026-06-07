@@ -6027,17 +6027,29 @@ if(
       'Logged in as: ' +
       savedUser.username;
 
-    if(
-      savedUser.role === 'superuser'
-    ){
+if(
+  savedUser.role === 'admin' ||
+  savedUser.role === 'superuser'
+){
 
-      document.getElementById(
-        'superuserButton'
-      ).classList.remove(
-        'hidden'
-      );
+  document.getElementById(
+    'adminButton'
+  ).style.display =
+    'inline-flex';
 
-    }
+}
+
+if(
+  savedUser.role === 'superuser'
+){
+
+  document.getElementById(
+    'superuserButton'
+  ).classList.remove(
+    'hidden'
+  );
+
+}
 
   }
 
