@@ -8457,11 +8457,33 @@ function closeAdminPanel(){
 
 function openAddContactModal(){
 
+  document
+    .getElementById(
+      'addContactModal'
+    )
+    .classList.remove(
+      'hidden'
+    );
+
+}function closeAddContactModal(){
+
+  document
+    .getElementById(
+      'addContactModal'
+    )
+    .classList.add(
+      'hidden'
+    );
+
+}
+function saveContact(){
+
   alert(
-    'Add Contact modal coming next.'
+    'Save Contact coming next.'
   );
 
-}	
+}
+	
 async function addUser(){
 
   const username =
@@ -9584,7 +9606,22 @@ function overrideCategory(
   "
 >
 
-  No contacts loaded.
+  <div style="
+    color:#64748b;
+    text-align:center;
+    padding:24px;
+  ">
+
+    No contacts found.
+
+    <div style="
+      margin-top:8px;
+      font-size:13px;
+    ">
+      Click "Add Contact" to create your first notification contact.
+    </div>
+
+  </div>
 
 </div>
 
@@ -10812,6 +10849,107 @@ geographic analysis.
 
 </div>
 
+</div>
+
+<!-- ========================================
+     ADD CONTACT MODAL
+======================================== -->
+
+<div
+  id="addContactModal"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      max-width:620px;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeAddContactModal()"
+    >
+      ✕
+    </button>
+
+    <h2>
+      Add Contact
+    </h2>
+
+    <div style="margin-top:18px;">
+
+      <label>
+        Name
+      </label>
+
+      <input
+        id="contactName"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Email
+      </label>
+
+      <input
+        id="contactEmail"
+        type="email"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Program
+      </label>
+
+      <input
+        id="contactProgram"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <button
+        style="
+          margin-top:22px;
+          width:100%;
+        "
+        onclick="saveContact()"
+      >
+        Save Contact
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+	
 	<script>
 
 let showAllCounties = false;
