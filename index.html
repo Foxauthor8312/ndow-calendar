@@ -440,10 +440,12 @@ button:hover{
     width:100%;
   }
 
-  .calendar{
-    grid-template-columns:repeat(7,minmax(120px,1fr));
-    overflow-x:auto;
-  }
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+    grid-auto-rows: minmax(95px, min-content);  /* <-- let rows expand with content */
+    overflow-x: auto;
+}
 
   .legend{
     justify-content:flex-start;
