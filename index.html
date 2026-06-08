@@ -148,15 +148,8 @@ button:hover{
   opacity:.9;
 }
 .calendar {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(120px, 1fr));
-  grid-template-rows: 32px;          /* header row */
-  grid-auto-rows: min-content;       /* let day rows grow with content */
-  gap: 1px;
-  background: #d1d5db;
-  border-top: 1px solid #d1d5db;
-  overflow-x: auto;                  /* horizontal scroll if needed */
-  align-content: start;
+  grid-auto-rows: 1fr;
+  height:100%;
 }
  
 .day-name{
