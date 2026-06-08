@@ -8644,14 +8644,81 @@ async function loadContacts(){
       return;
     }
 
-    list.innerHTML = data.contacts.map(c => `
-      <div class="instructorRequestCard" style="border-left:6px solid #2563eb; padding:12px; margin-bottom:10px;">
-        <strong>${c.name}</strong> (${c.role})<br>
-        <small>${c.email} | ${c.region} | ${c.program}</small><br>
-        <p>${c.notes || ''}</p>
-        <div>${c.active ? 'Active' : 'Inactive'}</div>
-      </div>
-    `).join('');
+list.innerHTML = data.contacts.map(c => `
+
+  <div
+    class="instructorRequestCard"
+    style="
+      border-left:6px solid #2563eb;
+      border-radius:8px;
+      padding:12px;
+      margin-bottom:10px;
+      background:#fff;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,.08);
+    "
+  >
+
+    <div style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+    ">
+
+      <strong>
+        ${c.name}
+      </strong>
+
+      <span style="
+        background:
+          ${c.active
+            ? '#16a34a'
+            : '#6b7280'};
+        color:white;
+        padding:4px 10px;
+        border-radius:999px;
+        font-size:11px;
+        font-weight:700;
+      ">
+        ${c.active
+          ? 'ACTIVE'
+          : 'INACTIVE'}
+      </span>
+
+    </div>
+
+    <div>
+      📧 ${c.email || ''}
+    </div>
+
+    <div>
+      📍 ${c.region || ''}
+    </div>
+
+    <div>
+      🏷️ ${c.program || ''}
+    </div>
+
+    <div>
+      👤 ${c.role || ''}
+    </div>
+
+    ${c.notes
+      ? `
+        <div style="
+          margin-top:8px;
+          color:#475569;
+        ">
+          ${c.notes}
+        </div>
+      `
+      : ''
+    }
+
+  </div>
+
+`).join('');
 
   } catch(err){
     console.error(err);
