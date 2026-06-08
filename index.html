@@ -8457,23 +8457,30 @@ function closeAdminPanel(){
 
 function openAddContactModal(){
 
-  document
-    .getElementById(
-      'addContactModal'
-    )
-    .classList.remove(
-      'hidden'
-    );
+  document.getElementById(
+    'addContactModal'
+  ).classList.remove(
+    'hidden'
+  );
 
-}function closeAddContactModal(){
+  document.getElementById(
+    'addContactModal'
+  ).style.display =
+    'flex';
 
-  document
-    .getElementById(
-      'addContactModal'
-    )
-    .classList.add(
-      'hidden'
-    );
+}
+function closeAddContactModal(){
+
+  document.getElementById(
+    'addContactModal'
+  ).classList.add(
+    'hidden'
+  );
+
+  document.getElementById(
+    'addContactModal'
+  ).style.display =
+    'none';
 
 }
 function saveContact(){
