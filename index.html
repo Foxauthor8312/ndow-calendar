@@ -333,7 +333,7 @@ button:hover{
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:9999;
+  z-index:100001;
   padding:20px;
 }
 
@@ -8711,119 +8711,150 @@ async function loadContacts(){
       return;
     }
 
-list.innerHTML = data.contacts.map(c => `
+list.innerHTML = `
 
-  <div
-    class="instructorRequestCard"
-    style="
-      border-left:6px solid #2563eb;
-      border-radius:8px;
-      padding:12px;
-      margin-bottom:10px;
-      background:#fff;
-      box-shadow:
-        0 1px 3px rgba(0,0,0,.08);
-    "
-  >
+  <table style="
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  ">
 
-    <div style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:8px;
-    ">
+    <thead>
 
-      <strong>
-        ${c.name}
-      </strong>
-
-      <span style="
-        background:
-          ${c.active
-            ? '#16a34a'
-            : '#6b7280'};
-        color:white;
-        padding:4px 10px;
-        border-radius:999px;
-        font-size:11px;
-        font-weight:700;
+      <tr style="
+        background:#F8FAFC;
+        border-bottom:1px solid #DBE3EC;
       ">
-        ${c.active
-          ? 'ACTIVE'
-          : 'INACTIVE'}
-      </span>
 
-    </div>
-
-    <div>
-      📧 ${c.email || ''}
-    </div>
-
-    <div>
-      📍 ${c.region || ''}
-    </div>
-
-    <div>
-      🏷️ ${c.program || ''}
-    </div>
-
-    <div>
-      👤 ${c.role || ''}
-    </div>
-
-    ${c.notes
-      ? `
-        <div style="
-          margin-top:8px;
-          color:#475569;
+        <th style="
+          text-align:left;
+          padding:10px;
         ">
-          ${c.notes}
-        </div>
-      `
-      : ''
-    }
+          Name
+        </th>
 
-<div style="
-  margin-top:10px;
-  display:flex;
-  gap:8px;
-">
+        <th style="
+          text-align:left;
+          padding:10px;
+        ">
+          Region
+        </th>
 
-  <button
-    onclick="openEditContactModal('${c.id}')"
-    style="
-      background:#2563eb;
-      color:white;
-      border:none;
-      border-radius:6px;
-      padding:6px 12px;
-      cursor:pointer;
-      font-weight:600;
-    "
-  >
-    Edit
-  </button>
+        <th style="
+          text-align:left;
+          padding:10px;
+        ">
+          Program
+        </th>
 
-  <button
-    onclick="deleteContact('${c.id}')"
-    style="
-      background:#dc2626;
-      color:white;
-      border:none;
-      border-radius:6px;
-      padding:6px 12px;
-      cursor:pointer;
-      font-weight:600;
-    "
-  >
-    Delete
-  </button>
+        <th style="
+          text-align:left;
+          padding:10px;
+        ">
+          Status
+        </th>
 
-</div>
+        <th style="
+          text-align:right;
+          padding:10px;
+        ">
+          Actions
+        </th>
 
-  </div>
+      </tr>
 
-`).join('');
+    </thead>
+
+    <tbody>
+
+      ${data.contacts.map(c => `
+
+        <tr style="
+          border-bottom:1px solid #DBE3EC;
+        ">
+
+          <td style="
+            padding:10px;
+          ">
+
+            <div style="
+              font-weight:600;
+              color:#19304B;
+            ">
+              ${c.name}
+            </div>
+
+            <div style="
+              font-size:12px;
+              color:#6B7280;
+            ">
+              ${c.email || ''}
+            </div>
+
+          </td>
+
+          <td style="
+            padding:10px;
+          ">
+            ${c.region || ''}
+          </td>
+
+          <td style="
+            padding:10px;
+          ">
+            ${c.program || ''}
+          </td>
+
+          <td style="
+            padding:10px;
+          ">
+
+            <span style="
+              color:
+                ${c.active
+                  ? '#7A9E7F'
+                  : '#DC2626'};
+              font-weight:600;
+            ">
+              ${c.active
+                ? 'Active'
+                : 'Inactive'}
+            </span>
+
+          </td>
+
+          <td style="
+            padding:10px;
+            text-align:right;
+            white-space:nowrap;
+          ">
+
+            <button
+              onclick="openEditContactModal('${c.id}')"
+              style="
+                margin-right:6px;
+              "
+            >
+              Edit
+            </button>
+
+            <button
+              onclick="deleteContact('${c.id}')"
+            >
+              Delete
+            </button>
+
+          </td>
+
+        </tr>
+
+      `).join('')}
+
+    </tbody>
+
+  </table>
+
+`;
 
   } catch(err){
     console.error(err);
