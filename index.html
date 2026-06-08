@@ -8488,8 +8488,8 @@ function closeAddContactModal(){
 
 	
 
+// ------------------ SAVE CONTACT ------------------
 async function saveContact(){
-
   const name = document.getElementById('contactName').value.trim();
   const email = document.getElementById('contactEmail').value.trim();
   const program = document.getElementById('contactProgram').value.trim();
@@ -8499,21 +8499,17 @@ async function saveContact(){
   const notes = document.getElementById('contactNotes').value.trim();
   const active = document.getElementById('contactActive').checked;
 
-  // Simple validation
   if(!name || !email){
     alert('Name and Email are required.');
     return;
   }
 
-  // Disable button while saving
   const saveBtn = document.querySelector('#addContactModal button[onclick="saveContact()"]');
   saveBtn.disabled = true;
   saveBtn.innerText = 'Saving...';
 
   try{
     const token = localStorage.getItem('token');
-
-    // Supabase POST example
     const response = await fetch(
       'https://ndow-calendar-server.onrender.com/api/admin/add-contact',
       {
@@ -8535,8 +8531,30 @@ async function saveContact(){
       }
     );
 
+    const data = await response.json();
+
+    if(data.success){
+      alert('Contact saved successfully.');
+      closeAddContactModal();
+      loadContacts();
+    } else {
+      alert('Save failed: ' + (data.message || 'Unknown error'));
+    }
+
+  } catch(err){
+    console.error(err);
+    alert('Save failed: ' + err.message);
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.innerText = 'Save Contact';
+  }
+}
+
+// ------------------ LOAD CONTACTS ------------------
 async function loadContacts(){
   const list = document.getElementById('contactsList');
+  if(!list) return;
+
   list.innerHTML = '<div style="padding:12px;">Loading...</div>';
 
   try{
@@ -8549,12 +8567,11 @@ async function loadContacts(){
     );
     const data = await response.json();
 
-    if(!data.success || !data.contacts || !data.contacts.length){
+    if(!data.success || !data.contacts || data.contacts.length === 0){
       list.innerHTML = '<div style="padding:12px;color:#64748b;">No contacts found.</div>';
       return;
     }
 
-    // Render cards
     list.innerHTML = data.contacts.map(c => `
       <div class="instructorRequestCard" style="border-left:6px solid #2563eb; padding:12px; margin-bottom:10px;">
         <strong>${c.name}</strong> (${c.role})<br>
@@ -8568,30 +8585,6 @@ async function loadContacts(){
     console.error(err);
     list.innerHTML = '<div style="padding:12px;color:red;">Failed to load contacts.</div>';
   }
-}
-	  
-    const data = await response.json();
-
-    if(data.success){
-      alert('Contact saved successfully.');
-
-      // Close modal
-      closeAddContactModal();
-
-      // Refresh contact cards list
-      loadContacts();
-    } else {
-      alert('Save failed: ' + (data.message || 'Unknown error'));
-    }
-
-  } catch(err){
-    console.error(err);
-    alert('Save failed: ' + err.message);
-  } finally {
-    saveBtn.disabled = false;
-    saveBtn.innerText = 'Save Contact';
-  }
-
 }
 
 async function loadContacts(){
