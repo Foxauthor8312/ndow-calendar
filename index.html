@@ -25,7 +25,7 @@
   rel="stylesheet"
 >
 
-<title>NDOW Volunteer Event Calendar</title>
+<title>NDOW Instructor Event Calendar</title>
 
 <link
   rel="icon"
@@ -1273,7 +1273,7 @@ body{
     </div>
 
     <div class="login-title-sub">
-      Volunteer Event Calendar
+      Instructor Event Calendar
     </div>
 
   </div>
@@ -1402,7 +1402,7 @@ body{
     ">
 
       <div>
-        A custom built application to assist the NDOW volunteer
+        A custom built application to assist the NDOW Instructor
         in choosing events to participate in.
       </div>
 
@@ -1565,10 +1565,10 @@ body{
 
  <div class="title-block">
 
-  <h1>NDOW Volunteer Event Calendar</h1>
+  <h1>NDOW Instructor Event Calendar</h1>
 
   <div class="subtitle">
-    A Volunteer-maintained Event Reference - see footnote
+    A Instructor-maintained Event Reference - see footnote
   </div>
 
 </div>
@@ -1760,7 +1760,7 @@ body{
            onclick="toggleFilter('Volunteer')">
 
         <span class="legend-color volunteer"></span>
-        Volunteer
+        Instructor
 
       </div>
 
@@ -1866,7 +1866,7 @@ body{
 
 <footer class="footer">
   <div class="footer-text">
-    NDOWVolunteer.com and the Volunteer Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW volunteers and authorized users only and is not intended for general public use. An authorized NDOW volunteer login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in volunteer activities is voluntary. © 2026 Barry Mattison — NDOW Volunteer Instructor. All rights reserved.
+    NDOWInstructor.com and the Instructor Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW Instructors and authorized users only and is not intended for general public use. An authorized NDOW Instructor login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in Instructor activities is voluntary. © 2026 Barry Mattison — NDOW Instructor Instructor. All rights reserved.
   </div>
 
   <div class="footer-version">
@@ -3281,7 +3281,7 @@ document.getElementById(
 document.getElementById(
   'wildlifeFact'
 ).innerText =
-  'Preparing NDOW volunteer systems...';
+  'Preparing NDOW Instructor systems...';
 
 await new Promise(resolve =>
   requestAnimationFrame(resolve)
@@ -3501,7 +3501,7 @@ loadVersion();
       document.getElementById(
         'loadingMessage'
       ).innerText =
-        'Loading volunteer calendar...';
+        'Loading Instructor calendar...';
 
     }
 
@@ -4545,7 +4545,7 @@ function openHoursModal(){
         border-radius:8px;
       "
     >
-      Volunteer Hours: 0.00
+      Instructor Hours: 0.00
       <br>
       Service Value: $0.00
     </div>
@@ -4708,7 +4708,7 @@ function calculateHours(){
   if(hours <= 0){
 
     error.textContent =
-      'Volunteer hours must be greater than zero.';
+      'Instructor hours must be greater than zero.';
 
     return;
 
@@ -4718,7 +4718,7 @@ function calculateHours(){
   hours * SERVICE_VALUE_RATE;
 
   summary.innerHTML = `
-  Volunteer Hours:
+  Instructor Hours:
   ${hours.toFixed(2)}
   <br>
   Service Value:
@@ -4856,7 +4856,7 @@ window.pendingHoursEntry = {
       margin-top:0;
       margin-bottom:20px;
     ">
-      Confirm Your Volunteer Hours
+      Confirm Your Instructor Hours
     </h3>
 
     <div style="
@@ -4938,7 +4938,7 @@ window.pendingHoursEntry = {
     ">
 
       <strong>
-        Volunteer Hours:
+        Instructor Hours:
       </strong>
 
       ${volunteerHours.toFixed(2)}
@@ -4992,10 +4992,10 @@ window.pendingHoursEntry = {
       font-size:14px;
     ">
       Reminder:
-      You must still enter your volunteer
-      hours in the official NDOW Volunteer
+      You must still enter your Instructor
+      hours in the official NDOW Instructor
       System event page to receive
-      official volunteer credit.
+      official Instructor credit.
     </div>
 
     <div style="
@@ -5075,7 +5075,7 @@ async function saveVolunteerHours(){
 
       throw new Error(
         result.message ||
-        'Failed to save volunteer hours.'
+        'Failed to save Instructor hours.'
       );
 
     }
@@ -5097,11 +5097,11 @@ async function saveVolunteerHours(){
         </div>
 
         <h3>
-          Volunteer Hours Saved
+          Instructor Hours Saved
         </h3>
 
         <p>
-          Your volunteer hours
+          Your Instructor hours
           have been recorded.
         </p>
 
@@ -5115,7 +5115,7 @@ async function saveVolunteerHours(){
           Reminder:
           You must still enter
           these hours in the
-          official NDOW Volunteer
+          official NDOW Instructor
           System.
         </div>
 
@@ -5247,7 +5247,7 @@ if(
 } catch(err){
 
   console.error(
-    'Volunteer hours lookup failed',
+    'Instructor hours lookup failed',
     err
   );
 
@@ -5583,7 +5583,7 @@ ${
   font-size:14px;
 ">
 
-  Volunteer requests are closed for this event.
+  Instructor requests are closed for this event.
 
 </div>
 
@@ -5715,7 +5715,7 @@ $${Math.round(
     font-weight:600;
   "
 >
-  Log Volunteer Hours
+  Log Instructor Hours
 </button>
 
 `
@@ -5730,7 +5730,7 @@ $${Math.round(
   font-size:14px;
   text-align:center;
 ">
-  Volunteer hours may be entered after the event begins.
+  Instructor hours may be entered after the event begins.
 </div>
 
 `}
@@ -7456,7 +7456,7 @@ async function loadDashboard(){
   </div>
 
   <div>
-    Volunteer Value ..... <strong>
+    Instructor Value ..... <strong>
       $${Number(
         result.totals.serviceValue || 0
       ).toLocaleString()}
@@ -9935,7 +9935,7 @@ geographic analysis.
   </option>
 
   <option value="Volunteer Management">
-    Volunteer Management
+    Instructor Management
   </option>
 
   <option value="Instructor Management">
@@ -10414,7 +10414,7 @@ geographic analysis.
     <h2 style="
       margin:0 0 24px 0;
     ">
-      My Volunteer Dashboard
+      My Instructor Dashboard
     </h2>
 
     <div id="dashboardContent">
@@ -11510,7 +11510,7 @@ ${regionTotal}
   >
 
     <h2 style="margin-top:0;">
-      Volunteer Hours Entry
+      Instructor Hours Entry
     </h2>
 
     <div id="hoursModalContent"></div>
