@@ -7205,13 +7205,21 @@ async function loadReleaseManager(){
 	    'https://ndow-calendar-server.onrender.com/api/releases/current'
 	 );
 
-    const release =
-      await response.json();
+const result =
+  await response.json();
 
-    document.getElementById(
-      'releaseVersionDisplay'
-    ).textContent =
-      release.version || '';
+const release =
+  result.release;
+
+console.log(
+  'Release Data:',
+  release
+);
+
+document.getElementById(
+  'releaseVersionDisplay'
+).textContent =
+  release.version || '';
 
     document.getElementById(
       'releaseTitleDisplay'
