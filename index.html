@@ -8590,22 +8590,16 @@ if(geoRegionSelect){
 }
 
 
-function closeAdminPanel(){
+function closeAdminPanel() {
+  const modal = document.getElementById('adminModal');
+  modal.classList.add('hidden');
+  modal.style.display = 'none';
 
-  const modal =
-    document.getElementById(
-      'adminModal'
-    );
-
-  modal.classList.add(
-    'hidden'
-  );
-
-  modal.style.display =
-    'none';
-
+  // Reopen Dashboard after closing Admin
+  const dashboard = document.getElementById('dashboardModal');
+  dashboard.classList.remove('hidden');
+  dashboard.style.display = 'flex';
 }
-
 async function addUser(){
 
   const username =
