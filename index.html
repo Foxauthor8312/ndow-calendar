@@ -6348,6 +6348,11 @@ function openAdminSection(section){
   document.getElementById(
     'instructorRequestsPanel'
   );	
+
+    const contacts =
+    document.getElementById(
+      'contactsPanel'
+    );
 	
 
   if(users){
@@ -6375,6 +6380,9 @@ if(category){
   category.style.display = 'none';
 }
 
+if(contacts){
+  contacts.style.display = 'none';
+}	
 /* ACTIVE SIDEBAR BUTTON */
 
 document
@@ -6393,6 +6401,8 @@ const buttonMap = {
     'adminRequestsBtn',
   announcements:
     'adminUpdatesBtn',
+  contacts:
+    'adminContactsBtn',
   help: 'adminHelpBtn',
   geo: 'adminAnalyticsBtn',
   category:
@@ -6460,6 +6470,13 @@ if(section === 'category' && category){
     'block';
 
   renderOverrides();
+
+}
+
+if(section === 'contacts' && contacts){
+
+  contacts.style.display =
+    'block';
 
 }
 
@@ -9275,6 +9292,13 @@ function overrideCategory(
   onclick="openAdminSection('announcements')"
 >
   Updates
+</button>
+
+<button
+  id="adminContactsBtn"
+  onclick="openAdminSection('contacts')"
+>
+  Contacts
 </button>
 
 <button
