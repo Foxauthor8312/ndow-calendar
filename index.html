@@ -1847,9 +1847,9 @@ body{
 
   </div>
 
-  <!-- ========================================
+ <!-- ========================================
        START CALENDAR
-  ======================================== -->
+======================================== -->
 
 <div
   id="calendarViewport"
@@ -1861,11 +1861,6 @@ body{
 ">
   <div class="calendar" id="calendar"></div>
 </div>
-
-  <div
-    class="calendar"
-    id="calendar"
-  ></div>
 
 </div>
 
@@ -1916,40 +1911,7 @@ body{
 
 </footer>
 
-<script>
-
-let authorizedUsers = [];
-let categoryEmails = [];
-
-const systemStatus = {
-
-  workflowStatus:'STARTING',
-
-  lastSync:null,
-
-  syncDuration:null,
-
-  eventsProcessed:0,
-
-  categorizedEvents:0,
-
-  uncategorizedEvents:0,
-
-  geoMappedEvents:0,
-
-  geoFailedEvents:0,
-
-  parseFailures:0,
-
-  warnings:[],
-
-  recentErrors:[]
-
-};
-
-// ========================================
-// START CATEGORY RULES
-// ========================================
+	
 const CATEGORY_RULES = {
 
   'Hunter Education': [
