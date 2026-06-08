@@ -5594,30 +5594,6 @@ if(
       'Logged in as: ' +
       savedUser.username;
 
-if(
-  savedUser.role === 'admin' ||
-  savedUser.role === 'superuser'
-){
-
-  document.getElementById(
-    'adminButton'
-  ).style.display =
-    'inline-flex';
-
-}
-
-if(
-  savedUser.role === 'superuser'
-){
-
-  document.getElementById(
-    'superuserButton'
-  ).classList.remove(
-    'hidden'
-  );
-
-}
-
   }
 
   (async () => {
