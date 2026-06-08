@@ -3693,30 +3693,6 @@ if(
 
 }
 
-if(
-  data.user.role === 'admin' ||
-  data.user.role === 'superuser'
-){
-
-  document.getElementById(
-    'adminButton'
-  ).style.display =
-    'inline-flex';
-
-}
-
-if(
-  data.user.role === 'superuser'
-){
-
-  document.getElementById(
-    'superuserButton'
-  ).classList.remove(
-    'hidden'
-  );
-
-}
-
 localStorage.setItem(
   'ndowAccess',
   'granted'
