@@ -8454,6 +8454,14 @@ function closeAdminPanel(){
     'flex';
 
 }
+
+function openAddContactModal(){
+
+  alert(
+    'Add Contact modal coming next.'
+  );
+
+}	
 async function addUser(){
 
   const username =
@@ -9547,16 +9555,38 @@ function overrideCategory(
     Notification Contacts
   </h2>
 
-  <div style="
-    background:#f8fafc;
+ <div style="
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+">
+
+  <h3 style="margin:0;">
+    Contacts
+  </h3>
+
+  <button
+    onclick="openAddContactModal()"
+  >
+    + Add Contact
+  </button>
+
+</div>
+
+<div
+  id="contactsList"
+  style="
     border:1px solid #e2e8f0;
     border-radius:8px;
     padding:16px;
-  ">
+    background:white;
+  "
+>
 
-    Contact management coming soon.
+  No contacts loaded.
 
-  </div>
+</div>
 
 </div>
 
