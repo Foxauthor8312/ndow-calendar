@@ -11529,7 +11529,14 @@ geographic analysis.
      EDIT CONTACT MODAL
 ======================================== -->
 <div id="editContactModal" class="modal hidden">
-  <div class="modal-content" style="max-width:620px;">
+ <div
+  class="modal-content"
+  style="
+    max-width:620px;
+    position:relative;
+    z-index:1000000;
+  "
+>
     <button class="modal-close" onclick="closeEditContactModal()">✕</button>
     <h2>Edit Contact</h2>
     <div style="margin-top:18px;">
