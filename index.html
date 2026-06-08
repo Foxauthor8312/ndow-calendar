@@ -7655,11 +7655,14 @@ ${user.role === 'admin' || user.role === 'superuser' ? `
 
   <div class="dashboard-tool-list">
 
-    <button
-      class="admin-button"
-      onclick="openAdminPanel()">
-      Admin
-    </button>
+<button
+  class="admin-button"
+  onclick="
+    closeDashboard();
+    openAdminPanel();
+  ">
+  Admin
+</button>
 
     <button
       class="admin-button"
