@@ -1202,6 +1202,21 @@ body{
   color:#234e70;
 }
 
+.geo-value{
+  font-size:18px;
+  font-weight:700;
+  color:#234e70;
+}
+
+.dashboard-summary{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:15px;
+  line-height:1.5;
+  color:#1f2937;
+}
+
 #loginScreen{
   transition:opacity .15s ease;
 }
@@ -7592,53 +7607,36 @@ async function loadDashboard(){
 
     container.innerHTML = `
 
-<div style="
-  display:grid;
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-  gap:16px;
-">
+<div class="dashboard-summary">
 
-  <div class="geo-card">
-    <div class="geo-title">
-      Events
-    </div>
-    <div class="geo-value">
+  <div>
+    Events .............. <strong>
       ${result.totals.events || 0}
-    </div>
+    </strong>
   </div>
 
-  <div class="geo-card">
-    <div class="geo-title">
-      Hours
-    </div>
-    <div class="geo-value">
+  <div>
+    Hours ............... <strong>
       ${Number(
         result.totals.hours || 0
       ).toFixed(1)}
-    </div>
+    </strong>
   </div>
 
-  <div class="geo-card">
-    <div class="geo-title">
-      Miles
-    </div>
-    <div class="geo-value">
+  <div>
+    Miles ............... <strong>
       ${Number(
         result.totals.mileage || 0
       ).toFixed(0)}
-    </div>
+    </strong>
   </div>
 
-  <div class="geo-card">
-    <div class="geo-title">
-      Volunteer Value
-    </div>
-    <div class="geo-value">
+  <div>
+    Volunteer Value ..... <strong>
       $${Number(
         result.totals.serviceValue || 0
       ).toLocaleString()}
-    </div>
+    </strong>
   </div>
 
 </div>
