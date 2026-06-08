@@ -8483,6 +8483,114 @@ function closeAddContactModal(){
     'none';
 
 }
+	
+      <label>
+        Region
+      </label>
+
+      <select
+        id="contactRegion"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+        <option value="">
+          Select Region
+        </option>
+
+        <option value="Western">
+          Western
+        </option>
+
+        <option value="Eastern">
+          Eastern
+        </option>
+
+        <option value="Southern">
+          Southern
+        </option>
+
+        <option value="Statewide">
+          Statewide
+        </option>
+
+      </select>
+
+      <label>
+        Role
+      </label>
+
+      <input
+        id="contactRole"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Notification Type
+      </label>
+
+      <input
+        id="contactNotificationType"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Notes
+      </label>
+
+      <textarea
+        id="contactNotes"
+        style="
+          width:100%;
+          min-height:90px;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      ></textarea>
+
+      <label style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin-bottom:18px;
+      ">
+
+        <input
+          type="checkbox"
+          id="contactActive"
+          checked
+        >
+
+        Active
+
+      </label>
+	
 function saveContact(){
 
   alert(
