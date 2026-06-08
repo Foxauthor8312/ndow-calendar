@@ -1897,545 +1897,116 @@ body{
 </div>
 
 <footer class="footer">
-
   <div class="footer-text">
-
     NDOWVolunteer.com and the Volunteer Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW volunteers and authorized users only and is not intended for general public use. An authorized NDOW volunteer login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in volunteer activities is voluntary. © 2026 Barry Mattison — NDOW Volunteer Instructor. All rights reserved.
-
   </div>
 
-<div class="footer-version">
-  v<span id="versionDisplay"></span>
-  <span id="versionTime"></span>
-</div>
-
+  <div class="footer-version">
+    v<span id="versionDisplay"></span>
+    <span id="versionTime"></span>
+  </div>
 </footer>
 
-	
+<script>
+// ========================================
+// CATEGORY RULES
+// ========================================
 const CATEGORY_RULES = {
-
-  'Hunter Education': [
-    'hunter ed'
-  ],
-
-  'Advanced Hunter Education': [
-    'clay',
-    'rso',
-    'crossbow',
-    '.22',
-    'rifle',
-    'shotgun',
-    'muzzleloader',
-    'skeet',
-    'trap',
-    'dutch',
-    'oven',
-    'bowhunter',
-    'maintenance',
-    'firearm',
-    'nra',
-	'dutch oven',
-	'wild harvest',
-	'sporting clays',
-	'crossbow',
-	'crossbows',
-	'big game',
-    'ams'
-  ],
-
-  'Fishing': [
-    'fishing',
-    'flies',
-    'angling',
-    'casting',
-    'float',
-    'kayak',
-    'carp',
-    'intermediate fly',
-    'ranger day',
-    'sntu',
-    'rodeo',
-    'pike out',
-    'cops',
-	'rods',
-    'rod repairs',
-	'trout',
-	'scout',
-	'fishing classes',
-    'free fishing',
-	'scout fishing',
-	'intro to fly',
-	'float tube',
-	'fishing clinic',
-	'bass',
-	'lake mead hatchery',
-	'hatchery',
-    'bobbers',
-	'flies',
-    'fly-fishing',
-	'project healing waters',
-	'comins',
-	'pike out',
-	'desert shores',
-	'fly fishing'
-  ],
-
-  'School': [
-    'school',
-    'career',
-    'tic',
-    'kyn',
-    'hatchery',
-    'steam',
-    'alamo',
-    '4h',
-    'know your nevada',
-	'ccsd',
-	'field day', 
-	'skins & skulls',
-	'school events',
-	'spring break',
-	'farm day',
-	'outdoor days',
-    'eco'
-  ],
-
-  'Archery': [
-    'nasp',
-    'intro to archery',
-    'bai',
-    'bait'
-  ],
-
-   'Urban Wildlife': [
-    'urban wildlife',
-    'urban education',
-    'living with',
-	   'living with wildlife',
-    'urban ed'
-  ],
-
-  'Wildlife': [
-    'wildlife',
-    'skins',
-    'table',
-	'table chat',
-    'chat',
-    'wild',
-    'bird',
-    'burrows',
-    'nests',
-    'bats',
-    'skulls',
-    'reptile',
-    'snake',
-    'bat walk',
-	'migratory',
-    'animal',
-	'red rock',
-    'red rock table chat',
-	'wild readings',
-    'discovery',
-	'talks',
-	'trail talks',
-	'scavenger hunt',
-    'owl',
-	'bird',
-    'birding',
-	'summer celebration',
-    'birds',
-    'reptile',
-    'wetlands',
-    'bat'
-  ],
-
-    'Boating': [
-    'boat',
-    'boating'
-  ],
-
-  'Volunteer': [
-    'volunteer',
-    'instructor',
-    'volunteer meeting',
-    'volunteer training',
-	'flagview',
-	'test event',
-    'academy'
-  ]
+  'Hunter Education': ['hunter ed'],
+  'Advanced Hunter Education': ['clay','rso','crossbow','.22','rifle','shotgun','muzzleloader','skeet','trap','dutch','oven','bowhunter','maintenance','firearm','nra','dutch oven','wild harvest','sporting clays','crossbow','crossbows','big game','ams'],
+  'Fishing': ['fishing','flies','angling','casting','float','kayak','carp','intermediate fly','ranger day','sntu','rodeo','pike out','cops','rods','rod repairs','trout','scout','fishing classes','free fishing','scout fishing','intro to fly','float tube','fishing clinic','bass','lake mead hatchery','hatchery','bobbers','flies','fly-fishing','project healing waters','comins','pike out','desert shores','fly fishing'],
+  'School': ['school','career','tic','kyn','hatchery','steam','alamo','4h','know your nevada','ccsd','field day','skins & skulls','school events','spring break','farm day','outdoor days','eco'],
+  'Archery': ['nasp','intro to archery','bai','bait'],
+  'Urban Wildlife': ['urban wildlife','urban education','living with','living with wildlife','urban ed'],
+  'Wildlife': ['wildlife','skins','table','table chat','chat','wild','bird','burrows','nests','bats','skulls','reptile','snake','bat walk','migratory','animal','red rock','red rock table chat','wild readings','discovery','talks','trail talks','scavenger hunt','owl','bird','birding','summer celebration','birds','reptile','wetlands','bat'],
+  'Boating': ['boat','boating'],
+  'Volunteer': ['volunteer','instructor','volunteer meeting','volunteer training','flagview','test event','academy']
 };
 
-
-
+// ========================================
+// NEVADA REGIONS
+// ========================================
 const nevadaRegions = {
-  Western: {
-    Humboldt: [
-      { city: "Winnemucca", zip: "89445" },
-      { city: "Golconda", zip: "89414" },
-      { city: "Denio", zip: "89404" },
-      { city: "McDermitt", zip: "89421" },
-      { city: "Orovada", zip: "89425" },
-      { city: "Paradise Valley", zip: "89426" },
-      { city: "Valmy", zip: "89438" },
-      { city: "Humboldt", zip: "89446" }
-    ],
-
-    Pershing: [
-      { city: "Lovelock", zip: "89419" },
-      { city: "Imlay", zip: "89418" }
-    ],
-
-    Washoe: [
-      { city: "Reno", zip: "89501" },
-      { city: "Reno", zip: "89502" },
-      { city: "Reno", zip: "89503" },
-      { city: "Reno", zip: "89506" },
-      { city: "Reno", zip: "89508" },
-      { city: "Reno", zip: "89509" },
-      { city: "Reno", zip: "89511" },
-      { city: "Reno", zip: "89519" },
-      { city: "Reno", zip: "89521" },
-      { city: "Reno", zip: "89523" },
-      { city: "Sparks", zip: "89431" },
-      { city: "Sparks", zip: "89433" },
-      { city: "Sparks", zip: "89434" },
-      { city: "Sparks", zip: "89436" },
-      { city: "Spanish Springs", zip: "89441" },
-      { city: "Sun Valley", zip: "89433" },
-      { city: "Incline Village", zip: "89450" },
-      { city: "Crystal Bay", zip: "89402" },
-      { city: "Gerlach", zip: "89412" },
-      { city: "Empire", zip: "89405" },
-      { city: "Wadsworth", zip: "89442" },
-      { city: "Verdi", zip: "89439" }
-    ],
-
-    Churchill: [
-      { city: "Fallon", zip: "89406" },
-      { city: "Fallon", zip: "89407" },
-      { city: "Naval Air Station Fallon", zip: "89496" }
-    ],
-
-    Douglas: [
-      { city: "Minden", zip: "89423" },
-      { city: "Gardnerville", zip: "89410" },
-      { city: "Genoa", zip: "89411" },
-      { city: "Zephyr Cove", zip: "89448" },
-      { city: "Stateline", zip: "89449" },
-      { city: "Gardnerville Ranchos", zip: "89460" },
-      { city: "Topaz", zip: "89413" },
-      { city: "Wellington", zip: "89444" }
-    ],
-
-    Mineral: [
-      { city: "Hawthorne", zip: "89415" },
-      { city: "Luning", zip: "89420" },
-      { city: "Mina", zip: "89422" },
-      { city: "Schurz", zip: "89427" }
-    ]
-  },
-
-  Eastern: {
-    Elko: [
-      { city: "Elko", zip: "89801" },
-      { city: "Elko", zip: "89802" },
-      { city: "Elko", zip: "89803" },
-      { city: "Carlin", zip: "89822" },
-      { city: "Wells", zip: "89835" },
-      { city: "West Wendover", zip: "89883" },
-      { city: "Spring Creek", zip: "89815" },
-      { city: "Jackpot", zip: "89825" },
-      { city: "Mountain City", zip: "89831" },
-      { city: "Jarbidge", zip: "89826" },
-      { city: "Owyhee", zip: "89832" },
-      { city: "Tuscarora", zip: "89834" },
-      { city: "Deeth", zip: "89823" },
-      { city: "Lamoille", zip: "89828" }
-    ],
-
-    Lander: [
-      { city: "Battle Mountain", zip: "89820" },
-      { city: "Austin", zip: "89310" }
-    ],
-
-    Eureka: [
-      { city: "Eureka", zip: "89316" }
-    ],
-
-    "White Pine": [
-      { city: "Ely", zip: "89301" },
-      { city: "Baker", zip: "89311" },
-      { city: "Duckwater", zip: "89314" },
-      { city: "Lund", zip: "89317" },
-      { city: "McGill", zip: "89318" },
-      { city: "Ruth", zip: "89319" }
-    ]
-  },
-
-  Southern: {
-    Esmeralda: [
-      { city: "Goldfield", zip: "89013" },
-      { city: "Dyer", zip: "89010" },
-      { city: "Silverpeak", zip: "89047" }
-    ],
-
-    Nye: [
-      { city: "Pahrump", zip: "89048" },
-      { city: "Pahrump", zip: "89041" },
-      { city: "Tonopah", zip: "89049" },
-      { city: "Amargosa Valley", zip: "89020" },
-      { city: "Beatty", zip: "89003" },
-      { city: "Crystal", zip: "89060" },
-      { city: "Mercury", zip: "89023" },
-      { city: "Round Mountain", zip: "89045" }
-    ],
-
-    Lincoln: [
-      { city: "Caliente", zip: "89008" },
-      { city: "Pioche", zip: "89043" },
-      { city: "Panaca", zip: "89042" },
-      { city: "Alamo", zip: "89001" },
-      { city: "Hiko", zip: "89017" }
-    ],
-
-    Clark: [
-      { city: "Las Vegas", zip: "89101" },
-      { city: "Las Vegas", zip: "89102" },
-      { city: "Las Vegas", zip: "89103" },
-      { city: "Las Vegas", zip: "89104" },
-      { city: "Las Vegas", zip: "89106" },
-      { city: "Las Vegas", zip: "89107" },
-      { city: "Las Vegas", zip: "89108" },
-      { city: "Las Vegas", zip: "89109" },
-      { city: "Las Vegas", zip: "89110" },
-      { city: "Las Vegas", zip: "89113" },
-      { city: "Las Vegas", zip: "89117" },
-      { city: "Las Vegas", zip: "89118" },
-      { city: "Las Vegas", zip: "89119" },
-      { city: "Las Vegas", zip: "89121" },
-      { city: "Las Vegas", zip: "89123" },
-      { city: "North Las Vegas", zip: "89030" },
-      { city: "North Las Vegas", zip: "89031" },
-      { city: "North Las Vegas", zip: "89032" },
-      { city: "North Las Vegas", zip: "89084" },
-      { city: "Henderson", zip: "89002" },
-      { city: "Henderson", zip: "89011" },
-      { city: "Henderson", zip: "89012" },
-      { city: "Henderson", zip: "89014" },
-      { city: "Henderson", zip: "89015" },
-      { city: "Henderson", zip: "89052" },
-      { city: "Boulder City", zip: "89005" },
-      { city: "Mesquite", zip: "89027" },
-      { city: "Laughlin", zip: "89029" },
-      { city: "Overton", zip: "89040" },
-      { city: "Searchlight", zip: "89046" },
-      { city: "Indian Springs", zip: "89018" },
-      { city: "Jean", zip: "89019" },
-      { city: "Moapa", zip: "89025" },
-      { city: "Bunkerville", zip: "89007" }
-    ]
-  }
+  Western: { ... }, // your existing region data
+  Eastern: { ... },
+  Southern: { ... }
 };
 
 // ========================================
-// BUILD ZIP LOOKUP INDEX
+// ZIP LOOKUP
 // ========================================
-
 const zipLookup = {};
 
 async function loadZipLookup(){
-
-  const response =
-    await fetch(
-      'zip_code_database.csv'
-    );
-
-  const text =
-    await response.text();
-
-  const rows =
-    text.split('\n');
-
+  const response = await fetch('zip_code_database.csv');
+  const text = await response.text();
+  const rows = text.split('\n');
   rows.shift();
-
-  Object.keys(zipLookup)
-    .forEach(key => {
-      delete zipLookup[key];
-    });
-
+  Object.keys(zipLookup).forEach(key => { delete zipLookup[key]; });
   rows.forEach(row => {
-
-    if(!row.trim()){
-      return;
-    }
-
-    const columns =
-      row.split(',');
-
-    const zip =
-      columns[0]
-        ?.replace(/"/g,'')
-        .trim()
-        .padStart(5,'0');
-
-    const city =
-  columns[1]
-    ?.replace(/"/g,'')
-    .trim();
-
-const county =
-  columns[2]
-    ?.replace(/"/g,'')
-    .replace(' County','')
-    .replace(/\r/g,'')
-    .trim();
-
+    if(!row.trim()) return;
+    const columns = row.split(',');
+    const zip = columns[0]?.replace(/"/g,'').trim().padStart(5,'0');
+    const city = columns[1]?.replace(/"/g,'').trim();
+    const county = columns[2]?.replace(/"/g,'').replace(' County','').replace(/\r/g,'').trim();
     const region = (() => {
-
-      const c =
-        county
-          ?.replace(/county/gi,'')
-          .replace(/\r/g,'')
-          .trim()
-          .toLowerCase();
-
-      if([
-        'clark',
-        'lincoln',
-        'nye',
-        'esmeralda'
-      ].includes(c)){
-        return 'Southern';
-      }
-
-      if([
-        'washoe',
-        'carson city',
-        'douglas',
-        'churchill',
-        'storey',
-        'lyon',
-        'pershing',
-        'mineral',
-        'humboldt'
-      ].includes(c)){
-        return 'Western';
-      }
-
-      if([
-        'elko',
-        'lander',
-        'eureka',
-        'white pine'
-      ].includes(c)){
-        return 'Eastern';
-      }
-
+      const c = county?.replace(/county/gi,'').replace(/\r/g,'').trim().toLowerCase();
+      if(['clark','lincoln','nye','esmeralda'].includes(c)) return 'Southern';
+      if(['washoe','carson city','douglas','churchill','storey','lyon','pershing','mineral','humboldt'].includes(c)) return 'Western';
+      if(['elko','lander','eureka','white pine'].includes(c)) return 'Eastern';
       return '';
-
     })();
-
-    if(!zip){
-      return;
-    }
-
-    zipLookup[zip] = {
-
-      city:
-        city || '',
-
-      county:
-        county || '',
-
-      region:
-        region || ''
-
-    };
-
+    if(!zip) return;
+    zipLookup[zip] = { city: city||'', county: county||'', region: region||'' };
   });
-
-  console.log(
-    'ZIP database loaded:',
-    Object.keys(zipLookup).length
-  );
-
+  console.log('ZIP database loaded:', Object.keys(zipLookup).length);
 }
 
 // ========================================
-// START EVENT CLASSIFICATION
+// EVENT CLASSIFICATION
 // ========================================
-
-function classifyEvent(title = '') {
-
-  if(
-    !title ||
-    typeof title !== 'string'
-  ){
-    return 'Other';
+function classifyEvent(title=''){
+  if(!title || typeof title !== 'string') return 'Other';
+  const t = title.toLowerCase();
+  for(const category in CATEGORY_RULES){
+    const keywords = CATEGORY_RULES[category];
+    if(keywords.some(keyword => t.includes(keyword.toLowerCase()))) return category;
   }
-
-  const t =
-    title.toLowerCase();
-
-  for(
-    const category in CATEGORY_RULES
-  ){
-
-    const keywords =
-      CATEGORY_RULES[category];
-
-    const matched =
-      keywords.some(keyword =>
-        t.includes(
-          keyword.toLowerCase()
-        )
-      );
-
-    if(matched){
-      return category;
-    }
-
-  }
-
   return 'Other';
-
 }
+
 const categoryColors = {
-
   'Hunter Education':'#84cc16',
-
   'Advanced Hunter Education':'#166534',
-
   'Fishing':'#f97316',
-
   'Wildlife':'#9333ea',
-
   'Urban Wildlife':'#0ea5e9',
-
   'Boating':'#6b7280',
-
   'Volunteer':'#2563eb',
-
   'Archery':'#bcc9bb',
-
   'School':'#b45309',
-
   'Other':'#64748b'
 };
 
 // ========================================
 // GLOBAL DATA
 // ========================================
-
-let events = [];
-let activeFilters = [];
-let activeRegion = '';
-let selectedEvent = null;
-let submittedHoursRecord = null;
-let volunteerTotals = null;
-
-const SERVICE_VALUE_RATE =
-  56.55;
+let authorizedUsers = [];
+let categoryEmails = [];
+const systemStatus = {
+  workflowStatus:'STARTING',
+  lastSync:null,
+  syncDuration:null,
+  eventsProcessed:0,
+  categorizedEvents:0,
+  uncategorizedEvents:0,
+  geoMappedEvents:0,
+  geoFailedEvents:0,
+  parseFailures:0,
+  warnings:[],
+  recentErrors:[]
+};
+</script>
 
 // ========================================
 // START EVENT LOADING
