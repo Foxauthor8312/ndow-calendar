@@ -1905,10 +1905,74 @@ body{
 
   </div>
 
+	
 </div>
 
+<!-- ========================================
+     EDIT CONTACT MODAL
+======================================== -->
 
+<div
+  id="editContactModal"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="max-width:620px;"
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeEditContactModal()"
+    >
+      ✕
+    </button>
+
+    <h2>Edit Contact</h2>
+
+    <input type="hidden" id="editContactId">
+
+    <div style="margin-top:18px;">
+
+      <label>Name</label>
+      <input id="editContactName" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Email</label>
+      <input id="editContactEmail" type="email" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Program</label>
+      <input id="editContactProgram" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Region</label>
+      <input id="editContactRegion" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Role</label>
+      <input id="editContactRole" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Notification Type</label>
+      <input id="editContactNotificationType" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Notes</label>
+      <textarea id="editContactNotes" style="width:100%; min-height:90px; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;"></textarea>
+
+      <label style="display:flex; align-items:center; gap:8px; margin-bottom:18px;">
+        <input type="checkbox" id="editContactActive">
+        Active
+      </label>
+
+      <button style="margin-top:22px; width:100%;" onclick="saveEditedContact()">Save Changes</button>
+
+    </div>
+
+  </div>
+
+</div>
+	
 <script>
+
+
+	
 // ========================================
 // CATEGORY RULES
 // ========================================
@@ -8716,6 +8780,44 @@ list.innerHTML = data.contacts.map(c => `
       : ''
     }
 
+<div style="
+  margin-top:10px;
+  display:flex;
+  gap:8px;
+">
+
+  <button
+    onclick="openEditContactModal('${c.id}')"
+    style="
+      background:#2563eb;
+      color:white;
+      border:none;
+      border-radius:6px;
+      padding:6px 12px;
+      cursor:pointer;
+      font-weight:600;
+    "
+  >
+    Edit
+  </button>
+
+  <button
+    onclick="deleteContact('${c.id}')"
+    style="
+      background:#dc2626;
+      color:white;
+      border:none;
+      border-radius:6px;
+      padding:6px 12px;
+      cursor:pointer;
+      font-weight:600;
+    "
+  >
+    Delete
+  </button>
+
+</div>
+
   </div>
 
 `).join('');
@@ -8726,6 +8828,42 @@ list.innerHTML = data.contacts.map(c => `
   }
 }
 
+let editingContactId = null;
+
+function openEditContactModal(id){
+
+  editingContactId = id;
+
+  const modal =
+    document.getElementById(
+      'editContactModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+}
+
+function closeEditContactModal(){
+
+  const modal =
+    document.getElementById(
+      'editContactModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+	
 async function addUser(){
 
   const username =
@@ -11299,6 +11437,46 @@ geographic analysis.
 
 <script>
 
+<!-- ========================================
+     EDIT CONTACT MODAL
+======================================== -->
+<div id="editContactModal" class="modal hidden">
+  <div class="modal-content" style="max-width:620px;">
+    <button class="modal-close" onclick="closeEditContactModal()">✕</button>
+    <h2>Edit Contact</h2>
+    <div style="margin-top:18px;">
+
+      <label>Name</label>
+      <input id="editContactName" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Email</label>
+      <input id="editContactEmail" type="email" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Program</label>
+      <input id="editContactProgram" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Region</label>
+      <input id="editContactRegion" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Role</label>
+      <input id="editContactRole" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Notification Type</label>
+      <input id="editContactNotificationType" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
+
+      <label>Notes</label>
+      <textarea id="editContactNotes" style="width:100%; min-height:90px; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;"></textarea>
+
+      <label style="display:flex; align-items:center; gap:8px; margin-bottom:18px;">
+        <input type="checkbox" id="editContactActive">
+        Active
+      </label>
+
+      <button style="margin-top:22px; width:100%;" onclick="saveEditedContact()">Save Changes</button>
+    </div>
+  </div>
+</div>
+	
 let showAllCounties = false;
 		
 const geoRegions = {
