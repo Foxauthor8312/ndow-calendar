@@ -147,24 +147,16 @@ button{
 button:hover{
   opacity:.9;
 }
-.calendar{
-  display:grid;
-  grid-template-columns:
-    repeat(7,minmax(0,1fr));
-  grid-template-rows:32px;
-  grid-auto-rows:minmax(120px,auto);
-  gap:1px;
-  background:#d1d5db;
-  border-top:1px solid #d1d5db;
-
-  height:100%;
-
-  overflow-y:auto;
-  overflow-x:hidden;
-
-  align-content:start;
-
-  min-height:0;
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  grid-template-rows: 32px;          /* header row */
+  grid-auto-rows: min-content;       /* let day rows grow with content */
+  gap: 1px;
+  background: #d1d5db;
+  border-top: 1px solid #d1d5db;
+  overflow-x: auto;                  /* horizontal scroll if needed */
+  align-content: start;
 }
  
 .day-name{
@@ -439,13 +431,6 @@ button:hover{
   .account-controls{
     width:100%;
   }
-
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(120px, 1fr));
-    grid-auto-rows: minmax(95px, min-content);  /* <-- let rows expand with content */
-    overflow-x: auto;
-}
 
   .legend{
     justify-content:flex-start;
@@ -1866,18 +1851,23 @@ body{
        START CALENDAR
   ======================================== -->
 
-<div style="
-  flex:1;
-  min-height:0;
-  overflow-y:auto;
+<div
+  id="calendarViewport"
+  style="
+    flex:1;
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
 ">
+  <div class="calendar" id="calendar"></div>
+</div>
 
-    <div
-      class="calendar"
-      id="calendar"
-    ></div>
+  <div
+    class="calendar"
+    id="calendar"
+  ></div>
 
-  </div>
+</div>
 
 </div>
 
