@@ -7380,7 +7380,95 @@ function enterReleaseEditMode(){
 
 function exitReleaseEditMode(){
 
-  location.reload();
+  closeReleaseManager();
+
+  document.getElementById(
+    'releaseManagerContent'
+  ).innerHTML = `
+    <div style="
+      border:1px solid #DBE3EC;
+      border-radius:6px;
+      padding:16px;
+      background:#FFFFFF;
+    ">
+
+      <div class="geo-title">
+        VERSION
+      </div>
+
+      <div
+        id="releaseVersionDisplay"
+        class="geo-value"
+        style="margin-bottom:16px;"
+      >
+        Loading...
+      </div>
+
+      <div class="geo-title">
+        TITLE
+      </div>
+
+      <div
+        id="releaseTitleDisplay"
+        style="margin-bottom:16px;"
+      >
+        Loading...
+      </div>
+
+      <div class="geo-title">
+        CURRENT FOCUS
+      </div>
+
+      <div
+        id="releaseFocusDisplay"
+        style="
+          margin-bottom:16px;
+          white-space:pre-wrap;
+        "
+      >
+        Loading...
+      </div>
+
+      <hr style="
+        border:none;
+        border-top:1px solid #DBE3EC;
+        margin:16px 0;
+      ">
+
+      <div class="geo-title">
+        RELEASE NOTES
+      </div>
+
+      <div
+        id="releaseNotesDisplay"
+        style="
+          white-space:pre-wrap;
+          line-height:1.5;
+        "
+      >
+        Loading...
+      </div>
+
+    </div>
+
+    <div style="
+      display:flex;
+      justify-content:flex-end;
+      margin-top:16px;
+    ">
+
+      <button
+        id="editReleaseBtn"
+        class="admin-button"
+        onclick="enterReleaseEditMode()"
+      >
+        Edit Release
+      </button>
+
+    </div>
+  `;
+
+  openReleaseManager();
 
 }
 	
