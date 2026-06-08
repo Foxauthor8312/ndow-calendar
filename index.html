@@ -7645,6 +7645,8 @@ ${user.role === 'admin' ||
   user.role === 'superuser'
   ? `
 
+${user.role === 'admin' || user.role === 'superuser' ? `
+
 <div class="dashboard-section">
 
   <h3 class="dashboard-section-title">
@@ -7653,16 +7655,45 @@ ${user.role === 'admin' ||
 
   <div class="dashboard-tool-list">
 
-<button
-  id="releaseManagerBtn"
-  class="admin-button"
-  onclick="openReleaseManager()">
+    <button
+      class="admin-button"
+      onclick="openAdminPanel()">
+      Admin
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="openReleaseManager()">
       Release Manager
     </button>
 
   </div>
 
 </div>
+
+` : ''}
+
+${user.role === 'superuser' ? `
+
+<div class="dashboard-section">
+
+  <h3 class="dashboard-section-title">
+    System Tools
+  </h3>
+
+  <div class="dashboard-tool-list">
+
+    <button
+      class="admin-button"
+      onclick="openSystemConsole()">
+      System
+    </button>
+
+  </div>
+
+</div>
+
+` : ''}
 
 `
   : ''}
