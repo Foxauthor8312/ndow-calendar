@@ -7249,6 +7249,143 @@ document.getElementById(
 
 }
 
+	function enterReleaseEditMode(){
+
+  const version =
+    document.getElementById(
+      'releaseVersionDisplay'
+    ).textContent;
+
+  const title =
+    document.getElementById(
+      'releaseTitleDisplay'
+    ).textContent;
+
+  const focus =
+    document.getElementById(
+      'releaseFocusDisplay'
+    ).textContent;
+
+  const notes =
+    document.getElementById(
+      'releaseNotesDisplay'
+    ).textContent;
+
+  document.getElementById(
+    'releaseManagerContent'
+  ).innerHTML = `
+
+<div style="margin-top:18px;">
+
+  <label>
+    Version
+  </label>
+
+  <input
+    id="editReleaseVersion"
+    value="${version}"
+    style="
+      width:100%;
+      padding:10px;
+      margin-top:6px;
+      margin-bottom:14px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      box-sizing:border-box;
+    "
+  >
+
+  <label>
+    Title
+  </label>
+
+  <input
+    id="editReleaseTitle"
+    value="${title}"
+    style="
+      width:100%;
+      padding:10px;
+      margin-top:6px;
+      margin-bottom:14px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      box-sizing:border-box;
+    "
+  >
+
+  <label>
+    Current Focus
+  </label>
+
+  <textarea
+    id="editReleaseFocus"
+    rows="4"
+    style="
+      width:100%;
+      padding:10px;
+      margin-top:6px;
+      margin-bottom:14px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      box-sizing:border-box;
+      resize:vertical;
+    "
+  >${focus}</textarea>
+
+  <label>
+    Release Notes
+  </label>
+
+  <textarea
+    id="editReleaseNotes"
+    rows="10"
+    style="
+      width:100%;
+      padding:10px;
+      margin-top:6px;
+      margin-bottom:14px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      box-sizing:border-box;
+      resize:vertical;
+    "
+  >${notes}</textarea>
+
+  <div style="
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:20px;
+  ">
+
+    <button
+      onclick="loadReleaseManager()"
+    >
+      Cancel
+    </button>
+
+    <button
+      onclick="saveReleaseChanges()"
+    >
+      Save Release
+    </button>
+
+  </div>
+
+</div>
+
+`;
+
+}
+
+	async function saveReleaseChanges(){
+
+  alert(
+    'Save endpoint not connected yet.'
+  );
+
+}
+
 async function loadDashboard(){
 
   const container =
@@ -10341,12 +10478,15 @@ geographic analysis.
       CURRENT FOCUS
     </div>
 
-    <div
-      id="releaseFocusDisplay"
-      style="margin-bottom:16px;"
-    >
-      Loading...
-    </div>
+<div
+  id="releaseFocusDisplay"
+  style="
+    margin-bottom:16px;
+    white-space:pre-wrap;
+  "
+>
+  Loading...
+</div>
 
     <hr style="
       border:none;
@@ -10376,13 +10516,14 @@ geographic analysis.
     margin-top:16px;
   ">
 
-    <button
-      id="editReleaseBtn"
-      class="admin-button"
-    >
-      Edit Release
-    </button>
-
+<button
+  id="editReleaseBtn"
+  class="admin-button"
+  onclick="enterReleaseEditMode()"
+>
+  Edit Release
+</button>
+	  
   </div>
 
 </div>
