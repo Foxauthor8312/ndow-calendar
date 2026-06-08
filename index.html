@@ -2251,6 +2251,7 @@ const categoryColors = {
 // ========================================
 // GLOBAL DATA
 // ========================================
+
 let authorizedUsers = [];
 let categoryEmails = [];
 const systemStatus = {
@@ -2266,6 +2267,16 @@ const systemStatus = {
   warnings:[],
   recentErrors:[]
 };
+	
+let events = [];
+let activeFilters = [];
+let activeRegion = '';
+let selectedEvent = null;
+let submittedHoursRecord = null;
+let volunteerTotals = null;
+
+const SERVICE_VALUE_RATE =
+  56.55;
 
 // ========================================
 // START EVENT LOADING
