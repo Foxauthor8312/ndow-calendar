@@ -43,9 +43,8 @@ body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:#f3f4f6;
-
   height:100vh;
-  overflow:auto;
+  overflow:hidden;
 }
 
 /* ========================================
@@ -148,8 +147,15 @@ button:hover{
   opacity:.9;
 }
 .calendar {
-  grid-auto-rows: 1fr;
-  height:100%;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
+  grid-template-rows: 32px;
+  grid-auto-rows: min-content;
+  gap: 1px;
+  background: #d1d5db;
+  border-top: 1px solid #d1d5db;
+  overflow-x: auto;
+  align-content: start;
 }
  
 .day-name{
@@ -1544,8 +1550,9 @@ body{
   id="appContent"
   style="
     display:none;
-    min-height:100vh;
+    height:100vh;
     flex-direction:column;
+    overflow:hidden;
   "
 >
 
@@ -1856,6 +1863,18 @@ body{
 
 </div>
 
+
+<footer class="footer">
+  <div class="footer-text">
+    NDOWVolunteer.com and the Volunteer Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW volunteers and authorized users only and is not intended for general public use. An authorized NDOW volunteer login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in volunteer activities is voluntary. © 2026 Barry Mattison — NDOW Volunteer Instructor. All rights reserved.
+  </div>
+
+  <div class="footer-version">
+    v<span id="versionDisplay"></span>
+    <span id="versionTime"></span>
+  </div>
+</footer>
+	
 </div>
 
 <!-- ========================================
@@ -1888,16 +1907,6 @@ body{
 
 </div>
 
-<footer class="footer">
-  <div class="footer-text">
-    NDOWVolunteer.com and the Volunteer Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW volunteers and authorized users only and is not intended for general public use. An authorized NDOW volunteer login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in volunteer activities is voluntary. © 2026 Barry Mattison — NDOW Volunteer Instructor. All rights reserved.
-  </div>
-
-  <div class="footer-version">
-    v<span id="versionDisplay"></span>
-    <span id="versionTime"></span>
-  </div>
-</footer>
 
 <script>
 // ========================================
