@@ -7439,11 +7439,13 @@ async function saveReleaseChanges(){
 
     }
 
-    await loadReleaseManager();
+alert(
+  'Release updated successfully.'
+);
 
-    alert(
-      'Release updated successfully.'
-    );
+closeReleaseManager();
+
+location.reload();
 
   }catch(err){
 
