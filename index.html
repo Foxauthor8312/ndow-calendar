@@ -8703,6 +8703,9 @@ async function loadContacts(){
     );
     const data = await response.json();
 
+	window.contactsCache =
+     data.contacts || [];
+
     if(!data.success || !data.contacts || data.contacts.length === 0){
       list.innerHTML = '<div style="padding:12px;color:#64748b;">No contacts found.</div>';
       return;
@@ -8833,6 +8836,60 @@ let editingContactId = null;
 function openEditContactModal(id){
 
   editingContactId = id;
+
+  const contact =
+    window.contactsCache?.find(
+      c => c.id === id
+    );
+
+  if(!contact){
+
+    alert(
+      'Contact not found'
+    );
+
+    return;
+
+  }
+
+  document.getElementById(
+    'editContactId'
+  ).value = contact.id || '';
+
+  document.getElementById(
+    'editContactName'
+  ).value = contact.name || '';
+
+  document.getElementById(
+    'editContactEmail'
+  ).value = contact.email || '';
+
+  document.getElementById(
+    'editContactProgram'
+  ).value = contact.program || '';
+
+  document.getElementById(
+    'editContactRegion'
+  ).value = contact.region || '';
+
+  document.getElementById(
+    'editContactRole'
+  ).value = contact.role || '';
+
+  document.getElementById(
+    'editContactNotificationType'
+  ).value =
+    contact.notification_type || '';
+
+  document.getElementById(
+    'editContactNotes'
+  ).value =
+    contact.notes || '';
+
+  document.getElementById(
+    'editContactActive'
+  ).checked =
+    !!contact.active;
 
   const modal =
     document.getElementById(
