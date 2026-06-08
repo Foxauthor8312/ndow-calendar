@@ -8490,64 +8490,136 @@ function closeAddContactModal(){
 
 // ------------------ SAVE CONTACT ------------------
 async function saveContact(){
-  const name = document.getElementById('contactName').value.trim();
-  const email = document.getElementById('contactEmail').value.trim();
-  const program = document.getElementById('contactProgram').value.trim();
-  const region = document.getElementById('contactRegion').value;
-  const role = document.getElementById('contactRole').value.trim();
-  const notificationType = document.getElementById('contactNotificationType').value.trim();
-  const notes = document.getElementById('contactNotes').value.trim();
-  const active = document.getElementById('contactActive').checked;
 
-  if(!name || !email){
-    alert('Name and Email are required.');
+  const name =
+    document.getElementById(
+      'contactName'
+    ).value.trim();
+
+  const email =
+    document.getElementById(
+      'contactEmail'
+    ).value.trim();
+
+  const program =
+    document.getElementById(
+      'contactProgram'
+    ).value.trim();
+
+  const region =
+    document.getElementById(
+      'contactRegion'
+    ).value;
+
+  const role =
+    document.getElementById(
+      'contactRole'
+    ).value.trim();
+
+  const notificationType =
+    document.getElementById(
+      'contactNotificationType'
+    ).value.trim();
+
+  const notes =
+    document.getElementById(
+      'contactNotes'
+    ).value.trim();
+
+  const active =
+    document.getElementById(
+      'contactActive'
+    ).checked;
+
+  if(
+    !name ||
+    !email
+  ){
+    alert(
+      'Name and Email are required.'
+    );
     return;
   }
 
-  const saveBtn = document.querySelector('#addContactModal button[onclick="saveContact()"]');
+  const saveBtn =
+    document.querySelector(
+      '#addContactModal button[onclick="saveContact()"]'
+    );
+
   saveBtn.disabled = true;
   saveBtn.innerText = 'Saving...';
 
   try{
-    const token = localStorage.getItem('token');
-    const response = await fetch(
-      'https://ndow-calendar-server.onrender.com/api/admin/add-contact',
-      {
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          program,
-          region,
-          role,
-          notification_type: notificationType,
-          notes,
-          active
-        })
-      }
-    );
 
-    const data = await response.json();
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/admin/add-contact',
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':
+              'application/json',
+            Authorization:
+              `Bearer ${token}`
+          },
+          body:JSON.stringify({
+            name,
+            email,
+            program,
+            region,
+            role,
+            notification_type:
+              notificationType,
+            notes,
+            active
+          })
+        }
+      );
+
+    const data =
+      await response.json();
 
     if(data.success){
-      alert('Contact saved successfully.');
+
+      alert(
+        'Contact saved successfully.'
+      );
+
       closeAddContactModal();
+
       loadContacts();
-    } else {
-      alert('Save failed: ' + (data.message || 'Unknown error'));
+
+    }else{
+
+      alert(
+        data.message ||
+        'Save failed'
+      );
+
     }
 
-  } catch(err){
+  }catch(err){
+
     console.error(err);
-    alert('Save failed: ' + err.message);
-  } finally {
+
+    alert(
+      'Save failed'
+    );
+
+  }finally{
+
     saveBtn.disabled = false;
-    saveBtn.innerText = 'Save Contact';
+
+    saveBtn.innerText =
+      'Save Contact';
+
   }
+
 }
 
 // ------------------ LOAD CONTACTS ------------------
