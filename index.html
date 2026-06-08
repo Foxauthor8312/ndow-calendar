@@ -2274,9 +2274,44 @@ let activeRegion = '';
 let selectedEvent = null;
 let submittedHoursRecord = null;
 let volunteerTotals = null;
+	
+let departmentContacts = [];
 
 const SERVICE_VALUE_RATE =
   56.55;
+
+	// ========================================
+// DEPARTMENT CONTACTS
+// ========================================
+
+async function loadDepartmentContacts(){
+
+  const { data, error } =
+    await supabase
+      .from(
+        'department_contacts'
+      )
+      .select('*')
+      .eq(
+        'active',
+        true
+      );
+
+  if(error){
+
+    console.error(
+      'Department contacts failed',
+      error
+    );
+
+    return;
+
+  }
+
+  departmentContacts =
+    data || [];
+
+}
 
 // ========================================
 // START EVENT LOADING
@@ -3501,19 +3536,26 @@ localStorage.setItem(
   'granted'
 );
 
-    document.getElementById(
-      'loadingMessage'
-    ).innerText =
-      'Loading regional mapping data...';
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Loading department contacts...';
 
-    await loadZipLookup();
+await loadDepartmentContacts();
 
-    document.getElementById(
-      'loadingMessage'
-    ).innerText =
-      'Loading NDOW event calendar...';
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Loading regional mapping data...';
 
-    await loadEvents();
+await loadZipLookup();
+
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Loading NDOW event calendar...';
+
+await loadEvents();
 
 document.getElementById(
   'loginScreen'
@@ -5428,31 +5470,68 @@ modalBody.innerHTML = `
   onchange="toggleCustomEmail()"
 >
 
-${categoryEmails.map(contact => {
+${departmentContacts
 
-  const selected =
+  .filter(contact =>
 
-    contact.categories &&
-    contact.categories.includes(
-      event.category
+    contact.active &&
+
+    (
+      contact.program ===
+        event.category
+
+      ||
+
+      contact.program ===
+        'ALL'
     )
 
-      ? 'selected'
+    &&
 
-      : '';
+    (
+      contact.region ===
+        event.region
 
-  return `
+      ||
 
-    <option
-      value="${contact.email}"
-      ${selected}
-    >
+      contact.region ===
+        'ALL'
+    )
 
-      ${contact.title}
+  )
 
-    </option>
+  .map(contact => {
 
-  `;
+    const selected =
+
+      contact.program ===
+        event.category
+
+      &&
+
+      contact.region ===
+        event.region
+
+        ? 'selected'
+
+        : '';
+
+    return `
+
+      <option
+        value="${contact.email}"
+        ${selected}
+      >
+
+        ${contact.role}
+
+      </option>
+
+    `;
+
+  })
+
+  .join('')}
 
 }).join('')}
 
