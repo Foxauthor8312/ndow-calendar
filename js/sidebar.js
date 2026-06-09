@@ -1,7 +1,12 @@
-/* =====================================================
-   NDOW Sidebar Navigation
-   ===================================================== */
+function closeAdminOverlay() {
 
-function showAdminPanel(panelId) {
-    console.log("Switching panel:", panelId);
+    const overlay =
+        document.getElementById(
+            "adminOverlay"
+        );
+
+    if (overlay) {
+        overlay.style.display = "none";
+    }
+
 }
