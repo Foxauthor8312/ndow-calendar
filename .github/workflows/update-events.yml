@@ -2,6 +2,9 @@ name: Update NDOW Events
 
 on:
   schedule:
+    # 1:15 AM Pacific
+    - cron: '15 8 * * *'
+
     # 10:15 AM Pacific
     - cron: '15 17 * * *'
 
@@ -13,7 +16,6 @@ on:
 
     # 4:15 PM Pacific
     - cron: '15 23 * * *'
-
   workflow_dispatch:
 
 concurrency:
