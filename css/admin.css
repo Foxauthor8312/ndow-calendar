@@ -242,6 +242,17 @@
 }
 
 /* =====================================================
+   CALENDAR WORKSPACE
+   ===================================================== */
+
+#calendarShell {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* =====================================================
    ADMIN OVERLAY
    ===================================================== */
 
@@ -249,19 +260,21 @@
 
     position:absolute;
 
-    top:0;
-    left:0;
+    top:16px;
+    left:16px;
 
-    width:min(1000px,75%);
+    width:min(850px,68%);
 
-    height:100%;
+    height:calc(100% - 32px);
 
     background:#FFFFFF;
 
-    border-right:1px solid #DBE3EC;
+    border:1px solid #DBE3EC;
+
+    border-radius:12px;
 
     box-shadow:
-        0 0 30px rgba(0,0,0,.12);
+        0 8px 24px rgba(0,0,0,.12);
 
     display:none;
 
