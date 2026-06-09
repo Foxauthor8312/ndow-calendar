@@ -1,25 +1,25 @@
 function openAdminOverlay(title) {
 
-    const overlay =
-        document.getElementById(
-            "adminOverlay"
-        );
+const overlay =
+    document.getElementById(
+        "adminOverlay"
+    );
 
-    const overlayTitle =
-        document.getElementById(
-            "overlayTitle"
-        );
+const overlayTitle =
+    document.getElementById(
+        "overlayTitle"
+    );
 
-    const overlayContent =
-        document.getElementById(
-            "overlayContent"
-        );
+const overlayContent =
+    document.getElementById(
+        "overlayContent"
+    );
 
-    if (!overlay) return;
+if (!overlay) return;
 
-    if (overlayTitle) {
-        overlayTitle.textContent = title;
-    }
+if (overlayTitle) {
+    overlayTitle.textContent = title;
+}
 
 if (overlayContent) {
 
@@ -27,70 +27,9 @@ if (overlayContent) {
 
         overlayContent.innerHTML = `
 
-            <div class="users-workspace">
+            <div id="usersWorkspaceContainer">
 
-                <div class="users-toolbar">
-
-                    <input
-                        type="text"
-                        placeholder="Search users..."
-                        class="users-search"
-                    >
-
-                    <button class="admin-button-primary">
-                        Add User
-                    </button>
-
-                    <button class="admin-button-secondary">
-                        Refresh
-                    </button>
-
-                </div>
-
-                <div class="users-directory">
-
-    <table class="admin-table">
-
-        <thead>
-
-            <tr>
-
-                <th>Name</th>
-
-                <th>Email</th>
-
-                <th>Phone</th>
-
-                <th>Role</th>
-
-                <th>Status</th>
-
-            </tr>
-
-        </thead>
-
-       <tbody id="usersTableBody">
-
-    <tr>
-
-        <td
-            colspan="5"
-            style="
-                text-align:center;
-                padding:40px;
-                color:#6B7280;
-            "
-        >
-            Loading users...
-        </td>
-
-    </tr>
-
-</tbody>
-
-    </table>
-
-</div>
+                Loading users...
 
             </div>
 
@@ -108,17 +47,13 @@ if (overlayContent) {
     }
 }
 
-    overlay.style.display = "flex";
+overlay.style.display = "flex";
 
-    if (title === "Users") {
-
-    loadUsersForWorkspace();
-
-}
-}
 if (title === "Users") {
 
     loadUsersForWorkspace();
+
+}
 
 }
 
@@ -137,12 +72,12 @@ function closeAdminOverlay() {
 
 async function loadUsersForWorkspace() {
 
-    const tbody =
+    const container =
         document.getElementById(
-            "usersTableBody"
+            "usersWorkspaceContainer"
         );
 
-    if (!tbody) return;
+    if (!container) return;
 
     const token =
         localStorage.getItem(
@@ -155,7 +90,7 @@ async function loadUsersForWorkspace() {
             await fetch(
                 "https://ndow-calendar-server.onrender.com/api/admin/users",
                 {
-                    headers: {
+                    headers:{
                         Authorization:
                             `Bearer ${token}`
                     }
@@ -170,71 +105,136 @@ async function loadUsersForWorkspace() {
             !data.users
         ) {
 
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="5">
-                        Failed to load users
-                    </td>
-                </tr>
-            `;
+            container.innerHTML =
+                "<p>Failed to load users.</p>";
 
             return;
+
         }
 
-        tbody.innerHTML = "";
+        let html = `
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    margin-bottom:16px;
+                "
+            >
+
+                <input
+                    type="text"
+                    placeholder="Search users..."
+                    style="
+                        flex:1;
+                        padding:10px;
+                        border:1px solid #d1d5db;
+                        border-radius:6px;
+                    "
+                >
+
+                <button
+                    class="admin-button-primary"
+                >
+                    Add User
+                </button>
+
+                <button
+                    class="admin-button-secondary"
+                    onclick="loadUsersForWorkspace()"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+        `;
 
         data.users.forEach(user => {
 
-            tbody.innerHTML += `
+            const disabled =
+                Number(
+                    user.disabled || 0
+                ) === 1;
 
-                <tr>
+            html += `
 
-                    <td>
-                        ${user.full_name || ""}
-                    </td>
+                <div
+                    style="
+                        padding:14px;
+                        margin-bottom:10px;
+                        border:1px solid #e5e7eb;
+                        border-radius:8px;
+                        background:
+                            ${
+                                disabled
+                                    ? "#fee2e2"
+                                    : "#f8fafc"
+                            };
+                    "
+                >
 
-                    <td>
-                        ${user.email || ""}
-                    </td>
+                    <div
+                        style="
+                            font-weight:700;
+                            font-size:16px;
+                            margin-bottom:6px;
+                        "
+                    >
+                        ${user.username}
+                    </div>
 
-                    <td>
-                        ${user.phone || ""}
-                    </td>
+                    <div>
+                        Role:
+                        ${user.role}
+                    </div>
 
-                    <td>
-                        ${user.role || ""}
-                    </td>
-
-                    <td>
+                    <div>
+                        Status:
                         ${
-                            Number(
-                                user.disabled || 0
-                            ) === 1
+                            disabled
                                 ? "Disabled"
                                 : "Active"
                         }
-                    </td>
+                    </div>
 
-                </tr>
+                    <div
+                        style="
+                            margin-top:10px;
+                        "
+                    >
+
+                        <button
+                            onclick="
+                                openEditUserModalByUsername(
+                                    '${user.username}'
+                                )
+                            "
+                        >
+                            Edit
+                        </button>
+
+                    </div>
+
+                </div>
 
             `;
 
         });
 
-    } catch (err) {
+        container.innerHTML =
+            html;
+
+    } catch(err) {
 
         console.error(
-            "WORKSPACE USER LOAD ERROR:",
+            "USER WORKSPACE ERROR:",
             err
         );
 
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="5">
-                    Error loading users
-                </td>
-            </tr>
-        `;
+        container.innerHTML =
+            "<p>Error loading users.</p>";
+
     }
 
 }
