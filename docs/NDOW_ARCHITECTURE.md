@@ -1,3 +1,501 @@
+# ==================================================
+
+# NDOW VOLUNTEER PORTAL ARCHITECTURE
+
+# ==================================================
+
+Version: 06-09-26
+
+Purpose
+
+This document serves as the authoritative
+architecture reference for the NDOW Volunteer
+Portal and Instructor Calendar.
+
+It defines:
+
+* System organization
+* User access levels
+* Navigation architecture
+* Overlay architecture
+* Permission standards
+* Design philosophy
+* Future module placement
+
+All future development should follow the
+standards defined within this document.
+
+# ==================================================
+
+# TERMINOLOGY STANDARD
+
+# ==================================================
+
+Technical Role Name
+
+Volunteer
+
+User Interface Label
+
+Instructor
+
+Purpose
+
+The application originated using the role
+name "Volunteer" throughout the codebase
+and database schema.
+
+To preserve compatibility and avoid
+unnecessary database migrations, the
+technical role name remains Volunteer.
+
+For user-facing screens, reports, menus,
+help content, and administrative interfaces,
+the preferred label is Instructor.
+
+Examples
+
+Code / Database
+
+Volunteer
+
+User Interface
+
+Instructor
+
+This standard applies throughout the system.
+
+# ==================================================
+
+# CURRENT APPLICATION ARCHITECTURE
+
+# ==================================================
+
+Primary Workspace
+
+Calendar
+
+The calendar is the primary application
+workspace.
+
+Administrative tools support the calendar.
+
+Administrative tools do not replace the
+calendar.
+
+The calendar should remain visible whenever
+practical.
+
+# ==================================================
+
+# USER ACCESS LEVELS
+
+# ==================================================
+
+Volunteer
+
+Permissions
+
+* View calendar
+* View event details
+* Request participation
+* Enter volunteer hours
+* View personal dashboard
+* View personal activity
+
+---
+
+Admin
+
+Includes all Volunteer permissions plus:
+
+* Approve volunteer hours
+* Review event submissions
+* Manage users
+* Manage announcements
+* Manage help topics
+* Manage requests
+* Access administrative overlays
+
+---
+
+SuperUser
+
+Includes all Admin permissions plus:
+
+* Access System Console
+* Execute workflows
+* Reprocess event pipelines
+* Run calendar updates
+* Manage system-level functions
+* Access Release Manager
+
+# ==================================================
+
+# PERMISSION MATRIX
+
+# ==================================================
+
+## Feature                      Volunteer   Admin   SuperUser
+
+View Calendar                   Yes       Yes       Yes
+View Event Details              Yes       Yes       Yes
+View Help                       Yes       Yes       Yes
+
+View Contacts                   No        Yes       Yes
+
+View Analytics                  No        Yes       Yes
+
+Manage Users                    No        Yes       Yes
+
+Manage Requests                 No        Yes       Yes
+
+Manage Categories               No        Yes       Yes
+
+View Updates                    No        Yes       Yes
+
+Release Manager                 No        No        Yes
+
+System Functions                No        No        Yes
+
+Version Information             Yes       Yes       Yes
+
+# ==================================================
+
+# SIDEBAR VISIBILITY MATRIX
+
+# ==================================================
+
+Volunteer
+
+Dashboard
+Help
+
+---
+
+Admin
+
+Dashboard
+Users
+Requests
+Updates
+Contacts
+Help
+Analytics
+Categories
+
+---
+
+SuperUser
+
+Dashboard
+Users
+Requests
+Updates
+Contacts
+Help
+Analytics
+Categories
+
+Release Manager
+System
+
+# ==================================================
+
+# SIDEBAR ARCHITECTURE
+
+# ==================================================
+
+Purpose
+
+Provide permanent application navigation.
+
+Replace popup-driven navigation.
+
+Eliminate nested administrative modals.
+
+---
+
+Sidebar Layout
+
+Volunteer Calendar
+Administration
+
+Dashboard
+Users
+Requests
+Updates
+Contacts
+Help
+Analytics
+Categories
+
+---
+
+Sidebar Rules
+
+* Sidebar remains visible at all times
+* Sidebar controls navigation
+* Dashboard functions as Home
+* Navigation never launches nested popups
+* Navigation opens overlays
+
+# ==================================================
+
+# OVERLAY ARCHITECTURE
+
+# ==================================================
+
+Purpose
+
+Administrative functions operate through a
+reusable overlay workspace.
+
+The overlay appears above the calendar.
+
+The calendar remains the primary application
+workspace.
+
+---
+
+Dashboard Behavior
+
+Dashboard is Home.
+
+Selecting Dashboard:
+
+* Closes any open overlay
+* Returns focus to the calendar
+* Does not open a separate panel
+
+---
+
+Overlay Behavior
+
+Administrative functions open inside a reusable
+workspace.
+
+Examples
+
+* Users
+* Requests
+* Updates
+* Contacts
+* Analytics
+* Categories
+
+---
+
+Overlay Rules
+
+* Sidebar remains visible
+* One overlay at a time
+* Overlay includes Close button
+* Closing returns to calendar
+* Calendar remains default application state
+
+# ==================================================
+
+# DASHBOARD PHILOSOPHY
+
+# ==================================================
+
+The Dashboard is always:
+
+"My Dashboard"
+
+The Dashboard is never:
+
+* Admin Dashboard
+* Instructor Dashboard
+* System Dashboard
+
+Content may change based on role.
+
+The Dashboard remains user-centric.
+
+The Dashboard is not a menu.
+
+The Dashboard is an information surface.
+
+Navigation belongs in the sidebar.
+
+# ==================================================
+
+# ANALYTICS ARCHITECTURE
+
+# ==================================================
+
+All analytics must support drill-down.
+
+Counts without underlying records are not
+considered complete analytics.
+
+---
+
+Example
+
+Washoe County      74
+
+Click
+
+Display all Washoe County events.
+
+---
+
+Example
+
+Fishing      32
+
+Click
+
+Display all Fishing events.
+
+---
+
+Rule
+
+Every statistic must lead to the underlying data.
+
+No dead-end numbers.
+
+# ==================================================
+
+# FUTURE ADMINISTRATIVE MODULES
+
+# ==================================================
+
+Planned Modules
+
+* Categories
+* Training
+* Instructors
+* Locations
+* Reports
+* Notifications
+
+All future administrative modules shall:
+
+* Appear in sidebar navigation
+* Open in overlay workspace
+* Follow permission matrix rules
+
+# ==================================================
+
+# LEGACY COMPONENTS SCHEDULED FOR REMOVAL
+
+# ==================================================
+
+After migration is complete:
+
+* Dashboard modal
+* Nested admin popups
+* Dashboard launch buttons
+* Legacy dashboard button grid
+* Popup-based admin navigation
+
+# ==================================================
+
+# DEVELOPMENT ROADMAP
+
+# ==================================================
+
+Phase 1
+Build sidebar shell
+
+Phase 2
+Implement overlay framework
+
+Phase 3
+Move Users into overlay
+
+Phase 4
+Move Requests into overlay
+
+Phase 5
+Move Contacts into overlay
+
+Phase 6
+Move Help into overlay
+
+Phase 7
+Move Analytics into overlay
+
+Phase 8
+Implement analytics drill-down
+
+Phase 9
+Add Categories overlay
+
+Phase 10
+Final style-guide cleanup
+
+# ==================================================
+
+# ARCHITECTURE PRINCIPLES
+
+# ==================================================
+
+1. Information before decoration.
+
+2. Every click should reveal information
+   or perform an action.
+
+3. Statistics must be actionable.
+
+4. Users should never lose context.
+
+5. Administrative workflows should require
+   the fewest practical clicks.
+
+6. Mobile and desktop interfaces should
+   expose the same functionality.
+
+7. Business logic changes require separate
+   approval from UI changes.
+
+8. User access determines permissions.
+
+9. Event assignments determine responsibilities.
+
+10. Dashboard displays user information.
+
+11. Admin manages operations.
+
+12. System manages platform functions.
+
+13. Precompute data whenever possible.
+
+14. Avoid repeated scanning of large datasets.
+
+15. Reuse existing interfaces whenever practical.
+
+16. Maintain clear separation between user,
+    admin, and system responsibilities.
+
+17. The calendar is the primary workspace.
+
+18. Administrative tools support the calendar,
+    not replace it.
+
+19. Dashboard is Home.
+
+20. Every feature should answer:
+
+"How does this help the logged-in user?"
+
+
+
+# ==================================================
+
+# HISTORICAL ARCHITECTURE NOTES
+
+# ==================================================
+
+The original architecture content begins below.
+Retain all existing content below this marker
+for historical reference and migration tracking.
+
 # NDOW_ARCHITECTURE.md
 
 ## Purpose
@@ -616,3 +1114,4 @@ Phase 10
 Final style-guide cleanup.
 
 When you paste the current dashboard HTML/CSS structure next, we'll be able to generate exact replacement blocks (start/end markers) for the sidebar conversion and keep with your preferred VS Code workflow.
+
