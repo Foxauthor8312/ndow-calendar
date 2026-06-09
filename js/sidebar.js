@@ -303,8 +303,6 @@ if (title === "Users") {
 
     `;
 
-}
-
 
 } else if (title === "Categories") {
 
