@@ -69,21 +69,24 @@ if (overlayContent) {
 
         </thead>
 
-        <tbody>
+       <tbody id="usersTableBody">
 
-            <tr>
+    <tr>
 
-                <td colspan="5"
-                    style="
-                        text-align:center;
-                        padding:40px;
-                        color:#6B7280;
-                    ">
-                    No users loaded
-                </td>
-            </tr>
+        <td
+            colspan="5"
+            style="
+                text-align:center;
+                padding:40px;
+                color:#6B7280;
+            "
+        >
+            Loading users...
+        </td>
 
-        </tbody>
+    </tr>
+
+</tbody>
 
     </table>
 
@@ -106,6 +109,11 @@ if (overlayContent) {
 }
 
     overlay.style.display = "flex";
+}
+if (title === "Users") {
+
+    loadUsersForWorkspace();
+
 }
 
 function closeAdminOverlay() {
