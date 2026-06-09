@@ -1212,26 +1212,20 @@ body{
 .geo-card{
   background:white;
   border:1px solid #dbe3ec;
-  border-radius:16px;
-  padding:20px;
+  border-radius:12px;
+  padding:120px;
   box-shadow:
     0 2px 8px rgba(0,0,0,0.04);
 }
 
 .geo-title{
-  font-size:14px;
+  font-size:12px;
   color:#6b7280;
-  margin-bottom:10px;
+  margin-bottom:40px;
 }
 
 .geo-value{
-  font-size:18px;
-  font-weight:700;
-  color:#234e70;
-}
-
-.geo-value{
-  font-size:18px;
+  font-size:14px;
   font-weight:700;
   color:#234e70;
 }
@@ -1240,7 +1234,7 @@ body{
   display:flex;
   flex-direction:column;
   gap:8px;
-  font-size:15px;
+  font-size:14px;
   line-height:1.5;
   color:#1f2937;
 }
@@ -11633,58 +11627,6 @@ geographic analysis.
 
 <script>
 
-/* ========================================
-   EDIT CONTACT MODAL
-======================================== */
-<div
-  id="editContactModal"
-  class="modal hidden"
-  style="
-    z-index:11000;
-  "
->
- <div
-  class="modal-content"
-  style="
-    max-width:620px;
-    position:relative;
-    z-index:12000;
-  "
->
-    <button class="modal-close" onclick="closeEditContactModal()">✕</button>
-    <h2>Edit Contact</h2>
-    <div style="margin-top:18px;">
-
-      <label>Name</label>
-      <input id="editContactName" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
-
-      <label>Email</label>
-      <input id="editContactEmail" type="email" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
-
-      <label>Program</label>
-      <input id="editContactProgram" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
-
-      <label>Region</label>
-      <input id="editContactRegion" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
-
-      <label>Role</label>
-      <input id="editContactRole" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
-
-      <label>Notification Type</label>
-      <input id="editContactNotificationType" style="width:100%; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;">
-
-      <label>Notes</label>
-      <textarea id="editContactNotes" style="width:100%; min-height:90px; padding:10px; margin-top:6px; margin-bottom:14px; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box;"></textarea>
-
-      <label style="display:flex; align-items:center; gap:8px; margin-bottom:18px;">
-        <input type="checkbox" id="editContactActive">
-        Active
-      </label>
-
-      <button style="margin-top:22px; width:100%;" onclick="saveEditedContact()">Save Changes</button>
-    </div>
-  </div>
-</div>
 	
 let showAllCounties = false;
 		
