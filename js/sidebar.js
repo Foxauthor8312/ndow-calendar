@@ -74,9 +74,11 @@ if (title === "Users") {
 
     overlayContent.innerHTML = `
         <div id="contactsWorkspaceContainer">
-            Contacts workspace coming next...
+            Loading contacts...
         </div>
     `;
+
+}
 
 } else if (title === "Help") {
 
@@ -165,6 +167,12 @@ if (title === "Requests") {
 if (title === "Updates") {
 
     loadAnnouncementAdminList();
+
+}
+
+if (title === "Contacts") {
+
+    loadContactsWorkspace();
 
 }
 
@@ -355,5 +363,74 @@ ${err}
     `;
 
 }
+
+}
+
+async function loadContactsWorkspace() {
+
+    const container =
+        document.getElementById(
+            "contactsWorkspaceContainer"
+        );
+
+    if (!container) return;
+
+    container.innerHTML =
+        "Loading contacts...";
+
+    try {
+
+        await loadDepartmentContacts();
+
+        let html = "";
+
+        departmentContacts
+            .filter(contact => contact.active)
+            .forEach(contact => {
+
+                html += `
+
+                    <div style="
+                        padding:12px;
+                        margin-bottom:10px;
+                        border:1px solid #dbe3ec;
+                        border-radius:8px;
+                        background:white;
+                    ">
+
+                        <div style="
+                            font-weight:700;
+                            margin-bottom:4px;
+                        ">
+                            ${contact.name || ""}
+                        </div>
+
+                        <div>
+                            Region:
+                            ${contact.region || ""}
+                        </div>
+
+                        <div>
+                            Email:
+                            ${contact.email || ""}
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+        container.innerHTML =
+            html || "<p>No contacts found.</p>";
+
+    } catch (err) {
+
+        console.error(err);
+
+        container.innerHTML =
+            "<p>Failed to load contacts.</p>";
+
+    }
 
 }
