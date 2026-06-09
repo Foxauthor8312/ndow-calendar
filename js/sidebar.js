@@ -43,21 +43,40 @@ if (title === "Users") {
 
     overlayContent.innerHTML = `
 
-        <div style="
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            margin-bottom:16px;
-        ">
+        <h2>
+            Program Updates
+        </h2>
 
-            <h3 style="margin:0;">
-                Announcements
-            </h3>
+        <input
+            id="announcementTitleInput"
+            class="login-input"
+            placeholder="Announcement Title"
+            style="margin-top:14px;"
+        >
+
+        <textarea
+            id="announcementMessageInput"
+            style="
+                width:100%;
+                height:220px;
+                margin-top:14px;
+                padding:14px;
+                border-radius:12px;
+                border:1px solid #d1d5db;
+                box-sizing:border-box;
+            "
+        ></textarea>
+
+        <div style="
+            margin-top:14px;
+            margin-bottom:20px;
+        ">
 
             <button
                 class="admin-button-primary"
+                onclick="saveAnnouncement()"
             >
-                New Announcement
+                Post Update
             </button>
 
         </div>
