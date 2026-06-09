@@ -1,1 +1,51 @@
+/* =====================================================
+   NDOW Volunteer Calendar
+   Administrative UI System
+   ===================================================== */
 
+:root {
+    --ndow-navy: #19304B;
+    --ndow-blue: #589FD6;
+    --ndow-green: #7A9E7F;
+    --ndow-orange: #F29647;
+    --ndow-bg: #F8FAFC;
+    --ndow-card: #FFFFFF;
+    --ndow-border: #DBE3EC;
+    --ndow-error: #DC2626;
+
+    --radius: 6px;
+
+    --font-main:
+        "IBM Plex Sans",
+        Inter,
+        system-ui,
+        sans-serif;
+}
+
+/* =====================================================
+   Administrative Layout
+   ===================================================== */
+
+.admin-shell {}
+
+.admin-sidebar {}
+
+.admin-content {}
+
+.admin-panel {}
+
+/* =====================================================
+   Cards
+   ===================================================== */
+
+.admin-card {}
+
+.admin-stat-card {}
+
+/* =====================================================
+   Navigation
+   ===================================================== */
+
+.admin-nav-item {}
+
+.admin-nav-item.active {}
