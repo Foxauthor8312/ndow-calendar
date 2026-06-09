@@ -22,9 +22,11 @@ function openAdminOverlay(title) {
     }
 
     if (overlayContent) {
-        overlayContent.innerHTML =
-            "<p>Workspace placeholder</p>";
-    }
+    overlayContent.innerHTML = `
+        <h3>${title} Workspace</h3>
+        <p>Coming soon.</p>
+    `;
+}
 
     overlay.style.display = "flex";
 }
