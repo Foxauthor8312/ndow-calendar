@@ -245,7 +245,67 @@ Assignment Types:
 
 ---
 
+
 # ARCHITECTURE PRINCIPLES
+
+1. Information before decoration.
+2. Every click should reveal information or perform an action.
+3. Statistics must be actionable.
+4. Users should never lose context.
+5. Administrative workflows should require the fewest practical clicks.
+6. Mobile and desktop interfaces should expose the same functionality.
+7. Business logic changes require separate approval from UI changes.
+Dashboard Rule
+The Dashboard is not a menu.
+
+The Dashboard is an information surface.
+
+Navigation belongs in the sidebar.
+
+That single statement prevents future regression back toward popup-launchers and dashboard button grids.
+
+Analytics Rule
+All analytics metrics must support drill-down.
+
+Counts without underlying records are not considered complete analytics.
+
+This is one of the strongest improvements in the redesign.
+
+Future Feature Placement
+
+Document where future modules belong.
+
+Future Administrative Modules
+
+- Categories
+- Training
+- Instructors
+- Locations
+- Reports
+- Notifications
+
+These modules should appear as sidebar items and open within the main content area.
+
+That keeps future growth consistent with the new architecture.
+
+Technical Debt Notes
+
+Create a section called:
+
+Legacy Components Scheduled for Removal
+
+Then list things like:
+
+- Dashboard modal
+- Nested admin popups
+- Redundant navigation launch buttons
+- Legacy dashboard button grid
+
+This becomes a cleanup checklist later.
+
+The biggest thing you've accomplished tonight is not the sidebar design itself—it's that you've finally defined a coherent application architecture. Up until now, features were accumulating through modals and utility windows. The sidebar/content-area model turns the calendar into a true administrative application instead of a collection of popups.
+
+Once you paste the existing dashboard HTML in the next session, we can start producing exact replacement blocks for Phase 1 (sidebar shell) without having to redesign the architecture again.
 
 1. User access determines permissions.
 
