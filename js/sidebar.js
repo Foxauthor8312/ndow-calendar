@@ -78,8 +78,6 @@ if (title === "Users") {
         </div>
     `;
 
-}
-
 } else if (title === "Help") {
 
     overlayContent.innerHTML = `
@@ -259,7 +257,7 @@ async function loadUsersForWorkspace() {
                     onclick="openAddUserModal()"
                 >
                     Add User
-                </button>>
+                </button>
 
                 <button
                     class="admin-button-secondary"
