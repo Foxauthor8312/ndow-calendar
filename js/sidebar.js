@@ -183,56 +183,127 @@ if (title === "Users") {
     overlayContent.innerHTML = `
 
         <h2>
-            Geo Analytics
+            Geographic Analytics
         </h2>
 
         <div style="
-            display:flex;
-            gap:12px;
-            align-items:center;
-            margin-bottom:16px;
-            flex-wrap:wrap;
+            margin-top:18px;
+            display:grid;
+            grid-template-columns:
+                repeat(auto-fit,minmax(220px,1fr));
+            gap:16px;
         ">
 
-            <label>
-                Region
-            </label>
+            <div class="geo-card">
 
-            <select
-                id="geoRegionSelect"
-                onchange="loadGeoCounties()"
-            >
-                <option value="Western">
-                    Western
-                </option>
+                <div class="geo-title">
+                    Event Regions
+                </div>
 
-                <option value="Eastern">
-                    Eastern
-                </option>
+                <select
+                    id="geoRegionSelect"
+                    class="contact-select"
+                    onchange="loadGeoCounties()"
+                    style="margin-top:12px;"
+                >
 
-                <option value="Southern">
-                    Southern
-                </option>
-            </select>
+                    <option value="ALL">
+                        All Regions
+                    </option>
 
-            <select
-                id="geoCountySelect"
-                onchange="loadGeoAnalytics()"
-            >
-                <option>
-                    Select County
-                </option>
-            </select>
+                    <option value="Western">
+                        Western Nevada
+                    </option>
+
+                    <option value="Eastern">
+                        Eastern Nevada
+                    </option>
+
+                    <option value="Southern">
+                        Southern Nevada
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="geo-card">
+
+                <div class="geo-title">
+                    County Analysis
+                </div>
+
+                <select
+                    id="geoCountySelect"
+                    class="contact-select"
+                    style="margin-top:12px;"
+                    onchange="renderCountyAnalysis()"
+                >
+
+                    <option value="">
+                        Select County
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="geo-card">
+
+                <div class="geo-title">
+                    Date Range
+                </div>
+
+                <input
+                    type="date"
+                    id="geoStartDate"
+                    class="contact-select"
+                    style="margin-top:12px;"
+                    onchange="loadGeoCounties()"
+                >
+
+                <input
+                    type="date"
+                    id="geoEndDate"
+                    class="contact-select"
+                    style="margin-top:10px;"
+                    onchange="loadGeoCounties()"
+                >
+
+                <button
+                    class="action-btn"
+                    style="
+                        margin-top:10px;
+                        width:100%;
+                    "
+                    onclick="clearGeoDates()"
+                >
+                    Reset Filters
+                </button>
+
+            </div>
 
         </div>
 
-        <div id="geoAnalyticsContent">
+        <div
+            id="geoRegionDetails"
+            style="
+                margin-top:12px;
+                background:white;
+                border:1px solid #dbe3ec;
+                border-radius:16px;
+                padding:20px;
+                line-height:1.7;
+            "
+        >
 
-            Loading analytics...
+            Select a region to begin geographic analysis.
 
         </div>
 
     `;
+
+}
 
 
 } else if (title === "Categories") {
@@ -420,7 +491,7 @@ if (title === "Analytics") {
     if (geoRegionSelect) {
 
         geoRegionSelect.value =
-            "Western";
+            "ALL";
 
         loadGeoCounties();
 
