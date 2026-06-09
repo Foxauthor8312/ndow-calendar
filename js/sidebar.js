@@ -47,11 +47,47 @@ if (overlayContent) {
 
                 </div>
 
-                <div class="users-grid-placeholder">
+                <div class="users-directory">
 
-                    User Directory Placeholder
+    <table class="admin-table">
 
-                </div>
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Email</th>
+
+                <th>Phone</th>
+
+                <th>Role</th>
+
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td colspan="5"
+                    style="
+                        text-align:center;
+                        padding:40px;
+                        color:#6B7280;
+                    ">
+                    No users loaded
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
 
             </div>
 
