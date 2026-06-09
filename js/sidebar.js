@@ -81,10 +81,55 @@ if (title === "Users") {
 } else if (title === "Help") {
 
     overlayContent.innerHTML = `
-        <div id="helpWorkspaceContainer">
-            Help workspace coming next...
+
+        <div style="
+            display:flex;
+            height:100%;
+            min-height:500px;
+        ">
+
+            <div style="
+                width:300px;
+                border-right:1px solid #dbe3ec;
+                overflow-y:auto;
+                padding-right:16px;
+            ">
+
+                <div style="
+                    font-weight:700;
+                    margin-bottom:12px;
+                    color:#19304B;
+                ">
+                    Help Topics
+                </div>
+
+                <div id="helpTopicList"></div>
+
+            </div>
+
+            <div
+                id="helpContentArea"
+                style="
+                    flex:1;
+                    overflow-y:auto;
+                    padding-left:24px;
+                "
+            >
+
+                <div style="
+                    color:#6b7280;
+                    font-size:16px;
+                ">
+                    Loading help topics...
+                </div>
+
+            </div>
+
         </div>
+
     `;
+
+}
 
 } else if (title === "Analytics") {
 
@@ -171,6 +216,12 @@ if (title === "Updates") {
 if (title === "Contacts") {
 
     loadContactsWorkspace();
+
+}
+
+if (title === "Help") {
+
+    loadHelpTopics();
 
 }
 
