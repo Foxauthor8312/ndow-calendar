@@ -105,9 +105,44 @@ if (title === "Users") {
 } else if (title === "System") {
 
     overlayContent.innerHTML = `
-        <div id="systemWorkspaceContainer">
-            System workspace coming next...
+
+        <div style="
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+            max-width:500px;
+        ">
+
+            <button
+                class="admin-button-primary"
+                onclick="window.open('https://github.com','_blank')"
+            >
+                GitHub
+            </button>
+
+            <button
+                class="admin-button-secondary"
+                onclick="window.open('https://dashboard.render.com','_blank')"
+            >
+                Render Dashboard
+            </button>
+
+            <button
+                class="admin-button-secondary"
+                onclick="window.location.reload()"
+            >
+                Reload Application
+            </button>
+
+            <button
+                class="admin-button-secondary"
+                onclick="closeAdminOverlay()"
+            >
+                Close Workspace
+            </button>
+
         </div>
+
     `;
 
 }
