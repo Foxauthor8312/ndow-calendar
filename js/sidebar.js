@@ -181,10 +181,59 @@ if (title === "Users") {
 } else if (title === "Analytics") {
 
     overlayContent.innerHTML = `
-        <div id="analyticsWorkspaceContainer">
-            Analytics workspace coming next...
+
+        <h2>
+            Geo Analytics
+        </h2>
+
+        <div style="
+            display:flex;
+            gap:12px;
+            align-items:center;
+            margin-bottom:16px;
+            flex-wrap:wrap;
+        ">
+
+            <label>
+                Region
+            </label>
+
+            <select
+                id="geoRegionSelect"
+                onchange="loadGeoCounties()"
+            >
+                <option value="Western">
+                    Western
+                </option>
+
+                <option value="Eastern">
+                    Eastern
+                </option>
+
+                <option value="Southern">
+                    Southern
+                </option>
+            </select>
+
+            <select
+                id="geoCountySelect"
+                onchange="loadGeoAnalytics()"
+            >
+                <option>
+                    Select County
+                </option>
+            </select>
+
         </div>
+
+        <div id="geoAnalyticsContent">
+
+            Loading analytics...
+
+        </div>
+
     `;
+
 
 } else if (title === "Categories") {
 
@@ -358,6 +407,24 @@ if (title === "Contacts") {
 if (title === "Categories") {
 
     renderOverrides();
+
+}
+
+if (title === "Analytics") {
+
+    const geoRegionSelect =
+        document.getElementById(
+            "geoRegionSelect"
+        );
+
+    if (geoRegionSelect) {
+
+        geoRegionSelect.value =
+            "Western";
+
+        loadGeoCounties();
+
+    }
 
 }
 
