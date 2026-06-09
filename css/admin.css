@@ -1,9 +1,14 @@
 /* =====================================================
    NDOW Volunteer Calendar
-   Administrative UI System
+   Administrative UI Design System
+   ===================================================== */
+
+/* =====================================================
+   DESIGN TOKENS
    ===================================================== */
 
 :root {
+
     --ndow-navy: #19304B;
     --ndow-blue: #589FD6;
     --ndow-green: #7A9E7F;
@@ -15,6 +20,12 @@
 
     --radius: 6px;
 
+    --shadow-sm:
+        0 1px 2px rgba(0,0,0,.05);
+
+    --shadow-md:
+        0 4px 10px rgba(0,0,0,.08);
+
     --font-main:
         "IBM Plex Sans",
         Inter,
@@ -23,29 +34,201 @@
 }
 
 /* =====================================================
-   Administrative Layout
+   ADMIN SHELL
    ===================================================== */
 
-.admin-shell {}
+.admin-shell {
+    display:flex;
+    min-height:100vh;
+    background:var(--ndow-bg);
+}
 
-.admin-sidebar {}
+.admin-sidebar {
+    width:260px;
+    background:var(--ndow-navy);
+    color:white;
+    flex-shrink:0;
+}
 
-.admin-content {}
-
-.admin-panel {}
+.admin-content {
+    flex:1;
+    overflow:auto;
+    padding:20px;
+    background:var(--ndow-bg);
+}
 
 /* =====================================================
-   Cards
+   PANELS
    ===================================================== */
 
-.admin-card {}
-
-.admin-stat-card {}
+.admin-panel {
+    background:var(--ndow-card);
+    border:1px solid var(--ndow-border);
+    border-radius:var(--radius);
+    padding:16px;
+}
 
 /* =====================================================
-   Navigation
+   SECTION HEADERS
    ===================================================== */
 
-.admin-nav-item {}
+.admin-section-title {
+    font-family:var(--font-main);
+    font-size:22px;
+    font-weight:700;
+    color:var(--ndow-navy);
+    margin:0 0 16px 0;
+}
 
-.admin-nav-item.active {}
+/* =====================================================
+   CARDS
+   ===================================================== */
+
+.admin-card {
+    background:var(--ndow-card);
+    border:1px solid var(--ndow-border);
+    border-radius:var(--radius);
+    padding:10px 12px;
+}
+
+.admin-stat-card {
+    background:var(--ndow-card);
+    border:1px solid var(--ndow-border);
+    border-radius:var(--radius);
+    padding:10px 12px;
+}
+
+.admin-card-label {
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#6B7280;
+}
+
+.admin-card-value {
+    font-size:16px;
+    font-weight:700;
+    color:var(--ndow-navy);
+    margin-top:4px;
+}
+
+/* =====================================================
+   DASHBOARD GRIDS
+   ===================================================== */
+
+.admin-card-grid {
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(180px,1fr));
+    gap:10px;
+}
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+
+.admin-sidebar-header {
+    padding:20px;
+    border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.admin-sidebar-logo {
+    width:90px;
+    display:block;
+    margin:0 auto 12px auto;
+}
+
+.admin-sidebar-title {
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.3;
+}
+
+.admin-sidebar-subtitle {
+    text-align:center;
+    font-size:12px;
+    opacity:.75;
+    margin-top:6px;
+}
+
+.admin-nav {
+    padding:12px 0;
+}
+
+.admin-nav-item {
+    display:flex;
+    align-items:center;
+    padding:12px 18px;
+    cursor:pointer;
+    transition:.15s;
+    font-size:14px;
+}
+
+.admin-nav-item:hover {
+    background:rgba(255,255,255,.06);
+}
+
+.admin-nav-item.active {
+    background:rgba(255,255,255,.12);
+    border-left:4px solid var(--ndow-blue);
+}
+
+/* =====================================================
+   TABLES
+   ===================================================== */
+
+.admin-table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+.admin-table th {
+    text-align:left;
+    padding:10px;
+    border-bottom:1px solid var(--ndow-border);
+    font-size:12px;
+    text-transform:uppercase;
+    color:#6B7280;
+}
+
+.admin-table td {
+    padding:10px;
+    border-bottom:1px solid var(--ndow-border);
+    font-size:14px;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+.admin-button-primary {
+    background:var(--ndow-navy);
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:10px 14px;
+    cursor:pointer;
+}
+
+.admin-button-primary:hover {
+    opacity:.92;
+}
+
+.admin-button-secondary {
+    background:white;
+    color:var(--ndow-navy);
+    border:1px solid var(--ndow-border);
+    border-radius:6px;
+    padding:10px 14px;
+    cursor:pointer;
+}
+
+/* =====================================================
+   UTILITY
+   ===================================================== */
+
+.admin-hidden {
+    display:none !important;
+}
