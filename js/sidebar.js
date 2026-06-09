@@ -224,17 +224,22 @@ async function loadUsersForWorkspace() {
 
         container.innerHTML =
             html;
+} catch(err) {
 
-    } catch(err) {
+    console.error(
+        "USER WORKSPACE ERROR:",
+        err
+    );
 
-        console.error(
-            "USER WORKSPACE ERROR:",
-            err
-        );
+    container.innerHTML = `
+        <pre style="
+            color:red;
+            white-space:pre-wrap;
+        ">
+${err}
+        </pre>
+    `;
 
-        container.innerHTML =
-            "<p>Error loading users.</p>";
-
-    }
+}
 
 }
