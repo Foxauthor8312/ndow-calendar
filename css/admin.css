@@ -263,9 +263,9 @@
     top:16px;
     left:16px;
 
-    width:min(850px,68%);
+    width:min(1150px,78%);
 
-    height:calc(100% - 32px);
+    height:650px;
 
     background:#FFFFFF;
 
