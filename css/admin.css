@@ -44,7 +44,7 @@
 }
 
 .admin-sidebar {
-    width:260px;
+    width:220px;
     background:var(--ndow-navy);
     color:white;
     flex-shrink:0;
