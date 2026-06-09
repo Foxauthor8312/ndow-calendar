@@ -189,10 +189,101 @@ if (title === "Users") {
 } else if (title === "Categories") {
 
     overlayContent.innerHTML = `
-        <div id="categoriesWorkspaceContainer">
-            Categories workspace coming next...
+
+        <h2>
+            Category Overrides
+        </h2>
+
+        <input
+            type="text"
+            id="overrideSearch"
+            placeholder="Search event..."
+            oninput="renderOverrides()"
+            style="
+                width:100%;
+                padding:8px;
+                margin-bottom:12px;
+            "
+        >
+
+        <div style="
+            margin-bottom:12px;
+        ">
+
+            <select
+                id="overrideFilter"
+                onchange="renderOverrides()"
+                style="
+                    padding:8px 10px;
+                    border-radius:8px;
+                    border:1px solid #d1d5db;
+                    font-size:13px;
+                "
+            >
+
+                <option value="ALL">
+                    All Categories
+                </option>
+
+                <option value="Other">
+                    Uncategorized
+                </option>
+
+                <option value="Hunter Education">
+                    Hunter Education
+                </option>
+
+                <option value="Fishing">
+                    Fishing
+                </option>
+
+                <option value="Advanced Hunter Education">
+                    Advanced Hunter Education
+                </option>
+
+                <option value="Wildlife">
+                    Wildlife
+                </option>
+
+                <option value="Urban Wildlife">
+                    Urban Wildlife
+                </option>
+
+                <option value="Archery">
+                    Archery
+                </option>
+
+                <option value="Boating">
+                    Boating
+                </option>
+
+                <option value="School">
+                    School
+                </option>
+
+                <option value="Volunteer">
+                    Volunteer
+                </option>
+
+            </select>
+
         </div>
+
+        <div
+            id="overrideList"
+            style="
+                height:600px;
+                overflow-y:auto;
+                overflow-x:hidden;
+                border-top:1px solid #e5e7eb;
+                padding-top:8px;
+                padding-right:6px;
+            "
+        ></div>
+
     `;
+
+}
 
 } else if (title === "System") {
 
@@ -263,6 +354,12 @@ if (title === "Updates") {
 if (title === "Contacts") {
 
     loadContacts();
+
+}
+
+if (title === "Categories") {
+
+    renderOverrides();
 
 }
 
