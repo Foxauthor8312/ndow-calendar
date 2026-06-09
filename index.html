@@ -5543,34 +5543,25 @@ modalBody.innerHTML = `
 
 ${departmentContacts
 
-  .filter(contact =>
+.filter(contact =>
+  contact.active
+)
 
-    contact.active &&
+.sort((a, b) => {
 
-    (
-      contact.program ===
-        event.category
+  if(a.region !== b.region){
 
-      ||
+    return a.region.localeCompare(
+      b.region
+    );
 
-      contact.program ===
-        'ALL'
-    )
+  }
 
-    &&
+  return a.name.localeCompare(
+    b.name
+  );
 
-    (
-      contact.region ===
-        event.region
-
-      ||
-
-      contact.region ===
-        'ALL'
-    )
-
-  )
-
+})
   .map(contact => {
 
     const selected =
@@ -5589,16 +5580,18 @@ ${departmentContacts
 
     return `
 
-      <option
-        value="${contact.email}"
-        ${selected}
-      >
+      return `
 
-        ${contact.role}
+  <option
+    value="${contact.email}"
+    ${selected}
+  >
 
-      </option>
+    ${contact.region} | ${contact.name} | ${contact.role} | ${contact.email}
 
-    `;
+  </option>
+
+`;
 
   })
 
