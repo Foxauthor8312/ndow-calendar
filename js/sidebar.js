@@ -73,9 +73,39 @@ if (title === "Users") {
 } else if (title === "Contacts") {
 
     overlayContent.innerHTML = `
-        <div id="contactsWorkspaceContainer">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:16px;
+        ">
+
+            <h3 style="margin:0;">
+                Contacts
+            </h3>
+
+            <button
+                class="admin-button-primary"
+                onclick="openAddContactModal()"
+            >
+                + Add Contact
+            </button>
+
+        </div>
+
+        <div
+            id="contactsList"
+            style="
+                border:1px solid #e2e8f0;
+                border-radius:8px;
+                padding:16px;
+                background:white;
+            "
+        >
             Loading contacts...
         </div>
+
     `;
 
 } else if (title === "Help") {
@@ -213,7 +243,7 @@ if (title === "Updates") {
 
 if (title === "Contacts") {
 
-    loadContactsWorkspace();
+    loadContacts();
 
 }
 
