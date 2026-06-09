@@ -283,8 +283,6 @@ if (title === "Users") {
 
     `;
 
-}
-
 } else if (title === "System") {
 
     overlayContent.innerHTML = `
