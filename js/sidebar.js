@@ -23,13 +23,50 @@ function openAdminOverlay(title) {
 
 if (overlayContent) {
 
-    overlayContent.innerHTML = `
-        <h3>${title} Workspace</h3>
+    if (title === "Users") {
 
-        <p>
-            This workspace is under construction.
-        </p>
-    `;
+        overlayContent.innerHTML = `
+
+            <div class="users-workspace">
+
+                <div class="users-toolbar">
+
+                    <input
+                        type="text"
+                        placeholder="Search users..."
+                        class="users-search"
+                    >
+
+                    <button class="admin-button-primary">
+                        Add User
+                    </button>
+
+                    <button class="admin-button-secondary">
+                        Refresh
+                    </button>
+
+                </div>
+
+                <div class="users-grid-placeholder">
+
+                    User Directory Placeholder
+
+                </div>
+
+            </div>
+
+        `;
+
+    } else {
+
+        overlayContent.innerHTML = `
+            <h3>${title} Workspace</h3>
+
+            <p>
+                This workspace is under construction.
+            </p>
+        `;
+    }
 }
 
     overlay.style.display = "flex";
