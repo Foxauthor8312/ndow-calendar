@@ -24,7 +24,67 @@ PATCH
 Bug fixes and small improvements.
 
 ---
+Date: 2026-06-07
+NDOW Volunteer Event Calendar - Development Update v26.1.5-7.1
 
+Current State
+
+✓ Department Contacts module integrated with Supabase
+✓ Department Contacts loaded from API endpoint
+✓ Contact deletion functional
+✓ Contact edit modal loads and populates correctly
+✓ Contact selector now displays Region, Name, Role, and Email
+✓ Instructor request workflow confirmed to use Department Contacts data source
+✓ Email recipient selector sorted and displaying active contacts correctly
+✓ Legacy recipient display issue resolved
+✓ JavaScript template literal parsing errors identified and corrected
+
+Email & Contact System
+
+✓ Verified department_contacts table is the authoritative contact source
+✓ Confirmed instructor request workflow uses selected contact email from Department Contacts
+✓ Removed dependency on hidden recipient assumptions
+✓ Contact selector updated for improved operational visibility
+✓ Active contacts displayed with expanded identification information
+
+Architecture Findings
+
+✓ Confirmed instructor request workflow pulls recipient email from contactSelect control
+✓ Confirmed Department Contacts data loaded from NDOW Calendar server API
+✓ Confirmed contact selection no longer dependent on hard-coded recipient display values
+✓ Identified historical email configuration references for future review
+
+Instructor Assignment Investigation
+
+✓ Investigated feasibility of instructor-assignment event indicators
+✓ Determined instructor visibility is restricted by NDOW licensing system permissions
+✓ Confirmed instructor assignment data is only visible when logged in as an assigned instructor
+✓ Identified permissions model as primary blocker to universal instructor assignment mapping
+✓ Opened investigation with NDOW IT regarding elevated administrative visibility
+
+Future Considerations
+
+• Possible nightly instructor-assignment synchronization workflow
+• Potential administrative account access for complete instructor visibility
+• NDOW portal integration and single-sign-on opportunities
+• Self-registration model using NDOW ID validation
+• Instructor assignment indicators based on authenticated user identity
+
+Known Issues
+
+• Contact edit modal stacking issue persists beneath Dashboard/Admin panels
+• Save Edited Contact functionality remains incomplete
+• Contacts UI requires additional style-guide cleanup
+
+Development Notes
+
+• Confirmed current login system remains appropriate for demonstrations and pilot deployment
+• Determined large-scale user management should be deferred pending NDOW integration discussions
+• Identified NDOW identity infrastructure as preferred long-term authentication solution
+• Continued maintaining project independence and separation from official NDOW branding pending future deployment decisions
+
+
+---
 ## Version 26.1.5.0
 
 Date: 2026-06-07
