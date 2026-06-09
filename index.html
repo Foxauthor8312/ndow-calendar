@@ -576,6 +576,35 @@ button:hover{
 /* ========================================
    START STATUS BAR SECTION
 ======================================== */
+
+.refresh-screen-btn{
+
+  padding:6px 14px;
+
+  border:1px solid #CBD5E1;
+
+  border-radius:8px;
+
+  background:#FFFFFF;
+
+  color:#334155;
+
+  font-size:13px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+}
+
+.refresh-screen-btn:hover{
+
+  background:#F8FAFC;
+
+}
+
 	
 .updated-bar{
   background:#dbeafe;
@@ -1620,6 +1649,13 @@ body{
       --
     </span>
   </div>
+
+  <button
+    class="refresh-screen-btn"
+    onclick="refreshScreen()"
+  >
+    Refresh Screen
+  </button>
 
   <div class="updated-section">
     <strong>CURRENT DATE/TIME:</strong>
@@ -4456,6 +4492,12 @@ setInterval(
 );
 
 updateCurrentTime();
+	
+function refreshScreen(){
+
+  location.reload();
+
+}
 	
 function nextMonth(){
 
