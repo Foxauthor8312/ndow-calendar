@@ -131,52 +131,210 @@ if (title === "Users") {
 
     overlayContent.innerHTML = `
 
-        <div style="
-            display:flex;
-            height:100%;
-            min-height:500px;
-        ">
+<h2>
+  Help Topic Manager
+</h2>
 
-            <div style="
-                width:300px;
-                border-right:1px solid #dbe3ec;
-                overflow-y:auto;
-                padding-right:16px;
-            ">
+<div style="
+  color:#6b7280;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:14px;
+">
+  Create, edit, organize, and publish help topics for users and administrators.
+</div>
 
-                <div style="
-                    font-weight:700;
-                    margin-bottom:12px;
-                    color:#19304B;
-                ">
-                    Help Topics
-                </div>
+<input
+  type="hidden"
+  id="helpEditId"
+>
 
-                <div id="helpTopicList"></div>
+<select
+  id="helpCategory"
+  class="contact-select"
+  style="margin-top:14px;"
+  onchange="renderHelpAdminList()"
+>
 
-            </div>
+  <option value="">
+    Select Help Category...
+  </option>
 
-            <div
-                id="helpContentArea"
-                style="
-                    flex:1;
-                    overflow-y:auto;
-                    padding-left:24px;
-                "
-            >
+  <option value="Getting Started">
+    Getting Started
+  </option>
 
-                <div style="
-                    color:#6b7280;
-                    font-size:16px;
-                ">
-                    Loading help topics...
-                </div>
+  <option value="Calendar">
+    Calendar
+  </option>
 
-            </div>
+  <option value="Events">
+    Events
+  </option>
 
-        </div>
+  <option value="Volunteer Management">
+    Volunteer Management
+  </option>
+
+  <option value="Instructor Management">
+    Instructor Management
+  </option>
+
+  <option value="Users & Accounts">
+    Users & Accounts
+  </option>
+
+  <option value="Announcements">
+    Announcements
+  </option>
+
+  <option value="Administration">
+    Administration
+  </option>
+
+  <option value="Reports & Analytics">
+    Reports & Analytics
+  </option>
+
+  <option value="Troubleshooting">
+    Troubleshooting
+  </option>
+
+  <option value="FAQ">
+    FAQ
+  </option>
+
+</select>
+
+<div style="
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:16px;
+">
+
+  <input
+    id="helpTopicKey"
+    placeholder="Topic Key"
+  >
+
+  <input
+    id="helpTitle"
+    placeholder="Topic Title"
+  >
+
+  <input
+    id="helpSortOrder"
+    type="number"
+    placeholder="Display Order"
+  >
+
+  <select
+    id="helpVisibilityRole"
+  >
+    <option value="all">
+      All Users
+    </option>
+
+    <option value="user">
+      Standard Users
+    </option>
+
+    <option value="admin">
+      Admin Only
+    </option>
+  </select>
+
+</div>
+
+<div style="
+  margin-top:16px;
+  margin-bottom:6px;
+  font-size:12px;
+  font-weight:600;
+  color:#374151;
+">
+  Topic Content
+</div>
+
+<textarea
+  id="helpContent"
+  style="
+    width:100%;
+    height:220px;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    resize:vertical;
+    box-sizing:border-box;
+  "
+></textarea>
+
+<div style="
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+">
+
+  <button onclick="saveHelpTopic()">
+    Save Topic
+  </button>
+
+  <button onclick="newHelpTopic()">
+    New Topic
+  </button>
+
+  <button
+    onclick="deleteHelpTopic()"
+    style="background:#dc2626;"
+  >
+    Delete
+  </button>
+
+</div>
+
+<div
+  id="helpAdminMessage"
+  style="
+    margin-top:14px;
+    font-size:14px;
+  "
+></div>
+
+<div style="
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+">
+  <span>
+    Topics In Selected Category
+  </span>
+
+  <span
+    id="helpTopicCount"
+    style="
+      font-size:12px;
+      color:#6b7280;
+    "
+  ></span>
+</div>
+
+<div
+  id="helpTopicAdminList"
+  style="
+    margin-top:8px;
+    max-height:300px;
+    overflow:auto;
+    border-top:1px solid #e5e7eb;
+    padding-top:14px;
+  "
+></div>
 
     `;
+
+}
 
 } else if (title === "Analytics") {
 
@@ -499,7 +657,9 @@ if (title === "Analytics") {
 
 if (title === "Help") {
 
-    loadHelpTopics();
+    renderHelpAdminList();
+
+    newHelpTopic();
 
 }
 
