@@ -240,3 +240,78 @@
 .admin-panel-view {
     display:block;
 }
+
+/* =====================================================
+   ADMIN OVERLAY
+   ===================================================== */
+
+.admin-overlay {
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:min(1000px,75%);
+
+    height:100%;
+
+    background:#FFFFFF;
+
+    border-right:1px solid #DBE3EC;
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,.12);
+
+    display:none;
+
+    flex-direction:column;
+
+    z-index:50;
+}
+
+.admin-overlay-header {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:16px 20px;
+
+    border-bottom:1px solid #DBE3EC;
+
+    flex-shrink:0;
+}
+
+.admin-overlay-title {
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#19304B;
+}
+
+.admin-overlay-close {
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:24px;
+
+    color:#6B7280;
+}
+
+.admin-overlay-content {
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px;
+}
