@@ -280,9 +280,8 @@
 
     flex-direction:column;
 
-    z-index:50;
+    z-index:2000;
 }
-
 .admin-overlay-header {
 
     display:flex;
