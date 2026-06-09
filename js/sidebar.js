@@ -23,28 +23,71 @@ if (overlayTitle) {
 
 if (overlayContent) {
 
-    if (title === "Users") {
+if (title === "Users") {
 
-        overlayContent.innerHTML = `
+    overlayContent.innerHTML = `
+        <div id="usersWorkspaceContainer">
+            Loading users...
+        </div>
+    `;
 
-            <div id="usersWorkspaceContainer">
+} else if (title === "Requests") {
 
-                Loading users...
+    overlayContent.innerHTML = `
+        <div id="requestsWorkspaceContainer">
+            Requests workspace coming next...
+        </div>
+    `;
 
-            </div>
+} else if (title === "Updates") {
 
-        `;
+    overlayContent.innerHTML = `
+        <div id="updatesWorkspaceContainer">
+            Updates workspace coming next...
+        </div>
+    `;
 
-    } else {
+} else if (title === "Contacts") {
 
-        overlayContent.innerHTML = `
-            <h3>${title} Workspace</h3>
+    overlayContent.innerHTML = `
+        <div id="contactsWorkspaceContainer">
+            Contacts workspace coming next...
+        </div>
+    `;
 
-            <p>
-                This workspace is under construction.
-            </p>
-        `;
-    }
+} else if (title === "Help") {
+
+    overlayContent.innerHTML = `
+        <div id="helpWorkspaceContainer">
+            Help workspace coming next...
+        </div>
+    `;
+
+} else if (title === "Analytics") {
+
+    overlayContent.innerHTML = `
+        <div id="analyticsWorkspaceContainer">
+            Analytics workspace coming next...
+        </div>
+    `;
+
+} else if (title === "Categories") {
+
+    overlayContent.innerHTML = `
+        <div id="categoriesWorkspaceContainer">
+            Categories workspace coming next...
+        </div>
+    `;
+
+} else if (title === "System") {
+
+    overlayContent.innerHTML = `
+        <div id="systemWorkspaceContainer">
+            System workspace coming next...
+        </div>
+    `;
+
+}
 }
 
 overlay.style.display = "flex";
@@ -135,9 +178,10 @@ async function loadUsersForWorkspace() {
 
                 <button
                     class="admin-button-primary"
+                    onclick="openAddUserModal()"
                 >
                     Add User
-                </button>
+                </button>>
 
                 <button
                     class="admin-button-secondary"
