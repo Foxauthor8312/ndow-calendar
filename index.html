@@ -3442,10 +3442,14 @@ await new Promise(resolve =>
     const data =
       await response.json();
 
-console.log(
-  'LOGIN ROLE:',
-  data.user.role
-);
+const data =
+  await response.json();
+
+console.log('LOGIN RESPONSE:', data);
+
+if(!data.success){
+  throw new Error('Invalid login');
+}
 
     document.getElementById(
       'loadingMessage'
