@@ -1728,135 +1728,37 @@ body{
 
   </aside>
 
-<main class="admin-content">
-
 <!-- ========================================
-     ADMIN PANELS
+     ADMIN OVERLAY
 ======================================== -->
 
-<div id="dashboardPanel" class="admin-panel-view">
+<div
+  id="adminOverlay"
+  class="admin-overlay"
+>
 
-  <div class="admin-panel">
+  <div class="admin-overlay-header">
 
-    <h2 class="admin-section-title">
-      Dashboard
-    </h2>
+    <div
+      id="overlayTitle"
+      class="admin-overlay-title"
+    >
+      Overlay Title
+    </div>
 
-    <p>
-      Dashboard content will be migrated here.
-    </p>
-
-  </div>
-
-</div>
-
-<div id="usersPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Users
-    </h2>
-
-    <p>
-      User management panel.
-    </p>
+    <button
+      class="admin-overlay-close"
+      onclick="closeAdminOverlay()"
+    >
+      ✕
+    </button>
 
   </div>
 
-</div>
-
-<div id="requestsPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Requests
-    </h2>
-
-    <p>
-      Request management panel.
-    </p>
-
-  </div>
-
-</div>
-
-<div id="updatesPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Updates
-    </h2>
-
-    <p>
-      Release manager and updates.
-    </p>
-
-  </div>
-
-</div>
-
-<div id="contactsPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Contacts
-    </h2>
-
-    <p>
-      Contact management panel.
-    </p>
-
-  </div>
-
-</div>
-
-<div id="helpPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Help
-    </h2>
-
-    <p>
-      Help system panel.
-    </p>
-
-  </div>
-
-</div>
-
-<div id="analyticsPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Analytics
-    </h2>
-
-    <p>
-      Analytics panel.
-    </p>
-
-  </div>
-
-</div>
-
-<div id="categoriesPanel" class="admin-panel-view admin-hidden">
-
-  <div class="admin-panel">
-
-    <h2 class="admin-section-title">
-      Categories
-    </h2>
-
-    <p>
-      Category management panel.
-    </p>
+  <div
+    id="overlayContent"
+    class="admin-overlay-content"
+  >
 
   </div>
 
