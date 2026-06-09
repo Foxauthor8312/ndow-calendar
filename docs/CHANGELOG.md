@@ -1,6 +1,11 @@
 # CHANGELOG
 
 All notable changes to the NDOW Volunteer Portal are documented in this file.
+Current Development Target:
+index-dev.html
+
+Production File:
+index.html
 
 Version numbers follow:
 
@@ -176,4 +181,84 @@ Documentation
 * Preserved independent calendar scrolling architecture.
 * Header, status bar, legends, region filters, and day names remain fixed while calendar grid scrolls independently.
 * Footer remains visible below calendar content and outside scrollable grid area.
+
+=====================================================
+2026-06-09
+Sidebar Redesign Project Initiated
+=====================================================
+
+Created development environment:
+
+- Created index-dev.html from production index.html
+- Added DEV title indicator
+- Added DEV visual banner
+
+Created foundational project structure:
+
+/css
+    admin.css
+
+/js
+    sidebar.js
+
+Linked admin.css into index-dev.html
+Linked sidebar.js into index-dev.html
+
+Purpose:
+
+Prepare for migration from modal-based
+administration workflow to permanent
+sidebar navigation architecture.
+
+No production functionality changed.
+
+Status:
+Foundation Complete
+* 6-9-26
+* start UI dvelopment
+*  index-dev.html created
+✓ DEV environment identified
+✓ /css folder created
+✓ admin.css created and linked
+✓ /js folder created
+✓ sidebar.js created and linked
+✓ Existing help.js preserved
+✓ No production impact
+
+MILESTONE 2
+Administrative Design System Created
+
+File:
+css/admin.css
+
+Added:
+- Design tokens
+- Sidebar framework
+- Panel framework
+- Card framework
+- Table framework
+- Button framework
+- Layout framework
+
+Purpose:
+Establish a consistent NDOW administrative UI
+before sidebar construction begins.
+
+Current Status
+
+Production:
+index.html
+
+Development:
+index-dev.html
+
+Next Task:
+Build Admin Shell
+
+Goal:
+Permanent left navigation with content-area panels.
+
+Calendar functionality remains unchanged during Phase 1.
+
+
 
