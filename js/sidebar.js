@@ -21,10 +21,14 @@ function openAdminOverlay(title) {
         overlayTitle.textContent = title;
     }
 
-    if (overlayContent) {
+if (overlayContent) {
+
     overlayContent.innerHTML = `
         <h3>${title} Workspace</h3>
-        <p>Coming soon.</p>
+
+        <p>
+            This workspace is under construction.
+        </p>
     `;
 }
 
