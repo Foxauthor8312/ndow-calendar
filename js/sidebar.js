@@ -109,6 +109,12 @@ if (overlayContent) {
 }
 
     overlay.style.display = "flex";
+
+    if (title === "Users") {
+
+    loadUsersForWorkspace();
+
+}
 }
 if (title === "Users") {
 
@@ -125,6 +131,110 @@ function closeAdminOverlay() {
 
     if (overlay) {
         overlay.style.display = "none";
+    }
+
+}
+
+async function loadUsersForWorkspace() {
+
+    const tbody =
+        document.getElementById(
+            "usersTableBody"
+        );
+
+    if (!tbody) return;
+
+    const token =
+        localStorage.getItem(
+            "token"
+        );
+
+    try {
+
+        const response =
+            await fetch(
+                "https://ndow-calendar-server.onrender.com/api/admin/users",
+                {
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`
+                    }
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (
+            !data.success ||
+            !data.users
+        ) {
+
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5">
+                        Failed to load users
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+        tbody.innerHTML = "";
+
+        data.users.forEach(user => {
+
+            tbody.innerHTML += `
+
+                <tr>
+
+                    <td>
+                        ${user.full_name || ""}
+                    </td>
+
+                    <td>
+                        ${user.email || ""}
+                    </td>
+
+                    <td>
+                        ${user.phone || ""}
+                    </td>
+
+                    <td>
+                        ${user.role || ""}
+                    </td>
+
+                    <td>
+                        ${
+                            Number(
+                                user.disabled || 0
+                            ) === 1
+                                ? "Disabled"
+                                : "Active"
+                        }
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+    } catch (err) {
+
+        console.error(
+            "WORKSPACE USER LOAD ERROR:",
+            err
+        );
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    Error loading users
+                </td>
+            </tr>
+        `;
     }
 
 }
