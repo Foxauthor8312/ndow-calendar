@@ -42,9 +42,32 @@ if (title === "Users") {
 } else if (title === "Updates") {
 
     overlayContent.innerHTML = `
-        <div id="updatesWorkspaceContainer">
-            Updates workspace coming next...
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:16px;
+        ">
+
+            <h3 style="margin:0;">
+                Announcements
+            </h3>
+
+            <button
+                class="admin-button-primary"
+            >
+                New Announcement
+            </button>
+
         </div>
+
+        <div id="announcementAdminList">
+
+            Loading announcements...
+
+        </div>
+
     `;
 
 } else if (title === "Contacts") {
@@ -101,6 +124,12 @@ if (title === "Users") {
 if (title === "Requests") {
 
     loadInstructorRequests();
+
+}
+
+if (title === "Updates") {
+
+    loadAnnouncementAdminList();
 
 }
 
