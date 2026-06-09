@@ -296,9 +296,20 @@
     border-bottom:1px solid #DBE3EC;
 
     flex-shrink:0;
+
+    cursor:grab;
+
+    user-select:none;
+}
+
+.admin-overlay-header:active {
+
+    cursor:grabbing;
 }
 
 .admin-overlay-title {
+
+    pointer-events:none;
 
     font-size:22px;
 
