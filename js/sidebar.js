@@ -34,8 +34,8 @@ if (title === "Users") {
 } else if (title === "Requests") {
 
     overlayContent.innerHTML = `
-        <div id="requestsWorkspaceContainer">
-            Requests workspace coming next...
+        <div id="instructorRequestsList">
+            Loading requests...
         </div>
     `;
 
@@ -95,6 +95,12 @@ overlay.style.display = "flex";
 if (title === "Users") {
 
     loadUsersForWorkspace();
+
+}
+
+if (title === "Requests") {
+
+    loadInstructorRequests();
 
 }
 
