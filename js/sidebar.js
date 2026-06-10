@@ -1069,9 +1069,3 @@ async function loadContactsWorkspace() {
 
 	
 </div>
-	
-</header>
-
-
-
-</div>
