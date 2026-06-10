@@ -3,6 +3,25 @@
    Administrative UI Design System
    ===================================================== */
 
+.admin-button-primary,
+.admin-button-secondary,
+.admin-button-warning,
+.admin-button-danger,
+.admin-button-utility {
+    height:34px;
+    min-width:90px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+    font-weight:600;
+
+    border-radius:6px;
+
+    transition:all .15s ease;
+}
 /* =====================================================
    DESIGN TOKENS
    ===================================================== */
@@ -236,28 +255,94 @@
    BUTTONS
    ===================================================== */
 
+.admin-button-primary,
+.admin-button-secondary,
+.admin-button-warning,
+.admin-button-danger,
+.admin-button-utility {
+    height:34px;
+    min-width:90px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0 14px;
+
+    font-size:14px;
+    font-weight:600;
+    font-family:var(--font-main);
+
+    border-radius:var(--radius);
+
+    cursor:pointer;
+
+    transition:
+        background-color .15s ease,
+        border-color .15s ease,
+        color .15s ease,
+        opacity .15s ease;
+}
+
+/* Primary */
+
 .admin-button-primary {
     background:var(--ndow-navy);
     color:white;
     border:none;
-    border-radius:6px;
-    padding:10px 14px;
-    cursor:pointer;
 }
 
 .admin-button-primary:hover {
     opacity:.92;
 }
 
+/* Secondary */
+
 .admin-button-secondary {
     background:white;
     color:var(--ndow-navy);
     border:1px solid var(--ndow-border);
-    border-radius:6px;
-    padding:10px 14px;
-    cursor:pointer;
 }
 
+.admin-button-secondary:hover {
+    background:var(--ndow-bg);
+}
+
+/* Warning */
+
+.admin-button-warning {
+    background:var(--ndow-orange);
+    color:white;
+    border:none;
+}
+
+.admin-button-warning:hover {
+    opacity:.92;
+}
+
+/* Danger */
+
+.admin-button-danger {
+    background:var(--ndow-error);
+    color:white;
+    border:none;
+}
+
+.admin-button-danger:hover {
+    opacity:.92;
+}
+
+/* Utility */
+
+.admin-button-utility {
+    background:white;
+    color:var(--ndow-navy);
+    border:1px solid var(--ndow-border);
+}
+
+.admin-button-utility:hover {
+    background:var(--ndow-bg);
+}
 /* =====================================================
    UTILITY
    ===================================================== */
@@ -304,7 +389,7 @@
 
     border:1px solid #DBE3EC;
 
-    border-radius:12px;
+    border-radius:var(--radius);
 
     box-shadow:
         0 8px 24px rgba(0,0,0,.12);
