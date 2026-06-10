@@ -1596,15 +1596,31 @@ body{
 </div>
 
 
+<!-- START MONTH NAVIGATION -->
+
 <div class="controls">
-   
-    <button onclick="prevMonth()">Previous</button>
 
-    <h2 id="monthLabel"></h2>
+  <button
+    class="month-square"
+    onclick="prevMonth()"
+    title="Previous Month"
+  >
+    ‹
+  </button>
 
-    <button onclick="nextMonth()">Next</button>
+  <h3 id="monthLabel"></h3>
 
-  </div>
+  <button
+    class="month-square"
+    onclick="nextMonth()"
+    title="Next Month"
+  >
+    ›
+  </button>
+
+</div>
+
+<!-- END MONTH NAVIGATION -->
 
 	<div class="account-controls">
 
