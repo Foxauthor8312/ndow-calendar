@@ -26,10 +26,40 @@ if (overlayContent) {
 if (title === "Users") {
 
     overlayContent.innerHTML = `
-        <div id="usersWorkspaceContainer">
-            Loading users...
+
+        <h2>
+            User Management
+        </h2>
+
+        <div style="
+            display:flex;
+            gap:12px;
+            align-items:center;
+            margin-bottom:18px;
+        ">
+
+            <label>
+                <input
+                    type="checkbox"
+                    id="showDisabledUsers"
+                    onchange="loadUsers()"
+                >
+                Show Disabled Users
+            </label>
+
         </div>
+
+        <div
+            id="userList"
+            style="
+                border-top:1px solid #e5e7eb;
+                padding-top:12px;
+            "
+        ></div>
+
     `;
+
+}
 
 } else if (title === "Requests") {
 
@@ -607,7 +637,7 @@ overlay.style.display = "flex";
 
 if (title === "Users") {
 
-    loadUsersForWorkspace();
+    loadUsers();
 
 }
 
