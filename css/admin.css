@@ -457,11 +457,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 .calendar-month-bar{
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+
+    width:100%;
+    margin:0 auto;
+
     gap:8px;
     padding:2px 0;
-    background:transparent;
 }
 
 #monthLabel{
