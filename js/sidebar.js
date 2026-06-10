@@ -32,11 +32,113 @@ if (title === "Users") {
         </h2>
 
         <div style="
-            display:flex;
+            display:grid;
+            grid-template-columns:
+                repeat(auto-fit,minmax(220px,1fr));
             gap:12px;
-            align-items:center;
-            margin-bottom:18px;
+            margin-bottom:16px;
         ">
+
+            <input
+                id="adminUsername"
+                class="contact-input"
+                placeholder="Username"
+            >
+
+            <input
+                id="adminPin"
+                class="contact-input"
+                placeholder="PIN"
+            >
+
+            <input
+                id="adminEmail"
+                class="contact-input"
+                placeholder="Email Address"
+            >
+
+            <input
+                id="adminPhone"
+                class="contact-input"
+                placeholder="Mobile Phone"
+            >
+
+            <input
+                id="adminNdowId"
+                class="contact-input"
+                placeholder="NDOW ID"
+            >
+
+        </div>
+
+        <div style="
+            display:flex;
+            gap:20px;
+            margin-bottom:14px;
+        ">
+
+            <label>
+                <input
+                    type="checkbox"
+                    id="adminNotifyEmail"
+                    checked
+                >
+                Email Notifications
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    id="adminNotifySms"
+                >
+                SMS Notifications
+            </label>
+
+        </div>
+
+        <select
+            id="adminRole"
+            class="contact-select"
+            style="margin-bottom:14px;"
+        >
+            <option value="user">
+                User
+            </option>
+
+            <option value="admin">
+                Admin
+            </option>
+
+            <option value="superuser">
+                Superuser
+            </option>
+        </select>
+
+        <button
+            class="admin-button-primary"
+            onclick="addUser()"
+        >
+            Create User
+        </button>
+
+        <div
+            id="adminMessage"
+            style="
+                margin-top:10px;
+                margin-bottom:20px;
+            "
+        ></div>
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:12px;
+        ">
+
+            <h3 style="margin:0;">
+                Users
+            </h3>
 
             <label>
                 <input
