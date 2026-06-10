@@ -460,8 +460,8 @@ button:hover{
   display:flex;
   flex-wrap:nowrap;
   align-items:center;
-  gap:6px;
-  padding:8px 12px;
+  gap:4px;
+  padding:4px 8px;
   width:100%;
   box-sizing:border-box;
   overflow-x:auto;
@@ -470,9 +470,9 @@ button:hover{
 .legend-item{
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  font-size:13px;
+  gap:6px;
+  padding:6px 10px;
+  font-size:12px;
   font-weight:600;
   border-right:1px solid #d1d5db;
   background:#eef2f7;
@@ -500,11 +500,8 @@ button:hover{
 
 
 .legend-color{
-  width:14px;
-  height:14px;
-  border-radius:4px;
-  display:inline-block;
-}
+  width:10px;
+  height:10px;
 
 .hunter{
   background:#84cc16;
@@ -1682,98 +1679,103 @@ body{
 </div>
 
 
+
 <!-- ========================================
      ADMIN SHELL
 ======================================== -->
+<div class="admin-shell">
+<aside class="admin-sidebar">
 
-<div class="admin-sidebar-header">
+  <div class="admin-sidebar-header">
 
-  <img
-    src="ndowvolunteer-logo.png"
-    alt="NDOW Volunteer Program"
-    class="admin-sidebar-logo"
-  >
+    <img
+      src="ndowvolunteer-logo.png"
+      alt="NDOW Volunteer Program"
+      class="admin-sidebar-logo"
+    >
 
-  <div class="admin-sidebar-title">
-    Resources
+    <div class="admin-sidebar-title">
+      Resources
+    </div>
+
   </div>
 
-</div>
-	
-<nav class="admin-nav">
+  <nav class="admin-nav">
 
-  <div
-    id="navDashboard"
-    class="admin-nav-item active"
-  >
-    📊 Dashboard
-  </div>
+    <div
+      id="navDashboard"
+      class="admin-nav-item active"
+    >
+      📊 Dashboard
+    </div>
 
-  <div
-    id="navUsers"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Users')"
-  >
-    👥 Users
-  </div>
+    <div
+      id="navUsers"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Users')"
+    >
+      👥 Users
+    </div>
 
-  <div
-    id="navRequests"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Requests')"
-  >
-    📋 Requests
-  </div>
+    <div
+      id="navRequests"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Requests')"
+    >
+      📋 Requests
+    </div>
 
-  <div
-    id="navUpdates"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Updates')"
-  >
-    🔄 Updates
-  </div>
+    <div
+      id="navUpdates"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Updates')"
+    >
+      🔄 Updates
+    </div>
 
-  <div
-    id="navContacts"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Contacts')"
-  >
-    📇 Contacts
-  </div>
+    <div
+      id="navContacts"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Contacts')"
+    >
+      📇 Contacts
+    </div>
 
-  <div
-    id="navHelp"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Help')"
-  >
-    ❓ Help
-  </div>
+    <div
+      id="navHelp"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Help')"
+    >
+      ❓ Help
+    </div>
 
-  <div
-    id="navAnalytics"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Analytics')"
-  >
-    📈 Analytics
-  </div>
+    <div
+      id="navAnalytics"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Analytics')"
+    >
+      📈 Analytics
+    </div>
 
-  <div
-    id="navCategories"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('Categories')"
-  >
-    🏷️ Categories
-  </div>
+    <div
+      id="navCategories"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('Categories')"
+    >
+      🏷️ Categories
+    </div>
 
-  <div
-    id="navSystem"
-    class="admin-nav-item"
-    onclick="openAdminOverlay('System')"
-  >
-    ⚙️ System
-  </div>
+    <div
+      id="navSystem"
+      class="admin-nav-item"
+      onclick="openAdminOverlay('System')"
+    >
+      ⚙️ System
+    </div>
 
-</nav>
+  </nav>
+
+</aside>
 	
 <!-- ========================================
      ADMIN OVERLAY
