@@ -456,20 +456,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 .calendar-month-bar{
-    position:relative;
     width:100%;
     text-align:center;
-
     padding:2px 0;
+}
+
+.calendar-month-bar #monthLabel{
     font-size:18px;
     font-weight:700;
     color:#19304B;
-}
-
-#monthLabel{
-    display:inline-block;
-    font-size:18px;
-    font-weight:700;
 }
 
 .month-arrow{
