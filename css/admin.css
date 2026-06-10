@@ -456,42 +456,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 .calendar-month-bar{
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:center !important;
-    gap:12px !important;
-    padding:2px 0 !important;
-    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    padding:4px 0;
+    font-size:22px;
+    font-weight:700;
+    color:#19304B;
 }
 
-.calendar-month-bar h2{
-    margin:0 !important;
-    padding:0 !important;
-    font-size:22px !important;
-    font-weight:700 !important;
-    color:#19304B !important;
+#monthLabel{
+    display:inline-block;
+    margin:0;
+    padding:0;
 }
 
-.calendar-month-bar .month-arrow{
-    display:inline-flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-
-    width:24px !important;
-    height:24px !important;
-
-    border:none !important;
-    background:transparent !important;
-
-    cursor:pointer !important;
-
-    font-size:20px !important;
-    font-weight:700 !important;
-    color:#19304B !important;
-
-    padding:0 !important;
-    margin:0 !important;
+.month-arrow{
+    cursor:pointer;
+    user-select:none;
+    font-size:22px;
+    font-weight:700;
+    color:#19304B;
 }
 /* =====================================================
    USERS WORKSPACE
