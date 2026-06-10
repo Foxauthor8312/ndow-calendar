@@ -59,8 +59,6 @@ if (title === "Users") {
 
     `;
 
-}
-
 } else if (title === "Requests") {
 
     overlayContent.innerHTML = `
