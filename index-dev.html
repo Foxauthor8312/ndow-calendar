@@ -2016,7 +2016,7 @@ body{
 
   </div>
 
- <!-- ========================================
+<!-- ========================================
        START CALENDAR
 ======================================== -->
 
@@ -2031,35 +2031,39 @@ body{
 
   <div class="calendar-month-bar">
 
-    <button
+    <span
       class="month-arrow"
       onclick="prevMonth()"
     >
       ◀
-    </button>
+    </span>
 
-    <h2 id="monthLabel"></h2>
+    <span id="monthLabel"></span>
 
-    <button
+    <span
       class="month-arrow"
       onclick="nextMonth()"
     >
       ▶
-    </button>
+    </span>
 
   </div>
 
-  <div class="calendar" id="calendar"></div>
+  <div
+    class="calendar"
+    id="calendar"
+  ></div>
 
 </div>   <!-- closes calendarViewport -->
 
 </div>   <!-- closes calendarShell -->
 
-  </main>
+</main>
 
 </div>
 
 <footer class="footer">
+
   <div class="footer-text">
     NDOWInstructor.com and the Instructor Event Calendar are independent informational resources intended to support conservation, education, community outreach, and volunteer engagement across Nevada. This site is intended for current NDOW Instructors and authorized users only and is not intended for general public use. An authorized NDOW Instructor login may be required to access certain information, features, or resources. This website and calendar system are not official products of the Nevada Department of Wildlife (NDOW) and do not connect to, modify, impact, or operate any official NDOW websites, systems, or services. Event information may change without notice. Participation in Instructor activities is voluntary. Intellectual Property of and © 2026 Barry Mattison. All rights reserved.
   </div>
@@ -2068,8 +2072,9 @@ body{
     v<span id="versionDisplay"></span>
     <span id="versionTime"></span>
   </div>
+
 </footer>
-	
+
 </div>
 
 <!-- ========================================
