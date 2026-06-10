@@ -362,99 +362,6 @@
     color:#6B7280;
 }
 
-let overlayDragging = false;
-let overlayOffsetX = 0;
-let overlayOffsetY = 0;
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const overlay =
-        document.getElementById(
-            "adminOverlay"
-        );
-
-    const header =
-        document.querySelector(
-            ".admin-overlay-header"
-        );
-
-    if (!overlay || !header) return;
-
-    header.addEventListener(
-        "mousedown",
-        (e) => {
-
-            overlayDragging = true;
-
-            const rect =
-                overlay.getBoundingClientRect();
-
-            overlayOffsetX =
-                e.clientX - rect.left;
-
-            overlayOffsetY =
-                e.clientY - rect.top;
-
-            header.style.cursor =
-                "grabbing";
-        }
-    );
-
-    document.addEventListener(
-        "mousemove",
-        (e) => {
-
-            if (!overlayDragging) return;
-
-            const maxX =
-                window.innerWidth -
-                overlay.offsetWidth;
-
-            const maxY =
-                window.innerHeight -
-                overlay.offsetHeight;
-
-            const newLeft =
-                Math.max(
-                    0,
-                    Math.min(
-                        e.clientX -
-                        overlayOffsetX,
-                        maxX
-                    )
-                );
-
-            const newTop =
-                Math.max(
-                    0,
-                    Math.min(
-                        e.clientY -
-                        overlayOffsetY,
-                        maxY
-                    )
-                );
-
-            overlay.style.left =
-                `${newLeft}px`;
-
-            overlay.style.top =
-                `${newTop}px`;
-        }
-    );
-
-    document.addEventListener(
-        "mouseup",
-        () => {
-
-            overlayDragging = false;
-
-            header.style.cursor =
-                "grab";
-        }
-    );
-
-});
-
 .calendar-month-bar{
     width:100%;
     text-align:center;
@@ -462,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 .calendar-month-bar #monthLabel{
-    font-size:18px;
+    font-size:16px;
     font-weight:700;
     color:#19304B;
 }
