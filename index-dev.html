@@ -1664,7 +1664,7 @@ body{
 <div class="updated-bar">
 
   <div class="updated-section">
-    <strong>LAST UPDATED:</strong>
+    <strong>Updated:</strong>
     <span id="lastUpdated">
       --
     </span>
@@ -1674,11 +1674,11 @@ body{
     class="refresh-screen-btn"
     onclick="refreshScreen()"
   >
-    Refresh Screen
+    Refresh
   </button>
 
   <div class="updated-section">
-    <strong>CURRENT DATE/TIME:</strong>
+    <strong>Time:</strong>
     <span id="currentTime">
       --
     </span>
@@ -1691,105 +1691,81 @@ body{
      ADMIN SHELL
 ======================================== -->
 
-<div class="admin-shell">
+<nav class="admin-nav">
 
-  <aside class="admin-sidebar">
+  <div
+    id="navDashboard"
+    class="admin-nav-item active"
+  >
+    📊 Dashboard
+  </div>
 
-    <div class="admin-sidebar-header">
+  <div
+    id="navUsers"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Users')"
+  >
+    👥 Users
+  </div>
 
-      <img
-        src="ndowvolunteer-logo.png"
-        alt="NDOW Volunteer Program"
-        class="admin-sidebar-logo"
-      >
+  <div
+    id="navRequests"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Requests')"
+  >
+    📋 Requests
+  </div>
 
-      <div class="admin-sidebar-title">
-        Volunteer Calendar
-      </div>
+  <div
+    id="navUpdates"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Updates')"
+  >
+    🔄 Updates
+  </div>
 
-      <div class="admin-sidebar-subtitle">
-        Administration
-      </div>
+  <div
+    id="navContacts"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Contacts')"
+  >
+    📇 Contacts
+  </div>
 
-    </div>
+  <div
+    id="navHelp"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Help')"
+  >
+    ❓ Help
+  </div>
 
-    <nav class="admin-nav">
+  <div
+    id="navAnalytics"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Analytics')"
+  >
+    📈 Analytics
+  </div>
 
-      <div
-       id="navDashboard"
-       class="admin-nav-item active"
-      >
-      Dashboard
-      </div>
+  <div
+    id="navCategories"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('Categories')"
+  >
+    🏷️ Categories
+  </div>
 
-	<div
-  id="navUsers"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Users')"
->
-  Users
-</div>
+  <div
+    id="navSystem"
+    class="admin-nav-item"
+    onclick="openAdminOverlay('System')"
+  >
+    ⚙️ System
+  </div>
 
-<div
-  id="navRequests"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Requests')"
->
-  Requests
-</div>
-
-<div
-  id="navUpdates"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Updates')"
->
-  Updates
-</div>
-
-<div
-  id="navContacts"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Contacts')"
->
-  Contacts
-</div>
-
-<div
-  id="navHelp"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Help')"
->
-  Help
-</div>
-
-<div
-  id="navAnalytics"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Analytics')"
->
-  Analytics
-</div>
-
-<div
-  id="navCategories"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('Categories')"
->
-  Categories
-</div>
-		
-<div
-  id="navSystem"
-  class="admin-nav-item"
-  onclick="openAdminOverlay('System')"
->
-  System
-</div>
-
-    </nav>
-
-  </aside>
-
+</nav>
+	
 <!-- ========================================
      ADMIN OVERLAY
 ======================================== -->
