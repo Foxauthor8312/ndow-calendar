@@ -541,3 +541,50 @@
 
     background:white;
 }
+
+/* =====================================================
+   USER DIRECTORY
+   ===================================================== */
+
+.admin-user-row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 14px;
+
+    border-bottom:1px solid var(--ndow-border);
+
+    background:white;
+}
+
+.admin-user-row:last-child{
+    border-bottom:none;
+}
+
+.admin-user-disabled{
+    background:#FEF2F2;
+}
+
+.admin-user-info{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.admin-user-name{
+    font-size:14px;
+    font-weight:700;
+    color:var(--ndow-navy);
+}
+
+.admin-user-meta{
+    font-size:12px;
+    color:#6B7280;
+}
+
+.admin-user-actions{
+    display:flex;
+    gap:8px;
+}
