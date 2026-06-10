@@ -1610,22 +1610,7 @@ body{
 
 	
 <header>
-  <div class="account-controls">
 
-<button
-  id="dashboardButton"
-  class="admin-button"
-  onclick="openDashboard()"
->
-  My Dashboard
-</button>
-
-<button onclick="logout()">
-  Logout
-</button>
-
-</div>
-	
  <div class="title-block">
 
   <h1>NDOW Instructor Event Calendar</h1>
@@ -1636,6 +1621,43 @@ body{
 
 </div>
 
+
+<div class="controls">
+   
+    <button onclick="prevMonth()">Previous</button>
+
+    <h2 id="monthLabel"></h2>
+
+    <button onclick="nextMonth()">Next</button>
+
+  </div>
+
+	<div class="account-controls">
+
+  <div id="userDisplay" class="user-display">
+    Logged in
+  </div>
+
+  <button onclick="logout()">
+    Logout
+  </button>
+
+	
+  <button class="admin-button" onclick="openHelpModal()">
+  Help
+</button>
+
+<button
+  id="dashboardButton"
+  class="admin-button"
+  onclick="openDashboard()"
+>
+  My Dashboard
+</button>
+
+	
+</div>
+	
 </header>
 
 <div class="updated-bar">
@@ -1660,9 +1682,9 @@ body{
       --
     </span>
   </div>
-	
 
-</div>	
+</div>
+
 
 <!-- ========================================
      ADMIN SHELL
