@@ -1610,9 +1610,21 @@ body{
 
 	
 <header>
-  <button onclick="logout()">
-    Logout
-  </button>
+  <div class="account-controls">
+
+<button
+  id="dashboardButton"
+  class="admin-button"
+  onclick="openDashboard()"
+>
+  My Dashboard
+</button>
+
+<button onclick="logout()">
+  Logout
+</button>
+
+</div>
 	
  <div class="title-block">
 
