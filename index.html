@@ -4265,27 +4265,32 @@ dayEvents.forEach(event => {
         event.instructors || ''
       );
 
-    const currentUsername =
+const currentUser =
 
-      JSON.parse(
-        localStorage.getItem('user') || '{}'
-      )
+  JSON.parse(
+    localStorage.getItem('user') || '{}'
+  );
 
-      .username
+const currentEmail =
 
-      ?.toLowerCase()
+  (currentUser.email || '')
+    .toLowerCase()
+    .trim();
 
-      ?.trim()
+const isInstructor =
 
-      || '';
+  Array.isArray(
+    event.instructors
+  ) &&
 
-    const isInstructor =
-
-      instructorText
+  event.instructors.some(
+    i =>
+      (i.email || '')
         .toLowerCase()
-        .includes(
-          currentUsername
-        );
+        .trim()
+      ===
+      currentEmail
+  );
 
     div.innerHTML = `
 
