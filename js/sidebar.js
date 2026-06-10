@@ -1072,27 +1072,6 @@ async function loadContactsWorkspace() {
 	
 </header>
 
-<div class="updated-bar">
 
-  <div class="updated-section">
-    <strong>LAST UPDATED:</strong>
-    <span id="lastUpdated">
-      --
-    </span>
-  </div>
-
-  <button
-    class="refresh-screen-btn"
-    onclick="refreshScreen()"
-  >
-    Refresh Screen
-  </button>
-
-  <div class="updated-section">
-    <strong>CURRENT DATE/TIME:</strong>
-    <span id="currentTime">
-      --
-    </span>
-  </div>
 
 </div>
