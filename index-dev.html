@@ -10207,6 +10207,11 @@ function overrideCategory(
 
 </div>
 
+<!-- =====================================================
+     USERS PANEL - DIRECTORY SECTION
+     START
+     ===================================================== -->
+
           <select
             id="adminRole"
             class="contact-select"
@@ -10220,12 +10225,14 @@ function overrideCategory(
               Admin
             </option>
 
-			  <option value="superuser">
-  			  Superuser
-			</option>
+            <option value="superuser">
+              Superuser
+            </option>
+
           </select>
 
           <button
+            class="admin-button-primary"
             style="
               margin-top:18px;
               width:100%;
@@ -10243,14 +10250,17 @@ function overrideCategory(
             "
           ></div>
 
-          <div style="
-            margin-top:30px;
-            display:flex;
-            flex-direction:column;
-            flex:1;
-            min-height:0;
-            overflow:hidden;
-          ">
+          <div
+            class="admin-form-panel"
+            style="
+              margin-top:24px;
+              display:flex;
+              flex-direction:column;
+              flex:1;
+              min-height:0;
+              overflow:hidden;
+            "
+          >
 
             <div style="
               display:flex;
@@ -10260,9 +10270,15 @@ function overrideCategory(
               flex-shrink:0;
             ">
 
-              <h3 style="margin:0;">
-                Users
-              </h3>
+              <div
+                class="admin-section-title"
+                style="
+                  margin:0;
+                  font-size:18px;
+                "
+              >
+                Administrators
+              </div>
 
               <label style="
                 font-size:13px;
@@ -10279,27 +10295,30 @@ function overrideCategory(
                   onchange="loadUsers()"
                 >
 
-                 Show Disabled
+                Show Disabled
 
               </label>
 
             </div>
 
-           <div
-			  id="userList"
-			  style="
-			    height:420px;
-			    overflow-y:auto;
-			    overflow-x:hidden;
-			    border-top:1px solid #e5e7eb;
-			    padding-top:8px;
-			    padding-right:6px;
-			  "
-			></div>
+            <div
+              id="userList"
+              style="
+                flex:1;
+                overflow-y:auto;
+                overflow-x:hidden;
+                border-top:1px solid var(--ndow-border);
+                padding-top:8px;
+                padding-right:6px;
+              "
+            ></div>
 
           </div>
 
-</div>
+<!-- =====================================================
+     USERS PANEL - DIRECTORY SECTION
+     END
+     ===================================================== -->
 
 <!-- CONTACTS -->
 
