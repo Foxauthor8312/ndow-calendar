@@ -806,6 +806,74 @@ function closeAdminOverlay() {
 
 }
 
+let overlayDragging = false;
+let overlayOffsetX = 0;
+let overlayOffsetY = 0;
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const overlay =
+            document.getElementById(
+                "adminOverlay"
+            );
+
+        const header =
+          overlay.querySelector(
+            ".admin-overlay-header"
+        );
+
+        if (!overlay || !header) return;
+
+        header.addEventListener(
+            "mousedown",
+            (e) => {
+
+                overlayDragging = true;
+
+                const rect =
+                    overlay.getBoundingClientRect();
+
+                overlayOffsetX =
+                    e.clientX - rect.left;
+
+                overlayOffsetY =
+                    e.clientY - rect.top;
+
+                header.style.cursor =
+                    "grabbing";
+            }
+        );
+
+        document.addEventListener(
+            "mousemove",
+            (e) => {
+
+                if (!overlayDragging) return;
+
+                overlay.style.left =
+                    `${e.clientX - overlayOffsetX}px`;
+
+                overlay.style.top =
+                    `${e.clientY - overlayOffsetY}px`;
+            }
+        );
+
+        document.addEventListener(
+            "mouseup",
+            () => {
+
+                overlayDragging = false;
+
+                header.style.cursor =
+                    "grab";
+            }
+        );
+
+    }
+);
+
 async function loadUsersForWorkspace() {
 
     const container =
