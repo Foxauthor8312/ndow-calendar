@@ -459,25 +459,38 @@ document.addEventListener("DOMContentLoaded", () => {
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:12px;
-    padding:4px 0;
-    font-size:22px;
-    font-weight:700;
-    color:#19304B;
+    gap:8px;
+    padding:2px 0;
+    background:transparent;
 }
 
 #monthLabel{
-    display:inline-block;
-    margin:0;
-    padding:0;
+    font-size:18px;
+    font-weight:700;
+    color:#19304B;
+    line-height:1;
 }
 
 .month-arrow{
+    display:inline-block;
+
     cursor:pointer;
     user-select:none;
-    font-size:22px;
+
+    font-size:16px;
     font-weight:700;
+    line-height:1;
+
     color:#19304B;
+
+    background:none !important;
+    border:none !important;
+    box-shadow:none !important;
+
+    width:auto;
+    height:auto;
+    padding:0 !important;
+    margin:0 !important;
 }
 /* =====================================================
    USERS WORKSPACE
