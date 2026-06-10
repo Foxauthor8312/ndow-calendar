@@ -1684,6 +1684,7 @@ body{
      ADMIN SHELL
 ======================================== -->
 <div class="admin-shell">
+
 <aside class="admin-sidebar">
 
   <div class="admin-sidebar-header">
@@ -1771,6 +1772,26 @@ body{
       onclick="openAdminOverlay('System')"
     >
       ⚙️ System
+    </div>
+
+    <hr style="
+      border:none;
+      border-top:1px solid rgba(255,255,255,.15);
+      margin:10px 12px;
+    ">
+
+    <div
+      class="admin-nav-item"
+      onclick="refreshScreen()"
+    >
+      🔄 Refresh
+    </div>
+
+    <div
+      class="admin-nav-item"
+      onclick="logout()"
+    >
+      🚪 Logout
     </div>
 
   </nav>
