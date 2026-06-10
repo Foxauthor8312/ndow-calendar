@@ -7235,12 +7235,36 @@ function filterInstructorRequests(status){
 
 }
 
+// =====================================================
+// DASHBOARD DEBUG
+// START
+// =====================================================
+
 function openDashboard(){
+
+  console.log(
+    'DASHBOARD CLICKED'
+  );
 
   const modal =
     document.getElementById(
       'dashboardModal'
     );
+
+  console.log(
+    'MODAL:',
+    modal
+  );
+
+  if(!modal){
+
+    alert(
+      'dashboardModal not found'
+    );
+
+    return;
+
+  }
 
   modal.classList.remove(
     'hidden'
@@ -7249,9 +7273,18 @@ function openDashboard(){
   modal.style.display =
     'flex';
 
+  alert(
+    'Dashboard modal opened'
+  );
+
   loadDashboard();
 
 }
+
+// =====================================================
+// DASHBOARD DEBUG
+// END
+// =====================================================
 
 function closeDashboard(){
 
