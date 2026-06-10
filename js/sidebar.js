@@ -1049,23 +1049,3 @@ async function loadContactsWorkspace() {
     }
 
 }
-
-<div class="account-controls">
-
-<div id="userDisplay" class="user-display">
-</div>
-
-<button
-  id="dashboardButton"
-  class="admin-button"
-  onclick="openDashboard()"
->
-  My Dashboard
-</button>
-
-<button onclick="logout()">
-  Logout
-</button>
-
-	
-</div>
