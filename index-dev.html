@@ -1623,26 +1623,12 @@ body{
 </div>
 
 
-<div class="controls">
-   
-    <button onclick="prevMonth()">Previous</button>
-
-    <h2 id="monthLabel"></h2>
-
-    <button onclick="nextMonth()">Next</button>
-
-  </div>
-
-	<div class="account-controls">
+<div class="account-controls">
 
   <div id="userDisplay" class="user-display">
     Logged in
   </div>
-
-  <button onclick="logout()">
-    Logout
-  </button>
-
+  
 <button
   id="dashboardButton"
   class="admin-button"
@@ -2042,7 +2028,29 @@ body{
     overflow-y:auto;
     overflow-x:hidden;
 ">
+
+  <div class="calendar-month-bar">
+
+    <button
+      class="month-arrow"
+      onclick="prevMonth()"
+    >
+      ◀
+    </button>
+
+    <h2 id="monthLabel"></h2>
+
+    <button
+      class="month-arrow"
+      onclick="nextMonth()"
+    >
+      ▶
+    </button>
+
+  </div>
+
   <div class="calendar" id="calendar"></div>
+
 </div>   <!-- closes calendarViewport -->
 
 </div>   <!-- closes calendarShell -->
