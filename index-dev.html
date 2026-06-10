@@ -6396,96 +6396,98 @@ async function loadUsers(){
           'div'
         );
 
-      heading.style.marginTop =
-        '18px';
-
-      heading.style.marginBottom =
-        '10px';
-
-      heading.style.fontWeight =
-        '700';
-
-      heading.style.color =
-        '#19304B';
-
+heading.className =
+  'admin-section-title';
       heading.innerText =
         title;
 
-      container.appendChild(
+        container.appendChild(
         heading
       );
 
-     users.forEach(user => {
+      users.forEach(user => {
 
-		  if(
-		    !showDisabled &&
-		    Number(user.disabled || 0) === 1
-		  ){
-		    return;
-		  }
-		
-		  const div =
-		    document.createElement(
-		      'div'
-	  );
-        div.style.padding =
-          '10px';
+        if(
+          !showDisabled &&
+          Number(user.disabled || 0) === 1
+        ){
+          return;
+        }
 
-        div.style.borderBottom =
-          '1px solid #e5e7eb';
+        const div =
+          document.createElement(
+            'div'
+          );
 
-        div.style.borderRadius =
-          '8px';
+        div.className =
+          'admin-user-row';
 
-        div.style.marginBottom =
-          '6px';
+        if(
+          Number(user.disabled || 0) === 1
+        ){
+          div.classList.add(
+            'admin-user-disabled'
+          );
+        }
 
-        div.style.background =
-          Number(user.disabled) === 1
-            ? '#fee2e2'
-            : '#f8fafc';
+        div.innerHTML = `
 
-div.innerHTML = `
-  <strong>${user.username}</strong><br>
-  Role: ${user.role}<br>
-  Status:
-  ${
-    Number(user.disabled || 0) === 1
-      ? 'Disabled'
-      : 'Active'
-  }
+          <div class="admin-user-info">
 
-  <br>
+            <div class="admin-user-name">
+              ${user.username}
+            </div>
 
-  <button
-    style="margin-top:8px;"
-    onclick="toggleUser(
-      '${user.username}',
-      ${
-        Number(user.disabled || 0) === 1
-          ? false
-          : true
-      }
-    )"
-  >
-    ${
-      Number(user.disabled || 0) === 1
-        ? 'Enable'
-        : 'Disable'
-    }
-  </button>
+            <div class="admin-user-meta">
+              ${user.role}
+              •
+              ${
+                Number(user.disabled || 0) === 1
+                  ? 'Disabled'
+                  : 'Active'
+              }
+            </div>
 
-<button
-  style="margin-top:8px;margin-left:8px;"
-  onclick="openEditUserModalByUsername('${user.username}')"
->
-  Edit
-</button>
-`;
+          </div>
 
-container.appendChild(
-  div
-);
+          <div class="admin-user-actions">
+
+            <button
+              class="${
+                Number(user.disabled || 0) === 1
+                  ? 'admin-button-primary'
+                  : 'admin-button-warning'
+              }"
+              onclick="toggleUser(
+                '${user.username}',
+                ${
+                  Number(user.disabled || 0) === 1
+                    ? false
+                    : true
+                }
+              )"
+            >
+              ${
+                Number(user.disabled || 0) === 1
+                  ? 'Enable'
+                  : 'Disable'
+              }
+            </button>
+
+            <button
+              class="admin-button-secondary"
+              onclick="openEditUserModalByUsername('${user.username}')"
+            >
+              Edit
+            </button>
+
+          </div>
+
+        `;
+
+        container.appendChild(
+          div
+        );
 
       });
 
