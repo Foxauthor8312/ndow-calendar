@@ -85,6 +85,38 @@ h1{
   align-items:center;
   color:white;
 }
+
+.calendar-nav-shell{
+
+  display:flex;
+  justify-content:center;
+
+  padding:10px 0;
+
+  background:transparent;
+
+}
+
+.calendar-nav-shell .controls{
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:8px 16px;
+
+  background:rgba(255,255,255,0.75);
+
+  backdrop-filter:blur(4px);
+
+  border:1px solid rgba(255,255,255,0.5);
+
+  border-radius:12px;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.12);
+
+}
 	
 .account-controls{
   display:flex;
@@ -1646,25 +1678,7 @@ body{
 
 <!-- START MONTH NAVIGATION -->
 
-<div class="controls">
 
-  
-
-<button class="month-square"
-        onclick="prevMonth()"
-        title="Previous Month">
-  ‹
-</button>
-
-<h3 id="monthLabel"></h3>
-
-<button class="month-square"
-        onclick="nextMonth()"
-        title="Next Month">
-  ›
-</button>
-
-</div>
 
 <!-- END MONTH NAVIGATION -->
 
@@ -1719,6 +1733,14 @@ body{
 	
 </header>
 
+</header>
+
+<div class="calendar-nav-shell">
+  ...
+</div>
+
+<div class="legend">
+	
 <div
   id="calendarShell"
   style="
@@ -1776,6 +1798,32 @@ body{
   >
     ?
   </span>
+
+</div>
+
+<div class="calendar-nav-shell">
+
+  <div class="controls">
+
+    <button
+      class="month-square"
+      onclick="prevMonth()"
+      title="Previous Month"
+    >
+      ‹
+    </button>
+
+    <h3 id="monthLabel"></h3>
+
+    <button
+      class="month-square"
+      onclick="nextMonth()"
+      title="Next Month"
+    >
+      ›
+    </button>
+
+  </div>
 
 </div>
 	  
