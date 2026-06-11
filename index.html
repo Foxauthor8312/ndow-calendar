@@ -8468,6 +8468,21 @@ async function reprocessEvents(){
 
     await loadEvents();
 
+	 const savedUser =
+  JSON.parse(
+    localStorage.getItem('user')
+  );
+
+if(savedUser){
+
+  document.getElementById(
+    'userDisplay'
+  ).innerText =
+    'Logged in as: ' +
+    savedUser.username;
+
+} 
+
     renderSystemConsole();
 
     alert(
