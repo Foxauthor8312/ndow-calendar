@@ -88,9 +88,22 @@ h1{
 	
 .account-controls{
   display:flex;
-  align-items:center;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:4px;
+}
+
+.account-buttons{
+  display:flex;
+  align-items:flex-start;
   gap:10px;
-  flex-wrap:wrap;
+}
+
+.user-display{
+  color:#cbd5e1;
+  font-size:11px;
+  font-weight:600;
+  white-space:nowrap;
 }
 
 .dashboard-block{
@@ -116,9 +129,10 @@ h1{
 }
 
 .user-display{
-  color:white;
-  font-size:14px;
+  color:#cbd5e1;
+  font-size:11px;
   font-weight:600;
+  white-space:nowrap;
 }
 	
 .login-button{
@@ -131,7 +145,7 @@ h1{
 }
 	
 button{
-  background:#F29647;
+  background:#4B6B88;
   color:white;
   border:none;
   padding:10px 16px;
@@ -1663,40 +1677,45 @@ body{
 
 <!-- END MONTH NAVIGATION -->
 
-	<div class="account-controls">
+<div class="account-controls">
 
   <div id="userDisplay" class="user-display">
     Logged in
   </div>
 
-  <button onclick="logout()">
-    Logout
-  </button>
+  <div class="account-buttons">
 
-	
-  <button class="admin-button" onclick="openHelpModal()">
-  Help
-</button>
+    <button onclick="logout()">
+      Logout
+    </button>
 
-<div class="dashboard-block">
+    <button
+      class="admin-button"
+      onclick="openHelpModal()"
+    >
+      Help
+    </button>
 
-  <button
-    id="dashboardButton"
-    class="admin-button dashboard-btn"
-    onclick="openDashboard()"
-  >
-    My Dashboard
-  </button>
+    <div class="dashboard-block">
 
-  <div class="header-time">
-    <span id="currentTime">
-      --
-    </span>
+      <button
+        id="dashboardButton"
+        class="admin-button dashboard-btn"
+        onclick="openDashboard()"
+      >
+        My Dashboard
+      </button>
+
+      <div class="header-time">
+        <span id="currentTime">
+          --
+        </span>
+      </div>
+
+    </div>
+
   </div>
 
-</div>
-
-	
 </div>
 	
 </header>
