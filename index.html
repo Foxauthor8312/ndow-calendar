@@ -65,7 +65,7 @@ header{
 
   flex-wrap:nowrap;
 
-  padding:12px 20px;
+  padding:18px 20px;
 
   border-bottom:2px solid #F29647;
 
@@ -79,35 +79,31 @@ h1{
   text-transform:uppercase;
   color:white;
 }
-	
+
 .controls{
   display:flex;
-  gap:10px;
   align-items:center;
+  gap:10px;
   color:white;
-}
 
-.title-block{
-  flex:1;
-  min-width:250px;
-}
-
-.controls{
   flex-shrink:0;
+  margin:0 auto;
 }
 
-/* MONTH NAVIGATION BUTTONS */
-
-	/* HEADER STATUS */
-
-.title-block h1{
+#monthLabel{
   margin:0;
-  font-size:26px;
+  color:white;
+  font-size:28px;
+  font-weight:700;
+  min-width:180px;
+  text-align:center;
 }
+
+/* HEADER STATUS */
 
 .title-block{
   flex:1;
-  min-width:400px;
+  min-width:500px;
 }
 
 .title-block h1{
@@ -120,23 +116,22 @@ h1{
 .subtitle{
   color:#cbd5e1;
   font-size:11px;
+  opacity:.9;
 }
 
 .header-status{
   margin-top:4px;
   color:#cbd5e1;
   font-size:11px;
-}
-	
-.subtitle{
-  font-size:12px;
-  opacity:.9;
+  opacity:.85;
 }
 
-.header-status{
-  margin-top:4px;
-  font-size:11px;
-  opacity:.85;
+.account-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:nowrap;
+  flex-shrink:0;
 }
 
 .dashboard-block{
@@ -187,64 +182,6 @@ h1{
 
 .month-square:active{
   transform:translateY(1px);
-}
-	
-.account-controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:nowrap;
-  flex-shrink:0;
-}
-
-.user-display{
-  color:white;
-  font-size:14px;
-  font-weight:600;
-}
-	
-.login-button{
-  background:
-    linear-gradient(
-      180deg,
-      #166534,
-      #14532d
-    ) !important;
-}
-	
-button{
-  background:#F29647;
-  color:white;
-  border:none;
-  padding:10px 16px;
-  border-radius:4px;
-  cursor:pointer;
-  font-weight:600;
-  transition:.2s ease;
-}
-
-.admin-layout > div:first-child button{
-
-  background:#2F4A63 !important;
-
-  color:white;
-
-  padding:6px 8px;
-
-  font-size:12px;
-
-  font-weight:600;
-
-  line-height:1;
-
-  border-radius:6px;
-
-}
-
-.admin-layout > div:first-child button:hover{
-
-  background:#24384B !important;
-
 }
 
 button:hover{
@@ -439,27 +376,6 @@ button:hover{
   align-items:center;
   z-index:9999;
   padding:20px;
-}
-
-.modal-content{
-  position:relative;
-  background:#fff;
-
-  width:86%;
-  max-width:980px;
-
-  height:auto;
-  max-height:92vh;
-
-  overflow-y:auto;
-
-  margin:2vh auto;
-
-  border-radius:12px;
-
-  padding:14px 18px;
-
-  box-sizing:border-box;
 }
 
 .close{
