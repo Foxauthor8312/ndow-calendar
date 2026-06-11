@@ -1650,21 +1650,17 @@ body{
 
   
 
-<button
-  class="month-square"
-  onclick="refreshScreen()"
-  title="Refresh"
->
-  ↻
-</button>	
+<button class="month-square"
+        onclick="prevMonth()"
+        title="Previous Month">
+  ‹
+</button>
 
-  <h3 id="monthLabel"></h3>
+<h3 id="monthLabel"></h3>
 
-  <button
-  class="month-square"
-  onclick="nextMonth()"
-  title="Next Month"
->
+<button class="month-square"
+        onclick="nextMonth()"
+        title="Next Month">
   ›
 </button>
 
