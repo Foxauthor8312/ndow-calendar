@@ -148,10 +148,11 @@ button{
   background:#4B6B88;
   color:white;
   border:none;
-  padding:10px 16px;
+  padding:6px 12px;
   border-radius:4px;
   cursor:pointer;
   font-weight:600;
+  font-size:12px;
   transition:.2s ease;
 }
 
@@ -1647,13 +1648,7 @@ body{
 
 <div class="controls">
 
-  <button
-    class="month-square"
-    onclick="prevMonth()"
-    title="Previous Month"
-  >
-    ‹
-  </button>
+  
 
 <button
   class="month-square"
@@ -1684,6 +1679,14 @@ body{
   </div>
 
   <div class="account-buttons">
+
+	<button
+  class="month-square"
+  onclick="refreshScreen()"
+  title="Refresh"
+>
+  ↻
+</button>  
 
     <button onclick="logout()">
       Logout
