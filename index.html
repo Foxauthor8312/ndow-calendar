@@ -63,14 +63,13 @@ header{
 
   gap:20px;
 
-  flex-wrap:nowrap;
+  flex-wrap:wrap;
 
   padding:18px 20px;
 
   border-bottom:2px solid #F29647;
 
 }
-	
 h1{
   margin:0;
   font-size:30px;
@@ -79,109 +78,69 @@ h1{
   text-transform:uppercase;
   color:white;
 }
-
+	
 .controls{
   display:flex;
-  align-items:center;
   gap:10px;
-  color:white;
-
-  flex-shrink:0;
-  margin:0 auto;
-}
-
-#monthLabel{
-  margin:0;
-  color:white;
-  font-size:28px;
-  font-weight:700;
-  min-width:180px;
-  text-align:center;
-}
-
-/* HEADER STATUS */
-
-.title-block{
-  flex:1;
-  min-width:500px;
-}
-
-.title-block h1{
-  margin:0;
-  font-size:22px;
-  line-height:1.1;
+  align-items:center;
   color:white;
 }
-
-.subtitle{
-  color:#cbd5e1;
-  font-size:11px;
-  opacity:.9;
-}
-
-.header-status{
-  margin-top:4px;
-  color:#cbd5e1;
-  font-size:11px;
-  opacity:.85;
-}
-
+	
 .account-controls{
   display:flex;
   align-items:center;
   gap:10px;
-  flex-wrap:nowrap;
-  flex-shrink:0;
+  flex-wrap:wrap;
 }
 
-.dashboard-block{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
+.user-display{
+  color:white;
+  font-size:14px;
+  font-weight:600;
+}
+	
+.login-button{
+  background:
+    linear-gradient(
+      180deg,
+      #166534,
+      #14532d
+    ) !important;
+}
+	
+button{
+  background:#F29647;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:4px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s ease;
 }
 
-.dashboard-btn{
-  padding:6px 10px !important;
-  font-size:12px !important;
-}
+.admin-layout > div:first-child button{
 
-.header-time{
-  font-size:10px;
-  color:#cbd5e1;
-  text-align:center;
-  white-space:nowrap;
-}
+  background:#2F4A63 !important;
 
-.month-square{
-  width:34px;
-  height:34px;
+  color:white;
 
-  border:1px solid #d1d5db;
-  border-radius:6px;
+  padding:6px 8px;
 
-  background:#ffffff;
-  color:#19304B;
+  font-size:12px;
 
-  font-size:20px;
-  font-weight:700;
+  font-weight:600;
+
   line-height:1;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  border-radius:6px;
 
-  cursor:pointer;
-  transition:.15s ease;
 }
 
-.month-square:hover{
-  background:#f9fafb;
-  border-color:#9ca3af;
-}
+.admin-layout > div:first-child button:hover{
 
-.month-square:active{
-  transform:translateY(1px);
+  background:#24384B !important;
+
 }
 
 button:hover{
@@ -378,6 +337,27 @@ button:hover{
   padding:20px;
 }
 
+.modal-content{
+  position:relative;
+  background:#fff;
+
+  width:86%;
+  max-width:980px;
+
+  height:auto;
+  max-height:92vh;
+
+  overflow-y:auto;
+
+  margin:2vh auto;
+
+  border-radius:12px;
+
+  padding:14px 18px;
+
+  box-sizing:border-box;
+}
+
 .close{
   float:right;
   cursor:pointer;
@@ -456,7 +436,6 @@ button:hover{
   }
 
 }
-
 /* ========================================
    START LEGEND SECTION
 ======================================== */
