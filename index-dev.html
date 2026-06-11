@@ -2035,17 +2035,19 @@ body{
     overflow-x:hidden;
 ">
 
-  <div class="calendar-month-bar">
+  <button class="month-square"
+        onclick="prevMonth()"
+        title="Previous Month">
+  ‹
+</button>
 
-  <span class="month-arrow"
-        onclick="prevMonth()">◀</span>
+<h3 id="monthLabel"></h3>
 
-  <span id="monthLabel"></span>
-
-  <span class="month-arrow"
-        onclick="nextMonth()">▶</span>
-
-</div>
+<button class="month-square"
+        onclick="nextMonth()"
+        title="Next Month">
+  ›
+</button>
 
   <div
     class="calendar"
