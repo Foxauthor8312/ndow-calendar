@@ -88,6 +88,43 @@ h1{
 
 /* MONTH NAVIGATION BUTTONS */
 
+	/* HEADER STATUS */
+
+.title-block h1{
+  margin:0;
+  font-size:26px;
+}
+
+.subtitle{
+  font-size:12px;
+  opacity:.9;
+}
+
+.header-status{
+  margin-top:4px;
+  font-size:11px;
+  opacity:.85;
+}
+
+.dashboard-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+
+.dashboard-btn{
+  padding:8px 14px !important;
+  font-size:13px !important;
+}
+
+.header-time{
+  font-size:11px;
+  font-weight:600;
+  text-align:center;
+  white-space:nowrap;
+}
+
 .month-square{
   width:34px;
   height:34px;
@@ -1616,17 +1653,28 @@ body{
 ======================================== -->
 
 	
-<header>
+<!-- START TITLE BLOCK -->
 
- <div class="title-block">
+</header>
+
+<div class="title-block">
 
   <h1>NDOW Instructor Event Calendar</h1>
 
   <div class="subtitle">
-    A Instructor-maintained Event Reference - see footnote
+    Instructor-maintained Event Reference
+  </div>
+
+  <div class="header-status">
+    Last Updated:
+    <span id="lastUpdated">
+      --
+    </span>
   </div>
 
 </div>
+
+<!-- END TITLE BLOCK -->
 
 
 <!-- START MONTH NAVIGATION -->
@@ -1641,15 +1689,23 @@ body{
     ‹
   </button>
 
+<button
+  class="month-square"
+  onclick="refreshScreen()"
+  title="Refresh"
+>
+  ↻
+</button>	
+
   <h3 id="monthLabel"></h3>
 
   <button
-    class="month-square"
-    onclick="nextMonth()"
-    title="Next Month"
-  >
-    ›
-  </button>
+  class="month-square"
+  onclick="nextMonth()"
+  title="Next Month"
+>
+  ›
+</button>
 
 </div>
 
@@ -1670,43 +1726,28 @@ body{
   Help
 </button>
 
-<button
-  id="dashboardButton"
-  class="admin-button"
-  onclick="openDashboard()"
->
-  My Dashboard
-</button>
-
-	
-</div>
-	
-</header>
-
-<div class="updated-bar">
-
-  <div class="updated-section">
-    <strong>LAST UPDATED:</strong>
-    <span id="lastUpdated">
-      --
-    </span>
-  </div>
+<div class="dashboard-block">
 
   <button
-    class="refresh-screen-btn"
-    onclick="refreshScreen()"
+    id="dashboardButton"
+    class="admin-button dashboard-btn"
+    onclick="openDashboard()"
   >
-    Refresh Screen
+    My Dashboard
   </button>
 
-  <div class="updated-section">
-    <strong>CURRENT DATE/TIME:</strong>
+  <div class="header-time">
     <span id="currentTime">
       --
     </span>
   </div>
 
 </div>
+
+	
+</div>
+	
+</header>
 
 <div
   id="calendarShell"
