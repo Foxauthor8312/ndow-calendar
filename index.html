@@ -6089,11 +6089,11 @@ if(
     'appContent'
   ).style.display = 'block';
 
+  setTimeout(() => {
+
   const savedUser =
     JSON.parse(
-      localStorage.getItem(
-        'user'
-      )
+      localStorage.getItem('user')
     );
 
   if(savedUser){
@@ -6105,6 +6105,8 @@ if(
       savedUser.username;
 
   }
+
+}, 100);
 
   (async () => {
 
