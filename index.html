@@ -7675,6 +7675,12 @@ ${user.role === 'admin' ||
       Release Manager
     </button>
 
+    <button
+      class="admin-button"
+      onclick="openInstructorRequestCenter()">
+      Instructor Request Center
+    </button>
+
   </div>
 
 </div>
@@ -7721,8 +7727,16 @@ ${user.role === 'superuser' ? `
 
   }
 
-}	
-	
+}
+
+function openInstructorRequestCenter(){
+
+  alert(
+    'Instructor Request Center Preview'
+  );
+
+}
+
 function openSystemConsole(){
 
   const modal =
