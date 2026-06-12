@@ -3110,13 +3110,14 @@ console.log(
 );
 
   
-   document.getElementById(
+systemStatus.lastSync =
+  new Date();
+
+document.getElementById(
   'lastUpdated'
 ).innerText =
-  new Date().toLocaleString();
-
-    systemStatus.lastSync =
-      new Date();
+  systemStatus.lastSync
+    .toLocaleString();
 
     systemStatus.syncDuration =
       (
