@@ -304,13 +304,9 @@ const isCompleted =
 if(isCompleted){
 
   console.log(
-    'SKIPPING INSTRUCTOR PAGE:',
+    'COMPLETED EVENT - VERIFYING INSTRUCTORS:',
     event.url
   );
-
-  allEvents.push(event);
-
-  continue;
 
 }
 
