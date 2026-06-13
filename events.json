@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-13T20:43:09.903Z",
+  "lastUpdated": "2026-06-13T22:30:44.082Z",
   "metrics": {
     "finalEvents": 360
   },
@@ -17,9 +17,69 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4394",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Michelle Lopez",
+          "role": "ASSISTANT",
+          "email": "michelleflopez98@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Nia Dippon",
+          "role": "ASSISTANT",
+          "email": "niadippon02@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Caleb Johnson",
+          "role": "ASSISTANT",
+          "email": "calebcjohnson@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Brooke Detommaso",
+          "role": "ASSISTANT",
+          "email": "brookedeto07@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -28,7 +88,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -46,9 +106,69 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4395",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Brooke Detommaso",
+          "role": "ASSISTANT",
+          "email": "brookedeto07@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "NANCY SILVA",
+          "role": "ASSISTANT",
+          "email": "nancysilva082@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Keith Roether",
+          "role": "ASSISTANT",
+          "email": "tufracer@msn.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Magdalina Marinelli",
+          "role": "ASSISTANT",
+          "email": "mlinamarinelli29@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -57,7 +177,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -77,16 +197,11 @@
         {
           "name": "William W Bly Jr",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -110,7 +225,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -130,16 +245,11 @@
         {
           "name": "Brian Lee Schmidt",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -159,16 +269,11 @@
         {
           "name": "Brian Lee Schmidt",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -188,16 +293,11 @@
         {
           "name": "Richard A Raby",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -217,16 +317,11 @@
         {
           "name": "Richard A Raby",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -246,16 +341,11 @@
         {
           "name": "Brian Lee Schmidt",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -275,16 +365,11 @@
         {
           "name": "Florentino Almazan",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -304,16 +389,11 @@
         {
           "name": "Florentino Almazan",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -333,16 +413,11 @@
         {
           "name": "Richard A Raby",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -366,7 +441,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -386,16 +461,11 @@
         {
           "name": "Philip James Hiller",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -415,16 +485,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -444,16 +509,11 @@
         {
           "name": "Philip James Hiller",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -473,16 +533,11 @@
         {
           "name": "Michelle Lopez",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -502,16 +557,11 @@
         {
           "name": "Clint L McGarr",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -531,16 +581,11 @@
         {
           "name": "Treg R Butterfield",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -560,16 +605,11 @@
         {
           "name": "HEATH J KORELL",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -589,16 +629,11 @@
         {
           "name": "Dennis Gordon",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -618,16 +653,11 @@
         {
           "name": "Clint L McGarr",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -647,16 +677,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -676,16 +701,11 @@
         {
           "name": "Treg R Butterfield",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -705,16 +725,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -734,16 +749,11 @@
         {
           "name": "NIKKI L HOOPER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -763,16 +773,11 @@
         {
           "name": "Treg R Butterfield",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -792,16 +797,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -821,16 +821,11 @@
         {
           "name": "Treg R Butterfield",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -850,16 +845,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -879,16 +869,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -908,16 +893,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -937,16 +917,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -966,16 +941,11 @@
         {
           "name": "Claire Clarke",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -995,16 +965,11 @@
         {
           "name": "Claire Clarke",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1028,7 +993,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1052,7 +1017,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1076,7 +1041,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1100,7 +1065,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1124,7 +1089,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1148,7 +1113,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1172,7 +1137,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1192,16 +1157,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1221,16 +1181,11 @@
         {
           "name": "Florentino Almazan",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1248,9 +1203,19 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4438",
       "instructors": [
         {
-          "name": "Keith Randall Roether",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Keith Roether",
           "role": "PRIMARY",
-          "email": "",
+          "email": "tufracer@msn.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -1259,7 +1224,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1279,16 +1244,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1308,16 +1268,11 @@
         {
           "name": "Tyson D Hollis",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1335,9 +1290,29 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4441",
       "instructors": [
         {
-          "name": "Barry E Mattison",
+          "name": "Keith Roether",
+          "role": "ASSISTANT",
+          "email": "tufracer@msn.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Richard Raby",
+          "role": "ASSISTANT",
+          "email": "raraby96707@yahoo.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
           "role": "PRIMARY",
-          "email": "",
+          "email": "lvrcav8tr@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -1346,7 +1321,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1366,16 +1341,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1395,16 +1365,11 @@
         {
           "name": "Kelly R Dean",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1424,16 +1389,11 @@
         {
           "name": "Michael L Fletcher",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1453,16 +1413,11 @@
         {
           "name": "LARRY C ALLEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1482,16 +1437,11 @@
         {
           "name": "Rob E DuFresne",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1511,16 +1461,11 @@
         {
           "name": "Denise Youles",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1540,16 +1485,11 @@
         {
           "name": "Carl W Lackey",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1569,16 +1509,11 @@
         {
           "name": "RAYMOND L POLAK",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1598,16 +1533,11 @@
         {
           "name": "Carl W Lackey",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1627,16 +1557,11 @@
         {
           "name": "William J Sanchez Jr",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1656,16 +1581,11 @@
         {
           "name": "JOHN M VALLEY",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1689,7 +1609,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1709,16 +1629,11 @@
         {
           "name": "LOGAN D KLONICKE",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1742,7 +1657,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1762,16 +1677,11 @@
         {
           "name": "Charles R Ohlandt",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1791,16 +1701,11 @@
         {
           "name": "Richard A Raby",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1820,16 +1725,11 @@
         {
           "name": "Martin G Olson",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1849,16 +1749,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1878,16 +1773,11 @@
         {
           "name": "LARRY G HYSLOP",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1907,16 +1797,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1936,16 +1821,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1965,16 +1845,11 @@
         {
           "name": "Nicole Hamblin",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1994,16 +1869,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2023,16 +1893,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2052,16 +1917,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2081,16 +1941,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2114,7 +1969,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2134,16 +1989,11 @@
         {
           "name": "DONALD W KAMINSKI Jr",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2163,16 +2013,11 @@
         {
           "name": "Philip Spencer",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2196,7 +2041,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2216,16 +2061,11 @@
         {
           "name": "Claire Clarke",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2245,16 +2085,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2274,16 +2109,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2303,16 +2133,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2351,7 +2176,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2371,16 +2196,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2400,16 +2220,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2429,16 +2244,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2462,7 +2272,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2482,16 +2292,11 @@
         {
           "name": "NICHOLAS R MAUS",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2511,16 +2316,11 @@
         {
           "name": "Michelle Lopez",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2540,16 +2340,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2569,16 +2364,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2602,7 +2392,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2622,16 +2412,11 @@
         {
           "name": "Nia Anabela Dippon",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2651,16 +2436,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2680,16 +2460,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2709,16 +2484,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2738,16 +2508,11 @@
         {
           "name": "RAYMOND L POLAK",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2767,16 +2532,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2796,16 +2556,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2825,16 +2580,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2854,16 +2604,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2881,9 +2626,19 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4497",
       "instructors": [
         {
-          "name": "Martin G Olson",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Martin Olson",
           "role": "PRIMARY",
-          "email": "",
+          "email": "mgoinvegas@embarqmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -2892,7 +2647,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2916,7 +2671,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2936,16 +2691,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2965,16 +2715,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2994,16 +2739,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3027,7 +2767,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3047,16 +2787,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3076,16 +2811,11 @@
         {
           "name": "Claire Clarke",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3105,16 +2835,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3134,16 +2859,11 @@
         {
           "name": "Kaluna Albert Aki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3163,16 +2883,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3192,16 +2907,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3221,16 +2931,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3248,9 +2953,69 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4510",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Nia Dippon",
+          "role": "ASSISTANT",
+          "email": "niadippon02@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Brooke Detommaso",
+          "role": "ASSISTANT",
+          "email": "brookedeto07@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Magdalina Marinelli",
+          "role": "ASSISTANT",
+          "email": "mlinamarinelli29@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Caleb Johnson",
+          "role": "ASSISTANT",
+          "email": "calebcjohnson@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -3259,7 +3024,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3279,16 +3044,11 @@
         {
           "name": "LOGAN D KLONICKE",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3308,16 +3068,11 @@
         {
           "name": "TANNER J COLBY",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3341,7 +3096,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3450,7 +3205,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3470,16 +3225,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3499,16 +3249,11 @@
         {
           "name": "Martin G Olson",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3528,16 +3273,11 @@
         {
           "name": "Richard A Raby",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3557,16 +3297,11 @@
         {
           "name": "Kingston A Wulff",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3586,16 +3321,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3615,16 +3345,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3644,16 +3369,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3673,16 +3393,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3706,7 +3421,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3730,7 +3445,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3750,16 +3465,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3779,16 +3489,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3808,16 +3513,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3837,16 +3537,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3866,16 +3561,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3895,16 +3585,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3924,16 +3609,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3953,16 +3633,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3982,16 +3657,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4011,16 +3681,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4038,9 +3703,249 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4535",
       "instructors": [
         {
-          "name": "Michelle Lopez",
-          "role": "PRIMARY",
-          "email": "",
+          "name": "Martin Olson",
+          "role": "ASSISTANT",
+          "email": "mgoinvegas@embarqmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Claude Nielsen",
+          "role": "ASSISTANT",
+          "email": "intheoutdoorslv@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Lauren MacLeod",
+          "role": "ASSISTANT",
+          "email": "laurenmacleod12@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Claire Clarke",
+          "role": "ASSISTANT",
+          "email": "claire11clarke@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Harold Duhe",
+          "role": "ASSISTANT",
+          "email": "mnduhe@yahoo.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
+          "role": "ASSISTANT",
+          "email": "abbey.czar@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Magdalina Marinelli",
+          "role": "ASSISTANT",
+          "email": "mlinamarinelli29@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Nia Dippon",
+          "role": "ASSISTANT",
+          "email": "niadippon02@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Brooke Detommaso",
+          "role": "ASSISTANT",
+          "email": "brookedeto07@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Caleb Johnson",
+          "role": "ASSISTANT",
+          "email": "calebcjohnson@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Matthew Caputo",
+          "role": "ASSISTANT",
+          "email": "matthewcaputo513@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Rhyan Culbertson",
+          "role": "ASSISTANT",
+          "email": "rjcul@hotmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Cynthia Dixon",
+          "role": "ASSISTANT",
+          "email": "dixcyn.5244@yahoo.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Fiore",
+          "role": "ASSISTANT",
+          "email": "jsfiore@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Terry Jackson",
+          "role": "ASSISTANT",
+          "email": "stomataindustries@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Kaitlyn Jameson",
+          "role": "ASSISTANT",
+          "email": "willsk55@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Samuel Jameson",
+          "role": "ASSISTANT",
+          "email": "samjameson12@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "John Mackey",
+          "role": "ASSISTANT",
+          "email": "john@johnmackeyphotography.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Bryan Merida-Merida",
+          "role": "ASSISTANT",
+          "email": "brymerida1@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Peggy Moore",
+          "role": "ASSISTANT",
+          "email": "moorepeggysue@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "William Moore",
+          "role": "ASSISTANT",
+          "email": "firewater5150@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Keith Roether",
+          "role": "ASSISTANT",
+          "email": "tufracer@msn.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "NANCY SILVA",
+          "role": "ASSISTANT",
+          "email": "nancysilva082@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -4049,7 +3954,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4069,16 +3974,11 @@
         {
           "name": "Darrel R Leavitt",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4098,16 +3998,11 @@
         {
           "name": "Brooke Kristen Detommaso",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4127,16 +4022,11 @@
         {
           "name": "Nicole Hamblin",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4156,16 +4046,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4185,16 +4070,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4214,16 +4094,11 @@
         {
           "name": "LOGAN D KLONICKE",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4247,7 +4122,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4271,7 +4146,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4291,16 +4166,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4320,16 +4190,11 @@
         {
           "name": "Brooke Kristen Detommaso",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.026Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4349,16 +4214,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4382,7 +4242,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4400,9 +4260,49 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4548",
       "instructors": [
         {
-          "name": "Keith Randall Roether",
+          "name": "Jackie Brooks",
+          "role": "ASSISTANT",
+          "email": "jbwwnam70.71@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Richard Raby",
+          "role": "ASSISTANT",
+          "email": "raraby96707@yahoo.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Donald Propst",
+          "role": "ASSISTANT",
+          "email": "thequacksmacker1@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Keith Roether",
           "role": "PRIMARY",
-          "email": "",
+          "email": "tufracer@msn.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -4411,7 +4311,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4431,16 +4331,11 @@
         {
           "name": "RAYMOND L POLAK",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4460,16 +4355,11 @@
         {
           "name": "LOGAN D KLONICKE",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4489,16 +4379,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4518,16 +4403,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4547,16 +4427,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4580,7 +4455,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4604,7 +4479,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.514Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4624,16 +4499,11 @@
         {
           "name": "John M Craig",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4653,16 +4523,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4686,7 +4551,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4706,16 +4571,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4735,16 +4595,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4764,16 +4619,11 @@
         {
           "name": "Magdalina Marinelli",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4793,16 +4643,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4822,16 +4667,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4851,16 +4691,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4880,16 +4715,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4909,16 +4739,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4938,16 +4763,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4967,16 +4787,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4996,16 +4811,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5029,7 +4839,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5049,16 +4859,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5078,16 +4883,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5111,7 +4911,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5135,7 +4935,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5159,7 +4959,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5183,7 +4983,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5207,7 +5007,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5227,16 +5027,11 @@
         {
           "name": "Keith Randall Roether",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5256,16 +5051,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5285,16 +5075,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5318,7 +5103,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5342,7 +5127,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5366,7 +5151,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5386,16 +5171,11 @@
         {
           "name": "Zachary M Olson",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5415,16 +5195,11 @@
         {
           "name": "Richard A Raby",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5483,7 +5258,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5503,16 +5278,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5532,16 +5302,11 @@
         {
           "name": "LOGAN D KLONICKE",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5561,16 +5326,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5590,16 +5350,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5619,16 +5374,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5648,16 +5398,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5677,16 +5422,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5706,16 +5446,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5735,16 +5470,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5768,7 +5498,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5792,7 +5522,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5816,7 +5546,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5840,7 +5570,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5860,16 +5590,11 @@
         {
           "name": "Claire Clarke",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5887,9 +5612,29 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4601",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Harold Duhe",
+          "role": "ASSISTANT",
+          "email": "mnduhe@yahoo.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -5898,7 +5643,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5916,9 +5661,19 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4602",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -5927,7 +5682,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5951,7 +5706,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5969,9 +5724,39 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4604",
       "instructors": [
         {
-          "name": "Caleb Christian Johnson",
+          "name": "Magdalina Marinelli",
+          "role": "ASSISTANT",
+          "email": "mlinamarinelli29@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Caleb Johnson",
           "role": "PRIMARY",
-          "email": "",
+          "email": "calebcjohnson@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "PRIMARY",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Lauren MacLeod",
+          "role": "PRIMARY",
+          "email": "laurenmacleod12@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -5980,7 +5765,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6000,16 +5785,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6029,16 +5809,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6056,9 +5831,49 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4608",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Brooke Detommaso",
+          "role": "ASSISTANT",
+          "email": "brookedeto07@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Caleb Johnson",
+          "role": "ASSISTANT",
+          "email": "calebcjohnson@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -6067,7 +5882,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6085,9 +5900,39 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4609",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Nia Dippon",
+          "role": "ASSISTANT",
+          "email": "niadippon02@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -6096,7 +5941,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6116,16 +5961,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6145,16 +5985,11 @@
         {
           "name": "Claire Clarke",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6178,7 +6013,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6202,7 +6037,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6222,16 +6057,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6251,16 +6081,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6280,16 +6105,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6313,7 +6133,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6333,16 +6153,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6362,16 +6177,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6391,16 +6201,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6420,16 +6225,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6449,16 +6249,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6497,7 +6292,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6517,16 +6312,11 @@
         {
           "name": "Martin G Olson",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6546,16 +6336,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6579,7 +6364,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6603,7 +6388,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6623,16 +6408,11 @@
         {
           "name": "Gilbert G Lenz",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6652,16 +6432,11 @@
         {
           "name": "Darrel R Leavitt",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6685,7 +6460,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6709,7 +6484,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6733,7 +6508,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6753,16 +6528,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6782,16 +6552,11 @@
         {
           "name": "Florentino Almazan",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6815,7 +6580,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6839,7 +6604,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6857,9 +6622,19 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4640",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -6868,7 +6643,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6888,16 +6663,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6917,16 +6687,11 @@
         {
           "name": "Marcial L Evertsen",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6946,16 +6711,11 @@
         {
           "name": "LOGAN D KLONICKE",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6975,16 +6735,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7008,7 +6763,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7077,7 +6832,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7097,16 +6852,11 @@
         {
           "name": "David Fulton",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7126,16 +6876,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7155,16 +6900,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7184,16 +6924,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7213,16 +6948,11 @@
         {
           "name": "Nicole St John",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7246,7 +6976,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7270,7 +7000,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7294,7 +7024,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7318,7 +7048,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7342,7 +7072,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7366,7 +7096,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7390,7 +7120,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7410,16 +7140,11 @@
         {
           "name": "Michelle Lopez",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7443,7 +7168,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7463,16 +7188,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7621,7 +7341,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7641,16 +7361,11 @@
         {
           "name": "STEVEN C ALEXANDER",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7670,16 +7385,11 @@
         {
           "name": "Gregory E McCluskey",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7703,7 +7413,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7723,16 +7433,11 @@
         {
           "name": "Abbey L Czarnecki",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7781,7 +7486,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7805,7 +7510,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7829,7 +7534,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7853,7 +7558,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7877,7 +7582,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7897,16 +7602,11 @@
         {
           "name": "WAYNE R TIETJEN",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7930,7 +7630,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7954,7 +7654,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7993,7 +7693,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8017,7 +7717,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8041,7 +7741,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8080,7 +7780,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8119,7 +7819,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.514Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8158,7 +7858,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8182,7 +7882,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8206,7 +7906,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8230,7 +7930,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8254,7 +7954,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8278,7 +7978,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.514Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8302,7 +8002,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8326,7 +8026,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8350,7 +8050,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.514Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8374,7 +8074,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8398,7 +8098,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8422,7 +8122,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8446,7 +8146,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8466,16 +8166,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8495,16 +8190,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8524,16 +8214,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8553,16 +8238,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8582,16 +8262,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8611,16 +8286,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8640,16 +8310,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8669,16 +8334,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8698,16 +8358,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8731,7 +8386,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8751,16 +8406,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8780,16 +8430,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8809,16 +8454,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8838,16 +8478,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8867,16 +8502,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8896,16 +8526,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8925,16 +8550,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8954,16 +8574,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8983,16 +8598,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9012,16 +8622,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:27.598Z",
+        "scrapedAt": "2026-06-13T22:26:21.794Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9041,16 +8646,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9070,16 +8670,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9099,16 +8694,11 @@
         {
           "name": "Jeanette Schmid Bennett",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9128,16 +8718,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:05.128Z",
+        "scrapedAt": "2026-06-13T22:24:08.025Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9161,7 +8746,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9185,7 +8770,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9209,7 +8794,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9229,16 +8814,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.161Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9258,16 +8838,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9287,16 +8862,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:39:51.162Z",
+        "scrapedAt": "2026-06-13T22:23:00.375Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9316,16 +8886,11 @@
         {
           "name": "Margaret Stewart Lord",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:14.688Z",
+        "scrapedAt": "2026-06-13T22:25:11.057Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9349,7 +8914,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.514Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9373,7 +8938,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9397,7 +8962,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9421,7 +8986,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9445,7 +9010,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9469,7 +9034,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9493,7 +9058,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9517,7 +9082,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9541,7 +9106,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9565,7 +9130,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9589,7 +9154,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9613,7 +9178,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:42:58.840Z",
+        "scrapedAt": "2026-06-13T22:30:32.426Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9631,9 +9196,39 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4736",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "James Dillard",
+          "role": "ASSISTANT",
+          "email": "jimdillard@cox.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "ROBERT BOURDAGE",
+          "role": "ASSISTANT",
+          "email": "rjbourdage@comcast.net",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -9642,7 +9237,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9662,16 +9257,11 @@
         {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
-          "email": "",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
+          "email": ""
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9695,7 +9285,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:40:50.567Z",
+        "scrapedAt": "2026-06-13T22:27:26.143Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9719,7 +9309,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9737,9 +9327,19 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4741",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -9748,7 +9348,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9772,7 +9372,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9790,9 +9390,19 @@
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4743",
       "instructors": [
         {
-          "name": "Abbey L Czarnecki",
+          "name": "Barry Mattison",
+          "role": "ASSISTANT",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Abbey Czarnecki",
           "role": "PRIMARY",
-          "email": "",
+          "email": "abbey.czar@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -9801,7 +9411,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9825,7 +9435,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.514Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9849,7 +9459,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9873,7 +9483,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9897,7 +9507,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9921,7 +9531,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9945,7 +9555,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9969,7 +9579,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10008,7 +9618,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10032,7 +9642,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10056,7 +9666,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10095,7 +9705,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10134,7 +9744,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10163,7 +9773,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10187,7 +9797,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10211,7 +9821,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10250,7 +9860,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:51.923Z",
+        "scrapedAt": "2026-06-13T22:29:37.537Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10299,7 +9909,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-13T20:41:11.513Z",
+        "scrapedAt": "2026-06-13T22:28:32.722Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
