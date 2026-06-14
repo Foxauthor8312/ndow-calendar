@@ -1274,6 +1274,16 @@ body{
   font-size:14px;
   line-height:1.5;
   color:#1f2937;
+
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:2px solid #dbe3ec;
+}
+
+.dashboard-section-divider{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid #e5e7eb;
 }
 
 #loginScreen{
@@ -7733,15 +7743,14 @@ async function loadDashboard(){
     <button
       class="admin-button"
       onclick="openInstructorRequestCenter()">
-      Instructor Requests
+      Instructor Assignment Requests
     </button>
 
   </div>
 
 </div>
 
-
-<div class="dashboard-section">
+<div class="dashboard-section dashboard-section-divider">
 
   <h3 class="dashboard-section-title">
     Administrator Tools
@@ -7816,7 +7825,7 @@ async function loadDashboard(){
 
 </div>
 
-<div class="dashboard-section">
+<div class="dashboard-section dashboard-section-divider">
 
   <h3 class="dashboard-section-title">
     System Tools
@@ -10134,7 +10143,7 @@ function overrideCategory(
   id="adminRequestsBtn"
   onclick="openAdminSection('instructorRequests')"
 >
-  Requests
+  Assignment Requests
 </button>
 
 <button
@@ -10460,7 +10469,9 @@ function overrideCategory(
 >
 
   <h2>
-    Instructor Requests
+   <h2>
+  Instructor Assignment Requests
+</h2>
   </h2>
 
   <div
