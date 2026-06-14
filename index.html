@@ -1723,7 +1723,7 @@ body{
         class="admin-button dashboard-btn"
         onclick="openDashboard()"
       >
-        My Dashboard
+        Dashboard
       </button>
 
       <div class="header-time">
@@ -7662,6 +7662,18 @@ async function loadDashboard(){
         ) || '{}'
       );
 
+const greeting =
+  document.getElementById(
+    'dashboardUserGreeting'
+  );
+
+if(greeting){
+
+  greeting.textContent =
+    `Welcome, ${user.name || 'User'}`;
+
+}
+	  
     const token =
       localStorage.getItem(
         'token'
@@ -11367,6 +11379,15 @@ geographic analysis.
     ">
       Dashboard
     </h2>
+
+	  <div id="dashboardUserGreeting"
+     style="
+       margin:-12px 0 20px 0;
+       color:#6b7280;
+       font-size:14px;
+       font-weight:500;
+     ">
+</div>
 
     <div id="dashboardContent">
 
