@@ -1280,6 +1280,14 @@ body{
   border-bottom:2px solid #dbe3ec;
 }
 
+.dashboard-summary-line{
+  font-size:13px;
+  color:#374151;
+  padding:4px 0 10px 0;
+  border-bottom:1px solid #dbe5ef;
+  margin-bottom:12px;
+}	
+
 .dashboard-section-divider{
   margin-top:18px;
   padding-top:18px;
@@ -7723,37 +7731,41 @@ if(greeting){
 
     container.innerHTML = `
 
-<div class="dashboard-summary">
+<div class="dashboard-summary-line">
 
-  <div>
-    Events .............. <strong>
-      ${result.totals.events || 0}
-    </strong>
-  </div>
+  2026 Totals |
 
-  <div>
-    Hours ............... <strong>
-      ${Number(
-        result.totals.hours || 0
-      ).toFixed(1)}
-    </strong>
-  </div>
+  Events:
+  <strong>
+    ${result.totals.events || 0}
+  </strong>
 
-  <div>
-    Miles ............... <strong>
-      ${Number(
-        result.totals.mileage || 0
-      ).toFixed(0)}
-    </strong>
-  </div>
+  |
 
-  <div>
-    Instructor Value ..... <strong>
-      $${Number(
-        result.totals.serviceValue || 0
-      ).toLocaleString()}
-    </strong>
-  </div>
+  Hours:
+  <strong>
+    ${Number(
+      result.totals.hours || 0
+    ).toFixed(1)}
+  </strong>
+
+  |
+
+  Miles:
+  <strong>
+    ${Number(
+      result.totals.mileage || 0
+    ).toFixed(0)}
+  </strong>
+
+  |
+
+  Volunteer Value:
+  <strong>
+    $${Number(
+      result.totals.serviceValue || 0
+    ).toLocaleString()}
+  </strong>
 
 </div>
 
