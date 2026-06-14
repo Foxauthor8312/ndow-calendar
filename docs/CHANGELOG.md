@@ -279,3 +279,23 @@ admin-content container.
 Status:
 Ready for panel-based navigation.
 
+UPDATE DASHBOARD 6-13
+
+Dashboard Refactor Completed
+
+✓ Renamed My Instructor Dashboard → Dashboard
+✓ Dashboard promoted to primary application hub
+✓ Added direct launchers for:
+    - User Management
+    - Program Updates
+    - Contacts
+    - Help Manager
+    - Analytics
+    - Categories
+    - Release Management
+    - Instructor Requests
+    - System Console
+✓ Admin modal retained as backend container
+✓ All launcher buttons verified
+✓ No functionality moved or rewritten
+
