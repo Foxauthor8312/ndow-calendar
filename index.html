@@ -1294,6 +1294,21 @@ body{
   border-top:1px solid #e5e7eb;
 }
 
+.program-summary-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+  gap:4px 24px;
+  margin-bottom:12px;
+}
+
+.program-summary-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:#4b5563;
+}	
+
 #loginScreen{
   transition:opacity .15s ease;
 }
@@ -7735,6 +7750,28 @@ if(greeting){
 
     }
 
+	  const programHtml =
+  result.programSummary
+    .map(([name,data]) => `
+
+      <div class="program-summary-row">
+
+        <span>
+          ${name}
+        </span>
+
+        <span>
+          ${data.events} /
+          ${Number(
+            data.hours
+          ).toFixed(1)}
+        </span>
+
+      </div>
+
+    `)
+    .join('');
+
     container.innerHTML = `
 
 <div class="dashboard-summary-line">
@@ -7775,6 +7812,27 @@ if(greeting){
 
 </div>
 
+<div id="dashboardProgramSummary">
+
+  <div
+    style="
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:6px;
+      color:#374151;
+    "
+  >
+    Program Activity (Events / Hours)
+  </div>
+
+  <div class="program-summary-grid">
+
+    ${programHtml}
+
+  </div>
+
+</div>
+
 <div class="dashboard-section">
 
   <h3 class="dashboard-section-title">
@@ -7786,7 +7844,7 @@ if(greeting){
   style="
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:82px;
   "
 >
 
@@ -7814,7 +7872,7 @@ if(greeting){
   style="
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:8px;
   "
 >
 
@@ -7905,7 +7963,7 @@ if(greeting){
   style="
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:8px;
   "
 >
 
