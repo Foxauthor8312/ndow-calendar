@@ -7752,11 +7752,11 @@ if(greeting){
 
   <div class="dashboard-tool-list">
 
-    <button
-      class="admin-button"
-      onclick="openInstructorRequestCenter()">
-      Instructor Assignment Requests
-    </button>
+<button
+  class="admin-button"
+  onclick="openInstructorRequestCenter()">
+  Instructor Event Requests
+</button>
 
   </div>
 
@@ -7778,8 +7778,16 @@ if(greeting){
       ">
       User Management
     </button>
+<button
+  class="admin-button"
+  onclick="
+    closeDashboard();
+    openProgramUpdates();
+  ">
+  Program Updates
+</button>
 
-    <button
+	<button
       class="admin-button"
       onclick="
         closeDashboard();
