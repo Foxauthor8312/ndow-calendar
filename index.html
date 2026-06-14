@@ -7721,6 +7721,12 @@ if(greeting){
     const result =
       await response.json();
 
+	  console.log(
+  'Program Summary:',
+  result.programSummary
+);
+	  
+
     if(!result.success){
 
       throw new Error(
