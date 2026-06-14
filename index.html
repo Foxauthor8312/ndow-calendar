@@ -4784,14 +4784,41 @@ function openHoursModal(){
     >
   </label>
 
-  <label>
-    Additional Stops
-    <input
-      type="text"
-      id="routeStops"
-      style="width:100%;"
-    >
-  </label>
+ <label>
+  Stop 1
+  <input
+    type="text"
+    id="routeStop1"
+    style="width:100%;"
+  >
+</label>
+
+<label>
+  Stop 2
+  <input
+    type="text"
+    id="routeStop2"
+    style="width:100%;"
+  >
+</label>
+
+<label>
+  Stop 3
+  <input
+    type="text"
+    id="routeStop3"
+    style="width:100%;"
+  >
+</label>
+
+<label>
+  Stop 4
+  <input
+    type="text"
+    id="routeStop4"
+    style="width:100%;"
+  >
+</label>
 
   <label style="
     display:flex;
@@ -4799,13 +4826,13 @@ function openHoursModal(){
     gap:8px;
     margin-top:10px;
   ">
-    <input
-      type="checkbox"
-      id="routeRoundTrip"
-      checked
-    >
-    Round Trip
-  </label>
+   <div style="
+  margin-top:8px;
+  color:#6b7280;
+  font-size:12px;
+">
+  Mileage is automatically calculated as a round trip.
+</div>
 
   <button
     type="button"
@@ -4948,10 +4975,27 @@ async function calculateRoute(){
         'routeDestination'
       ).value.trim();
 
-    const stops =
-      document.getElementById(
-        'routeStops'
-      )?.value || '';
+    const stops = [
+
+  document.getElementById(
+    'routeStop1'
+  )?.value || '',
+
+  document.getElementById(
+    'routeStop2'
+  )?.value || '',
+
+  document.getElementById(
+    'routeStop3'
+  )?.value || '',
+
+  document.getElementById(
+    'routeStop4'
+  )?.value || ''
+
+].filter(
+  stop => stop.trim()
+);
 
     const roundTrip =
       document.getElementById(
@@ -5009,19 +5053,12 @@ document.getElementById(
    <br>
 
    Travel Time:
-   ${result.travelHours} hours`;
-	  
-  } catch(err){
+   ${result.travelHours} hours
 
-    console.error(err);
+   <br>
 
-    alert(
-      'Route service unavailable.'
-    );
-
-  }
-
-}
+   Stops:
+   ${result.waypointCount - 2}`;
 
 function attachHoursCalculations(){
 
@@ -5274,9 +5311,27 @@ break_minutes: breakHours,
   selectedEvent.location ||
   '',
 route_stops:
-  document.getElementById(
-    'routeStops'
-  )?.value || '',
+  JSON.stringify([
+
+    document.getElementById(
+      'routeStop1'
+    )?.value || '',
+
+    document.getElementById(
+      'routeStop2'
+    )?.value || '',
+
+    document.getElementById(
+      'routeStop3'
+    )?.value || '',
+
+    document.getElementById(
+      'routeStop4'
+    )?.value || ''
+
+  ].filter(
+    stop => stop.trim()
+  )),
 	
   route_round_trip:
     document.getElementById(
