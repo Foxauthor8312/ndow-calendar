@@ -4977,30 +4977,25 @@ async function calculateRoute(){
 
     const stops = [
 
-  document.getElementById(
-    'routeStop1'
-  )?.value || '',
-
-  document.getElementById(
-    'routeStop2'
-  )?.value || '',
-
-  document.getElementById(
-    'routeStop3'
-  )?.value || '',
-
-  document.getElementById(
-    'routeStop4'
-  )?.value || ''
-
-].filter(
-  stop => stop.trim()
-);
-
-    const roundTrip =
       document.getElementById(
-        'routeRoundTrip'
-      )?.checked || false;
+        'routeStop1'
+      )?.value || '',
+
+      document.getElementById(
+        'routeStop2'
+      )?.value || '',
+
+      document.getElementById(
+        'routeStop3'
+      )?.value || '',
+
+      document.getElementById(
+        'routeStop4'
+      )?.value || ''
+
+    ].filter(
+      stop => stop.trim()
+    );
 
     const response =
       await fetch(
@@ -5020,8 +5015,7 @@ async function calculateRoute(){
 
             origin,
             destination,
-            stops,
-            roundTrip
+            stops
 
           })
 
@@ -5031,34 +5025,47 @@ async function calculateRoute(){
 
     const result =
       await response.json();
-document.getElementById(
-  'mileage'
-).value =
-  result.miles;
 
-document.getElementById(
-  'travelHours'
-).value =
-  result.travelHours;
+    document.getElementById(
+      'mileage'
+    ).value =
+      result.miles;
 
-document.getElementById(
-  'routeResult'
-).innerHTML =
+    document.getElementById(
+      'travelHours'
+    ).value =
+      result.travelHours;
 
-  `<strong>Route Calculated</strong><br>
+    document.getElementById(
+      'routeResult'
+    ).innerHTML =
 
-   Mileage:
-   ${result.miles} miles
+      `<strong>Route Calculated</strong><br>
 
-   <br>
+       Mileage:
+       ${result.miles} miles
 
-   Travel Time:
-   ${result.travelHours} hours
+       <br>
 
-   <br>
+       Travel Time:
+       ${result.travelHours} hours
 
-   Stops:
-   ${result.waypointCount - 2}`;
+       <br>
+
+       Stops:
+       ${result.waypointCount - 2}`;
+
+  } catch(err){
+
+    console.error(err);
+
+    alert(
+      'Route calculation failed.'
+    );
+
+  }
+
+}
 
 function attachHoursCalculations(){
 
