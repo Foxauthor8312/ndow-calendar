@@ -1297,27 +1297,31 @@ body{
 .program-summary-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  column-gap:24px;
-  row-gap:4px;
-  margin-bottom:14px;
+  column-gap:18px;
+  row-gap:2px;
+  margin-bottom:10px;
 }
 
 .program-summary-row{
-  display:grid;
-  grid-template-columns:1fr auto;
+  display:flex;
   align-items:center;
-  gap:10px;
   font-size:12px;
   color:#4b5563;
 }
 
-.program-summary-row span:first-child{
-  overflow:hidden;
-  text-overflow:ellipsis;
+.program-summary-name{
   white-space:nowrap;
 }
 
-.program-summary-row span:last-child{
+.program-summary-dots{
+  flex:1;
+  border-bottom:1px dotted #9ca3af;
+  margin:0 8px;
+  transform:translateY(-1px);
+}
+
+.program-summary-value{
+  white-space:nowrap;
   font-weight:600;
   color:#374151;
 }
@@ -7766,18 +7770,21 @@ if(greeting){
 	  const programHtml =
   result.programSummary
     .map(([name,data]) => `
+	
 
       <div class="program-summary-row">
 
-        <span>
+        <span class="program-summary-name">
           ${name}
         </span>
 
-        <span>
-			${data.events} Events •
-			${Number(
-			  data.hours
-			).toFixed(1)} Hrs
+        <span class="program-summary-dots">
+        </span>
+
+        <span class="program-summary-value">
+          ${data.events}/${Number(
+            data.hours
+          ).toFixed(1)}
         </span>
 
       </div>
@@ -7835,7 +7842,7 @@ if(greeting){
       color:#374151;
     "
   >
-    Program Activity
+    Program Activity (Events/Hours)
   </div>
 
   <div class="program-summary-grid">
