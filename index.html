@@ -4706,16 +4706,25 @@ function openHoursModal(){
         >
       </label>
 
-      <label>
-        Break Minutes
-        <input
-          type="number"
-          id="hoursBreak"
-          value="0"
-          min="0"
-          style="width:100%;"
-        >
-      </label>
+ <label>
+  Break Time
+
+  <select
+    id="hoursBreak"
+    style="width:100%;"
+  >
+    <option value="0">0.0 Hours</option>
+    <option value="0.5">0.5 Hours</option>
+    <option value="1">1.0 Hours</option>
+    <option value="1.5">1.5 Hours</option>
+    <option value="2">2.0 Hours</option>
+    <option value="2.5">2.5 Hours</option>
+    <option value="3">3.0 Hours</option>
+    <option value="3.5">3.5 Hours</option>
+    <option value="4">4.0 Hours</option>
+  </select>
+
+</label>
 
       <label>
         Travel Hours
@@ -4937,12 +4946,12 @@ function calculateHours(){
       'hoursEnd'
     ).value;
 
-  const breakMinutes =
-    Number(
-      document.getElementById(
-        'hoursBreak'
-      ).value || 0
-    );
+ const breakHours =
+  Number(
+    document.getElementById(
+      'hoursBreak'
+    ).value || 0
+  );
 
   const error =
     document.getElementById(
@@ -4985,20 +4994,20 @@ function calculateHours(){
   }
 
   let hours =
-    (endDate - startDate)
-    / 3600000;
+  (endDate - startDate)
+  / 3600000;
 
-  hours -=
-    breakMinutes / 60;
+hours -=
+  breakHours;
 
-  if(hours <= 0){
+if(hours <= 0){
 
-    error.textContent =
-      'Instructor hours must be greater than zero.';
+  error.textContent =
+    'Instructor hours must be greater than zero.';
 
-    return;
+  return;
 
-  }
+}
 
   const value =
   hours * SERVICE_VALUE_RATE;
@@ -5068,12 +5077,12 @@ function showHoursConfirmation(){
       'hoursEnd'
     ).value;
 
-  const breakMinutes =
-    Number(
-      document.getElementById(
-        'hoursBreak'
-      ).value || 0
-    );
+  const breakHours =
+  Number(
+    document.getElementById(
+      'hoursBreak'
+    ).value || 0
+  );
 
   const travelHours =
     Number(
@@ -5105,14 +5114,14 @@ function showHoursConfirmation(){
   const endDate =
     new Date(`2000-01-01T${end}`);
 
-  let volunteerHours =
-    (endDate - startDate)
-    / 3600000;
+ let volunteerHours =
+  (endDate - startDate)
+  / 3600000;
 
-  volunteerHours -=
-    breakMinutes / 60;
+volunteerHours -=
+  breakHours;
 
-  const serviceValue =
+const serviceValue =
   volunteerHours *
   SERVICE_VALUE_RATE;
 
@@ -5129,9 +5138,9 @@ window.pendingHoursEntry = {
   event_date: selectedEvent.date,
   location: selectedEvent.location,
 
-  start_time: start,
-  end_time: end,
-  break_minutes: breakMinutes,
+start_time: start,
+end_time: end,
+break_minutes: breakHours,
 
   travel_hours: travelHours,
   mileage: mileage,
@@ -5223,8 +5232,8 @@ route_stops:
       </div>
 
       <div>
-        Break Minutes:
-        <strong>${breakMinutes}</strong>
+        Break Time (Hours):
+       <strong>${breakHours}</strong>
       </div>
 
       <div>
