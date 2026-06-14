@@ -7752,11 +7752,14 @@ if(greeting){
 
   <div class="dashboard-tool-list">
 
-<button
-  class="admin-button"
-  onclick="openInstructorRequestCenter()">
-  Instructor Event Requests
-</button>
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openAssignmentRequests();
+      ">
+      Instructor Event Requests
+    </button>
 
   </div>
 
@@ -7774,20 +7777,30 @@ if(greeting){
       class="admin-button"
       onclick="
         closeDashboard();
+        openAssignmentRequests();
+      ">
+      Assignment Requests
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openInstructorRequestCenter();
+      ">
+      Instructor Request Center
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
         openUserManagement();
       ">
       User Management
     </button>
-<button
-  class="admin-button"
-  onclick="
-    closeDashboard();
-    openProgramUpdates();
-  ">
-  Program Updates
-</button>
 
-	<button
+    <button
       class="admin-button"
       onclick="
         closeDashboard();
@@ -7864,7 +7877,6 @@ if(greeting){
 </div>
 
 `;
-
   }catch(err){
 
     console.error(err);
