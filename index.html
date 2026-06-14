@@ -6732,6 +6732,20 @@ function openUserManagement(){
 
 }
 
+function openAssignmentRequests(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection(
+      'instructorRequests'
+    );
+
+  }, 100);
+
+}
+	
 async function loadInstructorRequests(){
 
   const list =
@@ -7277,7 +7291,6 @@ async function openReleaseManager(){
   await loadReleaseManager();
 
 }
-
 function closeReleaseManager(){
 
   const modal =
