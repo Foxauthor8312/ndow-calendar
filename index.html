@@ -4987,22 +4987,30 @@ async function calculateRoute(){
 
     const result =
       await response.json();
+document.getElementById(
+  'mileage'
+).value =
+  result.miles;
+
+document.getElementById(
+  'travelHours'
+).value =
+  result.travelHours;
 
 document.getElementById(
   'routeResult'
 ).innerHTML =
 
-  `<strong>Geocoded Successfully</strong><br>
+  `<strong>Route Calculated</strong><br>
 
-   Origin:
-   ${result.originCoords?.lat},
-   ${result.originCoords?.lng}
+   Mileage:
+   ${result.miles} miles
 
-   <br><br>
+   <br>
 
-   Destination:
-   ${result.destinationCoords?.lat},
-   ${result.destinationCoords?.lng}`;
+   Travel Time:
+   ${result.travelHours} hours`;
+	  
   } catch(err){
 
     console.error(err);
