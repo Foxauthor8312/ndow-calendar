@@ -1296,19 +1296,32 @@ body{
 
 .program-summary-grid{
   display:grid;
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-  gap:4px 24px;
-  margin-bottom:12px;
+  grid-template-columns:1fr 1fr;
+  column-gap:24px;
+  row-gap:4px;
+  margin-bottom:14px;
 }
 
 .program-summary-row{
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:10px;
   font-size:12px;
   color:#4b5563;
-}	
+}
 
+.program-summary-row span:first-child{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.program-summary-row span:last-child{
+  font-weight:600;
+  color:#374151;
+}
+	
 #loginScreen{
   transition:opacity .15s ease;
 }
@@ -7761,10 +7774,10 @@ if(greeting){
         </span>
 
         <span>
-          ${data.events} /
-          ${Number(
-            data.hours
-          ).toFixed(1)}
+			${data.events} Events •
+			${Number(
+			  data.hours
+			).toFixed(1)} Hrs
         </span>
 
       </div>
@@ -7822,7 +7835,7 @@ if(greeting){
       color:#374151;
     "
   >
-    Program Activity (Events / Hours)
+    Program Activity
   </div>
 
   <div class="program-summary-grid">
