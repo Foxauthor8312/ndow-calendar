@@ -4742,9 +4742,20 @@ function openHoursModal(){
 
 <!-- ROUTE SECTION START -->
 
-<div class="route-section">
+<div class="route-section" style="
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  background:#f9fafb;
+">
 
-  <h4>Travel Route</h4>
+  <h4 style="
+    margin:0 0 10px 0;
+    color:#374151;
+  ">
+    Travel Route
+  </h4>
 
   <label>
     Origin Address
@@ -4773,57 +4784,6 @@ function openHoursModal(){
     >
   </label>
 
-  <label>
-    <input
-      type="checkbox"
-      id="routeRoundTrip"
-      checked
-    >
-    Round Trip
-  </label>
-
-</div>
-
-<!-- ROUTE SECTION END -->
-
-<label>
-  Travel Notes
-
-<div style="
-  margin:12px 0;
-  padding:12px;
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  background:#f9fafb;
-">
-
-  <h4 style="
-    margin:0 0 10px 0;
-    color:#374151;
-  ">
-    Travel Route
-  </h4>
-
-  <label>
-    Origin
-    <input
-      type="text"
-      id="routeOrigin"
-      placeholder="Default profile location"
-      style="width:100%;"
-    >
-  </label>
-
-  <label style="margin-top:8px;display:block;">
-    Destination
-    <input
-      type="text"
-      id="routeDestination"
-      placeholder="Event location"
-      style="width:100%;"
-    >
-  </label>
-
   <label style="
     display:flex;
     align-items:center;
@@ -4838,108 +4798,91 @@ function openHoursModal(){
     Round Trip
   </label>
 
-  <button
-    type="button"
-    onclick="generateRoute()"
-    style="
-      margin-top:10px;
-      padding:8px 14px;
-    "
-  >
-    Generate Route
-  </button>
+</div>
 
-  <div
-    id="routePreview"
-    style="
-      margin-top:10px;
-      font-size:13px;
-      color:#6b7280;
-    "
-  ></div>
+<!-- ROUTE SECTION END -->
+
+<label>
+  Travel Notes
+  <textarea
+    id="travelNotes"
+    rows="3"
+    style="width:100%;"
+  ></textarea>
+</label>
+
+<label>
+  Activity Notes
+  <textarea
+    id="activityNotes"
+    rows="4"
+    style="width:100%;"
+  ></textarea>
+</label>
 
 </div>
 
-      <label>
-        Travel Notes
-        <textarea
-          id="travelNotes"
-          rows="3"
-          style="width:100%;"
-        ></textarea>
-      </label>
-	  
-	<label>
-	  Activity Notes
-	  <textarea
-	    id="activityNotes"
-	    rows="4"
-	    style="width:100%;"
-	  ></textarea>
-	</label>
-    </div>
-
-    <div
-      id="hoursSummary"
-      style="
-        margin-top:20px;
-        padding:12px;
-        background:#f3f4f6;
-        border-radius:8px;
-      "
-    >
-      Instructor Hours: 0.00
-      <br>
-      Service Value: $0.00
-    </div>
-
-    <div
-      id="hoursError"
-      style="
-        margin-top:12px;
-        color:#dc2626;
-        font-weight:600;
-      "
-    ></div>
-
-    <div
-      style="
-        display:flex;
-        gap:10px;
-        margin-top:20px;
-      "
-    >
-
-      <button
-        onclick="closeHoursModal()"
-      >
-        Cancel
-      </button>
-
-<button
-  id="continueHoursBtn"
-  disabled
-  onclick="
-    this.innerHTML='Loading...';
-    this.style.background='#dc2626';
-    showHoursConfirmation();
-  "
+<div
+  id="hoursSummary"
   style="
-    background:#ea580c;
-    color:white;
-    padding:12px 18px;
-    border:none;
+    margin-top:20px;
+    padding:12px;
+    background:#f3f4f6;
     border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
   "
 >
-  Continue →
-</button>
+  Instructor Hours: 0.00
+  <br>
+  Service Value: $0.00
+</div>
 
-    </div>
+<div
+  id="hoursError"
+  style="
+    margin-top:12px;
+    color:#dc2626;
+    font-weight:600;
+  "
+></div>
 
-  `;
+<div
+  style="
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+  "
+>
+
+  <button
+    onclick="closeHoursModal()"
+  >
+    Cancel
+  </button>
+
+  <button
+    id="continueHoursBtn"
+    disabled
+    onclick="
+      this.innerHTML='Loading...';
+      this.style.background='#dc2626';
+      showHoursConfirmation();
+    "
+    style="
+      background:#ea580c;
+      color:white;
+      padding:12px 18px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    "
+  >
+    Continue →
+  </button>
+
+</div>
+
+`;
 
   modal.style.display = 'flex';
 
