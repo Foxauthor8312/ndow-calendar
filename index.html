@@ -4729,16 +4729,136 @@ function openHoursModal(){
         >
       </label>
 
-      <label>
-        Mileage
-        <input
-          type="number"
-          id="mileage"
-          value="0"
-          min="0"
-          style="width:100%;"
-        >
-      </label>
+<label>
+  Mileage
+  <input
+    type="number"
+    id="mileage"
+    value="0"
+    min="0"
+    style="width:100%;"
+  >
+</label>
+
+<!-- ROUTE SECTION START -->
+
+<div class="route-section">
+
+  <h4>Travel Route</h4>
+
+  <label>
+    Origin Address
+    <input
+      type="text"
+      id="routeOrigin"
+      style="width:100%;"
+    >
+  </label>
+
+  <label>
+    Destination Address
+    <input
+      type="text"
+      id="routeDestination"
+      style="width:100%;"
+    >
+  </label>
+
+  <label>
+    Additional Stops
+    <input
+      type="text"
+      id="routeStops"
+      style="width:100%;"
+    >
+  </label>
+
+  <label>
+    <input
+      type="checkbox"
+      id="routeRoundTrip"
+      checked
+    >
+    Round Trip
+  </label>
+
+</div>
+
+<!-- ROUTE SECTION END -->
+
+<label>
+  Travel Notes
+
+<div style="
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  background:#f9fafb;
+">
+
+  <h4 style="
+    margin:0 0 10px 0;
+    color:#374151;
+  ">
+    Travel Route
+  </h4>
+
+  <label>
+    Origin
+    <input
+      type="text"
+      id="routeOrigin"
+      placeholder="Default profile location"
+      style="width:100%;"
+    >
+  </label>
+
+  <label style="margin-top:8px;display:block;">
+    Destination
+    <input
+      type="text"
+      id="routeDestination"
+      placeholder="Event location"
+      style="width:100%;"
+    >
+  </label>
+
+  <label style="
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+  ">
+    <input
+      type="checkbox"
+      id="routeRoundTrip"
+      checked
+    >
+    Round Trip
+  </label>
+
+  <button
+    type="button"
+    onclick="generateRoute()"
+    style="
+      margin-top:10px;
+      padding:8px 14px;
+    "
+  >
+    Generate Route
+  </button>
+
+  <div
+    id="routePreview"
+    style="
+      margin-top:10px;
+      font-size:13px;
+      color:#6b7280;
+    "
+  ></div>
+
+</div>
 
       <label>
         Travel Notes
@@ -4957,7 +5077,41 @@ function calculateHours(){
   button.disabled = false;
 
 }
+function generateRoute(){
 
+  const origin =
+    document.getElementById(
+      'routeOrigin'
+    )?.value || '';
+
+  const destination =
+    document.getElementById(
+      'routeDestination'
+    )?.value || '';
+
+  window.routeStatus =
+    'generated';
+
+  document.getElementById(
+    'routePreview'
+  ).innerHTML = `
+    <div style="
+      padding:8px;
+      background:#ecfdf5;
+      border:1px solid #10b981;
+      border-radius:6px;
+      color:#065f46;
+    ">
+      Route saved for:
+      <br>
+      ${origin || '(origin not set)'}
+      →
+      ${destination || '(destination not set)'}
+    </div>
+  `;
+
+}
+	
 
 function showHoursConfirmation(){
 
@@ -5068,6 +5222,69 @@ window.pendingHoursEntry = {
 
   service_value:
     serviceValue
+
+window.pendingHoursEntry = {
+
+  event_id: selectedEvent.id,
+  event_name: selectedEvent.title,
+
+  program: selectedEvent.category,
+  county: selectedEvent.county,
+  region: selectedEvent.region,
+
+  event_date: selectedEvent.date,
+  location: selectedEvent.location,
+
+  start_time: start,
+  end_time: end,
+  break_minutes: breakMinutes,
+
+  travel_hours: travelHours,
+  mileage: mileage,
+
+  travel_notes: travelNotes,
+  activity_notes: activityNotes,
+
+  volunteer_hours: volunteerHours,
+  service_value: serviceValue,
+
+  route_origin:
+  document.getElementById(
+    'routeOrigin'
+  )?.value ||
+  user.default_origin_address ||
+  '',
+
+ route_destination:
+  document.getElementById(
+    'routeDestination'
+  )?.value ||
+  selectedEvent.location ||
+  '',
+route_stops:
+  document.getElementById(
+    'routeStops'
+  )?.value || '',
+	
+  route_round_trip:
+    document.getElementById(
+      'routeRoundTrip'
+    )?.checked || false,
+
+  route_image_url:
+    window.routeImageUrl || '',
+
+  route_status:
+    window.routeStatus ||
+    'not_generated',
+
+  route_provider:
+    'openrouteservice',
+
+  route_generated_at:
+    new Date().toISOString()
+
+};	
 
 };	
 
