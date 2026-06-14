@@ -6650,6 +6650,78 @@ if(section === 'contacts' && contacts){
 
 }
 
+function openHelpManager(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection('help');
+
+  }, 100);
+
+}
+
+function openProgramUpdates(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection('announcements');
+
+  }, 100);
+
+}
+
+function openContactsManager(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection('contacts');
+
+  }, 100);
+
+}
+
+function openAnalytics(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection('geo');
+
+  }, 100);
+
+}
+
+function openCategories(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection('category');
+
+  }, 100);
+
+}
+
+function openUserManagement(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection('users');
+
+  }, 100);
+
+}
+
 async function loadInstructorRequests(){
 
   const list =
@@ -7650,9 +7722,41 @@ async function loadDashboard(){
 
 </div>
 
-${user.role === 'admin' ||
-  user.role === 'superuser'
-  ? `
+<div class="dashboard-section">
+
+  <h3 class="dashboard-section-title">
+    Instructor Tools
+  </h3>
+
+  <div class="dashboard-tool-list">
+
+    <button
+      class="admin-button"
+      onclick="openInstructorRequestCenter()">
+      Instructor Requests
+    </button>
+
+  </div>
+
+</div>
+
+<div class="dashboard-section">
+
+  <h3 class="dashboard-section-title">
+    Instructor Tools
+  </h3>
+
+  <div class="dashboard-tool-list">
+
+    <button
+      class="admin-button"
+      onclick="openInstructorRequestCenter()">
+      Instructor Requests
+    </button>
+
+  </div>
+
+</div>
 
 <div class="dashboard-section">
 
@@ -7668,26 +7772,18 @@ ${user.role === 'admin' ||
         closeDashboard();
         openAdminPanel();
       ">
-      Admin
+      User Management
     </button>
 
     <button
       class="admin-button"
       onclick="openReleaseManager()">
-      Release Manager
-    </button>
-
-    <button
-      class="admin-button"
-      onclick="openInstructorRequestCenter()">
-      Instructor Request Center
+      Release Management
     </button>
 
   </div>
 
 </div>
-
-${user.role === 'superuser' ? `
 
 <div class="dashboard-section">
 
@@ -7700,17 +7796,12 @@ ${user.role === 'superuser' ? `
     <button
       class="admin-button"
       onclick="openSystemConsole()">
-      System
+      System Console
     </button>
 
   </div>
 
 </div>
-
-` : ''}
-
-`
-  : ''}
 
 `;
 
@@ -11232,7 +11323,7 @@ geographic analysis.
     <h2 style="
       margin:0 0 24px 0;
     ">
-      My Instructor Dashboard
+      Dashboard
     </h2>
 
     <div id="dashboardContent">
