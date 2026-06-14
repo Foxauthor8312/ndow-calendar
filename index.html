@@ -7740,23 +7740,6 @@ async function loadDashboard(){
 
 </div>
 
-<div class="dashboard-section">
-
-  <h3 class="dashboard-section-title">
-    Instructor Tools
-  </h3>
-
-  <div class="dashboard-tool-list">
-
-    <button
-      class="admin-button"
-      onclick="openInstructorRequestCenter()">
-      Instructor Requests
-    </button>
-
-  </div>
-
-</div>
 
 <div class="dashboard-section">
 
@@ -7770,14 +7753,62 @@ async function loadDashboard(){
       class="admin-button"
       onclick="
         closeDashboard();
-        openAdminPanel();
+        openUserManagement();
       ">
       User Management
     </button>
 
     <button
       class="admin-button"
-      onclick="openReleaseManager()">
+      onclick="
+        closeDashboard();
+        openProgramUpdates();
+      ">
+      Program Updates
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openContactsManager();
+      ">
+      Contacts
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openHelpManager();
+      ">
+      Help Manager
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openAnalytics();
+      ">
+      Analytics
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openCategories();
+      ">
+      Categories
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openReleaseManager();
+      ">
       Release Management
     </button>
 
