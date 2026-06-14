@@ -5173,55 +5173,6 @@ function showHoursConfirmation(){
   volunteerHours *
   SERVICE_VALUE_RATE;
 
-window.pendingHoursEntry = {
-
-  event_id:
-    selectedEvent.id,
-
-  event_name:
-    selectedEvent.title,
-
-  program:
-    selectedEvent.category,
-
-  county:
-    selectedEvent.county,
-
-  region:
-    selectedEvent.region,
-
-  event_date:
-    selectedEvent.date,
-
-  location:
-    selectedEvent.location,
-
-  start_time:
-    start,
-
-  end_time:
-    end,
-
-  break_minutes:
-    breakMinutes,
-
-  travel_hours:
-    travelHours,
-
-  mileage:
-    mileage,
-
-  travel_notes:
-    travelNotes,
-
-  activity_notes:
-    activityNotes,
-
-  volunteer_hours:
-    volunteerHours,
-
-  service_value:
-    serviceValue
 
 window.pendingHoursEntry = {
 
@@ -5247,13 +5198,6 @@ window.pendingHoursEntry = {
 
   volunteer_hours: volunteerHours,
   service_value: serviceValue,
-
-  route_origin:
-  document.getElementById(
-    'routeOrigin'
-  )?.value ||
-  user.default_origin_address ||
-  '',
 
  route_destination:
   document.getElementById(
@@ -5283,8 +5227,6 @@ route_stops:
 
   route_generated_at:
     new Date().toISOString()
-
-};	
 
 };	
 
