@@ -7670,7 +7670,7 @@ const greeting =
 if(greeting){
 
   greeting.textContent =
-    `Welcome, ${user.name || 'User'}`;
+  `Welcome, ${user.full_name || user.username || user.email || 'User'}`;
 
 }
 	  
