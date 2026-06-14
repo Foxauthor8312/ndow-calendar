@@ -4988,14 +4988,21 @@ async function calculateRoute(){
     const result =
       await response.json();
 
-    document.getElementById(
-      'routeResult'
-    ).innerHTML =
+document.getElementById(
+  'routeResult'
+).innerHTML =
 
-      `<strong>Connected</strong><br>
-       Origin: ${result.origin}<br>
-       Destination: ${result.destination}`;
+  `<strong>Geocoded Successfully</strong><br>
 
+   Origin:
+   ${result.originCoords?.lat},
+   ${result.originCoords?.lng}
+
+   <br><br>
+
+   Destination:
+   ${result.destinationCoords?.lat},
+   ${result.destinationCoords?.lng}`;
   } catch(err){
 
     console.error(err);
