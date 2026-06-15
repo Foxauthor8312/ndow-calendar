@@ -7095,7 +7095,11 @@ function openAdminSection(section){
     document.getElementById(
       'contactsPanel'
     );
-	
+
+	const addresses =
+    document.getElementById(
+    'addressPanel'
+    );
 
   if(users){
     users.style.display = 'none';
@@ -7145,6 +7149,8 @@ const buttonMap = {
     'adminUpdatesBtn',
   contacts:
     'adminContactsBtn',
+  addresses:
+    'adminAddressesBtn',
   help: 'adminHelpBtn',
   geo: 'adminAnalyticsBtn',
   category:
@@ -7224,6 +7230,15 @@ if(section === 'contacts' && contacts){
 
 }
 
+if(section === 'addresses' && addresses){
+
+  addresses.style.display =
+    'block';
+
+  loadAddresses();
+
+}	
+
 }
 
 function openHelpManager(){
@@ -7264,7 +7279,15 @@ function openContactsManager(){
 
 function openAddressLibrary(){
 
-  alert('Address Library Coming Online');
+  openAdminPanel();
+
+  setTimeout(() => {
+
+    openAdminSection(
+      'addresses'
+    );
+
+  }, 100);
 
 }
 
@@ -9841,6 +9864,141 @@ list.innerHTML = `
   }
 }
 
+async function loadAddresses(){
+
+  const list =
+    document.getElementById(
+      'addressList'
+    );
+
+  if(!list){
+    return;
+  }
+
+  list.innerHTML =
+    '<div style="padding:12px;">Loading...</div>';
+
+  try{
+
+    const { data, error } =
+      await supabase
+        .from('addresses')
+        .select('*')
+        .order('location_name');
+
+    if(error){
+      throw error;
+    }
+
+    const search =
+      document.getElementById(
+        'addressSearch'
+      )?.value
+        ?.toLowerCase()
+        ?.trim() || '';
+
+    const filtered =
+      (data || []).filter(a =>
+
+        !search ||
+
+        (a.location_name || '')
+          .toLowerCase()
+          .includes(search)
+
+        ||
+
+        (a.city || '')
+          .toLowerCase()
+          .includes(search)
+
+        ||
+
+        (a.location_type || '')
+          .toLowerCase()
+          .includes(search)
+
+      );
+
+    list.innerHTML = `
+
+      <table style="
+        width:100%;
+        border-collapse:collapse;
+      ">
+
+        <thead>
+
+          <tr style="
+            background:#F8FAFC;
+            border-bottom:1px solid #DBE3EC;
+          ">
+
+            <th style="padding:10px;text-align:left;">
+              Location
+            </th>
+
+            <th style="padding:10px;text-align:left;">
+              Type
+            </th>
+
+            <th style="padding:10px;text-align:left;">
+              City
+            </th>
+
+            <th style="padding:10px;text-align:left;">
+              Address
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${filtered.map(a => `
+
+            <tr style="
+              border-bottom:1px solid #DBE3EC;
+            ">
+
+              <td style="padding:10px;">
+                ${a.location_name || ''}
+              </td>
+
+              <td style="padding:10px;">
+                ${a.location_type || ''}
+              </td>
+
+              <td style="padding:10px;">
+                ${a.city || ''}
+              </td>
+
+              <td style="padding:10px;">
+                ${a.address1 || ''}
+              </td>
+
+            </tr>
+
+          `).join('')}
+
+        </tbody>
+
+      </table>
+
+    `;
+
+  }catch(err){
+
+    console.error(err);
+
+    list.innerHTML =
+      '<div style="padding:12px;color:red;">Failed to load addresses.</div>';
+
+  }
+
+}	
+
 let editingContactId = null;
 
 function openEditContactModal(id){
@@ -10852,7 +11010,14 @@ id="adminSidebar"
 >
   Contacts
 </button>
-
+	
+<button
+  id="adminAddressesBtn"
+  onclick="openAdminSection('addresses')"
+>
+  Addresses
+</button>
+	
 <button
   id="adminHelpBtn"
   onclick="openAdminSection('help')"
@@ -11149,6 +11314,71 @@ id="adminSidebar"
 
 </div>
 
+<!-- ADDRESS LIBRARY -->
+
+<div
+  class="admin-panel"
+  id="addressPanel"
+  style="
+    flex:1;
+    display:none;
+    overflow-y:auto;
+  "
+>
+
+  <h2>
+    Address Library
+  </h2>
+
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+    gap:10px;
+  ">
+
+    <input
+      id="addressSearch"
+      type="text"
+      placeholder="Search addresses..."
+      oninput="loadAddresses()"
+      style="
+        flex:1;
+        max-width:350px;
+      "
+    >
+
+    <button
+      onclick="loadAddresses()"
+    >
+      Refresh
+    </button>
+
+  </div>
+
+  <div
+    id="addressList"
+    style="
+      border:1px solid #e2e8f0;
+      border-radius:8px;
+      padding:16px;
+      background:white;
+    "
+  >
+
+    <div style="
+      color:#64748b;
+      text-align:center;
+      padding:24px;
+    ">
+      Loading addresses...
+    </div>
+
+  </div>
+
+</div>
+	
 <!-- INSTRUCTOR REQUESTS -->
 
 <div
