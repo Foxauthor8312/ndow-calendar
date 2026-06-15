@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-06-15T14:42:11.258Z",
+  "lastUpdated": "2026-06-15T20:41:43.259Z",
   "metrics": {
-    "finalEvents": 362
+    "finalEvents": 372
   },
   "events": [
     {
@@ -88,7 +88,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -177,7 +177,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -201,7 +201,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -225,7 +225,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -249,7 +249,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -273,7 +273,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -297,7 +297,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -321,7 +321,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -345,7 +345,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -369,7 +369,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -393,7 +393,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -417,7 +417,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -441,7 +441,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -465,7 +465,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -489,7 +489,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -513,7 +513,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -537,7 +537,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -561,7 +561,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -585,7 +585,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -609,7 +609,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -633,7 +633,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -657,7 +657,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -681,7 +681,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -705,7 +705,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -729,7 +729,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -753,7 +753,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -777,7 +777,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -801,7 +801,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -825,7 +825,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -849,7 +849,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -873,7 +873,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -897,7 +897,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -921,7 +921,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -945,7 +945,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -969,7 +969,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.677Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -993,7 +993,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1017,7 +1017,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1041,7 +1041,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1065,7 +1065,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1089,7 +1089,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1113,7 +1113,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1137,7 +1137,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1161,7 +1161,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1185,7 +1185,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1224,7 +1224,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1248,7 +1248,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1272,7 +1272,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1321,7 +1321,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1345,7 +1345,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1369,7 +1369,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1393,7 +1393,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1417,7 +1417,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1441,7 +1441,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1465,7 +1465,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1489,7 +1489,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1513,7 +1513,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1537,7 +1537,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1561,7 +1561,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1585,7 +1585,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1609,7 +1609,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1633,7 +1633,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1657,7 +1657,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1681,7 +1681,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1705,7 +1705,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1729,7 +1729,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1753,7 +1753,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1777,7 +1777,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1801,7 +1801,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1825,7 +1825,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1849,7 +1849,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1873,7 +1873,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1897,7 +1897,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1921,7 +1921,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1945,7 +1945,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1969,7 +1969,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1993,7 +1993,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2017,7 +2017,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2041,7 +2041,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2065,7 +2065,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2089,7 +2089,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2113,7 +2113,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2137,7 +2137,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2176,7 +2176,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2200,7 +2200,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2224,7 +2224,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2248,7 +2248,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2272,7 +2272,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2296,7 +2296,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2320,7 +2320,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2344,7 +2344,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2368,7 +2368,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2392,7 +2392,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2416,7 +2416,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2440,7 +2440,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2464,7 +2464,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2488,7 +2488,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2512,7 +2512,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2536,7 +2536,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2560,7 +2560,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2584,7 +2584,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2608,7 +2608,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2647,7 +2647,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2671,7 +2671,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2695,7 +2695,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2719,7 +2719,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2743,7 +2743,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2767,7 +2767,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2791,7 +2791,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2815,7 +2815,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2839,7 +2839,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2863,7 +2863,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2887,7 +2887,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2911,7 +2911,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2935,7 +2935,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3024,7 +3024,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3048,7 +3048,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3072,7 +3072,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3096,7 +3096,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.735Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3205,7 +3205,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3229,7 +3229,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3253,7 +3253,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3277,7 +3277,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3301,7 +3301,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3325,7 +3325,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3349,7 +3349,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3373,7 +3373,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3397,7 +3397,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3406,12 +3406,12 @@
       "id": "4523",
       "sourceId": "4523",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4523",
-      "title": "Apr 19 Birding Series: Nesting Neighbors ■ Events Results Pending 25 of 30 seats remaining Location: Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124 Taught by: Brooke Kristen Detommaso Date & Times: Apr 19, 2026 9:00AM - 11:00AM PDT View",
+      "title": "Apr 19 Birding Series: Nesting Neighbors ■ Event Completed 25 of 30 seats remaining Location: Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124 Taught by: Brooke Kristen Detommaso Date & Times: Apr 19, 2026 9:00AM - 11:00AM PDT View",
       "category": "Event",
       "date": "2026-04-19",
       "time": "Apr 19, 2026 9:00AM - 11:00AM PDT",
       "location": "Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124",
-      "description": "Apr 19 Birding Series: Nesting Neighbors ■ Events Results Pending 25 of 30 seats remaining Location: Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124 Taught by: Brooke Kristen Detommaso Date & Times: Apr 19, 2026 9:00AM - 11:00AM PDT View - Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124",
+      "description": "Apr 19 Birding Series: Nesting Neighbors ■ Event Completed 25 of 30 seats remaining Location: Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124 Taught by: Brooke Kristen Detommaso Date & Times: Apr 19, 2026 9:00AM - 11:00AM PDT View - Deer Creek Picnic Area Deer Creek Rd Mt Charleston, NV 89124",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4523",
       "instructors": [
         {
@@ -3421,7 +3421,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3445,7 +3445,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3469,7 +3469,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3493,7 +3493,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3517,7 +3517,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3541,7 +3541,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3565,7 +3565,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3589,7 +3589,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3613,7 +3613,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3637,7 +3637,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3661,7 +3661,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3685,7 +3685,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3954,7 +3954,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3978,7 +3978,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4002,7 +4002,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4026,7 +4026,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4050,7 +4050,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4074,7 +4074,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4098,7 +4098,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4107,12 +4107,12 @@
       "id": "4542",
       "sourceId": "4542",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4542",
-      "title": "May 9 Birding Series: Migratory Birds ■ Events Results Pending 8 of 20 seats remaining Location: Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161 Taught by: Nia Anabela Dippon Date & Times: May 09, 2026 8:00AM - 10:00AM PDT View",
+      "title": "May 9 Birding Series: Migratory Birds ■ Event Completed 8 of 20 seats remaining Location: Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161 Taught by: Nia Anabela Dippon Date & Times: May 09, 2026 8:00AM - 10:00AM PDT View",
       "category": "Event",
       "date": "2026-05-09",
       "time": "May 09, 2026 8:00AM - 10:00AM PDT",
       "location": "Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161",
-      "description": "May 9 Birding Series: Migratory Birds ■ Events Results Pending 8 of 20 seats remaining Location: Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161 Taught by: Nia Anabela Dippon Date & Times: May 09, 2026 8:00AM - 10:00AM PDT View - Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161",
+      "description": "May 9 Birding Series: Migratory Birds ■ Event Completed 8 of 20 seats remaining Location: Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161 Taught by: Nia Anabela Dippon Date & Times: May 09, 2026 8:00AM - 10:00AM PDT View - Pine Creek Canyon Trailhead Pine Creek Las Vegas, NV 89161",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4542",
       "instructors": [
         {
@@ -4122,7 +4122,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4146,7 +4146,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4170,7 +4170,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4194,7 +4194,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.957Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4218,7 +4218,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4242,7 +4242,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4311,7 +4311,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4335,7 +4335,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4359,7 +4359,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4383,7 +4383,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4407,7 +4407,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4431,7 +4431,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4455,7 +4455,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4464,12 +4464,12 @@
       "id": "4555",
       "sourceId": "4555",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4555",
-      "title": "Jun 16 Youth Intro to Fishing Clinic - Lander County 4H UNLISTED ■ Registration Open 18 of 20 seats remaining Location: Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820 Taught by: Nicole Hamblin Date & Times: Jun 16, 2026 12:00PM - 3:00PM PDT View",
+      "title": "Jun 16 Youth Intro to Fishing Clinic - Lander County 4H UNLISTED ■ Registration Closed 18 of 20 seats remaining Location: Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820 Taught by: Nicole Hamblin Date & Times: Jun 16, 2026 12:00PM - 3:00PM PDT View",
       "category": "Event",
       "date": "2026-06-16",
       "time": "Jun 16, 2026 12:00PM - 3:00PM PDT",
       "location": "Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820",
-      "description": "Jun 16 Youth Intro to Fishing Clinic - Lander County 4H UNLISTED ■ Registration Open 18 of 20 seats remaining Location: Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820 Taught by: Nicole Hamblin Date & Times: Jun 16, 2026 12:00PM - 3:00PM PDT View - Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820",
+      "description": "Jun 16 Youth Intro to Fishing Clinic - Lander County 4H UNLISTED ■ Registration Closed 18 of 20 seats remaining Location: Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820 Taught by: Nicole Hamblin Date & Times: Jun 16, 2026 12:00PM - 3:00PM PDT View - Battle Mountain High School 425 Weaver Avenue Battle Mountain, NV 89820",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4555",
       "instructors": [
         {
@@ -4479,7 +4479,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4503,7 +4503,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4527,7 +4527,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4551,7 +4551,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4575,7 +4575,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4599,7 +4599,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4623,7 +4623,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4647,7 +4647,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4671,7 +4671,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4695,7 +4695,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4719,7 +4719,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4743,7 +4743,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4767,7 +4767,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4791,7 +4791,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4815,7 +4815,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4839,7 +4839,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4863,7 +4863,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4887,7 +4887,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4896,12 +4896,12 @@
       "id": "4573",
       "sourceId": "4573",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4573",
-      "title": "Jun 14 Introduction to Sporting Clays ■ Events Results Pending Location: Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: Jun 14, 2026 7:00AM - 10:00AM PDT View",
+      "title": "Jun 14 Introduction to Sporting Clays ■ Event Completed Location: Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: Jun 14, 2026 7:00AM - 10:00AM PDT View",
       "category": "Event",
       "date": "2026-06-14",
       "time": "Jun 14, 2026 7:00AM - 10:00AM PDT",
       "location": "Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
-      "description": "Jun 14 Introduction to Sporting Clays ■ Events Results Pending Location: Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: Jun 14, 2026 7:00AM - 10:00AM PDT View - Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
+      "description": "Jun 14 Introduction to Sporting Clays ■ Event Completed Location: Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131 Taught by: Keith Randall Roether Date & Times: Jun 14, 2026 7:00AM - 10:00AM PDT View - Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4573",
       "instructors": [
         {
@@ -4911,7 +4911,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4935,7 +4935,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4959,7 +4959,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4983,7 +4983,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5007,7 +5007,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5031,7 +5031,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.677Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5055,7 +5055,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5079,7 +5079,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5088,12 +5088,12 @@
       "id": "4581",
       "sourceId": "4581",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4581",
-      "title": "Apr 28 Wildlife & Fishing Field Trip - Tarr ES 2nd Grade PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131 Taught by: Lauren MacLeod Date & Times: Apr 28, 2026 10:00AM - 12:00PM PDT View",
+      "title": "Apr 28 Wildlife & Fishing Field Trip - Tarr ES 2nd Grade PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131 Taught by: Lauren MacLeod Date & Times: Apr 28, 2026 10:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-04-28",
       "time": "Apr 28, 2026 10:00AM - 12:00PM PDT",
       "location": "Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131",
-      "description": "Apr 28 Wildlife & Fishing Field Trip - Tarr ES 2nd Grade PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131 Taught by: Lauren MacLeod Date & Times: Apr 28, 2026 10:00AM - 12:00PM PDT View - Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131",
+      "description": "Apr 28 Wildlife & Fishing Field Trip - Tarr ES 2nd Grade PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131 Taught by: Lauren MacLeod Date & Times: Apr 28, 2026 10:00AM - 12:00PM PDT View - Floyd Lamb Park Ponds 9200 Tule Springs Road Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4581",
       "instructors": [
         {
@@ -5103,7 +5103,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5112,12 +5112,12 @@
       "id": "4582",
       "sourceId": "4582",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4582",
-      "title": "Apr 25 BioBlast - Aquatic Invertebrates PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122 Taught by: Magdalina Marinelli Date & Times: Apr 25, 2026 10:00AM - 1:00PM PDT View",
+      "title": "Apr 25 BioBlast - Aquatic Invertebrates PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122 Taught by: Magdalina Marinelli Date & Times: Apr 25, 2026 10:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-04-25",
       "time": "Apr 25, 2026 10:00AM - 1:00PM PDT",
       "location": "Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122",
-      "description": "Apr 25 BioBlast - Aquatic Invertebrates PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122 Taught by: Magdalina Marinelli Date & Times: Apr 25, 2026 10:00AM - 1:00PM PDT View - Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122",
+      "description": "Apr 25 BioBlast - Aquatic Invertebrates PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122 Taught by: Magdalina Marinelli Date & Times: Apr 25, 2026 10:00AM - 1:00PM PDT View - Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4582",
       "instructors": [
         {
@@ -5127,7 +5127,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5151,7 +5151,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5175,7 +5175,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5199,7 +5199,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5258,7 +5258,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5282,7 +5282,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5306,7 +5306,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5330,7 +5330,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5354,7 +5354,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5378,7 +5378,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5402,7 +5402,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5426,7 +5426,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.970Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5450,7 +5450,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5474,7 +5474,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5498,7 +5498,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5522,7 +5522,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5546,7 +5546,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5570,7 +5570,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5594,7 +5594,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5643,7 +5643,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5682,7 +5682,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5691,12 +5691,12 @@
       "id": "4603",
       "sourceId": "4603",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4603",
-      "title": "May 1 Owl Pellet Dissection PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021 Taught by: Lauren MacLeod Date & Times: May 01, 2026 10:00AM - 3:00PM PDT View",
+      "title": "May 1 Owl Pellet Dissection PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021 Taught by: Lauren MacLeod Date & Times: May 01, 2026 10:00AM - 3:00PM PDT View",
       "category": "Event",
       "date": "2026-05-01",
       "time": "May 01, 2026 10:00AM - 3:00PM PDT",
       "location": "Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021",
-      "description": "May 1 Owl Pellet Dissection PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021 Taught by: Lauren MacLeod Date & Times: May 01, 2026 10:00AM - 3:00PM PDT View - Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021",
+      "description": "May 1 Owl Pellet Dissection PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021 Taught by: Lauren MacLeod Date & Times: May 01, 2026 10:00AM - 3:00PM PDT View - Grant Bowler Elementary School 1425 Whipple Rd. Logandale, NV 89021",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4603",
       "instructors": [
         {
@@ -5706,7 +5706,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5765,7 +5765,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5789,7 +5789,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5813,7 +5813,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.332Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5882,7 +5882,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5941,7 +5941,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5965,7 +5965,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5989,7 +5989,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.677Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6013,7 +6013,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6037,7 +6037,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6061,7 +6061,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6085,7 +6085,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6109,7 +6109,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6118,12 +6118,12 @@
       "id": "4617",
       "sourceId": "4617",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4617",
-      "title": "May 9 World Migratory Bird Day Celebration ■ Events Results Pending 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: May 09, 2026 9:00AM - 1:00PM PDT View",
+      "title": "May 9 World Migratory Bird Day Celebration ■ Event Completed 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: May 09, 2026 9:00AM - 1:00PM PDT View",
       "category": "Event",
       "date": "2026-05-09",
       "time": "May 09, 2026 9:00AM - 1:00PM PDT",
       "location": "Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
-      "description": "May 9 World Migratory Bird Day Celebration ■ Events Results Pending 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: May 09, 2026 9:00AM - 1:00PM PDT View - Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
+      "description": "May 9 World Migratory Bird Day Celebration ■ Event Completed 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: May 09, 2026 9:00AM - 1:00PM PDT View - Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4617",
       "instructors": [
         {
@@ -6133,7 +6133,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6157,7 +6157,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6181,7 +6181,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6205,7 +6205,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6229,7 +6229,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6253,7 +6253,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6262,12 +6262,12 @@
       "id": "4623",
       "sourceId": "4623",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4623",
-      "title": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Events Results Pending 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View",
+      "title": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Event Completed 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View",
       "category": "Event",
       "date": "2026-06-02",
       "time": "Jun 02, 2026 10:00AM - 12:00PM PDT",
       "location": "Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
-      "description": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Events Results Pending 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View - Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
+      "description": "Jun 2 Red Rock Canyon Table Chat - Nevada Wildlife ■ Event Completed 1000 of 1000 seats remaining Location: Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 02, 2026 10:00AM - 12:00PM PDT View - Red Rock Canyon Visitor Center 1000 Scenic Loop Dr Las Vegas, NV 89161",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4623",
       "instructors": [
         {
@@ -6292,7 +6292,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6316,7 +6316,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6340,7 +6340,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6364,7 +6364,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6388,7 +6388,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6412,7 +6412,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6436,7 +6436,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6460,7 +6460,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6484,7 +6484,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6508,7 +6508,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6532,7 +6532,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6556,7 +6556,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6565,12 +6565,12 @@
       "id": "4638",
       "sourceId": "4638",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4638",
-      "title": "Jul 9 Intro to Shooting - .22 Rifle ■ Full Event with Waitlist 2 seats remaining on waitlist Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View",
+      "title": "Jul 9 Intro to Shooting - .22 Rifle ■ Full Event with Waitlist 1 seats remaining on waitlist Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View",
       "category": "Event",
       "date": "2026-07-09",
       "time": "Jul 09, 2026 4:30PM - 6:30PM PDT",
       "location": "Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801",
-      "description": "Jul 9 Intro to Shooting - .22 Rifle ■ Full Event with Waitlist 2 seats remaining on waitlist Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View - Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801",
+      "description": "Jul 9 Intro to Shooting - .22 Rifle ■ Full Event with Waitlist 1 seats remaining on waitlist Location: Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801 Taught by: Julie A Gabrielson Date & Times: Jul 09, 2026 4:30PM - 6:30PM PDT View - Elko County Shooting Range 308 Rifle Range Road Elko, NV 89801",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4638",
       "instructors": [
         {
@@ -6580,7 +6580,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6604,7 +6604,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6643,7 +6643,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6667,7 +6667,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6691,7 +6691,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6715,7 +6715,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6739,7 +6739,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6763,7 +6763,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6832,7 +6832,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6856,7 +6856,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6880,7 +6880,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6904,7 +6904,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6928,7 +6928,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6952,7 +6952,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6976,7 +6976,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7000,7 +7000,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7024,7 +7024,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7048,7 +7048,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7072,7 +7072,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7081,12 +7081,12 @@
       "id": "4657",
       "sourceId": "4657",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4657",
-      "title": "May 13 Bat Walk - UNR Extension Naturalist Program PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120 Taught by: Lauren MacLeod Date & Times: May 13, 2026 6:30PM - 8:30PM PDT View",
+      "title": "May 13 Bat Walk - UNR Extension Naturalist Program PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120 Taught by: Lauren MacLeod Date & Times: May 13, 2026 6:30PM - 8:30PM PDT View",
       "category": "Event",
       "date": "2026-05-13",
       "time": "May 13, 2026 6:30PM - 8:30PM PDT",
       "location": "Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120",
-      "description": "May 13 Bat Walk - UNR Extension Naturalist Program PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120 Taught by: Lauren MacLeod Date & Times: May 13, 2026 6:30PM - 8:30PM PDT View - Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120",
+      "description": "May 13 Bat Walk - UNR Extension Naturalist Program PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120 Taught by: Lauren MacLeod Date & Times: May 13, 2026 6:30PM - 8:30PM PDT View - Sunset Park Pond 2601 E Sunset Rd. Las Vegas, NV 89120",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4657",
       "instructors": [
         {
@@ -7096,7 +7096,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7105,12 +7105,12 @@
       "id": "4658",
       "sourceId": "4658",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4658",
-      "title": "May 13 Conservation & Wildlife presentation PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148 Taught by: Lauren MacLeod Date & Times: May 13, 2026 1:00PM - 2:00PM PDT View",
+      "title": "May 13 Conservation & Wildlife presentation PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148 Taught by: Lauren MacLeod Date & Times: May 13, 2026 1:00PM - 2:00PM PDT View",
       "category": "Event",
       "date": "2026-05-13",
       "time": "May 13, 2026 1:00PM - 2:00PM PDT",
       "location": "Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148",
-      "description": "May 13 Conservation & Wildlife presentation PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148 Taught by: Lauren MacLeod Date & Times: May 13, 2026 1:00PM - 2:00PM PDT View - Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148",
+      "description": "May 13 Conservation & Wildlife presentation PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148 Taught by: Lauren MacLeod Date & Times: May 13, 2026 1:00PM - 2:00PM PDT View - Wilbur & Theresa Faiss Middle School 9525 W. Maule Ave. Las Vegas, NV 89148",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4658",
       "instructors": [
         {
@@ -7120,7 +7120,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7144,7 +7144,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7168,7 +7168,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7192,7 +7192,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7223,26 +7223,6 @@
           "name": "Barry Mattison",
           "role": "ASSISTANT",
           "email": "lvrcav8tr@gmail.com",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
-        },
-        {
-          "name": "Jason Rolfe",
-          "role": "ASSISTANT",
-          "email": "evilsensation@yahoo.com",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
-        },
-        {
-          "name": "Nicholas Gulli",
-          "role": "ASSISTANT",
-          "email": "marshaddictionnv@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -7283,16 +7263,6 @@
           "name": "NANCY SILVA",
           "role": "ASSISTANT",
           "email": "nancysilva082@gmail.com",
-          "bio": "",
-          "image": "",
-          "specialties": [],
-          "links": {},
-          "enrichment": {}
-        },
-        {
-          "name": "Matthew Caputo",
-          "role": "ASSISTANT",
-          "email": "matthewcaputo513@gmail.com",
           "bio": "",
           "image": "",
           "specialties": [],
@@ -7350,6 +7320,26 @@
           "enrichment": {}
         },
         {
+          "name": "Michelle Lopez",
+          "role": "ASSISTANT",
+          "email": "michelleflopez98@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Patricia Pollina",
+          "role": "ASSISTANT",
+          "email": "ppollinanp@icloud.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
           "name": "Abbey Czarnecki",
           "role": "PRIMARY",
           "email": "abbey.czar@gmail.com",
@@ -7361,7 +7351,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7385,7 +7375,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7409,7 +7399,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7433,7 +7423,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7457,7 +7447,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7506,7 +7496,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7530,7 +7520,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7554,7 +7544,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7578,7 +7568,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7602,7 +7592,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7626,7 +7616,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7635,12 +7625,12 @@
       "id": "4673",
       "sourceId": "4673",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4673",
-      "title": "Jun 3 UK Survival School Training - Wildlife that Bites PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040 Taught by: Lauren MacLeod Date & Times: Jun 03, 2026 2:00PM - 3:30PM PDT View",
+      "title": "Jun 3 UK Survival School Training - Wildlife that Bites PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040 Taught by: Lauren MacLeod Date & Times: Jun 03, 2026 2:00PM - 3:30PM PDT View",
       "category": "Event",
       "date": "2026-06-03",
       "time": "Jun 03, 2026 2:00PM - 3:30PM PDT",
       "location": "Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040",
-      "description": "Jun 3 UK Survival School Training - Wildlife that Bites PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040 Taught by: Lauren MacLeod Date & Times: Jun 03, 2026 2:00PM - 3:30PM PDT View - Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040",
+      "description": "Jun 3 UK Survival School Training - Wildlife that Bites PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040 Taught by: Lauren MacLeod Date & Times: Jun 03, 2026 2:00PM - 3:30PM PDT View - Valley of Fire Visitor Center Mouse's Tank Rd. Overton, NV 89040",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4673",
       "instructors": [
         {
@@ -7650,7 +7640,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7659,12 +7649,12 @@
       "id": "4674",
       "sourceId": "4674",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4674",
-      "title": "May 20 Owl Pellet Dissection PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128 Taught by: Lauren MacLeod Date & Times: May 20, 2026 8:00AM - 11:00AM PDT View",
+      "title": "May 20 Owl Pellet Dissection PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128 Taught by: Lauren MacLeod Date & Times: May 20, 2026 8:00AM - 11:00AM PDT View",
       "category": "Event",
       "date": "2026-05-20",
       "time": "May 20, 2026 8:00AM - 11:00AM PDT",
       "location": "Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128",
-      "description": "May 20 Owl Pellet Dissection PRIVATE EVENT ■ Events Results Pending 1000 of 1000 seats remaining Location: Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128 Taught by: Lauren MacLeod Date & Times: May 20, 2026 8:00AM - 11:00AM PDT View - Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128",
+      "description": "May 20 Owl Pellet Dissection PRIVATE EVENT ■ Event Completed 1000 of 1000 seats remaining Location: Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128 Taught by: Lauren MacLeod Date & Times: May 20, 2026 8:00AM - 11:00AM PDT View - Richard H Bryan Elementary School 8050 Cielo Vista Ave Las Vegas, NV 89128",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4674",
       "instructors": [
         {
@@ -7674,7 +7664,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7683,12 +7673,12 @@
       "id": "4675",
       "sourceId": "4675",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4675",
-      "title": "Jun 5 Bat presentation & viewing UNLISTED ■ Events Results Pending 60 of 60 seats remaining Location: Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 05, 2026 7:00PM - 8:30PM PDT View",
+      "title": "Jun 5 Bat presentation & viewing UNLISTED ■ Event Completed 60 of 60 seats remaining Location: Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 05, 2026 7:00PM - 8:30PM PDT View",
       "category": "Event",
       "date": "2026-06-05",
       "time": "Jun 05, 2026 7:00PM - 8:30PM PDT",
       "location": "Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161",
-      "description": "Jun 5 Bat presentation & viewing UNLISTED ■ Events Results Pending 60 of 60 seats remaining Location: Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 05, 2026 7:00PM - 8:30PM PDT View - Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161",
+      "description": "Jun 5 Bat presentation & viewing UNLISTED ■ Event Completed 60 of 60 seats remaining Location: Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161 Taught by: Lauren MacLeod Date & Times: Jun 05, 2026 7:00PM - 8:30PM PDT View - Cactus Joe's Blue Diamond Nursery 12740 Blue Diamond Road Las Vegas, NV 89161",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4675",
       "instructors": [
         {
@@ -7713,7 +7703,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7737,7 +7727,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7761,7 +7751,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7789,6 +7779,36 @@
           "enrichment": {}
         },
         {
+          "name": "Caleb Johnson",
+          "role": "ASSISTANT",
+          "email": "calebcjohnson@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Nia Dippon",
+          "role": "ASSISTANT",
+          "email": "niadippon02@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Sonya Wilson",
+          "role": "ASSISTANT",
+          "email": "yessed5985@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
           "name": "Lauren MacLeod",
           "role": "PRIMARY",
           "email": "laurenmacleod12@gmail.com",
@@ -7800,7 +7820,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7839,7 +7859,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7878,7 +7898,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7902,7 +7922,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7926,7 +7946,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7950,7 +7970,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7974,7 +7994,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7998,7 +8018,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8022,7 +8042,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8031,12 +8051,12 @@
       "id": "4687",
       "sourceId": "4687",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4687",
-      "title": "May 30 YMCA Nocturnal Animals Walk PRIVATE EVENT ■ Events Results Pending 30 of 30 seats remaining Location: Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005 Taught by: Lauren MacLeod Date & Times: May 30, 2026 7:00PM - 9:00PM PDT View",
+      "title": "May 30 YMCA Nocturnal Animals Walk PRIVATE EVENT ■ Canceled 30 of 30 seats remaining Location: Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005 Taught by: Lauren MacLeod Date & Times: May 30, 2026 7:00PM - 9:00PM PDT View",
       "category": "Event",
       "date": "2026-05-30",
       "time": "May 30, 2026 7:00PM - 9:00PM PDT",
       "location": "Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005",
-      "description": "May 30 YMCA Nocturnal Animals Walk PRIVATE EVENT ■ Events Results Pending 30 of 30 seats remaining Location: Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005 Taught by: Lauren MacLeod Date & Times: May 30, 2026 7:00PM - 9:00PM PDT View - Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005",
+      "description": "May 30 YMCA Nocturnal Animals Walk PRIVATE EVENT ■ Canceled 30 of 30 seats remaining Location: Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005 Taught by: Lauren MacLeod Date & Times: May 30, 2026 7:00PM - 9:00PM PDT View - Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4687",
       "instructors": [
         {
@@ -8046,7 +8066,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8070,7 +8090,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8094,7 +8114,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8118,7 +8138,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8142,7 +8162,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8151,12 +8171,12 @@
       "id": "4692",
       "sourceId": "4692",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4692",
-      "title": "Jun 11 Junior Naturalist Camp - Henderson Bird Viewing Preserve PRIVATE EVENT ■ Events Results Pending 50 of 50 seats remaining Location: Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011 Taught by: Magdalina Marinelli Date & Times: Jun 11, 2026 10:00AM - 11:00AM PDT View",
+      "title": "Jun 11 Junior Naturalist Camp - Henderson Bird Viewing Preserve PRIVATE EVENT ■ Event Completed 50 of 50 seats remaining Location: Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011 Taught by: Magdalina Marinelli Date & Times: Jun 11, 2026 10:00AM - 11:00AM PDT View",
       "category": "Event",
       "date": "2026-06-11",
       "time": "Jun 11, 2026 10:00AM - 11:00AM PDT",
       "location": "Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011",
-      "description": "Jun 11 Junior Naturalist Camp - Henderson Bird Viewing Preserve PRIVATE EVENT ■ Events Results Pending 50 of 50 seats remaining Location: Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011 Taught by: Magdalina Marinelli Date & Times: Jun 11, 2026 10:00AM - 11:00AM PDT View - Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011",
+      "description": "Jun 11 Junior Naturalist Camp - Henderson Bird Viewing Preserve PRIVATE EVENT ■ Event Completed 50 of 50 seats remaining Location: Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011 Taught by: Magdalina Marinelli Date & Times: Jun 11, 2026 10:00AM - 11:00AM PDT View - Henderson Bird Viewing Preserve 350 East Galleria Dr Henderson, NV 89011",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4692",
       "instructors": [
         {
@@ -8166,7 +8186,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8190,7 +8210,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8214,7 +8234,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8238,7 +8258,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.677Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8262,7 +8282,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8286,7 +8306,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8310,7 +8330,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8334,7 +8354,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8358,7 +8378,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8382,7 +8402,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8406,7 +8426,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8430,7 +8450,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8454,7 +8474,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.677Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8478,7 +8498,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.870Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8502,7 +8522,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8526,7 +8546,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8550,7 +8570,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.075Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8574,7 +8594,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8598,7 +8618,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8622,7 +8642,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.265Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8646,7 +8666,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:37:20.074Z",
+        "scrapedAt": "2026-06-15T20:36:54.702Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8670,7 +8690,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.727Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8694,7 +8714,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8718,7 +8738,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8742,7 +8762,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:35:11.855Z",
+        "scrapedAt": "2026-06-15T20:34:53.956Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8766,7 +8786,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8790,7 +8810,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8814,7 +8834,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8838,7 +8858,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8862,7 +8882,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8886,7 +8906,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:33:59.969Z",
+        "scrapedAt": "2026-06-15T20:33:43.264Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8910,7 +8930,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:36:16.734Z",
+        "scrapedAt": "2026-06-15T20:35:54.331Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8934,7 +8954,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8958,7 +8978,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8982,7 +9002,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9006,7 +9026,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9030,7 +9050,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9054,7 +9074,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9078,7 +9098,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9102,7 +9122,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9126,7 +9146,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9150,7 +9170,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9174,7 +9194,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9198,7 +9218,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:41:54.919Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9257,7 +9277,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9281,7 +9301,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9305,7 +9325,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:38:33.728Z",
+        "scrapedAt": "2026-06-15T20:38:03.871Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9329,7 +9349,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9368,7 +9388,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9392,7 +9412,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9431,7 +9451,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.646Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9455,7 +9475,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9479,7 +9499,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9503,7 +9523,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9527,7 +9547,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9551,7 +9571,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9575,7 +9595,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9599,7 +9619,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9608,12 +9628,12 @@
       "id": "4751",
       "sourceId": "4751",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4751",
-      "title": "Jul 11 Introduction to Archery ■ Registration Open 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Jul 11, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event",
+      "title": "Jul 11 Introduction to Archery ■ Canceled 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Jul 11, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event",
       "category": "Event",
       "date": "2026-07-11",
       "time": "Jul 11, 2026 8:00AM - 11:00AM PDT",
       "location": "Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
-      "description": "Jul 11 Introduction to Archery ■ Registration Open 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Jul 11, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event - Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+      "description": "Jul 11 Introduction to Archery ■ Canceled 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Jul 11, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event - Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4751",
       "instructors": [
         {
@@ -9638,7 +9658,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9662,7 +9682,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9686,7 +9706,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9725,7 +9745,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9764,7 +9784,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9773,12 +9793,12 @@
       "id": "4756",
       "sourceId": "4756",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4756",
-      "title": "Aug 15 Introduction to Archery ■ Registration Open 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Aug 15, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event",
+      "title": "Aug 15 Introduction to Archery ■ Canceled 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Aug 15, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event",
       "category": "Event",
       "date": "2026-08-15",
       "time": "Aug 15, 2026 8:00AM - 11:00AM PDT",
       "location": "Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
-      "description": "Aug 15 Introduction to Archery ■ Registration Open 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Aug 15, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event - Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+      "description": "Aug 15 Introduction to Archery ■ Canceled 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Aug 15, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event - Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4756",
       "instructors": [
         {
@@ -9793,7 +9813,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9817,7 +9837,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9841,7 +9861,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.067Z",
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9880,7 +9900,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9889,12 +9909,12 @@
       "id": "4760",
       "sourceId": "4760",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4760",
-      "title": "Jun 15 Instructor class- Kayak Fishing class PRIVATE EVENT ■ Registration Closed 5 of 5 seats remaining Location: Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 15, 2026 6:30AM - 9:30AM PDT View",
+      "title": "Jun 15 Instructor class- Kayak Fishing class PRIVATE EVENT ■ Events Results Pending 5 of 5 seats remaining Location: Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 15, 2026 6:30AM - 9:30AM PDT View",
       "category": "Event",
       "date": "2026-06-15",
       "time": "Jun 15, 2026 6:30AM - 9:30AM PDT",
       "location": "Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005",
-      "description": "Jun 15 Instructor class- Kayak Fishing class PRIVATE EVENT ■ Registration Closed 5 of 5 seats remaining Location: Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 15, 2026 6:30AM - 9:30AM PDT View - Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005",
+      "description": "Jun 15 Instructor class- Kayak Fishing class PRIVATE EVENT ■ Events Results Pending 5 of 5 seats remaining Location: Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005 Taught by: Abbey L Czarnecki Date & Times: Jun 15, 2026 6:30AM - 9:30AM PDT View - Lake Mead Hemenway Fishing Point Lake Mead National Recreation Area Boulder City, NV 89005",
       "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4760",
       "instructors": [
         {
@@ -9929,7 +9949,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9968,7 +9988,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:39:34.678Z",
+        "scrapedAt": "2026-06-15T20:39:06.647Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9992,7 +10012,267 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-06-15T14:40:48.066Z",
+        "scrapedAt": "2026-06-15T20:40:16.739Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4763",
+      "sourceId": "4763",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4763",
+      "title": "Jul 11 Introduction to Archery ■ Registration Open 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Jul 11, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event",
+      "category": "Event",
+      "date": "2026-07-11",
+      "time": "Jul 11, 2026 8:00AM - 11:00AM PDT",
+      "location": "Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+      "description": "Jul 11 Introduction to Archery ■ Registration Open 20 of 20 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Jul 11, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event - Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4763",
+      "instructors": [
+        {
+          "name": "Abbey Czarnecki",
+          "role": "ASSISTANT",
+          "email": "abbey.czar@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        },
+        {
+          "name": "Barry Mattison",
+          "role": "PRIMARY",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4764",
+      "sourceId": "4764",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4764",
+      "title": "Aug 15 Introduction to Archery ■ Registration Open 19 of 19 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Aug 15, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event",
+      "category": "Event",
+      "date": "2026-08-15",
+      "time": "Aug 15, 2026 8:00AM - 11:00AM PDT",
+      "location": "Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+      "description": "Aug 15 Introduction to Archery ■ Registration Open 19 of 19 seats remaining Location: Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131 Taught by: Barry E Mattison Date & Times: Aug 15, 2026 8:00AM - 11:00AM PDT View Copy Event Cancel Event - Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4764",
+      "instructors": [
+        {
+          "name": "Barry Mattison",
+          "role": "PRIMARY",
+          "email": "lvrcav8tr@gmail.com",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4765",
+      "sourceId": "4765",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4765",
+      "title": "Sep 2 Introduction to Trap Shooting ■ Registration Open 5 of 5 seats remaining Location: Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131 Taught by: Richard A Raby Date & Times: Sep 02, 2026 6:30PM - 8:30PM PDT View",
+      "category": "Event",
+      "date": "2026-09-02",
+      "time": "Sep 02, 2026 6:30PM - 8:30PM PDT",
+      "location": "Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
+      "description": "Sep 2 Introduction to Trap Shooting ■ Registration Open 5 of 5 seats remaining Location: Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131 Taught by: Richard A Raby Date & Times: Sep 02, 2026 6:30PM - 8:30PM PDT View - Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4765",
+      "instructors": [
+        {
+          "name": "Richard A Raby",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:41:18.771Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4766",
+      "sourceId": "4766",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4766",
+      "title": "Jun 25 Southern Nevada Mule Deer Seminar ■ Registration Open 40 of 40 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Martin G Olson Date & Times: Jun 25, 2026 6:00PM - 10:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-25",
+      "time": "Jun 25, 2026 6:00PM - 10:00PM PDT",
+      "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "description": "Jun 25 Southern Nevada Mule Deer Seminar ■ Registration Open 40 of 40 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Martin G Olson Date & Times: Jun 25, 2026 6:00PM - 10:00PM PDT View - Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4766",
+      "instructors": [
+        {
+          "name": "Martin G Olson",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4767",
+      "sourceId": "4767",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4767",
+      "title": "Jul 9 Southern Nevada Antelope Seminar ■ Registration Open 40 of 40 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Martin G Olson Date & Times: Jul 09, 2026 6:30PM - 9:30PM PDT View",
+      "category": "Event",
+      "date": "2026-07-09",
+      "time": "Jul 09, 2026 6:30PM - 9:30PM PDT",
+      "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "description": "Jul 9 Southern Nevada Antelope Seminar ■ Registration Open 40 of 40 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Martin G Olson Date & Times: Jul 09, 2026 6:30PM - 9:30PM PDT View - Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4767",
+      "instructors": [
+        {
+          "name": "Martin G Olson",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4768",
+      "sourceId": "4768",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4768",
+      "title": "Aug 1 Southern Nevada Bighorn Ram Seminar ■ Registration Open 40 of 40 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Martin G Olson Date & Times: Aug 01, 2026 9:00AM - 11:30AM PDT View",
+      "category": "Event",
+      "date": "2026-08-01",
+      "time": "Aug 01, 2026 9:00AM - 11:30AM PDT",
+      "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "description": "Aug 1 Southern Nevada Bighorn Ram Seminar ■ Registration Open 40 of 40 seats remaining Location: Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131 Taught by: Martin G Olson Date & Times: Aug 01, 2026 9:00AM - 11:30AM PDT View - Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4768",
+      "instructors": [
+        {
+          "name": "Martin G Olson",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4769",
+      "sourceId": "4769",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4769",
+      "title": "Jun 20 YMCA Nocturnal Animals Walk PRIVATE EVENT ■ Registration Open 30 of 30 seats remaining Location: Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005 Taught by: Lauren MacLeod Date & Times: Jun 20, 2026 7:00PM - 9:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-20",
+      "time": "Jun 20, 2026 7:00PM - 9:00PM PDT",
+      "location": "Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005",
+      "description": "Jun 20 YMCA Nocturnal Animals Walk PRIVATE EVENT ■ Registration Open 30 of 30 seats remaining Location: Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005 Taught by: Lauren MacLeod Date & Times: Jun 20, 2026 7:00PM - 9:00PM PDT View - Historic Railroad Tunnel Trail Lakeshore Dr. Boulder City, NV 89005",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4769",
+      "instructors": [
+        {
+          "name": "Lauren MacLeod",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.739Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4770",
+      "sourceId": "4770",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4770",
+      "title": "Jun 27 Discovery Day UNLISTED ■ Registration Open 1000 of 1000 seats remaining Location: Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122 Taught by: Lauren MacLeod Date & Times: Jun 27, 2026 10:00AM - 1:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-27",
+      "time": "Jun 27, 2026 10:00AM - 1:00PM PDT",
+      "location": "Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122",
+      "description": "Jun 27 Discovery Day UNLISTED ■ Registration Open 1000 of 1000 seats remaining Location: Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122 Taught by: Lauren MacLeod Date & Times: Jun 27, 2026 10:00AM - 1:00PM PDT View - Clark County Wetlands Park 7050 Wetlands Park Ln Las Vegas, NV 89122",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4770",
+      "instructors": [
+        {
+          "name": "Lauren MacLeod",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4771",
+      "sourceId": "4771",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4771",
+      "title": "Jun 27 Bat & Nighthawk Walk - collab w RRAS PRIVATE EVENT ■ Registration Open 49 of 49 seats remaining Location: Pittman Wash Trailhead (Silver Springs) 1951 Silver Springs Parkway Silver Springs Recreation Center Henderson, NV 89074 Taught by: Lauren MacLeod Date & Times: Jun 27, 2026 7:00PM - 8:30PM PDT View",
+      "category": "Event",
+      "date": "2026-06-27",
+      "time": "Jun 27, 2026 7:00PM - 8:30PM PDT",
+      "location": "Pittman Wash Trailhead (Silver Springs) 1951 Silver Springs Parkway Silver Springs Recreation Center Henderson, NV 89074",
+      "description": "Jun 27 Bat & Nighthawk Walk - collab w RRAS PRIVATE EVENT ■ Registration Open 49 of 49 seats remaining Location: Pittman Wash Trailhead (Silver Springs) 1951 Silver Springs Parkway Silver Springs Recreation Center Henderson, NV 89074 Taught by: Lauren MacLeod Date & Times: Jun 27, 2026 7:00PM - 8:30PM PDT View - Pittman Wash Trailhead (Silver Springs) 1951 Silver Springs Parkway Silver Springs Recreation Center Henderson, NV 89074",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4771",
+      "instructors": [
+        {
+          "name": "Lauren MacLeod",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {}
+    },
+    {
+      "id": "4772",
+      "sourceId": "4772",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4772",
+      "title": "Jun 24 Camp No Limits PRIVATE EVENT ■ Registration Open 1000 of 1000 seats remaining Location: Whitney Ranch Recreation Center 1575 Galleria Drive Henderson, NV 89014 Taught by: Lauren MacLeod Date & Times: Jun 24, 2026 10:00AM - 12:00PM PDT View",
+      "category": "Event",
+      "date": "2026-06-24",
+      "time": "Jun 24, 2026 10:00AM - 12:00PM PDT",
+      "location": "Whitney Ranch Recreation Center 1575 Galleria Drive Henderson, NV 89014",
+      "description": "Jun 24 Camp No Limits PRIVATE EVENT ■ Registration Open 1000 of 1000 seats remaining Location: Whitney Ranch Recreation Center 1575 Galleria Drive Henderson, NV 89014 Taught by: Lauren MacLeod Date & Times: Jun 24, 2026 10:00AM - 12:00PM PDT View - Whitney Ranch Recreation Center 1575 Galleria Drive Henderson, NV 89014",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4772",
+      "instructors": [
+        {
+          "name": "Lauren MacLeod",
+          "role": "PRIMARY",
+          "email": ""
+        }
+      ],
+      "enrichment": {
+        "scrapedAt": "2026-06-15T20:40:16.740Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
