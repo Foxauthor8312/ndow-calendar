@@ -7293,17 +7293,18 @@ function openAddressLibrary(){
 
 function openAddAddressModal(){
 
-  alert('step 1');
-
   const modal =
     document.getElementById(
       'addressModal'
     );
 
-  alert(
-    modal
-      ? 'modal found'
-      : 'modal NOT found'
+  document.getElementById(
+    'addressModalTitle'
+  ).innerText =
+    'Add Address';
+
+  modal.classList.remove(
+    'hidden'
   );
 
 }
