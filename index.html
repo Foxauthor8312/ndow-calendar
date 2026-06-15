@@ -3,7 +3,18 @@
 <head>
 	 
 <meta charset="UTF-8">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
 
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script
+  src="https://unpkg.com/@mapbox/polyline">
+</script>
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -4860,6 +4871,18 @@ function openHoursModal(){
     "
   ></div>
 
+  <div
+  id="routeMap"
+  style="
+    margin-top:10px;
+    height:300px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    overflow:hidden;
+    display:none;
+  "
+></div>
+
 </div>
 
 <!-- ROUTE SECTION END -->
@@ -4961,6 +4984,72 @@ function closeHoursModal(){
 
 }
 
+let routeMap;
+
+let routeLayer;
+
+function renderRouteMap(){
+
+  if(
+    !window.routeGeometry
+  ) return;
+
+  document.getElementById(
+    'routeMap'
+  ).style.display =
+    'block';
+
+  const coordinates =
+    polyline.decode(
+      window.routeGeometry
+    );
+
+  const decoded =
+    coordinates.map(c => [
+
+      c[0],
+      c[1]
+
+    ]);
+
+  if(!routeMap){
+
+    routeMap =
+      L.map(
+        'routeMap'
+      );
+
+    L.tileLayer(
+
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+
+      {
+        maxZoom:19
+      }
+
+    ).addTo(routeMap);
+
+  }
+
+  if(routeLayer){
+
+    routeMap.removeLayer(
+      routeLayer
+    );
+
+  }
+
+  routeLayer =
+    L.polyline(
+      decoded
+    ).addTo(routeMap);
+
+  routeMap.fitBounds(
+    routeLayer.getBounds()
+  );
+
+}
+	
 async function calculateRoute(){
 
   try {
@@ -5029,6 +5118,8 @@ async function calculateRoute(){
     window.routeGeometry =
       result.routeGeometry || null;
 
+	  renderRouteMap();
+	  
     document.getElementById(
       'mileage'
     ).value =
