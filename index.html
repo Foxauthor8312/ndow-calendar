@@ -4971,10 +4971,74 @@ function openHoursModal(){
 
 `;
 
-  modal.style.display = 'flex';
+modal.style.display = 'flex';
 
-  attachHoursCalculations();
-  calculateHours();
+if(window.pendingHoursEntry){
+
+  document.getElementById(
+    'routeOrigin'
+  ).value =
+    window.pendingHoursEntry
+      .route_origin || '';
+
+  document.getElementById(
+    'routeDestination'
+  ).value =
+    window.pendingHoursEntry
+      .route_destination || '';
+
+  const stops =
+    JSON.parse(
+      window.pendingHoursEntry
+        .route_stops || '[]'
+    );
+
+  document.getElementById(
+    'routeStop1'
+  ).value =
+    stops[0] || '';
+
+  document.getElementById(
+    'routeStop2'
+  ).value =
+    stops[1] || '';
+
+  document.getElementById(
+    'routeStop3'
+  ).value =
+    stops[2] || '';
+
+  document.getElementById(
+    'routeStop4'
+  ).value =
+    stops[3] || '';
+
+  window.routeGeometry =
+    window.pendingHoursEntry
+      .route_polyline || '';
+
+  if(window.routeGeometry){
+
+    setTimeout(() => {
+
+      renderRouteMap();
+
+    }, 200);
+
+  }
+
+}
+
+attachHoursCalculations();
+calculateHours();
+
+if(window.routeGeometry){
+
+  setTimeout(() => {
+
+    renderRouteMap();
+
+  }, 200);
 
 }
 
