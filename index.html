@@ -5016,7 +5016,10 @@ function renderRouteMap(){
 
     routeMap =
       L.map(
-        'routeMap'
+        'routeMap',
+        {
+          zoomControl:true
+        }
       );
 
     L.tileLayer(
@@ -5041,12 +5044,25 @@ function renderRouteMap(){
 
   routeLayer =
     L.polyline(
-      decoded
+      decoded,
+      {
+        weight:5
+      }
     ).addTo(routeMap);
 
   routeMap.fitBounds(
     routeLayer.getBounds()
   );
+
+  setTimeout(() => {
+
+    routeMap.invalidateSize();
+
+    routeMap.fitBounds(
+      routeLayer.getBounds()
+    );
+
+  }, 250);
 
 }
 	
