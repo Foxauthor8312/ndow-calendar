@@ -5301,9 +5301,9 @@ window.pendingHoursEntry = {
   event_date: selectedEvent.date,
   location: selectedEvent.location,
 
-start_time: start,
-end_time: end,
-break_minutes: breakHours,
+  start_time: start,
+  end_time: end,
+  break_minutes: breakHours,
 
   travel_hours: travelHours,
   mileage: mileage,
@@ -5314,46 +5314,54 @@ break_minutes: breakHours,
   volunteer_hours: volunteerHours,
   service_value: serviceValue,
 
- route_destination:
-  document.getElementById(
-    'routeDestination'
-  )?.value ||
-  selectedEvent.location ||
-  '',
-route_stops:
-  JSON.stringify([
-
+  route_origin:
     document.getElementById(
-      'routeStop1'
+      'routeOrigin'
     )?.value || '',
 
+  route_destination:
     document.getElementById(
-      'routeStop2'
-    )?.value || '',
+      'routeDestination'
+    )?.value ||
+    selectedEvent.location ||
+    '',
 
-    document.getElementById(
-      'routeStop3'
-    )?.value || '',
+  route_stops:
+    JSON.stringify([
 
-    document.getElementById(
-      'routeStop4'
-    )?.value || ''
+      document.getElementById(
+        'routeStop1'
+      )?.value || '',
 
-  ].filter(
-    stop => stop.trim()
-  )),
-	
+      document.getElementById(
+        'routeStop2'
+      )?.value || '',
+
+      document.getElementById(
+        'routeStop3'
+      )?.value || '',
+
+      document.getElementById(
+        'routeStop4'
+      )?.value || ''
+
+    ].filter(
+      stop => stop.trim()
+    )),
+
+  route_polyline:
+    window.routeGeometry || '',
+
   route_round_trip:
-    document.getElementById(
-      'routeRoundTrip'
-    )?.checked || false,
+    true,
 
   route_image_url:
     window.routeImageUrl || '',
 
   route_status:
-    window.routeStatus ||
-    'not_generated',
+    window.routeGeometry
+      ? 'calculated'
+      : 'not_generated',
 
   route_provider:
     'openrouteservice',
@@ -5361,7 +5369,7 @@ route_stops:
   route_generated_at:
     new Date().toISOString()
 
-};	
+};
 
   document.getElementById(
     'hoursModalContent'
