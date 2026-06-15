@@ -7291,6 +7291,95 @@ function openAddressLibrary(){
 
 }
 
+function openAddAddressModal(){
+
+  document.getElementById(
+    'addressModalTitle'
+  ).innerText =
+    'Add Address';
+
+  document.getElementById(
+    'addressId'
+  ).value = '';
+
+  document.getElementById(
+    'addressLocationName'
+  ).value = '';
+
+  document.getElementById(
+    'addressType'
+  ).value = 'NDOW';
+
+  document.getElementById(
+    'addressAddress1'
+  ).value = '';
+
+  document.getElementById(
+    'addressCity'
+  ).value = '';
+
+  document.getElementById(
+    'addressState'
+  ).value = 'NV';
+
+  document.getElementById(
+    'addressZip'
+  ).value = '';
+
+  document.getElementById(
+    'addressLatitude'
+  ).value = '';
+
+  document.getElementById(
+    'addressLongitude'
+  ).value = '';
+
+  document.getElementById(
+    'addressDescription'
+  ).value = '';
+
+  document.getElementById(
+    'addressFavorite'
+  ).checked = false;
+
+  document.getElementById(
+    'addressActive'
+  ).checked = true;
+
+  document.getElementById(
+    'addressModal'
+  ).classList.remove(
+    'hidden'
+  );
+
+}
+
+function closeAddressModal(){
+
+  document.getElementById(
+    'addressModal'
+  ).classList.add(
+    'hidden'
+  );
+
+}
+
+function editAddress(id){
+
+  alert(
+    'Edit Address ' + id
+  );
+
+}
+
+async function saveAddress(){
+
+  alert(
+    'Save Address Coming Next'
+  );
+
+}	
+
 function openAnalytics(){
 
   openAdminPanel();
@@ -9957,6 +10046,15 @@ const data =
           ">
 
 <th style="
+  width:30px;
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+">
+  ★
+</th>
+
+<th style="
   padding:5px 8px;
   text-align:left;
   font-size:11px;
@@ -9992,6 +10090,15 @@ const data =
   Address
 </th>
 
+<th style="
+  width:70px;
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+">
+  Actions
+</th>
+
           </tr>
 
         </thead>
@@ -10001,26 +10108,61 @@ const data =
           ${filtered.map(a => `
 
             <tr style="
-              border-bottom:1px solid #DBE3EC;
-            ">
+  border-bottom:1px solid #DBE3EC;
+">
 
-              <td style="padding:10px;">
-                ${a.location_name || ''}
-              </td>
+  <td style="
+    text-align:center;
+    padding:4px;
+    font-size:12px;
+  ">
+    ${a.is_favorite ? '★' : ''}
+  </td>
 
-              <td style="padding:10px;">
-                ${a.location_type || ''}
-              </td>
+  <td style="
+    padding:4px 8px;
+    font-size:11px;
+  ">
+    ${a.location_name || ''}
+  </td>
 
-              <td style="padding:10px;">
-                ${a.city || ''}
-              </td>
+  <td style="
+    padding:4px 8px;
+    font-size:11px;
+  ">
+    ${a.location_type || ''}
+  </td>
 
-              <td style="padding:10px;">
-                ${a.address1 || ''}
-              </td>
+  <td style="
+    padding:4px 8px;
+    font-size:11px;
+  ">
+    ${a.city || ''}
+  </td>
 
-            </tr>
+  <td style="
+    padding:4px 8px;
+    font-size:11px;
+  ">
+    ${a.address1 || ''}
+  </td>
+
+  <td style="
+    text-align:center;
+    padding:4px;
+  ">
+    <button
+      onclick="editAddress('${a.id}')"
+      style="
+        font-size:10px;
+        padding:2px 6px;
+      "
+    >
+      Edit
+    </button>
+  </td>
+
+</tr>
 
           `).join('')}
 
@@ -11391,11 +11533,17 @@ id="adminSidebar"
       "
     >
 
-    <button
-      onclick="loadAddresses()"
-    >
-      Refresh
-    </button>
+<button
+  onclick="loadAddresses()"
+>
+  Refresh
+</button>
+
+<button
+  onclick="openAddAddressModal()"
+>
+  + Add Address
+</button>
 
   </div>
 
@@ -12811,6 +12959,132 @@ geographic analysis.
 
 </div>
 
+	
+<!-- ADDRESS MODAL -->
+
+<div
+  id="addressModal"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      max-width:850px;
+      width:90%;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeAddressModal()"
+    >
+      ✕
+    </button>
+
+    <h2 id="addressModalTitle">
+      Add Address
+    </h2>
+
+    <div
+      style="
+        font-size:11px;
+        color:#64748b;
+        margin-bottom:12px;
+      "
+    >
+      Address Library Record
+    </div>
+
+    <input
+      id="addressId"
+      type="hidden"
+    >
+
+    <label>Location Name</label>
+    <input id="addressLocationName">
+
+    <label>Type</label>
+    <select id="addressType">
+      <option>NDOW</option>
+      <option>EVENT</option>
+      <option>PARTNER</option>
+      <option>FIELD</option>
+      <option>SURVEY</option>
+      <option>RANGE</option>
+      <option>OTHER</option>
+    </select>
+
+    <label>Address</label>
+    <input id="addressAddress1">
+
+    <label>City</label>
+    <input id="addressCity">
+
+    <label>State</label>
+    <input
+      id="addressState"
+      value="NV"
+    >
+
+    <label>Zip</label>
+    <input id="addressZip">
+
+    <label>Latitude</label>
+    <input id="addressLatitude">
+
+    <label>Longitude</label>
+    <input id="addressLongitude">
+
+    <label>Description</label>
+    <textarea
+      id="addressDescription"
+      rows="3"
+    ></textarea>
+
+    <div style="
+      margin-top:10px;
+    ">
+
+      <label>
+        <input
+          id="addressFavorite"
+          type="checkbox"
+        >
+        Favorite
+      </label>
+
+      <label
+        style="
+          margin-left:20px;
+        "
+      >
+        <input
+          id="addressActive"
+          type="checkbox"
+          checked
+        >
+        Active
+      </label>
+
+    </div>
+
+    <div style="
+      margin-top:16px;
+      text-align:right;
+    ">
+
+      <button
+        onclick="saveAddress()"
+      >
+        Save
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 <!-- ========================================
      ADD CONTACT MODAL
 ======================================== -->
