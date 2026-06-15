@@ -7302,12 +7302,10 @@ function openAddAddressModal(){
     'hidden'
   );
 
-  console.log(
-    'addressModalTitle',
-    document.getElementById(
-      'addressModalTitle'
-    )
-  );
+  modal.style.display =
+    'flex';
+
+}
 
   console.log(
     'addressId',
@@ -7334,11 +7332,17 @@ function openAddAddressModal(){
 
 function closeAddressModal(){
 
-  document.getElementById(
-    'addressModal'
-  ).classList.add(
+  const modal =
+    document.getElementById(
+      'addressModal'
+    );
+
+  modal.classList.add(
     'hidden'
   );
+
+  modal.style.display =
+    'none';
 
 }
 
