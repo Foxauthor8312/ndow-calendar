@@ -299,3 +299,108 @@ Dashboard Refactor Completed
 ✓ All launcher buttons verified
 ✓ No functionality moved or rewritten
 
+# NDOW Calendar – Development Changelog
+
+## Route & Mileage Module Completed
+
+### Overview
+
+Implemented a complete Route & Mileage subsystem for Volunteer Hours entry. The module now calculates travel routes, mileage, travel time, and stores route information with volunteer hour submissions.
+
+### Features Added
+
+#### Route Calculation
+
+* Integrated OpenRouteService routing engine.
+* Added address geocoding for origin, destination, and intermediate stops.
+* Added support for up to four additional travel stops.
+* Added automatic round-trip mileage calculation.
+* Added automatic travel time calculation.
+* Travel time is rounded to the nearest quarter-hour increment (.25, .50, .75, 1.00).
+
+#### Route Display
+
+* Added interactive route map using Leaflet and OpenStreetMap.
+* Added real-time route rendering after calculation.
+* Added route summary display including:
+
+  * Mileage
+  * Travel Time
+  * Stop Count
+
+#### Volunteer Hours Integration
+
+* Added Route section to Hours Entry modal.
+* Added fields for:
+
+  * Origin Address
+  * Destination Address
+  * Stop 1
+  * Stop 2
+  * Stop 3
+  * Stop 4
+* Mileage and travel time automatically populate hours entry fields after route calculation.
+
+#### Data Storage
+
+Added storage of route-related data with each volunteer hours submission:
+
+* route_origin
+* route_destination
+* route_stops
+* route_polyline
+* route_status
+* route_provider
+* route_generated_at
+* route_image_url (reserved for future upload module)
+
+#### Edit & Restore Functionality
+
+Implemented restoration of route information when editing a pending hours entry.
+
+Restored automatically:
+
+* Start Time
+* End Time
+* Break Time
+* Travel Hours
+* Mileage
+* Travel Notes
+* Activity Notes
+* Origin Address
+* Destination Address
+* Additional Stops
+* Route Map
+
+Route geometry is restored from saved polyline data and redrawn automatically.
+
+### Architecture Notes
+
+Route geometry is stored as encoded polyline data rather than image files.
+
+Benefits:
+
+* Smaller storage footprint.
+* Route can be redrawn at any time.
+* Supports future PNG/PDF generation.
+* Supports future NDOW attachment uploads.
+* Preserves full route fidelity for auditing and reporting.
+
+### Future Enhancements
+
+#### Upload Framework Dependency
+
+The following feature is planned after completion of the file upload/storage framework:
+
+* Automatic route map image generation.
+* Upload route image to Supabase Storage.
+* Store image URL in route_image_url.
+* NDOW route image attachment support.
+* Route image export for reports and audits.
+
+### Status
+
+Route & Mileage Module: COMPLETE
+
+All core route calculation, display, persistence, and edit/restore functionality verified and operational.
+
