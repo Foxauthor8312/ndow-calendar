@@ -5026,6 +5026,9 @@ async function calculateRoute(){
     const result =
       await response.json();
 
+    window.routeGeometry =
+      result.routeGeometry || null;
+
     document.getElementById(
       'mileage'
     ).value =
