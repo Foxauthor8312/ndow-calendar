@@ -4987,45 +4987,94 @@ if(window.pendingHoursEntry){
     window.pendingHoursEntry
       .route_destination || '';
 
-  const stops =
-    JSON.parse(
+const stops =
+  JSON.parse(
+    window.pendingHoursEntry
+      .route_stops || '[]'
+  );
+
+document.getElementById(
+  'hoursStart'
+).value =
+  window.pendingHoursEntry
+    .start_time || '';
+
+document.getElementById(
+  'hoursEnd'
+).value =
+  window.pendingHoursEntry
+    .end_time || '';
+
+document.getElementById(
+  'hoursBreak'
+).value =
+  (
+    Number(
       window.pendingHoursEntry
-        .route_stops || '[]'
-    );
+        .break_minutes || 0
+    ) / 60
+  ).toString();
 
-  document.getElementById(
-    'routeStop1'
-  ).value =
-    stops[0] || '';
+document.getElementById(
+  'travelHours'
+).value =
+  window.pendingHoursEntry
+    .travel_hours || 0;
 
-  document.getElementById(
-    'routeStop2'
-  ).value =
-    stops[1] || '';
+document.getElementById(
+  'mileage'
+).value =
+  window.pendingHoursEntry
+    .mileage || 0;
 
-  document.getElementById(
-    'routeStop3'
-  ).value =
-    stops[2] || '';
+document.getElementById(
+  'travelNotes'
+).value =
+  window.pendingHoursEntry
+    .travel_notes || '';
+
+document.getElementById(
+  'activityNotes'
+).value =
+  window.pendingHoursEntry
+    .activity_notes || '';
+
+document.getElementById(
+  'routeStop1'
+).value =
+  stops[0] || '';
+
+document.getElementById(
+  'routeStop2'
+).value =
+  stops[1] || '';
+
+document.getElementById(
+  'routeStop3'
+).value =
+  stops[2] || '';
 
   document.getElementById(
     'routeStop4'
   ).value =
     stops[3] || '';
 
-  window.routeGeometry =
-    window.pendingHoursEntry
-      .route_polyline || '';
+window.routeGeometry =
+  window.pendingHoursEntry
+    .route_polyline || '';
 
-  if(window.routeGeometry){
+routeMap = null;
+routeLayer = null;
 
-    setTimeout(() => {
+if(window.routeGeometry){
 
-      renderRouteMap();
+  setTimeout(() => {
 
-    }, 200);
+    renderRouteMap();
 
-  }
+  }, 200);
+
+}
 
 }
 
