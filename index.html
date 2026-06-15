@@ -7250,7 +7250,11 @@ function openProgramUpdates(){
 
 }
 
-function openContactsManager(){
+function openAddressLibrary() {
+
+  alert('Address Library Coming Online');
+
+}
 
   openAdminPanel();
 
@@ -8457,6 +8461,14 @@ if(greeting){
       ">
       Contacts
     </button>
+<button
+  class="admin-button"
+  onclick="
+    closeDashboard();
+    openAddressLibrary();
+  ">
+  Address Library
+</button>
 
     <button
       class="admin-button"
