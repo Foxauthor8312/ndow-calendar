@@ -7331,13 +7331,122 @@ function editAddress(id){
 
 }
 
+
+	
 async function saveAddress(){
 
-  alert(
-    'Save Address Coming Next'
-  );
+  try{
 
-}	
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/admin/add-address',
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':
+              'application/json',
+            Authorization:
+              `Bearer ${token}`
+          },
+          body:JSON.stringify({
+
+            location_name:
+              document.getElementById(
+                'addressLocationName'
+              ).value,
+
+            address1:
+              document.getElementById(
+                'addressAddress1'
+              ).value,
+
+            city:
+              document.getElementById(
+                'addressCity'
+              ).value,
+
+            state:
+              document.getElementById(
+                'addressState'
+              ).value,
+
+            zip:
+              document.getElementById(
+                'addressZip'
+              ).value,
+
+            latitude:
+              document.getElementById(
+                'addressLatitude'
+              ).value || null,
+
+            longitude:
+              document.getElementById(
+                'addressLongitude'
+              ).value || null,
+
+            location_type:
+              document.getElementById(
+                'addressType'
+              ).value,
+
+            description:
+              document.getElementById(
+                'addressDescription'
+              ).value,
+
+            active:
+              document.getElementById(
+                'addressActive'
+              ).checked,
+
+            is_favorite:
+              document.getElementById(
+                'addressFavorite'
+              ).checked
+
+          })
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(data.success){
+
+      alert(
+        'Address saved'
+      );
+
+      closeAddressModal();
+
+      loadAddresses();
+
+    }else{
+
+      alert(
+        data.message ||
+        'Save failed'
+      );
+
+    }
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      'Save failed'
+    );
+
+  }
+
+}
 
 function openAnalytics(){
 
