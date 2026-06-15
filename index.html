@@ -4831,25 +4831,27 @@ function openHoursModal(){
   >
 </label>
 
-  <label style="
-    display:flex;
-    align-items:center;
-    gap:8px;
+  <div
+  style="
     margin-top:10px;
-  ">
-   <div style="
-  margin-top:8px;
-  color:#6b7280;
-  font-size:12px;
-">
-  Mileage is automatically calculated as a round trip.
-</div>
+  "
+>
+
+  <div
+    style="
+      margin-top:8px;
+      color:#6b7280;
+      font-size:12px;
+      margin-bottom:10px;
+    "
+  >
+    Mileage is automatically calculated as a round trip.
+  </div>
 
   <button
     type="button"
     onclick="calculateRoute()"
     style="
-      margin-top:10px;
       background:#2563eb;
       color:white;
       border:none;
@@ -4872,15 +4874,16 @@ function openHoursModal(){
   ></div>
 
   <div
-  id="routeMap"
-  style="
-    margin-top:10px;
-    height:300px;
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    overflow:hidden;
-  "
-></div>
+    id="routeMap"
+    style="
+      margin-top:10px;
+      width:100%;
+      height:300px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      overflow:hidden;
+    "
+  ></div>
 
 </div>
 
