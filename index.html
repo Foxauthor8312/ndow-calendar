@@ -408,6 +408,27 @@ button:hover{
   box-sizing:border-box;
 }
 
+/* ADDRESS FORM */
+
+.address-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 14px;
+}
+
+.address-form-grid label{
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  text-transform:uppercase;
+  color:#6B7280;
+  margin-bottom:2px;
+}
+
+.address-form-grid .full-width{
+  grid-column:1 / -1;
+}
+
 .close{
   float:right;
   cursor:pointer;
@@ -13068,9 +13089,13 @@ geographic analysis.
       id="addressId"
       type="hidden"
     >
-
+<div class="address-form-grid">
+	  
     <label>Location Name</label>
-    <input id="addressLocationName">
+    <input
+     id="addressLocationName"
+     class="full-width"
+    >
 
     <label>Type</label>
     <select id="addressType">
@@ -13084,7 +13109,10 @@ geographic analysis.
     </select>
 
     <label>Address</label>
-    <input id="addressAddress1">
+    <input
+  id="addressAddress1"
+  class="full-width"
+>
 
     <label>City</label>
     <input id="addressCity">
@@ -13105,37 +13133,34 @@ geographic analysis.
     <input id="addressLongitude">
 
     <label>Description</label>
-    <textarea
-      id="addressDescription"
-      rows="3"
-    ></textarea>
+   <textarea
+  id="addressDescription"
+  class="full-width"
+  rows="3"
+></textarea>
 
-    <div style="
-      margin-top:10px;
-    ">
+</div>
 
-      <label>
-        <input
-          id="addressFavorite"
-          type="checkbox"
-        >
-        Favorite
-      </label>
+<div style="margin-top:10px;">
 
-      <label
-        style="
-          margin-left:20px;
-        "
-      >
-        <input
-          id="addressActive"
-          type="checkbox"
-          checked
-        >
-        Active
-      </label>
+  <label>
+    <input
+      id="addressFavorite"
+      type="checkbox"
+    >
+    Favorite
+  </label>
 
-    </div>
+  <label style="margin-left:20px;">
+    <input
+      id="addressActive"
+      type="checkbox"
+      checked
+    >
+    Active
+  </label>
+
+</div>
 
     <div style="
       margin-top:16px;
