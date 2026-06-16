@@ -7350,7 +7350,7 @@ async function editAddress(id){
 
   const address =
     window.addressesCache?.find(
-      a => a.id === id
+      a => String(a.id) === String(id)
     );
 
   if(!address){
@@ -10176,6 +10176,8 @@ if(
 const data =
   result.addresses || [];
 
+	  window.addressesCache = data;
+	  
     const search =
       document.getElementById(
         'addressSearch'
