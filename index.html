@@ -2526,6 +2526,7 @@ let departmentContacts = [];
 
 const SERVICE_VALUE_RATE =
   56.55;
+let editingAddressId = null;	
 
 	// ========================================
 // DEPARTMENT CONTACTS
@@ -7343,11 +7344,98 @@ function openAddAddressModal(){
 
 }
 
-function editAddress(id){
+async function editAddress(id){
 
-  alert(
-    'Edit Address ' + id
+  editingAddressId = id;
+
+  const address =
+    window.addressesCache?.find(
+      a => a.id === id
+    );
+
+  if(!address){
+
+    alert('Address not found');
+    return;
+
+  }
+
+  document.getElementById(
+    'addressModalTitle'
+  ).textContent =
+    'Edit Address';
+
+  document.getElementById(
+    'addressId'
+  ).value =
+    address.id || '';
+
+  document.getElementById(
+    'addressLocationName'
+  ).value =
+    address.location_name || '';
+
+  document.getElementById(
+    'addressAddress1'
+  ).value =
+    address.address1 || '';
+
+  document.getElementById(
+    'addressCity'
+  ).value =
+    address.city || '';
+
+  document.getElementById(
+    'addressState'
+  ).value =
+    address.state || 'NV';
+
+  document.getElementById(
+    'addressZip'
+  ).value =
+    address.zip || '';
+
+  document.getElementById(
+    'addressLatitude'
+  ).value =
+    address.latitude || '';
+
+  document.getElementById(
+    'addressLongitude'
+  ).value =
+    address.longitude || '';
+
+  document.getElementById(
+    'addressType'
+  ).value =
+    address.location_type || 'NDOW';
+
+  document.getElementById(
+    'addressDescription'
+  ).value =
+    address.description || '';
+
+  document.getElementById(
+    'addressFavorite'
+  ).checked =
+    !!address.is_favorite;
+
+  document.getElementById(
+    'addressActive'
+  ).checked =
+    !!address.active;
+
+  const modal =
+    document.getElementById(
+      'addressModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
   );
+
+  modal.style.display =
+    'flex';
 
 }
 
