@@ -425,6 +425,18 @@ button:hover{
   margin-bottom:2px;
 }
 
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  box-sizing:border-box;
+}	
+
 .address-form-grid .full-width{
   grid-column:1 / -1;
 }
@@ -442,19 +454,6 @@ button:hover{
   display:none !important;
 }
 	
-.modal-content{
-  position:relative;
-  background:#fff;
-  width:86%;
-  max-width:980px;
-  max-height:82vh;
-  overflow-y:auto;
-  margin:3vh auto;
-  border-radius:12px;
-  padding:14px 18px;
-  box-sizing:border-box;
-}
-
 .modal-close{
   position:absolute;
   top:14px;
@@ -13114,30 +13113,41 @@ geographic analysis.
   class="full-width"
 >
 
-    <label>City</label>
-    <input id="addressCity">
+<div class="form-group">
+  <label>City</label>
+  <input id="addressCity">
+</div>
 
-    <label>State</label>
-    <input
-      id="addressState"
-      value="NV"
-    >
+<div class="form-group">
+  <label>State</label>
+  <input
+    id="addressState"
+    value="NV"
+  >
+</div>
 
-    <label>Zip</label>
-    <input id="addressZip">
+<div class="form-group">
+  <label>Zip</label>
+  <input id="addressZip">
+</div>
 
-    <label>Latitude</label>
-    <input id="addressLatitude">
+<div class="form-group">
+  <label>Latitude</label>
+  <input id="addressLatitude">
+</div>
 
-    <label>Longitude</label>
-    <input id="addressLongitude">
+<div class="form-group">
+  <label>Longitude</label>
+  <input id="addressLongitude">
+</div>
 
-    <label>Description</label>
-   <textarea
-  id="addressDescription"
-  class="full-width"
-  rows="3"
-></textarea>
+<div class="form-group full-width">
+  <label>Description</label>
+  <textarea
+    id="addressDescription"
+    rows="3"
+  ></textarea>
+</div>
 
 </div>
 
