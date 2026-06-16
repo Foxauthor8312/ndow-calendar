@@ -10187,6 +10187,8 @@ if(
 
 }
 
+
+	  
 const data =
   result.addresses || [];
 
@@ -10343,15 +10345,26 @@ const data =
     text-align:center;
     padding:4px;
   ">
-    <button
-      onclick="editAddress('${a.id}')"
-      style="
-        font-size:10px;
-        padding:2px 6px;
-      "
-    >
-      Edit
-    </button>
+   <button
+  onclick="editAddress('${a.id}')"
+  style="
+    font-size:10px;
+    padding:2px 6px;
+    margin-right:4px;
+  "
+>
+  Edit
+</button>
+
+<button
+  onclick="inactivateAddress('${a.id}')"
+  style="
+    font-size:10px;
+    padding:2px 6px;
+  "
+>
+  Inactivate
+</button>
   </td>
 
 </tr>
@@ -10374,6 +10387,68 @@ const data =
   }
 
 }	
+
+async function inactivateAddress(id){
+
+  if(
+    !confirm(
+      'Inactivate this address?'
+    )
+  ){
+    return;
+  }
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/admin/inactivate-address',
+        {
+          method:'POST',
+          headers:{
+            'Content-Type':
+              'application/json',
+            Authorization:
+              `Bearer ${token}`
+          },
+          body:JSON.stringify({
+            id
+          })
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(data.success){
+
+      loadAddresses();
+
+    }else{
+
+      alert(
+        data.message ||
+        'Inactivate failed'
+      );
+
+    }
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      'Inactivate failed'
+    );
+
+  }
+
+}
 
 let editingContactId = null;
 
