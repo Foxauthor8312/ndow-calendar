@@ -514,8 +514,8 @@ button:hover{
   display:flex;
   flex-wrap:nowrap;
   align-items:center;
-  gap:6px;
-  padding:8px 12px;
+  gap:3px;
+  padding:4px 8px;
   width:100%;
   box-sizing:border-box;
   overflow-x:auto;
@@ -524,14 +524,16 @@ button:hover{
 .legend-item{
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  font-size:13px;
+  gap:5px;
+  padding:5px 8px;
+  font-size:11px;
   font-weight:600;
   border-right:1px solid #d1d5db;
   background:#eef2f7;
   white-space:nowrap;
   flex:0 0 auto;
+  cursor:pointer;
+  transition:.2s ease;
 }
 
 .legend-item:last-child{
@@ -554,9 +556,9 @@ button:hover{
 
 
 .legend-color{
-  width:14px;
-  height:14px;
-  border-radius:4px;
+  width:10px;
+  height:10px;
+  border-radius:3px;
   display:inline-block;
 }
 
@@ -1934,11 +1936,11 @@ body{
   style="
     cursor:pointer;
     color:#2563eb;
-    font-size:14px;
+    font-size:10px;
     border:1px solid #2563eb;
     border-radius:50%;
-    width:18px;
-    height:18px;
+    width:14px;
+    height:14px;
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -1958,12 +1960,13 @@ body{
         white-space:nowrap;
       ">
 
-       <span style="
+<span style="
   font-weight:600;
   color:#374151;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:4px;
+  font-size:11px;
 ">
   Region:
 
@@ -1988,16 +1991,17 @@ body{
 
 </span>
 
-        <select
-          id="regionFilter"
-          onchange="setRegionFilter()"
-          style="
-            padding:8px 10px;
-            border-radius:8px;
-            border:1px solid #d1d5db;
-            font-size:13px;
-          "
-        >
+<select
+  id="regionFilter"
+  onchange="setRegionFilter()"
+  style="
+    padding:5px 8px;
+    border-radius:6px;
+    border:1px solid #d1d5db;
+    font-size:11px;
+    height:28px;
+  "
+>
 
           <option value="ALL">
             All Regions
@@ -2020,9 +2024,9 @@ body{
   style="
     display:flex;
     align-items:center;
-    gap:6px;
-    margin-left:12px;
-    font-size:13px;
+    gap:4px;
+    margin-left:8px;
+    font-size:11px;
     white-space:nowrap;
     cursor:pointer;
   "
