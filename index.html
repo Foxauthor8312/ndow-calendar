@@ -10547,11 +10547,6 @@ async function loadRouteAddressDropdowns(){
       return;
     }
 
-    const regionOrder = {
-  Southern: 1,
-  Eastern: 2,
-  Western: 3
-};
 
 const addresses =
   (result.addresses || [])
@@ -10559,46 +10554,47 @@ const addresses =
       a => a.active
     );
 
-const favorites =
-  addresses.filter(
-    a => a.is_favorite
+  const origin =
+  document.getElementById(
+    'routeOrigin'
   );
 
-const southern =
-  addresses
-    .filter(
-      a => a.region === 'Southern'
-    )
-    .sort((a,b) =>
-      (a.location_name || '')
-        .localeCompare(
-          b.location_name || ''
-        )
-    );
+const destination =
+  document.getElementById(
+    'routeDestination'
+  );
 
-const eastern =
-  addresses
-    .filter(
-      a => a.region === 'Eastern'
-    )
-    .sort((a,b) =>
-      (a.location_name || '')
-        .localeCompare(
-          b.location_name || ''
-        )
-    );
+if(
+  !origin ||
+  !destination
+){
+  return;
+}
 
-const western =
-  addresses
-    .filter(
-      a => a.region === 'Western'
-    )
-    .sort((a,b) =>
-      (a.location_name || '')
-        .localeCompare(
-          b.location_name || ''
-        )
-    );
+origin.innerHTML =
+  '<option value="">Select Origin</option>';
+
+destination.innerHTML =
+  '<option value="">Select Destination</option>';
+
+addresses.forEach(a => {
+
+  const label =
+    `${a.is_favorite ? '★ ' : ''}${a.location_name}`;
+
+  origin.innerHTML += `
+    <option value="${a.address1 || a.location_name}">
+      ${label}
+    </option>
+  `;
+
+  destination.innerHTML += `
+    <option value="${a.address1 || a.location_name}">
+      ${label}
+    </option>
+  `;
+
+});	  
 
   }catch(err){
 
@@ -10661,6 +10657,8 @@ async function inactivateAddress(id){
       );
 
     }
+
+	  
 
   }catch(err){
 
