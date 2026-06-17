@@ -7466,34 +7466,50 @@ const regionOrder = {
 
 };
 
-const data =
-  (result.addresses || []).sort(
-    (a,b) => {
+let data =
+  result.addresses || [];
 
-      const regionA =
-        regionOrder[
-          a.region
-        ] || 99;
+const showInactive =
+  document.getElementById(
+    'showInactiveAddresses'
+  )?.checked;
 
-      const regionB =
-        regionOrder[
-          b.region
-        ] || 99;
+if(!showInactive){
 
-      if(regionA !== regionB){
+  data =
+    data.filter(
+      a => a.active
+    );
 
-        return regionA - regionB;
+}
 
-      }
+data = data.sort(
+  (a,b) => {
 
-      return (
-        a.location_name || ''
-      ).localeCompare(
-        b.location_name || ''
-      );
+    const regionA =
+      regionOrder[
+        a.region
+      ] || 99;
+
+    const regionB =
+      regionOrder[
+        b.region
+      ] || 99;
+
+    if(regionA !== regionB){
+
+      return regionA - regionB;
 
     }
-  );
+
+    return (
+      a.location_name || ''
+    ).localeCompare(
+      b.location_name || ''
+    );
+
+  }
+);
 
     window.addressesCache =
       data;
@@ -12110,6 +12126,19 @@ id="adminSidebar"
 >
   Refresh
 </button>
+
+<label style="
+  margin-left:12px;
+  font-size:12px;
+  color:#475569;
+">
+  <input
+    type="checkbox"
+    id="showInactiveAddresses"
+    onchange="loadAddresses()"
+  >
+  Show Inactive
+</label>	  
 
 <button
   onclick="openAddAddressModal()"
