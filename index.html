@@ -7325,6 +7325,65 @@ function openAddressLibrary(){
 
 function openAddAddressModal(){
 
+  editingAddressId = null;
+
+  document.getElementById(
+    'addressModalTitle'
+  ).textContent =
+    'Add Address';
+
+  document.getElementById(
+    'addressId'
+  ).value = '';
+
+  document.getElementById(
+    'addressLocationName'
+  ).value = '';
+
+  document.getElementById(
+    'addressAddress1'
+  ).value = '';
+
+  document.getElementById(
+    'addressCity'
+  ).value = '';
+
+  document.getElementById(
+    'addressState'
+  ).value = 'NV';
+
+  document.getElementById(
+    'addressZip'
+  ).value = '';
+
+  document.getElementById(
+    'addressRegion'
+  ).value = '';
+
+  document.getElementById(
+    'addressLatitude'
+  ).value = '';
+
+  document.getElementById(
+    'addressLongitude'
+  ).value = '';
+
+  document.getElementById(
+    'addressType'
+  ).value = 'NDOW';
+
+  document.getElementById(
+    'addressDescription'
+  ).value = '';
+
+  document.getElementById(
+    'addressFavorite'
+  ).checked = false;
+
+  document.getElementById(
+    'addressActive'
+  ).checked = true;
+
   const modal =
     document.getElementById(
       'addressModal'
