@@ -330,144 +330,72 @@ if(isCompleted){
       }
     );
 
-const html =
-  await page.content();
-
-const customerLookup = {};
-
-const customerMatches =
-  [
-    ...html.matchAll(
-      /customer_id&quot;:(\d+).*?full_name&quot;:&quot;([^&]+)&quot;/gs
-    )
-  ];
-
-customerMatches.forEach(match => {
-
-  customerLookup[
-    match[2]
-      .trim()
-      .toLowerCase()
-  ] = match[1];
-
-});
-
-console.log(
-  'Customer IDs found:',
-  Object.keys(customerLookup).length
-);
-    
+  
    
-       const instructorData =
-  await page.evaluate(
-    (customerLookup) => {
+  const instructorData =
+  await page.evaluate(() => {
 
-            const text =
-              document.body
-                .innerText;
-
-            const lowerText =
-              text.toLowerCase();
-
-            const splitIndex =
-              lowerText.indexOf(
-                'assigned instructors'
-              );
-
-            if(splitIndex === -1){
-
-              return [];
-
-            }
-
-            const section =
-              text.substring(
-                splitIndex
-              );
-
-            const lines =
-              section
-                .split('\n')
-                .map(line =>
-                  line.trim()
-                )
-                .filter(Boolean);
-
-            const instructorData =
-              [];
-
-            for(
-              let i = 0;
-              i < lines.length;
-              i++
-            ){
-
-              const line =
-                lines[i];
-
-              const lowerLine =
-                line.toLowerCase();
-
-              if(
-                lowerLine.includes(
-                  'primary'
-                ) ||
-                lowerLine.includes(
-                  'assistant'
-                )
-              ){
-
-                const parts =
-                  line.split(/\s+/);
-
-                const role =
-                  parts.pop();
-
-                const name =
-                  parts.join(' ');
-
-                let email = '';
-
-                if(
-                  lines[i + 1] &&
-                  lines[i + 1].includes('@')
-                ){
-
-                  email =
-                    lines[i + 1];
-
-                }
-
-                const cleanName =
-                  name.trim();
-                
-                instructorData.push({
-                
-                  name:
-                    cleanName,
-                
-                  role:
-                    role.trim(),
-                
-                  email:
-                    email.trim(),
-                
-                  customerId:
-                    customerLookup[
-                      cleanName.toLowerCase()
-                    ] || ''
-                
-                });
-
-              }
-
-            }
-
-      return instructorData;
-
-      },
-      customerLookup
+    const reactNode =
+      document.querySelector(
+        '[data-react-class="instructors/SearchInstructorsForm"]'
       );
+
+    if(!reactNode){
+      return [];
+    }
+
+    const rawProps =
+      reactNode.getAttribute(
+        'data-react-props'
+      );
+
+    if(!rawProps){
+      return [];
+    }
+
+   let props;
+
+try{
+
+  props =
+    JSON.parse(rawProps);
+
+}catch{
+
+  props =
+    JSON.parse(
+      rawProps.replace(
+        /&quot;/g,
+        '"'
+      )
+    );
+
+}
+
+    return (
+      props.instructors || []
+    ).map(i => ({
+
+      name:
+        `${i.customer?.first_name || ''} ${i.customer?.last_name || ''}`
+          .trim(),
+
+      role:
+        i.is_primary
+          ? 'PRIMARY'
+          : 'ASSISTANT',
+
+      email:
+        i.customer?.email_address || '',
+
+      customerId:
+        String(
+          i.customer_id || ''
+        )
+
+    }));
+
+  });
 
         event.instructors =
           instructorData;
