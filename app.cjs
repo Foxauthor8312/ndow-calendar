@@ -358,8 +358,9 @@ console.log(
 );
     
    
-        const instructorData =
-          await page.evaluate(() => {
+       const instructorData =
+  await page.evaluate(
+    (customerLookup) => {
 
             const text =
               document.body
@@ -462,9 +463,11 @@ console.log(
 
             }
 
-            return instructorData;
+      return instructorData;
 
-          });
+      },
+      customerLookup
+      );
 
         event.instructors =
           instructorData;
