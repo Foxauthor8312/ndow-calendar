@@ -4999,6 +4999,7 @@ function openHoursModal(){
 `;
 
 modal.style.display = 'flex';
+	
 loadRouteAddressDropdowns();	
 
 if(window.pendingHoursEntry){
@@ -10556,84 +10557,48 @@ const addresses =
   (result.addresses || [])
     .filter(
       a => a.active
+    );
+
+const favorites =
+  addresses.filter(
+    a => a.is_favorite
+  );
+
+const southern =
+  addresses
+    .filter(
+      a => a.region === 'Southern'
     )
-    .sort((a,b) => {
+    .sort((a,b) =>
+      (a.location_name || '')
+        .localeCompare(
+          b.location_name || ''
+        )
+    );
 
-      if(
-        a.is_favorite &&
-        !b.is_favorite
-      ) return -1;
+const eastern =
+  addresses
+    .filter(
+      a => a.region === 'Eastern'
+    )
+    .sort((a,b) =>
+      (a.location_name || '')
+        .localeCompare(
+          b.location_name || ''
+        )
+    );
 
-      if(
-        !a.is_favorite &&
-        b.is_favorite
-      ) return 1;
-
-      const regionA =
-        regionOrder[
-          a.region
-        ] || 99;
-
-      const regionB =
-        regionOrder[
-          b.region
-        ] || 99;
-
-      if(regionA !== regionB){
-
-        return regionA - regionB;
-
-      }
-
-      return (
-        a.location_name || ''
-      ).localeCompare(
-        b.location_name || ''
-      );
-
-    });
-
-    const origin =
-      document.getElementById(
-        'routeOrigin'
-      );
-
-    const destination =
-      document.getElementById(
-        'routeDestination'
-      );
-
-    if(
-      !origin ||
-      !destination
-    ){
-      return;
-    }
-
-    origin.innerHTML =
-      '<option value="">Select Origin</option>';
-
-    destination.innerHTML =
-      '<option value="">Select Destination</option>';
-
-    addresses.forEach(a => {
-
-      const label =
-        `${a.is_favorite ? '★ ' : ''}${a.location_name}`;
-
-      origin.innerHTML += `
-        <option value="${a.address1 || a.location_name}">
-          ${label}
-        </option>
-      `;
-
-      destination.innerHTML += `
-        <option value="${a.address1 || a.location_name}">
-          ${label}
-        </option>
-      `;
-
-    });
+const western =
+  addresses
+    .filter(
+      a => a.region === 'Western'
+    )
+    .sort((a,b) =>
+      (a.location_name || '')
+        .localeCompare(
+          b.location_name || ''
+        )
+    );
 
   }catch(err){
 
