@@ -7355,6 +7355,235 @@ function openAddAddressModal(){
 
 }
 
+async function loadAddresses(){
+
+  const list =
+    document.getElementById(
+      'addressList'
+    );
+
+  if(!list){
+    return;
+  }
+
+  list.innerHTML =
+    '<div style="padding:12px;">Loading...</div>';
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/admin/addresses',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const result =
+      await response.json();
+
+    if(!result.success){
+
+      throw new Error(
+        result.message ||
+        'Failed to load addresses'
+      );
+
+    }
+
+    const data =
+      result.addresses || [];
+
+    window.addressesCache =
+      data;
+
+    const search =
+      document.getElementById(
+        'addressSearch'
+      )?.value
+        ?.toLowerCase()
+        ?.trim() || '';
+
+    const filtered =
+      data.filter(a =>
+
+        !search ||
+
+        (a.location_name || '')
+          .toLowerCase()
+          .includes(search)
+
+        ||
+
+        (a.city || '')
+          .toLowerCase()
+          .includes(search)
+
+        ||
+
+        (a.location_type || '')
+          .toLowerCase()
+          .includes(search)
+
+      );
+
+    list.innerHTML = `
+
+      <table style="
+        width:100%;
+        border-collapse:collapse;
+        font-size:11px;
+      ">
+
+        <thead>
+
+          <tr style="
+            background:#F8FAFC;
+            border-bottom:1px solid #DBE3EC;
+          ">
+
+            <th style="
+              width:30px;
+              text-align:center;
+            ">
+              ★
+            </th>
+
+            <th style="
+              padding:5px 8px;
+              text-align:left;
+            ">
+              Location
+            </th>
+
+            <th style="
+              padding:5px 8px;
+              text-align:left;
+            ">
+              Type
+            </th>
+
+            <th style="
+              padding:5px 8px;
+              text-align:left;
+            ">
+              City
+            </th>
+
+            <th style="
+              padding:5px 8px;
+              text-align:left;
+            ">
+              Address
+            </th>
+
+            <th style="
+              width:120px;
+              text-align:center;
+            ">
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${filtered.map(a => `
+
+            <tr style="
+              border-bottom:1px solid #DBE3EC;
+            ">
+
+              <td style="
+                text-align:center;
+                padding:4px;
+              ">
+                ${a.is_favorite ? '★' : ''}
+              </td>
+
+              <td style="
+                padding:4px 8px;
+              ">
+                ${a.location_name || ''}
+              </td>
+
+              <td style="
+                padding:4px 8px;
+              ">
+                ${a.location_type || ''}
+              </td>
+
+              <td style="
+                padding:4px 8px;
+              ">
+                ${a.city || ''}
+              </td>
+
+              <td style="
+                padding:4px 8px;
+              ">
+                ${a.address1 || ''}
+              </td>
+
+              <td style="
+                text-align:center;
+                padding:4px;
+              ">
+
+                <button
+                  onclick="editAddress('${a.id}')"
+                  style="
+                    font-size:10px;
+                    padding:2px 6px;
+                    margin-right:4px;
+                  "
+                >
+                  Edit
+                </button>
+
+                <button
+                  onclick="inactivateAddress('${a.id}')"
+                  style="
+                    font-size:10px;
+                    padding:2px 6px;
+                  "
+                >
+                  Inactivate
+                </button>
+
+              </td>
+
+            </tr>
+
+          `).join('')}
+
+        </tbody>
+
+      </table>
+
+    `;
+
+  }catch(err){
+
+    console.error(err);
+
+    list.innerHTML =
+      '<div style="padding:12px;color:red;">Failed to load addresses.</div>';
+
+  }
+
+}	
+
 async function editAddress(id){
 
   editingAddressId = id;
