@@ -13547,17 +13547,29 @@ geographic analysis.
      class="full-width"
     >
 
-    <label>Type</label>
-    <select id="addressType">
-      <option>NDOW</option>
-      <option>EVENT</option>
-      <option>PARTNER</option>
-      <option>FIELD</option>
-      <option>SURVEY</option>
-      <option>RANGE</option>
-      <option>OTHER</option>
-    </select>
+   <label>Type</label>
+<select id="addressType">
+  <option value="NDOW">
+    NDOW
+  </option>
 
+  <option value="EVENT">
+    Event Location
+  </option>
+
+  <option value="PARTNER">
+    Partner Organization
+  </option>
+</select>
+	
+<div style="
+  font-size:11px;
+  color:#64748b;
+  margin-top:4px;
+">
+  NDOW Facility, Event Location, or Partner Organization
+</div>
+	
     <label>Address</label>
     <input
   id="addressAddress1"
