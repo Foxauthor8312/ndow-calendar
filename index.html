@@ -7437,18 +7437,20 @@ async function loadAddresses(){
 
     list.innerHTML = `
 
-      <table style="
-        width:100%;
-        border-collapse:collapse;
-        font-size:11px;
-      ">
+	<table style="
+	  width:100%;
+	  border-collapse:collapse;
+	  font-size:11px;
+	  color:#19304B;
+	">
+	
+	<thead>
 
-        <thead>
-
-          <tr style="
-            background:#F8FAFC;
-            border-bottom:1px solid #DBE3EC;
-          ">
+	  <tr style="
+	    background:#F8FAFC;
+	    border-bottom:1px solid #DBE3EC;
+	    color:#19304B;
+	  ">
 
             <th style="
               width:30px;
@@ -7471,19 +7473,26 @@ async function loadAddresses(){
               Type
             </th>
 
-            <th style="
-              padding:5px 8px;
-              text-align:left;
-            ">
-              City
-            </th>
-
-            <th style="
-              padding:5px 8px;
-              text-align:left;
-            ">
-              Address
-            </th>
+			<th style="
+			  padding:5px 8px;
+			  text-align:left;
+			">
+			  City
+			</th>
+			
+			<th style="
+			  padding:5px 8px;
+			  text-align:left;
+			">
+			  Region
+			</th>
+			
+			<th style="
+			  padding:5px 8px;
+			  text-align:left;
+			">
+			  Address
+			</th>
 
             <th style="
               width:120px;
@@ -7522,18 +7531,24 @@ async function loadAddresses(){
               ">
                 ${a.location_type || ''}
               </td>
-
-              <td style="
-                padding:4px 8px;
-              ">
-                ${a.city || ''}
-              </td>
-
-              <td style="
-                padding:4px 8px;
-              ">
-                ${a.address1 || ''}
-              </td>
+				
+				<td style="
+				  padding:4px 8px;
+				">
+				  ${a.city || ''}
+				</td>
+				
+				<td style="
+				  padding:4px 8px;
+				">
+				  ${a.region || ''}
+				</td>
+				
+				<td style="
+				  padding:4px 8px;
+				">
+				  ${a.address1 || ''}
+				</td>
 
               <td style="
                 text-align:center;
@@ -7636,6 +7651,11 @@ async function editAddress(id){
     address.zip || '';
 
   document.getElementById(
+    'addressRegion'
+  ).value =
+    address.region || '';
+
+  document.getElementById(
     'addressLatitude'
   ).value =
     address.latitude || '';
@@ -7733,9 +7753,14 @@ const endpoint =
                 'addressState'
               ).value,
 
-            zip:
+                       zip:
               document.getElementById(
                 'addressZip'
+              ).value,
+
+            region:
+              document.getElementById(
+                'addressRegion'
               ).value,
 
             latitude:
@@ -13498,10 +13523,21 @@ geographic analysis.
 </div>
 
 <div class="form-group">
+  <label>Region</label>
+  <select id="addressRegion">
+    <option value="">Select Region</option>
+    <option value="Southern">Southern</option>
+    <option value="Eastern">Eastern</option>
+    <option value="Western">Western</option>
+    <option value="Statewide">Statewide</option>
+  </select>
+</div>
+
+<div class="form-group">
   <label>Latitude</label>
   <input id="addressLatitude">
 </div>
-
+	
 <div class="form-group">
   <label>Longitude</label>
   <input id="addressLongitude">
