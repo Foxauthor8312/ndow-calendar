@@ -2016,15 +2016,29 @@ body{
           </option>
 
         </select>
-
+<label
+  style="
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-left:12px;
+    font-size:13px;
+    white-space:nowrap;
+    cursor:pointer;
+  "
+>
+  <input
+    type="checkbox"
+    id="myEventsOnly"
+    onchange="renderCalendar(currentDate)"
+  >
+  My Events
+</label>
+		  
       </div>
     </div>
 
-    <!-- TEMP TEST
-    </div>
-    -->
-
- <!-- ========================================
+   <!-- ========================================
        START CALENDAR
 ======================================== -->
 
@@ -4253,7 +4267,47 @@ function renderCalendar(){
         ){
           return false;
         }
+		  
+        const myEventsOnly =
+  document.getElementById(
+    'myEventsOnly'
+  )?.checked;
 
+if(myEventsOnly){
+
+  const currentUser =
+
+    JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
+  const currentEmail =
+
+    (currentUser.email || '')
+      .toLowerCase()
+      .trim();
+
+  const isInstructor =
+
+    Array.isArray(
+      event.instructors
+    ) &&
+
+    event.instructors.some(
+      i =>
+        (i.email || '')
+          .toLowerCase()
+          .trim()
+        ===
+        currentEmail
+    );
+
+  if(!isInstructor){
+    return false;
+  }
+
+}
+		  
         if(
           activeFilters.length > 0 &&
           !activeFilters.includes(
