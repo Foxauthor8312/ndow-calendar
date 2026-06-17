@@ -10546,30 +10546,52 @@ async function loadRouteAddressDropdowns(){
       return;
     }
 
-    const addresses =
-      (result.addresses || [])
-        .filter(
-          a => a.active
-        )
-        .sort((a,b) => {
+    const regionOrder = {
+  Southern: 1,
+  Eastern: 2,
+  Western: 3
+};
 
-          if(
-            a.is_favorite &&
-            !b.is_favorite
-          ) return -1;
+const addresses =
+  (result.addresses || [])
+    .filter(
+      a => a.active
+    )
+    .sort((a,b) => {
 
-          if(
-            !a.is_favorite &&
-            b.is_favorite
-          ) return 1;
+      if(
+        a.is_favorite &&
+        !b.is_favorite
+      ) return -1;
 
-          return (
-            a.location_name || ''
-          ).localeCompare(
-            b.location_name || ''
-          );
+      if(
+        !a.is_favorite &&
+        b.is_favorite
+      ) return 1;
 
-        });
+      const regionA =
+        regionOrder[
+          a.region
+        ] || 99;
+
+      const regionB =
+        regionOrder[
+          b.region
+        ] || 99;
+
+      if(regionA !== regionB){
+
+        return regionA - regionB;
+
+      }
+
+      return (
+        a.location_name || ''
+      ).localeCompare(
+        b.location_name || ''
+      );
+
+    });
 
     const origin =
       document.getElementById(
@@ -10624,90 +10646,6 @@ async function loadRouteAddressDropdowns(){
 
 }
 	  
-
-
-async function loadRouteAddressDropdowns(){
-
-  try{
-
-    const token =
-      localStorage.getItem(
-        'token'
-      );
-
-    const response =
-      await fetch(
-        'https://ndow-calendar-server.onrender.com/api/admin/addresses',
-        {
-          headers:{
-            Authorization:
-              `Bearer ${token}`
-          }
-        }
-      );
-
-    const result =
-      await response.json();
-
-    if(!result.success){
-      return;
-    }
-
-    const addresses =
-      result.addresses || [];
-
-    const origin =
-      document.getElementById(
-        'routeOrigin'
-      );
-
-    const destination =
-      document.getElementById(
-        'routeDestination'
-      );
-
-    if(
-      !origin ||
-      !destination
-    ){
-      return;
-    }
-
-    origin.innerHTML =
-      '<option value="">Select Origin</option>';
-
-    destination.innerHTML =
-      '<option value="">Select Destination</option>';
-
-    addresses.forEach(a => {
-
-      const label =
-        `${a.is_favorite ? '★ ' : ''}${a.location_name}`;
-
-      origin.innerHTML += `
-        <option value="${a.address1 || a.location_name}">
-          ${label}
-        </option>
-      `;
-
-      destination.innerHTML += `
-        <option value="${a.address1 || a.location_name}">
-          ${label}
-        </option>
-      `;
-
-    });
-
-  }catch(err){
-
-    console.error(
-      'Route address load failed',
-      err
-    );
-
-  }
-
-}	
 
 async function inactivateAddress(id){
 
