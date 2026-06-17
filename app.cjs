@@ -330,6 +330,21 @@ if(isCompleted){
       }
     );
 
+if(
+  event.sourceId === '4759'
+){
+
+  fs.writeFileSync(
+    'debug-event-instructors.html',
+    await page.content()
+  );
+
+  console.log(
+    'Saved debug instructor page'
+  );
+
+}
+    
    
         const instructorData =
           await page.evaluate(() => {
