@@ -330,20 +330,32 @@ if(isCompleted){
       }
     );
 
-if(
-  event.sourceId === '4759'
-){
+const html =
+  await page.content();
 
-  fs.writeFileSync(
-    'debug-event-instructors.html',
-    await page.content()
-  );
+const customerLookup = {};
 
-  console.log(
-    'Saved debug instructor page'
-  );
+const customerMatches =
+  [
+    ...html.matchAll(
+      /customer_id&quot;:(\d+).*?full_name&quot;:&quot;([^&]+)&quot;/gs
+    )
+  ];
 
-}
+customerMatches.forEach(match => {
+
+  customerLookup[
+    match[2]
+      .trim()
+      .toLowerCase()
+  ] = match[1];
+
+});
+
+console.log(
+  'Customer IDs found:',
+  Object.keys(customerLookup).length
+);
     
    
         const instructorData =
@@ -425,17 +437,25 @@ if(
 
                 }
 
+                const cleanName =
+                  name.trim();
+                
                 instructorData.push({
-
+                
                   name:
-                    name.trim(),
-
+                    cleanName,
+                
                   role:
                     role.trim(),
-
+                
                   email:
-                    email.trim()
-
+                    email.trim(),
+                
+                  customerId:
+                    customerLookup[
+                      cleanName.toLowerCase()
+                    ] || ''
+                
                 });
 
               }
