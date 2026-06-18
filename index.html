@@ -11768,17 +11768,17 @@ if(
     ).innerText =
       data.message;
 
-    if(data.success){
+   if(data.success){
 
-      loadUsers();
+  setTimeout(async () => {
 
-      setTimeout(() => {
+    await loadUsers();
 
-        closeEditUserModal();
+    closeEditUserModal();
 
-      }, 800);
+  }, 500);
 
-    }
+}
 
   } catch(err){
 
