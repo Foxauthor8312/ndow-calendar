@@ -11572,6 +11572,7 @@ function closeEditUserModal(){
 }
 
 async function saveUserEdits(){
+	
 
   const token =
     localStorage.getItem('token');
@@ -11984,7 +11985,7 @@ id="adminSidebar"
   <label style="
     display:flex;
     align-items:center;
-    gap:px;
+    gap:8px;
     font-size:13px;
     color:#374151;
   ">
@@ -12096,17 +12097,19 @@ id="adminSidebar"
 
             </div>
 
-           <div
-			  id="userList"
-			  style="
-			    height:420px;
-			    overflow-y:auto;
-			    overflow-x:hidden;
-			    border-top:1px solid #e5e7eb;
-			    padding-top:8px;
-			    padding-right:6px;
-			  "
-			></div>
+          <div
+			  
+		  id="userList"
+		  style="
+		    flex:1;
+		    min-height:0;
+		    overflow-y:auto;
+		    overflow-x:hidden;
+		    border-top:1px solid #e5e7eb;
+		    padding-top:8px;
+		    padding-right:6px;
+		  "
+		></div>
 
           </div>
 
