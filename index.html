@@ -9406,22 +9406,80 @@ function previewInstructorImport(){
       'instructorImportResults'
     );
 
-  const emails =
-    text.match(
-      /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi
-    ) || [];
+  const lines =
+    text
+      .split('\n')
+      .map(l => l.trim())
+      .filter(Boolean);
 
-  results.innerHTML =
+  const instructors = [];
+
+  for(let i = 0; i < lines.length; i++){
+
+    const email =
+      lines[i].match(
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      );
+
+    if(!email){
+      continue;
+    }
+
+    instructors.push({
+
+      name:
+        lines[i - 1] || '',
+
+      email:
+        lines[i],
+
+      customerId:
+        lines[i + 1] || ''
+
+    });
+
+  }
+
+  let html =
     `
       <div style="
         padding:10px;
         background:#f3f4f6;
         border-radius:6px;
+        margin-bottom:10px;
       ">
-        <b>Emails Found:</b>
-        ${emails.length}
+        <b>Instructors Found:</b>
+        ${instructors.length}
       </div>
+
+      <table style="
+        width:100%;
+        border-collapse:collapse;
+        font-size:13px;
+      ">
+        <tr>
+          <th align="left">Name</th>
+          <th align="left">Email</th>
+          <th align="left">Customer ID</th>
+        </tr>
     `;
+
+  instructors.forEach(i => {
+
+    html += `
+      <tr>
+        <td>${i.name}</td>
+        <td>${i.email}</td>
+        <td>${i.customerId}</td>
+      </tr>
+    `;
+
+  });
+
+  html += '</table>';
+
+  results.innerHTML =
+    html;
 
 }
 
