@@ -9519,14 +9519,24 @@ async function runInstructorImport(){
       continue;
     }
 
-    instructors.push({
-      name:
-        lines[i - 1] || '',
-      email:
-        lines[i],
-      customerId:
-        lines[i + 1] || ''
-    });
+   instructors.push({
+
+  name:
+    lines[i - 1] || '',
+
+  email:
+    lines[i],
+
+  customerId:
+    lines[i + 1] || '',
+
+  ndowRole:
+    lines[i + 2] || '',
+
+  region:
+    lines[i + 3] || ''
+
+});
 
   }
 
@@ -9551,6 +9561,8 @@ async function runInstructorImport(){
         })
       }
     );
+
+	console.log(instructors);
 
   const data =
     await response.json();
