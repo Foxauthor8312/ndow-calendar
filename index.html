@@ -8264,10 +8264,17 @@ function openUserManagement(){
 
 function openAssignmentRequests(){
 
-  const user =
-    JSON.parse(
-      localStorage.getItem('user')
-    ) || {};
+  const sidebar =
+    document.getElementById(
+      'adminSidebar'
+    );
+
+  if(sidebar){
+
+    sidebar.style.display =
+      'none';
+
+  }
 
   const modal =
     document.getElementById(
@@ -10663,6 +10670,18 @@ if(
 
 }
 
+const sidebar =
+  document.getElementById(
+    'adminSidebar'
+  );
+
+if(sidebar){
+
+  sidebar.style.display =
+    'flex';
+
+}
+	
   const modal = document.getElementById(
     'adminModal'
   );
