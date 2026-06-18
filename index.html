@@ -3624,26 +3624,47 @@ console.log('LOGIN RESPONSE:', data);
 if(!data.success){
   throw new Error('Invalid login');
 }
-    document.getElementById(
-      'loadingMessage'
-    ).innerText =
-      'Verifying account permissions...';
 
-    if(!data.success){
-      overlay.style.display =
-        'none';
+if(data.must_change_pin){
 
-      overlay.style.visibility =
-        'hidden';
+  overlay.style.display =
+    'none';
 
-      overlay.style.opacity =
-        '0';
+  overlay.style.visibility =
+    'hidden';
 
-      throw new Error(
-        'Invalid login'
-      );
+  overlay.style.opacity =
+    '0';
 
-    }
+  alert(
+    'Welcome to the NDOW Volunteer Portal.\n\nYou must create a new PIN before continuing.'
+  );
+
+  return;
+
+}
+
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Verifying account permissions...';
+
+if(!data.success){
+
+  overlay.style.display =
+    'none';
+
+  overlay.style.visibility =
+    'hidden';
+
+  overlay.style.opacity =
+    '0';
+
+  throw new Error(
+    'Invalid login'
+  );
+
+}
 
 
 const loginScreen =
