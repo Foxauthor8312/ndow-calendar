@@ -9205,7 +9205,16 @@ async function loadDashboard(){
         ) || '{}'
       );
 
-const greeting =
+	  const isInstructor =
+       user.role === 'user';
+		
+		const isAdmin =
+		  user.role === 'admin';
+		
+		const isSuperuser =
+		  user.role === 'superuser';
+		
+		const greeting =
   document.getElementById(
     'dashboardUserGreeting'
   );
@@ -9466,9 +9475,11 @@ if(greeting){
       Release Management
     </button>
 
-  </div>
+ </div>
 
 </div>
+
+` : ''}
 
 <div class="dashboard-section dashboard-section-divider">
 
