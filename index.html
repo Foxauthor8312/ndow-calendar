@@ -8264,7 +8264,22 @@ function openUserManagement(){
 
 function openAssignmentRequests(){
 
-  openAdminPanel();
+  const user =
+    JSON.parse(
+      localStorage.getItem('user')
+    ) || {};
+
+  const modal =
+    document.getElementById(
+      'adminModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
 
   setTimeout(() => {
 
@@ -9501,7 +9516,7 @@ if(greeting){
 >
 
   <h3 class="dashboard-section-title">
-    System Toolss
+    System Tools
   </h3>
 
 <div
