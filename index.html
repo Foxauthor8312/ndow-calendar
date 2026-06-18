@@ -9212,7 +9212,19 @@ async function loadDashboard(){
 		  user.role === 'admin';
 		
 		const isSuperuser =
-		  user.role === 'superuser';
+  user.role === 'superuser';
+
+const adminSectionStyle =
+  (isAdmin || isSuperuser)
+    ? ''
+    : 'display:none;';
+
+const systemSectionStyle =
+  isSuperuser
+    ? ''
+    : 'display:none;';
+
+	  
 		
 		const greeting =
   document.getElementById(
@@ -9380,7 +9392,10 @@ if(greeting){
 
 </div>
 
-<div class="dashboard-section dashboard-section-divider">
+<div
+  class="dashboard-section dashboard-section-divider"
+  style="${adminSectionStyle}"
+>
 
   <h3 class="dashboard-section-title">
     Administrator Tools
@@ -9480,10 +9495,13 @@ if(greeting){
 </div>
 
 
-<div class="dashboard-section dashboard-section-divider">
+<div
+  class="dashboard-section dashboard-section-divider"
+  style="${systemSectionStyle}"
+>
 
   <h3 class="dashboard-section-title">
-    System Tools
+    System Toolss
   </h3>
 
 <div
