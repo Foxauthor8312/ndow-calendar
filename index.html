@@ -9567,13 +9567,23 @@ async function runInstructorImport(){
   const data =
     await response.json();
 
-  alert(
+   alert(
     `Import complete\n\nCreated: ${data.created}\nUpdated: ${data.updated}`
-  );
-
-  loadUsers();
-
-}
+	);
+	
+	document.getElementById(
+	  'instructorImportText'
+	).value = '';
+	
+	document.getElementById(
+	  'instructorImportResults'
+	).innerHTML = '';
+	
+	closeInstructorImportModal();
+	
+	loadUsers();
+	
+	}
 
 function renderSystemConsole(){
 
