@@ -9446,39 +9446,43 @@ function previewInstructorImport(){
 	  
   }
 
-  let html =
-    `
-      <div style="
-        padding:10px;
-        background:#f3f4f6;
-        border-radius:6px;
-        margin-bottom:10px;
-      ">
-        <b>Instructors Found:</b>
-        ${instructors.length}
-      </div>
+ let html =
+  `
+    <div style="
+      padding:10px;
+      background:#f3f4f6;
+      border-radius:6px;
+      margin-bottom:10px;
+    ">
+      <b>Instructors Found:</b>
+      ${instructors.length}
+    </div>
 
-      <table style="
-        width:100%;
-        border-collapse:collapse;
-        font-size:13px;
-      ">
-        <tr>
-          <th align="left">Name</th>
-          <th align="left">Email</th>
-          <th align="left">Customer ID</th>
-        </tr>
-    `;
+    <table style="
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+    ">
+      <tr>
+        <th align="left">Name</th>
+        <th align="left">Email</th>
+        <th align="left">Customer ID</th>
+        <th align="left">NDOW Role</th>
+        <th align="left">Region</th>
+      </tr>
+  `;
 
   instructors.forEach(i => {
 
     html += `
-      <tr>
-        <td>${i.name}</td>
-        <td>${i.email}</td>
-        <td>${i.customerId}</td>
-      </tr>
-    `;
+  <tr>
+    <td>${i.name}</td>
+    <td>${i.email}</td>
+    <td>${i.customerId}</td>
+    <td>${i.ndowRole}</td>
+    <td>${i.region}</td>
+  </tr>
+`;
 
   });
 
