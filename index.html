@@ -7122,6 +7122,8 @@ function openEditUserModalByUsername(username){
 
     }
 
+	  
+
   });
 
 }
@@ -11613,6 +11615,10 @@ async function resetPin(username){
 function openEditUserModal(user){
 
   document.getElementById(
+    'editUserCloseBtn'
+  ).style.display = 'none';
+
+  document.getElementById(
     'editUserModal'
   ).classList.remove('hidden');
 
@@ -11635,11 +11641,11 @@ function openEditUserModal(user){
   document.getElementById(
     'editPhone'
   ).value = user.phone || '';
- 
+
   document.getElementById(
     'editNdowId'
   ).value = user.ndow_id || '';
-	
+
   document.getElementById(
     'editRole'
   ).value = user.role || 'user';
@@ -11660,19 +11666,95 @@ function openEditUserModal(user){
 
 }
 
-function closeEditUserModal(){
-
-  document.getElementById(
-    'editUserModal'
-  ).classList.add('hidden');
-
-  document.getElementById(
-    'editUserModal'
-  ).style.display = 'none';
-
+async function saveUserEdits(){
 	
 
+  const token =
+    localStorage.getItem('token');
+
+  const payload = {
+
+  originalUsername:
+    document.getElementById(
+      'editOriginalUsername'
+    ).value,
+
+  username:
+    document.getElementById(
+      'editUsername'
+    ).value.trim(),
+
+  email:
+    document.getElementById(
+      'editEmail'
+    ).value.trim(),
+
+  phone:
+    document.getElementById(
+      'editPhone'
+    ).value.trim(),
+
+  ndow_id:
+    document.getElementById(
+      'editNdowId'
+    ).value.trim(),
+
+  role:
+    document.getElementById(
+      'editRole'
+    ).value,
+
+  notify_email:
+    document.getElementById(
+      'editNotifyEmail'
+    ).checked,
+
+  notify_sms:
+    document.getElementById(
+      'editNotifySms'
+    ).checked
+
+};
+
+
+const currentUser =
+  JSON.parse(
+    localStorage.getItem('user')
+  );
+
+if(
+  payload.role === 'superuser' &&
+  currentUser.role !== 'superuser' &&
+  currentUser.username !== payload.originalUsername
+){
+
+  alert(
+    'Only superusers can assign superuser access.'
+  );
+
+  return;
+
 }
+	
+
+  try {
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/admin/update-user',
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:`Bearer ${token}`
+        },
+
+        body:JSON.stringify(payload)
+      }
+    );
+
+    const data =
+      await response.json();
 
 async function saveUserEdits(){
 	
@@ -11790,6 +11872,25 @@ if(
     null,
     2
   );
+
+if(data.success){
+
+  await loadUsers();
+
+}
+
+  } catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'editUserMessage'
+    ).innerText =
+      'Save failed';
+
+  }
+
+}
 
    if(data.success){
 
@@ -13867,6 +13968,18 @@ geographic analysis.
           color:#374151;
         "
       ></div>
+
+	  <button
+		  id="editUserCloseBtn"
+		  style="
+		    margin-top:12px;
+		    width:100%;
+		    display:none;
+		  "
+		  onclick="closeEditUserModal()"
+	  >
+		  Close
+      </button>	
 
     </div>
 
