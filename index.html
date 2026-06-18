@@ -11723,6 +11723,16 @@ async function saveUserEdits(){
     ).checked
 
 };
+
+	document.getElementById(
+  'editUserMessage'
+).innerText =
+  'SENDING:\n' +
+  JSON.stringify(
+    payload,
+    null,
+    2
+  );
 	
 const currentUser =
   JSON.parse(
@@ -11764,9 +11774,22 @@ if(
       await response.json();
 
     document.getElementById(
-      'editUserMessage'
-    ).innerText =
-      data.message;
+  'editUserMessage'
+).innerText =
+  'SENT:\n' +
+  JSON.stringify(
+    payload,
+    null,
+    2
+  ) +
+
+  '\n\nRETURNED:\n' +
+
+  JSON.stringify(
+    data,
+    null,
+    2
+  );
 
    if(data.success){
 
@@ -11776,7 +11799,7 @@ if(
 
     closeEditUserModal();
 
-  }, 500);
+  }, 10000);
 
 }
 
