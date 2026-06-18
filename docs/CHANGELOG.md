@@ -402,5 +402,9 @@ The following feature is planned after completion of the file upload/storage fra
 
 Route & Mileage Module: COMPLETE
 
+6-17
+
+Fixed Edit User modal. Root cause was HTML structure issue. Edit modal was nested inside Instructor Request Center modal and missing proper closing structure, preventing display despite working JavaScript.
+
 All core route calculation, display, persistence, and edit/restore functionality verified and operational.
 
