@@ -1583,6 +1583,91 @@ body{
 
 </div>
 
+<div
+  id="changePinModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    z-index:100001;
+    justify-content:center;
+    align-items:center;
+  "
+>
+
+  <div
+    style="
+      background:white;
+      width:100%;
+      max-width:420px;
+      border-radius:10px;
+      padding:24px;
+      box-sizing:border-box;
+    "
+  >
+
+    <h2
+      style="
+        margin-top:0;
+        color:#19304B;
+      "
+    >
+      Welcome
+    </h2>
+
+    <p>
+      This is your first login.
+      Please create a new PIN before continuing.
+    </p>
+
+    <input
+      id="newPin"
+      type="password"
+      placeholder="New PIN"
+      maxlength="10"
+      style="
+        width:100%;
+        margin-bottom:12px;
+        padding:10px;
+        box-sizing:border-box;
+      "
+    >
+
+    <input
+      id="confirmPin"
+      type="password"
+      placeholder="Confirm PIN"
+      maxlength="10"
+      style="
+        width:100%;
+        margin-bottom:12px;
+        padding:10px;
+        box-sizing:border-box;
+      "
+    >
+
+    <div
+      id="changePinError"
+      style="
+        color:#c62828;
+        margin-bottom:12px;
+      "
+    ></div>
+
+    <button
+      onclick="submitChangePin()"
+      style="
+        width:100%;
+      "
+    >
+      Save PIN
+    </button>
+
+  </div>
+
+</div>
+
 <!-- ========================================
      START LOADING OVERLAY
 ======================================== -->
@@ -3636,11 +3721,15 @@ if(data.must_change_pin){
   overlay.style.opacity =
     '0';
 
-  alert(
-    'Welcome to the NDOW Volunteer Portal.\n\nYou must create a new PIN before continuing.'
-  );
+window.pendingLoginData =
+  data;
 
-  return;
+document.getElementById(
+  'changePinModal'
+).style.display =
+  'flex';
+
+return;
 
 }
 
