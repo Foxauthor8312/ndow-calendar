@@ -1700,18 +1700,16 @@ async function submitChangePin(){
 
   }
 
-  if(
+if(
   !/^\d{6}$/.test(
     newPin
   )
-)
+){
+  errorBox.innerText =
+    'PIN must be exactly 6 digits.';
 
-    errorBox.innerText =
-      'PIN must be exactly 6 digits.';
-
-    return;
-
-  }
+  return;
+}
 
   try{
 
