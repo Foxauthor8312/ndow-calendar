@@ -9425,19 +9425,25 @@ function previewInstructorImport(){
       continue;
     }
 
-    instructors.push({
+   instructors.push({
 
-      name:
-        lines[i - 1] || '',
+  name:
+    lines[i - 1] || '',
 
-      email:
-        lines[i],
+  email:
+    lines[i],
 
-      customerId:
-        lines[i + 1] || ''
+  customerId:
+    lines[i + 1] || '',
 
-    });
+  ndowRole:
+    lines[i + 2] || '',
 
+  region:
+    lines[i + 3] || ''
+
+});
+	  
   }
 
   let html =
@@ -9485,9 +9491,71 @@ function previewInstructorImport(){
 
 async function runInstructorImport(){
 
+  const text =
+    document.getElementById(
+      'instructorImportText'
+    ).value;
+
+  const lines =
+    text
+      .split('\n')
+      .map(l => l.trim())
+      .filter(Boolean);
+
+  const instructors = [];
+
+  for(let i = 0; i < lines.length; i++){
+
+    const email =
+      lines[i].match(
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      );
+
+    if(!email){
+      continue;
+    }
+
+    instructors.push({
+      name:
+        lines[i - 1] || '',
+      email:
+        lines[i],
+      customerId:
+        lines[i + 1] || ''
+    });
+
+  }
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+  const response =
+    await fetch(
+      `${API_BASE_URL}/api/admin/import-instructors`,
+      {
+        method:'POST',
+        headers:{
+          'Content-Type':
+            'application/json',
+          Authorization:
+            `Bearer ${token}`
+        },
+        body:JSON.stringify({
+          instructors
+        })
+      }
+    );
+
+  const data =
+    await response.json();
+
   alert(
-    'Import function coming next.'
+    `Import complete\n\nCreated: ${data.created}\nUpdated: ${data.updated}`
   );
+
+  loadUsers();
 
 }
 
