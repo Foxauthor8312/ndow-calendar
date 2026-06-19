@@ -560,3 +560,90 @@ Next:
 
 All core route calculation, display, persistence, and edit/restore functionality verified and operational.
 
+06/19/26
+Instructor Activity Report v1
+
+Completed:
+
+✅ Report route
+
+/api/reports/instructor-time
+
+✅ User authentication
+
+✅ Volunteer lookup
+
+✅ Annual totals
+
+Events
+Hours
+Miles
+Volunteer Value
+
+✅ Program Activity Summary
+
+Events
+Hours by program
+
+✅ Monthly grouping
+
+✅ Monthly subtotals
+
+✅ Event detail listing
+
+Event #
+Date
+Event
+Hours
+Miles
+Value
+
+✅ Report ID
+
+✅ Report Date
+
+✅ Print capability
+
+✅ PDF export via browser print
+
+What makes this one important
+
+This wasn't just another modal.
+
+It's the first feature that answers:
+
+What have I actually done this year?
+
+with real numbers.
+
+For most instructors that's probably the single most valuable report they'll ever need.
+
+What I'd put on the future list
+
+Not now, just parked for later:
+
+Reports
+├─ Instructor Activity Report        ✓ Complete
+├─ Regional Participation Report
+├─ Program Coverage Report
+├─ Instructor Certification Report
+├─ Volunteer Hours Audit Report
+├─ Annual Administrative Summary
+└─ NDOW Import Validation Report
+
+Those are administrator reports and can wait.
+
+I'd mark this in your release notes as:
+
+Added Instructor Activity Report
+
+• Annual volunteer summary
+• Program activity summary
+• Monthly activity breakdowns
+• Event-level detail
+• Printable/PDF export
+• Volunteer value calculations
+
+That's a substantial feature, not a minor enhancement.
+
+Take the break. This one is finished. 👍
