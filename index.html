@@ -9124,7 +9124,38 @@ async function loadInstructorTimeReport(){
 
     const data =
       await response.json();
+	  
+	const programSummary = {};
+	
+	data.records.forEach(
+	  record => {
 
+    const program =
+      record.program || 'Other';
+
+    if(
+      !programSummary[program]
+    ){
+
+      programSummary[program] = {
+
+        events:0,
+        hours:0
+
+      };
+
+    }
+
+    programSummary[program].events++;
+
+    programSummary[program].hours +=
+      Number(
+        record.volunteer_hours || 0
+      );
+
+  }
+);
+	  
 const now =
   new Date();
 
@@ -9196,6 +9227,17 @@ const reportId =
   Value:
   $${data.summary.value.toFixed(2)}
 </div>
+
+<hr>
+
+<h4 style="
+  margin-top:10px;
+  margin-bottom:6px;
+">
+  Program Activity Summary
+</h4>
+
+<div id="programSummary"></div>
 
 <hr>
 
@@ -9458,7 +9500,76 @@ data.records.forEach(
 rows += `
 </table>
 `;
+let programHtml = `
 
+<table
+  style="
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+    margin-bottom:12px;
+  "
+>
+
+<tr>
+
+  <th align="left">
+    Program
+  </th>
+
+  <th align="right">
+    Events
+  </th>
+
+  <th align="right">
+    Hours
+  </th>
+
+</tr>
+
+`;
+
+Object.keys(
+  programSummary
+)
+.sort()
+.forEach(
+  program => {
+
+    programHtml += `
+
+<tr>
+
+  <td>
+    ${program}
+  </td>
+
+  <td align="right">
+    ${programSummary[program].events}
+  </td>
+
+  <td align="right">
+    ${programSummary[
+      program
+    ].hours.toFixed(1)}
+  </td>
+
+</tr>
+
+`;
+
+  }
+);
+
+programHtml += `
+</table>
+`;
+
+document.getElementById(
+  'programSummary'
+).innerHTML =
+  programHtml;
+	  
     document.getElementById(
       'reportRows'
     ).innerHTML =
