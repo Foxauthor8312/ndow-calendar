@@ -9067,6 +9067,208 @@ localStorage.setItem(
   }
 
 }
+
+function openInstructorTimeReport(){
+
+  const modal =
+    document.getElementById(
+      'instructorReportModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  loadInstructorTimeReport();
+
+}
+
+function closeInstructorTimeReport(){
+
+  const modal =
+    document.getElementById(
+      'instructorReportModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
+async function loadInstructorTimeReport(){
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/reports/instructor-time',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    document.getElementById(
+      'reportContent'
+    ).innerHTML = `
+
+<h3>
+  ${data.volunteer.name}
+</h3>
+
+<div>
+  Region:
+  ${data.volunteer.region}
+</div>
+
+<div style="margin-top:8px;">
+  Events:
+  ${data.summary.events}
+  |
+  Hours:
+  ${data.summary.hours.toFixed(2)}
+  |
+  Miles:
+  ${data.summary.mileage}
+  |
+  Value:
+  $${data.summary.value.toFixed(2)}
+</div>
+
+<hr>
+
+<div id="reportRows"></div>
+
+`;
+
+    let rows = `
+
+<table
+  style="
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+  "
+>
+
+<tr>
+
+  <th align="left">
+    Event#
+  </th>
+
+  <th align="left">
+    Date
+  </th>
+
+  <th align="left">
+    Event Title
+  </th>
+
+  <th align="right">
+    Hours
+  </th>
+
+  <th align="right">
+    Miles
+  </th>
+
+  <th align="right">
+    Value
+  </th>
+
+</tr>
+
+`;
+
+    data.records.forEach(
+      record => {
+
+        const title =
+          record.event_name
+            .split('■')[0]
+            .trim();
+
+        rows += `
+
+<tr>
+
+  <td>
+    ${record.event_id}
+  </td>
+
+  <td>
+    ${record.event_date}
+  </td>
+
+  <td>
+    ${title}
+  </td>
+
+  <td align="right">
+    ${Number(
+      record.volunteer_hours || 0
+    ).toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${Number(
+      record.mileage || 0
+    ).toFixed(0)}
+  </td>
+
+  <td align="right">
+    $${Number(
+      record.service_value || 0
+    ).toFixed(0)}
+  </td>
+
+</tr>
+
+`;
+
+      }
+    );
+
+    rows += `
+</table>
+`;
+
+    document.getElementById(
+      'reportRows'
+    ).innerHTML =
+      rows;
+
+  }catch(err){
+
+    console.error(err);
+
+    document.getElementById(
+      'reportContent'
+    ).innerHTML =
+      'Unable to load report.';
+
+  }
+
+}	
+		  
 /* ========================================
    RELEASE MANAGER
 ======================================== */
@@ -14702,6 +14904,47 @@ geographic analysis.
           color:#374151;
         "
       ></div>
+
+    </div>
+
+  </div>
+
+</div>	
+
+
+<div id="instructorReportModal" class="modal hidden">
+
+  <div
+    class="modal-content"
+    style="
+      max-width:1100px;
+      width:95%;
+      max-height:80vh;
+      overflow-y:auto;
+      font-family:'IBM Plex Sans',sans-serif;
+      font-size:11px;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeInstructorTimeReport()"
+    >
+      ✕
+    </button>
+
+    <h2>
+      Instructor Time Report
+    </h2>
+
+    <div
+      id="reportContent"
+      style="
+        margin-top:12px;
+      "
+    >
+
+      Loading report...
 
     </div>
 
