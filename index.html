@@ -8856,28 +8856,16 @@ function closeProfileModal(){
 
 }
 
-async function loadProfile(){
+function loadProfile(){
 
   try{
 
-    const token =
-      localStorage.getItem(
-        'token'
-      );
-
-    const response =
-      await fetch(
-        `${API_BASE_URL}/profile`,
-        {
-          headers:{
-            Authorization:
-              `Bearer ${token}`
-          }
-        }
-      );
-
     const user =
-      await response.json();
+      JSON.parse(
+        localStorage.getItem(
+          'user'
+        ) || '{}'
+      );
 
     document.getElementById(
       'profileUsername'
@@ -8915,8 +8903,7 @@ async function loadProfile(){
 
 }
 
-	
-	async function saveProfile(){
+async function saveProfile(){
 
   try{
 
@@ -8927,7 +8914,7 @@ async function loadProfile(){
 
     const response =
       await fetch(
-        `${API_BASE_URL}/profile`,
+        'https://ndow-calendar-server.onrender.com/api/profile',
         {
           method:'PUT',
 
