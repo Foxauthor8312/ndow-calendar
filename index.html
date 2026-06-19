@@ -1627,7 +1627,7 @@ body{
       id="newPin"
       type="password"
       placeholder="New PIN"
-      maxlength="10"
+      maxlength="6"
       style="
         width:100%;
         margin-bottom:12px;
@@ -1640,7 +1640,7 @@ body{
       id="confirmPin"
       type="password"
       placeholder="Confirm PIN"
-      maxlength="10"
+      maxlength="6"
       style="
         width:100%;
         margin-bottom:12px;
@@ -1700,16 +1700,30 @@ async function submitChangePin(){
 
   }
 
-if(
-  !/^\d{6}$/.test(
-    newPin
-  )
-){
-  errorBox.innerText =
-    'PIN must be exactly 6 digits.';
+  if(
+    !/^\d{6}$/.test(
+      newPin
+    )
+  ){
 
-  return;
-}
+    errorBox.innerText =
+      'PIN must be exactly 6 digits.';
+
+    return;
+
+  }
+
+  const username =
+
+    window.pendingLoginData
+      ?.user
+      ?.username ||
+
+    JSON.parse(
+      localStorage.getItem(
+        'user'
+      ) || '{}'
+    ).username;
 
   try{
 
@@ -1726,8 +1740,7 @@ if(
 
           body:JSON.stringify({
 
-            username:
-              window.pendingLoginData.user.username,
+            username,
 
             newPin
 
@@ -1749,13 +1762,29 @@ if(
 
     }
 
-    alert(
-      'PIN updated successfully.'
-    );
+    closeChangePinModal();
 
-    location.reload();
+    const profileMessage =
+      document.getElementById(
+        'profileMessage'
+      );
 
-  } catch(err){
+    if(profileMessage){
+
+      profileMessage.innerText =
+        'PIN updated successfully.';
+
+    }else{
+
+      alert(
+        'PIN updated successfully.'
+      );
+
+      location.reload();
+
+    }
+
+  }catch(err){
 
     console.error(err);
 
@@ -1763,6 +1792,24 @@ if(
       'Server error';
 
   }
+
+}
+
+function openChangePinModal(){
+
+  document.getElementById(
+    'changePinModal'
+  ).style.display =
+    'flex';
+
+}
+
+function closeChangePinModal(){
+
+  document.getElementById(
+    'changePinModal'
+  ).style.display =
+    'none';
 
 }
 
