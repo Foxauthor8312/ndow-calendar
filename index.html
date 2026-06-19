@@ -13880,9 +13880,27 @@ id="adminSidebar"
   "
 >
 
- <h2>
-  Geographic Analytics
- </h2>
+ <div
+  style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+  "
+>
+
+  <h2 style="margin:0;">
+    Geographic Analytics
+  </h2>
+
+  <button
+    class="action-btn"
+    onclick="printGeoAnalysisReport()"
+  >
+    Print Report
+  </button>
+
+</div>
 
   <div style="
     margin-top:18px;
@@ -13986,6 +14004,7 @@ id="adminSidebar"
 
 <div
   id="geoRegionDetails"
+  data-report-container="true"
   style="
     margin-top:12px;
     background:white;
@@ -14337,30 +14356,7 @@ geographic analysis.
 
 <!-- GEO -->
 
-        <div
-          class="admin-panel"
-          id="geoPanel"
-          style="
-            flex:1;
-            display:none;
-            overflow-y:auto;
-          "
-        >
-
-          <h2>
-            Geographic Analytics
-          </h2>
-
-          <div style="
-            margin-top:18px;
-            color:#475569;
-            line-height:1.6;
-          ">
-            Regional analytics tools will appear here.
-          </div>
-
-        </div>
-
+  
       </div>
 
     </div>
@@ -15795,6 +15791,102 @@ const geoEventStats = {
   }
 
 };
+
+function printGeoAnalysisReport(){
+
+  const report =
+    document.getElementById('geoRegionDetails');
+
+  if(!report){
+
+    alert('Geo Analysis report area not found.');
+    return;
+
+  }
+
+  const region =
+    document.getElementById('geoRegionSelect')?.value ||
+    'All Regions';
+
+  const county =
+    document.getElementById('geoCountySelect')?.value ||
+    'All Counties';
+
+  const startDate =
+    document.getElementById('geoStartDate')?.value ||
+    'Not Specified';
+
+  const endDate =
+    document.getElementById('geoEndDate')?.value ||
+    'Not Specified';
+
+  const printWindow = window.open('', '_blank');
+
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Geo Analysis Report</title>
+
+        <style>
+
+          body{
+            font-family:Arial,sans-serif;
+            padding:30px;
+            color:#222;
+          }
+
+          h1{
+            margin-bottom:20px;
+          }
+
+          .meta{
+            margin-bottom:25px;
+            line-height:1.8;
+          }
+
+        </style>
+
+      </head>
+
+      <body>
+
+        <h1>Geo Analysis Report</h1>
+
+        <div class="meta">
+
+          <strong>Generated:</strong>
+          ${new Date().toLocaleString()}
+          <br>
+
+          <strong>Region:</strong>
+          ${region}
+          <br>
+
+          <strong>County:</strong>
+          ${county}
+          <br>
+
+          <strong>Date Range:</strong>
+          ${startDate} - ${endDate}
+
+        </div>
+
+        ${report.innerHTML}
+
+      </body>
+    </html>
+  `);
+
+  printWindow.document.close();
+
+  setTimeout(() => {
+
+    printWindow.focus();
+    printWindow.print();
+
+  }, 500);
+
+}	
 
 function clearGeoDates(){
 
