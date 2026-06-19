@@ -15792,101 +15792,19 @@ const geoEventStats = {
 
 };
 
+generateReportId()
+renderReport()
+buildGeoAnalysisReport()
+
+	
 function printGeoAnalysisReport(){
 
   const report =
-    document.getElementById('geoRegionDetails');
+    buildGeoAnalysisReport();
 
-  if(!report){
+  renderReport(report);
 
-    alert('Geo Analysis report area not found.');
-    return;
-
-  }
-
-  const region =
-    document.getElementById('geoRegionSelect')?.value ||
-    'All Regions';
-
-  const county =
-    document.getElementById('geoCountySelect')?.value ||
-    'All Counties';
-
-  const startDate =
-    document.getElementById('geoStartDate')?.value ||
-    'Not Specified';
-
-  const endDate =
-    document.getElementById('geoEndDate')?.value ||
-    'Not Specified';
-
-  const printWindow = window.open('', '_blank');
-
-  printWindow.document.write(`
-    <html>
-      <head>
-        <title>Geo Analysis Report</title>
-
-        <style>
-
-          body{
-            font-family:Arial,sans-serif;
-            padding:30px;
-            color:#222;
-          }
-
-          h1{
-            margin-bottom:20px;
-          }
-
-          .meta{
-            margin-bottom:25px;
-            line-height:1.8;
-          }
-
-        </style>
-
-      </head>
-
-      <body>
-
-        <h1>Geo Analysis Report</h1>
-
-        <div class="meta">
-
-          <strong>Generated:</strong>
-          ${new Date().toLocaleString()}
-          <br>
-
-          <strong>Region:</strong>
-          ${region}
-          <br>
-
-          <strong>County:</strong>
-          ${county}
-          <br>
-
-          <strong>Date Range:</strong>
-          ${startDate} - ${endDate}
-
-        </div>
-
-        ${report.innerHTML}
-
-      </body>
-    </html>
-  `);
-
-  printWindow.document.close();
-
-  setTimeout(() => {
-
-    printWindow.focus();
-    printWindow.print();
-
-  }, 500);
-
-}	
+}
 
 function clearGeoDates(){
 
