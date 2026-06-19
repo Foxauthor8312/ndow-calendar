@@ -534,3 +534,67 @@ That will prevent synchronization headaches later and keep the staffing engine f
 Known Issues
 
 • Dashboard cards too large
+
+My Profile (User)
+Account Information
+Username (read only)
+Email Address (editable)
+Mobile Phone (editable)
+Account Security
+Change PIN
+Notification Preferences
+Email Notifications
+Dashboard Notifications
+SMS Notifications (future)
+Save
+Save Changes
+Read Only Fields
+
+Users can see:
+
+Username
+
+Users cannot edit:
+
+Username
+Role
+Certifications
+Hidden Fields
+
+Not displayed to users:
+
+NDOW Customer ID
+Status
+must_change_pin
+Internal IDs
+Permission Flags
+Admin User Editor
+
+Admins can manage:
+
+Name
+Email
+Phone
+Role
+Status
+Certifications
+
+No NDOW Customer ID visible.
+
+Superuser User Editor
+
+Additional section:
+
+System Information
+------------------
+NDOW Customer ID
+
+Visible only to:
+
+currentUser.role === 'superuser'
+
+This keeps the user profile clean and gives ndow_customer_id the protection it deserves as the system's primary relationship key. It also fits nicely with the upcoming Certification Management and staffing-request features.
+
+
+
+
