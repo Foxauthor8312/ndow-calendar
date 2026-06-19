@@ -8928,7 +8928,12 @@ function loadProfile(){
       'profilePhone'
     ).value =
       user.phone || '';
-
+	  
+    document.getElementById(
+      'profileRegion'
+    ).value =
+       user.region || 'Southern';
+	  
     document.getElementById(
       'profileNotifyEmail'
     ).checked =
@@ -8984,7 +8989,11 @@ async function saveProfile(){
               document.getElementById(
                 'profilePhone'
               ).value,
-
+            region:
+              document.getElementById(
+                'profileRegion'
+              ).value,
+			  
             notify_email:
               document.getElementById(
                 'profileNotifyEmail'
@@ -9002,6 +9011,43 @@ async function saveProfile(){
 
     const data =
       await response.json();
+
+	const user =
+  JSON.parse(
+    localStorage.getItem(
+      'user'
+    ) || '{}'
+  );
+
+user.email =
+  document.getElementById(
+    'profileEmail'
+  ).value;
+
+user.phone =
+  document.getElementById(
+    'profilePhone'
+  ).value;
+
+user.region =
+  document.getElementById(
+    'profileRegion'
+  ).value;
+
+user.notify_email =
+  document.getElementById(
+    'profileNotifyEmail'
+  ).checked;
+
+user.notify_sms =
+  document.getElementById(
+    'profileNotifySms'
+  ).checked;
+
+localStorage.setItem(
+  'user',
+  JSON.stringify(user)
+);  
 
     document.getElementById(
       'profileMessage'
@@ -14531,7 +14577,7 @@ geographic analysis.
         "
       >
 
-           <label>
+      <label>
         Mobile Phone
       </label>
 
@@ -14547,6 +14593,36 @@ geographic analysis.
           box-sizing:border-box;
         "
       >
+      <label>
+        Region
+      </label>
+		
+	  <select
+		  id="profileRegion"
+		  style="
+		    width:100%;
+		    padding:10px;
+		    margin-top:6px;
+		    margin-bottom:14px;
+		    border:1px solid #d1d5db;
+		    border-radius:8px;
+		    box-sizing:border-box;
+		  "
+		>
+
+		  <option value="Southern">
+		    Southern
+		  </option>
+		
+		  <option value="Eastern">
+		    Eastern
+		  </option>
+		
+		  <option value="Western">
+		    Western
+		  </option>
+		
+	  </select>	
 
       <h3
         style="
