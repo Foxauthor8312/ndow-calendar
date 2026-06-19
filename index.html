@@ -9631,13 +9631,7 @@ if(greeting){
 
 </div>
 
-<div class="dashboard-section">
-
-  <h3 class="dashboard-section-title">
-    Instructor Tools
-  </h3>
-
-  <div
+<div
   class="dashboard-tool-list"
   style="
     display:flex;
@@ -9664,7 +9658,16 @@ if(greeting){
       My Profile
     </button>
 
-  </div>
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openInstructorTimeReport();
+      ">
+      My Reports
+    </button>
+
+</div>
 
 </div>
 
