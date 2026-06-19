@@ -8836,6 +8836,8 @@ function openProfileModal(){
   modal.style.display =
     'flex';
 
+  loadProfile();
+
 }
 
 function closeProfileModal(){
@@ -8854,6 +8856,137 @@ function closeProfileModal(){
 
 }
 
+async function loadProfile(){
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        `${API_BASE_URL}/profile`,
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const user =
+      await response.json();
+
+    document.getElementById(
+      'profileUsername'
+    ).value =
+      user.username || '';
+
+    document.getElementById(
+      'profileEmail'
+    ).value =
+      user.email || '';
+
+    document.getElementById(
+      'profilePhone'
+    ).value =
+      user.phone || '';
+
+    document.getElementById(
+      'profileNotifyEmail'
+    ).checked =
+      !!user.notify_email;
+
+    document.getElementById(
+      'profileNotifySms'
+    ).checked =
+      !!user.notify_sms;
+
+  }catch(error){
+
+    console.error(
+      'Profile load error:',
+      error
+    );
+
+  }
+
+}
+
+	
+	async function saveProfile(){
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        `${API_BASE_URL}/profile`,
+        {
+          method:'PUT',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+
+            email:
+              document.getElementById(
+                'profileEmail'
+              ).value,
+
+            phone:
+              document.getElementById(
+                'profilePhone'
+              ).value,
+
+            notify_email:
+              document.getElementById(
+                'profileNotifyEmail'
+              ).checked,
+
+            notify_sms:
+              document.getElementById(
+                'profileNotifySms'
+              ).checked
+
+          })
+
+        }
+      );
+
+    const data =
+      await response.json();
+
+    document.getElementById(
+      'profileMessage'
+    ).innerText =
+      data.message ||
+      'Profile updated successfully';
+
+  }catch(error){
+
+    document.getElementById(
+      'profileMessage'
+    ).innerText =
+      'Unable to save profile';
+
+    console.error(error);
+
+  }
+
+}
 /* ========================================
    RELEASE MANAGER
 ======================================== */
@@ -14330,8 +14463,8 @@ geographic analysis.
       </label>
 
       <input
-        id="profileUsername"
-        disabled
+       id="profileUsername"
+       readonly
         style="
           width:100%;
           padding:10px;
@@ -14341,6 +14474,8 @@ geographic analysis.
           border-radius:8px;
           box-sizing:border-box;
           background:#f3f4f6;
+          color:#6b7280;
+		  
         "
       >
 
@@ -14362,7 +14497,7 @@ geographic analysis.
         "
       >
 
-      <label>
+           <label>
         Mobile Phone
       </label>
 
@@ -14378,6 +14513,15 @@ geographic analysis.
           box-sizing:border-box;
         "
       >
+
+      <h3
+        style="
+          margin-top:20px;
+          margin-bottom:10px;
+        "
+      >
+        Notification Preferences
+      </h3>
 
       <div
         style="
@@ -14406,7 +14550,16 @@ geographic analysis.
           SMS Notifications
         </label>
 
-      </div>
+           </div>
+
+      <h3
+        style="
+          margin-top:20px;
+          margin-bottom:10px;
+        "
+      >
+        Account Security
+      </h3>
 
       <button
         style="
