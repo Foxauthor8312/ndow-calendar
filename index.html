@@ -9158,7 +9158,7 @@ async function loadInstructorTimeReport(){
 
 `;
 
-    let rows = `
+ let rows = `
 
 <table
   style="
@@ -9170,27 +9170,42 @@ async function loadInstructorTimeReport(){
 
 <tr>
 
-<th width="70">
-  Event#
-</th>
-
-<th width="80">
-  Date
-</th>
-
-<th>
-  Event Title
-</th>
-
-  <th align="right">
-    Hours
+  <th
+    align="right"
+    style="width:60px;"
+  >
+    Evt#
   </th>
 
-  <th align="right">
-    Miles
+  <th
+    align="left"
+    style="width:75px;"
+  >
+    Date
   </th>
 
-  <th align="right">
+  <th align="left">
+    Event
+  </th>
+
+  <th
+    align="right"
+    style="width:50px;"
+  >
+    Hrs
+  </th>
+
+  <th
+    align="right"
+    style="width:50px;"
+  >
+    Mi
+  </th>
+
+  <th
+    align="right"
+    style="width:75px;"
+  >
     Value
   </th>
 
@@ -9198,24 +9213,139 @@ async function loadInstructorTimeReport(){
 
 `;
 
-    data.records.forEach(
-      record => {
+let currentMonth = '';
 
-        const title =
-          record.event_name
-            .split('■')[0]
-            .trim();
+let monthEvents = 0;
+let monthHours = 0;
+let monthMiles = 0;
+let monthValue = 0;
+
+data.records.forEach(
+  (record,index) => {
+
+    const recordDate =
+      new Date(
+        record.event_date
+      );
+
+    const monthName =
+      recordDate.toLocaleDateString(
+        'en-US',
+        {
+          month:'long',
+          year:'numeric'
+        }
+      );
+
+    if(
+      currentMonth !== monthName
+    ){
+
+      if(currentMonth){
 
         rows += `
 
 <tr>
+  <td
+    colspan="6"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+      padding:6px;
+      border-top:1px solid #d1d5db;
+      border-bottom:1px solid #d1d5db;
+    "
+  >
+    ${currentMonth} Totals:
+    Events: ${monthEvents}
+    |
+    Hours: ${monthHours.toFixed(1)}
+    |
+    Miles: ${monthMiles.toFixed(0)}
+    |
+    Value: $${monthValue.toFixed(0)}
+  </td>
+</tr>
 
-  <td>
+`;
+
+      }
+
+      currentMonth =
+        monthName;
+
+      monthEvents = 0;
+      monthHours = 0;
+      monthMiles = 0;
+      monthValue = 0;
+
+      rows += `
+
+<tr>
+  <td
+    colspan="6"
+    style="
+      padding-top:12px;
+      padding-bottom:4px;
+      font-weight:700;
+      font-size:12px;
+      border-top:2px solid #19304B;
+    "
+  >
+    ${monthName}
+  </td>
+</tr>
+
+`;
+
+    }
+
+    const title =
+      record.event_name
+        .split('■')[0]
+        .trim();
+
+    const formattedDate =
+      recordDate.toLocaleDateString(
+        'en-US',
+        {
+          year:'2-digit',
+          month:'2-digit',
+          day:'2-digit'
+        }
+      );
+
+    monthEvents++;
+
+    monthHours +=
+      Number(
+        record.volunteer_hours || 0
+      );
+
+    monthMiles +=
+      Number(
+        record.mileage || 0
+      );
+
+    monthValue +=
+      Number(
+        record.service_value || 0
+      );
+
+    rows += `
+
+<tr
+  style="
+    border-bottom:1px solid #f3f4f6;
+  "
+>
+
+  <td align="right">
     ${record.event_id}
   </td>
 
   <td>
-    ${record.event_date}
+    ${formattedDate}
   </td>
 
   <td>
@@ -9244,10 +9374,43 @@ async function loadInstructorTimeReport(){
 
 `;
 
-      }
-    );
+    if(
+      index ===
+      data.records.length - 1
+    ){
 
-    rows += `
+      rows += `
+
+<tr>
+  <td
+    colspan="6"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+      padding:6px;
+      border-top:1px solid #d1d5db;
+      border-bottom:1px solid #d1d5db;
+    "
+  >
+    ${currentMonth} Totals:
+    Events: ${monthEvents}
+    |
+    Hours: ${monthHours.toFixed(1)}
+    |
+    Miles: ${monthMiles.toFixed(0)}
+    |
+    Value: $${monthValue.toFixed(0)}
+  </td>
+</tr>
+
+`;
+
+    }
+
+  }
+);
+
+rows += `
 </table>
 `;
 
