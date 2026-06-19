@@ -9125,6 +9125,29 @@ async function loadInstructorTimeReport(){
     const data =
       await response.json();
 
+const now =
+  new Date();
+
+const reportDate =
+  now.toLocaleDateString(
+    'en-US',
+    {
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    }
+  );
+
+const reportYear =
+  now.getFullYear();
+
+const reportId =
+  `ITR-${reportYear}-${String(
+    now.getMonth() + 1
+  ).padStart(2,'0')}${String(
+    now.getDate()
+  ).padStart(2,'0')}`;
+	  
     document.getElementById(
       'reportContent'
     ).innerHTML = `
@@ -9136,6 +9159,28 @@ async function loadInstructorTimeReport(){
 <div>
   Region:
   ${data.volunteer.region}
+</div>
+
+<div style="
+  margin-top:4px;
+  font-size:10px;
+  color:#6b7280;
+  line-height:1.4;
+">
+
+  Report ID:
+  ${reportId}
+
+  <br>
+
+  Report Date:
+  ${reportDate}
+
+  <br>
+
+  Report Year:
+  ${reportYear}
+
 </div>
 
 <div style="margin-top:8px;">
