@@ -8822,6 +8822,38 @@ function closeDashboard(){
 
 }
 
+function openProfileModal(){
+
+  const modal =
+    document.getElementById(
+      'profileModal'
+    );
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+}
+
+function closeProfileModal(){
+
+  const modal =
+    document.getElementById(
+      'profileModal'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+}
+
 /* ========================================
    RELEASE MANAGER
 ======================================== */
@@ -9408,6 +9440,15 @@ if(greeting){
         openAssignmentRequests();
       ">
       Instructor Event Requests
+    </button>
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openProfileModal();
+      ">
+      My Profile
     </button>
 
   </div>
@@ -14259,7 +14300,148 @@ geographic analysis.
 
   </div>
 </div>
-	
+
+
+<div id="profileModal" class="modal hidden">
+
+  <div
+    class="modal-content"
+    style="
+      max-width:620px;
+      width:90%;
+      max-height:70vh;
+      overflow-y:auto;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeProfileModal()"
+    >
+      ✕
+    </button>
+
+    <h2>My Profile</h2>
+
+    <div style="margin-top:18px;">
+
+      <label>
+        Username
+      </label>
+
+      <input
+        id="profileUsername"
+        disabled
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+          background:#f3f4f6;
+        "
+      >
+
+      <label>
+        Email Address
+      </label>
+
+      <input
+        id="profileEmail"
+        type="email"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <label>
+        Mobile Phone
+      </label>
+
+      <input
+        id="profilePhone"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <div
+        style="
+          margin-top:12px;
+          display:flex;
+          flex-direction:column;
+          gap:10px;
+        "
+      >
+
+        <label>
+          <input
+            type="checkbox"
+            id="profileNotifyEmail"
+          >
+
+          Email Notifications
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            id="profileNotifySms"
+          >
+
+          SMS Notifications
+        </label>
+
+      </div>
+
+      <button
+        style="
+          margin-top:18px;
+          width:100%;
+        "
+        onclick="openChangePinModal()"
+      >
+        Change PIN
+      </button>
+
+      <button
+        style="
+          margin-top:12px;
+          width:100%;
+        "
+        onclick="saveProfile()"
+      >
+        Save Changes
+      </button>
+
+      <div
+        id="profileMessage"
+        style="
+          margin-top:14px;
+          font-size:14px;
+          color:#374151;
+        "
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>	
 <!-- ADDRESS MODAL -->
 
 <div
