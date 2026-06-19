@@ -346,6 +346,190 @@ Assessment:
 
 NDOW Event Results synchronization is technically feasible and should be considered a Phase 2 enhancement after dashboard, admin workflow, and request center development are complete.
 
+Excellent. Then I'd lock in the roadmap like this and avoid any detours.
+
+Certification System Roadmap
+Phase 1 — Database Foundation
+
+Status: Complete
+
+✅ programs table
+
+✅ Seeded program records
+
+✅ instructor_certifications table
+
+✅ ndow_customer_id relationship strategy
+
+✅ User migration substantially complete
+
+✅ Admin backdoor intentionally excluded
+
+Phase 2 — Certification Import Manager
+
+Next Build
+
+Backend Routes
+GET    /api/admin/programs
+POST   /api/admin/import-certifications
+GET    /api/admin/certifications
+GET    /api/admin/user-certifications/:ndow_customer_id
+Import Workflow
+Upload CSV
+    ↓
+Parse
+    ↓
+Validate Program
+    ↓
+Validate Customer ID
+    ↓
+Skip Duplicates
+    ↓
+Insert Records
+    ↓
+Return Report
+Import Report
+Records Processed
+Imported
+Duplicates
+Unknown Programs
+Unknown Customer IDs
+
+This should feel very similar to the instructor import process you just finished.
+
+Phase 3 — Certification Viewer
+
+Add a section to the user dashboard:
+
+My Certifications
+-------------------------
+Hunter Education
+Archery Education
+Advanced Hunter Education
+Fishing Classes
+
+No editing.
+
+Read-only.
+
+NDOW remains the source of truth.
+
+Imports remain the update mechanism.
+
+Phase 4 — Certification Administration
+
+Admin panel:
+
+Certification Management
+
+Tabs:
+
+Import Certifications
+View Certifications
+Program Management
+
+User lookup:
+
+Search User
+     ↓
+View Certifications
+
+Useful for troubleshooting imports.
+
+Phase 5 — Instructor Request Center
+
+This is where the earlier discovery becomes important.
+
+Current system:
+
+Instructor
+    ↓
+Requests Event Assignment
+
+Future system:
+
+Admin
+    ↓
+Needs Staff
+    ↓
+Creates Staffing Request
+
+Completely different workflow.
+
+Phase 6 — Certification-Aware Staffing
+
+Example:
+
+Event:
+Hunter Education
+
+System automatically queries:
+
+program_id = 1
+
+Returns:
+
+Qualified Instructors
+
+Admin sees:
+
+Need: 3 instructors
+
+Available:
+✓ Barry Mattison
+✓ Sonya Wilson
+✓ Keith Roether
+✓ Claude Nielsen
+Phase 7 — Notifications
+
+Potential channels:
+
+Dashboard Alerts
+Login Popup
+Email
+SMS (Twilio)
+
+Response options:
+
+Accept
+Decline
+Unavailable
+Phase 8 — Coverage Analytics
+
+Questions the system can answer:
+
+How many certified instructors
+by program?
+
+Which programs have low coverage?
+
+Which counties lack certified instructors?
+
+Which events required emergency staffing?
+
+Which programs generate the most staffing requests?
+One Design Decision I'd Make Now
+
+For the certification import table, keep:
+
+ndow_customer_id
+program_id
+active
+created_at
+
+and do not add instructor names, emails, usernames, or roles.
+
+Treat certifications as a pure relationship table:
+
+User
+   ↔
+Certification
+   ↔
+Program
+
+Everything else should always come from the users table.
+
+That will prevent synchronization headaches later and keep the staffing engine fast and reliable.
 
 Known Issues
 
