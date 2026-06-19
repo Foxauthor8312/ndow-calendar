@@ -9476,6 +9476,12 @@ rows += `
   }
 
 }	
+
+function printInstructorReport(){
+
+  window.print();
+
+}
 		  
 /* ========================================
    RELEASE MANAGER
@@ -15145,6 +15151,17 @@ geographic analysis.
       Instructor Time Report
     </h2>
 
+	<div style="
+      margin-bottom:12px;
+      ">
+    <button
+		
+    onclick="printInstructorReport()"
+  >
+    Print Report
+    </button>
+    </div>
+	  
     <div
       id="reportContent"
       style="
