@@ -9479,7 +9479,83 @@ rows += `
 
 function printInstructorReport(){
 
-  window.print();
+  const reportHtml =
+    document.querySelector(
+      '#instructorReportModal .modal-content'
+    ).innerHTML;
+
+  const printWindow =
+    window.open(
+      '',
+      '_blank'
+    );
+
+  printWindow.document.write(`
+
+<html>
+
+<head>
+
+<title>
+Instructor Time Report
+</title>
+
+<style>
+
+body{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:11px;
+  margin:20px;
+}
+
+button{
+  display:none;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:4px;
+}
+
+th{
+  border-bottom:2px solid #000;
+}
+
+tr{
+  page-break-inside:avoid;
+}
+
+</style>
+
+</head>
+
+<body>
+
+${reportHtml}
+
+</body>
+
+</html>
+
+`);
+
+  printWindow.document.close();
+
+  setTimeout(
+    () => {
+
+      printWindow.focus();
+
+      printWindow.print();
+
+    },
+    750
+  );
 
 }
 		  
