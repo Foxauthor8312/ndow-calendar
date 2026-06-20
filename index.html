@@ -10040,15 +10040,9 @@ alert(
   'Release updated successfully.'
 );
 
-await loadReleaseManager();
-
 closeReleaseManager();
 
-setTimeout(() => {
-
-  location.reload();
-
-}, 500);
+location.reload();
 
   }catch(err){
 
