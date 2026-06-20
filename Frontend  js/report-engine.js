@@ -1,0 +1,4 @@
+generateReportId()
+renderReport()
+buildGeoAnalysisReport()
+printGeoAnalysisReport()
