@@ -15792,9 +15792,161 @@ const geoEventStats = {
 
 };
 
-generateReportId()
-renderReport()
-buildGeoAnalysisReport()
+/*****************************************************************
+ REPORT ENGINE
+*****************************************************************/
+
+function generateReportId(prefix){
+
+  const now = new Date();
+
+  const stamp =
+    now.getFullYear() +
+    String(now.getMonth() + 1).padStart(2,'0') +
+    String(now.getDate()).padStart(2,'0') +
+    '-' +
+    String(now.getHours()).padStart(2,'0') +
+    String(now.getMinutes()).padStart(2,'0');
+
+  return `${prefix}-${stamp}`;
+
+}
+
+function renderReport(report){
+
+  const printWindow = window.open('', '_blank');
+
+  printWindow.document.write(report.html);
+
+  printWindow.document.close();
+
+  setTimeout(() => {
+
+    printWindow.focus();
+    printWindow.print();
+
+  }, 500);
+
+}
+
+function buildGeoAnalysisReport(){
+
+  const region =
+    document.getElementById('geoRegionSelect')?.value ||
+    'All Regions';
+
+  const county =
+    document.getElementById('geoCountySelect')?.value ||
+    'All Counties';
+
+  const startDate =
+    document.getElementById('geoStartDate')?.value ||
+    'All Dates';
+
+  const endDate =
+    document.getElementById('geoEndDate')?.value ||
+    'All Dates';
+
+  const reportId =
+    generateReportId('GEO');
+
+  const reportContent =
+    document.getElementById('geoRegionDetails');
+
+  return {
+
+    html: `
+
+      <html>
+
+        <head>
+
+          <title>Geo Analysis Report</title>
+
+          <style>
+
+            body{
+              font-family:Arial,sans-serif;
+              padding:40px;
+              color:#1f2937;
+              line-height:1.6;
+            }
+
+            h1{
+              margin:0;
+              color:#19304B;
+            }
+
+            h2{
+              margin-top:30px;
+              padding-bottom:6px;
+              border-bottom:2px solid #dbe3ec;
+              color:#19304B;
+            }
+
+            .report-meta{
+              margin-top:15px;
+              margin-bottom:25px;
+            }
+
+          </style>
+
+        </head>
+
+        <body>
+
+          <div
+            style="
+              font-size:13px;
+              color:#64748b;
+              margin-bottom:8px;
+            "
+          >
+            NDOW Volunteer Portal
+          </div>
+
+          <h1>
+            Geo Analysis Report
+          </h1>
+
+          <div class="report-meta">
+
+            <strong>Report ID:</strong>
+            ${reportId}
+            <br>
+
+            <strong>Generated:</strong>
+            ${new Date().toLocaleString()}
+            <br>
+
+            <strong>Region:</strong>
+            ${region}
+            <br>
+
+            <strong>County:</strong>
+            ${county}
+            <br>
+
+            <strong>Date Range:</strong>
+            ${startDate} - ${endDate}
+
+          </div>
+
+          <h2>
+            Analysis Results
+          </h2>
+
+          ${reportContent.innerHTML}
+
+        </body>
+
+      </html>
+
+    `
+
+  };
+
+}
 
 	
 function printGeoAnalysisReport(){
