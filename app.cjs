@@ -405,12 +405,14 @@ try{
   });
 
         event.instructors =
-          instructorData;
+  instructorData;
 
-        console.log(
-          'Instructor count:',
-          instructorData.length
-        );
+event.ndowResults = [];
+
+console.log(
+  'Instructor count:',
+  instructorData.length
+);
 
     for(const instructor of instructorData){
 
@@ -440,41 +442,86 @@ console.log(
   resultsUrl
 );
 
-  try{
+try{
 
-    await page.goto(
-      resultsUrl,
-      {
-        waitUntil:'networkidle2',
-        timeout:60000
-      }
+  await page.goto(
+    resultsUrl,
+    {
+      waitUntil:'networkidle2',
+      timeout:60000
+    }
+  );
+
+  const pageText =
+    await page.evaluate(() =>
+      document.body.innerText
     );
 
-    const pageText =
-      await page.evaluate(() =>
-        document.body.innerText
-      );
-
-    console.log(
-  'RESULTS PAGE FOUND FOR EVENT:',
-  event.id
-);
-
-    console.log(
-      pageText.substring(
-        0,
-        1000
-      )
+  const hoursMatch =
+    pageText.match(
+      /Total \(hrs\)\s+([0-9.]+)/
     );
 
-  }catch(err){
-
-    console.log(
-      'RESULTS PAGE FAILED:',
-      resultsUrl
+  const travelMatch =
+    pageText.match(
+      /Travel Hours\s+([0-9.]+)/
     );
 
-  }
+  const mileageMatch =
+    pageText.match(
+      /Mileage\s+([0-9.]+)/
+    );
+
+  event.ndowResults.push({
+
+    customerId:
+      instructor.customerId,
+
+    name:
+      instructor.name,
+
+    hours:
+      hoursMatch
+        ? Number(
+            hoursMatch[1]
+          )
+        : 0,
+
+    travelHours:
+      travelMatch
+        ? Number(
+            travelMatch[1]
+          )
+        : 0,
+
+    mileage:
+      mileageMatch
+        ? Number(
+            mileageMatch[1]
+          )
+        : 0
+
+  });
+
+  console.log(
+    'NDOW RESULTS:',
+    event.id,
+    instructor.name,
+    event.ndowResults[
+      event.ndowResults.length - 1
+    ]
+  );
+
+}catch(err){
+
+  console.log(
+    'RESULTS PAGE FAILED:',
+    resultsUrl
+  );
+
+  console.log(err);
+
+}
 
 }
 
