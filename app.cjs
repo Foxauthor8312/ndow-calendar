@@ -405,6 +405,62 @@ try{
           instructorData.length
         );
 
+    for(const instructor of instructorData){
+
+  if(
+    instructor.customerId !==
+    '4017707'
+  ){
+    continue;
+  }
+
+  const resultsUrl =
+
+`https://nevada.events.licensing.app/dashboard/em/assigned_events/${event.id}/instructor_results/${instructor.customerId}`;
+
+  console.log(
+    'TEST RESULTS URL:',
+    resultsUrl
+  );
+
+  try{
+
+    await page.goto(
+      resultsUrl,
+      {
+        waitUntil:'networkidle2',
+        timeout:60000
+      }
+    );
+
+    const pageText =
+      await page.evaluate(() =>
+        document.body.innerText
+      );
+
+    console.log(
+      'RESULTS PAGE FOUND FOR:',
+      event.id
+    );
+
+    console.log(
+      pageText.substring(
+        0,
+        1000
+      )
+    );
+
+  }catch(err){
+
+    console.log(
+      'RESULTS PAGE FAILED:',
+      resultsUrl
+    );
+
+  }
+
+}
+
       } catch(err){
 
         console.log(
