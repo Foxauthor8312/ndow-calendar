@@ -161,42 +161,49 @@ const fs = require('fs');
 
         }
 
-        const results = [];
+  const results = [];
 
-        cards.forEach(card => {
+cards.forEach(card => {
 
-          const linkEl =
-            card.querySelector('a');
+  const linkEl =
+    card.querySelector('a');
 
-          const rawHref =
-            linkEl?.getAttribute(
-              'href'
-            ) || '';
+  const rawHref =
+    linkEl?.getAttribute(
+      'href'
+    ) || '';
 
-          const url =
-            rawHref.startsWith(
-              'http'
-            )
-              ? rawHref
-              : 'https://nevada.events.licensing.app' +
-                rawHref;
+  const url =
+    rawHref.startsWith(
+      'http'
+    )
+      ? rawHref
+      : 'https://nevada.events.licensing.app' +
+        rawHref;
 
-          const instructorUrl =
-            url +
-            '/event_instructors';
+  const eventId =
+    rawHref.match(
+      /assigned_events\/(\d+)/
+    )?.[1] || '';
 
-          const text =
-            card.innerText || '';
+  const instructorUrl =
+    url +
+    '/event_instructors';
 
-          results.push({
+  const text =
+    card.innerText || '';
 
-            title: text,
-            date: '',
-            location: '',
-            url,
-            instructorUrl,
-            text,
-            instructors: [],
+  results.push({
+
+    id: eventId,
+
+    title: text,
+    date: '',
+    location: '',
+    url,
+    instructorUrl,
+    text,
+    instructors: [],
             enrichment: {
               scrapedAt:
                 new Date()
@@ -414,14 +421,24 @@ try{
     continue;
   }
 
-  const resultsUrl =
+const resultsUrl =
 
 `https://nevada.events.licensing.app/dashboard/em/assigned_events/${event.id}/instructor_results/${instructor.customerId}`;
 
-  console.log(
-    'TEST RESULTS URL:',
-    resultsUrl
-  );
+console.log(
+  'EVENT ID:',
+  event.id
+);
+
+console.log(
+  'CUSTOMER ID:',
+  instructor.customerId
+);
+
+console.log(
+  'TEST RESULTS URL:',
+  resultsUrl
+);
 
   try{
 
@@ -439,9 +456,9 @@ try{
       );
 
     console.log(
-      'RESULTS PAGE FOUND FOR:',
-      event.id
-    );
+  'RESULTS PAGE FOUND FOR EVENT:',
+  event.id
+);
 
     console.log(
       pageText.substring(
