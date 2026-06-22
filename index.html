@@ -12239,19 +12239,29 @@ addresses.forEach(a => {
   const label =
     `${a.is_favorite ? '★ ' : ''}${a.location_name}`;
 
+  const fullAddress =
+    [
+      a.address1,
+      a.city,
+      a.state,
+      a.zip
+    ]
+    .filter(Boolean)
+    .join(', ');
+
   origin.innerHTML += `
-    <option value="${a.address1 || a.location_name}">
+    <option value="${fullAddress}">
       ${label}
     </option>
   `;
 
   destination.innerHTML += `
-    <option value="${a.address1 || a.location_name}">
+    <option value="${fullAddress}">
       ${label}
     </option>
   `;
 
-});	  
+});
 
   }catch(err){
 
