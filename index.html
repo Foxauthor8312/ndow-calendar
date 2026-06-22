@@ -6338,23 +6338,21 @@ try {
 
   }
 
-  const totalsResponse =
+const totalsResponse =
   await fetch(
-
-`https://ndow-calendar-server.onrender.com/api//api/volunteer-totals/${user.ndow_customer_id}`,
-
+    `https://ndow-calendar-server.onrender.com/api/volunteer-totals/${user.ndow_customer_id}`,
     {
-
-      headers: {
-
+      headers:{
         Authorization:
           `Bearer ${token}`
-
       }
-
     }
-
   );
+
+console.log(
+  'volunteer-totals status',
+  totalsResponse.status
+);
 
 const totalsResult =
   await totalsResponse.json();
@@ -10360,26 +10358,24 @@ if(greeting){
         'token'
       );
 
-    const response =
-      await fetch(
+const response =
+  await fetch(
+    `https://ndow-calendar-server.onrender.com/api/volunteer-hours/${event.id}?ndow_id=${user.ndow_customer_id}`,
+    {
+      headers:{
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+  );
 
-`https://ndow-calendar-server.onrender.com/api/volunteer-totals/${user.ndow_customer_id}`,
+console.log(
+  'volunteer-hours status',
+  response.status
+);
 
-        {
-
-          headers: {
-
-            Authorization:
-              `Bearer ${token}`
-
-          }
-
-        }
-
-      );
-
-    const result =
-      await response.json();
+const result =
+  await response.json();
 
 	  console.log(
   'Program Summary:',
