@@ -9336,6 +9336,10 @@ let monthMiles = 0;
 let monthValue = 0;
 let monthBreak = 0;
 let monthTravel = 0;
+let monthNdowHours = 0;
+let monthNdowBreak = 0;
+let monthNdowTravel = 0;
+let monthNdowMiles = 0;	  
 
 data.records.forEach(
   (record,index) => {
@@ -9391,12 +9395,19 @@ data.records.forEach(
       currentMonth =
         monthName;
 
-      monthEvents = 0;
-	monthHours = 0;
-	monthBreak = 0;
-	monthTravel = 0;
-	monthMiles = 0;
-	monthValue = 0;;
+monthEvents = 0;
+
+monthHours = 0;
+monthBreak = 0;
+monthTravel = 0;
+monthMiles = 0;
+
+monthNdowHours = 0;
+monthNdowBreak = 0;
+monthNdowTravel = 0;
+monthNdowMiles = 0;
+
+monthValue = 0;
 
       rows += `
 
@@ -9451,15 +9462,25 @@ monthTravel +=
     record.travel_hours || 0
   );
 
-monthMiles +=
-      Number(
-        record.mileage || 0
-      );
+monthNdowHours +=
+  Number(
+    record.ndowHours || 0
+  );
 
-    monthValue +=
-      Number(
-        record.service_value || 0
-      );
+monthNdowBreak +=
+  Number(
+    record.ndowBreak || 0
+  );
+
+monthNdowTravel +=
+  Number(
+    record.ndowTravel || 0
+  );
+
+monthNdowMiles +=
+  Number(
+    record.ndowMileage || 0
+  );
 
 rows += `
 
@@ -9546,11 +9567,11 @@ rows += `
       data.records.length - 1
     ){
 
-      rows += `
+ rows += `
 
 <tr>
   <td
-    colspan="12"
+    colspan="3"
     style="
       font-weight:700;
       background:#f3f4f6;
@@ -9559,19 +9580,99 @@ rows += `
       border-bottom:1px solid #d1d5db;
     "
   >
-    ${currentMonth} Totals:
-    Events: ${monthEvents}
-    |
-    Hours: ${monthHours.toFixed(1)}
-	|
-	Break: ${monthBreak.toFixed(1)}
-	|
-	Travel: ${monthTravel.toFixed(1)}
-	|
-	Miles: ${monthMiles.toFixed(0)}
-	    |
-	    Value: $${monthValue.toFixed(0)}
-	  </td>
+    ${currentMonth} Totals
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthHours.toFixed(1)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthBreak.toFixed(1)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthTravel.toFixed(1)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthMiles.toFixed(0)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthNdowHours.toFixed(1)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthNdowBreak.toFixed(1)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthNdowTravel.toFixed(1)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    ${monthNdowMiles.toFixed(0)}
+  </td>
+
+  <td
+    align="right"
+    style="
+      font-weight:700;
+      background:#f3f4f6;
+    "
+  >
+    $${monthValue.toFixed(0)}
+  </td>
+
 </tr>
 
 `;
