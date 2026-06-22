@@ -9461,10 +9461,11 @@ monthValue = 0;
 
     }
 
-    const title =
-      record.event_name
-        .split('■')[0]
-        .trim();
+ const title =
+  `[${record.event_id}] ` +
+  record.event_name
+    .split('■')[0]
+    .trim();
 
     const formattedDate =
       recordDate.toLocaleDateString(
