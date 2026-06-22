@@ -414,14 +414,7 @@ console.log(
   instructorData.length
 );
 
-    for(const instructor of instructorData){
-
-  if(
-    instructor.customerId !==
-    '4017707'
-  ){
-    continue;
-  }
+for(const instructor of instructorData){
 
 const resultsUrl =
 
