@@ -5013,6 +5013,9 @@ function openHoursModal(){
 
   }
 
+window.currentEvent =
+  selectedEvent;
+	
   const modal =
     document.getElementById(
       'hoursModal'
@@ -5235,6 +5238,23 @@ function openHoursModal(){
       overflow:hidden;
     "
   ></div>
+
+  <button
+  type="button"
+  onclick="downloadRouteMap()"
+  style="
+    margin-top:10px;
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+  "
+>
+  Save Route JPG
+</button>
 
 </div>
 
@@ -16920,5 +16940,64 @@ ${regionTotal}
 
 </div>
 	<script src="js/help.js"></script>
+	async function downloadRouteMap(){
+
+  try{
+
+    const mapElement =
+      document.getElementById(
+        'routeMap'
+      );
+
+    if(!mapElement){
+
+      alert(
+        'Map not found.'
+      );
+
+      return;
+
+    }
+
+    const canvas =
+      await html2canvas(
+        mapElement,
+        {
+          useCORS:true,
+          scale:2
+        }
+      );
+
+    const link =
+      document.createElement(
+        'a'
+      );
+
+    const eventId =
+      window.currentEvent?.id ||
+      'route';
+
+    link.download =
+      `NDOW-Route-${eventId}.jpg`;
+
+    link.href =
+      canvas.toDataURL(
+        'image/jpeg',
+        0.95
+      );
+
+    link.click();
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      'Unable to save route map.'
+    );
+
+  }
+
+}
 </body>
 </html>
