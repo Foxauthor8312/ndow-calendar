@@ -9362,13 +9362,14 @@ data.records.forEach(
       currentMonth !== monthName
     ){
 
-      if(currentMonth){
+if(currentMonth){
 
-        rows += `
+  rows += `
 
 <tr>
+
   <td
-    colspan="12"
+    colspan="3"
     style="
       font-weight:700;
       background:#f3f4f6;
@@ -9377,23 +9378,53 @@ data.records.forEach(
       border-bottom:1px solid #d1d5db;
     "
   >
-    ${currentMonth} Totals:
-    Events: ${monthEvents}
-    |
-    Hours: ${monthHours.toFixed(1)}
-    |
-    Miles: ${monthMiles.toFixed(0)}
-    |
-    Value: $${monthValue.toFixed(0)}
+    ${currentMonth} Totals
   </td>
+
+  <td align="right">
+    ${monthHours.toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${monthBreak.toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${monthTravel.toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${monthMiles.toFixed(0)}
+  </td>
+
+  <td align="right">
+    ${monthNdowHours.toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${monthNdowBreak.toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${monthNdowTravel.toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${monthNdowMiles.toFixed(0)}
+  </td>
+
+  <td align="right">
+    $${monthValue.toFixed(0)}
+  </td>
+
 </tr>
 
 `;
 
-      }
+}
 
-      currentMonth =
-        monthName;
+currentMonth =
+monthName;
 
 monthEvents = 0;
 
@@ -9462,6 +9493,11 @@ monthTravel +=
     record.travel_hours || 0
   );
 
+monthMiles +=
+  Number(
+    record.mileage || 0
+  );	  
+
 monthNdowHours +=
   Number(
     record.ndowHours || 0
@@ -9481,6 +9517,11 @@ monthNdowMiles +=
   Number(
     record.ndowMileage || 0
   );
+
+monthValue +=
+  Number(
+    record.service_value || 0
+  );	  
 
 rows += `
 
