@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-22T00:05:59.800Z",
+  "lastUpdated": "2026-06-22T00:51:34.156Z",
   "metrics": {
     "finalEvents": 383
   },
@@ -94,8 +94,66 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "1785689",
+          "name": "Michelle Lopez",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 8.25,
+          "breakHours": 0.5,
+          "travelHours": 4,
+          "mileage": 208
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 8,
+          "breakHours": 0.5,
+          "travelHours": 4,
+          "mileage": 0
+        },
+        {
+          "customerId": "4256194",
+          "name": "Nia Dippon",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4254131",
+          "name": "Brooke Detommaso",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -190,8 +248,66 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 6,
+          "breakHours": 0,
+          "travelHours": 1,
+          "mileage": 1
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 6.25,
+          "breakHours": 0,
+          "travelHours": 1.25,
+          "mileage": 42
+        },
+        {
+          "customerId": "4254131",
+          "name": "Brooke Detommaso",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1475231",
+          "name": "NANCY SILVA",
+          "hours": 5.5,
+          "breakHours": 0,
+          "travelHours": 1,
+          "mileage": 40
+        },
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 4.5,
+          "breakHours": 0,
+          "travelHours": 1.25,
+          "mileage": 56
+        },
+        {
+          "customerId": "4157504",
+          "name": "Magdalina Marinelli",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -214,8 +330,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -238,8 +355,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -262,8 +380,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -286,8 +405,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -310,8 +430,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -334,8 +455,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -358,8 +480,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -382,8 +505,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -406,8 +530,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -430,8 +555,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -454,8 +580,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -478,8 +605,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -502,8 +630,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -526,8 +655,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -550,8 +680,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -574,8 +705,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -598,8 +730,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -622,8 +755,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -646,8 +780,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -670,8 +805,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -694,8 +830,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -718,8 +855,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -742,8 +880,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -766,8 +905,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -790,8 +930,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -814,8 +955,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -838,8 +980,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -862,8 +1005,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -886,8 +1030,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -910,8 +1055,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -934,8 +1080,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -958,8 +1105,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -982,8 +1130,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.916Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1006,8 +1155,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1030,8 +1180,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1054,8 +1205,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1078,8 +1230,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1102,8 +1255,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1126,8 +1280,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1150,8 +1305,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1174,8 +1330,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1198,8 +1355,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1239,8 +1397,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 7,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 42
+        },
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 5.75,
+          "breakHours": 0,
+          "travelHours": 0.75,
+          "mileage": 33.5
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1263,8 +1439,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1287,8 +1464,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1339,8 +1517,34 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 9.75,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 67
+        },
+        {
+          "customerId": "1719204",
+          "name": "Richard Raby",
+          "hours": 8,
+          "breakHours": 0.5,
+          "travelHours": 0.5,
+          "mileage": 14
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 8.5,
+          "breakHours": 0.5,
+          "travelHours": 2,
+          "mileage": 42
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1363,8 +1567,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1387,8 +1592,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1411,8 +1617,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1435,8 +1642,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1459,8 +1667,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1483,8 +1692,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1507,8 +1717,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1531,8 +1742,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1555,8 +1767,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1579,8 +1792,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1603,8 +1817,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1627,8 +1842,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1651,8 +1867,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1675,8 +1892,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1699,8 +1917,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1723,8 +1942,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1747,8 +1967,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1771,8 +1992,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1795,8 +2017,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1819,8 +2042,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1843,8 +2067,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1867,8 +2092,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1891,8 +2117,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1915,8 +2142,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1939,8 +2167,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1963,8 +2192,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -1987,8 +2217,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2011,8 +2242,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.086Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2035,8 +2267,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2059,8 +2292,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2083,8 +2317,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2107,8 +2342,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2131,8 +2367,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2155,8 +2392,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2196,8 +2434,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "1451248",
+          "name": "Martin Olson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 4.5,
+          "breakHours": 0,
+          "travelHours": 2,
+          "mileage": 40
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2220,8 +2476,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2244,8 +2501,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2268,8 +2526,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2292,8 +2551,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2316,8 +2576,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2340,8 +2601,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2364,8 +2626,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2388,8 +2651,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2412,8 +2676,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2436,8 +2701,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2460,8 +2726,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2484,8 +2751,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2508,8 +2776,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2532,8 +2801,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2556,8 +2826,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2580,8 +2851,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2604,8 +2876,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2628,8 +2901,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2669,8 +2943,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 4,
+          "breakHours": 0,
+          "travelHours": 2,
+          "mileage": 38
+        },
+        {
+          "customerId": "1451248",
+          "name": "Martin Olson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2693,8 +2985,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2717,8 +3010,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2741,8 +3035,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2765,8 +3060,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2789,8 +3085,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2813,8 +3110,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2837,8 +3135,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2861,8 +3160,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2885,8 +3185,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2909,8 +3210,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2933,8 +3235,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -2957,8 +3260,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3053,8 +3357,66 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4256194",
+          "name": "Nia Dippon",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4254131",
+          "name": "Brooke Detommaso",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4157504",
+          "name": "Magdalina Marinelli",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 8,
+          "breakHours": 0.5,
+          "travelHours": 3.5,
+          "mileage": 110
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 7.5,
+          "breakHours": 0.5,
+          "travelHours": 3,
+          "mileage": 0
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3077,8 +3439,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3101,8 +3464,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3125,8 +3489,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3243,8 +3608,82 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1475231",
+          "name": "NANCY SILVA",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1137958",
+          "name": "Bryan Merida-Merida",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1357322",
+          "name": "Catherine Winchester",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "613899",
+          "name": "James Fiore",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4257127",
+          "name": "Sonya Wilson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1785689",
+          "name": "Michelle Lopez",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3267,8 +3706,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3291,8 +3731,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3315,8 +3756,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3339,8 +3781,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3363,8 +3806,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3387,8 +3831,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3411,8 +3856,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3435,8 +3881,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3459,8 +3906,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3483,8 +3931,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3507,8 +3956,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3531,8 +3981,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3555,8 +4006,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3579,8 +4031,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3603,8 +4056,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3627,8 +4081,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3651,8 +4106,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3675,8 +4131,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3699,8 +4156,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -3723,8 +4181,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4017,8 +4476,210 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "1451248",
+          "name": "Martin Olson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "565636",
+          "name": "Claude Nielsen",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1768143",
+          "name": "Claire Clarke",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "925283",
+          "name": "Harold Duhe",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4157504",
+          "name": "Magdalina Marinelli",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4256194",
+          "name": "Nia Dippon",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4254131",
+          "name": "Brooke Detommaso",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1809270",
+          "name": "Matthew Caputo",
+          "hours": 7.75,
+          "breakHours": 0,
+          "travelHours": 2,
+          "mileage": 135
+        },
+        {
+          "customerId": "592111",
+          "name": "Rhyan Culbertson",
+          "hours": 9,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 9.25,
+          "breakHours": 0.5,
+          "travelHours": 2.25,
+          "mileage": 133
+        },
+        {
+          "customerId": "4257523",
+          "name": "Cynthia Dixon",
+          "hours": 8.75,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "613899",
+          "name": "James Fiore",
+          "hours": 9.75,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "492108",
+          "name": "Terry Jackson",
+          "hours": 9.75,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1705899",
+          "name": "Kaitlyn Jameson",
+          "hours": 9,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1617197",
+          "name": "Samuel Jameson",
+          "hours": 9,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1706695",
+          "name": "John Mackey",
+          "hours": 6.5,
+          "breakHours": 0.5,
+          "travelHours": 2.75,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 9,
+          "breakHours": 0.5,
+          "travelHours": 2.5,
+          "mileage": 0
+        },
+        {
+          "customerId": "1137958",
+          "name": "Bryan Merida-Merida",
+          "hours": 8.75,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1358484",
+          "name": "Peggy Moore",
+          "hours": 9,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1700098",
+          "name": "William Moore",
+          "hours": 9,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 10,
+          "breakHours": 0.5,
+          "travelHours": 2,
+          "mileage": 137
+        },
+        {
+          "customerId": "1475231",
+          "name": "NANCY SILVA",
+          "hours": 4.25,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4041,8 +4702,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4065,8 +4727,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4089,8 +4752,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4113,8 +4777,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4137,8 +4802,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4161,8 +4827,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4185,8 +4852,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4209,8 +4877,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4233,8 +4902,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4257,8 +4927,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.804Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4281,8 +4952,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4305,8 +4977,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4379,8 +5052,50 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "562293",
+          "name": "Jackie Brooks",
+          "hours": 5.25,
+          "breakHours": 0,
+          "travelHours": 0.5,
+          "mileage": 8
+        },
+        {
+          "customerId": "1719204",
+          "name": "Richard Raby",
+          "hours": 6.25,
+          "breakHours": 0.5,
+          "travelHours": 0.5,
+          "mileage": 14
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 8,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 46
+        },
+        {
+          "customerId": "1367753",
+          "name": "Donald Propst",
+          "hours": 2,
+          "breakHours": 0.5,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 6.5,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 67
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4403,8 +5118,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4427,8 +5143,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4451,8 +5168,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4475,8 +5193,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4499,8 +5218,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4523,8 +5243,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4547,8 +5268,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4571,8 +5293,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4595,8 +5318,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4619,8 +5343,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4643,8 +5368,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4667,8 +5393,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4691,8 +5418,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4715,8 +5443,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4739,8 +5468,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4763,8 +5493,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4787,8 +5518,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4811,8 +5543,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4835,8 +5568,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4859,8 +5593,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4883,8 +5618,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4907,8 +5643,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4931,8 +5668,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4955,8 +5693,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -4979,8 +5718,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5003,8 +5743,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5027,8 +5768,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5051,8 +5793,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5075,8 +5818,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5099,8 +5843,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.916Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5123,8 +5868,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5147,8 +5893,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5171,8 +5918,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5195,8 +5943,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5219,8 +5968,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5243,8 +5993,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5267,8 +6018,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5330,8 +6082,42 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "562293",
+          "name": "Jackie Brooks",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1719204",
+          "name": "Richard Raby",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5354,8 +6140,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5378,8 +6165,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5402,8 +6190,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5426,8 +6215,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5450,8 +6240,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5474,8 +6265,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5498,8 +6290,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5522,8 +6315,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5546,8 +6340,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.751Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5570,8 +6365,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5594,8 +6390,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5618,8 +6415,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5642,8 +6440,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5666,8 +6465,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5718,8 +6518,34 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 8.5,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 66
+        },
+        {
+          "customerId": "925283",
+          "name": "Harold Duhe",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5759,8 +6585,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 6,
+          "breakHours": 0,
+          "travelHours": 1,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5783,8 +6627,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5846,8 +6691,42 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4157504",
+          "name": "Magdalina Marinelli",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 5.5,
+          "breakHours": 0,
+          "travelHours": 1,
+          "mileage": 29
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5870,8 +6749,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5894,8 +6774,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -5968,8 +6849,50 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 11,
+          "breakHours": 0.5,
+          "travelHours": 4,
+          "mileage": 226
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 11,
+          "breakHours": 0.5,
+          "travelHours": 3,
+          "mileage": 0
+        },
+        {
+          "customerId": "4254131",
+          "name": "Brooke Detommaso",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.734Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6031,8 +6954,42 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 4,
+          "breakHours": 0,
+          "travelHours": 1.5,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 4,
+          "breakHours": 0,
+          "travelHours": 1.5,
+          "mileage": 70
+        },
+        {
+          "customerId": "4256194",
+          "name": "Nia Dippon",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6055,8 +7012,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6079,8 +7037,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.916Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6103,8 +7062,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6127,8 +7087,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6151,8 +7112,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6175,8 +7137,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6199,8 +7162,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6223,8 +7187,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6247,8 +7212,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6271,8 +7237,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6295,8 +7262,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6319,8 +7287,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6343,8 +7312,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6384,8 +7354,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 7,
+          "breakHours": 0.5,
+          "travelHours": 1,
+          "mileage": 22
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6408,8 +7396,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6432,8 +7421,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6456,8 +7446,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6480,8 +7471,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6504,8 +7496,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6528,8 +7521,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6552,8 +7546,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6576,8 +7571,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6600,8 +7596,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6624,8 +7621,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6648,8 +7646,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6672,8 +7671,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6696,8 +7696,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.685Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6737,8 +7738,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 4,
+          "breakHours": 0,
+          "travelHours": 1.75,
+          "mileage": 64
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6761,8 +7780,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6785,8 +7805,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6809,8 +7830,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6833,8 +7855,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6857,8 +7880,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6931,8 +7955,50 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "1137768",
+          "name": "ROBERT BOURDAGE",
+          "hours": 9.5,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 24
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 10,
+          "breakHours": 0.5,
+          "travelHours": 2.75,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 10.5,
+          "breakHours": 0.5,
+          "travelHours": 4,
+          "mileage": 226
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6955,8 +8021,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -6979,8 +8046,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7003,8 +8071,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7027,8 +8096,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7051,8 +8121,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7075,8 +8146,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7099,8 +8171,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7123,8 +8196,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7147,8 +8221,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7171,8 +8246,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7195,8 +8271,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7219,8 +8296,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7243,8 +8321,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7267,8 +8346,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7291,8 +8371,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7464,8 +8545,122 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4269442",
+          "name": "Keith Roether",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 7,
+          "breakHours": 0.5,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "917068",
+          "name": "Joseph Manas",
+          "hours": 6.5,
+          "breakHours": 0.5,
+          "travelHours": 3,
+          "mileage": 156
+        },
+        {
+          "customerId": "949608",
+          "name": "SHELLY MANAS",
+          "hours": 6.5,
+          "breakHours": 0.5,
+          "travelHours": 3,
+          "mileage": 0
+        },
+        {
+          "customerId": "1137958",
+          "name": "Bryan Merida-Merida",
+          "hours": 6,
+          "breakHours": 0,
+          "travelHours": 1.5,
+          "mileage": 73
+        },
+        {
+          "customerId": "1475231",
+          "name": "NANCY SILVA",
+          "hours": 6,
+          "breakHours": 0,
+          "travelHours": 1,
+          "mileage": 52
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 6,
+          "breakHours": 0,
+          "travelHours": 1.25,
+          "mileage": 66
+        },
+        {
+          "customerId": "4257127",
+          "name": "Sonya Wilson",
+          "hours": 3.75,
+          "breakHours": 0,
+          "travelHours": 0.25,
+          "mileage": 5
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1768143",
+          "name": "Claire Clarke",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1063478",
+          "name": "Mariano Sensano",
+          "hours": 5.75,
+          "breakHours": 0,
+          "travelHours": 4.25,
+          "mileage": 72
+        },
+        {
+          "customerId": "1785689",
+          "name": "Michelle Lopez",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4258926",
+          "name": "Patricia Pollina",
+          "hours": 6,
+          "breakHours": 0,
+          "travelHours": 1.5,
+          "mileage": 77
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7488,8 +8683,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7512,8 +8708,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7536,8 +8733,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7560,8 +8758,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7612,8 +8811,34 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 14.5,
+          "breakHours": 1,
+          "travelHours": 8,
+          "mileage": 406
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 14,
+          "breakHours": 0.5,
+          "travelHours": 8,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7636,8 +8861,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7660,8 +8886,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7684,8 +8911,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7708,8 +8936,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7732,8 +8961,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7756,8 +8986,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7780,8 +9011,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7821,8 +9053,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 3.5,
+          "breakHours": 0,
+          "travelHours": 1,
+          "mileage": 23
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7862,8 +9112,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7914,8 +9182,34 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4278258",
+          "name": "Alexis Jacang",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -7988,8 +9282,50 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 6.5,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 61
+        },
+        {
+          "customerId": "4251788",
+          "name": "Caleb Johnson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4256194",
+          "name": "Nia Dippon",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4257127",
+          "name": "Sonya Wilson",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8029,8 +9365,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 8,
+          "breakHours": 0.5,
+          "travelHours": 1.5,
+          "mileage": 61
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8070,8 +9424,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "3214827",
+          "name": "Lauren MacLeod",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8094,8 +9466,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8118,8 +9491,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8142,8 +9516,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8166,8 +9541,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8190,8 +9566,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.683Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8214,8 +9591,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8238,8 +9616,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8262,8 +9641,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8286,8 +9666,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8310,8 +9691,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8334,8 +9716,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8358,8 +9741,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8382,8 +9766,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8406,8 +9791,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8430,8 +9816,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8454,8 +9841,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8478,8 +9866,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8502,8 +9891,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8526,8 +9916,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.488Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8550,8 +9941,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8574,8 +9966,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8598,8 +9991,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8622,8 +10016,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8646,8 +10041,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.916Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8670,8 +10066,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8694,8 +10091,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8718,8 +10116,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8742,8 +10141,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8766,8 +10166,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.620Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8790,8 +10191,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8814,8 +10216,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8838,8 +10241,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:00:19.619Z",
+        "scrapedAt": "2026-06-22T00:43:15.735Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8862,8 +10266,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8886,8 +10291,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8910,8 +10316,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8934,8 +10341,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:57:48.803Z",
+        "scrapedAt": "2026-06-22T00:34:57.700Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8958,8 +10366,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -8982,8 +10391,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9006,8 +10416,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9030,8 +10441,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9054,8 +10466,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9078,8 +10491,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:56:27.085Z",
+        "scrapedAt": "2026-06-22T00:33:05.001Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9102,8 +10516,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-21T23:58:57.544Z",
+        "scrapedAt": "2026-06-22T00:36:19.752Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9126,8 +10541,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9150,8 +10566,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9174,8 +10591,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9198,8 +10616,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9222,8 +10641,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9246,8 +10666,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9270,8 +10691,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9294,8 +10716,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9318,8 +10741,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9342,8 +10766,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9366,8 +10791,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9390,8 +10816,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9453,8 +10880,42 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 6.75,
+          "breakHours": 0.5,
+          "travelHours": 2,
+          "mileage": 0
+        },
+        {
+          "customerId": "974164",
+          "name": "James Dillard",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "1137768",
+          "name": "ROBERT BOURDAGE",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9477,8 +10938,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9501,8 +10963,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:01:35.489Z",
+        "scrapedAt": "2026-06-22T00:45:15.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9525,8 +10988,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9566,8 +11030,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 12.5,
+          "breakHours": 1,
+          "travelHours": 1,
+          "mileage": 22
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9590,8 +11072,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9631,8 +11114,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 10.5,
+          "breakHours": 1,
+          "travelHours": 1,
+          "mileage": 22
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9655,8 +11156,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.683Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9679,8 +11181,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9703,8 +11206,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9727,8 +11231,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9751,8 +11256,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9775,8 +11281,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9799,8 +11306,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9840,8 +11348,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9864,8 +11390,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9888,8 +11415,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9929,8 +11457,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "712082",
+          "name": "Florentino Almazan",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -9970,8 +11516,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "712082",
+          "name": "Florentino Almazan",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10000,8 +11564,18 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10024,8 +11598,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10048,8 +11623,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10089,8 +11665,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10141,8 +11735,34 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4157504",
+          "name": "Magdalina Marinelli",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10182,8 +11802,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 7,
+          "breakHours": 0.5,
+          "travelHours": 1,
+          "mileage": 23
+        },
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10206,8 +11844,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.683Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10247,8 +11886,26 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "341025",
+          "name": "Abbey Czarnecki",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        },
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10277,8 +11934,18 @@
           "enrichment": {}
         }
       ],
+      "ndowResults": [
+        {
+          "customerId": "4017707",
+          "name": "Barry Mattison",
+          "hours": 0,
+          "breakHours": 0,
+          "travelHours": 0,
+          "mileage": 0
+        }
+      ],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10301,8 +11968,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10325,8 +11993,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10349,8 +12018,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10373,8 +12043,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10397,8 +12068,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10421,8 +12093,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10445,8 +12118,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10469,8 +12143,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10493,8 +12168,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10517,8 +12193,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10541,8 +12218,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10565,8 +12243,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10589,8 +12268,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.908Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10613,8 +12293,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10637,8 +12318,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10661,8 +12343,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:05:16.909Z",
+        "scrapedAt": "2026-06-22T00:50:49.556Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10685,8 +12368,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:03:59.012Z",
+        "scrapedAt": "2026-06-22T00:49:12.684Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10709,8 +12393,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
@@ -10733,8 +12418,9 @@
           "email": ""
         }
       ],
+      "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-06-22T00:02:37.917Z",
+        "scrapedAt": "2026-06-22T00:46:33.712Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {}
