@@ -9221,6 +9221,12 @@ const reportId =
   Hours:
   ${data.summary.hours.toFixed(2)}
   |
+  Break:
+  ${(data.summary.breakMinutes / 60).toFixed(2)}
+  |
+  Travel:
+  ${data.summary.travelHours.toFixed(2)}
+  |
   Miles:
   ${data.summary.mileage}
   |
@@ -9259,14 +9265,14 @@ const reportId =
 
   <th
     align="right"
-    style="width:60px;"
+    style="width:55px;"
   >
     Evt#
   </th>
 
   <th
     align="left"
-    style="width:75px;"
+    style="width:70px;"
   >
     Date
   </th>
@@ -9277,21 +9283,35 @@ const reportId =
 
   <th
     align="right"
-    style="width:50px;"
+    style="width:40px;"
   >
     Hrs
   </th>
 
   <th
     align="right"
-    style="width:50px;"
+    style="width:40px;"
+  >
+    Brk
+  </th>
+
+  <th
+    align="right"
+    style="width:40px;"
+  >
+    Trv
+  </th>
+
+  <th
+    align="right"
+    style="width:45px;"
   >
     Mi
   </th>
 
   <th
     align="right"
-    style="width:75px;"
+    style="width:70px;"
   >
     Value
   </th>
@@ -9306,6 +9326,8 @@ let monthEvents = 0;
 let monthHours = 0;
 let monthMiles = 0;
 let monthValue = 0;
+let monthBreak = 0;
+let monthTravel = 0;
 
 data.records.forEach(
   (record,index) => {
@@ -9362,9 +9384,11 @@ data.records.forEach(
         monthName;
 
       monthEvents = 0;
-      monthHours = 0;
-      monthMiles = 0;
-      monthValue = 0;
+	monthHours = 0;
+	monthBreak = 0;
+	monthTravel = 0;
+	monthMiles = 0;
+	monthValue = 0;;
 
       rows += `
 
@@ -9405,11 +9429,21 @@ data.records.forEach(
     monthEvents++;
 
     monthHours +=
-      Number(
-        record.volunteer_hours || 0
-      );
+  Number(
+    record.volunteer_hours || 0
+  );
 
-    monthMiles +=
+monthBreak +=
+  Number(
+    record.break_minutes || 0
+  ) / 60;
+
+monthTravel +=
+  Number(
+    record.travel_hours || 0
+  );
+
+monthMiles +=
       Number(
         record.mileage || 0
       );
@@ -9439,9 +9473,23 @@ data.records.forEach(
     ${title}
   </td>
 
-  <td align="right">
+   <td align="right">
     ${Number(
       record.volunteer_hours || 0
+    ).toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${(
+      Number(
+        record.break_minutes || 0
+      ) / 60
+    ).toFixed(1)}
+  </td>
+
+  <td align="right">
+    ${Number(
+      record.travel_hours || 0
     ).toFixed(1)}
   </td>
 
@@ -9483,11 +9531,15 @@ data.records.forEach(
     Events: ${monthEvents}
     |
     Hours: ${monthHours.toFixed(1)}
-    |
-    Miles: ${monthMiles.toFixed(0)}
-    |
-    Value: $${monthValue.toFixed(0)}
-  </td>
+	|
+	Break: ${monthBreak.toFixed(1)}
+	|
+	Travel: ${monthTravel.toFixed(1)}
+	|
+	Miles: ${monthMiles.toFixed(0)}
+	    |
+	    Value: $${monthValue.toFixed(0)}
+	  </td>
 </tr>
 
 `;
