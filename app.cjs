@@ -462,6 +462,11 @@ try{
       /Total \(hrs\)\s+([0-9.]+)/
     );
 
+  const breakMatch =
+  pageText.match(
+    /Select how many break hours you took\s+([0-9.]+)/
+  );
+
   const travelMatch =
     pageText.match(
       /Travel Hours\s+([0-9.]+)/
@@ -474,18 +479,25 @@ try{
 
   event.ndowResults.push({
 
-    customerId:
-      instructor.customerId,
+  customerId:
+    instructor.customerId,
 
-    name:
-      instructor.name,
+  name:
+    instructor.name,
 
-    hours:
-      hoursMatch
-        ? Number(
-            hoursMatch[1]
-          )
-        : 0,
+  hours:
+    hoursMatch
+      ? Number(
+          hoursMatch[1]
+        )
+      : 0,
+
+  breakHours:
+    breakMatch
+      ? Number(
+          breakMatch[1]
+        )
+      : 0,
 
     travelHours:
       travelMatch
