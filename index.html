@@ -7890,54 +7890,68 @@ data = data.sort(
 	    color:#19304B;
 	  ">
 
-            <th style="
-              width:30px;
-              text-align:center;
-            ">
-              ★
-            </th>
+ <th
+  align="right"
+  style="width:35px;"
+>
+  PH
+</th>
 
-            <th style="
-              padding:5px 8px;
-              text-align:left;
-            ">
-              Location
-            </th>
+<th
+  align="right"
+  style="width:35px;"
+>
+  PB
+</th>
 
-            <th style="
-              padding:5px 8px;
-              text-align:left;
-            ">
-              Type
-            </th>
+<th
+  align="right"
+  style="width:35px;"
+>
+  PT
+</th>
 
-			<th style="
-			  padding:5px 8px;
-			  text-align:left;
-			">
-			  City
-			</th>
-			
-			<th style="
-			  padding:5px 8px;
-			  text-align:left;
-			">
-			  Region
-			</th>
-			
-			<th style="
-			  padding:5px 8px;
-			  text-align:left;
-			">
-			  Address
-			</th>
+<th
+  align="right"
+  style="width:35px;"
+>
+  PM
+</th>
 
-            <th style="
-              width:120px;
-              text-align:center;
-            ">
-              Actions
-            </th>
+<th
+  align="right"
+  style="width:35px;"
+>
+  NH
+</th>
+
+<th
+  align="right"
+  style="width:35px;"
+>
+  NB
+</th>
+
+<th
+  align="right"
+  style="width:35px;"
+>
+  NT
+</th>
+
+<th
+  align="right"
+  style="width:35px;"
+>
+  NM
+</th>
+
+<th
+  align="right"
+  style="width:70px;"
+>
+  Value
+</th>
 
           </tr>
 
@@ -9461,49 +9475,61 @@ monthMiles +=
   "
 >
 
-  <td align="right">
-    ${record.event_id}
-  </td>
+<td align="right">
+  ${Number(
+    record.volunteer_hours || 0
+  ).toFixed(1)}
+</td>
 
-  <td>
-    ${formattedDate}
-  </td>
+<td align="right">
+  ${(
+    Number(
+      record.break_minutes || 0
+    ) / 60
+  ).toFixed(1)}
+</td>
 
-  <td>
-    ${title}
-  </td>
+<td align="right">
+  ${Number(
+    record.travel_hours || 0
+  ).toFixed(1)}
+</td>
 
-   <td align="right">
-    ${Number(
-      record.volunteer_hours || 0
-    ).toFixed(1)}
-  </td>
+<td align="right">
+  ${Number(
+    record.mileage || 0
+  ).toFixed(0)}
+</td>
 
-  <td align="right">
-    ${(
-      Number(
-        record.break_minutes || 0
-      ) / 60
-    ).toFixed(1)}
-  </td>
+<td align="right">
+  ${Number(
+    record.ndowHours || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.travel_hours || 0
-    ).toFixed(1)}
-  </td>
+<td align="right">
+  ${Number(
+    record.ndowBreak || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.mileage || 0
-    ).toFixed(0)}
-  </td>
+<td align="right">
+  ${Number(
+    record.ndowTravel || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    $${Number(
-      record.service_value || 0
-    ).toFixed(0)}
-  </td>
+<td align="right">
+  ${Number(
+    record.ndowMileage || 0
+  ).toFixed(0)}
+</td>
+
+<td align="right">
+  $${Number(
+    record.service_value || 0
+  ).toFixed(0)}
+</td>
 
 </tr>
 
