@@ -40,10 +40,9 @@ window.loadAssignmentRequests =
 
       }
 
-      const container =
-        document.getElementById(
-          'staffingRequestsContainer'
-        );
+     document.getElementById(
+      'assignmentRequestList'
+       );
 
       if(!container){
         return;
