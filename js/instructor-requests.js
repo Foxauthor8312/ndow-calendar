@@ -39,10 +39,9 @@ window.loadAssignmentRequests =
         );
 
       }
-
-     document.getElementById(
-      'assignmentRequestList'
-       );
+document.getElementById(
+  'assignmentRequestRows'
+);
 
       if(!container){
         return;
@@ -243,8 +242,7 @@ window.saveAssignmentRequest =
 
       if(modal){
 
-        modal.style.display =
-          'none';
+       closeCreateAssignmentRequest();
 
       }
 
@@ -310,6 +308,49 @@ window.openAssignmentRequestDetails =
 
       console.error(
         'openAssignmentRequestDetails',
+        err
+      );
+
+    }
+
+  };
+
+// ========================================
+// CLOSE CREATE REQUEST
+// ========================================
+
+window.closeCreateAssignmentRequest =
+  function(){
+
+    const modal =
+      document.getElementById(
+        'createAssignmentRequestModal'
+      );
+
+    if(modal){
+
+      modal.classList.add(
+        'hidden'
+      );
+
+    }
+
+  };
+// ========================================
+// INITIALIZE REQUEST CENTER
+// ========================================
+
+window.initializeInstructorRequests =
+  async function(){
+
+    try {
+
+      await loadAssignmentRequests();
+
+    } catch(err){
+
+      console.error(
+        'initializeInstructorRequests',
         err
       );
 
