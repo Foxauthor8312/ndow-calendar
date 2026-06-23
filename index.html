@@ -10791,6 +10791,14 @@ function closeInstructorRequestCenter(){
 
 }
 
+function openCreateAssignmentRequest(){
+
+  alert(
+    'Create Request form coming next.'
+  );
+
+}	
+
 function openSystemConsole(){
 
   const modal =
@@ -15129,139 +15137,73 @@ geographic analysis.
       Instructor Request Center
     </h2>
 
-    <div style="
-      border:1px solid #DBE3EC;
-      border-radius:6px;
-      padding:16px;
-      background:#FFFFFF;
-    ">
-
-   <div style="
-  border:1px solid #DBE3EC;
-  border-radius:6px;
-  padding:16px;
-  background:#FFFFFF;
-  margin-bottom:16px;
+<div style="
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 ">
 
+  <div>
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      color:#19304B;
+    ">
+      Staffing Requests
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#6B7280;
+      margin-top:4px;
+    ">
+      Create and manage instructor staffing requests.
+    </div>
+
+  </div>
+
+  <button
+    class="admin-button"
+    onclick="openCreateAssignmentRequest()"
+  >
+    Create Request
+  </button>
+
+</div>
+
+<div
+  id="assignmentRequestList"
+  style="
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+    background:#FFFFFF;
+    min-height:300px;
+    padding:16px;
+  "
+>
+
   <div style="
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:24px;
+    color:#6B7280;
+    text-align:center;
+    padding:40px 20px;
   ">
-
-    <div>
-
-      <div class="geo-title">
-        REQUEST WORKFLOW
-      </div>
-
-      <div style="margin-top:12px;">
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Need Identified
-        </div>
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Request Created
-        </div>
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Priority Assigned
-        </div>
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Instructor Notification
-        </div>
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Instructor Response
-        </div>
-
-        <div style="
-          padding:8px 0;
-        ">
-          Assignment Confirmation
-        </div>
-
-      </div>
-
-    </div>
-
-    <div>
-
-      <div class="geo-title">
-        INSTRUCTOR RESPONSES
-      </div>
-
-      <div style="margin-top:12px;">
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Accept Assignment
-        </div>
-
-        <div style="
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
-          Decline Assignment
-        </div>
-
-         <div style="
-          padding:8px 0;
-        ">
-          Mark Unavailable
-        </div>
-
-      </div>
-
-    </div>
-
+    No staffing requests found.
   </div>
 
 </div>
 
 <div style="
-  margin-top:12px;
-  color:#6B7280;
+  margin-top:16px;
   font-size:13px;
-  line-height:1.5;
+  color:#6B7280;
 ">
-
-  Future functionality will leverage existing event data to create
-  single-event or multi-event instructor requests. Administrators will be
-  able to define staffing requirements, notify qualified instructors,
-  track responses, and manage assignment fulfillment through a centralized
-  notification workflow utilizing dashboard alerts, email delivery, and
-  future SMS escalation capabilities.
-
+  Open requests, staffing levels, instructor responses,
+  and assignment fulfillment will appear here.
 </div>
 
   </div>
-
-</div>
-
-
-
-</div>
 
 </div>
 
