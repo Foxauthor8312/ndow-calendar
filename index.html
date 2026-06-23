@@ -6295,8 +6295,6 @@ async function openEventModal(eventUrl) {
 
 	submittedHoursRecord = null;
 
-	submittedHoursRecord = null;
-
 try {
 
   const user =
@@ -6711,17 +6709,17 @@ ${
 
 ${allowHours ? (
 
-  submittedHoursRecord
+submittedHoursRecord
 
     ? `
 
 <div style="
     padding:8px;
-	background:#ecfdf5;
-	border:1px solid #16a34a;
-	border-radius:6px;
-	font-size:12px;
-	line-height:1.25;
+    background:#ecfdf5;
+    border:1px solid #16a34a;
+    border-radius:6px;
+    font-size:12px;
+    line-height:1.25;
 ">
 
   <div style="
@@ -6807,6 +6805,26 @@ $${Math.round(
 `
     : ''
 }
+
+<button
+  onclick="
+    window.pendingHoursEntry = submittedHoursRecord;
+    openHoursModal();
+  "
+  style="
+    width:100%;
+    margin-top:8px;
+    background:#2563eb;
+    color:white;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+  "
+>
+  Edit Submitted Hours
+</button>
 
 </div>
 
