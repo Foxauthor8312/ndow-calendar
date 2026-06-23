@@ -15252,6 +15252,184 @@ geographic analysis.
 
 </div>
 
+<!-- ========================================
+     CREATE ASSIGNMENT REQUEST
+======================================== -->
+
+<div
+  id="createAssignmentRequestModal"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      width:min(800px,95%);
+      max-height:90vh;
+      overflow-y:auto;
+      padding:24px;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="
+        document
+          .getElementById(
+            'createAssignmentRequestModal'
+          )
+          .classList
+          .add('hidden')
+      "
+    >
+      ✕
+    </button>
+
+    <h2>
+      Create Assignment Request
+    </h2>
+
+    <label>
+      Request Title
+    </label>
+
+    <input
+      id="assignmentRequestTitle"
+      style="
+        width:100%;
+        margin-top:6px;
+        margin-bottom:14px;
+      "
+    >
+
+    <label>
+      Notes
+    </label>
+
+    <textarea
+      id="assignmentRequestNotes"
+      style="
+        width:100%;
+        min-height:80px;
+        margin-top:6px;
+        margin-bottom:14px;
+      "
+    ></textarea>
+
+    <label>
+      Priority
+    </label>
+
+    <select
+      id="assignmentRequestPriority"
+      style="
+        width:100%;
+        margin-top:6px;
+        margin-bottom:14px;
+      "
+    >
+
+      <option value="Low">
+        Low
+      </option>
+
+      <option value="Normal" selected>
+        Normal
+      </option>
+
+      <option value="High">
+        High
+      </option>
+
+      <option value="Critical">
+        Critical
+      </option>
+
+    </select>
+
+    <label>
+      Program
+    </label>
+
+    <select
+      id="assignmentRequestProgram"
+      style="
+        width:100%;
+        margin-top:6px;
+        margin-bottom:14px;
+      "
+    >
+      <option value="">
+        Select Program
+      </option>
+    </select>
+
+    <label>
+      Region
+    </label>
+
+    <select
+      id="assignmentRequestRegion"
+      style="
+        width:100%;
+        margin-top:6px;
+        margin-bottom:14px;
+      "
+    >
+
+      <option value="">
+        Select Region
+      </option>
+
+      <option value="Western">
+        Western
+      </option>
+
+      <option value="Eastern">
+        Eastern
+      </option>
+
+      <option value="Southern">
+        Southern
+      </option>
+
+      <option value="Statewide">
+        Statewide
+      </option>
+
+    </select>
+
+    <label>
+      Selected Events
+    </label>
+
+    <div
+      id="assignmentRequestEvents"
+      style="
+        border:1px solid #DBE3EC;
+        border-radius:6px;
+        padding:12px;
+        min-height:120px;
+        margin-top:6px;
+        margin-bottom:16px;
+      "
+    >
+
+      No events selected.
+
+    </div>
+
+    <button
+      class="admin-button"
+      onclick="saveAssignmentRequest()"
+    >
+      Create Request
+    </button>
+
+  </div>
+
+</div>
+	
 <div id="editUserModal" class="modal hidden">
 
 <div
