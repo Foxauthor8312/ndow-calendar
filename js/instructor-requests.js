@@ -1,7 +1,9 @@
 // ========================================
 // INSTRUCTOR REQUEST CENTER
 // ========================================
-
+console.log(
+  'instructor-requests.js loaded'
+);
 const ASSIGNMENT_API =
   'https://ndow-calendar-server.onrender.com/api';
 
