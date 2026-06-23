@@ -9330,35 +9330,55 @@ const reportId =
     Event
   </th>
 
-  <th colspan="4"
-      align="center">
-    Portal
-  </th>
+ <th
+  colspan="4"
+  align="center"
+  style="
+    background:#f3f4f6;
+    border-right:2px solid #9ca3af;
+  "
+>
+  Portal
+</th>
 
-  <th colspan="4"
-      align="center">
-    NDOW
-  </th>
+<th
+  colspan="4"
+  align="center"
+  style="
+    background:#dbeafe;
+  "
+>
+  NDOW
+</th>
 
-  <th rowspan="2"
-      align="right"
-      style="width:70px;">
-    Value
-  </th>
+<th rowspan="2"
+    align="right"
+    style="
+      width:70px;
+      background:#dcfce7;
+    ">
+  Value
+</th>
 
 </tr>
 
 <tr>
 
-  <th align="right">Hrs</th>
-  <th align="right">Brk</th>
-  <th align="right">Trv</th>
-  <th align="right">Mi</th>
+  <th align="right" style="background:#f3f4f6;">Hrs</th>
+  <th align="right" style="background:#f3f4f6;">Brk</th>
+  <th align="right" style="background:#f3f4f6;">Trv</th>
+  <th align="right"
+      style="
+        background:#f3f4f6;
+        border-right:2px solid #9ca3af;
+      ">
+    Mi
+  </th>
 
-  <th align="right">Hrs</th>
-  <th align="right">Brk</th>
-  <th align="right">Trv</th>
-  <th align="right">Mi</th>
+  <th align="right" style="background:#dbeafe;">Hrs</th>
+  <th align="right" style="background:#dbeafe;">Brk</th>
+  <th align="right" style="background:#dbeafe;">Trv</th>
+  <th align="right" style="background:#dbeafe;">Mi</th>
 
 </tr>
 
@@ -9580,61 +9600,94 @@ rows += `
     ${title}
   </td>
 
-  <td align="right">
-    ${Number(
-      record.volunteer_hours || 0
-    ).toFixed(1)}
-  </td>
+  <td
+  align="right"
+  style="background:#f9fafb;"
+>
+  ${Number(
+    record.volunteer_hours || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${(
-      Number(
-        record.break_minutes || 0
-      ) / 60
-    ).toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="background:#f9fafb;"
+>
+  ${(
+    Number(
+      record.break_minutes || 0
+    ) / 60
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.travel_hours || 0
-    ).toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="background:#f9fafb;"
+>
+  ${Number(
+    record.travel_hours || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.mileage || 0
-    ).toFixed(0)}
-  </td>
+<td
+  align="right"
+  style="
+    background:#f9fafb;
+    border-right:2px solid #9ca3af;
+  "
+>
+  ${Number(
+    record.mileage || 0
+  ).toFixed(0)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.ndowHours || 0
-    ).toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="background:#eff6ff;"
+>
+  ${Number(
+    record.ndowHours || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.ndowBreak || 0
-    ).toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="background:#eff6ff;"
+>
+  ${Number(
+    record.ndowBreak || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.ndowTravel || 0
-    ).toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="background:#eff6ff;"
+>
+  ${Number(
+    record.ndowTravel || 0
+  ).toFixed(1)}
+</td>
 
-  <td align="right">
-    ${Number(
-      record.ndowMileage || 0
-    ).toFixed(0)}
-  </td>
+<td
+  align="right"
+  style="background:#eff6ff;"
+>
+  ${Number(
+    record.ndowMileage || 0
+  ).toFixed(0)}
+</td>
 
-  <td align="right">
-    $${Number(
-      record.service_value || 0
-    ).toFixed(0)}
-  </td>
+<td
+  align="right"
+  style="
+    background:#f0fdf4;
+    font-weight:600;
+  "
+>
+  $${Number(
+    record.service_value || 0
+  ).toFixed(0)}
+</td>
 
 </tr>
 
@@ -9661,85 +9714,96 @@ rows += `
     ${currentMonth} Totals
   </td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthHours.toFixed(1)}
-  </td>
+ <td
+  align="right"
+  style="
+    font-weight:700;
+    background:#f3f4f6;
+  "
+>
+  ${monthHours.toFixed(1)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthBreak.toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#f3f4f6;
+  "
+>
+  ${monthBreak.toFixed(1)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthTravel.toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#f3f4f6;
+  "
+>
+  ${monthTravel.toFixed(1)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthMiles.toFixed(0)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#f3f4f6;
+    border-right:2px solid #9ca3af;
+  "
+>
+  ${monthMiles.toFixed(0)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthNdowHours.toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#dbeafe;
+  "
+>
+  ${monthNdowHours.toFixed(1)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthNdowBreak.toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#dbeafe;
+  "
+>
+  ${monthNdowBreak.toFixed(1)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthNdowTravel.toFixed(1)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#dbeafe;
+  "
+>
+  ${monthNdowTravel.toFixed(1)}
+</td>
 
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    ${monthNdowMiles.toFixed(0)}
-  </td>
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#dbeafe;
+  "
+>
+  ${monthNdowMiles.toFixed(0)}
+</td>
+
+<td
+  align="right"
+  style="
+    font-weight:700;
+    background:#dcfce7;
+  "
+>
+  $${monthValue.toFixed(0)}
+</td>
 
   <td
     align="right"
