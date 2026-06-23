@@ -13141,7 +13141,15 @@ function openEditUserModal(user){
     'editNotifySms'
   ).checked =
     !!user.notify_sms;
+	
+if(user.ndow_customer_id){
 
+  loadUserCertifications(
+    user.ndow_customer_id
+  );
+
+}
+	
   document.getElementById(
     'editUserMessage'
   ).innerText = '';
@@ -13272,14 +13280,6 @@ async function saveUserEdits(){
       ).checked
 
   };
-
-	if(user.ndow_customer_id){
-
-  loadUserCertifications(
-    user.ndow_customer_id
-  );
-
-}
 	
   document.getElementById(
     'editUserMessage'
@@ -13371,30 +13371,7 @@ async function saveUserEdits(){
   }
 
 }
-   if(data.success){
 
-  setTimeout(async () => {
-
-    await loadUsers();
-
-    closeEditUserModal();
-
-  }, 10000);
-
-}
-
-  } catch(err){
-
-    console.error(err);
-
-    document.getElementById(
-      'editUserMessage'
-    ).innerText =
-      'Save failed';
-
-  }
-
-}
 	
 
 function renderOverrides(){
