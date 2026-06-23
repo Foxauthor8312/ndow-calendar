@@ -10378,7 +10378,7 @@ if(greeting){
 
 const response =
   await fetch(
-    `https://ndow-calendar-server.onrender.com/api/volunteer-hours/${event.id}?ndow_id=${user.ndow_customer_id}`,
+    `https://ndow-calendar-server.onrender.com/api/volunteer-totals/${user.ndow_customer_id}`,
     {
       headers:{
         Authorization:
@@ -10388,7 +10388,7 @@ const response =
   );
 
 console.log(
-  'volunteer-hours status',
+  'volunteer-totals status',
   response.status
 );
 
@@ -10409,9 +10409,9 @@ const result =
 
     }
 
-	  const programHtml =
-  result.programSummary
-    .map(([name,data]) => `
+	const programHtml =
+     (result.programSummary || [])
+       .map(([name,data]) => `
 	
 
       <div class="program-summary-row">
