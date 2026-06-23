@@ -13204,15 +13204,17 @@ async function loadUserCertifications(
           ">
 
             <input
-              type="checkbox"
-              class="certification-checkbox"
-              value="${program.id}"
-              ${
-                assigned.has(program.id)
-                  ? 'checked'
-                  : ''
-              }
-            >
+  type="checkbox"
+  class="certification-checkbox"
+  value="${program.id}"
+  ${
+    assigned.has(
+      Number(program.id)
+    )
+      ? 'checked'
+      : ''
+  }
+>
 
             ${program.program_name}
 
