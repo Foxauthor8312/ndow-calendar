@@ -1,7 +1,4 @@
-window.openInstructorRequestCenter
-window.loadAssignmentRequests
-window.openCreateAssignmentRequest
-window.saveAssignmentRequest
-window.openAssignmentRequestDetails
-window.loadAssignmentCandidates
-window.sendAssignmentNotifications
+loadAssignmentRequests()
+openCreateAssignmentRequest()
+saveAssignmentRequest()
+openAssignmentRequestDetails()
