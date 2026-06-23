@@ -1,8 +1,7 @@
 // ========================================
 // INSTRUCTOR REQUEST CENTER
 // ========================================
-alert('instructor-requests.js loaded');
-);
+
 const ASSIGNMENT_API =
   'https://ndow-calendar-server.onrender.com/api';
 
@@ -40,9 +39,11 @@ window.loadAssignmentRequests =
         );
 
       }
-document.getElementById(
-  'assignmentRequestRows'
-);
+
+      const container =
+        document.getElementById(
+          'assignmentRequestRows'
+        );
 
       if(!container){
         return;
@@ -54,8 +55,12 @@ document.getElementById(
       ){
 
         container.innerHTML = `
-          <div class="empty-state">
-            No assignment requests found.
+          <div style="
+            color:#6B7280;
+            text-align:center;
+            padding:40px 20px;
+          ">
+            No staffing requests found.
           </div>
         `;
 
@@ -72,6 +77,19 @@ document.getElementById(
               openAssignmentRequestDetails(
                 ${request.id}
               )
+            "
+            style="
+              display:grid;
+              grid-template-columns:
+                70px
+                1fr
+                120px
+                120px
+                120px;
+              gap:10px;
+              padding:10px;
+              border-bottom:1px solid #DBE3EC;
+              cursor:pointer;
             "
           >
 
@@ -122,13 +140,19 @@ window.openCreateAssignmentRequest =
         'createAssignmentRequestModal'
       );
 
-    if(modal){
-
-      modal.classList.remove(
-        'hidden'
-      );
-
+    if(!modal){
+      return;
     }
+
+    modal.classList.remove(
+      'hidden'
+    );
+
+    modal.style.display =
+      'block';
+
+    modal.style.zIndex =
+      '99999';
 
   };
 
@@ -202,11 +226,8 @@ window.saveAssignmentRequest =
             body:JSON.stringify({
 
               title,
-
               notes,
-
               priority,
-
               region,
 
               program_id:
@@ -234,18 +255,9 @@ window.saveAssignmentRequest =
         'Assignment request created.'
       );
 
+      closeCreateAssignmentRequest();
+
       await loadAssignmentRequests();
-
-      const modal =
-        document.getElementById(
-          'createAssignmentRequestModal'
-        );
-
-      if(modal){
-
-       closeCreateAssignmentRequest();
-
-      }
 
     } catch(err){
 
@@ -264,36 +276,16 @@ window.saveAssignmentRequest =
   };
 
 // ========================================
-// OPEN REQUEST DETAILS
+// REQUEST DETAILS
 // ========================================
 
-window.openCreateAssignmentRequest =
-  function(){
+window.openAssignmentRequestDetails =
+  async function(requestId){
 
-    const modal =
-      document.getElementById(
-        'createAssignmentRequestModal'
-      );
-
-    alert(
-      modal
-        ? 'Modal exists'
-        : 'Modal NOT found'
+    console.log(
+      'Open request:',
+      requestId
     );
-
-    if(modal){
-
-      modal.classList.remove(
-        'hidden'
-      );
-
-      modal.style.display =
-        'block';
-
-      modal.style.zIndex =
-        '99999';
-
-    }
 
   };
 
@@ -309,15 +301,19 @@ window.closeCreateAssignmentRequest =
         'createAssignmentRequestModal'
       );
 
-    if(modal){
-
-      modal.classList.add(
-        'hidden'
-      );
-
+    if(!modal){
+      return;
     }
 
+    modal.classList.add(
+      'hidden'
+    );
+
+    modal.style.display =
+      'none';
+
   };
+
 // ========================================
 // INITIALIZE REQUEST CENTER
 // ========================================
