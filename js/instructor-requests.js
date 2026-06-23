@@ -124,8 +124,9 @@ window.openCreateAssignmentRequest =
 
     if(modal){
 
-      modal.style.display =
-        'flex';
+      modal.classList.remove(
+        'hidden'
+      );
 
     }
 
