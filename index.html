@@ -13235,6 +13235,30 @@ async function loadUserCertifications(
   }
 
 }
+
+function closeEditUserModal(){
+
+  const modal =
+    document.getElementById(
+      'editUserModal'
+    );
+
+  if(!modal){
+    return;
+  }
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
+
+  document.getElementById(
+    'editUserMessage'
+  ).innerText = '';
+
+}
 	
 async function saveUserEdits(){
 
