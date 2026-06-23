@@ -13115,6 +13115,11 @@ function openEditUserModal(user){
   ).value = user.username;
 
   document.getElementById(
+  'editUserModal'
+).dataset.ndowCustomerId =
+  user.ndow_customer_id || '';	
+
+  document.getElementById(
     'editUsername'
   ).value = user.username || '';
 
@@ -13186,11 +13191,12 @@ async function loadUserCertifications(
       await certificationsResponse.json();
 
     const assigned =
-      new Set(
-        certificationsData.certifications.map(
-          c => Number(c.program_id)
-        )
-      );
+  new Set(
+    (certificationsData.certifications || [])
+      .map(
+        c => Number(c.program_id)
+      )
+  );
 
     document.getElementById(
       'editUserCertifications'
@@ -13377,15 +13383,52 @@ async function saveUserEdits(){
 
     if(data.success){
 
-      await loadUsers();
+  const certifications =
+    Array.from(
+      document.querySelectorAll(
+        '.certification-checkbox:checked'
+      )
+    ).map(
+      checkbox => Number(
+        checkbox.value
+      )
+    );
 
-      setTimeout(() => {
+  const ndowCustomerId =
+  document.getElementById(
+    'editUserModal'
+  ).dataset.ndowCustomerId;
 
-        closeEditUserModal();
+await fetch(
+  `https://ndow-calendar-server.onrender.com/api/instructor-certifications/${ndowCustomerId}`,
+    {
+		
+      method:'PUT',
 
-      }, 2000);
+      headers:{
+        'Content-Type':
+          'application/json'
+      },
+
+      body:JSON.stringify({
+
+        programIds:
+          certifications
+
+      })
 
     }
+  );
+
+  await loadUsers();
+
+  setTimeout(() => {
+
+    closeEditUserModal();
+
+  }, 2000);
+
+}
 
   } catch(err){
 
