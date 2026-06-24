@@ -15399,16 +15399,26 @@ geographic analysis.
 
     </select>
 
-	  <button
+<button
   type="button"
   class="admin-button"
-  onclick="openEventSelectionModal()"
-  style="
-    margin-bottom:14px;
-  "
+  onclick="toggleEventSelectionPanel()"
 >
   Select Events
 </button>
+
+<div
+  id="eventSelectionPanel"
+  style="
+    display:none;
+    margin-top:12px;
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+    max-height:250px;
+    overflow-y:auto;
+    padding:12px;
+  "
+></div>
 
     <label>
       Selected Events
@@ -15441,59 +15451,7 @@ geographic analysis.
 
 </div>
 
-<!-- ========================================
-     EVENT SELECTION MODAL
-======================================== -->
 
-<div
-  id="eventSelectionModal"
-  class="modal hidden"
->
-
-  <div
-    class="modal-content"
-    style="
-      width:min(900px,95%);
-      max-height:85vh;
-      overflow-y:auto;
-      padding:24px;
-    "
-  >
-
-    <button
-      class="modal-close"
-      onclick="closeEventSelectionModal()"
-    >
-      ✕
-    </button>
-
-    <h2>
-      Select Events
-    </h2>
-
-    <div
-      id="eventSelectionList"
-    >
-      Loading...
-    </div>
-
-    <div style="
-      margin-top:20px;
-      text-align:right;
-    ">
-
-      <button
-        class="admin-button"
-        onclick="saveSelectedEvents()"
-      >
-        Done
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
 	
 <div id="editUserModal" class="modal hidden">
 
