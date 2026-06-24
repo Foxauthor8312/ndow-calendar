@@ -480,6 +480,8 @@ window.saveSelectedEvents =
 window.renderSelectedAssignmentEvents =
   function(){
 
+    alert('openEventSelectionModal fired');
+
     const container =
       document.getElementById(
         'assignmentRequestEvents'
