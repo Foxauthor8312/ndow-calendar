@@ -371,7 +371,24 @@ window.toggleEventSelectionPanel =
       'block';
 
     const futureEvents =
-      events.filter(event => {
+  events
+    .filter(event => {
+
+      return (
+        event.date &&
+        new Date(event.date) >=
+        new Date()
+      );
+
+    })
+    .sort((a,b) => {
+
+      return (
+        new Date(a.date) -
+        new Date(b.date)
+      );
+
+    });
 
         return (
           event.date &&
@@ -385,20 +402,31 @@ window.toggleEventSelectionPanel =
       futureEvents.map(event => `
 
         <label style="
-          display:block;
-          padding:8px 0;
-          border-bottom:1px solid #DBE3EC;
-        ">
+  display:block;
+  padding:6px 0;
+  border-bottom:1px solid #DBE3EC;
+">
 
-          <input
-            type="checkbox"
-            class="assignment-event-checkbox"
-            data-id="${event.id}"
-          >
+  <input
+    type="checkbox"
+    class="assignment-event-checkbox"
+    data-id="${event.id}"
+  >
 
-          ${event.title}
+  <strong>
+    ${event.date}
+  </strong>
 
-        </label>
+  <div style="
+    font-size:11px;
+    color:#6B7280;
+    margin-left:22px;
+    line-height:1.3;
+  ">
+    ${event.title}
+  </div>
+
+</label>
 
       `).join('') +
 
