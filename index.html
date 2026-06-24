@@ -9522,11 +9522,42 @@ monthValue = 0;
 
     }
 
- const title =
-  `[${record.event_id}] ` +
-  record.event_name
-    .split('■')[0]
-    .trim();
+ let title = '';
+
+if(
+  record.event_id &&
+  record.event_date >= '2026-03-16'
+){
+
+  title = `
+    <span
+      class="report-event-link"
+      onclick="
+        openEventFromReport(
+          '${record.event_id}'
+        )
+      "
+      style="
+        color:#19304B;
+        font-weight:600;
+        cursor:pointer;
+      "
+    >
+      [${record.event_id}]
+    </span>
+    ${record.event_name
+      .split('■')[0]
+      .trim()}
+  `;
+
+}else{
+
+  title =
+    record.event_name
+      .split('■')[0]
+      .trim();
+
+}
 
     const formattedDate =
       recordDate.toLocaleDateString(
@@ -9917,6 +9948,31 @@ document.getElementById(
       'Unable to load report.';
 
   }
+
+}	
+
+function openEventFromReport(
+  eventId
+){
+
+  const event =
+    events.find(
+      e =>
+        String(e.id) ===
+        String(eventId)
+    );
+
+  if(!event){
+
+    alert(
+      'Event not available in calendar.'
+    );
+
+    return;
+
+  }
+
+  openEventModal(event);
 
 }	
 
