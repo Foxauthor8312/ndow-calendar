@@ -15399,6 +15399,17 @@ geographic analysis.
 
     </select>
 
+	  <button
+  type="button"
+  class="admin-button"
+  onclick="openEventSelectionModal()"
+  style="
+    margin-bottom:14px;
+  "
+>
+  Select Events
+</button>
+
     <label>
       Selected Events
     </label>
@@ -15425,6 +15436,60 @@ geographic analysis.
     >
       Create Request
     </button>
+
+  </div>
+
+</div>
+
+<!-- ========================================
+     EVENT SELECTION MODAL
+======================================== -->
+
+<div
+  id="eventSelectionModal"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      width:min(900px,95%);
+      max-height:85vh;
+      overflow-y:auto;
+      padding:24px;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeEventSelectionModal()"
+    >
+      ✕
+    </button>
+
+    <h2>
+      Select Events
+    </h2>
+
+    <div
+      id="eventSelectionList"
+    >
+      Loading...
+    </div>
+
+    <div style="
+      margin-top:20px;
+      text-align:right;
+    ">
+
+      <button
+        class="admin-button"
+        onclick="saveSelectedEvents()"
+      >
+        Done
+      </button>
+
+    </div>
 
   </div>
 
