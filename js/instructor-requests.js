@@ -343,36 +343,35 @@ window.initializeInstructorRequests =
 window.selectedAssignmentEvents =
   [];
 
-window.openEventSelectionModal =
+window.toggleEventSelectionPanel =
   function(){
 
-    const modal =
+    const panel =
       document.getElementById(
-        'eventSelectionModal'
+        'eventSelectionPanel'
       );
 
-    const container =
-      document.getElementById(
-        'eventSelectionList'
-      );
-
-    if(
-      !modal ||
-      !container
-    ){
+    if(!panel){
       return;
     }
 
-    modal.classList.remove(
-      'hidden'
-    );
+    if(
+      panel.style.display ===
+      'block'
+    ){
 
-    modal.style.display =
+      panel.style.display =
+        'none';
+
+      return;
+
+    }
+
+    panel.style.display =
       'block';
 
     const futureEvents =
-      (events || [])
-      .filter(event => {
+      events.filter(event => {
 
         return (
           event.date &&
@@ -382,12 +381,12 @@ window.openEventSelectionModal =
 
       });
 
-    container.innerHTML =
+    panel.innerHTML =
       futureEvents.map(event => `
 
         <label style="
           display:block;
-          padding:10px;
+          padding:8px 0;
           border-bottom:1px solid #DBE3EC;
         ">
 
@@ -397,43 +396,26 @@ window.openEventSelectionModal =
             data-id="${event.id}"
           >
 
-          <strong>
-            ${event.title}
-          </strong>
-
-          <br>
-
-          <span style="
-            color:#6B7280;
-            font-size:13px;
-          ">
-            ${event.date}
-          </span>
+          ${event.title}
 
         </label>
 
-      `).join('');
+      `).join('') +
 
-  };
+      `
 
-window.closeEventSelectionModal =
-  function(){
+      <button
+        class="admin-button"
+        style="
+          margin-top:12px;
+          width:100%;
+        "
+        onclick="saveSelectedEvents()"
+      >
+        Use Selected Events
+      </button>
 
-    const modal =
-      document.getElementById(
-        'eventSelectionModal'
-      );
-
-    if(modal){
-
-      modal.classList.add(
-        'hidden'
-      );
-
-      modal.style.display =
-        'none';
-
-    }
+      `;
 
   };
 
@@ -473,14 +455,15 @@ window.saveSelectedEvents =
 
     renderSelectedAssignmentEvents();
 
-    closeEventSelectionModal();
+    document.getElementById(
+      'eventSelectionPanel'
+    ).style.display =
+      'none';
 
   };
 
 window.renderSelectedAssignmentEvents =
   function(){
-
-    alert('openEventSelectionModal fired');
 
     const container =
       document.getElementById(
@@ -492,7 +475,6 @@ window.renderSelectedAssignmentEvents =
     }
 
     if(
-      !window.selectedAssignmentEvents ||
       window.selectedAssignmentEvents.length === 0
     ){
 
@@ -506,15 +488,9 @@ window.renderSelectedAssignmentEvents =
     container.innerHTML =
       window.selectedAssignmentEvents
         .map(event => `
-
-          <div style="
-            padding:6px 0;
-          ">
-
+          <div>
             ${event.event_title}
-
           </div>
-
         `)
         .join('');
 
