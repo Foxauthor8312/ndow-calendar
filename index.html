@@ -6286,10 +6286,22 @@ async function openEventModal(eventUrl) {
 
     modal.style.display = "flex";
 
-    const event =
-      events.find(
-        e => e.url === eventUrl
-      );
+    let event;
+
+if(
+  typeof eventUrl === 'object'
+){
+
+  event = eventUrl;
+
+}else{
+
+  event =
+    events.find(
+      e => e.url === eventUrl
+    );
+
+}
 
 	selectedEvent = event;
 
@@ -9955,12 +9967,22 @@ function openEventFromReport(
   eventId
 ){
 
-  const event =
-    events.find(
-      e =>
-        String(e.id) ===
-        String(eventId)
-    );
+ console.log(
+  'Looking for event:',
+  eventId
+);
+
+const event =
+  events.find(
+    e =>
+      String(e.id) ===
+      String(eventId)
+  );
+
+console.log(
+  'Found event:',
+  event
+);
 
   if(!event){
 
