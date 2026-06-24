@@ -370,7 +370,7 @@ window.toggleEventSelectionPanel =
     panel.style.display =
       'block';
 
-    const futureEvents =
+const futureEvents =
   events
     .filter(event => {
 
@@ -389,14 +389,6 @@ window.toggleEventSelectionPanel =
       );
 
     });
-
-        return (
-          event.date &&
-          new Date(event.date) >=
-          new Date()
-        );
-
-      });
 
     panel.innerHTML =
       futureEvents.map(event => `
