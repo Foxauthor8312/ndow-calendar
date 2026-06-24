@@ -335,3 +335,185 @@ window.initializeInstructorRequests =
     }
 
   };
+
+// ========================================
+// EVENT SELECTION
+// ========================================
+
+window.selectedAssignmentEvents =
+  [];
+
+window.openEventSelectionModal =
+  function(){
+
+    const modal =
+      document.getElementById(
+        'eventSelectionModal'
+      );
+
+    const container =
+      document.getElementById(
+        'eventSelectionList'
+      );
+
+    if(
+      !modal ||
+      !container
+    ){
+      return;
+    }
+
+    modal.classList.remove(
+      'hidden'
+    );
+
+    modal.style.display =
+      'block';
+
+    const futureEvents =
+      (events || [])
+      .filter(event => {
+
+        return (
+          event.date &&
+          new Date(event.date) >=
+          new Date()
+        );
+
+      });
+
+    container.innerHTML =
+      futureEvents.map(event => `
+
+        <label style="
+          display:block;
+          padding:10px;
+          border-bottom:1px solid #DBE3EC;
+        ">
+
+          <input
+            type="checkbox"
+            class="assignment-event-checkbox"
+            data-id="${event.id}"
+          >
+
+          <strong>
+            ${event.title}
+          </strong>
+
+          <br>
+
+          <span style="
+            color:#6B7280;
+            font-size:13px;
+          ">
+            ${event.date}
+          </span>
+
+        </label>
+
+      `).join('');
+
+  };
+
+window.closeEventSelectionModal =
+  function(){
+
+    const modal =
+      document.getElementById(
+        'eventSelectionModal'
+      );
+
+    if(modal){
+
+      modal.classList.add(
+        'hidden'
+      );
+
+      modal.style.display =
+        'none';
+
+    }
+
+  };
+
+window.saveSelectedEvents =
+  function(){
+
+    const checked =
+      document.querySelectorAll(
+        '.assignment-event-checkbox:checked'
+      );
+
+    const selected =
+      [];
+
+    checked.forEach(box => {
+
+      const event =
+        events.find(e =>
+          String(e.id) ===
+          box.dataset.id
+        );
+
+      if(event){
+
+        selected.push({
+          event_id:event.id,
+          event_title:event.title,
+          event_date:event.date
+        });
+
+      }
+
+    });
+
+    window.selectedAssignmentEvents =
+      selected;
+
+    renderSelectedAssignmentEvents();
+
+    closeEventSelectionModal();
+
+  };
+
+window.renderSelectedAssignmentEvents =
+  function(){
+
+    const container =
+      document.getElementById(
+        'assignmentRequestEvents'
+      );
+
+    if(!container){
+      return;
+    }
+
+    if(
+      !window.selectedAssignmentEvents ||
+      window.selectedAssignmentEvents.length === 0
+    ){
+
+      container.innerHTML =
+        'No events selected.';
+
+      return;
+
+    }
+
+    container.innerHTML =
+      window.selectedAssignmentEvents
+        .map(event => `
+
+          <div style="
+            padding:6px 0;
+          ">
+
+            ${event.event_title}
+
+          </div>
+
+        `)
+        .join('');
+
+  };
