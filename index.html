@@ -2735,28 +2735,95 @@ const county =
 // ========================================
 // EVENT CLASSIFICATION
 // ========================================
-function classifyEvent(title=''){
-  if(!title || typeof title !== 'string') return 'Other';
-  const t = title.toLowerCase();
-  for(const category in CATEGORY_RULES){
-    const keywords = CATEGORY_RULES[category];
-    if(keywords.some(keyword => t.includes(keyword.toLowerCase()))) return category;
-  }
-  return 'Other';
-}
+function classifyEvent(event){
 
-const categoryColors = {
-  'Hunter Education':'#84cc16',
-  'Advanced Hunter Education':'#166534',
-  'Fishing':'#f97316',
-  'Wildlife':'#9333ea',
-  'Urban Wildlife':'#0ea5e9',
-  'Boating':'#6b7280',
-  'Volunteer':'#2563eb',
-  'Archery':'#bcc9bb',
-  'School':'#b45309',
-  'Other':'#64748b'
-};
+  // ----------------------------------------
+  // Use official NDOW Program first
+  // ----------------------------------------
+
+  if(
+    event &&
+    event.program
+  ){
+
+    const program =
+      event.program
+        .trim()
+        .toLowerCase();
+
+    switch(program){
+
+      case 'hunter education':
+        return 'Hunter Education';
+
+      case 'advanced hunter education':
+        return 'Advanced Hunter Education';
+
+      case 'fishing classes':
+        return 'Fishing';
+
+      case 'wildlife discovery':
+        return 'Wildlife';
+
+      case 'archery education':
+        return 'Archery';
+
+      case 'school events':
+        return 'School';
+
+      case 'boating education':
+        return 'Boating';
+
+      case 'other / general volunteer':
+      case 'general volunteer':
+        return 'Volunteer';
+
+    }
+
+  }
+
+  // ----------------------------------------
+  // Fallback to title keywords
+  // ----------------------------------------
+
+  const title =
+    event?.title || '';
+
+  if(
+    !title ||
+    typeof title !== 'string'
+  ){
+    return 'Other';
+  }
+
+  const t =
+    title.toLowerCase();
+
+  for(
+    const category
+    in CATEGORY_RULES
+  ){
+
+    const keywords =
+      CATEGORY_RULES[category];
+
+    if(
+      keywords.some(keyword =>
+        t.includes(
+          keyword.toLowerCase()
+        )
+      )
+    ){
+
+      return category;
+
+    }
+
+  }
+
+  return 'Other';
+
+}
 
 // ========================================
 // GLOBAL DATA
@@ -3094,7 +3161,7 @@ const category =
     (event.title || '')
   ) ||
   classifyEvent(
-    event.title || ''
+    event
   );
 
       if(category === 'Other'){
