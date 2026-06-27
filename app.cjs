@@ -364,6 +364,21 @@ await page.goto(
   }
 );
 
+  const eventPageText =
+  await page.evaluate(
+    () => document.body.innerText
+  );
+
+const programMatch =
+  eventPageText.match(
+    /Program:\s*([^\r\n]+)/i
+  );
+
+event.program =
+  programMatch
+    ? programMatch[1].trim()
+    : '';
+
   const eventInfo =
   await page.evaluate(() => {
 
