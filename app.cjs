@@ -364,34 +364,71 @@ await page.goto(
   }
 );
 
-  const eventPageText =
-  await page.evaluate(
-    () => document.body.innerText
-  );
-
-const programMatch =
-  eventPageText.match(
-    /Program:\s*([^\r\n]+)/i
-  );
-
-event.program =
-  programMatch
-    ? programMatch[1].trim()
-    : '';
-
-  const eventInfo =
+const details =
   await page.evaluate(() => {
 
     const text =
       document.body.innerText;
 
+    function extract(label){
+
+      const match =
+        text.match(
+          new RegExp(
+            label + '\\s*:\\s*([^\\r\\n]+)',
+            'i'
+          )
+        );
+
+      return match
+        ? match[1].trim()
+        : '';
+
+    }
+
     return {
-      text
+
+      program:
+        extract('Program'),
+
+      eventName:
+        extract('Event Name'),
+
+      location:
+        extract('Location'),
+
+      dateTime:
+        extract('Date & Times'),
+
+      about:
+        extract('About this Event')
+
     };
 
   });
 
-console.log(eventInfo.text);
+event.program =
+  details.program;
+
+if(details.eventName){
+  event.title =
+    details.eventName;
+}
+
+if(details.location){
+  event.location =
+    details.location;
+}
+
+if(details.dateTime){
+  event.time =
+    details.dateTime;
+}
+
+if(details.about){
+  event.description =
+    details.about;
+}
 
   try {
 
