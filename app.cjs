@@ -94,6 +94,40 @@ const fs = require('fs');
       timeout:60000
     });
 
+    // ----------------------------------------
+// Capture Program
+// ----------------------------------------
+
+try{
+
+  event.program =
+    await page.evaluate(() => {
+
+      const body =
+        document.body.innerText;
+
+      const match =
+        body.match(
+          /Program\s*:?[\r\n\s]+([^\r\n]+)/i
+        );
+
+      return match
+        ? match[1].trim()
+        : '';
+
+    });
+
+  console.log(
+    'PROGRAM:',
+    event.program
+  );
+
+}catch(err){
+
+  event.program = '';
+
+}
+
     console.log(
       'Login successful.'
     );
@@ -317,15 +351,32 @@ if(isCompleted){
 
 }
 
-  console.log(
-    'Checking instructors for:',
-    event.url
-  );
+ console.log(
+  'Loading event:',
+  event.url
+);
 
-  console.log(
-    'INSTRUCTOR URL:',
-    event.instructorUrl
-  );
+await page.goto(
+  event.url,
+  {
+    waitUntil:'networkidle2',
+    timeout:60000
+  }
+);
+
+  const eventInfo =
+  await page.evaluate(() => {
+
+    const text =
+      document.body.innerText;
+
+    return {
+      text
+    };
+
+  });
+
+console.log(eventInfo.text);
 
   try {
 
