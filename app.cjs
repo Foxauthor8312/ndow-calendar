@@ -414,8 +414,14 @@ if(details.eventName){
   event.title =
     details.eventName;
 }
+// Preserve the richer location extracted from the event card.
+// The detail page currently only returns the first line of
+// the location, which removes the city and ZIP.
 
-if(details.location){
+if(
+  details.location &&
+  !event.location
+){
   event.location =
     details.location;
 }
