@@ -11,6 +11,8 @@ const fs = require('fs');
     ]
   });
 
+  const DEBUG = false;
+  
   const page = await browser.newPage();
 
   await page.setRequestInterception(true);
@@ -20,18 +22,20 @@ const fs = require('fs');
     const type =
       req.resourceType();
 
-    if(
-      type === 'image' ||
-      type === 'font'
-    ){
+if (
+  type === 'image' ||
+  type === 'font' ||
+  type === 'stylesheet' ||
+  type === 'media'
+){
 
-      req.abort();
+  req.abort();
 
-    } else {
+}else{
 
-      req.continue();
+  req.continue();
 
-    }
+}
 
   });
 
@@ -90,7 +94,7 @@ const fs = require('fs');
     );
 
     await page.waitForNavigation({
-      waitUntil:'networkidle2',
+      waitUntil:'domcontentloaded',
       timeout:60000
     });
 
@@ -359,7 +363,7 @@ if(isCompleted){
 await page.goto(
   event.url,
   {
-    waitUntil:'networkidle2',
+    waitUntil:'domcontentloaded',
     timeout:60000
   }
 );
@@ -441,7 +445,7 @@ if(details.about){
     await page.goto(
       event.instructorUrl,
       {
-        waitUntil:'networkidle2',
+        waitUntil:'domcontentloaded',
         timeout:60000
       }
     );
@@ -533,27 +537,39 @@ const resultsUrl =
 
 `https://nevada.events.licensing.app/dashboard/em/assigned_events/${event.id}/instructor_results/${instructor.customerId}`;
 
-console.log(
-  'EVENT ID:',
-  event.id
-);
+if(DEBUG){
 
-console.log(
+  console.log(
+    'EVENT ID:',
+    event.id
+  );
+
+}
+
+
+if(DEBUG){
+
+  console.log(
   'CUSTOMER ID:',
   instructor.customerId
 );
 
+}
+
+if(DEBUG){
+  
 console.log(
   'TEST RESULTS URL:',
   resultsUrl
 );
+}  
 
 try{
 
   await page.goto(
     resultsUrl,
     {
-      waitUntil:'networkidle2',
+      waitUntil:'domcontentloaded',
       timeout:60000
     }
   );
@@ -672,9 +688,12 @@ try{
     )
   );
 
+  if(DEBUG){
+    
   console.log(
     'Instructor enrichment complete.'
   );
+  }
 
   await browser.close();
 
