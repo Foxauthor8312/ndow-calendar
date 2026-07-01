@@ -1,42 +1,44 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
+const puppeteer =
+  require('puppeteer');
+
+const fs =
+  require('fs');
+
 const { createClient } =
   require('@supabase/supabase-js');
 
 (async function () {
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox'
-    ]
-  });
+  const supabase =
+    createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
 
-const supabase =
-  createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+  const { data, error } =
+    await supabase
+      .from('volunteer_hours')
+      .select('id')
+      .limit(1);
+
+  if(error){
+
+    throw error;
+
+  }
+
+  console.log(
+    'SUPABASE CONNECTED'
   );
 
-const { data, error } =
-  await supabase
-    .from('volunteer_hours')
-    .select('id')
-    .limit(1);
-
-if(error){
-  throw error;
-}
-
-console.log(
-  'SUPABASE CONNECTED'
-);
-
-const browser =
-  await puppeteer.launch({
-    ...
-  });
+  const browser =
+    await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox'
+      ]
+    });
 
   const DEBUG = false;
   
