@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const { createClient } =
+  require('@supabase/supabase-js');
 
 (async function () {
 
@@ -11,36 +13,36 @@ const fs = require('fs');
     ]
   });
 
-  const supabase =
+const supabase =
   createClient(
     process.env.SUPABASE_URL,
     process.env.SUPABASE_SERVICE_ROLE_KEY
   );
 
-  const { data, error } =
+const { data, error } =
   await supabase
     .from('volunteer_hours')
     .select('id')
     .limit(1);
 
 if(error){
-
   throw error;
-
 }
 
 console.log(
-  'Supabase connected.'
+  'SUPABASE CONNECTED'
 );
+
+const browser =
+  await puppeteer.launch({
+    ...
+  });
 
   const DEBUG = false;
   
   const page = await browser.newPage();
 
-  const { createClient } =
-  require('@supabase/supabase-js');
-
-  await page.setRequestInterception(true);
+    await page.setRequestInterception(true);
 
   page.on('request', req => {
 
