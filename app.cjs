@@ -513,8 +513,12 @@ try{
 
   });
 
-        event.instructors =
-  instructorData;
+if (
+  Array.isArray(instructorData) &&
+  instructorData.length > 0
+) {
+  event.instructors = instructorData;
+}
 
 event.ndowResults = [];
 
