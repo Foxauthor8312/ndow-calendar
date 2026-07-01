@@ -11,9 +11,18 @@ const fs = require('fs');
     ]
   });
 
+  const supabase =
+  createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+
   const DEBUG = false;
   
   const page = await browser.newPage();
+
+  const { createClient } =
+  require('@supabase/supabase-js');
 
   await page.setRequestInterception(true);
 
