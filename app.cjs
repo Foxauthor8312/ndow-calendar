@@ -666,6 +666,60 @@ try{
 
   });
 
+  const { error: upsertError } =
+  await supabase
+    .from('ndow_hours')
+    .upsert(
+      {
+        event_id: event.id,
+        ndow_customer_id: instructor.customerId,
+        event_date: event.date,
+        event_name: event.title,
+        program: event.program,
+        location: event.location,
+        volunteer_name: instructor.name,
+        volunteer_hours:
+          hoursMatch
+            ? Number(hoursMatch[1])
+            : 0,
+        break_minutes:
+          breakMatch
+            ? Number(breakMatch[1] * 60)
+            : 0,
+        travel_hours:
+          travelMatch
+            ? Number(travelMatch[1])
+            : 0,
+        mileage:
+          mileageMatch
+            ? Number(mileageMatch[1])
+            : 0,
+        updated_at:
+          new Date().toISOString()
+      },
+      {
+        onConflict:
+          'event_id,ndow_customer_id,event_date'
+      }
+    );
+
+if(upsertError){
+
+  console.error(
+    'UPSERT FAILED:',
+    upsertError
+  );
+
+}else{
+
+  console.log(
+    'SYNC:',
+    event.id,
+    instructor.customerId
+  );
+
+}
+
   console.log(
     'NDOW RESULTS:',
     event.id,
