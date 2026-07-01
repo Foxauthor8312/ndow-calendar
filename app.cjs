@@ -17,6 +17,22 @@ const fs = require('fs');
     process.env.SUPABASE_SERVICE_ROLE_KEY
   );
 
+  const { data, error } =
+  await supabase
+    .from('volunteer_hours')
+    .select('id')
+    .limit(1);
+
+if(error){
+
+  throw error;
+
+}
+
+console.log(
+  'Supabase connected.'
+);
+
   const DEBUG = false;
   
   const page = await browser.newPage();
