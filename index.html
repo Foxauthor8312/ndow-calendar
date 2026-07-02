@@ -6804,6 +6804,10 @@ ${
   border-top:1px solid #e5e7eb;
 ">
 
+${
+submittedHoursRecord
+? `
+
 <div style="
     padding:8px;
     background:#eff6ff;
@@ -6822,10 +6826,17 @@ ${
     NDOW Recorded Hours
   </div>
 
-  <div>
-   Hours:
-${submittedHoursRecord.volunteer_hours.toFixed(2)}
-  </div>
+ ${
+submittedHoursRecord
+? `
+   ...existing blue panel...
+`
+: `
+<div class="info-panel">
+No volunteer hours have been submitted for this event.
+</div>
+`
+}
 
   <div>
     Break:
@@ -6843,6 +6854,10 @@ ${submittedHoursRecord.volunteer_hours.toFixed(2)}
   </div>
 
 </div>
+`
+: ''
+}
+
 
 ${allowHours ? (
 
