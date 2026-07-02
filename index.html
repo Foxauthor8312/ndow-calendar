@@ -6460,6 +6460,50 @@ if(
 
 }
 
+const myHoursResponse =
+  await fetch(
+    `https://ndow-calendar-server.onrender.com/api/my-hours/${event.id}`,
+    {
+      headers:{
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+  );
+
+const myHours =
+  await myHoursResponse.json();
+
+console.log(
+  'MY HOURS:',
+  myHours
+);
+
+const myHoursResponse =
+  await fetch(
+    `https://ndow-calendar-server.onrender.com/api/my-hours/${event.id}`,
+    {
+      headers:{
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+  );
+
+const myHoursResult =
+  await myHoursResponse.json();
+
+if(
+  myHoursResult.success
+){
+
+  console.log(
+    'NDOW HOURS:',
+    myHoursResult.record
+  );
+
+}
+	
 } catch(err){
 
   console.error(
