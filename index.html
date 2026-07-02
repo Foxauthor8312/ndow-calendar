@@ -6823,29 +6823,55 @@ submittedHoursRecord
     font-weight:700;
     margin-bottom:3px;
   ">
-    NDOW Recorded Hours
+   Official NDOW Volunteer Record
   </div>
-
- ${
+  <div style="
+  font-size:11px;
+  color:#6b7280;
+  margin-bottom:6px;
+${
 submittedHoursRecord
 ? `
-   ...existing blue panel...
-`
-: `
-<div class="info-panel">
-No volunteer hours have been submitted for this event.
-</div>
-`
-}
+
+<div style="
+    padding:8px;
+    background:#eff6ff;
+    border:1px solid #2563eb;
+    border-radius:6px;
+    font-size:12px;
+    line-height:1.25;
+    margin-bottom:8px;
+">
+
+  <div style="
+    color:#1d4ed8;
+    font-weight:700;
+    margin-bottom:3px;
+  ">
+    Official NDOW Volunteer Record
+  </div>
+
+  <div style="
+    font-size:11px;
+    color:#6b7280;
+    margin-bottom:6px;
+  ">
+    Source: NDOW Volunteer Hours Database
+  </div>
+
+  <div>
+    Hours:
+    ${submittedHoursRecord.volunteer_hours.toFixed(2)}
+  </div>
 
   <div>
     Break:
-   ${submittedHoursRecord.break_minutes}
+    ${submittedHoursRecord.break_minutes}
   </div>
 
   <div>
     Travel:
-   ${submittedHoursRecord.travel_hours.toFixed(2)}
+    ${submittedHoursRecord.travel_hours.toFixed(2)}
   </div>
 
   <div>
@@ -6854,10 +6880,24 @@ No volunteer hours have been submitted for this event.
   </div>
 
 </div>
-`
-: ''
-}
 
+`
+: `
+
+<div style="
+    padding:8px;
+    background:#f9fafb;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    font-size:12px;
+    color:#6b7280;
+    margin-bottom:8px;
+">
+  No official NDOW volunteer record is currently available for this event.
+</div>
+
+`
+}
 
 ${allowHours ? (
 
@@ -6880,29 +6920,40 @@ submittedHoursRecord
     margin-bottom:3px;
     font-size:12px;
   ">
-    ✓ Hours Submitted
+    ✓ Your Submitted Hours
   </div>
+
+  <div style="
+    font-size:11px;
+    color:#166534;
+    margin-bottom:6px;
+  ">
+    Source: NDOW Instructor Event Calendar
+  </div>
+
+  <hr style="
+    margin:10px 0;
+    border:none;
+    border-top:1px solid #d1d5db;
+  ">
 
   <div>
     Hours:
     ${Number(
-      submittedHoursRecord
-        .volunteer_hours || 0
+      submittedHoursRecord.volunteer_hours || 0
     ).toFixed(2)}
   </div>
 
   <div>
     Value:
     $${Number(
-      submittedHoursRecord
-        .service_value || 0
+      submittedHoursRecord.service_value || 0
     ).toFixed(2)}
   </div>
 
   <div>
     Status:
-    ${submittedHoursRecord
-      .approval_status || 'Submitted'}
+    ${submittedHoursRecord.approval_status || 'Submitted'}
   </div>
 
   ${
@@ -6920,7 +6971,7 @@ submittedHoursRecord
   margin-top:2px;
 ">
 
- <strong>
+<strong>
   ${volunteerTotals.year} Totals
 </strong>
 
