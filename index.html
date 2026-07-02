@@ -6916,24 +6916,43 @@ submittedHoursRecord
     border-top:1px solid #d1d5db;
   ">
 
-  <div>
-    Hours:
-    ${Number(
-      submittedHoursRecord.volunteer_hours || 0
-    ).toFixed(2)}
-  </div>
+<div>
+  Hours:
+  ${Number(
+    submittedHoursRecord.volunteer_hours || 0
+  ).toFixed(2)}
+</div>
 
-  <div>
-    Value:
-    $${Number(
-      submittedHoursRecord.service_value || 0
-    ).toFixed(2)}
-  </div>
+<div>
+  Break:
+  ${submittedHoursRecord.break_minutes}
+</div>
 
-  <div>
-    Status:
-    ${submittedHoursRecord.approval_status || 'Submitted'}
-  </div>
+<div>
+  Travel:
+  ${Number(
+    submittedHoursRecord.travel_hours || 0
+  ).toFixed(2)}
+</div>
+
+<div>
+  Mileage:
+  ${Number(
+    submittedHoursRecord.mileage || 0
+  ).toFixed(0)}
+</div>
+
+<div>
+  Value:
+  $${Number(
+    submittedHoursRecord.service_value || 0
+  ).toFixed(2)}
+</div>
+
+<div>
+  Status:
+  ${submittedHoursRecord.approval_status || 'Submitted'}
+</div>
 
   ${
   volunteerTotals
