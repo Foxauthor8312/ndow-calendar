@@ -694,6 +694,8 @@ try{
           mileageMatch
             ? Number(mileageMatch[1])
             : 0,
+        event_url: event.url,
+        
         updated_at:
           new Date().toISOString()
       },
