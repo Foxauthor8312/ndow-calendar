@@ -6478,10 +6478,13 @@ if(
   myHoursResult.success
 ){
 
-  console.log(
-    'NDOW HOURS:',
-    myHoursResult.record
-  );
+console.log(
+  JSON.stringify(
+    myHoursResult.record,
+    null,
+    2
+  )
+);
 
 }
 	
