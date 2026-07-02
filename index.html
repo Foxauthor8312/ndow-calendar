@@ -6471,25 +6471,6 @@ const myHoursResponse =
     }
   );
 
-const myHours =
-  await myHoursResponse.json();
-
-console.log(
-  'MY HOURS:',
-  myHours
-);
-
-const myHoursResponse =
-  await fetch(
-    `https://ndow-calendar-server.onrender.com/api/my-hours/${event.id}`,
-    {
-      headers:{
-        Authorization:
-          `Bearer ${token}`
-      }
-    }
-  );
-
 const myHoursResult =
   await myHoursResponse.json();
 
