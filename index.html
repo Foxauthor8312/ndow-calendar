@@ -6823,23 +6823,23 @@ ${
   </div>
 
   <div>
-    Hours:
-    ${myHoursResult.record.volunteer_hours.toFixed(2)}
+   Hours:
+${submittedHoursRecord.volunteer_hours.toFixed(2)}
   </div>
 
   <div>
     Break:
-    ${myHoursResult.record.break_minutes} min
+   ${submittedHoursRecord.break_minutes}
   </div>
 
   <div>
     Travel:
-    ${myHoursResult.record.travel_hours.toFixed(2)}
+   ${submittedHoursRecord.travel_hours.toFixed(2)}
   </div>
 
   <div>
     Mileage:
-    ${myHoursResult.record.mileage.toFixed(0)}
+    ${submittedHoursRecord.mileage.toFixed(0)}
   </div>
 
 </div>
@@ -7012,10 +7012,7 @@ $${Math.round(
 
   modalBody.innerHTML = `
     <div style="padding:40px;text-align:center;">
-      Failed to load event.<br><br>
-      <pre style="text-align:left;font-size:12px;color:red;white-space:pre-wrap;">
-${err.stack}
-      </pre>
+      Failed to load event.
     </div>
   `;
 
