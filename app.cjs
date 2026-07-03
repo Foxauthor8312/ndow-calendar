@@ -332,23 +332,24 @@ if(locationMatch){
 
 }
 
-if(timeMatch){
+if(details.dateTime){
 
   event.time =
-    timeMatch[1]
-      .replace(/\n+/g,' ')
-      .replace(/\s+/g,' ')
-      .trim();
+    details.dateTime.trim();
 
-  const dateMatch =
-    event.time.match(
-      /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
-    );
+  if(!event.date){
 
-  if(dateMatch){
+    const dateMatch =
+      event.time.match(
+        /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
+      );
 
-    event.date =
-      dateMatch[1];
+    if(dateMatch){
+
+      event.date =
+        dateMatch[1];
+
+    }
 
   }
 
