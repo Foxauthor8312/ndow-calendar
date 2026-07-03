@@ -6587,13 +6587,40 @@ modalBody.innerHTML = `
         Event #: ${event.id}
       </div>
 
-      <div style="
+       <div style="
         font-weight:700;
         color:#19304B;
         margin-bottom:6px;
       ">
         ${event.title}
       </div>
+
+      ${
+        event.status === 'Cancelled'
+          ? `
+            <div style="
+              display:flex;
+              align-items:center;
+              gap:8px;
+              margin:8px 0 12px 0;
+              color:#d60000;
+              font-size:15px;
+              font-weight:700;
+            ">
+              <span style="
+                width:10px;
+                height:10px;
+                background:#ff0000;
+                border-radius:50%;
+                display:inline-block;
+                flex-shrink:0;
+              "></span>
+
+              <span>EVENT CANCELLED</span>
+            </div>
+          `
+          : ''
+      }
 
       <div style="
         font-size:14px;
