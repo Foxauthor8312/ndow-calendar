@@ -332,24 +332,23 @@ if(locationMatch){
 
 }
 
-if(details.dateTime){
+if(timeMatch){
 
   event.time =
-    details.dateTime.trim();
+    timeMatch[1]
+      .replace(/\n+/g,' ')
+      .replace(/\s+/g,' ')
+      .trim();
 
-  if(!event.date){
+  const dateMatch =
+    event.time.match(
+      /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
+    );
 
-    const dateMatch =
-      event.time.match(
-        /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
-      );
+  if(dateMatch){
 
-    if(dateMatch){
-
-      event.date =
-        dateMatch[1];
-
-    }
+    event.date =
+      dateMatch[1];
 
   }
 
@@ -370,7 +369,6 @@ if(instructorMatch){
   ];
 
 }
-
 const isCompleted =
   event.title.includes(
     'Event Completed'
@@ -461,8 +459,29 @@ if(
 }
 
 if(details.dateTime){
+
+  const dateTime =
+    details.dateTime.trim();
+
   event.time =
-    details.dateTime;
+    dateTime;
+
+  if(!event.date){
+
+    const dateMatch =
+      dateTime.match(
+        /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
+      );
+
+    if(dateMatch){
+
+      event.date =
+        dateMatch[1];
+
+    }
+
+  }
+
 }
 
 if(details.about){
