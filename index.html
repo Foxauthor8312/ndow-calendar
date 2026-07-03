@@ -4789,10 +4789,6 @@ const rawTitle =
     event.title || ''
   );
 
-const isCancelled =
-  event.status === 'Cancelled' ||
-  /Canceled|Cancelled/i.test(rawTitle);
-
 const cleanTitle =
 
   rawTitle
