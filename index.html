@@ -542,11 +542,6 @@ button:hover{
   border-right:none;
 }
 
-.legend-item{
-  cursor:pointer;
-  transition:.2s ease;
-}
-
 .legend-item:hover{
   background:#e5e7eb;
 }
@@ -600,6 +595,11 @@ button:hover{
   background:#2563eb;
 }
 
+.cancelled{
+  background:#ff0000;
+  border-radius:50%;
+}
+
 .other{
   background:#64748b;
 }  .official-link{
@@ -644,6 +644,14 @@ button:hover{
   border-radius:8px;
   border:1px solid #d1d5db;
   font-size:14px;
+}
+  .event-cancelled-dot{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#ff0000;
+  flex-shrink:0;
 }
 
 /* ========================================
@@ -2161,6 +2169,11 @@ function closeChangePinModal(){
         <span class="legend-color volunteer"></span>
         Instructor
 
+      </div>
+
+      <div class="legend-item" data-category="Cancelled">
+          <span class="legend-color cancelled"></span>
+        Cancelled
       </div>
 
       <div class="legend-item"
@@ -4662,14 +4675,33 @@ if(myEventsOnly){
 
 }
 		  
-        if(
-          activeFilters.length > 0 &&
-          !activeFilters.includes(
-            event.category
-          )
-        ){
-          return false;
-        }
+const categoryFilters =
+  activeFilters.filter(
+    f => f !== 'Cancelled'
+  );
+
+const cancelledFilter =
+  activeFilters.includes(
+    'Cancelled'
+  );
+
+// Category filtering
+if(
+  categoryFilters.length > 0 &&
+  !categoryFilters.includes(
+    event.category
+  )
+){
+  return false;
+}
+
+// Cancelled filtering
+if(
+  cancelledFilter &&
+  event.status !== 'Cancelled'
+){
+  return false;
+}
 
 let rawDate =
 
@@ -4888,7 +4920,7 @@ div.innerHTML = `
         <span style="
           width:8px;
           height:8px;
-          background:#d32f2f;
+          background:#ff0000;
           border-radius:50%;
           display:inline-block;
           flex-shrink:0;
