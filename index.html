@@ -4783,30 +4783,38 @@ dayEvents.forEach(event => {
 
     }
 
-    const cleanTitle =
+const rawTitle =
 
-      String(
-        event.title || ''
-      )
+  String(
+    event.title || ''
+  );
 
-      .replace(
-        /^[A-Z][a-z]{2}\s+\d{1,2}\s*/,
-        ''
-      )
+const isCancelled =
+  event.status === 'Cancelled' ||
+  /Canceled|Cancelled/i.test(rawTitle);
 
-      .split('Location:')[0]
+const cleanTitle =
 
-      .split('Taught by:')[0]
+  rawTitle
 
-      .split('Date & Times:')[0]
+  .replace(
+    /^[A-Z][a-z]{2}\s+\d{1,2}\s*/,
+    ''
+  )
 
-      .replace(/■.*$/,'')
+  .split('Location:')[0]
 
-      .replace(/\n+/g,' ')
+  .split('Taught by:')[0]
 
-      .replace(/\s+/g,' ')
+  .split('Date & Times:')[0]
 
-      .trim();
+  .replace(/■.*$/,'')
+
+  .replace(/\n+/g,' ')
+
+  .replace(/\s+/g,' ')
+
+  .trim();
 
     const instructorText =
 
@@ -4851,46 +4859,61 @@ const isInstructor =
       currentEmail
   );
 
-    div.innerHTML = `
+div.innerHTML = `
 
-  <div style="
-    display:flex;
-    align-items:center;
-    gap:4px;
+<div style="
+  display:flex;
+  align-items:center;
+  gap:4px;
+  overflow:hidden;
+">
+
+  ${
+    isInstructor
+      ? `
+        <span style="
+          color:#000;
+          font-size:10px;
+          flex-shrink:0;
+          font-weight:700;
+        ">
+          ★
+        </span>
+      `
+      : ''
+  }
+
+  ${
+    isCancelled
+      ? `
+        <span style="
+          width:8px;
+          height:8px;
+          background:#d32f2f;
+          border-radius:50%;
+          display:inline-block;
+          flex-shrink:0;
+        "></span>
+      `
+      : ''
+  }
+
+  <span style="
     overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    display:block;
+    width:100%;
   ">
+    #${event.id} ${cleanTitle}
+  </span>
 
-    ${
-      isInstructor
-        ? `
-          <span style="
-            color:#000;
-            font-size:10px;
-            flex-shrink:0;
-            font-weight:700;
-          ">
-            ★
-          </span>
-        `
-        : ''
-    }
-
-    <span style="
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      display:block;
-      width:100%;
-    ">
-      ${cleanTitle}
-    </span>
-
-  </div>
+</div>
 
 `;
 
-    div.title =
-      cleanTitle;
+div.title =
+    `${isCancelled ? 'CANCELLED - ' : ''}#${event.id} ${cleanTitle}`;
 
     div.onclick = () =>
       openEventModal(
