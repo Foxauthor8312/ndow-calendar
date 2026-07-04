@@ -85,7 +85,7 @@ module.exports = async function saveRoster(
             )
             .eq(
                 'event_id',
-                event.id
+                event.event_id
             )
             .single();
 
@@ -113,7 +113,7 @@ module.exports = async function saveRoster(
         })
         .eq(
             'event_id',
-            event.id
+           event.event_id
         );
     */
 
@@ -140,7 +140,7 @@ module.exports = async function saveRoster(
             })
             .eq(
                 'event_id',
-                event.id
+                event.event_id
             );
 
         return;
@@ -160,7 +160,7 @@ module.exports = async function saveRoster(
         .delete()
         .eq(
             'event_id',
-            event.id
+            event.event_id
         );
 
     //----------------------------------------------------------------------
@@ -170,11 +170,15 @@ module.exports = async function saveRoster(
     const now =
         new Date();
 
+ console.log(
+    `Preparing to save ${students.length} students for event ${event.event_id}`
+);
+
     const rows =
         students.map(student => ({
 
             event_id:
-                event.id,
+                event.event_id,
 
             registration_id:
                 student.registration_id,
@@ -242,7 +246,7 @@ module.exports = async function saveRoster(
             })
             .eq(
                 'event_id',
-                event.id
+                event.event_id
             );
 
     if (updateError)
@@ -252,17 +256,23 @@ module.exports = async function saveRoster(
     // Update workflow
     //----------------------------------------------------------------------
 
-    await supabase
-        .from('event_workflow')
-        .update({
-
-            workflow_stage:
-                'ROSTER_READY'
-
-        })
-        .eq(
+    const {
+        error: deleteError
+    } =
+        await supabase
+            .from('event_rosters')
+            .delete()
+            .eq(
+                'event_id',
+                event.event_id
+            );
+    
+    if (deleteError) {
+        throw deleteError;
+    }
+          .eq(
             'event_id',
-            event.id
+            event.event_id
         );
 
     console.log(
