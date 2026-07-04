@@ -30,9 +30,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const createSession = require('./ndow-session');
-const scrapeRoster = require('./ndow-scraper/roster-scraper');
-const saveRoster = require('./ndow-scraper/roster-repository');
+const createSession = require('./ndow-session.cjs');
+const scrapeRoster = require('./ndow-scraper/roster-scraper.cjs');
+const saveRoster = require('./ndow-scraper/roster-repository.cjs');
 
 const EVENTS_FILE = path.join(__dirname, 'events.json');
 const LOOKBACK_DAYS = 7;
