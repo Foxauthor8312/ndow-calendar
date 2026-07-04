@@ -12,12 +12,12 @@
  Responsibilities
 
     • Compare roster hash
-    • Update roster cache
-    • Update events table
-    • Update workflow
+    • Refresh roster cache
+    • Update event statistics
+    • Update workflow state
 
- Module Ver. : 1.0.0
- Build       : 2026.07.04.001
+ Module Ver. : 1.1.0
+ Build       : 2026.07.04.002
 
  Developer   : Barry Mattison
 ==============================================================================
@@ -70,8 +70,8 @@ module.exports = async function saveRoster(
             )
             .digest('hex');
 
-        //----------------------------------------------------------------------
-    // Check current roster hash
+    //----------------------------------------------------------------------
+    // Read existing event
     //----------------------------------------------------------------------
 
     const {
@@ -87,38 +87,16 @@ module.exports = async function saveRoster(
                 'event_id',
                 event.event_id
             )
-            .single();
+            .maybeSingle();
 
     if (eventError) {
+
         throw eventError;
+
     }
 
-     //----------------------------------------------------------------------
-    // Update workflow
     //----------------------------------------------------------------------
-
-    /*
-    TODO
-
-    Enable workflow updates after the initial roster synchronization
-    has been verified.
-
-    await supabase
-        .from('event_workflow')
-        .update({
-
-            workflow_stage:
-                'ROSTER_READY'
-
-        })
-        .eq(
-            'event_id',
-           event.event_id
-        );
-    */
-
-    //----------------------------------------------------------------------
-    // No changes
+    // No roster changes
     //----------------------------------------------------------------------
 
     if (
@@ -130,18 +108,27 @@ module.exports = async function saveRoster(
             'Roster unchanged.'
         );
 
-        await supabase
-            .from('events')
-            .update({
+        const {
+            error
+        } =
+            await supabase
+                .from('events')
+                .update({
 
-                roster_last_checked:
-                    new Date()
+                    roster_last_checked:
+                        new Date()
 
-            })
-            .eq(
-                'event_id',
-                event.event_id
-            );
+                })
+                .eq(
+                    'event_id',
+                    event.event_id
+                );
+
+        if (error) {
+
+            throw error;
+
+        }
 
         return;
 
@@ -152,27 +139,32 @@ module.exports = async function saveRoster(
     );
 
     //----------------------------------------------------------------------
-    // Delete previous roster
+    // Delete existing roster
     //----------------------------------------------------------------------
 
-    await supabase
-        .from('event_rosters')
-        .delete()
-        .eq(
-            'event_id',
-            event.event_id
-        );
+    const {
+        error: deleteError
+    } =
+        await supabase
+            .from('event_rosters')
+            .delete()
+            .eq(
+                'event_id',
+                event.event_id
+            );
+
+    if (deleteError) {
+
+        throw deleteError;
+
+    }
 
     //----------------------------------------------------------------------
-    // Insert new roster
+    // Build rows
     //----------------------------------------------------------------------
 
     const now =
         new Date();
-
- console.log(
-    `Preparing to save ${students.length} students for event ${event.event_id}`
-);
 
     const rows =
         students.map(student => ({
@@ -203,6 +195,14 @@ module.exports = async function saveRoster(
 
         }));
 
+    console.log(
+        `Preparing to save ${rows.length} students.`
+    );
+
+    //----------------------------------------------------------------------
+    // Insert roster
+    //----------------------------------------------------------------------
+
     if (rows.length) {
 
         const {
@@ -212,8 +212,11 @@ module.exports = async function saveRoster(
                 .from('event_rosters')
                 .insert(rows);
 
-        if (insertError)
+        if (insertError) {
+
             throw insertError;
+
+        }
 
     }
 
@@ -233,7 +236,7 @@ module.exports = async function saveRoster(
 
                 registered_count:
                     rows.length,
-                
+
                 roster_student_count:
                     rows.length,
 
@@ -249,28 +252,25 @@ module.exports = async function saveRoster(
                 event.event_id
             );
 
-    if (updateError)
+    if (updateError) {
+
         throw updateError;
 
+    }
+
     //----------------------------------------------------------------------
-    // Update workflow
+    // Update workflow (optional)
     //----------------------------------------------------------------------
 
-    const {
-        error: deleteError
-    } =
-        await supabase
-            .from('event_rosters')
-            .delete()
-            .eq(
-                'event_id',
-                event.event_id
-            );
-    
-    if (deleteError) {
-        throw deleteError;
-    }
-          .eq(
+    await supabase
+        .from('event_workflow')
+        .update({
+
+            workflow_stage:
+                'ROSTER_READY'
+
+        })
+        .eq(
             'event_id',
             event.event_id
         );
