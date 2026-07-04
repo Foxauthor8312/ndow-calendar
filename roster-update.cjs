@@ -2,19 +2,28 @@
 ==============================================================================
  NDOW Volunteer Portal
 ------------------------------------------------------------------------------
- Module      : roster-update.cjs
+ Module      : roster-scraper.cjs
 
- Description : Event roster update utility.
+ Description : Event roster scraper.
 
  Purpose:
 
-    Reads events.json, identifies events that require roster maintenance,
-    and prepares the processing queue.
+    Opens an NDOW event roster page and extracts all registered students.
 
-    Version 0.2 establishes the complete processing loop but does not
-    yet scrape roster data.
+ Returns:
 
- Module Ver. : 0.2.0
+    [
+        {
+            event_id,
+            registration_id,
+            customer_id,
+            student_name,
+            student_email,
+            registration_status
+        }
+    ]
+
+ Module Ver. : 1.0.0
  Build       : 2026.07.04.001
 
  Developer   : Barry Mattison
@@ -23,96 +32,15 @@
 
 'use strict';
 
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path = require('path');
-const { createClient } = require('@supabase/supabase-js');
+module.exports = async function scrapeRoster(page, eventId) {
 
-const EVENTS_FILE =
-    path.join(__dirname, 'events.json');
+    const rosterUrl =
+        `https://nevada.events.licensing.app/dashboard/em/event_rosters/${eventId}`;
 
-const LOOKBACK_DAYS = 7;
-
-(async function () {
-
-    //----------------------------------------------------------------------
-    // Supabase
-    //----------------------------------------------------------------------
-
-    const supabase = createClient(
-        process.env.SUPABASE_URL,
-        process.env.SUPABASE_SERVICE_ROLE_KEY
-    );
-
-    const { error } =
-        await supabase
-            .from('volunteer_hours')
-            .select('id')
-            .limit(1);
-
-    if (error)
-        throw error;
-
-    console.log('SUPABASE CONNECTED');
-
-    //----------------------------------------------------------------------
-    // Browser
-    //----------------------------------------------------------------------
-
-    const browser =
-        await puppeteer.launch({
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox'
-            ]
-        });
-
-    const page =
-        await browser.newPage();
-
-    await page.setRequestInterception(true);
-
-    page.on('request', req => {
-
-        const type = req.resourceType();
-
-        if (
-            type === 'image' ||
-            type === 'font' ||
-            type === 'stylesheet' ||
-            type === 'media'
-        ) {
-
-            req.abort();
-
-        } else {
-
-            req.continue();
-
-        }
-
-    });
-
-    //----------------------------------------------------------------------
-    // Restore Session
-    //----------------------------------------------------------------------
-
-    if (fs.existsSync('session.json')) {
-
-        const cookies =
-            JSON.parse(
-                fs.readFileSync('session.json')
-            );
-
-        await page.setCookie(...cookies);
-
-    }
-
-    console.log('Opening NDOW...');
+    console.log(`Opening roster ${eventId}...`);
 
     await page.goto(
-        'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
+        rosterUrl,
         {
             waitUntil: 'domcontentloaded',
             timeout: 60000
@@ -121,140 +49,140 @@ const LOOKBACK_DAYS = 7;
 
     await page.waitForSelector('body');
 
-    //----------------------------------------------------------------------
-    // Login
-    //----------------------------------------------------------------------
+    const students = await page.evaluate((eventId) => {
 
-    if (await page.$('input[type="password"]')) {
+        const roster = [];
 
-        console.log('Login required...');
-
-        await page.type(
-            'input[type="email"]',
-            process.env.NDOW_EMAIL
+        const cards = document.querySelectorAll(
+            '.card.bg-white.mb-2.p-3.card-expand'
         );
 
-        await page.type(
-            'input[type="password"]',
-            process.env.NDOW_PASSWORD
-        );
+        cards.forEach(card => {
 
-        await page.click(
-            'button[type="submit"]'
-        );
+            //
+            // Student Name
+            //
 
-        await page.waitForNavigation({
-            waitUntil: 'domcontentloaded',
-            timeout: 60000
+            const title =
+                card.querySelector('.card-title');
+
+            const studentName =
+                title
+                    ? title.textContent.trim()
+                    : '';
+
+            //
+            // Email
+            //
+
+            let studentEmail = '';
+
+            const body =
+                card.innerText;
+
+            const emailMatch =
+                body.match(
+                    /Email Address:\s*([^\s]+)/i
+                );
+
+            if (emailMatch) {
+
+                studentEmail =
+                    emailMatch[1].trim();
+
+            }
+
+            //
+            // Customer ID
+            //
+
+            let customerId = null;
+
+            const messageLink =
+                card.querySelector(
+                    'a[href*="messages?student="]'
+                );
+
+            if (messageLink) {
+
+                const href =
+                    messageLink.getAttribute('href');
+
+                const match =
+                    href.match(
+                        /student=(\d+)/
+                    );
+
+                if (match) {
+
+                    customerId =
+                        Number(match[1]);
+
+                }
+
+            }
+
+            //
+            // Registration ID
+            //
+
+            let registrationId = null;
+
+            const moveLink =
+                card.querySelector(
+                    'a[href*="/registrations/"]'
+                );
+
+            if (moveLink) {
+
+                const href =
+                    moveLink.getAttribute('href');
+
+                const match =
+                    href.match(
+                        /registrations\/(\d+)/
+                    );
+
+                if (match) {
+
+                    registrationId =
+                        Number(match[1]);
+
+                }
+
+            }
+
+            roster.push({
+
+                event_id: eventId,
+
+                registration_id:
+                    registrationId,
+
+                customer_id:
+                    customerId,
+
+                student_name:
+                    studentName,
+
+                student_email:
+                    studentEmail,
+
+                registration_status:
+                    'Registered'
+
+            });
+
         });
 
-    }
+        return roster;
 
-    const cookies =
-        await page.cookies();
-
-    fs.writeFileSync(
-        'session.json',
-        JSON.stringify(cookies, null, 2)
-    );
-
-    console.log('Session ready.');
-    console.log('');
-
-    //----------------------------------------------------------------------
-    // Load Events
-    //----------------------------------------------------------------------
-
-    const raw =
-        fs.readFileSync(EVENTS_FILE, 'utf8');
-
-    const data =
-        JSON.parse(raw);
-
-    const events =
-        data.events || [];
+    }, eventId);
 
     console.log(
-        `Calendar Updated : ${data.lastUpdated}`
+        `Students found: ${students.length}`
     );
 
-    console.log(
-        `Events Loaded    : ${events.length}`
-    );
+    return students;
 
-    console.log('');
-
-    //----------------------------------------------------------------------
-    // Build Queue
-    //----------------------------------------------------------------------
-
-    const today =
-        new Date();
-
-    today.setHours(0,0,0,0);
-
-    const earliest =
-        new Date(today);
-
-    earliest.setDate(
-        earliest.getDate() - LOOKBACK_DAYS
-    );
-
-    const queue =
-        events.filter(event => {
-
-            const eventDate =
-                new Date(event.date);
-
-            return eventDate >= earliest;
-
-        });
-
-    console.log(
-        `Events To Process : ${queue.length}`
-    );
-
-    console.log('');
-
-    //----------------------------------------------------------------------
-    // Process Queue
-    //----------------------------------------------------------------------
-
-    for (const event of queue) {
-
-        const rosterUrl =
-            `https://nevada.events.licensing.app/dashboard/em/event_rosters/${event.id}`;
-
-        console.log('------------------------------------------------');
-
-        console.log(event.id);
-
-        console.log(event.title);
-
-        console.log(event.date);
-
-        console.log(event.status);
-
-        console.log(rosterUrl);
-
-        console.log('');
-
-        //
-        // Version 0.3
-        //
-        // await page.goto(rosterUrl);
-        //
-
-    }
-
-    console.log('Completed.');
-
-    await browser.close();
-
-})().catch(err => {
-
-    console.error(err);
-
-    process.exit(1);
-
-});
+};
