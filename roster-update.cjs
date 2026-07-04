@@ -37,7 +37,6 @@ const syncEvents =
     require('./ndow-scraper/event-repository.cjs');
 
 const EVENTS_FILE = path.join(__dirname, 'events.json');
-const LOOKBACK_DAYS = 7;
 
 (async function () {
 
@@ -74,30 +73,98 @@ const LOOKBACK_DAYS = 7;
     //----------------------------------------------------------------------
     // Build processing queue
     //----------------------------------------------------------------------
+    //----------------------------------------------------------------------
+    // Build processing queue
+    //----------------------------------------------------------------------
 
-    const today = new Date();
+    console.log('Loading events from database...');
 
-    today.setHours(0, 0, 0, 0);
+    const {
+        data: queue,
+        error: queueError
+    } =
+        await supabase
+            .from('events')
+            .select('*')
+            .order(
+                'event_date',
+                {
+                    ascending: true
+                }
+            );
 
-    const earliest = new Date(today);
+    if (queueError) {
 
-    earliest.setDate(
-        earliest.getDate() - LOOKBACK_DAYS
-    );
+        throw queueError;
 
-    const queue = events.filter(event => {
-
-        const eventDate = new Date(event.date);
-
-        return eventDate >= earliest;
-
-    });
+    }
 
     console.log(
         `Events To Process : ${queue.length}`
     );
 
     console.log('');
+
+    //----------------------------------------------------------------------
+    // Process Events
+    //----------------------------------------------------------------------
+
+    for (const event of queue) {
+
+        console.log('--------------------------------------------------');
+        console.log(
+            `${event.event_id} - ${event.title}`
+        );
+        console.log('--------------------------------------------------');
+
+        const students =
+            await scrapeRoster(
+                page,
+                event.event_id
+            );
+
+        console.table(students);
+
+        await saveRoster(
+            supabase,
+            event,
+            students
+        );
+
+        console.log('');
+
+    }
+    //--------------------------------------------------------------------
+// Load processing queue from database
+//--------------------------------------------------------------------
+
+console.log('Loading events from database...');
+
+const {
+    data: queue,
+    error: queueError
+} =
+    await supabase
+        .from('events')
+        .select('*')
+        .order(
+            'event_date',
+            {
+                ascending: true
+            }
+        );
+
+if (queueError) {
+
+    throw queueError;
+
+}
+
+console.log(
+    `Events To Process : ${queue.length}`
+);
+
+console.log('');
 
     //----------------------------------------------------------------------
     // Process Events
