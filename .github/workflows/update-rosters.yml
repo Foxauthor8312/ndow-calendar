@@ -1,0 +1,36 @@
+name: Update Event Rosters
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+
+  update-rosters:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Roster Update
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+          NDOW_EMAIL: ${{ secrets.NDOW_EMAIL }}
+          NDOW_PASSWORD: ${{ secrets.NDOW_PASSWORD }}
+
+        run: node roster-update.cjs
