@@ -24,6 +24,7 @@
      • Authenticate when required
 
  Returns:
+ 
 
      {
          browser,
