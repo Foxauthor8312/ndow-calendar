@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
+    # Daily at 2:00 AM Pacific during PDT (09:00 UTC)
     - cron: '0 9 * * *'
 
 jobs:
@@ -12,12 +13,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    timeout-minutes: 60
+
     steps:
 
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -25,21 +28,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Show Repository Contents
-        run: |
-          pwd
-          ls -la
-          echo ""
-          echo "ndow-session:"
-          ls -la ndow-session.cjs || true
-          echo ""
-          echo "roster-update:"
-          ls -la roster-update.cjs || true
-
-      - name: Run Roster Update
+      - name: Run Roster Synchronization
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           NDOW_EMAIL: ${{ secrets.NDOW_EMAIL }}
           NDOW_PASSWORD: ${{ secrets.NDOW_PASSWORD }}
+
         run: node roster-update.cjs
