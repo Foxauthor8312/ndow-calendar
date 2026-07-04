@@ -32,6 +32,7 @@ const path = require('path');
 
 const createSession = require('./ndow-session');
 const scrapeRoster = require('./ndow-scraper/roster-scraper');
+const saveRoster = require('./ndow-scraper/roster-repository');
 
 const EVENTS_FILE = path.join(__dirname, 'events.json');
 const LOOKBACK_DAYS = 7;
@@ -101,15 +102,21 @@ const LOOKBACK_DAYS = 7;
         console.log(`${event.id} - ${event.title}`);
         console.log('--------------------------------------------------');
 
-        const students =
-            await scrapeRoster(
-                page,
-                event.id
-            );
-
-        console.table(students);
-
-        console.log('');
+    const students =
+        await scrapeRoster(
+            page,
+            event.id
+        );
+    
+    console.table(students);
+    
+    await saveRoster(
+        supabase,
+        event,
+        students
+    );
+    
+    console.log('');
 
     }
 
