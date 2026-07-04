@@ -208,7 +208,7 @@ module.exports = async function saveRoster(
                     rows.length,
                 
                 roster_student_count:
-                    rows.length,,
+                    rows.length,
 
                 roster_last_checked:
                     now,
