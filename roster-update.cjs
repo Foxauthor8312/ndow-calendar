@@ -7,19 +7,18 @@
 ------------------------------------------------------------------------------
  Purpose:
 
-    Coordinates the roster synchronization process.
+    Synchronizes NDOW event rosters into the operational database.
 
  Responsibilities:
 
     • Login to NDOW
-    • Load events.json
     • Synchronize events table
-    • Load processing queue from database
-    • Scrape event rosters
-    • Save roster data
+    • Build roster processing queue
+    • Scrape student rosters
+    • Save roster cache
 
- Module Ver. : 1.0.0
- Build       : 2026.07.04.002
+ Module Ver. : 1.1.0
+ Build       : 2026.07.04.003
 
  Developer   : Barry Mattison
 ==============================================================================
@@ -47,6 +46,8 @@ const EVENTS_FILE =
         __dirname,
         'events.json'
     );
+
+const ROSTER_LOOKBACK_DAYS = 7;
 
 (async function () {
 
@@ -96,8 +97,23 @@ const EVENTS_FILE =
     console.log('');
 
     //----------------------------------------------------------------------
-    // Load processing queue
+    // Build processing queue
     //----------------------------------------------------------------------
+
+    const earliest =
+        new Date();
+
+    earliest.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+    earliest.setDate(
+        earliest.getDate() -
+        ROSTER_LOOKBACK_DAYS
+    );
 
     console.log(
         'Loading events from database...'
@@ -110,6 +126,12 @@ const EVENTS_FILE =
         await supabase
             .from('events')
             .select('*')
+            .gte(
+                'event_date',
+                earliest
+                    .toISOString()
+                    .slice(0, 10)
+            )
             .order(
                 'event_date',
                 {
@@ -133,37 +155,60 @@ const EVENTS_FILE =
     // Process events
     //----------------------------------------------------------------------
 
+    let processed = 0;
+    let failed = 0;
+
     for (const event of queue) {
 
-        console.log(
-            '--------------------------------------------------'
-        );
+        try {
 
-        console.log(
-            `${event.event_id} - ${event.title}`
-        );
-
-        console.log(
-            '--------------------------------------------------'
-        );
-
-        const students =
-            await scrapeRoster(
-                page,
-                event.event_id
+            console.log(
+                '--------------------------------------------------'
             );
 
-        console.table(
-            students
-        );
+            console.log(
+                `${event.event_id} - ${event.title}`
+            );
 
-        await saveRoster(
-            supabase,
-            event,
-            students
-        );
+            console.log(
+                '--------------------------------------------------'
+            );
 
-        console.log('');
+            const students =
+                await scrapeRoster(
+                    page,
+                    event.event_id
+                );
+
+            console.table(
+                students
+            );
+
+            await saveRoster(
+                supabase,
+                event,
+                students
+            );
+
+            processed++;
+
+        }
+
+        catch (error) {
+
+            failed++;
+
+            console.error('');
+            console.error(
+                `FAILED EVENT ${event.event_id}`
+            );
+            console.error(
+                event.title
+            );
+            console.error(error);
+            console.error('');
+
+        }
 
     }
 
@@ -174,9 +219,16 @@ const EVENTS_FILE =
     await browser.close();
 
     console.log('');
+    console.log('----------------------------------------');
+    console.log('Roster Synchronization Complete');
+    console.log('----------------------------------------');
     console.log(
-        'Roster update completed.'
+        `Processed : ${processed}`
     );
+    console.log(
+        `Failed    : ${failed}`
+    );
+    console.log('----------------------------------------');
     console.log('');
 
 })().catch(error => {
