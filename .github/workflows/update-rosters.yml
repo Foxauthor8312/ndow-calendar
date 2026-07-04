@@ -33,4 +33,15 @@ jobs:
           NDOW_EMAIL: ${{ secrets.NDOW_EMAIL }}
           NDOW_PASSWORD: ${{ secrets.NDOW_PASSWORD }}
 
+          - name: Show Repository Contents
+  run: |
+    pwd
+    ls -la
+    echo ""
+    echo "ndow-session:"
+    ls -la ndow-session.cjs || true
+    echo ""
+    echo "roster-update:"
+    ls -la roster-update.cjs || true
+
         run: node roster-update.cjs
