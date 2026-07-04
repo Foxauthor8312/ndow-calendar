@@ -33,6 +33,8 @@ const path = require('path');
 const createSession = require('./ndow-session.cjs');
 const scrapeRoster = require('./ndow-scraper/roster-scraper.cjs');
 const saveRoster = require('./ndow-scraper/roster-repository.cjs');
+const syncEvents =
+    require('./ndow-scraper/event-repository.cjs');
 
 const EVENTS_FILE = path.join(__dirname, 'events.json');
 const LOOKBACK_DAYS = 7;
@@ -60,6 +62,11 @@ const LOOKBACK_DAYS = 7;
     const data = JSON.parse(raw);
 
     const events = data.events || [];
+ 
+    await syncEvents(
+    supabase,
+    events
+);
 
     console.log(`Events Loaded : ${events.length}`);
     console.log('');
