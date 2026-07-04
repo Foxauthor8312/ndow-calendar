@@ -202,3 +202,5 @@ module.exports = async function scrapeRoster(page, eventId) {
     );
 
     return uniqueStudents;
+
+};
