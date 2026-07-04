@@ -38,7 +38,7 @@ module.exports = async function scrapeRoster(page, eventId) {
 
     });
 
-    await page.waitForTimeout(750);
+    await new Promise(resolve => setTimeout(resolve, 750));
 
     const students = await page.evaluate(eventId => {
 
