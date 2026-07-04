@@ -3,41 +3,19 @@
  NDOW Volunteer Portal
 ------------------------------------------------------------------------------
  Module      : roster-update.cjs
- Description : Event roster cache maintenance.
+
+ Description : Event roster update utility.
 
  Purpose:
-   Maintains the operational roster cache used by the NDOW Volunteer Portal.
-   This module reads the current events.json file, identifies events requiring
-   roster maintenance, and (in future phases) updates the operational database
-   with the latest student roster information.
 
- Responsibilities:
+    Reads events.json, identifies events that require roster maintenance,
+    and prepares the processing queue.
 
-     • Read events.json
-     • Identify qualifying instructor events
-     • Report processing statistics
+    Version 0.2 establishes the complete processing loop but does not
+    yet scrape roster data.
 
- Future Responsibilities:
-
-     • Authenticate with NDOW
-     • Retrieve student rosters
-     • Detect roster changes
-     • Update event_rosters
-     • Update events roster metadata
-     • Update event_workflow
-     • Support communications workflow
-
- Notes:
-
-     This module DOES NOT update the calendar.
-
-     The public calendar continues to operate exclusively from events.json.
-
-     This module maintains only the operational database used for
-     communications and workflow automation.
-
- Module Ver. : 0.1.0
- Build       : 2026.07.03.001
+ Module Ver. : 0.2.0
+ Build       : 2026.07.04.001
 
  Developer   : Barry Mattison
 ==============================================================================
@@ -45,96 +23,238 @@
 
 'use strict';
 
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
 
-const EVENTS_FILE = path.join(__dirname, 'events.json');
+const EVENTS_FILE =
+    path.join(__dirname, 'events.json');
+
 const LOOKBACK_DAYS = 7;
 
-/*==============================================================================
-  Load Events
-==============================================================================*/
+(async function () {
 
-function loadEvents() {
+    //----------------------------------------------------------------------
+    // Supabase
+    //----------------------------------------------------------------------
 
-    console.log('Loading events.json...');
+    const supabase = createClient(
+        process.env.SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
 
-    if (!fs.existsSync(EVENTS_FILE)) {
-        throw new Error(`Unable to locate ${EVENTS_FILE}`);
-    }
+    const { error } =
+        await supabase
+            .from('volunteer_hours')
+            .select('id')
+            .limit(1);
 
-    const raw = fs.readFileSync(EVENTS_FILE, 'utf8');
-    const events = JSON.parse(raw);
+    if (error)
+        throw error;
 
-    if (!Array.isArray(events)) {
-        throw new Error('events.json does not contain an event array.');
-    }
+    console.log('SUPABASE CONNECTED');
 
-    return events;
+    //----------------------------------------------------------------------
+    // Browser
+    //----------------------------------------------------------------------
 
-}
+    const browser =
+        await puppeteer.launch({
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox'
+            ]
+        });
 
-/*==============================================================================
-  Determine Qualifying Events
+    const page =
+        await browser.newPage();
 
-  Phase 1 Placeholder
+    await page.setRequestInterception(true);
 
-  Future business rules:
+    page.on('request', req => {
 
-      • Logged-in instructor is assigned to the event
-      • Event is today or in the future
-        OR
-        Event completed within LOOKBACK_DAYS
-      • Cancelled events remain eligible
-==============================================================================*/
+        const type = req.resourceType();
 
-function getQualifyingEvents(events) {
+        if (
+            type === 'image' ||
+            type === 'font' ||
+            type === 'stylesheet' ||
+            type === 'media'
+        ) {
 
-    return events;
+            req.abort();
 
-}
+        } else {
 
-/*==============================================================================
-  Main
-==============================================================================*/
+            req.continue();
 
-async function main() {
-
-    console.log('');
-    console.log('==========================================================');
-    console.log(' NDOW Volunteer Portal');
-    console.log(' Roster Update Utility');
-    console.log('==========================================================');
-    console.log('');
-
-    const events = loadEvents();
-
-    const qualifyingEvents = getQualifyingEvents(events);
-
-    console.log('');
-    console.log('Summary');
-    console.log('----------------------------------------------------------');
-    console.log(`Events Loaded       : ${events.length}`);
-    console.log(`Qualifying Events   : ${qualifyingEvents.length}`);
-    console.log('');
-    console.log('Phase 1 completed successfully.');
-    console.log('');
-
-}
-
-/*==============================================================================
-  Startup
-==============================================================================*/
-
-main()
-    .then(() => process.exit(0))
-    .catch(error => {
-
-        console.error('');
-        console.error('Roster update failed.');
-        console.error(error);
-        console.error('');
-
-        process.exit(1);
+        }
 
     });
+
+    //----------------------------------------------------------------------
+    // Restore Session
+    //----------------------------------------------------------------------
+
+    if (fs.existsSync('session.json')) {
+
+        const cookies =
+            JSON.parse(
+                fs.readFileSync('session.json')
+            );
+
+        await page.setCookie(...cookies);
+
+    }
+
+    console.log('Opening NDOW...');
+
+    await page.goto(
+        'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events',
+        {
+            waitUntil: 'domcontentloaded',
+            timeout: 60000
+        }
+    );
+
+    await page.waitForSelector('body');
+
+    //----------------------------------------------------------------------
+    // Login
+    //----------------------------------------------------------------------
+
+    if (await page.$('input[type="password"]')) {
+
+        console.log('Login required...');
+
+        await page.type(
+            'input[type="email"]',
+            process.env.NDOW_EMAIL
+        );
+
+        await page.type(
+            'input[type="password"]',
+            process.env.NDOW_PASSWORD
+        );
+
+        await page.click(
+            'button[type="submit"]'
+        );
+
+        await page.waitForNavigation({
+            waitUntil: 'domcontentloaded',
+            timeout: 60000
+        });
+
+    }
+
+    const cookies =
+        await page.cookies();
+
+    fs.writeFileSync(
+        'session.json',
+        JSON.stringify(cookies, null, 2)
+    );
+
+    console.log('Session ready.');
+    console.log('');
+
+    //----------------------------------------------------------------------
+    // Load Events
+    //----------------------------------------------------------------------
+
+    const raw =
+        fs.readFileSync(EVENTS_FILE, 'utf8');
+
+    const data =
+        JSON.parse(raw);
+
+    const events =
+        data.events || [];
+
+    console.log(
+        `Calendar Updated : ${data.lastUpdated}`
+    );
+
+    console.log(
+        `Events Loaded    : ${events.length}`
+    );
+
+    console.log('');
+
+    //----------------------------------------------------------------------
+    // Build Queue
+    //----------------------------------------------------------------------
+
+    const today =
+        new Date();
+
+    today.setHours(0,0,0,0);
+
+    const earliest =
+        new Date(today);
+
+    earliest.setDate(
+        earliest.getDate() - LOOKBACK_DAYS
+    );
+
+    const queue =
+        events.filter(event => {
+
+            const eventDate =
+                new Date(event.date);
+
+            return eventDate >= earliest;
+
+        });
+
+    console.log(
+        `Events To Process : ${queue.length}`
+    );
+
+    console.log('');
+
+    //----------------------------------------------------------------------
+    // Process Queue
+    //----------------------------------------------------------------------
+
+    for (const event of queue) {
+
+        const rosterUrl =
+            `https://nevada.events.licensing.app/dashboard/em/event_rosters/${event.id}`;
+
+        console.log('------------------------------------------------');
+
+        console.log(event.id);
+
+        console.log(event.title);
+
+        console.log(event.date);
+
+        console.log(event.status);
+
+        console.log(rosterUrl);
+
+        console.log('');
+
+        //
+        // Version 0.3
+        //
+        // await page.goto(rosterUrl);
+        //
+
+    }
+
+    console.log('Completed.');
+
+    await browser.close();
+
+})().catch(err => {
+
+    console.error(err);
+
+    process.exit(1);
+
+});
