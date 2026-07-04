@@ -70,6 +70,29 @@ module.exports = async function saveRoster(
             )
             .digest('hex');
 
+        //----------------------------------------------------------------------
+    // Check current roster hash
+    //----------------------------------------------------------------------
+
+    const {
+        data: currentEvent,
+        error: eventError
+    } =
+        await supabase
+            .from('events')
+            .select(
+                'roster_hash'
+            )
+            .eq(
+                'event_id',
+                event.id
+            )
+            .single();
+
+    if (eventError) {
+        throw eventError;
+    }
+
      //----------------------------------------------------------------------
     // Update workflow
     //----------------------------------------------------------------------
