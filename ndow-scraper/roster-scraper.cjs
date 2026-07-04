@@ -176,10 +176,29 @@ module.exports = async function scrapeRoster(page, eventId) {
 
     }, eventId);
 
+    //----------------------------------------------------------------------
+    // Remove duplicate students
+    //----------------------------------------------------------------------
+
+    const uniqueStudents =
+        Array.from(
+
+            new Map(
+
+                students.map(student => [
+
+                    `${student.event_id}-${student.student_email}`,
+
+                    student
+
+                ])
+
+            ).values()
+
+        );
+
     console.log(
-        `Students found: ${students.length}`
+        `Students found: ${uniqueStudents.length}`
     );
 
-    return students;
-
-};
+    return uniqueStudents;
