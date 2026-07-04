@@ -70,27 +70,29 @@ module.exports = async function saveRoster(
             )
             .digest('hex');
 
-    //----------------------------------------------------------------------
-    // Check current hash
+     //----------------------------------------------------------------------
+    // Update workflow
     //----------------------------------------------------------------------
 
-    const {
-        data: currentEvent,
-        error: eventError
-    } =
-        await supabase
-            .from('events')
-            .select(
-                'roster_hash'
-            )
-            .eq(
-                'event_id',
-                event.id
-            )
-            .single();
+    /*
+    TODO
 
-    if (eventError)
-        throw eventError;
+    Enable workflow updates after the initial roster synchronization
+    has been verified.
+
+    await supabase
+        .from('event_workflow')
+        .update({
+
+            workflow_stage:
+                'ROSTER_READY'
+
+        })
+        .eq(
+            'event_id',
+            event.id
+        );
+    */
 
     //----------------------------------------------------------------------
     // No changes
@@ -202,8 +204,11 @@ module.exports = async function saveRoster(
                 roster_hash:
                     rosterHash,
 
-                roster_student_count:
+                registered_count:
                     rows.length,
+                
+                roster_student_count:
+                    rows.length,,
 
                 roster_last_checked:
                     now,
