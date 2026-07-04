@@ -25,23 +25,21 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Show Repository Contents
+        run: |
+          pwd
+          ls -la
+          echo ""
+          echo "ndow-session:"
+          ls -la ndow-session.cjs || true
+          echo ""
+          echo "roster-update:"
+          ls -la roster-update.cjs || true
+
       - name: Run Roster Update
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-
           NDOW_EMAIL: ${{ secrets.NDOW_EMAIL }}
           NDOW_PASSWORD: ${{ secrets.NDOW_PASSWORD }}
-
-          - name: Show Repository Contents
-  run: |
-    pwd
-    ls -la
-    echo ""
-    echo "ndow-session:"
-    ls -la ndow-session.cjs || true
-    echo ""
-    echo "roster-update:"
-    ls -la roster-update.cjs || true
-
         run: node roster-update.cjs
