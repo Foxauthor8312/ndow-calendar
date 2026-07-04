@@ -5,16 +5,42 @@
  Module      : roster-scraper.cjs
  Description : Extract student roster from an NDOW event.
 ------------------------------------------------------------------------------
+ Purpose:
+
+    Opens an NDOW roster page and extracts all registered students.
+
+ Responsibilities
+
+    • Open roster page
+    • Expand student cards
+    • Extract registration information
+    • Remove duplicate students
+    • Return normalized roster
+
+ Module Ver. : 1.1.0
+ Build       : 2026.07.04.002
+
+ Developer   : Barry Mattison
+==============================================================================
 */
 
 'use strict';
 
-module.exports = async function scrapeRoster(page, eventId) {
+module.exports = async function scrapeRoster(
+    page,
+    eventId
+) {
+
+    //----------------------------------------------------------------------
+    // Open roster page
+    //----------------------------------------------------------------------
 
     const rosterUrl =
         `https://nevada.events.licensing.app/dashboard/em/event_rosters/${eventId}`;
 
-    console.log(`Opening roster ${eventId}...`);
+    console.log(
+        `Opening roster ${eventId}...`
+    );
 
     await page.goto(
         rosterUrl,
@@ -26,158 +52,172 @@ module.exports = async function scrapeRoster(page, eventId) {
 
     await page.waitForSelector('body');
 
-    //
-    // Expand all collapsed student cards.
-    //
+    //----------------------------------------------------------------------
+    // Expand all collapsed student cards
+    //----------------------------------------------------------------------
 
     await page.evaluate(() => {
 
         document
             .querySelectorAll('.card-title.collapsed')
-            .forEach(title => title.click());
+            .forEach(card => card.click());
 
     });
 
-    await new Promise(resolve => setTimeout(resolve, 750));
+    await new Promise(resolve =>
+        setTimeout(resolve, 1000)
+    );
 
-    const students = await page.evaluate(eventId => {
+    //----------------------------------------------------------------------
+    // Extract roster
+    //----------------------------------------------------------------------
 
-        const roster = [];
+    const students =
+        await page.evaluate(eventId => {
 
-        const cards =
-            document.querySelectorAll(
-                '.card.card-expand'
-            );
+            const roster = [];
 
-        cards.forEach(card => {
-
-            //----------------------------------------------------------
-            // Student Name
-            //----------------------------------------------------------
-
-            const title =
-                card.querySelector('.card-title');
-
-            const studentName =
-                title
-                    ? title.textContent.trim()
-                    : '';
-
-            //----------------------------------------------------------
-            // Entire Card Text
-            //----------------------------------------------------------
-
-            const text =
-                card.innerText;
-
-            //----------------------------------------------------------
-            // Email
-            //----------------------------------------------------------
-
-            let studentEmail = '';
-
-            const email =
-                text.match(
-                    /Email Address:\s*([^\s]+)/i
+            const cards =
+                document.querySelectorAll(
+                    '.card.card-expand'
                 );
 
-            if (email) {
+            cards.forEach(card => {
 
-                studentEmail =
-                    email[1].trim();
+                //----------------------------------------------------------
+                // Student Name
+                //----------------------------------------------------------
 
-            }
-
-            //----------------------------------------------------------
-            // Customer ID
-            //----------------------------------------------------------
-
-            let customerId = null;
-
-            const emailLink =
-                card.querySelector(
-                    'a[href*="messages?student="]'
-                );
-
-            if (emailLink) {
-
-                const match =
-                    emailLink.href.match(
-                        /student=(\d+)/
+                const title =
+                    card.querySelector(
+                        '.card-title'
                     );
 
-                if (match) {
+                const studentName =
+                    title
+                        ? title.textContent.trim()
+                        : '';
 
-                    customerId =
-                        Number(match[1]);
+                if (!studentName)
+                    return;
+
+                //----------------------------------------------------------
+                // Card Text
+                //----------------------------------------------------------
+
+                const text =
+                    card.innerText;
+
+                //----------------------------------------------------------
+                // Email
+                //----------------------------------------------------------
+
+                let studentEmail = '';
+
+                const emailMatch =
+                    text.match(
+                        /Email Address:\s*([^\s]+)/i
+                    );
+
+                if (emailMatch) {
+
+                    studentEmail =
+                        emailMatch[1].trim();
 
                 }
 
-            }
+                //----------------------------------------------------------
+                // Customer ID
+                //----------------------------------------------------------
 
-            //----------------------------------------------------------
-            // Registration ID
-            //----------------------------------------------------------
+                let customerId = null;
 
-            let registrationId = null;
-
-            const moveLink =
-                card.querySelector(
-                    'a[href*="/registrations/"]'
-                );
-
-            if (moveLink) {
-
-                const match =
-                    moveLink.href.match(
-                        /registrations\/(\d+)/
+                const emailButton =
+                    card.querySelector(
+                        'a[href*="messages?student="]'
                     );
 
-                if (match) {
+                if (emailButton) {
 
-                    registrationId =
-                        Number(match[1]);
+                    const match =
+                        emailButton.href.match(
+                            /student=(\d+)/
+                        );
+
+                    if (match) {
+
+                        customerId =
+                            Number(match[1]);
+
+                    }
 
                 }
 
-            }
+                //----------------------------------------------------------
+                // Registration ID
+                //----------------------------------------------------------
 
-            //----------------------------------------------------------
-            // Ignore empty cards
-            //----------------------------------------------------------
+                let registrationId = null;
 
-            if (!studentName)
-                return;
+                const moveButton =
+                    card.querySelector(
+                        'a[href*="/registrations/"]'
+                    );
 
-            roster.push({
+                if (moveButton) {
 
-                event_id: eventId,
+                    const match =
+                        moveButton.href.match(
+                            /registrations\/(\d+)/
+                        );
 
-                registration_id:
-                    registrationId,
+                    if (match) {
 
-                customer_id:
-                    customerId,
+                        registrationId =
+                            Number(match[1]);
 
-                student_name:
-                    studentName,
+                    }
 
-                student_email:
-                    studentEmail,
+                }
 
-                registration_status:
-                    'Registered'
+                //----------------------------------------------------------
+                // Add student
+                //----------------------------------------------------------
+
+                roster.push({
+
+                    event_id:
+                        eventId,
+
+                    registration_id:
+                        registrationId,
+
+                    customer_id:
+                        customerId,
+
+                    student_name:
+                        studentName,
+
+                    student_email:
+                        studentEmail,
+
+                    registration_status:
+                        'Registered'
+
+                });
 
             });
 
-        });
+            return roster;
 
-        return roster;
-
-    }, eventId);
+        }, eventId);
 
     //----------------------------------------------------------------------
     // Remove duplicate students
+    //
+    // Customer ID uniquely identifies a person in NDOW.
+    // Email addresses are NOT unique because family members
+    // may share a common email address.
     //----------------------------------------------------------------------
 
     const uniqueStudents =
@@ -187,7 +227,7 @@ module.exports = async function scrapeRoster(page, eventId) {
 
                 students.map(student => [
 
-                    `${student.event_id}-${student.student_email}`,
+                    student.customer_id,
 
                     student
 
@@ -196,6 +236,10 @@ module.exports = async function scrapeRoster(page, eventId) {
             ).values()
 
         );
+
+    //----------------------------------------------------------------------
+    // Logging
+    //----------------------------------------------------------------------
 
     console.log(
         `Students found: ${uniqueStudents.length}`
