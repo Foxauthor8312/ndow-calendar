@@ -3,30 +3,38 @@
  NDOW Volunteer Portal
 ------------------------------------------------------------------------------
  Module      : roster-update.cjs
- Description : Updates cached student rosters for instructor events.
+ Description : Event roster cache maintenance.
 
  Purpose:
-   Reads events.json, determines which events require roster maintenance,
-   retrieves student rosters from the NDOW event management system, and
-   updates the local operational database.
+   Maintains the operational roster cache used by the NDOW Volunteer Portal.
+   This module reads the current events.json file, identifies events requiring
+   roster maintenance, and (in future phases) updates the operational database
+   with the latest student roster information.
 
  Responsibilities:
 
      • Read events.json
-     • Determine qualifying instructor events
-     • Retrieve event rosters
+     • Identify qualifying instructor events
+     • Report processing statistics
+
+ Future Responsibilities:
+
+     • Authenticate with NDOW
+     • Retrieve student rosters
      • Detect roster changes
-     • Update cached roster information
-     • Update workflow status
+     • Update event_rosters
+     • Update events roster metadata
+     • Update event_workflow
+     • Support communications workflow
 
  Notes:
 
      This module DOES NOT update the calendar.
 
-     The calendar continues to operate exclusively from events.json.
+     The public calendar continues to operate exclusively from events.json.
 
      This module maintains only the operational database used for
-     communications and future workflow automation.
+     communications and workflow automation.
 
  Module Ver. : 0.1.0
  Build       : 2026.07.03.001
@@ -36,3 +44,97 @@
 */
 
 'use strict';
+
+const fs = require('fs');
+const path = require('path');
+
+const EVENTS_FILE = path.join(__dirname, 'events.json');
+const LOOKBACK_DAYS = 7;
+
+/*==============================================================================
+  Load Events
+==============================================================================*/
+
+function loadEvents() {
+
+    console.log('Loading events.json...');
+
+    if (!fs.existsSync(EVENTS_FILE)) {
+        throw new Error(`Unable to locate ${EVENTS_FILE}`);
+    }
+
+    const raw = fs.readFileSync(EVENTS_FILE, 'utf8');
+    const events = JSON.parse(raw);
+
+    if (!Array.isArray(events)) {
+        throw new Error('events.json does not contain an event array.');
+    }
+
+    return events;
+
+}
+
+/*==============================================================================
+  Determine Qualifying Events
+
+  Phase 1 Placeholder
+
+  Future business rules:
+
+      • Logged-in instructor is assigned to the event
+      • Event is today or in the future
+        OR
+        Event completed within LOOKBACK_DAYS
+      • Cancelled events remain eligible
+==============================================================================*/
+
+function getQualifyingEvents(events) {
+
+    return events;
+
+}
+
+/*==============================================================================
+  Main
+==============================================================================*/
+
+async function main() {
+
+    console.log('');
+    console.log('==========================================================');
+    console.log(' NDOW Volunteer Portal');
+    console.log(' Roster Update Utility');
+    console.log('==========================================================');
+    console.log('');
+
+    const events = loadEvents();
+
+    const qualifyingEvents = getQualifyingEvents(events);
+
+    console.log('');
+    console.log('Summary');
+    console.log('----------------------------------------------------------');
+    console.log(`Events Loaded       : ${events.length}`);
+    console.log(`Qualifying Events   : ${qualifyingEvents.length}`);
+    console.log('');
+    console.log('Phase 1 completed successfully.');
+    console.log('');
+
+}
+
+/*==============================================================================
+  Startup
+==============================================================================*/
+
+main()
+    .then(() => process.exit(0))
+    .catch(error => {
+
+        console.error('');
+        console.error('Roster update failed.');
+        console.error(error);
+        console.error('');
+
+        process.exit(1);
+
+    });
