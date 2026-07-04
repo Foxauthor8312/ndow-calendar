@@ -2,28 +2,23 @@
 ==============================================================================
  NDOW Volunteer Portal
 ------------------------------------------------------------------------------
- Module      : roster-scraper.cjs
-
- Description : Event roster scraper.
-
+ Module      : roster-update.cjs
+ Description : Event roster update controller.
+------------------------------------------------------------------------------
  Purpose:
 
-    Opens an NDOW event roster page and extracts all registered students.
+    Coordinates the roster update process.
 
- Returns:
+    Responsibilities:
 
-    [
-        {
-            event_id,
-            registration_id,
-            customer_id,
-            student_name,
-            student_email,
-            registration_status
-        }
-    ]
+      • Login to NDOW
+      • Load events.json
+      • Build processing queue
+      • Call roster scraper
+      • (Future) Call repository
+      • Log progress
 
- Module Ver. : 1.0.0
+ Module Ver. : 0.3.0
  Build       : 2026.07.04.001
 
  Developer   : Barry Mattison
@@ -32,157 +27,108 @@
 
 'use strict';
 
-module.exports = async function scrapeRoster(page, eventId) {
+const fs = require('fs');
+const path = require('path');
 
-    const rosterUrl =
-        `https://nevada.events.licensing.app/dashboard/em/event_rosters/${eventId}`;
+const createSession = require('./ndow-session');
+const scrapeRoster = require('./ndow-scraper/roster-scraper');
 
-    console.log(`Opening roster ${eventId}...`);
+const EVENTS_FILE = path.join(__dirname, 'events.json');
+const LOOKBACK_DAYS = 7;
 
-    await page.goto(
-        rosterUrl,
-        {
-            waitUntil: 'domcontentloaded',
-            timeout: 60000
-        }
+(async function () {
+
+    //----------------------------------------------------------------------
+    // Create authenticated session
+    //----------------------------------------------------------------------
+
+    const {
+        browser,
+        page,
+        supabase
+    } = await createSession();
+
+    //----------------------------------------------------------------------
+    // Load events.json
+    //----------------------------------------------------------------------
+
+    console.log('');
+    console.log('Loading events.json...');
+
+    const raw = fs.readFileSync(EVENTS_FILE, 'utf8');
+    const data = JSON.parse(raw);
+
+    const events = data.events || [];
+
+    console.log(`Events Loaded : ${events.length}`);
+    console.log('');
+
+    //----------------------------------------------------------------------
+    // Build processing queue
+    //----------------------------------------------------------------------
+
+    const today = new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+    const earliest = new Date(today);
+
+    earliest.setDate(
+        earliest.getDate() - LOOKBACK_DAYS
     );
 
-    await page.waitForSelector('body');
+    const queue = events.filter(event => {
 
-    const students = await page.evaluate((eventId) => {
+        const eventDate = new Date(event.date);
 
-        const roster = [];
+        return eventDate >= earliest;
 
-        const cards = document.querySelectorAll(
-            '.card.bg-white.mb-2.p-3.card-expand'
-        );
-
-        cards.forEach(card => {
-
-            //
-            // Student Name
-            //
-
-            const title =
-                card.querySelector('.card-title');
-
-            const studentName =
-                title
-                    ? title.textContent.trim()
-                    : '';
-
-            //
-            // Email
-            //
-
-            let studentEmail = '';
-
-            const body =
-                card.innerText;
-
-            const emailMatch =
-                body.match(
-                    /Email Address:\s*([^\s]+)/i
-                );
-
-            if (emailMatch) {
-
-                studentEmail =
-                    emailMatch[1].trim();
-
-            }
-
-            //
-            // Customer ID
-            //
-
-            let customerId = null;
-
-            const messageLink =
-                card.querySelector(
-                    'a[href*="messages?student="]'
-                );
-
-            if (messageLink) {
-
-                const href =
-                    messageLink.getAttribute('href');
-
-                const match =
-                    href.match(
-                        /student=(\d+)/
-                    );
-
-                if (match) {
-
-                    customerId =
-                        Number(match[1]);
-
-                }
-
-            }
-
-            //
-            // Registration ID
-            //
-
-            let registrationId = null;
-
-            const moveLink =
-                card.querySelector(
-                    'a[href*="/registrations/"]'
-                );
-
-            if (moveLink) {
-
-                const href =
-                    moveLink.getAttribute('href');
-
-                const match =
-                    href.match(
-                        /registrations\/(\d+)/
-                    );
-
-                if (match) {
-
-                    registrationId =
-                        Number(match[1]);
-
-                }
-
-            }
-
-            roster.push({
-
-                event_id: eventId,
-
-                registration_id:
-                    registrationId,
-
-                customer_id:
-                    customerId,
-
-                student_name:
-                    studentName,
-
-                student_email:
-                    studentEmail,
-
-                registration_status:
-                    'Registered'
-
-            });
-
-        });
-
-        return roster;
-
-    }, eventId);
+    });
 
     console.log(
-        `Students found: ${students.length}`
+        `Events To Process : ${queue.length}`
     );
 
-    return students;
+    console.log('');
 
-};
+    //----------------------------------------------------------------------
+    // Process Events
+    //----------------------------------------------------------------------
+
+    for (const event of queue) {
+
+        console.log('--------------------------------------------------');
+        console.log(`${event.id} - ${event.title}`);
+        console.log('--------------------------------------------------');
+
+        const students =
+            await scrapeRoster(
+                page,
+                event.id
+            );
+
+        console.table(students);
+
+        console.log('');
+
+    }
+
+    //----------------------------------------------------------------------
+    // Cleanup
+    //----------------------------------------------------------------------
+
+    await browser.close();
+
+    console.log('');
+    console.log('Roster update completed.');
+    console.log('');
+
+})().catch(error => {
+
+    console.error('');
+    console.error(error);
+    console.error('');
+
+    process.exit(1);
+
+});
