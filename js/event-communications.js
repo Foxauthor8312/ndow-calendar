@@ -30,6 +30,8 @@ async function openEventCommunication(event){
 
     await loadEventRoster(event.id);
 
+    renderCommunicationModal();
+
 }
 
 function closeEventCommunication(){
@@ -202,5 +204,21 @@ async function sendCommunication(){
         alert(err.message);
 
     }
+
+}
+function renderCommunicationModal(){
+
+    const container =
+        document.getElementById(
+            'eventCommunicationContent'
+        );
+
+    container.innerHTML = `
+
+        <p><strong>Event:</strong> ${selectedEvent.title}</p>
+
+        <p><strong>Students Loaded:</strong> ${roster.length}</p>
+
+    `;
 
 }
