@@ -215,20 +215,22 @@ function renderCommunicationModal(){
 
     container.innerHTML = `
 
-<div style="margin-bottom:20px;">
+<div style="
+    margin-bottom:20px;
+">
 
     <div style="
-        font-size:20px;
+        font-size:24px;
         font-weight:700;
         color:#19304B;
-        margin-bottom:6px;
+        margin-bottom:8px;
     ">
         ${selectedEvent.title}
     </div>
 
     <div style="
         color:#4b5563;
-        line-height:1.5;
+        line-height:1.6;
     ">
         ${selectedEvent.date}<br>
         ${selectedEvent.location}
@@ -236,65 +238,13 @@ function renderCommunicationModal(){
 
 </div>
 
-<div style="margin-bottom:18px;">
+<hr>
 
-    <label style="
-        display:block;
-        font-weight:700;
-        margin-bottom:6px;
-    ">
-        Subject
-    </label>
+<div style="
+    margin-top:20px;
+">
 
-    <input
-        id="email-subject"
-        type="text"
-        value="Reminder: ${selectedEvent.title}"
-        style="
-            width:100%;
-            padding:10px;
-            border:1px solid #d1d5db;
-            border-radius:8px;
-        "
-    >
-
-</div>
-
-<div>
-
-    <label style="
-        display:block;
-        font-weight:700;
-        margin-bottom:6px;
-    ">
-        Message
-    </label>
-
-    <textarea
-        id="email-message"
-        style="
-            width:100%;
-            height:180px;
-            padding:10px;
-            border:1px solid #d1d5db;
-            border-radius:8px;
-        "
->Hello {{student_name}},
-
-This is a reminder that you are registered for:
-
-${selectedEvent.title}
-
-Date:
-${selectedEvent.date}
-
-Location:
-${selectedEvent.location}
-
-We look forward to seeing you!
-
-Nevada Department of Wildlife
-Volunteer Program</textarea>
+COMING NEXT...
 
 </div>
 
