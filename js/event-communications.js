@@ -16,14 +16,33 @@
 ==============================================================================
 */
 
-let currentEvent = null;
+let currentCommunicationEvent = null;
 
-let roster = [];
+let communicationRoster = [];
 
 let selectedRecipients = [];
 
-const API =
-    'https://ndow-calendar-server.onrender.com/api';
+async function openEventCommunication(event){
+
+    currentCommunicationEvent = event;
+
+    document.getElementById(
+        'eventCommunicationModal'
+    ).style.display = 'flex';
+
+    await loadEventRoster(event.id);
+
+    renderCommunicationModal();
+
+}
+
+function closeEventCommunication(){
+
+    document.getElementById(
+        'eventCommunicationModal'
+    ).style.display = 'none';
+
+}
 
 //==================================================
 // Load Event Roster
