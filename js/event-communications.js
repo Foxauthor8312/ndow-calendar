@@ -15,24 +15,20 @@
 
 ==============================================================================
 */
-
-let currentCommunicationEvent = null;
-
-let communicationRoster = [];
+const API =
+    'https://ndow-calendar-server.onrender.com/api';
 
 let selectedRecipients = [];
 
-async function openEventCommunication(event){
+let roster = [];
 
-    currentCommunicationEvent = event;
+async function openEventCommunication(event){
 
     document.getElementById(
         'eventCommunicationModal'
     ).style.display = 'flex';
 
     await loadEventRoster(event.id);
-
-    renderCommunicationModal();
 
 }
 
@@ -44,37 +40,38 @@ function closeEventCommunication(){
 
 }
 
-//==================================================
-// Load Event Roster
-//==================================================
+async function loadEventRoster(eventId){
 
-async function loadEventRoster(eventId) {
+    try{
 
-    try {
+        const token =
+            localStorage.getItem('token');
 
         const response =
             await fetch(
 
-                `${API_BASE}/api/event-roster/${eventId}`,
+`${API}/event-roster/${eventId}`,
 
-                {
+            {
 
-                    headers: {
+                headers:{
 
-                        Authorization:
-
-                            `Bearer ${authToken}`
-
-                    }
+                    Authorization:
+                        `Bearer ${token}`
 
                 }
 
+            }
+
+        );
+
+        if(!response.ok){
+
+            throw new Error(
+                'Unable to load event roster.'
             );
 
-        if (!response.ok)
-            throw new Error(
-                'Unable to load roster.'
-            );
+        }
 
         roster =
             await response.json();
@@ -82,7 +79,10 @@ async function loadEventRoster(eventId) {
         selectedRecipients =
             [...roster];
 
-        renderRecipientList();
+        console.log(
+            'Roster loaded:',
+            roster
+        );
 
     }
 
@@ -90,111 +90,13 @@ async function loadEventRoster(eventId) {
 
         console.error(err);
 
-        alert(err.message);
+        alert(
+            err.message
+        );
 
     }
 
 }
-
-//==================================================
-// Recipient List
-//==================================================
-
-function renderRecipientList() {
-
-    const list =
-        document.getElementById(
-            'recipient-list'
-        );
-
-    list.innerHTML = '';
-
-    roster.forEach(student => {
-
-        const checked =
-            selectedRecipients.find(
-
-                r =>
-
-                r.customer_id ===
-
-                student.customer_id
-
-            )
-
-            ? 'checked'
-
-            : '';
-
-        list.insertAdjacentHTML(
-
-            'beforeend',
-
-            `
-<label class="recipient">
-
-<input
-type="checkbox"
-
-${checked}
-
-onchange="toggleRecipient(${student.customer_id})">
-
-${student.student_name}
-
-</label>
-`
-
-        );
-
-    });
-
-}
-
-function toggleRecipient(customerId) {
-
-    const exists =
-        selectedRecipients.find(
-
-            r =>
-
-            r.customer_id === customerId
-
-        );
-
-    if(exists){
-
-        selectedRecipients =
-
-            selectedRecipients.filter(
-
-                r =>
-
-                r.customer_id !== customerId
-
-            );
-
-    }
-
-    else{
-
-        const student =
-
-            roster.find(
-
-                r =>
-
-                r.customer_id === customerId
-
-            );
-
-        selectedRecipients.push(student);
-
-    }
-
-}//==================================================
-// Send Communication
-//==================================================
 
 async function sendCommunication(){
 
@@ -214,49 +116,74 @@ async function sendCommunication(){
             ).value.trim();
 
         if (!subject) {
-
-            alert(
-                'Please enter a subject.'
-            );
-
+            alert('Please enter a subject.');
             return;
-
         }
 
         if (!message) {
-
-            alert(
-                'Please enter a message.'
-            );
-
+            alert('Please enter a message.');
             return;
-
         }
 
         if (selectedRecipients.length === 0) {
-
-            alert(
-                'Please select at least one recipient.'
-            );
-
+            alert('Please select at least one recipient.');
             return;
-
         }
 
-await fetch(
+        const response =
+            await fetch(
+
+`${API}/event-communications/send`,
+
+            {
+
+                method: 'POST',
+
+                headers: {
+
+                    'Content-Type':
+                        'application/json',
+
+                    Authorization:
+                        `Bearer ${token}`
+
+                },
+
+                body: JSON.stringify({
+
+                    eventId:
+                        selectedEvent.id,
+
+                    eventName:
+                        selectedEvent.title,
+
+                    eventDate:
+                        selectedEvent.date,
+
+                    eventLocation:
+                        selectedEvent.location,
+
+                    subject,
+
+                    message,
+
+                    recipients:
+                        selectedRecipients
+
+                })
+
+            }
+
+        );
 
         const result =
             await response.json();
 
         if (!response.ok)
-            throw new Error(
-                result.message
-            );
+            throw new Error(result.message);
 
         alert(
-
             `${result.recipients} email(s) sent successfully.`
-
         );
 
     }
@@ -270,4 +197,3 @@ await fetch(
     }
 
 }
-
