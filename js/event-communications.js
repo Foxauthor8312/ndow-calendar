@@ -73,11 +73,18 @@ async function loadEventRoster(eventId){
 
         }
 
-        roster =
-            await response.json();
+const result =
+    await response.json();
 
-        selectedRecipients =
-            [...roster];
+console.log(result);
+
+roster =
+    Array.isArray(result)
+        ? result
+        : result.roster || [];
+
+selectedRecipients =
+    [...roster];
 
         console.log(
             'Roster loaded:',
