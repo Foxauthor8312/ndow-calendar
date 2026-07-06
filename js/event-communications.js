@@ -58,7 +58,7 @@ async function loadEventRoster(eventId){
         const response =
             await fetch(
 
-`${API}/event-roster/${eventId}`,
+`${API}/event-communications/event-roster/${eventId}`,
 
             {
 
