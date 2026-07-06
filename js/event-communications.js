@@ -24,11 +24,17 @@ let roster = [];
 
 async function openEventCommunication(event){
 
+    console.log('Opening event:', event);
+
+    console.log('Event ID:', event.id);
+
     document.getElementById(
         'eventCommunicationModal'
     ).style.display = 'flex';
 
     await loadEventRoster(event.id);
+
+    console.log('Roster after load:', roster);
 
     renderCommunicationModal();
 
