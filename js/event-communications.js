@@ -78,8 +78,6 @@ async function loadEventRoster(eventId){
 const result =
     await response.json();
 
-console.log(result);
-
 roster =
     Array.isArray(result)
         ? result
@@ -88,11 +86,7 @@ roster =
 selectedRecipients =
     [...roster];
 
-        console.log(
-            'Roster loaded:',
-            roster
-        );
-
+ 
     }
 
     catch(err){
@@ -104,6 +98,62 @@ selectedRecipients =
         );
 
     }
+
+}
+
+function renderRecipientList(){
+
+    const list =
+        document.getElementById(
+            'recipient-list'
+        );
+
+    list.innerHTML = '';
+
+    roster.forEach(student => {
+
+        const checked =
+            selectedRecipients.some(
+
+                r =>
+                    r.customer_id ===
+                    student.customer_id
+
+            ) ? 'checked' : '';
+
+        list.insertAdjacentHTML(
+
+            'beforeend',
+
+            `
+<label style="
+display:block;
+margin-bottom:8px;
+">
+
+<input
+type="checkbox"
+${checked}
+onchange="toggleRecipient(${student.customer_id})"
+>
+
+${student.student_name}
+
+<span style="
+color:#6b7280;
+font-size:12px;
+">
+
+(${student.student_email})
+
+</span>
+
+</label>
+`
+
+        );
+
+    });
 
 }
 
@@ -194,6 +244,8 @@ async function sendCommunication(){
         alert(
             `${result.recipients} email(s) sent successfully.`
         );
+
+     closeEventCommunication();
 
     }
 
@@ -303,8 +355,97 @@ We look forward to seeing you.
 
 </textarea>
 
+<hr style="margin:24px 0;">
+
+<h3 style="margin-bottom:12px;">
+
+Recipients (${roster.length})
+
+</h3>
+
+<div
+    id="recipient-list"
+    style="
+        max-height:220px;
+        overflow-y:auto;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        padding:12px;
+        background:#fafafa;
+    "
+></div>
+
+<div style="
+    margin-top:10px;
+    font-size:13px;
+    color:#6b7280;
+">
+
+Selected:
+<span id="selected-count">
+${selectedRecipients.length}
+</span>
+
+</div>
+
 </div>
 
 `;
+
+ renderRecipientList();
+
+ }
+
+function toggleRecipient(customerId){
+
+    const exists =
+        selectedRecipients.find(
+
+            r =>
+
+            r.customer_id === customerId
+
+        );
+
+    if(exists){
+
+        selectedRecipients =
+
+            selectedRecipients.filter(
+
+                r =>
+
+                r.customer_id !== customerId
+
+            );
+
+    }
+
+    else{
+
+        const student =
+
+            roster.find(
+
+                r =>
+
+                r.customer_id === customerId
+
+            );
+
+        if(student){
+
+            selectedRecipients.push(
+                student
+            );
+
+        }
+
+    }
+
+    document.getElementById(
+        'selected-count'
+    ).textContent =
+        selectedRecipients.length;
 
 }
