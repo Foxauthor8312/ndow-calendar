@@ -14,7 +14,8 @@
 
 ==============================================================================
 */
-
+const LOGO_URL =
+    'https://foxauthor8312.github.io/ndow-calendar/ndow-new-logo.png';
 export function renderEmailHeader(){
 
     return `
@@ -26,20 +27,25 @@ text-align:center;
 border-bottom:4px solid #8C6E4A;
 ">
 
-<img
-
-src="https://www.ndow.org/wp-content/themes/ndow/images/logo.png"
-
-alt="Nevada Department of Wildlife"
-
-style="
-max-width:240px;
-height:auto;
-display:block;
-margin:0 auto;
-"
-
+<a
+    href="https://nevada.events.licensing.app/em/programs"
+    target="_blank"
+    rel="noopener noreferrer"
+    style="text-decoration:none;"
 >
+
+    <img
+        src="${LOGO_URL}"
+        alt="Nevada Department of Wildlife"
+        style="
+          max-width:140px;
+          height:auto;
+          display:block;
+          margin:0 auto;
+    "
+    >
+
+</a>
 
 <div style="
 margin-top:18px;
