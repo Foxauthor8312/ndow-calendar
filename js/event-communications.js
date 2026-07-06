@@ -101,6 +101,14 @@ async function sendCommunication(){
                 .value
                 .trim();
 
+         const ccMe =
+
+       document
+           .getElementById(
+               'send-copy'
+           )
+           .checked;
+
         if(!subject){
 
             alert(
@@ -151,6 +159,8 @@ async function sendCommunication(){
                 subject,
 
                 message,
+
+            ccMe,
 
                 ccEmail,
 
@@ -363,13 +373,51 @@ ${selectedRecipients.length}
 
 <hr style="margin:24px 0;">
 
+<div style="
+margin-bottom:18px;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:8px;
+background:#fafafa;
+">
+
+<label style="
+display:flex;
+align-items:center;
+gap:10px;
+cursor:pointer;
+font-weight:600;
+">
+
+<input
+
+id="send-copy"
+
+type="checkbox"
+
+>
+
+Send me a copy
+
+</label>
+
+<div style="
+margin:8px 0 18px 28px;
+font-size:13px;
+color:#6b7280;
+">
+
+A copy will be sent to your instructor email address.
+
+</div>
+
 <label style="
 display:block;
 font-weight:700;
 margin-bottom:6px;
 ">
 
-Send Test Copy (optional)
+Additional Recipient (optional)
 
 </label>
 
@@ -386,10 +434,11 @@ width:100%;
 padding:10px;
 border:1px solid #d1d5db;
 border-radius:8px;
-margin-bottom:18px;
 "
 
 >
+
+</div>
 
 <div style="
 display:flex;
