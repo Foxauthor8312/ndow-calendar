@@ -40,24 +40,30 @@ from
 
 './event-communications-ui.js';
 
-const API =
-    'https://ndow-calendar-server.onrender.com/api';
+let currentEvent = null;
 
 let selectedRecipients = [];
 
 let roster = [];
 
 async function openEventCommunication(event){
+  currentEvent = event;
 
     document.getElementById(
         'eventCommunicationModal'
     ).style.display = 'flex';
 
-    await loadEventRoster(event.id);
+    roster =
+      await loadEventRoster(
+        event.id
+    );
+
+    selectedRecipients =
+      [...roster];
 
     renderCommunicationModal();
 
-}
+   }
 
 function closeEventCommunication(){
 
@@ -67,7 +73,111 @@ function closeEventCommunication(){
 
 }
 
+async function sendCommunication(){
 
+    try{
+
+        const subject =
+            document
+                .getElementById(
+                    'email-subject'
+                )
+                .value
+                .trim();
+
+        const message =
+            document
+                .getElementById(
+                    'email-message'
+                )
+                .value
+                .trim();
+
+        const ccEmail =
+            document
+                .getElementById(
+                    'cc-email'
+                )
+                .value
+                .trim();
+
+        if(!subject){
+
+            alert(
+                'Please enter a subject.'
+            );
+
+            return;
+
+        }
+
+        if(!message){
+
+            alert(
+                'Please enter a message.'
+            );
+
+            return;
+
+        }
+
+        if(
+            selectedRecipients.length === 0
+        ){
+
+            alert(
+                'Please select at least one recipient.'
+            );
+
+            return;
+
+        }
+
+        const result =
+            await sendCommunicationRequest({
+
+                eventId:
+                    currentEvent.id,
+
+                eventName:
+                    currentEvent.title,
+
+                eventDate:
+                    currentEvent.date,
+
+                eventLocation:
+                    currentEvent.location,
+
+                subject,
+
+                message,
+
+                ccEmail,
+
+                recipients:
+                    selectedRecipients
+
+            });
+
+        alert(
+
+            `${result.recipients} email(s) sent successfully.`
+
+        );
+
+        closeEventCommunication();
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+        alert(err.message);
+
+    }
+
+}
 
 function renderCommunicationModal(){
 
@@ -88,15 +198,15 @@ function renderCommunicationModal(){
         color:#19304B;
         margin-bottom:8px;
     ">
-        ${selectedEvent.title}
+        ${currentEvent.title}
     </div>
 
     <div style="
         color:#4b5563;
         line-height:1.6;
     ">
-        ${selectedEvent.date}<br>
-        ${selectedEvent.location}
+        ${currentEvent.date}<br>
+        ${currentEvent.location}
     </div>
 
 </div>
@@ -129,7 +239,7 @@ border-radius:8px;
 margin-bottom:18px;
 "
 
-value="Reminder - ${selectedEvent.title}"
+value="Reminder - ${currentEvent.title}"
 
 >
 
@@ -283,7 +393,13 @@ Send Email
 
 `;
 
- renderRecipientList();
+ renderRecipientList(
+
+    roster,
+
+    selectedRecipients
+
+);
 
  }
 
@@ -334,9 +450,22 @@ function toggleRecipient(customerId){
 
     }
 
-    document.getElementById(
-        'selected-count'
-    ).textContent =
-        selectedRecipients.length;
+updateRecipientCount(
+
+    selectedRecipients.length
+
+);
 
 }
+
+window.openEventCommunication =
+    openEventCommunication;
+
+window.closeEventCommunication =
+    closeEventCommunication;
+
+window.sendCommunication =
+    sendCommunication;
+
+window.toggleRecipient =
+    toggleRecipient;
