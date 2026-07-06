@@ -44,7 +44,7 @@ export async function loadEventRoster(eventId){
 
 }
 
-export async function sendCommunication(payload){
+export async function sendCommunicationRequest(payload){
 
     const token =
         localStorage.getItem('token');
