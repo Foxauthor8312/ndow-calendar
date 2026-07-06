@@ -55,28 +55,64 @@ async function loadEventRoster(eventId){
         const token =
             localStorage.getItem('token');
 
- console.log(
-    'Request URL:',
-    `${API}/event-communications/event-roster/${eventId}`
-);
+        console.log(
+            'Request URL:',
+            `${API}/event-communications/event-roster/${eventId}`
+        );
 
-const response =
-    await fetch(
+        const response =
+            await fetch(
 
-        `${API}/event-communications/event-roster/${eventId}`,
+                `${API}/event-communications/event-roster/${eventId}`,
 
-        {
+                {
 
-            headers:{
+                    headers:{
 
-                Authorization:
-                    `Bearer ${token}`
+                        Authorization:
+                            `Bearer ${token}`
 
-            }
+                    }
+
+                }
+
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                'Unable to load event roster.'
+            );
 
         }
 
-    );
+        const result =
+            await response.json();
+
+        console.log(
+            'Roster response:',
+            result
+        );
+
+        roster =
+            Array.isArray(result)
+                ? result
+                : result.roster || [];
+
+        selectedRecipients =
+            [...roster];
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+        alert(err.message);
+
+    }
+
+}
 
                     Authorization:
                         `Bearer ${token}`
