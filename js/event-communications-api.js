@@ -92,3 +92,5 @@ if(!response.ok){
 }
 
 return JSON.parse(text);
+
+ }
