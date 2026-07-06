@@ -24,17 +24,11 @@ let roster = [];
 
 async function openEventCommunication(event){
 
-    console.log('Opening event:', event);
-
-    console.log('Event ID:', event.id);
-
     document.getElementById(
         'eventCommunicationModal'
     ).style.display = 'flex';
 
     await loadEventRoster(event.id);
-
-    console.log('Roster after load:', roster);
 
     renderCommunicationModal();
 
@@ -55,64 +49,14 @@ async function loadEventRoster(eventId){
         const token =
             localStorage.getItem('token');
 
-        console.log(
-            'Request URL:',
-            `${API}/event-communications/event-roster/${eventId}`
-        );
-
         const response =
             await fetch(
 
-                `${API}/event-communications/event-roster/${eventId}`,
+`${API}/event-roster/${eventId}`,
 
-                {
+            {
 
-                    headers:{
-
-                        Authorization:
-                            `Bearer ${token}`
-
-                    }
-
-                }
-
-            );
-
-        if(!response.ok){
-
-            throw new Error(
-                'Unable to load event roster.'
-            );
-
-        }
-
-        const result =
-            await response.json();
-
-        console.log(
-            'Roster response:',
-            result
-        );
-
-        roster =
-            Array.isArray(result)
-                ? result
-                : result.roster || [];
-
-        selectedRecipients =
-            [...roster];
-
-    }
-
-    catch(err){
-
-        console.error(err);
-
-        alert(err.message);
-
-    }
-
-}
+                headers:{
 
                     Authorization:
                         `Bearer ${token}`
@@ -133,11 +77,6 @@ async function loadEventRoster(eventId){
 
 const result =
     await response.json();
-
-     console.log(
-    'Roster response:',
-    result
-);
 
 roster =
     Array.isArray(result)
