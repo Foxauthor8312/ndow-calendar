@@ -55,18 +55,28 @@ async function loadEventRoster(eventId){
         const token =
             localStorage.getItem('token');
 
-        const response =
-            await fetch(
-            `${API}/event-communications/event-roster/${eventId}`,
+ console.log(
+    'Request URL:',
+    `${API}/event-communications/event-roster/${eventId}`
+);
 
-            console.log(
-               'Request URL:',
-               `${API}/event-communications/event-roster/${eventId}`
-            ); 
+const response =
+    await fetch(
 
-            {
+        `${API}/event-communications/event-roster/${eventId}`,
 
-                headers:{
+        {
+
+            headers:{
+
+                Authorization:
+                    `Bearer ${token}`
+
+            }
+
+        }
+
+    );
 
                     Authorization:
                         `Bearer ${token}`
