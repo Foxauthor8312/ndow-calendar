@@ -81,7 +81,7 @@ const result =
 roster =
     Array.isArray(result)
         ? result
-        : result.roster || [];
+        : result.data || result.roster || [];
 
 selectedRecipients =
     [...roster];
