@@ -75,17 +75,20 @@ export async function sendCommunicationRequest(payload){
 
         );
 
-    const result =
-        await response.json();
+const text =
+    await response.text();
 
-    if(!response.ok){
+console.log(
+    'Send response:',
+    text
+);
 
-        throw new Error(
-            result.message
-        );
+if(!response.ok){
 
-    }
-
-    return result;
+    throw new Error(
+        text
+    );
 
 }
+
+return JSON.parse(text);
