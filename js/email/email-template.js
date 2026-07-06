@@ -8,12 +8,32 @@
 
  Responsibilities
 
-    • Generate HTML email body
-    • Centralize branding
+    • Compose complete HTML email
+    • Combine header, body and footer
     • Personalize recipient information
 
 ==============================================================================
 */
+
+import {
+
+    renderEmailHeader
+
+}
+
+from
+
+'./email-header.js';
+
+import {
+
+    renderEmailFooter
+
+}
+
+from
+
+'./email-footer.js';
 
 export function renderEmailTemplate({
 
@@ -21,40 +41,45 @@ export function renderEmailTemplate({
 
     recipient,
 
+    subject,
+
     message
 
 }){
 
     return `
 
-<div style="
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>${subject}</title>
+
+</head>
+
+<body style="
+margin:0;
+padding:30px;
+background:#edf2f7;
 font-family:Arial,sans-serif;
-color:#333;
+">
+
+<div style="
 max-width:700px;
-margin:auto;
-border:1px solid #d1d5db;
+margin:0 auto;
+background:white;
 border-radius:8px;
 overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
 ">
 
-<div style="
-background:#19304B;
-padding:24px;
-text-align:center;
-">
+${renderEmailHeader()}
 
-<img
-src="https://your-logo-url-here"
-alt="NDOW"
-style="
-max-width:220px;
-">
-
-</div>
-
-<div style="
-padding:28px;
-">
+<div style="padding:32px;">
 
 <h2 style="
 margin-top:0;
@@ -65,12 +90,22 @@ Hello ${recipient.student_name},
 
 </h2>
 
-${message
-    .replace(/\n/g,'<br>')}
+<p>
 
-<hr style="
-margin:28px 0;
+${message.replace(/\n/g,'<br>')}
+
+</p>
+
+<hr style="margin:28px 0;">
+
+<h3 style="
+margin-bottom:18px;
+color:#19304B;
 ">
+
+Event Information
+
+</h3>
 
 <table style="
 width:100%;
@@ -81,7 +116,8 @@ border-collapse:collapse;
 
 <td style="
 font-weight:bold;
-width:160px;
+padding:6px 0;
+width:140px;
 ">
 
 Event
@@ -100,6 +136,7 @@ ${event.title}
 
 <td style="
 font-weight:bold;
+padding:6px 0;
 ">
 
 Date
@@ -118,6 +155,7 @@ ${event.date}
 
 <td style="
 font-weight:bold;
+padding:6px 0;
 ">
 
 Location
@@ -134,36 +172,15 @@ ${event.location}
 
 </table>
 
-<p style="
-margin-top:28px;
-">
+</div>
 
-We look forward to seeing you.
-
-</p>
+${renderEmailFooter()}
 
 </div>
 
-<div style="
-background:#f3f4f6;
-padding:18px;
-font-size:12px;
-color:#6b7280;
-">
+</body>
 
-This email was sent by the
-Nevada Department of Wildlife
-Volunteer Portal.
-
-<br><br>
-
-This message may contain information
-intended only for the registered
-recipient.
-
-</div>
-
-</div>
+</html>
 
 `;
 
