@@ -278,11 +278,63 @@ We look forward to seeing you.
 
 <hr style="margin:24px 0;">
 
-<h3 style="margin-bottom:12px;">
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+">
+
+<h3 style="
+margin:0;
+">
 
 Recipients (${roster.length})
 
 </h3>
+
+<div>
+
+<button
+
+type="button"
+
+onclick="selectAllRecipients()"
+
+style="
+margin-right:8px;
+padding:4px 10px;
+font-size:12px;
+cursor:pointer;
+"
+
+>
+
+Select All
+
+</button>
+
+<button
+
+type="button"
+
+onclick="clearRecipients()"
+
+style="
+padding:4px 10px;
+font-size:12px;
+cursor:pointer;
+"
+
+>
+
+Clear All
+
+</button>
+
+</div>
+
+</div>
 
 <div
     id="recipient-list"
@@ -458,6 +510,47 @@ updateRecipientCount(
 
 }
 
+function selectAllRecipients(){
+
+    selectedRecipients =
+        [...roster];
+
+    renderRecipientList(
+
+        roster,
+
+        selectedRecipients
+
+    );
+
+    updateRecipientCount(
+
+        selectedRecipients.length
+
+    );
+
+}
+
+function clearRecipients(){
+
+    selectedRecipients = [];
+
+    renderRecipientList(
+
+        roster,
+
+        selectedRecipients
+
+    );
+
+    updateRecipientCount(
+
+        selectedRecipients.length
+
+    );
+
+}
+
 window.openEventCommunication =
     openEventCommunication;
 
@@ -469,3 +562,9 @@ window.sendCommunication =
 
 window.toggleRecipient =
     toggleRecipient;
+
+window.selectAllRecipients =
+    selectAllRecipients;
+
+window.clearRecipients =
+    clearRecipients;
