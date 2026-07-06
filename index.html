@@ -3005,28 +3005,6 @@ const response = await fetch(
 const rawEventCount =
   (data.events || []).length;
 
-events =
-  (data.events || [])
-  .filter(event => {
-
-    const text = `
-      ${event.title || ''}
-      ${event.description || ''}
-    `.toLowerCase();
-
-    return !text.includes(
-      'canceled'
-    );
-
-  });
-
-console.log(
-  'Cancelled Events Removed:',
-  rawEventCount - events.length
-);
-
-
-
 const originalEventCount =
   events.length;
 	
@@ -6595,32 +6573,78 @@ modalBody.innerHTML = `
         ${event.title}
       </div>
 
-      ${
-        event.status === 'Cancelled'
-          ? `
-            <div style="
-              display:flex;
-              align-items:center;
-              gap:8px;
-              margin:8px 0 12px 0;
-              color:#d60000;
-              font-size:15px;
-              font-weight:700;
-            ">
-              <span style="
-                width:10px;
-                height:10px;
-                background:#ff0000;
-                border-radius:50%;
-                display:inline-block;
-                flex-shrink:0;
-              "></span>
+${
+  event.status === 'Cancelled'
+    ? `
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin:8px 0 12px 0;
+        color:#d60000;
+        font-size:15px;
+        font-weight:700;
+      ">
+        <span style="
+          width:10px;
+          height:10px;
+          background:#ff0000;
+          border-radius:50%;
+          display:inline-block;
+          flex-shrink:0;
+        "></span>
 
-              <span>EVENT CANCELLED</span>
-            </div>
-          `
-          : ''
-      }
+        <span>EVENT CANCELLED</span>
+      </div>
+    `
+    : event.status === 'Registration Closed'
+    ? `
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin:8px 0 12px 0;
+        color:#b26a00;
+        font-size:15px;
+        font-weight:700;
+      ">
+        <span style="
+          width:10px;
+          height:10px;
+          background:#f4b400;
+          border-radius:50%;
+          display:inline-block;
+          flex-shrink:0;
+        "></span>
+
+        <span>REGISTRATION CLOSED</span>
+      </div>
+    `
+    : event.status === 'Completed'
+    ? `
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin:8px 0 12px 0;
+        color:#0066cc;
+        font-size:15px;
+        font-weight:700;
+      ">
+        <span style="
+          width:10px;
+          height:10px;
+          background:#0066cc;
+          border-radius:50%;
+          display:inline-block;
+          flex-shrink:0;
+        "></span>
+
+        <span>EVENT COMPLETED</span>
+      </div>
+    `
+    : ''
+}
 
       <div style="
         font-size:14px;
