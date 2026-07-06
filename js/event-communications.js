@@ -57,8 +57,12 @@ async function loadEventRoster(eventId){
 
         const response =
             await fetch(
+            `${API}/event-communications/event-roster/${eventId}`,
 
-`${API}/event-communications/event-roster/${eventId}`,
+            console.log(
+               'Request URL:',
+               `${API}/event-communications/event-roster/${eventId}`
+            ); 
 
             {
 
@@ -83,6 +87,11 @@ async function loadEventRoster(eventId){
 
 const result =
     await response.json();
+
+     console.log(
+    'Roster response:',
+    result
+);
 
 roster =
     Array.isArray(result)
