@@ -240,11 +240,68 @@ function renderCommunicationModal(){
 
 <hr>
 
-<div style="
-    margin-top:20px;
+<div style="margin-top:24px;">
+
+<label style="
+display:block;
+font-weight:700;
+margin-bottom:6px;
 ">
 
-COMING NEXT...
+Subject
+
+</label>
+
+<input
+
+id="email-subject"
+
+type="text"
+
+style="
+width:100%;
+padding:10px;
+border:1px solid #d1d5db;
+border-radius:8px;
+margin-bottom:18px;
+"
+
+value="Reminder - ${selectedEvent.title}"
+
+>
+
+<label style="
+display:block;
+font-weight:700;
+margin-bottom:6px;
+">
+
+Message
+
+</label>
+
+<textarea
+
+id="email-message"
+
+style="
+width:100%;
+height:180px;
+padding:12px;
+border:1px solid #d1d5db;
+border-radius:8px;
+resize:vertical;
+"
+
+>
+
+Thank you for registering for this Nevada Department of Wildlife event.
+
+Please review the attached event information before attending.
+
+We look forward to seeing you.
+
+</textarea>
 
 </div>
 
