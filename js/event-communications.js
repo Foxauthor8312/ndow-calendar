@@ -144,6 +144,11 @@ async function sendCommunication(){
                 'email-message'
             ).value.trim();
 
+     const ccEmail =
+    document.getElementById(
+        'cc-email'
+    ).value.trim();
+
         if (!subject) {
             alert('Please enter a subject.');
             return;
@@ -196,6 +201,8 @@ async function sendCommunication(){
 
                     message,
 
+                    ccEmail,
+                    
                     recipients:
                         selectedRecipients
 
@@ -355,6 +362,86 @@ Selected:
 <span id="selected-count">
 ${selectedRecipients.length}
 </span>
+
+</div>
+
+<hr style="margin:24px 0;">
+
+<label style="
+display:block;
+font-weight:700;
+margin-bottom:6px;
+">
+
+Send Test Copy (optional)
+
+</label>
+
+<input
+
+id="cc-email"
+
+type="email"
+
+placeholder="name@example.com"
+
+style="
+width:100%;
+padding:10px;
+border:1px solid #d1d5db;
+border-radius:8px;
+margin-bottom:18px;
+"
+
+>
+
+<div style="
+display:flex;
+justify-content:flex-end;
+gap:12px;
+margin-top:24px;
+">
+
+<button
+
+id="cancel-communication"
+
+type="button"
+
+style="
+padding:10px 20px;
+"
+
+onclick="closeEventCommunication()"
+
+>
+
+Cancel
+
+</button>
+
+<button
+
+id="send-communication"
+
+type="button"
+
+style="
+padding:10px 20px;
+background:#19304B;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+"
+
+onclick="sendCommunication()"
+
+>
+
+Send Email
+
+</button>
 
 </div>
 
