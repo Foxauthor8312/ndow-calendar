@@ -15,6 +15,31 @@
 
 ==============================================================================
 */
+
+import {
+
+    loadEventRoster,
+
+    sendCommunicationRequest
+
+}
+
+from
+
+'./event-communications-api.js';
+
+import {
+
+    renderRecipientList,
+
+    updateRecipientCount
+
+}
+
+from
+
+'./event-communications-ui.js';
+
 const API =
     'https://ndow-calendar-server.onrender.com/api';
 
@@ -42,199 +67,8 @@ function closeEventCommunication(){
 
 }
 
-async function loadEventRoster(eventId) {
 
-    const token =
-        localStorage.getItem('token');
 
-    const response =
-        await fetch(
-
-            `${API}/event-communications/event-roster/${eventId}`,
-
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
-
-        );
-
-    const result =
-        await response.json();
-
-    console.log(result);
-
-    roster = result.data || [];
-
-    selectedRecipients = [...roster];
-
-}
-
-function renderRecipientList(){
-
-    const list =
-        document.getElementById(
-            'recipient-list'
-        );
-
-    list.innerHTML = '';
-
-    roster.forEach(student => {
-
-        const checked =
-            selectedRecipients.some(
-
-                r =>
-                    r.customer_id ===
-                    student.customer_id
-
-            ) ? 'checked' : '';
-
-        list.insertAdjacentHTML(
-
-            'beforeend',
-
-            `
-<label style="
-display:block;
-margin-bottom:8px;
-">
-
-<input
-type="checkbox"
-${checked}
-onchange="toggleRecipient(${student.customer_id})"
->
-
-${student.student_name}
-
-<span style="
-color:#6b7280;
-font-size:12px;
-">
-
-(${student.student_email})
-
-</span>
-
-</label>
-`
-
-        );
-
-    });
-
-}
-
-async function sendCommunication(){
-
-    try{
-
-        const token =
-            localStorage.getItem('token');
-
-        const subject =
-            document.getElementById(
-                'email-subject'
-            ).value.trim();
-
-        const message =
-            document.getElementById(
-                'email-message'
-            ).value.trim();
-
-     const ccEmail =
-    document.getElementById(
-        'cc-email'
-    ).value.trim();
-
-        if (!subject) {
-            alert('Please enter a subject.');
-            return;
-        }
-
-        if (!message) {
-            alert('Please enter a message.');
-            return;
-        }
-
-        if (selectedRecipients.length === 0) {
-            alert('Please select at least one recipient.');
-            return;
-        }
-
-        const response =
-            await fetch(
-
-`${API}/event-communications/send`,
-
-            {
-
-                method: 'POST',
-
-                headers: {
-
-                    'Content-Type':
-                        'application/json',
-
-                    Authorization:
-                        `Bearer ${token}`
-
-                },
-
-                body: JSON.stringify({
-
-                    eventId:
-                        selectedEvent.id,
-
-                    eventName:
-                        selectedEvent.title,
-
-                    eventDate:
-                        selectedEvent.date,
-
-                    eventLocation:
-                        selectedEvent.location,
-
-                    subject,
-
-                    message,
-
-                    ccEmail,
-                    
-                    recipients:
-                        selectedRecipients
-
-                })
-
-            }
-
-        );
-
-        const result =
-            await response.json();
-
-        if (!response.ok)
-            throw new Error(result.message);
-
-        alert(
-            `${result.recipients} email(s) sent successfully.`
-        );
-
-     closeEventCommunication();
-
-    }
-
-    catch(err){
-
-        console.error(err);
-
-        alert(err.message);
-
-    }
-
-}
 function renderCommunicationModal(){
 
     const container =
