@@ -3000,7 +3000,10 @@ const response = await fetch(
     }
 
    const data =
-  await response.json();
+    await response.json();
+
+  events =
+   data.events || [];
 
 const rawEventCount =
   (data.events || []).length;
