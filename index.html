@@ -595,7 +595,7 @@ button:hover{
   background:#2563eb;
 }
 
-.cancelled{
+.Canceled{
   background:#ff0000;
   border-radius:50%;
 }
@@ -645,7 +645,7 @@ button:hover{
   border:1px solid #d1d5db;
   font-size:14px;
 }
-  .event-cancelled-dot{
+  .event-Canceled-dot{
   display:inline-block;
   width:9px;
   height:9px;
@@ -2172,10 +2172,10 @@ function closeChangePinModal(){
       </div>
 
 		 <div class="legend-item"
-		     onclick="toggleFilter('Cancelled')">
+		     onclick="toggleFilter('Canceled')">
 		
-		    <span class="legend-color cancelled"></span>
-		    Cancelled
+		    <span class="legend-color Canceled"></span>
+		    Canceled
 		
 		</div>
 
@@ -4658,12 +4658,12 @@ if(myEventsOnly){
 		  
 const categoryFilters =
   activeFilters.filter(
-    f => f !== 'Cancelled'
+    f => f !== 'Canceled'
   );
 
-const cancelledFilter =
+const CanceledFilter =
   activeFilters.includes(
-    'Cancelled'
+    'Canceled'
   );
 
 // Category filtering
@@ -4676,10 +4676,10 @@ if(
   return false;
 }
 
-// Cancelled filtering
+// Canceled filtering
 if(
-  cancelledFilter &&
-  event.status !== 'Cancelled'
+  CanceledFilter &&
+  event.status !== 'Canceled'
 ){
   return false;
 }
@@ -4825,8 +4825,8 @@ const cleanTitle =
 
   .trim();
 
-const isCancelled =
-  event.status === 'Cancelled';
+const isCanceled =
+  event.status === 'Canceled';
 
 const instructorText =
 
@@ -4896,7 +4896,7 @@ div.innerHTML = `
   }
 
   ${
-    isCancelled
+    isCanceled
       ? `
         <span style="
           width:8px;
@@ -4925,7 +4925,7 @@ div.innerHTML = `
 `;
 
 div.title =
-    `${isCancelled ? 'CANCELLED - ' : ''}#${event.id} ${cleanTitle}`;
+    `${isCanceled ? 'Canceled - ' : ''}#${event.id} ${cleanTitle}`;
 
     div.onclick = () =>
       openEventModal(
@@ -6574,30 +6574,7 @@ modalBody.innerHTML = `
       </div>
 
 ${
-  event.status === 'Cancelled'
-    ? `
-      <div style="
-        display:flex;
-        align-items:center;
-        gap:8px;
-        margin:8px 0 12px 0;
-        color:#d60000;
-        font-size:15px;
-        font-weight:700;
-      ">
-        <span style="
-          width:10px;
-          height:10px;
-          background:#ff0000;
-          border-radius:50%;
-          display:inline-block;
-          flex-shrink:0;
-        "></span>
-
-        <span>EVENT CANCELLED</span>
-      </div>
-    `
-    : event.status === 'Registration Closed'
+  event.status === 'Registration Closed'
     ? `
       <div style="
         display:flex;
@@ -6620,7 +6597,30 @@ ${
         <span>REGISTRATION CLOSED</span>
       </div>
     `
-    : event.status === 'Completed'
+  : event.status === 'Canceled'
+    ? `
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin:8px 0 12px 0;
+        color:#d60000;
+        font-size:15px;
+        font-weight:700;
+      ">
+        <span style="
+          width:10px;
+          height:10px;
+          background:#ff0000;
+          border-radius:50%;
+          display:inline-block;
+          flex-shrink:0;
+        "></span>
+
+        <span>EVENT CANCELED</span>
+      </div>
+    `
+  : event.status === 'Event Results Pending'
     ? `
       <div style="
         display:flex;
@@ -6635,6 +6635,29 @@ ${
           width:10px;
           height:10px;
           background:#0066cc;
+          border-radius:50%;
+          display:inline-block;
+          flex-shrink:0;
+        "></span>
+
+        <span>EVENT RESULTS PENDING</span>
+      </div>
+    `
+  : event.status === 'Event Completed'
+    ? `
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin:8px 0 12px 0;
+        color:#008000;
+        font-size:15px;
+        font-weight:700;
+      ">
+        <span style="
+          width:10px;
+          height:10px;
+          background:#00aa44;
           border-radius:50%;
           display:inline-block;
           flex-shrink:0;
