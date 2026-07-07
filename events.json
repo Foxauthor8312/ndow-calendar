@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-06T22:55:09.446Z",
+  "lastUpdated": "2026-07-07T00:35:59.253Z",
   "metrics": {
     "finalEvents": 411
   },
@@ -7,7 +7,7 @@
     {
       "id": "4394",
       "sourceId": "4394",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4394",
       "title": "Cops & Bobbers - Laughlin",
       "program": "Fishing Classes",
@@ -155,7 +155,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -164,7 +164,7 @@
     {
       "id": "4395",
       "sourceId": "4395",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4395",
       "title": "Cops & Bobbers - Las Vegas",
       "program": "Fishing Classes",
@@ -312,7 +312,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -321,7 +321,7 @@
     {
       "id": "4396",
       "sourceId": "4396",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4396",
       "title": "Bowhunter Education Field Day",
       "program": "Bowhunter Education Field Day",
@@ -346,7 +346,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -380,7 +380,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -389,7 +389,7 @@
     {
       "id": "4398",
       "sourceId": "4398",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4398",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -414,7 +414,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -423,7 +423,7 @@
     {
       "id": "4399",
       "sourceId": "4399",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4399",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -448,7 +448,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -457,7 +457,7 @@
     {
       "id": "4400",
       "sourceId": "4400",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4400",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -482,7 +482,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -491,7 +491,7 @@
     {
       "id": "4401",
       "sourceId": "4401",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4401",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -516,7 +516,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -525,7 +525,7 @@
     {
       "id": "4402",
       "sourceId": "4402",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4402",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -550,7 +550,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -559,7 +559,7 @@
     {
       "id": "4403",
       "sourceId": "4403",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4403",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -584,7 +584,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -593,7 +593,7 @@
     {
       "id": "4404",
       "sourceId": "4404",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4404",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -618,7 +618,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -627,7 +627,7 @@
     {
       "id": "4405",
       "sourceId": "4405",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4405",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -652,7 +652,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -686,7 +686,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -695,7 +695,7 @@
     {
       "id": "4407",
       "sourceId": "4407",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4407",
       "title": "Introduction to Rifle Shooting",
       "program": "Advanced Hunter Education",
@@ -720,7 +720,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -729,7 +729,7 @@
     {
       "id": "4408",
       "sourceId": "4408",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4408",
       "title": "Introduction to Shooting Sporting Clays",
       "program": "Advanced Hunter Education",
@@ -754,7 +754,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -763,7 +763,7 @@
     {
       "id": "4409",
       "sourceId": "4409",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4409",
       "title": "Introduction to Muzzleloader Shooting",
       "program": "Advanced Hunter Education",
@@ -788,7 +788,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -797,7 +797,7 @@
     {
       "id": "4410",
       "sourceId": "4410",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4410",
       "title": "Test Event for Timesheet",
       "program": "Wildlife Discovery",
@@ -822,7 +822,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -831,7 +831,7 @@
     {
       "id": "4411",
       "sourceId": "4411",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4411",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -856,7 +856,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -865,7 +865,7 @@
     {
       "id": "4412",
       "sourceId": "4412",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4412",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -890,7 +890,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -899,7 +899,7 @@
     {
       "id": "4413",
       "sourceId": "4413",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4413",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -924,7 +924,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -933,7 +933,7 @@
     {
       "id": "4414",
       "sourceId": "4414",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4414",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -958,7 +958,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -967,7 +967,7 @@
     {
       "id": "4415",
       "sourceId": "4415",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4415",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -992,7 +992,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1001,7 +1001,7 @@
     {
       "id": "4416",
       "sourceId": "4416",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4416",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1026,7 +1026,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1035,7 +1035,7 @@
     {
       "id": "4417",
       "sourceId": "4417",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4417",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1060,7 +1060,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1069,7 +1069,7 @@
     {
       "id": "4418",
       "sourceId": "4418",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4418",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1094,7 +1094,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1103,7 +1103,7 @@
     {
       "id": "4419",
       "sourceId": "4419",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4419",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1128,7 +1128,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1137,7 +1137,7 @@
     {
       "id": "4420",
       "sourceId": "4420",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4420",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1162,7 +1162,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1171,7 +1171,7 @@
     {
       "id": "4421",
       "sourceId": "4421",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4421",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1196,7 +1196,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1205,7 +1205,7 @@
     {
       "id": "4422",
       "sourceId": "4422",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4422",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1230,7 +1230,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1239,7 +1239,7 @@
     {
       "id": "4423",
       "sourceId": "4423",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4423",
       "title": "WILD Week: Become a Biologist",
       "program": "Wildlife Discovery",
@@ -1264,7 +1264,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1273,7 +1273,7 @@
     {
       "id": "4424",
       "sourceId": "4424",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4424",
       "title": "WILD Week: Animal Adaptations",
       "program": "Wildlife Discovery",
@@ -1298,7 +1298,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1307,7 +1307,7 @@
     {
       "id": "4425",
       "sourceId": "4425",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4425",
       "title": "WILD Week: Wildlife Safari",
       "program": "Wildlife Discovery",
@@ -1332,7 +1332,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1341,7 +1341,7 @@
     {
       "id": "4426",
       "sourceId": "4426",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4426",
       "title": "WILD Week: Animal Tracks",
       "program": "Wildlife Discovery",
@@ -1366,7 +1366,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1375,7 +1375,7 @@
     {
       "id": "4427",
       "sourceId": "4427",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4427",
       "title": "Living with Wildlife - Birds",
       "program": "Wildlife Discovery",
@@ -1400,7 +1400,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1409,7 +1409,7 @@
     {
       "id": "4428",
       "sourceId": "4428",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4428",
       "title": "Living with Wildlife - Reptiles",
       "program": "Wildlife Discovery",
@@ -1434,7 +1434,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1468,7 +1468,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1502,7 +1502,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1536,7 +1536,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1570,7 +1570,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1604,7 +1604,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1638,7 +1638,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1672,7 +1672,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1681,7 +1681,7 @@
     {
       "id": "4436",
       "sourceId": "4436",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4436",
       "title": "Bowhunter Education Field Day",
       "program": "Bowhunter Education Field Day",
@@ -1706,7 +1706,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1715,7 +1715,7 @@
     {
       "id": "4437",
       "sourceId": "4437",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4437",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1740,7 +1740,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1749,7 +1749,7 @@
     {
       "id": "4438",
       "sourceId": "4438",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4438",
       "title": "Instructor Range Day",
       "program": "Advanced Hunter Education",
@@ -1802,7 +1802,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1811,7 +1811,7 @@
     {
       "id": "4439",
       "sourceId": "4439",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4439",
       "title": "Introduction to Crossbows",
       "program": "Advanced Hunter Education",
@@ -1836,7 +1836,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1845,7 +1845,7 @@
     {
       "id": "4440",
       "sourceId": "4440",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4440",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -1870,7 +1870,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1879,7 +1879,7 @@
     {
       "id": "4441",
       "sourceId": "4441",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4441",
       "title": "BAI Instructor Certification",
       "program": "Archery Education",
@@ -1951,7 +1951,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1960,7 +1960,7 @@
     {
       "id": "4442",
       "sourceId": "4442",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4442",
       "title": "Advanced Fly-Tying",
       "program": "Fishing Classes",
@@ -1985,7 +1985,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1994,7 +1994,7 @@
     {
       "id": "4443",
       "sourceId": "4443",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4443",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2019,7 +2019,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2028,7 +2028,7 @@
     {
       "id": "4444",
       "sourceId": "4444",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4444",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2053,7 +2053,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2062,7 +2062,7 @@
     {
       "id": "4445",
       "sourceId": "4445",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4445",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2087,7 +2087,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2096,7 +2096,7 @@
     {
       "id": "4446",
       "sourceId": "4446",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4446",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2121,7 +2121,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2130,7 +2130,7 @@
     {
       "id": "4447",
       "sourceId": "4447",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4447",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2155,7 +2155,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2164,7 +2164,7 @@
     {
       "id": "4448",
       "sourceId": "4448",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4448",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2189,7 +2189,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2198,7 +2198,7 @@
     {
       "id": "4449",
       "sourceId": "4449",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4449",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2223,7 +2223,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2232,7 +2232,7 @@
     {
       "id": "4450",
       "sourceId": "4450",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4450",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2257,7 +2257,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2266,7 +2266,7 @@
     {
       "id": "4451",
       "sourceId": "4451",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4451",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2291,7 +2291,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2300,7 +2300,7 @@
     {
       "id": "4452",
       "sourceId": "4452",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4452",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2325,7 +2325,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2359,7 +2359,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2368,7 +2368,7 @@
     {
       "id": "4454",
       "sourceId": "4454",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4454",
       "title": "Spring Break Youth Hands on Outdoor Days",
       "program": "Advanced Hunter Education",
@@ -2393,7 +2393,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2427,7 +2427,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2436,7 +2436,7 @@
     {
       "id": "4456",
       "sourceId": "4456",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4456",
       "title": "Introduction to Trap Shooting",
       "program": "Advanced Hunter Education",
@@ -2461,7 +2461,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2470,7 +2470,7 @@
     {
       "id": "4457",
       "sourceId": "4457",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4457",
       "title": "Introduction to Skeet Shooting",
       "program": "Advanced Hunter Education",
@@ -2495,7 +2495,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2504,7 +2504,7 @@
     {
       "id": "4458",
       "sourceId": "4458",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4458",
       "title": "Southern Nevada Big Game Tag Application Seminar",
       "program": "Advanced Hunter Education",
@@ -2529,7 +2529,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2538,7 +2538,7 @@
     {
       "id": "4459",
       "sourceId": "4459",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4459",
       "title": "TIC Field Stations - Collins/Cunningham",
       "program": "School Events",
@@ -2563,7 +2563,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2572,7 +2572,7 @@
     {
       "id": "4460",
       "sourceId": "4460",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4460",
       "title": "TIC Release - McShane",
       "program": "School Events",
@@ -2597,7 +2597,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2606,7 +2606,7 @@
     {
       "id": "4461",
       "sourceId": "4461",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4461",
       "title": "KYN Lesson 2 - Wirth and Safford",
       "program": "School Events",
@@ -2631,7 +2631,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2640,7 +2640,7 @@
     {
       "id": "4462",
       "sourceId": "4462",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4462",
       "title": "KYN Lesson 2 - Jordan",
       "program": "School Events",
@@ -2665,7 +2665,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2674,7 +2674,7 @@
     {
       "id": "4463",
       "sourceId": "4463",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4463",
       "title": "YOUTH Registration: Save Comins Lake Pike-Out",
       "program": "Fishing Classes",
@@ -2699,7 +2699,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2708,7 +2708,7 @@
     {
       "id": "4464",
       "sourceId": "4464",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4464",
       "title": "TIC Release - Bennett",
       "program": "School Events",
@@ -2733,7 +2733,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2742,7 +2742,7 @@
     {
       "id": "4465",
       "sourceId": "4465",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4465",
       "title": "Youth Wildlife Discovery Walk",
       "program": "Wildlife Discovery",
@@ -2767,7 +2767,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2776,7 +2776,7 @@
     {
       "id": "4466",
       "sourceId": "4466",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4466",
       "title": "Wetlands Art Day",
       "program": "Wildlife Discovery",
@@ -2801,7 +2801,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2810,7 +2810,7 @@
     {
       "id": "4467",
       "sourceId": "4467",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4467",
       "title": "Birding Series: Birds in Color",
       "program": "Wildlife Discovery",
@@ -2835,7 +2835,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2869,7 +2869,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2878,7 +2878,7 @@
     {
       "id": "4469",
       "sourceId": "4469",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4469",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2903,7 +2903,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2912,7 +2912,7 @@
     {
       "id": "4470",
       "sourceId": "4470",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4470",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -2937,7 +2937,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2971,7 +2971,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2980,7 +2980,7 @@
     {
       "id": "4474",
       "sourceId": "4474",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4474",
       "title": "Living with Wildlife - Sun City Summerlin",
       "program": "Wildlife Discovery",
@@ -3005,7 +3005,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3014,7 +3014,7 @@
     {
       "id": "4475",
       "sourceId": "4475",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4475",
       "title": "Fair Maintenance and Prep",
       "program": "Advanced Hunter Education",
@@ -3039,7 +3039,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3048,7 +3048,7 @@
     {
       "id": "4476",
       "sourceId": "4476",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4476",
       "title": "KYN Lesson 3 - Wirth and Safford",
       "program": "School Events",
@@ -3073,7 +3073,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3082,7 +3082,7 @@
     {
       "id": "4477",
       "sourceId": "4477",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4477",
       "title": "KYN Lesson 3 - Jordan",
       "program": "School Events",
@@ -3107,7 +3107,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3169,7 +3169,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3178,7 +3178,7 @@
     {
       "id": "4479",
       "sourceId": "4479",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4479",
       "title": "Outdoor Adventure Week- Fishing and Boating Fun",
       "program": "Fishing Classes",
@@ -3203,7 +3203,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3212,7 +3212,7 @@
     {
       "id": "4480",
       "sourceId": "4480",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4480",
       "title": "Instructor Events Training",
       "program": "Advanced Hunter Education",
@@ -3237,7 +3237,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3246,7 +3246,7 @@
     {
       "id": "4481",
       "sourceId": "4481",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4481",
       "title": "Owl Biology Presentation",
       "program": "School Events",
@@ -3271,7 +3271,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3305,7 +3305,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3314,7 +3314,7 @@
     {
       "id": "4483",
       "sourceId": "4483",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4483",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -3339,7 +3339,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3348,7 +3348,7 @@
     {
       "id": "4484",
       "sourceId": "4484",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4484",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -3373,7 +3373,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3382,7 +3382,7 @@
     {
       "id": "4485",
       "sourceId": "4485",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4485",
       "title": "Ladies Fly Fishing",
       "program": "Fishing Classes",
@@ -3407,7 +3407,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3416,7 +3416,7 @@
     {
       "id": "4486",
       "sourceId": "4486",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4486",
       "title": "Kayak Birdwatching - Lake Mead",
       "program": "Wildlife Discovery",
@@ -3441,7 +3441,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3475,7 +3475,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3484,7 +3484,7 @@
     {
       "id": "4488",
       "sourceId": "4488",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4488",
       "title": "NASP Virtual Tournament - The Meadows School",
       "program": "School Events",
@@ -3509,7 +3509,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3518,7 +3518,7 @@
     {
       "id": "4489",
       "sourceId": "4489",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4489",
       "title": "SNTU meeting and fishing instruction",
       "program": "Fishing Classes",
@@ -3543,7 +3543,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3552,7 +3552,7 @@
     {
       "id": "4490",
       "sourceId": "4490",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4490",
       "title": "\"Eco-advisors\" Student presentations & feedback",
       "program": "School Events",
@@ -3577,7 +3577,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3586,7 +3586,7 @@
     {
       "id": "4491",
       "sourceId": "4491",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4491",
       "title": "\"Eco-advisors\" Student presentations & feedback",
       "program": "School Events",
@@ -3611,7 +3611,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3620,7 +3620,7 @@
     {
       "id": "4492",
       "sourceId": "4492",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4492",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -3645,7 +3645,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3654,7 +3654,7 @@
     {
       "id": "4493",
       "sourceId": "4493",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4493",
       "title": "Elko NASP Club - 3/17/26",
       "program": "School Events",
@@ -3679,7 +3679,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3688,7 +3688,7 @@
     {
       "id": "4494",
       "sourceId": "4494",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4494",
       "title": "Career Fair",
       "program": "School Events",
@@ -3713,7 +3713,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3722,7 +3722,7 @@
     {
       "id": "4495",
       "sourceId": "4495",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4495",
       "title": "Career Fair",
       "program": "School Events",
@@ -3747,7 +3747,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3756,7 +3756,7 @@
     {
       "id": "4496",
       "sourceId": "4496",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4496",
       "title": "Career Fair",
       "program": "School Events",
@@ -3781,7 +3781,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3790,7 +3790,7 @@
     {
       "id": "4497",
       "sourceId": "4497",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4497",
       "title": "NASP Virtual Tournament- Las Vegas Academy",
       "program": "School Events",
@@ -3843,7 +3843,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3877,7 +3877,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3886,7 +3886,7 @@
     {
       "id": "4499",
       "sourceId": "4499",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4499",
       "title": "Instructor Portal Discussion",
       "program": "Advanced Hunter Education",
@@ -3911,7 +3911,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3920,7 +3920,7 @@
     {
       "id": "4500",
       "sourceId": "4500",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4500",
       "title": "Archery and Firearms Maintenance",
       "program": "Advanced Hunter Education",
@@ -3945,7 +3945,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3954,7 +3954,7 @@
     {
       "id": "4501",
       "sourceId": "4501",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4501",
       "title": "Archery and Firearms Maintenance",
       "program": "Advanced Hunter Education",
@@ -3979,7 +3979,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4013,7 +4013,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4022,7 +4022,7 @@
     {
       "id": "4503",
       "sourceId": "4503",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4503",
       "title": "Friday Flies- Boulder City",
       "program": "Fishing Classes",
@@ -4047,7 +4047,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4056,7 +4056,7 @@
     {
       "id": "4504",
       "sourceId": "4504",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4504",
       "title": "Living with Wildlife - CCSD Family Engagement Center",
       "program": "Wildlife Discovery",
@@ -4081,7 +4081,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.841Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4090,7 +4090,7 @@
     {
       "id": "4505",
       "sourceId": "4505",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4505",
       "title": "Lake Mead Hatchery Visitors Center hosting",
       "program": "Fishing Classes",
@@ -4115,7 +4115,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4124,7 +4124,7 @@
     {
       "id": "4506",
       "sourceId": "4506",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4506",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -4149,7 +4149,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4158,7 +4158,7 @@
     {
       "id": "4507",
       "sourceId": "4507",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4507",
       "title": "TIC Release - Monett",
       "program": "School Events",
@@ -4183,7 +4183,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4192,7 +4192,7 @@
     {
       "id": "4508",
       "sourceId": "4508",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4508",
       "title": "Desert Shores Spring Derby",
       "program": "Fishing Classes",
@@ -4217,7 +4217,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4226,7 +4226,7 @@
     {
       "id": "4509",
       "sourceId": "4509",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4509",
       "title": "TIC Release Field Trip",
       "program": "Fishing Classes",
@@ -4251,7 +4251,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4260,7 +4260,7 @@
     {
       "id": "4510",
       "sourceId": "4510",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4510",
       "title": "TIC Release Field Trip- Floyd ES",
       "program": "Fishing Classes",
@@ -4408,7 +4408,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4417,7 +4417,7 @@
     {
       "id": "4511",
       "sourceId": "4511",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4511",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -4442,7 +4442,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4451,7 +4451,7 @@
     {
       "id": "4512",
       "sourceId": "4512",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4512",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -4476,7 +4476,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4510,7 +4510,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.841Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4705,7 +4705,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4714,7 +4714,7 @@
     {
       "id": "4515",
       "sourceId": "4515",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4515",
       "title": "Carp Rodeo 2026",
       "program": "Fishing Classes",
@@ -4739,7 +4739,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4748,7 +4748,7 @@
     {
       "id": "4516",
       "sourceId": "4516",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4516",
       "title": "AMS Training",
       "program": "Advanced Hunter Education",
@@ -4773,7 +4773,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4782,7 +4782,7 @@
     {
       "id": "4517",
       "sourceId": "4517",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4517",
       "title": "Introduction to Shotgun",
       "program": "Advanced Hunter Education",
@@ -4807,7 +4807,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4816,7 +4816,7 @@
     {
       "id": "4518",
       "sourceId": "4518",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4518",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -4841,7 +4841,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4850,7 +4850,7 @@
     {
       "id": "4519",
       "sourceId": "4519",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4519",
       "title": "Archery and Firearms Maintenance",
       "program": "Advanced Hunter Education",
@@ -4875,7 +4875,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4884,7 +4884,7 @@
     {
       "id": "4520",
       "sourceId": "4520",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4520",
       "title": "Project Healing Water Fly Fishing",
       "program": "Fishing Classes",
@@ -4909,7 +4909,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4918,7 +4918,7 @@
     {
       "id": "4521",
       "sourceId": "4521",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4521",
       "title": "STEM Family Night- Dickens Elementary",
       "program": "School Events",
@@ -4943,7 +4943,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4952,7 +4952,7 @@
     {
       "id": "4522",
       "sourceId": "4522",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4522",
       "title": "SNCC Outreach Event - Reptile Education",
       "program": "Wildlife Discovery",
@@ -4977,7 +4977,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4986,7 +4986,7 @@
     {
       "id": "4523",
       "sourceId": "4523",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4523",
       "title": "Birding Series: Nesting Neighbors",
       "program": "Wildlife Discovery",
@@ -5011,7 +5011,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5045,7 +5045,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5054,7 +5054,7 @@
     {
       "id": "4525",
       "sourceId": "4525",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4525",
       "title": "Skins & Skulls + WE Scavenger Hunt (McQuinn)",
       "program": "School Events",
@@ -5079,7 +5079,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5088,7 +5088,7 @@
     {
       "id": "4526",
       "sourceId": "4526",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4526",
       "title": "KYN Lesson 1 (Dyk and Manzaneras)",
       "program": "School Events",
@@ -5113,7 +5113,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5122,7 +5122,7 @@
     {
       "id": "4527",
       "sourceId": "4527",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4527",
       "title": "KYN Lesson 2 (Dyk and Manzaneras)",
       "program": "School Events",
@@ -5147,7 +5147,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5156,7 +5156,7 @@
     {
       "id": "4528",
       "sourceId": "4528",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4528",
       "title": "KYN Lesson 3 (Dyk and Manzaneras)",
       "program": "School Events",
@@ -5181,7 +5181,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5190,7 +5190,7 @@
     {
       "id": "4529",
       "sourceId": "4529",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4529",
       "title": "KYN Lesson 1 (Beasley)",
       "program": "School Events",
@@ -5215,7 +5215,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.841Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5224,7 +5224,7 @@
     {
       "id": "4530",
       "sourceId": "4530",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4530",
       "title": "KYN Lesson 2 (Beasley)",
       "program": "School Events",
@@ -5249,7 +5249,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5258,7 +5258,7 @@
     {
       "id": "4531",
       "sourceId": "4531",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4531",
       "title": "KYN Lesson 3 (Beasley)",
       "program": "School Events",
@@ -5283,7 +5283,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5292,7 +5292,7 @@
     {
       "id": "4532",
       "sourceId": "4532",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4532",
       "title": "KYN Lesson 1 (3 classes)",
       "program": "School Events",
@@ -5317,7 +5317,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5326,7 +5326,7 @@
     {
       "id": "4533",
       "sourceId": "4533",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4533",
       "title": "KYN Lesson 1 (Parker)",
       "program": "School Events",
@@ -5351,7 +5351,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5360,7 +5360,7 @@
     {
       "id": "4534",
       "sourceId": "4534",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4534",
       "title": "Owl Pellet Dissections (3 classes)",
       "program": "School Events",
@@ -5385,7 +5385,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5394,7 +5394,7 @@
     {
       "id": "4535",
       "sourceId": "4535",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4535",
       "title": "2026 Clark County Fair & Rodeo",
       "program": "Wildlife Discovery",
@@ -5884,7 +5884,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5893,7 +5893,7 @@
     {
       "id": "4536",
       "sourceId": "4536",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4536",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -5918,7 +5918,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5927,7 +5927,7 @@
     {
       "id": "4537",
       "sourceId": "4537",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4537",
       "title": "Roundy Elementary School Career Day",
       "program": "School Events",
@@ -5952,7 +5952,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5961,7 +5961,7 @@
     {
       "id": "4538",
       "sourceId": "4538",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4538",
       "title": "Intro to Fly-Fishing Clinic",
       "program": "Fishing Classes",
@@ -5986,7 +5986,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5995,7 +5995,7 @@
     {
       "id": "4539",
       "sourceId": "4539",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4539",
       "title": "Elko NASP Club - 4/7/26",
       "program": "School Events",
@@ -6020,7 +6020,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6029,7 +6029,7 @@
     {
       "id": "4540",
       "sourceId": "4540",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4540",
       "title": "Elko NASP Club - 4/21/26",
       "program": "School Events",
@@ -6054,7 +6054,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6063,7 +6063,7 @@
     {
       "id": "4541",
       "sourceId": "4541",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4541",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -6088,7 +6088,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6097,7 +6097,7 @@
     {
       "id": "4542",
       "sourceId": "4542",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4542",
       "title": "Birding Series: Migratory Birds",
       "program": "Wildlife Discovery",
@@ -6122,7 +6122,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6156,7 +6156,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6165,7 +6165,7 @@
     {
       "id": "4544",
       "sourceId": "4544",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4544",
       "title": "Spring Blooms & Wildlife Walk",
       "program": "Wildlife Discovery",
@@ -6190,7 +6190,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6199,7 +6199,7 @@
     {
       "id": "4545",
       "sourceId": "4545",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4545",
       "title": "Career Fair",
       "program": "School Events",
@@ -6224,7 +6224,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.575Z",
+        "scrapedAt": "2026-07-07T00:21:29.222Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6233,7 +6233,7 @@
     {
       "id": "4546",
       "sourceId": "4546",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4546",
       "title": "Skins & Skulls",
       "program": "Wildlife Discovery",
@@ -6258,7 +6258,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6292,7 +6292,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6301,7 +6301,7 @@
     {
       "id": "4548",
       "sourceId": "4548",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4548",
       "title": "Intro to Archery CAP",
       "program": "Archery Education",
@@ -6411,7 +6411,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6420,7 +6420,7 @@
     {
       "id": "4549",
       "sourceId": "4549",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4549",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -6445,7 +6445,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6454,7 +6454,7 @@
     {
       "id": "4550",
       "sourceId": "4550",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4550",
       "title": "2026 Volunteer Instructor Academy",
       "program": "Advanced Hunter Education",
@@ -6479,7 +6479,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6488,7 +6488,7 @@
     {
       "id": "4551",
       "sourceId": "4551",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4551",
       "title": "Instructor Defensive Driving Class",
       "program": "Fishing Classes",
@@ -6513,7 +6513,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6522,7 +6522,7 @@
     {
       "id": "4552",
       "sourceId": "4552",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4552",
       "title": "Fly-Tying Class Clean Up and Fly-Fishing Class Prep",
       "program": "Fishing Classes",
@@ -6547,7 +6547,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6556,7 +6556,7 @@
     {
       "id": "4553",
       "sourceId": "4553",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4553",
       "title": "NRA Range Safety Officer",
       "program": "Advanced Hunter Education",
@@ -6581,7 +6581,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6615,7 +6615,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6624,7 +6624,7 @@
     {
       "id": "4555",
       "sourceId": "4555",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4555",
       "title": "Youth Intro to Fishing Clinic - Lander County 4H",
       "program": "Fishing Classes",
@@ -6649,7 +6649,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6658,7 +6658,7 @@
     {
       "id": "4556",
       "sourceId": "4556",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4556",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -6683,7 +6683,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6692,7 +6692,7 @@
     {
       "id": "4557",
       "sourceId": "4557",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4557",
       "title": "NRA Range Safety Officer",
       "program": "Advanced Hunter Education",
@@ -6717,7 +6717,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6726,7 +6726,7 @@
     {
       "id": "4558",
       "sourceId": "4558",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4558",
       "title": "Float Tube Fly-Fishing Clinic",
       "program": "Fishing Classes",
@@ -6751,7 +6751,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6760,7 +6760,7 @@
     {
       "id": "4559",
       "sourceId": "4559",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4559",
       "title": "Ruby Valley School - Fly Fishing Demo",
       "program": "School Events",
@@ -6785,7 +6785,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6794,7 +6794,7 @@
     {
       "id": "4560",
       "sourceId": "4560",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4560",
       "title": "Know Your Nevada - HV - L1",
       "program": "School Events",
@@ -6819,7 +6819,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6828,7 +6828,7 @@
     {
       "id": "4561",
       "sourceId": "4561",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4561",
       "title": "Nests, Burrows & southern NV Wildlife",
       "program": "School Events",
@@ -6853,7 +6853,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6862,7 +6862,7 @@
     {
       "id": "4562",
       "sourceId": "4562",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4562",
       "title": "Know Your Nevada - HV - L2",
       "program": "School Events",
@@ -6887,7 +6887,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6896,7 +6896,7 @@
     {
       "id": "4563",
       "sourceId": "4563",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4563",
       "title": "Know Your Nevada - HV - L3",
       "program": "School Events",
@@ -6921,7 +6921,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6930,7 +6930,7 @@
     {
       "id": "4564",
       "sourceId": "4564",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4564",
       "title": "Know Your Nevada - ECS - L1",
       "program": "School Events",
@@ -6955,7 +6955,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6964,7 +6964,7 @@
     {
       "id": "4565",
       "sourceId": "4565",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4565",
       "title": "Know Your Nevada - ECS - L2",
       "program": "School Events",
@@ -6989,7 +6989,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6998,7 +6998,7 @@
     {
       "id": "4566",
       "sourceId": "4566",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4566",
       "title": "Know Your Nevada - ECS - L3",
       "program": "School Events",
@@ -7023,7 +7023,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7032,7 +7032,7 @@
     {
       "id": "4567",
       "sourceId": "4567",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4567",
       "title": "Know Your Nevada - L1 - Taylor ES (4 classes)",
       "program": "School Events",
@@ -7057,7 +7057,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.179Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7066,7 +7066,7 @@
     {
       "id": "4568",
       "sourceId": "4568",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4568",
       "title": "Know Your Nevada - L2 - Taylor ES (4 classes)",
       "program": "School Events",
@@ -7091,7 +7091,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7100,7 +7100,7 @@
     {
       "id": "4569",
       "sourceId": "4569",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4569",
       "title": "Know Your Nevada - L3 - Taylor ES (4 classes)",
       "program": "School Events",
@@ -7125,7 +7125,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7159,16 +7159,16 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
-      "text": "Jul 10\nYouth Intro to Fishing Clinic - White Pine County 4H Unlisted\n\n■ Registration Open 6 of 20 seats remaining\n\nLocation:\n\nCave Lake State Park\nUS Highway 93-Success Summit\nEly, NV 89301\n\nTaught by:\n\nNicole Hamblin\nDate & Times:\nJul 10, 2026 10:00AM - 1:00PM PDT\nView"
+      "text": "Jul 10\nYouth Intro to Fishing Clinic - White Pine County 4H Unlisted\n\n■ Registration Open 4 of 20 seats remaining\n\nLocation:\n\nCave Lake State Park\nUS Highway 93-Success Summit\nEly, NV 89301\n\nTaught by:\n\nNicole Hamblin\nDate & Times:\nJul 10, 2026 10:00AM - 1:00PM PDT\nView"
     },
     {
       "id": "4571",
       "sourceId": "4571",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4571",
       "title": "Hidden Valley ES Field Trip",
       "program": "School Events",
@@ -7193,7 +7193,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7202,7 +7202,7 @@
     {
       "id": "4572",
       "sourceId": "4572",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4572",
       "title": "TIC Release - Fernley IS",
       "program": "School Events",
@@ -7227,7 +7227,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7236,7 +7236,7 @@
     {
       "id": "4573",
       "sourceId": "4573",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4573",
       "title": "Introduction to Sporting Clays",
       "program": "Advanced Hunter Education",
@@ -7261,7 +7261,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7270,7 +7270,7 @@
     {
       "id": "4574",
       "sourceId": "4574",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4574",
       "title": "Intro to Bass Fishing Clinic",
       "program": "Fishing Classes",
@@ -7295,7 +7295,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7304,7 +7304,7 @@
     {
       "id": "4575",
       "sourceId": "4575",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4575",
       "title": "Introduction to Crossbows",
       "program": "Advanced Hunter Education",
@@ -7329,7 +7329,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7338,7 +7338,7 @@
     {
       "id": "4576",
       "sourceId": "4576",
-      "status": "Open",
+      "status": "Registration Closed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4576",
       "title": "Float Tube Fly-Fishing Clinic",
       "program": "Fishing Classes",
@@ -7363,7 +7363,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7397,7 +7397,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7406,7 +7406,7 @@
     {
       "id": "4578",
       "sourceId": "4578",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4578",
       "title": "Archery and Firearms Maintenance",
       "program": "Advanced Hunter Education",
@@ -7431,7 +7431,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7440,7 +7440,7 @@
     {
       "id": "4579",
       "sourceId": "4579",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4579",
       "title": "TIC Release - Taylor ES",
       "program": "School Events",
@@ -7465,7 +7465,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7474,7 +7474,7 @@
     {
       "id": "4580",
       "sourceId": "4580",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4580",
       "title": "Surviving in the Mojave Desert",
       "program": "School Events",
@@ -7499,7 +7499,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7508,7 +7508,7 @@
     {
       "id": "4581",
       "sourceId": "4581",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4581",
       "title": "Wildlife & Fishing Field Trip - Tarr ES 2nd Grade",
       "program": "School Events",
@@ -7533,7 +7533,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7542,7 +7542,7 @@
     {
       "id": "4582",
       "sourceId": "4582",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4582",
       "title": "BioBlast - Aquatic Invertebrates",
       "program": "Wildlife Discovery",
@@ -7567,7 +7567,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7601,7 +7601,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7610,7 +7610,7 @@
     {
       "id": "4584",
       "sourceId": "4584",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4584",
       "title": "Firearm Maintenance",
       "program": "Advanced Hunter Education",
@@ -7635,7 +7635,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7644,7 +7644,7 @@
     {
       "id": "4585",
       "sourceId": "4585",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4585",
       "title": "Introduction to Sporting Clays",
       "program": "Advanced Hunter Education",
@@ -7669,7 +7669,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7769,7 +7769,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7778,7 +7778,7 @@
     {
       "id": "4587",
       "sourceId": "4587",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4587",
       "title": "Elko NASP Club - 5/5/26",
       "program": "School Events",
@@ -7803,7 +7803,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7812,7 +7812,7 @@
     {
       "id": "4588",
       "sourceId": "4588",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4588",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -7837,7 +7837,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7846,7 +7846,7 @@
     {
       "id": "4589",
       "sourceId": "4589",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4589",
       "title": "TIC Release - Hunsberger ES",
       "program": "School Events",
@@ -7871,7 +7871,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7880,7 +7880,7 @@
     {
       "id": "4590",
       "sourceId": "4590",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4590",
       "title": "TIC Release - Mt. Rose",
       "program": "School Events",
@@ -7905,7 +7905,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7914,7 +7914,7 @@
     {
       "id": "4591",
       "sourceId": "4591",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4591",
       "title": "TIC Release - Smith HS",
       "program": "School Events",
@@ -7939,7 +7939,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7948,7 +7948,7 @@
     {
       "id": "4592",
       "sourceId": "4592",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4592",
       "title": "TIC Release - Corbett ES",
       "program": "School Events",
@@ -7973,7 +7973,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7982,7 +7982,7 @@
     {
       "id": "4593",
       "sourceId": "4593",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4593",
       "title": "TIC Release - Dunn ES Kit",
       "program": "School Events",
@@ -8007,7 +8007,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8016,7 +8016,7 @@
     {
       "id": "4594",
       "sourceId": "4594",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4594",
       "title": "Reptiles Lesson - O'brien MS",
       "program": "School Events",
@@ -8041,7 +8041,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8050,7 +8050,7 @@
     {
       "id": "4595",
       "sourceId": "4595",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4595",
       "title": "STEAM Thursday - South Valleys",
       "program": "School Events",
@@ -8075,7 +8075,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8109,7 +8109,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8143,7 +8143,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8152,7 +8152,7 @@
     {
       "id": "4598",
       "sourceId": "4598",
-      "status": "Open",
+      "status": "Registration Closed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4598",
       "title": "Introduction to Rifle Shooting",
       "program": "Advanced Hunter Education",
@@ -8177,7 +8177,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8211,7 +8211,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8220,7 +8220,7 @@
     {
       "id": "4600",
       "sourceId": "4600",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4600",
       "title": "Wild Neighbors - CCSD Family Engagement Center",
       "program": "Wildlife Discovery",
@@ -8245,7 +8245,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8254,7 +8254,7 @@
     {
       "id": "4601",
       "sourceId": "4601",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4601",
       "title": "Jr Ranger Day",
       "program": "Fishing Classes",
@@ -8326,7 +8326,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8335,7 +8335,7 @@
     {
       "id": "4602",
       "sourceId": "4602",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4602",
       "title": "Veteran Fishing morning",
       "program": "Fishing Classes",
@@ -8388,7 +8388,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8397,7 +8397,7 @@
     {
       "id": "4603",
       "sourceId": "4603",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4603",
       "title": "Owl Pellet Dissection",
       "program": "School Events",
@@ -8422,7 +8422,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8431,7 +8431,7 @@
     {
       "id": "4604",
       "sourceId": "4604",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4604",
       "title": "Red Rock Canyon Table Chat - Nevada Wildlife",
       "program": "Wildlife Discovery",
@@ -8522,7 +8522,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8531,7 +8531,7 @@
     {
       "id": "4606",
       "sourceId": "4606",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4606",
       "title": "SNTU meeting and fishing instruction",
       "program": "Fishing Classes",
@@ -8556,7 +8556,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8565,7 +8565,7 @@
     {
       "id": "4607",
       "sourceId": "4607",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4607",
       "title": "Vegas Vista Academy Hatchery Field Trip",
       "program": "Fishing Classes",
@@ -8590,7 +8590,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.766Z",
+        "scrapedAt": "2026-07-07T00:22:49.841Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8599,7 +8599,7 @@
     {
       "id": "4608",
       "sourceId": "4608",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4608",
       "title": "Alamo Fishing Field Trip- Manch ES",
       "program": "School Events",
@@ -8709,7 +8709,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8718,7 +8718,7 @@
     {
       "id": "4609",
       "sourceId": "4609",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4609",
       "title": "Scout Fishing morning",
       "program": "Fishing Classes",
@@ -8809,7 +8809,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8818,7 +8818,7 @@
     {
       "id": "4610",
       "sourceId": "4610",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4610",
       "title": "Skins, Skulls, and Track Casting",
       "program": "Wildlife Discovery",
@@ -8843,7 +8843,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8852,7 +8852,7 @@
     {
       "id": "4611",
       "sourceId": "4611",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4611",
       "title": "Living with Wildlife - Reptiles",
       "program": "Wildlife Discovery",
@@ -8877,7 +8877,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8911,7 +8911,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8945,7 +8945,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8954,7 +8954,7 @@
     {
       "id": "4614",
       "sourceId": "4614",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4614",
       "title": "KYN Lesson 2 (3classes)",
       "program": "School Events",
@@ -8979,7 +8979,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8988,7 +8988,7 @@
     {
       "id": "4615",
       "sourceId": "4615",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4615",
       "title": "KYN Lesson 2 (Parker)",
       "program": "School Events",
@@ -9013,7 +9013,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9022,7 +9022,7 @@
     {
       "id": "4616",
       "sourceId": "4616",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4616",
       "title": "Skins, Skulls, and Careers (Sestanovich)",
       "program": "School Events",
@@ -9047,7 +9047,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9056,7 +9056,7 @@
     {
       "id": "4617",
       "sourceId": "4617",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4617",
       "title": "World Migratory Bird Day Celebration",
       "program": "Wildlife Discovery",
@@ -9081,7 +9081,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9090,7 +9090,7 @@
     {
       "id": "4618",
       "sourceId": "4618",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4618",
       "title": "Skins & Skulls (Nielsen)",
       "program": "School Events",
@@ -9115,7 +9115,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9124,7 +9124,7 @@
     {
       "id": "4619",
       "sourceId": "4619",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4619",
       "title": "KYN Lesson 3 (3 classes)",
       "program": "School Events",
@@ -9149,7 +9149,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9158,7 +9158,7 @@
     {
       "id": "4620",
       "sourceId": "4620",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4620",
       "title": "Skins, Skulls, and WE Scavanger Hunt",
       "program": "School Events",
@@ -9183,7 +9183,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9192,7 +9192,7 @@
     {
       "id": "4621",
       "sourceId": "4621",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4621",
       "title": "KYN Lesson 3 (Parker)",
       "program": "School Events",
@@ -9217,7 +9217,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9226,7 +9226,7 @@
     {
       "id": "4622",
       "sourceId": "4622",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4622",
       "title": "Flagview Environmental Days",
       "program": "School Events",
@@ -9251,7 +9251,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9260,7 +9260,7 @@
     {
       "id": "4623",
       "sourceId": "4623",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4623",
       "title": "Red Rock Canyon Table Chat - Nevada Wildlife",
       "program": "Wildlife Discovery",
@@ -9313,7 +9313,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9322,7 +9322,7 @@
     {
       "id": "4624",
       "sourceId": "4624",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4624",
       "title": "Dutch Oven Your Wild Harvest",
       "program": "Advanced Hunter Education",
@@ -9347,7 +9347,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9356,7 +9356,7 @@
     {
       "id": "4625",
       "sourceId": "4625",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4625",
       "title": "Friday Flies- Las Vegas",
       "program": "Fishing Classes",
@@ -9381,7 +9381,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9415,7 +9415,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9424,7 +9424,7 @@
     {
       "id": "4627",
       "sourceId": "4627",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4627",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -9449,7 +9449,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9458,7 +9458,7 @@
     {
       "id": "4628",
       "sourceId": "4628",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4628",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -9483,7 +9483,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9492,7 +9492,7 @@
     {
       "id": "4629",
       "sourceId": "4629",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4629",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -9517,7 +9517,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9526,7 +9526,7 @@
     {
       "id": "4630",
       "sourceId": "4630",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4630",
       "title": "Free Fishing Day 2026 - South Fork State Recreation Area",
       "program": "Fishing Classes",
@@ -9551,7 +9551,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9560,7 +9560,7 @@
     {
       "id": "4631",
       "sourceId": "4631",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4631",
       "title": "Free Fishing Day 2026 - Cave Lake State Park",
       "program": "Fishing Classes",
@@ -9585,7 +9585,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9619,7 +9619,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9628,7 +9628,7 @@
     {
       "id": "4633",
       "sourceId": "4633",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4633",
       "title": "Project Healing Water Fly Fishing",
       "program": "Fishing Classes",
@@ -9653,7 +9653,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9662,7 +9662,7 @@
     {
       "id": "4637",
       "sourceId": "4637",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4637",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -9687,7 +9687,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9721,7 +9721,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9755,7 +9755,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9764,7 +9764,7 @@
     {
       "id": "4640",
       "sourceId": "4640",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4640",
       "title": "Intro to Fly-Fishing Clinic",
       "program": "Fishing Classes",
@@ -9817,7 +9817,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9826,7 +9826,7 @@
     {
       "id": "4641",
       "sourceId": "4641",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4641",
       "title": "Intro to Fly-Fishing Clinic (part 2)",
       "program": "Fishing Classes",
@@ -9851,7 +9851,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9860,7 +9860,7 @@
     {
       "id": "4642",
       "sourceId": "4642",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4642",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -9885,7 +9885,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9894,7 +9894,7 @@
     {
       "id": "4643",
       "sourceId": "4643",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4643",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -9919,7 +9919,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9928,7 +9928,7 @@
     {
       "id": "4644",
       "sourceId": "4644",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4644",
       "title": "Friday Flies- Boulder City",
       "program": "Fishing Classes",
@@ -9953,7 +9953,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9987,7 +9987,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10106,7 +10106,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10115,7 +10115,7 @@
     {
       "id": "4647",
       "sourceId": "4647",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4647",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -10140,7 +10140,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10149,7 +10149,7 @@
     {
       "id": "4648",
       "sourceId": "4648",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4648",
       "title": "Bird Trunk (Nielsen)",
       "program": "School Events",
@@ -10174,7 +10174,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10183,7 +10183,7 @@
     {
       "id": "4649",
       "sourceId": "4649",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4649",
       "title": "WILD Readings (Ely) - North American Porcupine",
       "program": "Wildlife Discovery",
@@ -10208,7 +10208,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10217,7 +10217,7 @@
     {
       "id": "4650",
       "sourceId": "4650",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4650",
       "title": "WILD Readings (Elko) - Coyote",
       "program": "Wildlife Discovery",
@@ -10242,7 +10242,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10251,7 +10251,7 @@
     {
       "id": "4651",
       "sourceId": "4651",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4651",
       "title": "Skins & Skulls (Little Explorers)",
       "program": "School Events",
@@ -10276,7 +10276,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10285,7 +10285,7 @@
     {
       "id": "4652",
       "sourceId": "4652",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4652",
       "title": "Skins, Skulls, and WE Scavanger Hunt",
       "program": "Wildlife Discovery",
@@ -10310,7 +10310,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10344,7 +10344,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10378,7 +10378,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10412,7 +10412,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10446,7 +10446,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10455,7 +10455,7 @@
     {
       "id": "4657",
       "sourceId": "4657",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4657",
       "title": "Bat Walk - UNR Extension Naturalist Program",
       "program": "Wildlife Discovery",
@@ -10480,7 +10480,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10489,7 +10489,7 @@
     {
       "id": "4658",
       "sourceId": "4658",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4658",
       "title": "Conservation & Wildlife presentation",
       "program": "School Events",
@@ -10514,7 +10514,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10523,7 +10523,7 @@
     {
       "id": "4659",
       "sourceId": "4659",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4659",
       "title": "Lake Mead Hatchery Visitor Center",
       "program": "Fishing Classes",
@@ -10548,7 +10548,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10557,7 +10557,7 @@
     {
       "id": "4660",
       "sourceId": "4660",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4660",
       "title": "Urban Wildlife & Construction Safety: What to Do When You Cross Paths (NV Contractors Association)",
       "program": "Wildlife Discovery",
@@ -10582,7 +10582,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10591,7 +10591,7 @@
     {
       "id": "4661",
       "sourceId": "4661",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4661",
       "title": "Scout Fishing morning- pack 707",
       "program": "Fishing Classes",
@@ -10616,7 +10616,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10625,7 +10625,7 @@
     {
       "id": "4662",
       "sourceId": "4662",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4662",
       "title": "Free Fishing Day 2026 - Boulder City",
       "program": "Fishing Classes",
@@ -10906,7 +10906,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10915,7 +10915,7 @@
     {
       "id": "4663",
       "sourceId": "4663",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4663",
       "title": "Fishing Introduction: Grammar #2 School",
       "program": "Fishing Classes",
@@ -10940,7 +10940,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10949,7 +10949,7 @@
     {
       "id": "4664",
       "sourceId": "4664",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4664",
       "title": "Intro to Fly-Fishing: Instructor Hours",
       "program": "Fishing Classes",
@@ -10974,7 +10974,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11008,7 +11008,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11017,7 +11017,7 @@
     {
       "id": "4666",
       "sourceId": "4666",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4666",
       "title": "SNTU meeting",
       "program": "Fishing Classes",
@@ -11042,7 +11042,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11123,7 +11123,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11157,7 +11157,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11191,7 +11191,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11225,7 +11225,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11259,7 +11259,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11268,7 +11268,7 @@
     {
       "id": "4672",
       "sourceId": "4672",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4672",
       "title": "Elko NASP Club - 5/19/26",
       "program": "School Events",
@@ -11293,7 +11293,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11302,7 +11302,7 @@
     {
       "id": "4673",
       "sourceId": "4673",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4673",
       "title": "UK Survival School Training - Wildlife that Bites",
       "program": "Wildlife Discovery",
@@ -11327,7 +11327,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11336,7 +11336,7 @@
     {
       "id": "4674",
       "sourceId": "4674",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4674",
       "title": "Owl Pellet Dissection",
       "program": "School Events",
@@ -11361,7 +11361,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11370,7 +11370,7 @@
     {
       "id": "4675",
       "sourceId": "4675",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4675",
       "title": "Bat presentation & viewing",
       "program": "Wildlife Discovery",
@@ -11423,7 +11423,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11485,7 +11485,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11566,7 +11566,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11575,7 +11575,7 @@
     {
       "id": "4678",
       "sourceId": "4678",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4678",
       "title": "Bighorn Sheep Table Chat",
       "program": "Wildlife Discovery",
@@ -11666,7 +11666,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11675,7 +11675,7 @@
     {
       "id": "4679",
       "sourceId": "4679",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4679",
       "title": "Bighorn Sheep Table Chat",
       "program": "Wildlife Discovery",
@@ -11747,7 +11747,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11756,7 +11756,7 @@
     {
       "id": "4680",
       "sourceId": "4680",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4680",
       "title": "Bighorn Sheep Table Chat",
       "program": "Wildlife Discovery",
@@ -11847,7 +11847,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11856,7 +11856,7 @@
     {
       "id": "4681",
       "sourceId": "4681",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4681",
       "title": "Bighorn Sheep Table Chat",
       "program": "Wildlife Discovery",
@@ -11928,7 +11928,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11962,7 +11962,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11996,7 +11996,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12030,7 +12030,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12064,7 +12064,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.468Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12098,7 +12098,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12132,7 +12132,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12141,7 +12141,7 @@
     {
       "id": "4688",
       "sourceId": "4688",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4688",
       "title": "Boulder City Summer Camp Wildlife/Urban program",
       "program": "Wildlife Discovery",
@@ -12166,7 +12166,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12200,7 +12200,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12234,7 +12234,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12268,7 +12268,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12277,7 +12277,7 @@
     {
       "id": "4692",
       "sourceId": "4692",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4692",
       "title": "Junior Naturalist Camp - Henderson Bird Viewing Preserve",
       "program": "Wildlife Discovery",
@@ -12302,7 +12302,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12311,7 +12311,7 @@
     {
       "id": "4693",
       "sourceId": "4693",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4693",
       "title": "KYN Brown - L1 - King",
       "program": "School Events",
@@ -12336,7 +12336,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12345,7 +12345,7 @@
     {
       "id": "4694",
       "sourceId": "4694",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4694",
       "title": "KYN Brown - L2 - King",
       "program": "School Events",
@@ -12370,7 +12370,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12379,7 +12379,7 @@
     {
       "id": "4695",
       "sourceId": "4695",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4695",
       "title": "KYN Brown - L3 - King",
       "program": "School Events",
@@ -12404,7 +12404,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12413,7 +12413,7 @@
     {
       "id": "4696",
       "sourceId": "4696",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4696",
       "title": "KYN Brown - L1 - Thomsen",
       "program": "School Events",
@@ -12438,7 +12438,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12447,7 +12447,7 @@
     {
       "id": "4697",
       "sourceId": "4697",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4697",
       "title": "KYN Brown - L2 - Thomsen",
       "program": "School Events",
@@ -12472,7 +12472,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12481,7 +12481,7 @@
     {
       "id": "4698",
       "sourceId": "4698",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4698",
       "title": "KYN Brown - L3 - Thomsen",
       "program": "School Events",
@@ -12506,7 +12506,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12515,7 +12515,7 @@
     {
       "id": "4699",
       "sourceId": "4699",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4699",
       "title": "KYN Brown - Lesson 1 - Perry",
       "program": "School Events",
@@ -12540,7 +12540,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12549,7 +12549,7 @@
     {
       "id": "4700",
       "sourceId": "4700",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4700",
       "title": "KYN Brown - L2 - Perry",
       "program": "School Events",
@@ -12574,7 +12574,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12583,7 +12583,7 @@
     {
       "id": "4701",
       "sourceId": "4701",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4701",
       "title": "KYN Brown - L3 - Perry",
       "program": "School Events",
@@ -12608,7 +12608,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12642,7 +12642,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12651,7 +12651,7 @@
     {
       "id": "4703",
       "sourceId": "4703",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4703",
       "title": "KYN Spanish Springs ES - L2 - 4 classes",
       "program": "School Events",
@@ -12676,7 +12676,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12685,7 +12685,7 @@
     {
       "id": "4704",
       "sourceId": "4704",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4704",
       "title": "KYN Spanish Springs ES - L3 - 4 classes",
       "program": "School Events",
@@ -12710,7 +12710,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12719,7 +12719,7 @@
     {
       "id": "4705",
       "sourceId": "4705",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4705",
       "title": "KYN Spanish Springs ES - L1 - 4 classes",
       "program": "School Events",
@@ -12744,7 +12744,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.449Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12753,7 +12753,7 @@
     {
       "id": "4706",
       "sourceId": "4706",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4706",
       "title": "Hunsberger Watershed Lesson",
       "program": "School Events",
@@ -12778,7 +12778,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12787,7 +12787,7 @@
     {
       "id": "4707",
       "sourceId": "4707",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4707",
       "title": "Owl Week lesson and Pellet Dissection",
       "program": "School Events",
@@ -12812,7 +12812,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12821,7 +12821,7 @@
     {
       "id": "4708",
       "sourceId": "4708",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4708",
       "title": "Wildlife Forensics Program",
       "program": "School Events",
@@ -12846,7 +12846,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.825Z",
+        "scrapedAt": "2026-07-07T00:28:14.568Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12855,7 +12855,7 @@
     {
       "id": "4709",
       "sourceId": "4709",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4709",
       "title": "Oxbow Field Trip - Huffaker ES",
       "program": "School Events",
@@ -12880,7 +12880,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12889,7 +12889,7 @@
     {
       "id": "4710",
       "sourceId": "4710",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4710",
       "title": "GSSN Troop 8 Project Meeting",
       "program": "Wildlife Discovery",
@@ -12914,7 +12914,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12923,7 +12923,7 @@
     {
       "id": "4711",
       "sourceId": "4711",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4711",
       "title": "GSSN Troop 8 Preliminary Project Meeting",
       "program": "Wildlife Discovery",
@@ -12948,7 +12948,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.180Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12957,7 +12957,7 @@
     {
       "id": "4712",
       "sourceId": "4712",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4712",
       "title": "Farm Day",
       "program": "Wildlife Discovery",
@@ -12982,7 +12982,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:47:03.824Z",
+        "scrapedAt": "2026-07-07T00:28:14.567Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12991,7 +12991,7 @@
     {
       "id": "4713",
       "sourceId": "4713",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4713",
       "title": "Wildlife Wednesday - Habitats and Microorganisms",
       "program": "Wildlife Discovery",
@@ -13016,7 +13016,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13025,7 +13025,7 @@
     {
       "id": "4714",
       "sourceId": "4714",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4714",
       "title": "NWEA Water Palooza",
       "program": "School Events",
@@ -13050,7 +13050,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.326Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13059,7 +13059,7 @@
     {
       "id": "4715",
       "sourceId": "4715",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4715",
       "title": "Lake Mead Hatchery Visitor Center",
       "program": "Fishing Classes",
@@ -13084,7 +13084,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13093,7 +13093,7 @@
     {
       "id": "4716",
       "sourceId": "4716",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4716",
       "title": "TIC Release - St. Albert's",
       "program": "School Events",
@@ -13118,7 +13118,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:39:34.574Z",
+        "scrapedAt": "2026-07-07T00:21:29.221Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13152,7 +13152,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13186,7 +13186,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13220,7 +13220,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13229,7 +13229,7 @@
     {
       "id": "4720",
       "sourceId": "4720",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4720",
       "title": "KYN Westergard - Pfaff - L1",
       "program": "School Events",
@@ -13254,7 +13254,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.179Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13263,7 +13263,7 @@
     {
       "id": "4721",
       "sourceId": "4721",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4721",
       "title": "KYN Westergard - Pfaff - L2",
       "program": "School Events",
@@ -13288,7 +13288,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.179Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13297,7 +13297,7 @@
     {
       "id": "4722",
       "sourceId": "4722",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4722",
       "title": "KYN Westergard - Pfaff - L3",
       "program": "School Events",
@@ -13322,7 +13322,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:38:03.179Z",
+        "scrapedAt": "2026-07-07T00:19:59.105Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13331,7 +13331,7 @@
     {
       "id": "4723",
       "sourceId": "4723",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4723",
       "title": "Spanish Springs Career Fair",
       "program": "School Events",
@@ -13356,7 +13356,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:40:59.765Z",
+        "scrapedAt": "2026-07-07T00:22:49.840Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13390,7 +13390,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13424,7 +13424,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13458,7 +13458,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13492,7 +13492,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13526,7 +13526,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13560,7 +13560,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13594,7 +13594,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13628,7 +13628,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13662,7 +13662,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13696,7 +13696,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13730,7 +13730,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13764,7 +13764,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13773,7 +13773,7 @@
     {
       "id": "4736",
       "sourceId": "4736",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4736",
       "title": "Day Camp Fishing Trip- CLV",
       "program": "Fishing Classes",
@@ -13864,7 +13864,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13873,7 +13873,7 @@
     {
       "id": "4737",
       "sourceId": "4737",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4737",
       "title": "Reptile Walk",
       "program": "Wildlife Discovery",
@@ -13898,7 +13898,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13932,7 +13932,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:48:41.613Z",
+        "scrapedAt": "2026-07-07T00:29:48.450Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13941,7 +13941,7 @@
     {
       "id": "4740",
       "sourceId": "4740",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4740",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -13966,7 +13966,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13975,7 +13975,7 @@
     {
       "id": "4741",
       "sourceId": "4741",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4741",
       "title": "Day of Gratitude military event",
       "program": "Fishing Classes",
@@ -14028,7 +14028,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14037,7 +14037,7 @@
     {
       "id": "4742",
       "sourceId": "4742",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4742",
       "title": "Free Fishing Day - Floyd Lamb Park",
       "program": "Fishing Classes",
@@ -14062,7 +14062,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14071,7 +14071,7 @@
     {
       "id": "4743",
       "sourceId": "4743",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4743",
       "title": "Day of Gratitude set up and prep",
       "program": "Fishing Classes",
@@ -14124,7 +14124,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14133,7 +14133,7 @@
     {
       "id": "4744",
       "sourceId": "4744",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4744",
       "title": "Living with Wildlife",
       "program": "Wildlife Discovery",
@@ -14158,7 +14158,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14167,7 +14167,7 @@
     {
       "id": "4745",
       "sourceId": "4745",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4745",
       "title": "Hunter Education",
       "program": "Hunter Education",
@@ -14192,7 +14192,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14226,7 +14226,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14260,7 +14260,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14294,7 +14294,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14328,7 +14328,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14337,7 +14337,7 @@
     {
       "id": "4750",
       "sourceId": "4750",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4750",
       "title": "Introduction to Rifle Shooting",
       "program": "Advanced Hunter Education",
@@ -14362,7 +14362,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14424,7 +14424,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14458,7 +14458,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14492,7 +14492,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14554,7 +14554,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14616,7 +14616,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14659,7 +14659,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14693,7 +14693,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14727,7 +14727,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14789,7 +14789,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14870,7 +14870,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14879,7 +14879,7 @@
     {
       "id": "4761",
       "sourceId": "4761",
-      "status": "Cancelled",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4761",
       "title": "2026 Free Fishing Day Preparation",
       "program": "Fishing Classes",
@@ -14932,7 +14932,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14966,7 +14966,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15047,7 +15047,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15109,7 +15109,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15143,7 +15143,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15177,7 +15177,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15211,7 +15211,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15245,7 +15245,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15254,7 +15254,7 @@
     {
       "id": "4769",
       "sourceId": "4769",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4769",
       "title": "YMCA Nocturnal Animals Walk",
       "program": "Wildlife Discovery",
@@ -15279,7 +15279,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15288,7 +15288,7 @@
     {
       "id": "4770",
       "sourceId": "4770",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4770",
       "title": "Discovery Day",
       "program": "Wildlife Discovery",
@@ -15313,7 +15313,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15322,7 +15322,7 @@
     {
       "id": "4771",
       "sourceId": "4771",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4771",
       "title": "Bat & Nighthawk Walk - collab w RRAS",
       "program": "Wildlife Discovery",
@@ -15347,7 +15347,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15356,7 +15356,7 @@
     {
       "id": "4772",
       "sourceId": "4772",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4772",
       "title": "Camp No Limits",
       "program": "Wildlife Discovery",
@@ -15381,7 +15381,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15415,7 +15415,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15449,7 +15449,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15483,7 +15483,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15517,7 +15517,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15551,7 +15551,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15585,7 +15585,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15619,7 +15619,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15653,7 +15653,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15715,7 +15715,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15724,7 +15724,7 @@
     {
       "id": "4782",
       "sourceId": "4782",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4782",
       "title": "SNTU meeting and fly fishing instruction",
       "program": "Fishing Classes",
@@ -15749,7 +15749,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15758,7 +15758,7 @@
     {
       "id": "4783",
       "sourceId": "4783",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4783",
       "title": "Free Fishing Day prep",
       "program": "Fishing Classes",
@@ -15783,7 +15783,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:49:57.211Z",
+        "scrapedAt": "2026-07-07T00:31:01.327Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15817,7 +15817,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15826,7 +15826,7 @@
     {
       "id": "4785",
       "sourceId": "4785",
-      "status": "Open",
+      "status": "Completed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4785",
       "title": "Sporting Clay Maintenance",
       "program": "Advanced Hunter Education",
@@ -15851,7 +15851,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.884Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15885,7 +15885,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15919,7 +15919,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15953,7 +15953,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16015,7 +16015,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16049,7 +16049,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16083,7 +16083,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16117,7 +16117,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16151,7 +16151,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16185,7 +16185,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16219,11 +16219,11 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
-      "text": "Jul 25\nHunter Education\n\n■ Registration Open 34 of 35 seats remaining\n\nLocation:\n\nVerdi Community Library & Nature Center\n270 Bridge St\nVerdi, NV 89439\n\nTaught by:\n\nWilliam J Sanchez Jr\nDate & Times:\nJul 25, 2026 8:00AM - 5:00PM PDT\nView"
+      "text": "Jul 25\nHunter Education\n\n■ Registration Open 33 of 35 seats remaining\n\nLocation:\n\nVerdi Community Library & Nature Center\n270 Bridge St\nVerdi, NV 89439\n\nTaught by:\n\nWilliam J Sanchez Jr\nDate & Times:\nJul 25, 2026 8:00AM - 5:00PM PDT\nView"
     },
     {
       "id": "4796",
@@ -16253,7 +16253,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16287,7 +16287,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16321,7 +16321,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16355,7 +16355,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16389,7 +16389,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16489,7 +16489,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16589,7 +16589,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16623,7 +16623,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16657,7 +16657,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16691,7 +16691,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16700,7 +16700,7 @@
     {
       "id": "4806",
       "sourceId": "4806",
-      "status": "Cancelled",
+      "status": "Registration Closed",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4806",
       "title": "Hatchery Host",
       "program": "Fishing Classes",
@@ -16734,7 +16734,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16777,7 +16777,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16811,7 +16811,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:54:54.801Z",
+        "scrapedAt": "2026-07-07T00:35:45.912Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16845,7 +16845,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:53:42.031Z",
+        "scrapedAt": "2026-07-07T00:34:35.580Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16879,7 +16879,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16913,7 +16913,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-07-06T22:51:55.885Z",
+        "scrapedAt": "2026-07-07T00:32:59.469Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
