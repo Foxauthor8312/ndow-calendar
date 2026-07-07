@@ -17580,6 +17580,8 @@ ${regionTotal}
 }
 
 </script>
+
+	
 <div
   id="systemConsole"
   class="modal hidden"
@@ -17726,11 +17728,34 @@ ${regionTotal}
 
 </div>
 
-    <div id="eventCommunicationContent"></div>
+<div id="eventCommunicationContent"></div>
 
   </div>
 
-</div>	
+</div>
+
+<!-- ==========================================
+     Communications Workspace
+========================================== -->
+
+<div id="communicationsWorkspace"
+     style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:#f8fafc;
+        z-index:6000;
+     ">
+
+    <div id="communicationsHeader"></div>
+
+    <div id="communicationsBody"></div>
+
+</div>
+
+<script src="js/help.js"></script>
+
+<script src="js/communications/communications-workspace.js"></script>	
 
 <script src="js/help.js"></script>
 
