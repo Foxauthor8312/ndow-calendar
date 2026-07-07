@@ -401,11 +401,17 @@ const details =
 
 function extractDtValue(label){
 
+  const normalize = value =>
+    value
+      .replace(/:$/, '')
+      .trim()
+      .toLowerCase();
+
   const dt =
     [...document.querySelectorAll('dt')]
       .find(el =>
-        el.textContent.trim().toLowerCase() ===
-        label.toLowerCase()
+        normalize(el.textContent) ===
+        normalize(label)
       );
 
   if(!dt){
