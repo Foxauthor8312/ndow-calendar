@@ -399,48 +399,58 @@ await page.goto(
 const details =
   await page.evaluate(() => {
 
-    const text =
-      document.body.innerText;
+function extractDtValue(label){
 
-    function extract(label){
+  const dt =
+    [...document.querySelectorAll('dt')]
+      .find(el =>
+        el.textContent.trim().toLowerCase() ===
+        label.toLowerCase()
+      );
 
-      const match =
-        text.match(
-          new RegExp(
-            label + '\\s*:\\s*([^\\r\\n]+)',
-            'i'
-          )
-        );
+  if(!dt){
+    return '';
+  }
 
-      return match
-        ? match[1].trim()
-        : '';
+  const dd =
+    dt.nextElementSibling;
 
-    }
+  return dd
+    ? dd.textContent.trim()
+    : '';
 
-    return {
+}
+    
+ return {
 
-      program:
-        extract('Program'),
+  status:
+    extractDtValue('Event Status'),
 
-      eventName:
-        extract('Event Name'),
+  program:
+    extractDtValue('Program'),
 
-      location:
-        extract('Location'),
+  eventName:
+    extractDtValue('Event Name'),
 
-      dateTime:
-        extract('Date & Times'),
+  location:
+    extractDtValue('Location'),
 
-      about:
-        extract('About this Event')
+  dateTime:
+    extractDtValue('Date & Times'),
 
-    };
+  about:
+    extractDtValue('About this Event')
+
+};
 
   });
 
 event.program =
   details.program;
+
+ event.status =
+  details.status ||
+  'Registration Open'; 
 
 if(details.eventName){
   event.title =
