@@ -445,18 +445,14 @@ function(){
 
         if(event){
 
-            selected.push({
+          selected.push({
 
-                event_id:
-                    event.id,
+            event_id:event.id,
+            event_title:event.title,
+            event_date:event.date,
+            location:event.location || ''
 
-                event_title:
-                    event.title,
-
-                event_date:
-                    event.date
-
-            });
+          });
 
         }
 
@@ -535,7 +531,17 @@ function(){
             margin-bottom:4px;
         "
     >
-        ${event.event_title}
+    
+   ${event.event_date}
+      <br>
+      <strong>${event.event_title}</strong>
+      <br>
+      <span style="
+          font-size:11px;
+          color:#6B7280;
+      ">
+          ${event.location || ''}
+      </span>
     </div>
 
     <div
@@ -623,7 +629,7 @@ function(){
             margin-bottom:8px;
         "
     >
-        Assign Instructors
+        Request instructors from this list:Assign Instructors
     </div>
 
     <div>
