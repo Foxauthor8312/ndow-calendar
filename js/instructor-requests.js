@@ -528,17 +528,17 @@ async function(region){
 
     try{
 
-        const response =
-            await fetch(
+      const response =
+    await fetch(
 
-                `${API_BASE}/assignment-instructors?region=${encodeURIComponent(region)}`,
+        `/api/assignment-instructors?region=${encodeURIComponent(region)}`,
 
-                {
-                    headers:
-                        authHeaders()
-                }
+        {
+            headers:
+                authHeaders()
+        }
 
-            );
+    );
 
         const result =
             await response.json();
