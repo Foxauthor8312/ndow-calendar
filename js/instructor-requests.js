@@ -528,20 +528,32 @@ async function(region){
 
     try{
 
-const response =
-    await fetch(
+        const token =
+            localStorage.getItem(
+                'token'
+            );
 
-        `https://ndow-calendar-server.onrender.com/api/assignment-instructors?region=${encodeURIComponent(region)}`
+        const response =
+            await fetch(
 
-    );
+                `https://ndow-calendar-server.onrender.com/api/assignment-instructors?region=${encodeURIComponent(region)}`,
 
-const result =
-    await response.json();
+                {
+                    headers:{
+                        Authorization:
+                            `Bearer ${token}`
+                    }
+                }
 
-console.log(
-    'Assignment Instructors:',
-    result
-);
+            );
+
+        const result =
+            await response.json();
+
+        console.log(
+            'Assignment Instructors:',
+            result
+        );
 
     }
 
