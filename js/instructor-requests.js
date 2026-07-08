@@ -555,6 +555,11 @@ async function(region){
             result
         );
 
+      window.assignmentInstructors =
+          result.instructors || [];
+
+            renderAssignmentInstructorList();
+
     }
 
     catch(err){
@@ -565,5 +570,18 @@ async function(region){
         );
 
     }
+
+};
+
+// ========================================
+// RENDER ASSIGNMENT INSTRUCTORS
+// ========================================
+
+window.renderAssignmentInstructorList =
+function(){
+
+    console.log(
+        window.assignmentInstructors
+    );
 
 };
