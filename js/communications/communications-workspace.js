@@ -207,6 +207,10 @@ console.log(
 
 `;
 
+loadCompose();
+
+};
+
 window.closeCommunicationsWorkspace =
 function(){
 
