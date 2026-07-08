@@ -49,9 +49,8 @@ let roster = [];
 async function openEventCommunication(event){
   currentEvent = event;
 
-    document.getElementById(
-        'eventCommunicationModal'
-    ).style.display = 'flex';
+    renderCommunicationModal();
+return;
 
     roster =
       await loadEventRoster(
@@ -192,9 +191,9 @@ async function sendCommunication(){
 function renderCommunicationModal(){
 
     const container =
-        document.getElementById(
-            'eventCommunicationContent'
-        );
+    document.getElementById(
+        'communicationsContent'
+    );
 
     container.innerHTML = `
 
