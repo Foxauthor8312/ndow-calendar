@@ -173,11 +173,6 @@ window.saveAssignmentRequest =
           'assignmentRequestTitle'
         )?.value?.trim();
 
-      const notes =
-        document.getElementById(
-          'assignmentRequestNotes'
-        )?.value?.trim();
-
       const priority =
         document.getElementById(
           'assignmentRequestPriority'
@@ -188,13 +183,6 @@ window.saveAssignmentRequest =
           'assignmentRequestRegion'
         )?.value;
 
-      await loadAssignmentInstructors(
-        region
-      );
-
-        return;
-
-      
       const selectedEvents =
         window.selectedAssignmentEvents || [];
 
@@ -228,7 +216,6 @@ window.saveAssignmentRequest =
             body:JSON.stringify({
 
               title,
-              notes,
               priority,
               region,
 
@@ -438,35 +425,66 @@ panel.innerHTML =
 
     };
 window.saveSelectedEvents =
-  function(){
+function(){
 
     const checked =
-      document.querySelectorAll(
-        '.assignment-event-checkbox:checked'
-      );
+        document.querySelectorAll(
+            '.assignment-event-checkbox:checked'
+        );
 
     const selected =
-      [];
+        [];
 
     checked.forEach(box => {
 
-      const event =
-        events.find(e =>
-          String(e.id) ===
-          box.dataset.id
-        );
+        const event =
+            events.find(e =>
+                String(e.id) ===
+                box.dataset.id
+            );
 
-      if(event){
+        if(event){
 
-        selected.push({
-          event_id:event.id,
-          event_title:event.title,
-          event_date:event.date
-        });
+            selected.push({
 
-      }
+                event_id:
+                    event.id,
+
+                event_title:
+                    event.title,
+
+                event_date:
+                    event.date
+
+            });
+
+        }
 
     });
+
+    window.selectedAssignmentEvents =
+        selected;
+
+    document.getElementById(
+        'eventSelectionPanel'
+    ).style.display =
+        'none';
+
+    document.getElementById(
+        'useSelectedEventsButton'
+    ).style.display =
+        'none';
+
+    const region =
+        document.getElementById(
+            'assignmentRequestRegion'
+        ).value;
+
+    loadAssignmentInstructors(
+        region
+    );
+
+};
 
 window.selectedAssignmentEvents =
     selected;
@@ -698,10 +716,10 @@ async function(region){
             result
         );
 
-      window.assignmentInstructors =
-          result.instructors || [];
+ window.assignmentInstructors =
+    result.instructors || [];
 
-            renderAssignmentInstructorList();
+renderSelectedAssignmentEvents();
 
     }
 
@@ -713,68 +731,5 @@ async function(region){
         );
 
     }
-
-};
-
-// ========================================
-// RENDER ASSIGNMENT INSTRUCTORS
-// ========================================
-
-window.renderAssignmentInstructorList =
-function(){
-
-    const container =
-        document.getElementById(
-            'assignmentInstructorList'
-        );
-
-    if(!container){
-        return;
-    }
-
-    if(
-        !window.assignmentInstructors ||
-        window.assignmentInstructors.length === 0
-    ){
-
-        container.innerHTML =
-            'No instructors found.';
-
-        return;
-
-    }
-
-    container.innerHTML =
-        window.assignmentInstructors
-            .map(instructor => `
-
-<label style="
-    display:block;
-    padding:8px 0;
-    border-bottom:1px solid #DBE3EC;
-">
-
-<input
-    type="checkbox"
-    class="assignment-instructor-checkbox"
-    data-id="${instructor.id}"
->
-
-<strong>
-    ${instructor.username}
-</strong>
-
-<div style="
-    font-size:11px;
-    color:#6B7280;
-    margin-left:22px;
-">
-    ${instructor.email}
-</div>
-
-</label>
-
-`)
-            .join('');
 
 };
