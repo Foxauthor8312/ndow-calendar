@@ -486,23 +486,6 @@ function(){
 
 };
 
-window.selectedAssignmentEvents =
-    selected;
-
-renderSelectedAssignmentEvents();
-
-document.getElementById(
-    'eventSelectionPanel'
-).style.display =
-    'none';
-
-document.getElementById(
-    'useSelectedEventsButton'
-).style.display =
-    'none';
-
-  };
-
 // ========================================
 // RENDER SELECTED EVENTS
 // ========================================
