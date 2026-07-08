@@ -485,61 +485,83 @@ document.getElementById(
 
   };
 
+// ========================================
+// RENDER SELECTED EVENTS
+// ========================================
+
 window.renderSelectedAssignmentEvents =
-  function(){
+function(){
 
     const container =
-      document.getElementById(
-        'assignmentRequestEvents'
-      );
+        document.getElementById(
+            'assignmentRequestEvents'
+        );
 
     if(!container){
-      return;
+        return;
     }
 
     if(
-      window.selectedAssignmentEvents.length === 0
+        window.selectedAssignmentEvents.length === 0
     ){
 
-      container.innerHTML =
-        'No events selected.';
+        container.innerHTML =
+            'No events selected.';
 
-      return;
+        return;
 
     }
 
-container.innerHTML =
-  window.selectedAssignmentEvents
-    .map(event => `
+    container.innerHTML =
+        window.selectedAssignmentEvents
+            .map(event => `
 
 <div
     style="
         border:1px solid #DBE3EC;
         border-radius:6px;
-        padding:10px;
-        margin-bottom:12px;
+        padding:12px;
+        margin-bottom:16px;
+        background:#FAFBFC;
     "
 >
 
-    <div style="
-        font-weight:600;
-        margin-bottom:10px;
-    ">
+    <div
+        style="
+            font-size:15px;
+            font-weight:600;
+            color:#19304B;
+            margin-bottom:4px;
+        "
+    >
         ${event.event_title}
     </div>
 
-    <div style="
-        display:flex;
-        gap:16px;
-        align-items:center;
-        margin-bottom:10px;
-    ">
+    <div
+        style="
+            font-size:12px;
+            color:#6B7280;
+            margin-bottom:12px;
+        "
+    >
+        ${event.event_date}
+    </div>
+
+    <div
+        style="
+            display:flex;
+            gap:20px;
+            margin-bottom:10px;
+        "
+    >
 
         <div>
 
             <label>
                 Show Time
-            </label><br>
+            </label>
+
+            <br>
 
             <input
                 type="time"
@@ -553,7 +575,9 @@ container.innerHTML =
 
             <label>
                 Instructors Needed
-            </label><br>
+            </label>
+
+            <br>
 
             <input
                 type="number"
@@ -561,14 +585,20 @@ container.innerHTML =
                 value="1"
                 class="assignment-needed"
                 data-event="${event.event_id}"
-                style="width:70px;"
+                style="
+                    width:70px;
+                "
             >
 
         </div>
 
     </div>
 
-    <div>
+    <div
+        style="
+            margin-bottom:12px;
+        "
+    >
 
         <label>
             Event Notes
@@ -586,11 +616,51 @@ container.innerHTML =
 
     </div>
 
+    <div
+        style="
+            font-weight:600;
+            margin-bottom:8px;
+        "
+    >
+        Assign Instructors
+    </div>
+
+    <div>
+
+        ${
+            (window.assignmentInstructors || [])
+            .map(instructor => `
+
+<label
+    style="
+        display:block;
+        padding:4px 0;
+    "
+>
+
+<input
+    type="checkbox"
+    class="assignment-instructor"
+    data-event="${event.event_id}"
+    data-instructor="${instructor.id}"
+>
+
+${instructor.username}
+
+</label>
+
+`)
+            .join('')
+        }
+
+    </div>
+
 </div>
 
 `)
-    .join('');
-  };
+            .join('');
+
+};
 
 // ========================================
 // LOAD ASSIGNMENT INSTRUCTORS
