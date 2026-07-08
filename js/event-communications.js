@@ -61,6 +61,17 @@ async function openEventCommunication(event){
     renderCommunicationModal();
 
 }
+
+window.loadReview = function(){
+
+    renderCommunicationModal({
+
+        mode: 'review'
+
+    });
+
+};
+
 function closeEventCommunication(){
 
     document.getElementById(
@@ -185,7 +196,9 @@ async function sendCommunication(){
 
 }
 
-function renderCommunicationModal(){
+function renderCommunicationModal(options = {}){
+ const reviewMode =
+    options.mode === 'review';
 
     const container =
     document.getElementById(
@@ -197,6 +210,16 @@ function renderCommunicationModal(){
 <div style="
     margin-bottom:20px;
 ">
+<h2 style="
+    margin-top:0;
+    margin-bottom:18px;
+">
+
+${reviewMode
+    ? '⭐ Review'
+    : '📧 Compose Email'}
+
+</h2>
 
     <div style="
         font-size:24px;
@@ -245,7 +268,11 @@ border-radius:8px;
 margin-bottom:18px;
 "
 
-value="Reminder - ${currentEvent.title}"
+value="${
+    reviewMode
+        ? `Thank You for Attending ${currentEvent.title}`
+        : `Reminder - ${currentEvent.title}`
+}"
 
 >
 
@@ -274,11 +301,26 @@ resize:vertical;
 
 >
 
-Thank you for registering for this Nevada Department of Wildlife event.
+${reviewMode
+? `Thank you for attending "${currentEvent.title}."
+
+We appreciate your participation and hope you enjoyed the class.
+
+Your feedback helps us improve future Nevada Department of Wildlife programs.
+
+Please take a few moments to complete our class review using the link below.
+
+[Jotform Review Link]
+
+Thank you,
+
+Nevada Department of Wildlife`
+: `Thank you for registering for this Nevada Department of Wildlife event.
 
 Please review the attached event information before attending.
 
 We look forward to seeing you.
+`}
 
 </textarea>
 
@@ -480,7 +522,9 @@ onclick="sendCommunication()"
 
 >
 
-Send Email
+${reviewMode
+    ? 'Send Review'
+    : 'Send Email'}
 
 </button>
 
