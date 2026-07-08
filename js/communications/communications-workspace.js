@@ -70,101 +70,142 @@ console.log(
 
     // Sidebar
 
-    document.getElementById(
-        'communicationsSidebar'
-    ).innerHTML = `
+   document.getElementById(
+    'communicationsSidebar'
+).innerHTML = `
 
-        <div style="
+    <div style="
+        font-size:13px;
+        color:#6b7280;
+        font-weight:700;
+        margin-bottom:6px;
+    ">
+        Event #${event.id}
+    </div>
+
+    <div style="
+        font-size:22px;
+        font-weight:700;
+        color:#19304B;
+        line-height:1.3;
+        margin-bottom:8px;
+    ">
+        ${event.title}
+    </div>
+
+    <div style="
+        color:#2563eb;
+        font-weight:600;
+        margin-bottom:14px;
+    ">
+        ${event.program || ''}
+    </div>
+
+    <div style="
+        font-size:14px;
+        margin-bottom:8px;
+    ">
+        ${event.status || 'Registration Open'}
+    </div>
+
+    <div style="
+        font-size:14px;
+        margin-bottom:8px;
+    ">
+        ${event.time || event.date || ''}
+    </div>
+
+    <div style="
+        font-size:14px;
+        margin-bottom:18px;
+        line-height:1.4;
+    ">
+        ${event.location || ''}
+    </div>
+
+    <hr style="margin:18px 0;">
+
+    <div style="
+        font-size:11px;
+        font-weight:700;
+        color:#6b7280;
+        letter-spacing:.08em;
+        margin-bottom:8px;
+    ">
+        COMMUNICATIONS
+    </div>
+
+    <button
+        class="comm-nav active"
+        onclick="loadCompose()"
+    >
+        📧 Compose Email
+    </button>
+
+    <button
+        class="comm-nav"
+        onclick="comingSoon('History')"
+    >
+        📜 History
+    </button>
+
+    <button
+        class="comm-nav"
+        onclick="comingSoon('Templates')"
+    >
+        📄 Templates
+    </button>
+
+    <hr style="margin:18px 0;">
+
+    <div style="
+        font-size:11px;
+        font-weight:700;
+        color:#6b7280;
+        letter-spacing:.08em;
+        margin-bottom:8px;
+    ">
+        EVENT FOLLOW-UP
+    </div>
+
+    <button
+        class="comm-nav"
+        onclick="comingSoon('Attendance')"
+    >
+        ✓ Attendance
+    </button>
+
+    <button
+        class="comm-nav"
+        onclick="comingSoon('Survey & Thank You')"
+    >
+        💬 Survey & Thank You
+    </button>
+
+    <button
+        class="comm-nav"
+        onclick="comingSoon('Automation')"
+    >
+        ⚙ Automation
+    </button>
+
+    <hr style="margin:18px 0;">
+
+    <div
+        id="communicationsStatusSummary"
+        style="
             font-size:13px;
             color:#6b7280;
-            font-weight:700;
-            margin-bottom:8px;
-        ">
-            Event #${event.id}
-        </div>
+            line-height:1.8;
+        "
+    >
+        <div>Recipients: —</div>
+        <div>Emails Sent: —</div>
+        <div>Attendance: Pending</div>
+        <div>Survey: Not Sent</div>
+    </div>
 
-        <div style="
-            font-size:22px;
-            font-weight:700;
-            color:#19304B;
-            margin-bottom:8px;
-            line-height:1.3;
-        ">
-            ${event.title}
-        </div>
-
-        <div style="
-            color:#2563eb;
-            font-weight:600;
-            margin-bottom:12px;
-        ">
-            ${event.program || ''}
-        </div>
-
-        <div style="margin-bottom:8px;">
-            <strong>Status:</strong><br>
-            ${event.status || 'Registration Open'}
-        </div>
-
-        <div style="margin-bottom:8px;">
-            <strong>Date & Time:</strong><br>
-            ${event.time || event.date || ''}
-        </div>
-
-        <div style="margin-bottom:20px;">
-            <strong>Location:</strong><br>
-            ${event.location || ''}
-        </div>
-
-        <hr>
-
-        <button
-            class="comm-nav"
-            onclick="loadCompose()"
-        >
-            📧 Compose Email
-        </button>
-
-        <button
-            class="comm-nav"
-            onclick="comingSoon('History')"
-        >
-            📜 History
-        </button>
-
-        <button
-            class="comm-nav"
-            onclick="comingSoon('Templates')"
-        >
-            📄 Templates
-        </button>
-
-        <button
-            class="comm-nav"
-            onclick="comingSoon('Attendance')"
-        >
-            ✓ Attendance
-        </button>
-
-        <button
-            class="comm-nav"
-            onclick="comingSoon('Thank You & Feedback')"
-        >
-            💬 Thank You & Feedback
-        </button>
-
-        <button
-            class="comm-nav"
-            onclick="comingSoon('Automation')"
-        >
-            ⚙ Automation
-        </button>
-
-    `;
-
-    loadCompose();
-
-};
+`;
 
 window.closeCommunicationsWorkspace =
 function(){
