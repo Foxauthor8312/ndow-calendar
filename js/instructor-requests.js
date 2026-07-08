@@ -461,7 +461,7 @@ function(){
             event_date: event.date,
             event_time: event.time || '',
             location: event.location || '',
-            registrants: event.registrants || 0
+            registrants: event.roster_student_count || 0
         
         });
 
@@ -558,12 +558,14 @@ function(){
             line-height:1.4;
         "
     >
+        Event #${event.event_id}<br>
+
         ${event.event_date}<br>
-
+        
         ${event.event_time || ''}<br>
-
+        
         ${event.location || ''}<br>
-
+        
         Registered: ${event.registrants || 0}
     </div>
 
