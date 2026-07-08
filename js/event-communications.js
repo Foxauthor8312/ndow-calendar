@@ -46,6 +46,8 @@ let selectedRecipients = [];
 
 let roster = [];
 
+let communicationMode = 'compose';
+
 async function openEventCommunication(event){
 
     currentEvent = event;
@@ -99,6 +101,23 @@ async function sendCommunication(){
                 )
                 .value
                 .trim();
+
+        let finalMessage = message;
+
+        if(
+            communicationMode === 'review'
+        ){
+        
+            finalMessage =
+                message.replace(
+        
+                    '[Jotform Review Link]',
+        
+                    'https://YOUR-JOTFORM-LINK'
+        
+                );
+        
+        }
 
         const ccEmail =
             document
@@ -165,7 +184,7 @@ async function sendCommunication(){
 
                 subject,
 
-                message,
+               message: finalMessage,
 
             ccMe,
 
@@ -199,6 +218,11 @@ async function sendCommunication(){
 function renderCommunicationModal(options = {}){
  const reviewMode =
     options.mode === 'review';
+
+ communicationMode =
+    reviewMode
+        ? 'review'
+        : 'compose';
 
     const container =
     document.getElementById(
@@ -337,7 +361,15 @@ margin-bottom:12px;
 margin:0;
 ">
 
-Recipients (${roster.length})
+<h3 style="
+margin:0;
+">
+
+${reviewMode
+    ? `Attendees (${roster.length})`
+    : `Recipients (${roster.length})`}
+
+</h3>
 
 </h3>
 
@@ -358,7 +390,7 @@ cursor:pointer;
 
 >
 
-Select All
+Select Attendees
 
 </button>
 
@@ -455,7 +487,7 @@ font-weight:700;
 margin-bottom:6px;
 ">
 
-Additional Recipient (optional)
+Additional Recipient (Staff Copy)
 
 </label>
 
