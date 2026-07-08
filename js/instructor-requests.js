@@ -188,11 +188,7 @@ window.saveAssignmentRequest =
           'assignmentRequestRegion'
         )?.value;
 
-      const programId =
-        document.getElementById(
-          'assignmentRequestProgram'
-        )?.value;
-
+      
       const selectedEvents =
         window.selectedAssignmentEvents || [];
 
@@ -229,9 +225,6 @@ window.saveAssignmentRequest =
               notes,
               priority,
               region,
-
-              program_id:
-                programId,
 
               events:
                 selectedEvents
@@ -351,29 +344,39 @@ console.log(
 window.toggleEventSelectionPanel =
   function(){
 
-    const panel =
-      document.getElementById(
+  const panel =
+    document.getElementById(
         'eventSelectionPanel'
-      );
+    );
 
-    if(!panel){
-      return;
-    }
+if(!panel){
+    return;
+}
 
-    if(
-      panel.style.display ===
-      'block'
-    ){
-
-      panel.style.display =
-        'none';
-
-      return;
-
-    }
+if(
+    panel.style.display ===
+    'block'
+){
 
     panel.style.display =
-      'block';
+        'none';
+
+    document.getElementById(
+        'useSelectedEventsButton'
+    ).style.display =
+        'none';
+
+    return;
+
+}
+
+panel.style.display =
+    'block';
+
+document.getElementById(
+    'useSelectedEventsButton'
+).style.display =
+    'block';
 
 const futureEvents =
   events
@@ -395,55 +398,39 @@ const futureEvents =
 
     });
 
-    panel.innerHTML =
-      futureEvents.map(event => `
+panel.innerHTML =
+    futureEvents.map(event => `
 
-        <label style="
-  display:block;
-  padding:6px 0;
-  border-bottom:1px solid #DBE3EC;
+<label style="
+    display:block;
+    padding:6px 0;
+    border-bottom:1px solid #DBE3EC;
 ">
 
-  <input
+<input
     type="checkbox"
     class="assignment-event-checkbox"
     data-id="${event.id}"
-  >
+>
 
-  <strong>
+<strong>
     ${event.date}
-  </strong>
+</strong>
 
-  <div style="
+<div style="
     font-size:11px;
     color:#6B7280;
     margin-left:22px;
     line-height:1.3;
-  ">
+">
     ${event.title}
-  </div>
+</div>
 
 </label>
 
-      `).join('') +
+`).join('');
 
-      `
-
-      <button
-        class="admin-button"
-        style="
-          margin-top:12px;
-          width:100%;
-        "
-        onclick="saveSelectedEvents()"
-      >
-        Use Selected Events
-      </button>
-
-      `;
-
-  };
-
+    };
 window.saveSelectedEvents =
   function(){
 
@@ -475,15 +462,20 @@ window.saveSelectedEvents =
 
     });
 
-    window.selectedAssignmentEvents =
-      selected;
+window.selectedAssignmentEvents =
+    selected;
 
-    renderSelectedAssignmentEvents();
+renderSelectedAssignmentEvents();
 
-    document.getElementById(
-      'eventSelectionPanel'
-    ).style.display =
-      'none';
+document.getElementById(
+    'eventSelectionPanel'
+).style.display =
+    'none';
+
+document.getElementById(
+    'useSelectedEventsButton'
+).style.display =
+    'none';
 
   };
 
