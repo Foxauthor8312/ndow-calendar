@@ -508,15 +508,88 @@ window.renderSelectedAssignmentEvents =
 
     }
 
-    container.innerHTML =
-      window.selectedAssignmentEvents
-        .map(event => `
-          <div>
-            ${event.event_title}
-          </div>
-        `)
-        .join('');
+container.innerHTML =
+  window.selectedAssignmentEvents
+    .map(event => `
 
+<div
+    style="
+        border:1px solid #DBE3EC;
+        border-radius:6px;
+        padding:10px;
+        margin-bottom:12px;
+    "
+>
+
+    <div style="
+        font-weight:600;
+        margin-bottom:10px;
+    ">
+        ${event.event_title}
+    </div>
+
+    <div style="
+        display:flex;
+        gap:16px;
+        align-items:center;
+        margin-bottom:10px;
+    ">
+
+        <div>
+
+            <label>
+                Show Time
+            </label><br>
+
+            <input
+                type="time"
+                class="assignment-show-time"
+                data-event="${event.event_id}"
+            >
+
+        </div>
+
+        <div>
+
+            <label>
+                Instructors Needed
+            </label><br>
+
+            <input
+                type="number"
+                min="1"
+                value="1"
+                class="assignment-needed"
+                data-event="${event.event_id}"
+                style="width:70px;"
+            >
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <label>
+            Event Notes
+        </label>
+
+        <textarea
+            class="assignment-event-notes"
+            data-event="${event.event_id}"
+            rows="2"
+            style="
+                width:100%;
+                margin-top:4px;
+            "
+        ></textarea>
+
+    </div>
+
+</div>
+
+`)
+    .join('');
   };
 
 // ========================================
