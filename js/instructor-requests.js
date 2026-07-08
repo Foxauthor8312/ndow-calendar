@@ -580,8 +580,58 @@ async function(region){
 window.renderAssignmentInstructorList =
 function(){
 
-    console.log(
+    const container =
+        document.getElementById(
+            'assignmentInstructorList'
+        );
+
+    if(!container){
+        return;
+    }
+
+    if(
+        !window.assignmentInstructors ||
+        window.assignmentInstructors.length === 0
+    ){
+
+        container.innerHTML =
+            'No instructors found.';
+
+        return;
+
+    }
+
+    container.innerHTML =
         window.assignmentInstructors
-    );
+            .map(instructor => `
+
+<label style="
+    display:block;
+    padding:8px 0;
+    border-bottom:1px solid #DBE3EC;
+">
+
+<input
+    type="checkbox"
+    class="assignment-instructor-checkbox"
+    data-id="${instructor.id}"
+>
+
+<strong>
+    ${instructor.username}
+</strong>
+
+<div style="
+    font-size:11px;
+    color:#6B7280;
+    margin-left:22px;
+">
+    ${instructor.email}
+</div>
+
+</label>
+
+`)
+            .join('');
 
 };
