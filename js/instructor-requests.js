@@ -528,18 +528,20 @@ async function(region){
 
     try{
 
-        const response =
-            await fetch(
-                `/api/assignment-instructors?region=${encodeURIComponent(region)}`
-            );
+const response =
+    await fetch(
 
-        const result =
-            await response.json();
+        `https://ndow-calendar-server.onrender.com/api/assignment-instructors?region=${encodeURIComponent(region)}`
 
-        console.log(
-            'Assignment Instructors:',
-            result
-        );
+    );
+
+const result =
+    await response.json();
+
+console.log(
+    'Assignment Instructors:',
+    result
+);
 
     }
 
