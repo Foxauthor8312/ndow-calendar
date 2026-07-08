@@ -188,6 +188,12 @@ window.saveAssignmentRequest =
           'assignmentRequestRegion'
         )?.value;
 
+      await loadAssignmentInstructors(
+        region
+      );
+
+        return;
+
       
       const selectedEvents =
         window.selectedAssignmentEvents || [];
