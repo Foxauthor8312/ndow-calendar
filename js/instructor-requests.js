@@ -343,6 +343,11 @@ window.initializeInstructorRequests =
 window.selectedAssignmentEvents =
   [];
 
+console.log(
+    'Selected Events:',
+    window.selectedAssignmentEvents
+);
+
 window.toggleEventSelectionPanel =
   function(){
 
