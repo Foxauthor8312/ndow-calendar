@@ -376,9 +376,18 @@ const futureEvents =
     .filter(event => {
 
       return (
+
         event.date &&
+
         new Date(event.date) >=
-        new Date()
+        new Date() &&
+
+        !String(
+            event.status || ''
+        )
+        .toLowerCase()
+        .includes('cancel')
+
       );
 
     })
