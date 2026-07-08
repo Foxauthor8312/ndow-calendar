@@ -47,23 +47,20 @@ let selectedRecipients = [];
 let roster = [];
 
 async function openEventCommunication(event){
-  currentEvent = event;
+
+    currentEvent = event;
+
+    roster = await loadEventRoster(event.id);
+
+    console.log("Roster:", roster);
+
+    selectedRecipients = [...roster];
+
+    console.log("Recipients:", selectedRecipients.length);
 
     renderCommunicationModal();
-return;
 
-    roster =
-      await loadEventRoster(
-        event.id
-    );
-
-    selectedRecipients =
-      [...roster];
-
-    renderCommunicationModal();
-
-   }
-
+}
 function closeEventCommunication(){
 
     document.getElementById(
