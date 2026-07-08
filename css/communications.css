@@ -1,1 +1,44 @@
+/* ==========================================
+   Communications Workspace
+========================================== */
 
+.comm-nav{
+
+    width:100%;
+    display:block;
+
+    padding:10px 14px;
+    margin-bottom:8px;
+
+    border:none;
+    border-radius:6px;
+
+    background:#e5e7eb;
+
+    color:#19304B;
+
+    font-size:14px;
+    font-weight:500;
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+.comm-nav:hover{
+
+    background:#dbeafe;
+
+}
+
+.comm-nav.active{
+
+    background:#19304B;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
