@@ -15688,28 +15688,7 @@ geographic analysis.
 
   </div>
 
-<hr style="margin:20px 0;">
 
-<h3>
-    Select Instructors
-</h3>
-
-<div
-    id="assignmentInstructorList"
-    style="
-        border:1px solid #DBE3EC;
-        border-radius:6px;
-        padding:12px;
-        min-height:220px;
-        max-height:260px;
-        overflow-y:auto;
-        margin-bottom:16px;
-    "
->
-
-    No instructors loaded.
-
-</div>
 	
   <button
     class="admin-button"
@@ -15792,31 +15771,27 @@ geographic analysis.
     </h2>
 
     <label>
-      Request Title
-    </label>
+  Request Title
+</label>
 
-    <input
-      id="assignmentRequestTitle"
-      style="
-        width:100%;
-        margin-top:6px;
-        margin-bottom:14px;
-      "
-    >
+<input
+  id="assignmentRequestTitle"
+  style="
+    width:100%;
+    margin:4px 0 10px 0;
+    height:32px;
+  "
+>
 
-    <label>
-      Notes
-    </label>
+<div
+  style="
+    display:flex;
+    gap:12px;
+    margin-bottom:10px;
+  "
+>
 
-    <textarea
-      id="assignmentRequestNotes"
-      style="
-        width:100%;
-        min-height:80px;
-        margin-top:6px;
-        margin-bottom:14px;
-      "
-    ></textarea>
+  <div style="flex:1;">
 
     <label>
       Priority
@@ -15826,8 +15801,8 @@ geographic analysis.
       id="assignmentRequestPriority"
       style="
         width:100%;
-        margin-top:6px;
-        margin-bottom:14px;
+        margin-top:4px;
+        height:32px;
       "
     >
 
@@ -15849,22 +15824,9 @@ geographic analysis.
 
     </select>
 
-    <label>
-      Program
-    </label>
+  </div>
 
-    <select
-      id="assignmentRequestProgram"
-      style="
-        width:100%;
-        margin-top:6px;
-        margin-bottom:14px;
-      "
-    >
-      <option value="">
-        Select Program
-      </option>
-    </select>
+  <div style="flex:1;">
 
     <label>
       Region
@@ -15874,8 +15836,8 @@ geographic analysis.
       id="assignmentRequestRegion"
       style="
         width:100%;
-        margin-top:6px;
-        margin-bottom:14px;
+        margin-top:4px;
+        height:32px;
       "
     >
 
@@ -15901,10 +15863,51 @@ geographic analysis.
 
     </select>
 
+  </div>
+
+</div>
+
+<label>
+  Notes
+</label>
+
+<textarea
+  id="assignmentRequestNotes"
+  style="
+    width:100%;
+    min-height:60px;
+    margin:4px 0 10px 0;
+  "
+></textarea>
+
+<hr style="margin:20px 0;">
+
+<h3>
+    Select Instructors
+</h3>
+
+<div
+    id="assignmentInstructorList"
+    style="
+        border:1px solid #DBE3EC;
+        border-radius:6px;
+        padding:12px;
+        min-height:220px;
+        max-height:260px;
+        overflow-y:auto;
+        margin-bottom:16px;
+    "
+>
+
+    No instructors loaded.
+
+</div>
+	  
 <button
   type="button"
   class="admin-button"
   onclick="toggleEventSelectionPanel()"
+  style="margin-bottom:8px;"
 >
   Select Events
 </button>
@@ -15913,58 +15916,114 @@ geographic analysis.
   id="eventSelectionPanel"
   style="
     display:none;
-    margin-top:12px;
     border:1px solid #DBE3EC;
     border-radius:6px;
-    max-height:250px;
+    max-height:180px;
     overflow-y:auto;
-    padding:12px;
+    padding:8px;
+    margin-bottom:8px;
   "
 ></div>
 
-    <label>
-      Selected Events
-    </label>
-
- <button
+<button
   id="useSelectedEventsButton"
   class="admin-button"
   style="
     display:none;
     width:100%;
-    margin-top:10px;
+    margin-bottom:10px;
   "
   onclick="saveSelectedEvents()"
 >
   Use Selected Events
-</button> 
+</button>
 
-    <div
-      id="assignmentRequestEvents"
-      style="
-        border:1px solid #DBE3EC;
-        border-radius:6px;
-        padding:12px;
-        min-height:120px;
-        margin-top:6px;
-        margin-bottom:16px;
-      "
-    >
+<label>
+  Selected Events
+</label>
 
-      No events selected.
+<div
+  id="assignmentRequestEvents"
+  style="
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+    padding:8px;
+    min-height:70px;
+    max-height:100px;
+    overflow-y:auto;
+    margin:4px 0 12px 0;
+  "
+>
+  No events selected.
+</div>
 
-    </div>
+<div
+  style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:6px;
+  "
+>
+
+  <label style="margin:0;">
+    Select Instructors
+  </label>
+
+  <div>
 
     <button
+      type="button"
       class="admin-button"
-      onclick="saveAssignmentRequest()"
+      style="
+        padding:4px 10px;
+        font-size:11px;
+      "
     >
-      Create Request
+      Select All
+    </button>
+
+    <button
+      type="button"
+      class="admin-button"
+      style="
+        padding:4px 10px;
+        font-size:11px;
+      "
+    >
+      Clear All
     </button>
 
   </div>
 
 </div>
+
+<div
+  id="assignmentInstructorList"
+  style="
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+    padding:8px;
+    min-height:170px;
+    max-height:220px;
+    overflow-y:auto;
+    margin-bottom:14px;
+  "
+>
+
+  No instructors loaded.
+
+</div>
+
+<button
+  class="admin-button"
+  onclick="saveAssignmentRequest()"
+  style="
+    width:100%;
+  "
+>
+  Create &amp; Send Request
+</button>
 
 
 	
