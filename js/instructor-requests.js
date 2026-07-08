@@ -445,14 +445,16 @@ function(){
 
         if(event){
 
-          selected.push({
-
-            event_id:event.id,
-            event_title:event.title,
-            event_date:event.date,
-            location:event.location || ''
-
-          });
+        selected.push({
+        
+            event_id: event.id,
+            event_title: event.title,
+            event_date: event.date,
+            event_time: event.time || '',
+            location: event.location || '',
+            registrants: event.registrants || 0
+        
+        });
 
         }
 
@@ -523,36 +525,40 @@ function(){
     "
 >
 
+<div
+    style="
+        margin-bottom:12px;
+    "
+>
+
     <div
         style="
             font-size:15px;
             font-weight:600;
             color:#19304B;
-            margin-bottom:4px;
         "
     >
-    
-   ${event.event_date}
-      <br>
-      <strong>${event.event_title}</strong>
-      <br>
-      <span style="
-          font-size:11px;
-          color:#6B7280;
-      ">
-          ${event.location || ''}
-      </span>
+        ${event.event_title}
     </div>
 
     <div
         style="
             font-size:12px;
             color:#6B7280;
-            margin-bottom:12px;
+            margin-top:2px;
+            line-height:1.4;
         "
     >
-        ${event.event_date}
+        ${event.event_date}<br>
+
+        ${event.event_time || ''}<br>
+
+        ${event.location || ''}<br>
+
+        Registered: ${event.registrants || 0}
     </div>
+
+</div>
 
     <div
         style="
