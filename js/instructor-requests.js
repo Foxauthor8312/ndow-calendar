@@ -238,7 +238,17 @@ window.saveAssignmentRequest =
       }
 
       alert(
-        'Assignment request created.'
+          `Assignment Request Created
+          
+          Status: In Production
+          
+          The following functions are still being completed:
+          
+          • Email delivery
+          • Instructor responses
+          • Assignment tracking
+          • Request history
+          • Automatic notifications`
       );
 
       closeCreateAssignmentRequest();
