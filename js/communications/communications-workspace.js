@@ -13,6 +13,29 @@ function(event){
             'communicationsWorkspace'
         );
 
+ console.log('Workspace:', workspace);
+
+console.log(
+    'Subtitle:',
+    document.getElementById(
+        'communicationsHeaderSubtitle'
+    )
+);
+
+console.log(
+    'Sidebar:',
+    document.getElementById(
+        'communicationsSidebar'
+    )
+);
+
+console.log(
+    'Content:',
+    document.getElementById(
+        'communicationsContent'
+    )
+);
+
     if(!workspace || !event){
         return;
     }
