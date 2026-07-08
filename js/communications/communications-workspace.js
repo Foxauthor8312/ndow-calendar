@@ -177,9 +177,9 @@ console.log(
 
     <button
         class="comm-nav"
-        onclick="comingSoon('Survey & Thank You')"
+        onclick="loadReview()"
     >
-        💬 Survey & Thank You
+        💬 Review & Thank You
     </button>
 
     <button
