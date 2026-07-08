@@ -512,3 +512,45 @@ window.renderSelectedAssignmentEvents =
         .join('');
 
   };
+
+// ========================================
+// LOAD ASSIGNMENT INSTRUCTORS
+// ========================================
+
+window.loadAssignmentInstructors =
+async function(region){
+
+    try{
+
+        const response =
+            await fetch(
+
+                `${API_BASE}/assignment-instructors?region=${encodeURIComponent(region)}`,
+
+                {
+                    headers:
+                        authHeaders()
+                }
+
+            );
+
+        const result =
+            await response.json();
+
+        console.log(
+            'Assignment Instructors:',
+            result
+        );
+
+    }
+
+    catch(err){
+
+        console.error(
+            'Unable to load instructors',
+            err
+        );
+
+    }
+
+};
