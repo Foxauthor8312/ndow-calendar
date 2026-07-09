@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
  schedule:
-  - cron: '0 9,17 * * *'
+  # Daily at 9:00 AM and 5:00 PM Pacific during PDT
+  - cron: '0 0,16 * * *'
 
 jobs:
 
