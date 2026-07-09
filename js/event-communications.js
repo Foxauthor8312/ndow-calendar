@@ -76,9 +76,7 @@ window.loadReview = function(){
 
 function closeEventCommunication(){
 
-    document.getElementById(
-        'eventCommunicationModal'
-    ).style.display = 'none';
+    closeCommunicationsWorkspace();
 
 }
 
