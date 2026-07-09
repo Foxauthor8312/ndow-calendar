@@ -237,14 +237,16 @@ function renderCommunicationModal(options = {}){
     margin-bottom:18px;
 ">
 
+<h2>
+
 ${reviewMode
-    ? '⭐ Review'
-    : '📧 Compose Email'}
+    ? '💬 Survey'
+    : '📧 Reminder'}
 
 </h2>
 
     <div style="
-        font-size:24px;
+        font-size:20px;
         font-weight:700;
         color:#19304B;
         margin-bottom:8px;
@@ -256,7 +258,20 @@ ${reviewMode
         color:#4b5563;
         line-height:1.6;
     ">
-        ${currentEvent.date}<br>
+        ${new Date(
+    currentEvent.date
+).toLocaleDateString(
+
+    'en-US',
+
+    {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    }
+
+)}
         ${currentEvent.location}
     </div>
 
