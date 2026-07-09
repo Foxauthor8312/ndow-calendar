@@ -5,6 +5,7 @@
 ==========================================================
 */
 
+
 window.openCommunicationsWorkspace =
 function(event){
 
