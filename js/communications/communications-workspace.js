@@ -151,7 +151,7 @@ console.log(
         class="comm-nav active"
         onclick="loadCompose()"
     >
-        📧 Compose Email
+        📧 Reminder
     </button>
 
     <button
@@ -165,7 +165,7 @@ console.log(
         class="comm-nav"
         onclick="comingSoon('Templates')"
     >
-        📄 Templates
+        📄 Announcements
     </button>
 
     <hr style="margin:18px 0;">
@@ -191,7 +191,7 @@ console.log(
         class="comm-nav"
         onclick="loadReview()"
     >
-        💬 Review & Thank You
+        💬 Survey
     </button>
 
     <button
@@ -212,9 +212,9 @@ console.log(
         "
     >
         <div>Recipients: —</div>
-        <div>Emails Sent: —</div>
+        <div>Reminder: Not Sent</div>
         <div>Attendance: Pending</div>
-        <div>Survey: Not Sent</div>
+        <div>Survey: Pending</div>
     </div>
 
 `;
