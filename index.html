@@ -6529,10 +6529,15 @@ const totalsResponse =
     }
   );
 
+	
+
 console.log(
   'volunteer-totals status',
   totalsResponse.status
 );
+
+const totalsResult =
+  await totalsResponse.json();
 
 const totalsResult =
   await totalsResponse.json();
@@ -6544,6 +6549,12 @@ if(
   volunteerTotals =
     totalsResult;
 
+}
+
+if(
+    window.inCommunicationsWorkspace
+){
+    return;
 }
 
 	
