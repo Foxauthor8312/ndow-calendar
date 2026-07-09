@@ -20,7 +20,9 @@ import {
 
     loadEventRoster,
 
-    sendCommunicationRequest
+    sendCommunicationRequest,
+
+    saveAttendanceRequest
 
 }
 
