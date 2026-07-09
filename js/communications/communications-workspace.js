@@ -14,6 +14,13 @@ function(event){
             'communicationsWorkspace'
         );
 
+     // Ensure the workspace is attached to <body>
+    if (workspace.parentElement !== document.body) {
+
+        document.body.appendChild(workspace);
+
+    }
+
  console.log('Workspace:', workspace);
 
 console.log(
