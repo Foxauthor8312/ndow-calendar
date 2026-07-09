@@ -3,9 +3,8 @@ name: Update Event Rosters
 on:
   workflow_dispatch:
 
-  schedule:
-    # Daily at 2:00 AM Pacific during PDT (09:00 UTC)
-    - cron: '0 9 * * *'
+ schedule:
+  - cron: '0 9,17 * * *'
 
 jobs:
 
