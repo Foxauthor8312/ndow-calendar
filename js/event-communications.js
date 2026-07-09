@@ -707,3 +707,6 @@ window.clearRecipients =
 
 window.loadEventRoster =
     loadEventRoster;
+
+window.saveAttendanceRequest =
+    saveAttendanceRequest;
