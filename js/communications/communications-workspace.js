@@ -60,6 +60,7 @@ console.log(
 
     workspace.style.display =
         'block';
+    workspace.style.zIndex = '99999';
 
     // Header
 
