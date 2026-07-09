@@ -182,7 +182,7 @@ console.log(
 
     <button
         class="comm-nav"
-        onclick="comingSoon('Attendance')"
+        onclick="loadAttendance()"
     >
         ✓ Attendance
     </button>
@@ -263,6 +263,22 @@ function(){
                 has not loaded.
             </p>
         `;
+
+    }
+
+};
+
+window.loadAttendance =
+function(){
+
+    if(
+        typeof openAttendance ===
+        'function'
+    ){
+
+        openAttendance(
+            window.currentCommunicationEvent
+        );
 
     }
 
