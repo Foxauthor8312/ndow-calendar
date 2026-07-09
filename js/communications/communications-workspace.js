@@ -44,6 +44,9 @@ console.log(
 
     window.currentCommunicationEvent =
         event;
+ 
+    window.inCommunicationsWorkspace =
+    true;
 
     // Hide the Event Details modal
 
@@ -214,6 +217,9 @@ loadCompose();
 
 window.closeCommunicationsWorkspace =
 function(){
+
+    window.inCommunicationsWorkspace =
+        false;
 
     document.getElementById(
         'communicationsWorkspace'
