@@ -59,6 +59,30 @@ function renderAttendance(){
     ">
 </div>
 
+<hr style="margin:24px 0;">
+
+<div style="
+    display:flex;
+    justify-content:flex-end;
+">
+
+<button
+    type="button"
+    onclick="saveAttendance()"
+    style="
+        padding:10px 20px;
+        background:#19304B;
+        color:white;
+        border:none;
+        border-radius:6px;
+        cursor:pointer;
+    "
+>
+    Save Attendance
+</button>
+
+</div>
+
 `;
 
     renderAttendanceList();
@@ -90,13 +114,15 @@ border-bottom:1px solid #eee;
 ">
 
 <input
-type="checkbox"
-style="
-margin-right:12px;
-"
-checked
+    type="checkbox"
+    ${student.attended ? 'checked' : ''}
+    onchange="
+        updateAttendance(
+            ${student.customer_id},
+            this.checked
+        )
+    "
 >
-
 <div>
 
 <div style="
@@ -131,6 +157,29 @@ ${
         );
 
     });
+
+}
+
+function updateAttendance(
+    customerId,
+    attended
+){
+
+    const student =
+        roster.find(
+
+            s =>
+                s.customer_id ===
+                customerId
+
+        );
+
+    if(student){
+
+        student.attended =
+            attended;
+
+    }
 
 }
 
