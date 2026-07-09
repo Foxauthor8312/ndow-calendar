@@ -702,3 +702,6 @@ window.selectAllRecipients =
 
 window.clearRecipients =
     clearRecipients;
+
+window.loadEventRoster =
+    loadEventRoster;
