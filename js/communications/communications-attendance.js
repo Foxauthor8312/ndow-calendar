@@ -185,14 +185,35 @@ function updateAttendance(
 
 async function saveAttendance(){
 
-    console.log(
-        'Attendance Roster:',
-        roster
-    );
+    try{
 
-    alert(
-        'Attendance saved (test).'
-    );
+        const result =
+
+            await window.saveAttendanceRequest(
+
+                window.currentCommunicationEvent.id,
+
+                roster
+
+            );
+
+        alert(
+
+            result.message ||
+
+            'Attendance saved.'
+
+        );
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+        alert(err.message);
+
+    }
 
 }
 
