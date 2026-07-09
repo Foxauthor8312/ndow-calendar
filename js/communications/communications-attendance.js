@@ -103,7 +103,10 @@ checked
 font-weight:600;
 ">
 
-${student.name}
+${
+    student.student_name ||
+    student.name
+}
 
 </div>
 
@@ -112,7 +115,10 @@ font-size:12px;
 color:#6b7280;
 ">
 
-${student.email}
+${
+    student.student_email ||
+    student.email
+}
 
 </div>
 
