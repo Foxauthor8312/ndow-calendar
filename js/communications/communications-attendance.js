@@ -185,3 +185,9 @@ function updateAttendance(
 
 window.openAttendance =
     openAttendance;
+
+window.saveAttendance =
+    saveAttendance;
+
+window.updateAttendance =
+    updateAttendance;
