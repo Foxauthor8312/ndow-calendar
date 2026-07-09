@@ -183,6 +183,19 @@ function updateAttendance(
 
 }
 
+async function saveAttendance(){
+
+    console.log(
+        'Attendance Roster:',
+        roster
+    );
+
+    alert(
+        'Attendance saved (test).'
+    );
+
+}
+
 window.openAttendance =
     openAttendance;
 
