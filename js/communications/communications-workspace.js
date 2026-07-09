@@ -180,12 +180,12 @@ console.log(
         EVENT FOLLOW-UP
     </div>
 
-    <button
-        class="comm-nav"
-        onclick="loadAttendance()"
-    >
-        ✓ Attendance
-    </button>
+     <button
+       class="comm-nav"
+       onclick="loadAttendance()"
+   >
+       ✓ Attendance
+   </button>
 
     <button
         class="comm-nav"
@@ -300,5 +300,21 @@ function(name){
         </p>
 
     `;
+
+};
+
+window.loadAttendance =
+function(){
+
+    if(
+        typeof openAttendance ===
+        'function'
+    ){
+
+        openAttendance(
+            window.currentCommunicationEvent
+        );
+
+    }
 
 };
