@@ -5,20 +5,14 @@
 ==========================================================
 */
 
-import {
-    loadEventRoster
-}
-from
-'./event-communications-api.js';
-
 let roster = [];
 
 async function openAttendance(event){
 
-    roster =
-        await loadEventRoster(
-            event.id
-        );
+roster =
+    await window.loadEventRoster(
+        event.id
+    );
 
     renderAttendance();
 
