@@ -27,59 +27,52 @@ function renderAttendance(){
 
     container.innerHTML = `
 
-<h2 style="margin-top:0;">
-    ✓ Attendance
-</h2>
+<div class="comm-card">
 
-<div style="
-    font-size:22px;
-    font-weight:700;
-    color:#19304B;
-    margin-bottom:8px;
-">
-    Attendance Roster
-</div>
+    <h2 class="comm-card-title">
+        Attendance Roster
+    </h2>
 
-<div style="
-    color:#4b5563;
-    margin-bottom:20px;
-">
-    Check each student who attended.
-</div>
+    <div class="comm-card-subtitle">
+        Mark each participant who attended this event.
+    </div>
 
-<div
-    id="attendance-list"
-    style="
-        border:1px solid #d1d5db;
-        border-radius:8px;
-        background:white;
-        padding:16px;
-        max-height:520px;
-        overflow-y:auto;
-    ">
-</div>
+    <div
+        id="attendance-list"
+        class="comm-table"
+        style="
+            max-height:520px;
+            overflow-y:auto;
+        "
+    ></div>
 
-<hr style="margin:24px 0;">
+    <div class="comm-flex-end comm-mt">
 
-<div style="
-    display:flex;
-    justify-content:flex-end;
-">
+        <button
+            type="button"
+            class="comm-button"
+            onclick="selectAllAttendance()"
+        >
+            Select All
+        </button>
 
-<button
-    type="button"
-    onclick="saveAttendance()"
-    style="
-        padding:10px 20px;
-        background:#19304B;
-        color:white;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;
-    "
->
-    Save Attendance
-</button>
+        <button
+            type="button"
+            class="comm-button"
+            onclick="clearAttendance()"
+        >
+            Clear All
+        </button>
+
+        <button
+            type="button"
+            class="comm-button comm-button-primary"
+            onclick="saveAttendance()"
+        >
+            Save Attendance
+        </button>
+
+    </div>
 
 </div>
 
@@ -98,7 +91,7 @@ function renderAttendanceList(){
 
     list.innerHTML = '';
 
-    roster.forEach(student=>{
+    roster.forEach(student => {
 
         list.insertAdjacentHTML(
 
@@ -106,51 +99,43 @@ function renderAttendanceList(){
 
             `
 
-<label style="
-display:flex;
-align-items:center;
-padding:8px 0;
-border-bottom:1px solid #eee;
-">
+<div class="comm-row">
 
-<input
-    type="checkbox"
-    ${student.attended ? 'checked' : ''}
-    onchange="
-        updateAttendance(
-            ${student.customer_id},
-            this.checked
-        )
-    "
->
-<div>
+    <input
+        class="comm-checkbox"
+        type="checkbox"
+        ${student.attended ? 'checked' : ''}
+        onchange="
+            updateAttendance(
+                ${student.customer_id},
+                this.checked
+            )
+        "
+    >
 
-<div style="
-font-weight:600;
-">
+    <div>
 
-${
-    student.student_name ||
-    student.name
-}
+        <div class="comm-student">
 
-</div>
+            ${
+                student.student_name ||
+                student.name
+            }
 
-<div style="
-font-size:12px;
-color:#6b7280;
-">
+        </div>
 
-${
-    student.student_email ||
-    student.email
-}
+        <div class="comm-email">
+
+            ${
+                student.student_email ||
+                student.email
+            }
+
+        </div>
+
+    </div>
 
 </div>
-
-</div>
-
-</label>
 
 `
 
@@ -180,6 +165,34 @@ function updateAttendance(
             attended;
 
     }
+
+}
+
+function selectAllAttendance(){
+
+    roster.forEach(
+
+        student =>
+
+            student.attended = true
+
+    );
+
+    renderAttendanceList();
+
+}
+
+function clearAttendance(){
+
+    roster.forEach(
+
+        student =>
+
+            student.attended = false
+
+    );
+
+    renderAttendanceList();
 
 }
 
@@ -217,8 +230,16 @@ async function saveAttendance(){
 
 }
 
+
+
 window.openAttendance =
     openAttendance;
+
+window.selectAllAttendance =
+    selectAllAttendance;
+
+window.clearAttendance =
+    clearAttendance;
 
 window.saveAttendance =
     saveAttendance;
