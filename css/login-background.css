@@ -1,170 +1,42 @@
 /*
 ==========================================================
 NDOW Volunteer Portal
-Login Background Manager
+Login Background
 ==========================================================
 */
 
-const LoginBackground = {
+.login-background{
 
-    backgrounds: [],
+    position:absolute;
 
-    activeIndex: 0,
+    inset:0;
 
-    imageDeck: [],
+    background-repeat:no-repeat;
 
-    deckPosition: 0,
+    background-position:center center;
 
-    initialize(){
+    background-size:cover;
 
-        this.backgrounds = [
+    opacity:0;
 
-            document.getElementById(
-                'loginBackgroundA'
-            ),
+    transition:opacity .8s ease-in-out;
 
-            document.getElementById(
-                'loginBackgroundB'
-            )
+    z-index:1;
 
-        ];
+    will-change:opacity;
 
-        this.buildDeck();
+}
 
-        this.showNextImage(true);
+.login-overlay{
 
-    },
+    position:absolute;
 
-    buildDeck(){
+    inset:0;
 
-        this.imageDeck = [];
+    background:rgba(0,0,0,.24);
 
-        for(
+    z-index:2;
 
-            let i = 1;
+    pointer-events:none;
 
-            i <= LoginConfig.imageCount;
-
-            i++
-
-        ){
-
-            this.imageDeck.push(i);
-
-        }
-
-        // Fisher-Yates Shuffle
-
-        for(
-
-            let i =
-
-                this.imageDeck.length - 1;
-
-            i > 0;
-
-            i--
-
-        ){
-
-            const j =
-
-                Math.floor(
-
-                    Math.random() *
-
-                    (i + 1)
-
-                );
-
-            [
-
-                this.imageDeck[i],
-
-                this.imageDeck[j]
-
-            ] = [
-
-                this.imageDeck[j],
-
-                this.imageDeck[i]
-
-            ];
-
-        }
-
-        this.deckPosition = 0;
-
-    },
-
-    getNextImage(){
-
-        if(
-
-            this.deckPosition >=
-
-            this.imageDeck.length
-
-        ){
-
-            this.buildDeck();
-
-        }
-
-        return this.imageDeck[
-            this.deckPosition++
-        ];
-
-    },
-
-    showNextImage(
-
-        immediate = false
-
-    ){
-
-        const image =
-
-            this.getNextImage();
-
-        const next =
-
-            1 - this.activeIndex;
-
-        const currentLayer =
-
-            this.backgrounds[
-                this.activeIndex
-            ];
-
-        const nextLayer =
-
-            this.backgrounds[
-                next
-            ];
-
-        nextLayer.style.backgroundImage =
-
-            `url(${LoginConfig.imagePath}image-${image}.${LoginConfig.imageExtension})`;
-
-        if(immediate){
-
-            nextLayer.style.opacity = 1;
-
-            currentLayer.style.opacity = 0;
-
-            this.activeIndex = next;
-
-            return;
-
-        }
-
-        nextLayer.style.opacity = 1;
-
-        currentLayer.style.opacity = 0;
-
-        this.activeIndex = next;
-
-    }
-
-};
+}
