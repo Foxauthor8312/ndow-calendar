@@ -229,25 +229,37 @@ Login Panel
 
     justify-content:center;
 
-    gap:18px;
+    align-items:center;
 
-    margin-top:6px;
+    gap:10px;
 
-    font-size:13px;
+    margin-top:12px;
+
+    font-size:12px;
 
 }
 
 .login-links a{
 
-    color:#589FD6;
+    color:#19304B;
 
     text-decoration:none;
+
+    font-weight:600;
 
 }
 
 .login-links a:hover{
 
+    color:#000000;
+
     text-decoration:underline;
+
+}
+
+.login-link-divider{
+
+    color:#4B5D73;
 
 }
 
@@ -275,6 +287,12 @@ Login Panel
 .login-status{
 
     color:#4B5D73;
+
+    font-size:11px;
+
+    text-align:center;
+
+    line-height:1.4;
 
 }
 
