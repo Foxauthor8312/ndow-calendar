@@ -11,9 +11,9 @@ Login Background
 
     inset:0;
 
-    background-size:cover;
+    background-size: cover;
 
-    background-position:center;
+    height:100vh;
 
     background-repeat:no-repeat;
 
