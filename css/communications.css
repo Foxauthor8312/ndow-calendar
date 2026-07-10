@@ -479,6 +479,22 @@
 
     display:flex;
 
+    height:calc(100vh - 70px);
+
+}
+
+.comm-sidebar{
+
+    width:300px;
+
+    flex-shrink:0;
+
+}
+
+.comm-content{
+
+    flex:1;
+
 }
 
 .comm-flex-between{
