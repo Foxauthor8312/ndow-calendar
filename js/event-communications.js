@@ -109,13 +109,13 @@ async function sendCommunication(){
         ){
         
             finalMessage =
-                message.replace(
-        
-                    '[Jotform Review Link]',
-        
-                    'https://YOUR-JOTFORM-LINK'
-        
-                );
+              message.replace(
+
+                '[Survey Link]',
+            
+                'https://YOUR-SURVEY-LINK'
+            
+            );
         
         }
 
@@ -229,118 +229,115 @@ function renderCommunicationModal(options = {}){
         'communicationsContent'
     );
 
-    container.innerHTML = `
+container.innerHTML = `
 
-<div style="
-    margin-bottom:20px;
-">
-<h2 style="
-    margin-top:0;
-    margin-bottom:18px;
-">
+<div class="comm-card">
 
-<h2>
+    <h2 class="comm-card-title">
 
-${reviewMode
-    ? '💬 Survey'
-    : '📧 Reminder'}
+        ${reviewMode
+            ? 'Survey'
+            : 'Reminder'}
 
-</h2>
+    </h2>
 
-    <div style="
-        font-size:20px;
-        font-weight:700;
-        color:#19304B;
-        margin-bottom:8px;
-    ">
-        ${currentEvent.title}
-    </div>
+    <div class="comm-card-subtitle">
 
-    <div style="
-        color:#4b5563;
-        line-height:1.6;
-    ">
+        <strong>
+
+            ${currentEvent.title}
+
+        </strong>
+
+        <br><br>
+
         ${new Date(
-    currentEvent.date
-).toLocaleDateString(
+            currentEvent.date
+        ).toLocaleDateString(
 
-    'en-US',
+            'en-US',
 
-    {
-        weekday:'long',
-        year:'numeric',
-        month:'long',
-        day:'numeric'
-    }
+            {
+                weekday:'long',
+                year:'numeric',
+                month:'long',
+                day:'numeric'
+            }
 
-)}
+        )}
+
+        <br>
+
         ${currentEvent.location}
+
     </div>
 
 </div>
 
-<hr>
+<div class="comm-card">
 
-<div style="margin-top:24px;">
+    <label class="comm-label">
 
-<label style="
-display:block;
-font-weight:700;
-margin-bottom:6px;
-">
+        Template
 
-Subject
+    </label>
 
-</label>
+    <select
+        id="email-template"
+        class="comm-select"
+    >
 
-<input
+        <option>
 
-id="email-subject"
+            ${
+                reviewMode
+                    ? 'Survey'
+                    : 'General Reminder'
+            }
 
-type="text"
+        </option>
 
-style="
-width:100%;
-padding:10px;
-border:1px solid #d1d5db;
-border-radius:8px;
-margin-bottom:18px;
-"
+    </select>
 
-value="${
-    reviewMode
-        ? `Thank You for Attending ${currentEvent.title}`
-        : `Reminder - ${currentEvent.title}`
-}"
+    <br><br>
 
->
+    <label class="comm-label">
 
-<label style="
-display:block;
-font-weight:700;
-margin-bottom:6px;
-">
+        Subject
 
-Message
+    </label>
 
-</label>
+    <input
 
-<textarea
+        id="email-subject"
 
-id="email-message"
+        class="comm-input"
 
-style="
-width:100%;
-height:180px;
-padding:12px;
-border:1px solid #d1d5db;
-border-radius:8px;
-resize:vertical;
-"
+        type="text"
 
->
+        value="${
+            reviewMode
+                ? `Thank You for Attending ${currentEvent.title}`
+                : `Reminder - ${currentEvent.title}`
+        }"
 
-${reviewMode
+    >
+
+    <br><br>
+
+    <label class="comm-label">
+
+        Message
+
+    </label>
+
+    <textarea
+
+        id="email-message"
+
+        class="comm-textarea"
+
+>${reviewMode
 ? `Thank you for attending "${currentEvent.title}."
 
 We appreciate your participation and hope you enjoyed the class.
@@ -349,7 +346,7 @@ Your feedback helps us improve future Nevada Department of Wildlife programs.
 
 Please take a few moments to complete our class review using the link below.
 
-[Jotform Review Link]
+[Survey Link]
 
 Thank you,
 
@@ -359,26 +356,15 @@ Nevada Department of Wildlife`
 Please review the attached event information before attending.
 
 We look forward to seeing you.
-`}
+`}</textarea>
 
-</textarea>
+</div>
 
-<hr style="margin:24px 0;">
+<div class="comm-card">
 
-<div style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:12px;
-">
+<div class="comm-flex-between">
 
-<h3 style="
-margin:0;
-">
-
-<h3 style="
-margin:0;
-">
+<h3>
 
 ${reviewMode
     ? `Attendees (${roster.length})`
@@ -386,40 +372,29 @@ ${reviewMode
 
 </h3>
 
-</h3>
-
 <div>
 
 <button
+
+class="comm-button"
 
 type="button"
 
 onclick="selectAllRecipients()"
 
-style="
-margin-right:8px;
-padding:4px 10px;
-font-size:12px;
-cursor:pointer;
-"
-
 >
 
-Select Attendees
+Select All
 
 </button>
 
 <button
 
+class="comm-button"
+
 type="button"
 
 onclick="clearRecipients()"
-
-style="
-padding:4px 10px;
-font-size:12px;
-cursor:pointer;
-"
 
 >
 
@@ -432,47 +407,41 @@ Clear All
 </div>
 
 <div
-    id="recipient-list"
-    style="
-        max-height:220px;
-        overflow-y:auto;
-        border:1px solid #d1d5db;
-        border-radius:8px;
-        padding:12px;
-        background:#fafafa;
-    "
+
+id="recipient-list"
+
+class="comm-table"
+
+style="
+    max-height:220px;
+    overflow-y:auto;
+"
+
 ></div>
 
-<div style="
-    margin-top:10px;
-    font-size:13px;
-    color:#6b7280;
-">
+<div class="comm-mt">
 
 Selected:
-<span id="selected-count">
+
+<span
+
+id="selected-count"
+
+class="comm-count"
+
+>
+
 ${selectedRecipients.length}
+
 </span>
 
 </div>
 
-<hr style="margin:24px 0;">
+</div>
 
-<div style="
-margin-bottom:18px;
-padding:14px;
-border:1px solid #d1d5db;
-border-radius:8px;
-background:#fafafa;
-">
+<div class="comm-card">
 
-<label style="
-display:flex;
-align-items:center;
-gap:10px;
-cursor:pointer;
-font-weight:600;
-">
+<label>
 
 <input
 
@@ -486,23 +455,11 @@ Send me a copy
 
 </label>
 
-<div style="
-margin:8px 0 18px 28px;
-font-size:13px;
-color:#6b7280;
-">
+<br><br>
 
-A copy will be sent to your instructor email address.
+<label class="comm-label">
 
-</div>
-
-<label style="
-display:block;
-font-weight:700;
-margin-bottom:6px;
-">
-
-Additional Recipient (Staff Copy)
+Additional Recipient
 
 </label>
 
@@ -512,35 +469,21 @@ id="cc-email"
 
 type="email"
 
-placeholder="name@example.com"
+class="comm-input"
 
-style="
-width:100%;
-padding:10px;
-border:1px solid #d1d5db;
-border-radius:8px;
-"
+placeholder="name@example.com"
 
 >
 
 </div>
 
-<div style="
-display:flex;
-justify-content:flex-end;
-gap:12px;
-margin-top:24px;
-">
+<div class="comm-flex-end">
 
 <button
 
-id="cancel-communication"
+class="comm-button"
 
 type="button"
-
-style="
-padding:10px 20px;
-"
 
 onclick="closeEventCommunication()"
 
@@ -552,30 +495,19 @@ Cancel
 
 <button
 
-id="send-communication"
+class="comm-button comm-button-primary"
 
 type="button"
-
-style="
-padding:10px 20px;
-background:#19304B;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-"
 
 onclick="sendCommunication()"
 
 >
 
 ${reviewMode
-    ? 'Send Review'
-    : 'Send Email'}
+    ? 'Send Survey'
+    : 'Send Reminder'}
 
 </button>
-
-</div>
 
 </div>
 
