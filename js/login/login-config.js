@@ -1,19 +1,44 @@
+/*
+==========================================================
+NDOW Volunteer Portal
+Login Configuration
+==========================================================
+*/
+
 const LoginConfig = {
+
+    // --------------------------------------
+    // Background Images
+    // --------------------------------------
 
     imagePath: 'images/login/',
 
-    imageCount: 11,
-
     imageExtension: 'webp',
 
-    panelPosition: 'right',
+    imageCount: 11,
 
-    panelOpacity: .72,
-
-    overlayOpacity: .20,
+    preventRepeat: true,
 
     fadeDuration: 800,
 
-    preventRepeat: true
+
+    // --------------------------------------
+    // Login Panel
+    // --------------------------------------
+
+    panelPosition: 'right',
+
+    panelOpacity: 0.72,
+
+    overlayOpacity: 0.20,
+
+
+    // --------------------------------------
+    // Session
+    // --------------------------------------
+
+    autoLogoutMinutes: 30,
+
+    rememberEmail: true
 
 };
