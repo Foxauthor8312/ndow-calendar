@@ -80,145 +80,183 @@ console.log(
     ).textContent =
         event.title;
 
-    // Sidebar
+ // Sidebar
 
-   document.getElementById(
+document.getElementById(
     'communicationsSidebar'
 ).innerHTML = `
 
-    <div style="
-        font-size:13px;
-        color:#6b7280;
-        font-weight:700;
-        margin-bottom:6px;
-    ">
-        Event #${event.id}
-    </div>
+<div class="comm-sidebar-section">
 
-    <div style="
-        font-size:22px;
-        font-weight:700;
-        color:#19304B;
-        line-height:1.3;
-        margin-bottom:8px;
-    ">
+    <div class="comm-event-title">
         ${event.title}
     </div>
 
-    <div style="
-        color:#2563eb;
-        font-weight:600;
-        margin-bottom:14px;
-    ">
+    <div class="comm-id">
+        Event #${event.id}
+    </div>
+
+    <div class="comm-program">
         ${event.program || ''}
     </div>
 
-    <div style="
-        font-size:14px;
-        margin-bottom:8px;
-    ">
+</div>
+
+<div class="comm-sidebar-section">
+
+    <div class="comm-label">
+        Status
+    </div>
+
+    <div class="comm-value">
         ${event.status || 'Registration Open'}
     </div>
 
-    <div style="
-        font-size:14px;
-        margin-bottom:8px;
-    ">
+    <div class="comm-label">
+        Date / Time
+    </div>
+
+    <div class="comm-value">
         ${event.time || event.date || ''}
     </div>
 
-    <div style="
-        font-size:14px;
-        margin-bottom:18px;
-        line-height:1.4;
-    ">
+    <div class="comm-label">
+        Location
+    </div>
+
+    <div class="comm-value">
         ${event.location || ''}
     </div>
 
-    <hr style="margin:18px 0;">
+</div>
 
-    <div style="
-        font-size:11px;
-        font-weight:700;
-        color:#6b7280;
-        letter-spacing:.08em;
-        margin-bottom:8px;
-    ">
-        COMMUNICATIONS
+<hr class="comm-divider">
+
+<div class="comm-sidebar-heading">
+    Communications
+</div>
+
+<button
+    class="comm-nav active"
+    onclick="
+        setActiveCommNav(this);
+        loadCompose();
+    "
+>
+    Reminder
+</button>
+
+<button
+    class="comm-nav"
+    onclick="
+        setActiveCommNav(this);
+        comingSoon('History');
+    "
+>
+    History
+</button>
+
+<button
+    class="comm-nav"
+    onclick="
+        setActiveCommNav(this);
+        comingSoon('Templates');
+    "
+>
+    Announcements
+</button>
+
+<hr class="comm-divider">
+
+<div class="comm-sidebar-heading">
+    Follow-Up
+</div>
+
+<button
+    class="comm-nav"
+    onclick="
+        setActiveCommNav(this);
+        loadAttendance();
+    "
+>
+    Attendance
+</button>
+
+<button
+    class="comm-nav"
+    onclick="
+        setActiveCommNav(this);
+        loadReview();
+    "
+>
+    Survey
+</button>
+
+<button
+    class="comm-nav"
+    onclick="
+        setActiveCommNav(this);
+        comingSoon('Automation');
+    "
+>
+    Automation
+</button>
+
+<hr class="comm-divider">
+
+<div id="communicationsStatusSummary">
+
+    <div class="comm-status">
+
+        <span class="comm-status-label">
+            Registered
+        </span>
+
+        <span class="comm-status-value comm-count">
+            —
+        </span>
+
     </div>
 
-    <button
-        class="comm-nav active"
-        onclick="loadCompose()"
-    >
-        📧 Reminder
-    </button>
+    <div class="comm-status">
 
-    <button
-        class="comm-nav"
-        onclick="comingSoon('History')"
-    >
-        📜 History
-    </button>
+        <span class="comm-status-label">
+            Reminder
+        </span>
 
-    <button
-        class="comm-nav"
-        onclick="comingSoon('Templates')"
-    >
-        📄 Announcements
-    </button>
+        <span class="comm-status-value">
+            Not Sent
+        </span>
 
-    <hr style="margin:18px 0;">
-
-    <div style="
-        font-size:11px;
-        font-weight:700;
-        color:#6b7280;
-        letter-spacing:.08em;
-        margin-bottom:8px;
-    ">
-        EVENT FOLLOW-UP
     </div>
 
-     <button
-       class="comm-nav"
-       onclick="loadAttendance()"
-   >
-       ✓ Attendance
-   </button>
+    <div class="comm-status">
 
-    <button
-        class="comm-nav"
-        onclick="loadReview()"
-    >
-        💬 Survey
-    </button>
+        <span class="comm-status-label">
+            Attendance
+        </span>
 
-    <button
-        class="comm-nav"
-        onclick="comingSoon('Automation')"
-    >
-        ⚙ Automation
-    </button>
+        <span class="comm-status-value">
+            Pending
+        </span>
 
-    <hr style="margin:18px 0;">
-
-    <div
-        id="communicationsStatusSummary"
-        style="
-            font-size:13px;
-            color:#6b7280;
-            line-height:1.8;
-        "
-    >
-        <div>Recipients: —</div>
-        <div>Reminder: Not Sent</div>
-        <div>Attendance: Pending</div>
-        <div>Survey: Pending</div>
     </div>
+
+    <div class="comm-status">
+
+        <span class="comm-status-label">
+            Survey
+        </span>
+
+        <span class="comm-status-value">
+            Pending
+        </span>
+
+    </div>
+
+</div>
 
 `;
-
 loadCompose();
 
 };
@@ -303,18 +341,4 @@ function(name){
 
 };
 
-window.loadAttendance =
-function(){
 
-    if(
-        typeof openAttendance ===
-        'function'
-    ){
-
-        openAttendance(
-            window.currentCommunicationEvent
-        );
-
-    }
-
-};
