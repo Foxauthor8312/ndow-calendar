@@ -1,9 +1,40 @@
-getLastImage()
+/*
+==========================================================
+NDOW Volunteer Portal
+Login Storage
+==========================================================
+*/
 
-setLastImage()
+const LoginStorage = {
 
-getRememberedEmail()
+    getLastImage(){
 
-setRememberedEmail()
+        return Number(
+            localStorage.getItem(
+                'ndow_last_login_image'
+            )
+        );
 
-clearLoginStorage()
+    },
+
+    setLastImage(image){
+
+        localStorage.setItem(
+
+            'ndow_last_login_image',
+
+            image
+
+        );
+
+    },
+
+    clear(){
+
+        localStorage.removeItem(
+            'ndow_last_login_image'
+        );
+
+    }
+
+};
