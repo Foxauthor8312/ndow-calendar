@@ -168,32 +168,40 @@ async function sendCommunication(){
         }
 
         const result =
-            await sendCommunicationRequest({
+       await sendCommunicationRequest({
 
-                eventId:
-                    currentEvent.id,
+    eventId:
+        currentEvent.id,
 
-                eventName:
-                    currentEvent.title,
+    eventName:
+        currentEvent.title,
 
-                eventDate:
-                    currentEvent.date,
+    eventDate:
+        currentEvent.date,
 
-                eventLocation:
-                    currentEvent.location,
+    eventLocation:
+        currentEvent.location,
 
-                subject,
+    subject,
 
-               message: finalMessage,
+    message: finalMessage,
 
-            ccMe,
+    communicationType:
 
-                ccEmail,
+        communicationMode === 'review'
 
-                recipients:
-                    selectedRecipients
+            ? 'Survey'
 
-            });
+            : 'Reminder',
+
+    ccMe,
+
+    ccEmail,
+
+    recipients:
+        selectedRecipients
+
+});
 
         alert(
 
