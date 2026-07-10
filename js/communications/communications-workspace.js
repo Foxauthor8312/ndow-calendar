@@ -322,6 +322,27 @@ function(){
 
 };
 
+function setActiveCommNav(button){
+
+    document
+        .querySelectorAll('.comm-nav')
+        .forEach(btn =>
+
+            btn.classList.remove(
+                'active'
+            )
+
+        );
+
+    button.classList.add(
+        'active'
+    );
+
+}
+
+window.setActiveCommNav =
+    setActiveCommNav;
+
 window.comingSoon =
 function(name){
 
