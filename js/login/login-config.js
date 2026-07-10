@@ -15,7 +15,7 @@ const LoginConfig = {
 
     imageExtension: 'webp',
 
-    imageCount: 11,
+    imageCount: 20,
 
     preventRepeat: true,
 
