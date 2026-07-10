@@ -43,6 +43,10 @@
   type="image/png"
   href="favicon.png"
 >
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/login-background.css">
+<link rel="stylesheet" href="css/login-panel.css">
+	
 
 <style>
 
@@ -1463,6 +1467,12 @@ body{
 ======================================== -->
 
 <div id="loginScreen" class="login-screen">
+
+	<div id="loginBackground"
+     class="login-background"></div>
+
+<div id="loginOverlay"
+     class="login-overlay"></div>
 
   <div class="login-box">
 
@@ -17913,6 +17923,8 @@ ${regionTotal}
 
 <script src="js/communications/communications-workspace.js"></script>	
 
+		
+
 <script>
 
 async function downloadRouteMap(){
@@ -17976,6 +17988,13 @@ async function downloadRouteMap(){
 }
 
 </script>
+
+<script src="js/login/login-config.js"></script>
+<script src="js/login/login-storage.js"></script>
+<script src="js/login/login-background.js"></script>
+<script src="js/login/login-ui.js"></script>
+<script src="js/login/login-auth.js"></script>
+<script src="js/login/login.js"></script>		
 
 </body>
 </html>
