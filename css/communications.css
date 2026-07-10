@@ -1,16 +1,192 @@
-/* ==========================================
-   Communications Workspace
-========================================== */
+/*
+==============================================================================
+ NDOW Volunteer Portal
+ Communications Workspace
+------------------------------------------------------------------------------
+ File        : communications.css
+ Purpose     : Shared styling for the Communications Center
+ Font        : IBM Plex Sans / IBM Plex Mono
+==============================================================================
+*/
+
+/* ==========================================================================
+   Workspace
+========================================================================== */
+
+#communicationsWorkspace{
+
+    font-family:
+        "IBM Plex Sans",
+        sans-serif;
+
+    color:#19304B;
+
+    background:#f5f7fa;
+
+}
+
+#communicationsHeader{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    height:70px;
+
+    padding:0 24px;
+
+    background:#19304B;
+
+    color:#fff;
+
+    border-bottom:1px solid #0f1d2e;
+
+}
+
+.comm-header-title{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.comm-header-subtitle{
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    opacity:.85;
+
+}
+
+/* ==========================================================================
+   Layout
+========================================================================== */
+
+.comm-sidebar{
+
+    background:#fff;
+
+    border-right:1px solid #d8dde6;
+
+    padding:24px;
+
+    overflow-y:auto;
+
+}
+
+.comm-content{
+
+    background:#f8fafc;
+
+    padding:30px;
+
+    overflow-y:auto;
+
+}
+
+/* ==========================================================================
+   Sidebar
+========================================================================== */
+
+.comm-sidebar-section{
+
+    margin-bottom:26px;
+
+}
+
+.comm-sidebar-heading{
+
+    margin-bottom:10px;
+
+    color:#6b7280;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+}
+
+.comm-event-title{
+
+    margin-bottom:10px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+}
+
+.comm-program{
+
+    margin-bottom:14px;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+}
+
+.comm-label{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#6b7280;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.comm-value{
+
+    margin-bottom:12px;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+.comm-id,
+
+.comm-count{
+
+    font-family:
+        "IBM Plex Mono",
+        monospace;
+
+}
+
+/* ==========================================================================
+   Navigation
+========================================================================== */
 
 .comm-nav{
 
     width:100%;
+
     display:block;
 
-    padding:10px 14px;
     margin-bottom:8px;
 
+    padding:10px 14px;
+
     border:none;
+
     border-radius:6px;
 
     background:#e5e7eb;
@@ -18,7 +194,9 @@
     color:#19304B;
 
     font-size:14px;
+
     font-weight:500;
+
     text-align:left;
 
     cursor:pointer;
@@ -40,5 +218,277 @@
     color:#fff;
 
     font-weight:600;
+
+}
+
+/* ==========================================================================
+   Cards
+========================================================================== */
+
+.comm-card{
+
+    background:#fff;
+
+    border:1px solid #d8dde6;
+
+    border-radius:10px;
+
+    padding:24px;
+
+    margin-bottom:24px;
+
+}
+
+.comm-card-title{
+
+    margin:0 0 8px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.comm-card-subtitle{
+
+    margin-bottom:22px;
+
+    color:#6b7280;
+
+    line-height:1.6;
+
+}
+
+/* ==========================================================================
+   Forms
+========================================================================== */
+
+.comm-input,
+
+.comm-select,
+
+.comm-textarea{
+
+    width:100%;
+
+    padding:10px 12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:8px;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    box-sizing:border-box;
+
+}
+
+.comm-textarea{
+
+    min-height:180px;
+
+    resize:vertical;
+
+}
+
+.comm-input:focus,
+
+.comm-select:focus,
+
+.comm-textarea:focus{
+
+    outline:none;
+
+    border-color:#19304B;
+
+}
+
+/* ==========================================================================
+   Attendance
+========================================================================== */
+
+.comm-table{
+
+    border:1px solid #d8dde6;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    overflow:hidden;
+
+}
+
+.comm-row{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:12px 16px;
+
+    border-bottom:1px solid #eceff3;
+
+}
+
+.comm-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.comm-checkbox{
+
+    margin-right:14px;
+
+}
+
+.comm-student{
+
+    font-weight:600;
+
+}
+
+.comm-email{
+
+    margin-top:2px;
+
+    color:#6b7280;
+
+    font-size:12px;
+
+}
+
+/* ==========================================================================
+   Buttons
+========================================================================== */
+
+.comm-button{
+
+    padding:10px 20px;
+
+    border-radius:6px;
+
+    border:1px solid #cbd5e1;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+}
+
+.comm-button:hover{
+
+    background:#f3f4f6;
+
+}
+
+.comm-button-primary{
+
+    background:#19304B;
+
+    color:#fff;
+
+    border:none;
+
+}
+
+.comm-button-primary:hover{
+
+    background:#25496d;
+
+}
+
+.comm-button-secondary{
+
+    background:#fff;
+
+    color:#19304B;
+
+}
+
+/* ==========================================================================
+   Status
+========================================================================== */
+
+.comm-status{
+
+    margin-bottom:8px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:13px;
+
+}
+
+.comm-status-label{
+
+    color:#6b7280;
+
+}
+
+.comm-status-value{
+
+    font-weight:600;
+
+}
+
+/* ==========================================================================
+   Utilities
+========================================================================== */
+
+.comm-divider{
+
+    margin:22px 0;
+
+    border:none;
+
+    border-top:1px solid #e5e7eb;
+
+}
+
+.comm-flex{
+
+    display:flex;
+
+}
+
+.comm-flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.comm-flex-end{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+}
+
+.comm-mt{
+
+    margin-top:24px;
+
+}
+
+.comm-mb{
+
+    margin-bottom:24px;
 
 }
