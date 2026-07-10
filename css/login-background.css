@@ -1,1 +1,40 @@
+/*
+==========================================================
+NDOW Volunteer Portal
+Login Background
+==========================================================
+*/
 
+.login-background{
+
+    position:absolute;
+
+    inset:0;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    opacity:0;
+
+    transition:opacity .8s ease;
+
+    z-index:1;
+
+}
+
+.login-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.20);
+
+    z-index:2;
+
+    pointer-events:none;
+
+}
