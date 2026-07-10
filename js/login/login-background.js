@@ -1,78 +1,169 @@
 /*
 ==========================================================
 NDOW Volunteer Portal
-Login Background
+Login Background Manager
 ==========================================================
 */
 
 const LoginBackground = {
 
-    currentImage: 0,
+    backgrounds: [],
+
+    activeIndex: 0,
+
+    imageDeck: [],
+
+    deckPosition: 0,
 
     initialize(){
 
-        this.showRandomImage();
+        this.backgrounds = [
+
+            document.getElementById(
+                'loginBackgroundA'
+            ),
+
+            document.getElementById(
+                'loginBackgroundB'
+            )
+
+        ];
+
+        this.buildDeck();
+
+        this.showNextImage(true);
 
     },
 
-    showRandomImage(){
+    buildDeck(){
 
-        const background =
+        this.imageDeck = [];
 
-            document.getElementById(
-                'loginBackground'
-            );
+        for(
 
-        if(!background)
-            return;
+            let i = 1;
 
-        let image;
+            i <= LoginConfig.imageCount;
 
-        do{
+            i++
 
-            image =
+        ){
+
+            this.imageDeck.push(i);
+
+        }
+
+        // Fisher-Yates Shuffle
+
+        for(
+
+            let i =
+
+                this.imageDeck.length - 1;
+
+            i > 0;
+
+            i--
+
+        ){
+
+            const j =
 
                 Math.floor(
 
                     Math.random() *
 
-                    LoginConfig.imageCount
+                    (i + 1)
 
-                ) + 1;
+                );
+
+            [
+
+                this.imageDeck[i],
+
+                this.imageDeck[j]
+
+            ] = [
+
+                this.imageDeck[j],
+
+                this.imageDeck[i]
+
+            ];
 
         }
 
-        while(
+        this.deckPosition = 0;
 
-            LoginConfig.preventRepeat &&
+    },
 
-            image ===
+    getNextImage(){
 
-            LoginStorage.getLastImage()
+        if(
 
-        );
+            this.deckPosition >=
 
-        LoginStorage.setLastImage(
+            this.imageDeck.length
 
-            image
+        ){
 
-        );
+            this.buildDeck();
 
-        this.currentImage = image;
+        }
 
-        background.style.opacity = 0;
+        return this.imageDeck[
+            this.deckPosition++
+        ];
 
-        setTimeout(() => {
+    },
 
-            background.style.backgroundImage =
+    showNextImage(
 
-                `url(${LoginConfig.imagePath}image-${image}.${LoginConfig.imageExtension})`;
+        immediate = false
 
-            background.style.opacity = 1;
+    ){
 
-        },
+        const image =
 
-        LoginConfig.fadeDuration / 2);
+            this.getNextImage();
+
+        const next =
+
+            1 - this.activeIndex;
+
+        const currentLayer =
+
+            this.backgrounds[
+                this.activeIndex
+            ];
+
+        const nextLayer =
+
+            this.backgrounds[
+                next
+            ];
+
+        nextLayer.style.backgroundImage =
+
+            `url(${LoginConfig.imagePath}image-${image}.${LoginConfig.imageExtension})`;
+
+        if(immediate){
+
+            nextLayer.style.opacity = 1;
+
+            currentLayer.style.opacity = 0;
+
+            this.activeIndex = next;
+
+            return;
+
+        }
+
+        nextLayer.style.opacity = 1;
+
+        currentLayer.style.opacity = 0;
+
+        this.activeIndex = next;
 
     }
 
