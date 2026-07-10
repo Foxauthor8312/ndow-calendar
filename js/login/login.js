@@ -1,7 +1,7 @@
 /*
 ==========================================================
 NDOW Volunteer Portal
-Login Initialization
+Login Startup
 ==========================================================
 */
 
@@ -9,10 +9,12 @@ document.addEventListener(
 
     'DOMContentLoaded',
 
-    () => {
-
-        LoginBackground.initialize();
-
-    }
+    initializeLogin
 
 );
+
+function initializeLogin(){
+
+    LoginBackground.initialize();
+
+}
