@@ -1,1 +1,39 @@
+/*
+==========================================================
+NDOW Volunteer Portal
+Login Layout
+==========================================================
+*/
 
+.login-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    background:#000;
+
+}
+
+.login-box{
+
+    position:relative;
+
+}
+
+.login-header,
+.login-form{
+
+    position:relative;
+
+    z-index:20;
+
+}
