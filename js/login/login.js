@@ -1,9 +1,18 @@
-initializeLogin(){
+/*
+==========================================================
+NDOW Volunteer Portal
+Login Initialization
+==========================================================
+*/
 
-    LoginBackground.initialize();
+document.addEventListener(
 
-    LoginUI.initialize();
+    'DOMContentLoaded',
 
-    LoginAuth.initialize();
+    () => {
 
-}
+        LoginBackground.initialize();
+
+    }
+
+);
