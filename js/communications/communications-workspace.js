@@ -9,6 +9,8 @@
 window.openCommunicationsWorkspace =
 function(event){
 
+ console.log("OPEN WORKSPACE", event);
+
     const workspace =
         document.getElementById(
             'communicationsWorkspace'
