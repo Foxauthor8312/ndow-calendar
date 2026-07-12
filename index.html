@@ -6333,15 +6333,15 @@ try {
   const result =
     await response.json();
 
-  if(
-    result.success &&
-    result.submitted
-  ){
+if(result.success){
 
-    submittedHoursRecord =
-      result.record;
+  submittedHoursRecord =
+    result.record;
 
-  }
+  window.ndowRecord =
+    result.ndowRecord;
+
+}
 
 const totalsResponse =
   await fetch(
@@ -6796,7 +6796,7 @@ ${
 ">
 
 ${
-submittedHoursRecord
+window.ndowRecord
 ? `
 
 <div style="
@@ -6816,6 +6816,7 @@ submittedHoursRecord
   ">
    Official NDOW Volunteer Record
   </div>
+  
   <div style="
   font-size:11px;
   color:#6b7280;
@@ -6829,25 +6830,33 @@ submittedHoursRecord
     Source: NDOW Volunteer Hours Database
   </div>
 
-  <div>
-    Hours:
-    ${submittedHoursRecord.volunteer_hours.toFixed(2)}
-  </div>
+<div>
+  Hours:
+  ${Number(
+    window.ndowRecord?.volunteer_hours || 0
+  ).toFixed(2)}
+</div>
 
-  <div>
-    Break:
-    ${submittedHoursRecord.break_minutes}
-  </div>
+<div>
+  Break:
+  ${Number(
+    window.ndowRecord?.break_minutes || 0
+  ).toFixed(0)}
+</div>
 
-  <div>
-    Travel:
-    ${submittedHoursRecord.travel_hours.toFixed(2)}
-  </div>
+<div>
+  Travel:
+  ${Number(
+    window.ndowRecord?.travel_hours || 0
+  ).toFixed(2)}
+</div>
 
-  <div>
-    Mileage:
-    ${submittedHoursRecord.mileage.toFixed(0)}
-  </div>
+<div>
+  Mileage:
+  ${Number(
+    window.ndowRecord?.mileage || 0
+  ).toFixed(0)}
+</div>
 
 </div>
 
