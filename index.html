@@ -5537,15 +5537,33 @@ async function calculateRoute(){
 
 	  renderRouteMap();
 	  
-    document.getElementById(
-      'mileage'
-    ).value =
-      result.miles;
+// ==========================================================
+// 2026-07-11
+// Display calculated travel values.
+//
+// Server returns values already rounded to NDOW
+// reporting increments. Display them using two
+// decimal places for consistency.
+// ==========================================================
 
-    document.getElementById(
-      'travelHours'
-    ).value =
-      result.travelHours;
+document.getElementById(
+  'mileage'
+).value =
+  Number(
+    result.miles
+  ).toFixed(2);
+
+document.getElementById(
+  'travelHours'
+).value =
+  Number(
+    result.travelHours
+  ).toFixed(2);
+
+// Refresh volunteer hours summary after
+// travel time changes.
+
+calculateHours();
 
     document.getElementById(
       'routeResult'
@@ -5664,40 +5682,105 @@ function calculateHours(){
 
   }
 
-  let hours =
-  (endDate - startDate)
-  / 3600000;
+ // ==========================================================
+// 2026-07-11
+// Calculate total volunteer hours.
+//
+// Total Volunteer Hours =
+// (Event Time + Travel Time) - Break Time
+// ==========================================================
 
-hours -=
+const eventHours =
+  (endDate - startDate) / 3600000;
+
+const travelHours =
+  Number(
+    document.getElementById(
+      'travelHours'
+    ).value || 0
+  );
+
+const totalHours =
+  eventHours +
+  travelHours -
   breakHours;
 
-if(hours <= 0){
+if(totalHours <= 0){
 
   error.textContent =
-    'Instructor hours must be greater than zero.';
+    'Total volunteer hours must be greater than zero.';
 
   return;
 
 }
 
-  const value =
-  hours * SERVICE_VALUE_RATE;
+const value =
+  totalHours *
+  SERVICE_VALUE_RATE;
 
-  summary.innerHTML = `
-  Instructor Hours:
-  ${hours.toFixed(2)}
-  <br>
-  Service Value:
-  $${value.toLocaleString(
-    'en-US',
-    {
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    }
-  )}
+// ==========================================================
+// 2026-07-11
+// Display Volunteer Time Summary.
+//
+// NDOW Total Volunteer Hours are calculated as:
+//
+// (Event Time + Travel Time) - Break Time
+//
+// All hours are displayed to two decimal places.
+// ==========================================================
+
+summary.innerHTML = `
+
+<div style="
+    line-height:1.8;
+">
+
+<div>
+    Event Time:
+    <strong>${eventHours.toFixed(2)}</strong>
+</div>
+
+<div>
+    Travel Time:
+    <strong>${travelHours.toFixed(2)}</strong>
+</div>
+
+<div>
+    Break Time:
+    <strong>-${breakHours.toFixed(2)}</strong>
+</div>
+
+<hr style="margin:10px 0;">
+
+<div style="
+    font-size:18px;
+    font-weight:700;
+    color:#166534;
+">
+    Total Volunteer Hours:
+    ${totalHours.toFixed(2)}
+</div>
+
+<div style="
+    margin-top:8px;
+">
+    Service Value:
+    <strong>
+        $${value.toLocaleString(
+            'en-US',
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        )}
+    </strong>
+</div>
+
+</div>
+
 `;
 
-  button.disabled = false;
+button.disabled = false;
 
 }
 function generateRoute(){
