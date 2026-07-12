@@ -6942,7 +6942,15 @@ $${Math.round(
     : `
 
 <button
-  onclick="openHoursModal()"
+  onclick="
+    // ==========================================================
+    // 2026-07-11
+    // NEW HOURS ENTRY
+    // Clear any previous edit record before opening the modal.
+    // ==========================================================
+    window.pendingHoursEntry = null;
+    openHoursModal();
+  "
   style="
     display:block;
     width:100%;
