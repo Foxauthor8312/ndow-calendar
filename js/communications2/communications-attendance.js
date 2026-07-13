@@ -49,6 +49,72 @@ from
 
 export function renderAttendance(){
 
+    const preview =
+
+        document.getElementById(
+
+            'communicationsPreview'
+
+        );
+
+    if(preview){
+
+        preview.innerHTML = `
+
+<div
+    style="
+        background:white;
+        border:1px solid #DBE3EC;
+        border-radius:10px;
+        padding:36px;
+        min-height:700px;
+        box-shadow:0 2px 10px rgba(0,0,0,.06);
+    "
+>
+
+    <h2
+        style="
+            color:#19304B;
+            margin-top:0;
+        "
+    >
+
+        Attendance
+
+    </h2>
+
+    <p>
+
+        Mark each participant who attended this
+        event.
+
+    </p>
+
+    <p>
+
+        Click <strong>Save Attendance</strong>
+        when you are finished.
+
+    </p>
+
+    <hr>
+
+    <p
+        style="
+            color:#6B7280;
+        "
+    >
+
+        Attendance does not send an email.
+
+    </p>
+
+</div>
+
+`;
+
+    }
+
     const state =
 
         getState();
@@ -89,7 +155,7 @@ export function renderAttendance(){
     <div
         id="attendanceList"
         style="
-            max-height:280px;
+            max-height:360px;
             overflow-y:auto;
         "
     >
@@ -101,7 +167,7 @@ export function renderAttendance(){
     <div
         style="
             display:flex;
-            justify-content:flex-end;
+            justify-content:center;
             gap:10px;
             margin-top:16px;
         "
@@ -236,14 +302,13 @@ function refreshAttendance(){
 
 }
 
-
 /*==============================================================================
     TOGGLE
 ==============================================================================*/
 
 window.toggleAttendance =
 
-function(customerId,attended){
+function(customerId, attended){
 
     const state =
 
@@ -253,7 +318,7 @@ function(customerId,attended){
 
         state.roster.find(
 
-            s=>
+            s =>
 
                 s.customer_id ===
 
@@ -288,7 +353,9 @@ function(){
 
         student=>{
 
-            student.attended = true;
+            student.attended =
+
+                true;
 
         }
 
@@ -315,7 +382,9 @@ function(){
 
         student=>{
 
-            student.attended = false;
+            student.attended =
+
+                false;
 
         }
 
@@ -354,7 +423,7 @@ async function(){
 
             result.message ||
 
-            'Attendance saved.'
+            'Attendance saved successfully.'
 
         );
 
