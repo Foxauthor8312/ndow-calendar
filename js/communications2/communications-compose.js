@@ -128,7 +128,7 @@ function renderCompose(){
 
         <label class="comm-label">
 
-            Template
+            Function
 
         </label>
 
@@ -139,19 +139,23 @@ function renderCompose(){
         >
 
             <option value="${COMMUNICATION_TYPES.REMINDER}">
-                Reminder
+                Reminder Email
             </option>
-
+            
+            <option value="attendance">
+                Attendance
+            </option>
+            
             <option value="${COMMUNICATION_TYPES.SURVEY}">
-                Survey
+                Survey Email
             </option>
-
+            
             <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-                We Missed You
+                We Missed You Email
             </option>
-
+            
             <option value="${COMMUNICATION_TYPES.CUSTOM}">
-                Custom
+                Custom Email
             </option>
 
         </select>
@@ -287,9 +291,11 @@ function renderDynamicPanel(){
 
     if(
 
-        type === COMMUNICATION_TYPES.SURVEY ||
-
-        type === COMMUNICATION_TYPES.NO_SHOW
+       type === 'attendance' ||
+   
+       type === COMMUNICATION_TYPES.SURVEY ||
+   
+       type === COMMUNICATION_TYPES.NO_SHOW
 
     ){
 
@@ -398,6 +404,14 @@ function updateTemplate(){
             'communicationTemplate'
 
         ).value;
+
+     if(type === 'attendance'){
+
+    renderAttendance();
+
+    return;
+
+}
 
     const email =
 
