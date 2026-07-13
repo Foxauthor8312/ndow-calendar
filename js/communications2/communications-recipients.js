@@ -223,7 +223,7 @@ function renderRecipientList(){
 
     list.innerHTML = '';
 
-    state.roster.forEach(
+    recipients.forEach(
 
         student=>{
 
