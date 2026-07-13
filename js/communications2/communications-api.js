@@ -75,7 +75,7 @@ export async function loadRoster(eventId){
 
         await fetch(
 
-            `${API_BASE}${API.ROSTER}/${eventId}/roster`,
+           `${API_BASE}${API.ROSTER}/${eventId}`,
 
             {
 
@@ -118,7 +118,7 @@ export async function loadHistory(eventId){
 
         await fetch(
 
-            `${API_BASE}${API.HISTORY}/${eventId}/history`,
+            `${API_BASE}${API.HISTORY}/${eventId}`,
 
             {
 
