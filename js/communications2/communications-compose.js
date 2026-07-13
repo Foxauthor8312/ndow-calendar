@@ -36,7 +36,9 @@ from
 
 import {
 
-    getState
+    getState,
+
+    setSelectedRecipients
 
 }
 
@@ -44,6 +46,15 @@ from
 
 './communications-state.js';
 
+import {
+
+    COMMUNICATION_TYPES
+
+}
+
+from
+
+'./communications-config.js';
 import {
 
     buildTemplate
@@ -290,12 +301,11 @@ function renderDynamicPanel(){
         ).value;
 
     if(
+if(
 
-       type === 'attendance' ||
-   
-       type === COMMUNICATION_TYPES.SURVEY ||
-   
-       type === COMMUNICATION_TYPES.NO_SHOW
+    type === 'attendance'
+
+){
 
     ){
 
