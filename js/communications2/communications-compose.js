@@ -116,177 +116,130 @@ function renderCompose(){
     "
 >
 
-    <!-- =========================================
-         COMPOSE
-    ========================================== -->
+<div class="comm-card">
 
-    <div class="comm-card">
+    <div class="comm-card-header">
 
-        <div class="comm-card-header">
-
-            ✉ Compose Communication
-
-        </div>
-
-        <div class="comm-card-body">
-
-            <label class="comm-label">
-
-                Template
-
-            </label>
-
-            <select
-                id="communicationTemplate"
-                class="comm-select"
-                style="width:100%;"
-            >
-
-                <option value="${COMMUNICATION_TYPES.REMINDER}">
-                    Reminder
-                </option>
-
-                <option value="${COMMUNICATION_TYPES.SURVEY}">
-                    Survey
-                </option>
-
-                <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-                    We Missed You
-                </option>
-
-                <option value="${COMMUNICATION_TYPES.CUSTOM}">
-                    Custom
-                </option>
-
-            </select>
-
-            <br><br>
-
-            <label class="comm-label">
-
-                Subject
-
-            </label>
-
-            <input
-                id="communicationSubject"
-                class="comm-input"
-                type="text"
-                style="width:100%;"
-            >
-
-        </div>
+        ✉ Compose Communication
 
     </div>
 
-${renderAttendance()}
+    <div class="comm-card-body">
 
-<!-- =========================================
-     RECIPIENTS
-========================================== -->
+        <label class="comm-label">
 
-    <div class="comm-card">
+            Template
+
+        </label>
+
+        <select
+            id="communicationTemplate"
+            class="comm-select"
+            style="width:100%;"
+        >
+
+            <option value="${COMMUNICATION_TYPES.REMINDER}">
+                Reminder
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.SURVEY}">
+                Survey
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.NO_SHOW}">
+                We Missed You
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.CUSTOM}">
+                Custom
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <label class="comm-label">
+
+            Subject
+
+        </label>
+
+        <input
+            id="communicationSubject"
+            class="comm-input"
+            type="text"
+            style="width:100%;"
+        >
+
+    </div>
+
+</div>
+
+<div id="communicationsDynamicPanel">
+
+</div>
+
+<div class="comm-card">
+
+    <div class="comm-card-header">
+
+        ✈ Send Options
+
+    </div>
+
+    <div class="comm-card-body">
+
+        <label>
+
+            <input
+                id="sendCopy"
+                type="checkbox"
+            >
+
+            Send me a copy
+
+        </label>
+
+        <br><br>
+
+        <label class="comm-label">
+
+            Additional Recipient
+
+        </label>
+
+        <input
+            id="additionalRecipient"
+            class="comm-input"
+            type="email"
+            placeholder="name@example.com"
+            style="width:100%;"
+        >
 
         <div
-            class="comm-card-header"
+            class="comm-flex-end"
             style="
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
+                margin-top:22px;
             "
         >
 
-            <span>
-
-                👥 Recipients
-
-            </span>
-
-            <span
-                id="recipientCountHeader"
-                style="
-                    font-size:13px;
-                    font-weight:600;
-                    color:#19304B;
-                "
+            <button
+                class="comm-button"
+                onclick="closeCommunicationsWorkspace()"
             >
 
-            </span>
+                Cancel
 
-        </div>
+            </button>
 
-        <div
-            id="communicationsRecipients">
-
-        </div>
-
-    </div>
-
-    <!-- =========================================
-         SEND OPTIONS
-    ========================================== -->
-
-    <div class="comm-card">
-
-        <div class="comm-card-header">
-
-            ✈ Send Options
-
-        </div>
-
-        <div class="comm-card-body">
-
-            <label>
-
-                <input
-                    id="sendCopy"
-                    type="checkbox"
-                >
-
-                Send me a copy
-
-            </label>
-
-            <br><br>
-
-            <label class="comm-label">
-
-                Additional Recipient
-
-            </label>
-
-            <input
-                id="additionalRecipient"
-                class="comm-input"
-                type="email"
-                placeholder="name@example.com"
-                style="width:100%;"
+            <button
+                class="comm-button comm-button-primary"
+                onclick="sendCommunication()"
             >
 
-            <div
-                class="comm-flex-end"
-                style="
-                    margin-top:22px;
-                "
-            >
+                Send Email
 
-                <button
-                    class="comm-button"
-                    onclick="closeCommunicationsWorkspace()">
-
-                    Cancel
-
-                </button>
-
-                <button
-                    class="comm-button comm-button-primary"
-                    onclick="sendCommunication()">
-
-                    Send Email
-
-                </button>
-
-            </div>
+            </button>
 
         </div>
 
@@ -294,9 +247,108 @@ ${renderAttendance()}
 
 </div>
 
+</div>
+
 `;
 
     initializeCompose();
+
+    renderDynamicPanel();
+
+}
+
+/*==============================================================================
+    DYNAMIC PANEL
+==============================================================================*/
+
+function renderDynamicPanel(){
+
+    const panel =
+
+        document.getElementById(
+
+            'communicationsDynamicPanel'
+
+        );
+
+    if(!panel){
+
+        return;
+
+    }
+
+    const type =
+
+        document.getElementById(
+
+            'communicationTemplate'
+
+        ).value;
+
+    if(
+
+        type === COMMUNICATION_TYPES.SURVEY ||
+
+        type === COMMUNICATION_TYPES.NO_SHOW
+
+    ){
+
+        panel.innerHTML =
+
+            renderAttendance();
+
+    }
+
+    else{
+
+        panel.innerHTML = `
+
+<div class="comm-card">
+
+    <div
+        class="comm-card-header"
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        "
+    >
+
+        <span>
+
+            👥 Recipients
+
+        </span>
+
+        <span
+            id="recipientCountHeader"
+            style="
+                font-size:13px;
+                font-weight:600;
+                color:#19304B;
+            "
+        >
+
+        </span>
+
+    </div>
+
+    <div
+        id="communicationsRecipients">
+
+    </div>
+
+</div>
+
+`;
+
+        if(window.renderRecipients){
+
+            window.renderRecipients();
+
+        }
+
+    }
 
 }
 
@@ -324,6 +376,7 @@ function initializeCompose(){
 
 
     updateTemplate();
+
 
 }
 
@@ -375,6 +428,8 @@ function updateTemplate(){
         email.subject;
 
     renderPreview();
+
+    renderDynamicPanel();
 
 }
 
