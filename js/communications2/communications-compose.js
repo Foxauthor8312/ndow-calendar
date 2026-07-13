@@ -38,8 +38,6 @@ import {
 
     getState,
 
-    setSelectedRecipients
-
 }
 
 from
@@ -292,7 +290,6 @@ function renderDynamicPanel(){
 
         ).value;
 
-    if(
 if(
 
     type === 'attendance'
@@ -453,6 +450,7 @@ function updateTemplate(){
     
     }
 
+ }
 /*==============================================================================
     GLOBALS
 ==============================================================================*/
