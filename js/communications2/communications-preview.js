@@ -67,11 +67,25 @@ export function renderPreview(){
 
         getState();
 
-    container.innerHTML =
+    container.innerHTML = `
 
-        state.preview.html ||
+<div
+    style="
+        background:white;
+        border:1px solid #DBE3EC;
+        border-radius:10px;
+        padding:36px;
+        min-height:700px;
+        box-shadow:0 2px 10px rgba(0,0,0,.06);
+        overflow:auto;
+    "
+>
 
-        '';
+${state.preview.html || ''}
+
+</div>
+
+`;
 
 }
 
@@ -111,13 +125,18 @@ export function renderEmptyPreview(){
 
 <div
     style="
-        height:100%;
+        background:white;
+        border:1px solid #DBE3EC;
+        border-radius:10px;
+        min-height:700px;
         display:flex;
         align-items:center;
         justify-content:center;
-        color:#6b7280;
+        color:#6B7280;
         font-size:15px;
-    ">
+        box-shadow:0 2px 10px rgba(0,0,0,.06);
+    "
+>
 
     Select a communication template.
 
@@ -138,12 +157,12 @@ export function renderPreviewHeader(){
 
 <div
     style="
-        padding:14px 18px;
-        border-bottom:1px solid #DBE3EC;
-        background:#F8FAFC;
+        font-size:20px;
         font-weight:700;
         color:#19304B;
-    ">
+        margin-bottom:18px;
+    "
+>
 
     Email Preview
 
