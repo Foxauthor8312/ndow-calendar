@@ -454,9 +454,12 @@ function updateTemplate(){
     renderPreview();
 
     renderDynamicPanel();
-
-}
-
+    
+    if(window.renderRecipients){
+    
+        window.renderRecipients();
+    
+    }
 
 /*==============================================================================
     GLOBALS
