@@ -165,6 +165,12 @@ console.log(
 
     initializeWorkspaceModules();
 
+ console.log(
+
+    getState()
+
+);
+
 }
 
 
@@ -195,19 +201,51 @@ async function loadWorkspaceRoster(){
 
     try{
 
-        const roster =
+const roster =
 
-            await loadRoster(
+    await loadRoster(
 
-                state.currentEvent.id
+        state.currentEvent.id
 
-            );
+    );
 
-        setRoster(
+setRoster(
 
-            roster
+    roster
 
-        );
+);
+
+console.log(
+
+    '[Communications] Roster Loaded',
+
+    roster
+
+);
+
+console.log(
+
+    '[Communications] Roster Count',
+
+    roster.length
+
+);
+
+     console.log(
+
+    '[Communications] Roster Loaded',
+
+    roster
+
+);
+
+console.log(
+
+    '[Communications] Student Count',
+
+    roster.length
+
+);
 
     }
 
