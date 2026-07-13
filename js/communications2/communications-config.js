@@ -39,9 +39,7 @@ export const COMMUNICATION_VERSION = '2.0';
 
 export const API_BASE =
 
-    window.API_BASE ||
-
-    '';
+    'https://ndow-calendar-server.onrender.com/api';
 
 /*===========================================================================
     ROUTES
