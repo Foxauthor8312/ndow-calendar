@@ -12,7 +12,6 @@
  Responsibilities:
     • Load event roster
     • Load communication history
-    • Load communication location
     • Send communications
     • Save attendance
 
@@ -26,7 +25,9 @@
 
 import {
 
-    API_BASE
+    API_BASE,
+
+    API
 
 }
 
@@ -35,9 +36,9 @@ from
 './communications-config.js';
 
 
-/*===========================================================================
+/*==============================================================================
     HEADERS
-===========================================================================*/
+==============================================================================*/
 
 function headers(){
 
@@ -52,9 +53,9 @@ function headers(){
 }
 
 
-/*===========================================================================
+/*==============================================================================
     LOAD ROSTER
-===========================================================================*/
+==============================================================================*/
 
 export async function loadRoster(eventId){
 
@@ -62,11 +63,11 @@ export async function loadRoster(eventId){
 
         await fetch(
 
-            `${API_BASE}/communications/event/${eventId}/roster`,
+            `${API_BASE}${API.ROSTER}/${eventId}/roster`,
 
             {
 
-                headers:
+                headers :
 
                     headers()
 
@@ -95,9 +96,9 @@ export async function loadRoster(eventId){
 }
 
 
-/*===========================================================================
+/*==============================================================================
     LOAD HISTORY
-===========================================================================*/
+==============================================================================*/
 
 export async function loadHistory(eventId){
 
@@ -105,11 +106,11 @@ export async function loadHistory(eventId){
 
         await fetch(
 
-            `${API_BASE}/communications/event/${eventId}/history`,
+            `${API_BASE}${API.HISTORY}/${eventId}/history`,
 
             {
 
-                headers:
+                headers :
 
                     headers()
 
@@ -138,9 +139,9 @@ export async function loadHistory(eventId){
 }
 
 
-/*===========================================================================
-    SEND EMAIL
-===========================================================================*/
+/*==============================================================================
+    SEND COMMUNICATION
+==============================================================================*/
 
 export async function sendCommunication(payload){
 
@@ -148,7 +149,7 @@ export async function sendCommunication(payload){
 
         await fetch(
 
-            `${API_BASE}/communications/send`,
+            `${API_BASE}${API.SEND}`,
 
             {
 
@@ -187,9 +188,9 @@ export async function sendCommunication(payload){
 }
 
 
-/*===========================================================================
+/*==============================================================================
     SAVE ATTENDANCE
-===========================================================================*/
+==============================================================================*/
 
 export async function saveAttendance(
 
@@ -203,7 +204,7 @@ export async function saveAttendance(
 
         await fetch(
 
-            `${API_BASE}/attendance/${eventId}`,
+            `${API_BASE}${API.ATTENDANCE}/${eventId}`,
 
             {
 
