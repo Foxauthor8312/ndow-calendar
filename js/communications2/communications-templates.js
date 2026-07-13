@@ -7,23 +7,16 @@
  Layer       : Frontend
 
  Purpose:
-    Generates all communication templates.
+    Builds communication templates.
 
  Responsibilities:
-    • Reminder emails
-    • Survey emails
-    • No Show emails
-    • Custom emails
-
- Returns:
-    {
-        subject,
-        html
-    }
+    • Reminder
+    • Survey
+    • No Show
+    • Custom
 
  Used By:
     • communications-compose.js
-    • communications-preview.js
 ==============================================================================
 */
 
@@ -39,22 +32,10 @@ from
 
 './communications-config.js';
 
-import {
 
-    buildSubject,
-
-    replacePlaceholders
-
-}
-
-from
-
-'./communications-utils.js';
-
-
-/*===========================================================================
-    PUBLIC
-===========================================================================*/
+/*==============================================================================
+    BUILD TEMPLATE
+==============================================================================*/
 
 export function buildTemplate(
 
@@ -62,7 +43,7 @@ export function buildTemplate(
 
     event,
 
-    location = {},
+    location,
 
     options = {}
 
@@ -72,7 +53,7 @@ export function buildTemplate(
 
         case COMMUNICATION_TYPES.SURVEY:
 
-            return buildSurveyTemplate(
+            return surveyTemplate(
 
                 event,
 
@@ -82,35 +63,27 @@ export function buildTemplate(
 
         case COMMUNICATION_TYPES.NO_SHOW:
 
-            return buildNoShowTemplate(
+            return noShowTemplate(
 
-                event,
-
-                options
+                event
 
             );
 
         case COMMUNICATION_TYPES.CUSTOM:
 
-            return buildCustomTemplate(
+            return customTemplate(
 
-                event,
-
-                options
+                event
 
             );
 
-        case COMMUNICATION_TYPES.REMINDER:
-
         default:
 
-            return buildReminderTemplate(
+            return reminderTemplate(
 
                 event,
 
-                location,
-
-                options
+                location
 
             );
 
@@ -119,59 +92,61 @@ export function buildTemplate(
 }
 
 
-/*===========================================================================
+/*==============================================================================
     REMINDER
-===========================================================================*/
+==============================================================================*/
 
-function buildReminderTemplate(
+function reminderTemplate(
 
     event,
 
-    location,
-
-    options
+    location
 
 ){
 
-    const subject =
+    return {
 
-        buildSubject(
+        subject:
 
-            `Reminder: ${event.title}`
+`Nevada Department of Wildlife - Reminder: ${event.title}`,
 
-        );
+        html:
 
-    const html = replacePlaceholders(
+`
 
-`<h2>{{title}}</h2>
+<h2>
+
+${event.title}
+
+</h2>
 
 <p>
 
-Thank you for registering for this Nevada Department of Wildlife event.
+Thank you for registering for a
+Nevada Department of Wildlife event.
 
 </p>
 
 <p>
 
-This is a friendly reminder that your class is scheduled for:
+<strong>Date:</strong>
+${event.date}
+
+<br>
+
+<strong>Time:</strong>
+${event.time || ''}
+
+<br>
+
+<strong>Location:</strong>
+${event.location}
 
 </p>
 
-<ul>
-
-<li><strong>Date:</strong> {{date}}</li>
-
-<li><strong>Time:</strong> {{time}}</li>
-
-<li><strong>Location:</strong> {{location}}</li>
-
-</ul>
-
-<h3>Directions</h3>
-
 <p>
 
-{{directions}}
+${location?.directions || ''}
 
 </p>
 
@@ -181,56 +156,18 @@ We look forward to seeing you.
 
 </p>
 
-<p>
-
-Nevada Department of Wildlife
-
-</p>`,
-
-        {
-
-            title :
-
-                event.title,
-
-            date :
-
-                event.date,
-
-            time :
-
-                event.time,
-
-            location :
-
-                event.location,
-
-            directions :
-
-                location.directions ||
-
-                ''
-
-        }
-
-    );
-
-    return {
-
-        subject,
-
-        html
+`
 
     };
 
 }
 
 
-/*===========================================================================
+/*==============================================================================
     SURVEY
-===========================================================================*/
+==============================================================================*/
 
-function buildSurveyTemplate(
+function surveyTemplate(
 
     event,
 
@@ -238,169 +175,150 @@ function buildSurveyTemplate(
 
 ){
 
-    const subject =
+    return {
 
-        buildSubject(
+        subject:
 
-            `We'd Appreciate Your Feedback: ${event.title}`
+`Nevada Department of Wildlife - Thank You for Attending ${event.title}`,
 
-        );
+        html:
 
-    const html = replacePlaceholders(
+`
 
-`<h2>Thank You</h2>
+<h2>
+
+Thank You
+
+</h2>
 
 <p>
 
 Thank you for attending
 
-<strong>{{title}}</strong>.
+<strong>
+
+${event.title}
+
+</strong>.
 
 </p>
 
 <p>
 
-Please take a few moments to complete our survey.
+Your feedback helps improve future
+Nevada Department of Wildlife programs.
 
 </p>
 
 <p>
 
-<a href="{{surveyUrl}}">
+<a href="${options.surveyUrl || '#'}">
 
-Complete Survey
+Complete the Class Survey
 
 </a>
 
 </p>
 
-<p>
-
-We appreciate your feedback.
-
-</p>`,
-
-        {
-
-            title :
-
-                event.title,
-
-            surveyUrl :
-
-                options.surveyUrl ||
-
-                '#'
-
-        }
-
-    );
-
-    return {
-
-        subject,
-
-        html
+`
 
     };
 
 }
 
 
-/*===========================================================================
+/*==============================================================================
     NO SHOW
-===========================================================================*/
+==============================================================================*/
 
-function buildNoShowTemplate(
+function noShowTemplate(
 
-    event,
-
-    options
+    event
 
 ){
 
-    const subject =
-
-        buildSubject(
-
-            `We Missed You at ${event.title}`
-
-        );
-
-    const html = replacePlaceholders(
-
-`<h2>We Missed You</h2>
-
-<p>
-
-We noticed that you were unable to attend
-
-<strong>{{title}}</strong>.
-
-</p>
-
-<p>
-
-We hope you'll register for another upcoming class.
-
-</p>
-
-<p>
-
-Thank you for your interest in Nevada Department of Wildlife programs.
-
-</p>`,
-
-        {
-
-            title :
-
-                event.title
-
-        }
-
-    );
-
     return {
 
-        subject,
+        subject:
 
-        html
+`Nevada Department of Wildlife - We Missed You`,
+
+        html:
+
+`
+
+<h2>
+
+We Missed You
+
+</h2>
+
+<p>
+
+We noticed you were unable to attend
+
+<strong>
+
+${event.title}
+
+</strong>.
+
+</p>
+
+<p>
+
+We hope you'll register for another
+Nevada Department of Wildlife class soon.
+
+</p>
+
+<p>
+
+We look forward to seeing you at
+a future event.
+
+</p>
+
+`
 
     };
 
 }
 
 
-/*===========================================================================
+/*==============================================================================
     CUSTOM
-===========================================================================*/
+==============================================================================*/
 
-function buildCustomTemplate(
+function customTemplate(
 
-    event,
-
-    options
+    event
 
 ){
 
     return {
 
-        subject :
+        subject:
 
-            buildSubject(
+`Nevada Department of Wildlife - ${event.title}`,
 
-                options.subject ||
+        html:
 
-                ''
+`
 
-            ),
+<h2>
 
-        html :
+${event.title}
 
-            options.html ||
+</h2>
 
-            ''
+<p>
+
+Enter your custom communication here.
+
+</p>
+
+`
 
     };
 
