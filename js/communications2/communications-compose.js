@@ -7,18 +7,8 @@
  Layer       : Frontend Controller
 
  Purpose:
-    Builds the communications compose workspace.
+    Builds the Communications Workspace compose panel.
 
- Responsibilities:
-    • Render compose workspace
-    • Template selection
-    • Subject generation
-    • Preview generation
-    • Initialize recipients
-    • Initialize preview
-
- Used By:
-    • communications-workspace.js
 ==============================================================================
 */
 
@@ -36,14 +26,13 @@ from
 
 import {
 
-    getState,
+    getState
 
 }
 
 from
 
 './communications-state.js';
-
 
 import {
 
@@ -142,19 +131,19 @@ function renderCompose(){
             <option value="${COMMUNICATION_TYPES.REMINDER}">
                 Reminder Email
             </option>
-            
+
             <option value="attendance">
                 Attendance
             </option>
-            
+
             <option value="${COMMUNICATION_TYPES.SURVEY}">
                 Survey Email
             </option>
-            
+
             <option value="${COMMUNICATION_TYPES.NO_SHOW}">
                 We Missed You Email
             </option>
-            
+
             <option value="${COMMUNICATION_TYPES.CUSTOM}">
                 Custom Email
             </option>
@@ -258,11 +247,7 @@ function renderCompose(){
 
     initializeCompose();
 
-    renderDynamicPanel();
-
-}
-
-/*==============================================================================
+ /*==============================================================================
     DYNAMIC PANEL
 ==============================================================================*/
 
@@ -290,11 +275,9 @@ function renderDynamicPanel(){
 
         ).value;
 
-if(
+    if(
 
-    type === 'attendance'
-
-){
+        type === 'attendance'
 
     ){
 
@@ -357,6 +340,7 @@ if(
 
 }
 
+
 /*==============================================================================
     INITIALIZE
 ==============================================================================*/
@@ -379,14 +363,11 @@ function initializeCompose(){
 
     );
 
-
     updateTemplate();
-
 
 }
 
-
-/*==============================================================================
+ /*==============================================================================
     TEMPLATE
 ==============================================================================*/
 
@@ -396,21 +377,43 @@ function updateTemplate(){
 
         getState();
 
-    const type =
+    const selector =
 
         document.getElementById(
 
             'communicationTemplate'
 
-        ).value;
+        );
 
-     if(type === 'attendance'){
+    if(!selector){
 
-    renderAttendance();
+        return;
 
-    return;
+    }
 
-}
+    const type =
+
+        selector.value;
+
+    state.currentTemplate =
+
+        type;
+
+    /*----------------------------------------------------------
+        Attendance Mode
+    ----------------------------------------------------------*/
+
+    if(type === 'attendance'){
+
+        renderDynamicPanel();
+
+        return;
+
+    }
+
+    /*----------------------------------------------------------
+        Build Email
+    ----------------------------------------------------------*/
 
     const email =
 
@@ -424,33 +427,39 @@ function updateTemplate(){
 
         );
 
-    state.currentTemplate =
-
-        type;
-
     state.preview =
 
         email;
 
-    document.getElementById(
+    const subject =
 
-        'communicationSubject'
+        document.getElementById(
 
-    ).value =
+            'communicationSubject'
 
-        email.subject;
+        );
+
+    if(subject){
+
+        subject.value =
+
+            email.subject;
+
+    }
 
     renderPreview();
 
     renderDynamicPanel();
-    
+
     if(window.renderRecipients){
-    
+
         window.renderRecipients();
-    
+
     }
 
- }
+}
+
+
 /*==============================================================================
     GLOBALS
 ==============================================================================*/
@@ -458,3 +467,5 @@ function updateTemplate(){
 window.changeCommunicationTemplate =
 
     updateTemplate;
+
+}
