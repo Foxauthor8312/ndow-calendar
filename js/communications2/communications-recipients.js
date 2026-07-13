@@ -139,6 +139,58 @@ function renderRecipientList(){
 
         getState();
 
+     let recipients =
+
+        [...state.roster];
+
+    const selector =
+
+        document.getElementById(
+
+            'communicationTemplate'
+
+        );
+
+    const currentFunction =
+
+        selector ?
+
+            selector.value :
+
+            COMMUNICATION_TYPES.REMINDER;
+
+    switch(currentFunction){
+
+        case COMMUNICATION_TYPES.SURVEY:
+
+            recipients =
+
+                recipients.filter(
+
+                    student =>
+
+                        student.attended === true
+
+                );
+
+            break;
+
+        case COMMUNICATION_TYPES.NO_SHOW:
+
+            recipients =
+
+                recipients.filter(
+
+                    student =>
+
+                        student.attended === false
+
+                );
+
+            break;
+
+    }
+
     const list =
 
         document.getElementById(
