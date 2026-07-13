@@ -35,6 +35,16 @@ from
 
 './communications-state.js';
 
+import {
+
+    COMMUNICATION_TYPES
+
+}
+
+from
+
+'./communications-config.js';
+
 
 /*===========================================================================
     INITIALIZE
