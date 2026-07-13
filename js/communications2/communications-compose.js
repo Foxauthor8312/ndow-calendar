@@ -4,18 +4,18 @@
  Communications Workspace
 ------------------------------------------------------------------------------
  Module      : communications-compose.js
- Layer       : Frontend
+ Layer       : Frontend Controller
 
  Purpose:
-    Renders the Event Communications workspace.
+    Builds the communications compose workspace.
 
  Responsibilities:
     • Render compose workspace
-    • Communication type selection
-    • Display subject
-    • Display preview
-    • Display recipients
-    • Footer controls
+    • Template selection
+    • Subject generation
+    • Preview generation
+    • Initialize recipients
+    • Initialize preview
 
  Used By:
     • communications-workspace.js
@@ -65,9 +65,9 @@ from
 './communications-preview.js';
 
 
-/*===========================================================================
+/*==============================================================================
     OPEN
-===========================================================================*/
+==============================================================================*/
 
 export function openCompose(){
 
@@ -76,11 +76,11 @@ export function openCompose(){
 }
 
 
-/*===========================================================================
+/*==============================================================================
     RENDER
-===========================================================================*/
+==============================================================================*/
 
-export function renderCompose(){
+function renderCompose(){
 
     const container =
 
@@ -96,169 +96,192 @@ export function renderCompose(){
 
     }
 
-    const state =
-
-        getState();
-
     container.innerHTML = `
 
-<div class="comm-workspace">
+<div class="comm-card">
 
-    <div class="comm-card">
+    <div class="comm-card-header">
 
-        <div class="comm-card-header">
-
-            Communication
-
-        </div>
-
-        <div class="comm-card-body">
-
-            <label>
-
-                Template
-
-            </label>
-
-            <select
-                id="communicationTemplate"
-                onchange="changeCommunicationTemplate()"
-            >
-
-                <option value="${COMMUNICATION_TYPES.REMINDER}">
-
-                    Reminder
-
-                </option>
-
-                <option value="${COMMUNICATION_TYPES.SURVEY}">
-
-                    Survey
-
-                </option>
-
-                <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-
-                    We Missed You
-
-                </option>
-
-                <option value="${COMMUNICATION_TYPES.CUSTOM}">
-
-                    Custom
-
-                </option>
-
-            </select>
-
-            <label
-                style="margin-top:18px;">
-
-                Subject
-
-            </label>
-
-            <input
-                id="communicationSubject"
-                type="text"
-                readonly
-            >
-
-        </div>
+        Compose Communication
 
     </div>
 
+    <div class="comm-card-body">
 
-    <div class="comm-card">
+        <label class="comm-label">
 
-        <div class="comm-card-header">
-
-            Email Preview
-
-        </div>
-
-        <div
-            id="communicationsPreview"
-            class="comm-preview">
-
-        </div>
-
-    </div>
-
-
-    <div class="comm-card">
-
-        <div class="comm-card-header">
-
-            Recipients
-
-        </div>
-
-        <div
-            id="communicationsRecipients">
-
-            Loading recipients...
-
-        </div>
-
-    </div>
-
-
-    <div class="comm-footer">
-
-        <label>
-
-            <input
-                id="sendCopy"
-                type="checkbox"
-            >
-
-            Send me a copy
+            Template
 
         </label>
 
-        <div>
+        <select
+            id="communicationTemplate"
+            class="comm-select"
+        >
 
-            <button
-                onclick="closeCommunicationsWorkspace()">
+            <option value="${COMMUNICATION_TYPES.REMINDER}">
 
-                Cancel
+                Reminder
 
-            </button>
+            </option>
 
-            <button
-                class="primary-button"
-                onclick="sendCommunication()">
+            <option value="${COMMUNICATION_TYPES.SURVEY}">
 
-                Send Email
+                Survey
 
-            </button>
+            </option>
 
-        </div>
+            <option value="${COMMUNICATION_TYPES.NO_SHOW}">
+
+                We Missed You
+
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.CUSTOM}">
+
+                Custom
+
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <label class="comm-label">
+
+            Subject
+
+        </label>
+
+        <input
+            id="communicationSubject"
+            class="comm-input"
+            type="text"
+        >
 
     </div>
 
 </div>
 
+<div class="comm-card">
+
+    <div class="comm-card-header">
+
+        Email Preview
+
+    </div>
+
+    <div
+        id="communicationsPreview"
+        class="comm-preview">
+
+    </div>
+
+</div>
+
+<div class="comm-card">
+
+    <div class="comm-card-header">
+
+        Recipients
+
+    </div>
+
+    <div
+        id="communicationsRecipients">
+
+    </div>
+
+</div>
+
+<div class="comm-card">
+
+    <label>
+
+        <input
+            id="sendCopy"
+            type="checkbox"
+        >
+
+        Send me a copy
+
+    </label>
+
+    <br><br>
+
+    <label class="comm-label">
+
+        Additional Recipient
+
+    </label>
+
+    <input
+        id="additionalRecipient"
+        class="comm-input"
+        type="email"
+        placeholder="name@example.com"
+    >
+
+</div>
+
+<div class="comm-flex-end">
+
+    <button
+        class="comm-button"
+        onclick="closeCommunicationsWorkspace()">
+
+        Cancel
+
+    </button>
+
+    <button
+        class="comm-button comm-button-primary"
+        onclick="sendCommunication()">
+
+        Send Email
+
+    </button>
+
+</div>
+
 `;
+
+    initializeCompose();
+
+}
+
+
+/*==============================================================================
+    INITIALIZE
+==============================================================================*/
+
+function initializeCompose(){
+
+    const selector =
+
+        document.getElementById(
+
+            'communicationTemplate'
+
+        );
+
+    selector.addEventListener(
+
+        'change',
+
+        updateTemplate
+
+    );
+
 
     updateTemplate();
 
 }
 
 
-/*===========================================================================
+/*==============================================================================
     TEMPLATE
-===========================================================================*/
-
-window.changeCommunicationTemplate =
-
-function(){
-
-    updateTemplate();
-
-};
-
+==============================================================================*/
 
 function updateTemplate(){
 
@@ -305,3 +328,12 @@ function updateTemplate(){
     renderPreview();
 
 }
+
+
+/*==============================================================================
+    GLOBALS
+==============================================================================*/
+
+window.changeCommunicationTemplate =
+
+    updateTemplate;
