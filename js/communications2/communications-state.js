@@ -7,30 +7,28 @@
  Layer       : Frontend State
 
  Purpose:
-    Maintains the current state of the Communications Workspace.
+    Central application state for the Communications Workspace.
 
  Responsibilities:
     • Current event
-    • Current template
-    • Current recipients
-    • Current location
-    • Current communication history
-    • Preview content
+    • Template selection
+    • Roster
+    • Selected recipients
+    • Location information
+    • Communication history
+    • Email preview
+    • UI state
 
  Used By:
-    • communications-workspace.js
-    • communications-compose.js
-    • communications-preview.js
-    • communications-recipients.js
-    • communications-history.js
+    • All Communications modules
 ==============================================================================
 */
 
 'use strict';
 
-/*===========================================================================
+/*==============================================================================
     APPLICATION STATE
-===========================================================================*/
+==============================================================================*/
 
 const state = {
 
@@ -38,99 +36,75 @@ const state = {
 
     loading : false,
 
-    dirty : false
+    dirty : false,
+
+    currentEvent : null,
+
+    currentTemplate : null,
+
+    roster : [],
+
+    selectedRecipients : [],
+
+    location : null,
+
+    history : [],
+
+    preview : {
+
+        subject : '',
+
+        html : ''
+
+    },
+
+    attendance : {
+
+        loaded : false,
+
+        roster : []
+
+    },
+
+    feedback : {
+
+        enabled : false,
+
+        surveyUrl : ''
+
+    },
+
+    ui : {
+
+        activeView : 'compose',
+
+        loading : false,
+
+        initialized : false,
+
+        sending : false
+
+    }
 
 };
 
 
-/*===========================================================================
-    CURRENT EVENT
-===========================================================================*/
+/*==============================================================================
+    STATE
+==============================================================================*/
 
-state.currentEvent = null;
-
-
-/*===========================================================================
-    TEMPLATE
-===========================================================================*/
-
-state.currentTemplate = null;
-
-
-/*===========================================================================
-    RECIPIENTS
-===========================================================================*/
-
-state.roster = [];
-
-state.selectedRecipients = [];
-
-
-/*===========================================================================
-    LOCATION
-===========================================================================*/
-
-state.location = null;
-
-
-/*===========================================================================
-    HISTORY
-===========================================================================*/
-
-state.history = [];
-
-
-/*===========================================================================
-    PREVIEW
-===========================================================================*/
-
-state.preview = {
-
-    subject : '',
-
-    html : ''
-
-};
-
-
-/*===========================================================================
-    ATTENDANCE
-===========================================================================*/
-
-state.attendance = {
-
-    loaded : false,
-
-    roster : []
-
-};
-
-
-/*===========================================================================
-    FEEDBACK
-===========================================================================*/
-
-state.feedback = {
-
-    enabled : false,
-
-    surveyUrl : ''
-
-};
-
-
-/*===========================================================================
-    METHODS
-===========================================================================*/
-
-export function getState() {
+export function getState(){
 
     return state;
 
 }
 
 
-export function resetState() {
+/*==============================================================================
+    RESET
+==============================================================================*/
+
+export function resetState(){
 
     state.initialized = false;
 
@@ -162,24 +136,44 @@ export function resetState() {
 
     state.feedback.surveyUrl = '';
 
+    state.ui.activeView = 'compose';
+
+    state.ui.loading = false;
+
+    state.ui.initialized = false;
+
+    state.ui.sending = false;
+
 }
 
 
-export function setCurrentEvent(event) {
+/*==============================================================================
+    EVENT
+==============================================================================*/
+
+export function setCurrentEvent(event){
 
     state.currentEvent = event;
 
 }
 
 
-export function setTemplate(template) {
+/*==============================================================================
+    TEMPLATE
+==============================================================================*/
+
+export function setCurrentTemplate(template){
 
     state.currentTemplate = template;
 
 }
 
 
-export function setRoster(roster) {
+/*==============================================================================
+    ROSTER
+==============================================================================*/
+
+export function setRoster(roster){
 
     state.roster = roster || [];
 
@@ -188,31 +182,72 @@ export function setRoster(roster) {
 }
 
 
-export function setSelectedRecipients(recipients) {
+/*==============================================================================
+    RECIPIENTS
+==============================================================================*/
+
+export function setSelectedRecipients(recipients){
 
     state.selectedRecipients = recipients || [];
 
 }
 
 
-export function setLocation(location) {
+/*==============================================================================
+    LOCATION
+==============================================================================*/
+
+export function setLocation(location){
 
     state.location = location;
 
 }
 
 
-export function setHistory(history) {
+/*==============================================================================
+    HISTORY
+==============================================================================*/
+
+export function setHistory(history){
 
     state.history = history || [];
 
 }
 
 
-export function setPreview(subject, html) {
+/*==============================================================================
+    PREVIEW
+==============================================================================*/
+
+export function setPreview(subject, html){
 
     state.preview.subject = subject;
 
     state.preview.html = html;
+
+}
+
+
+/*==============================================================================
+    UI
+==============================================================================*/
+
+export function setLoading(value){
+
+    state.ui.loading = value;
+
+}
+
+
+export function setSending(value){
+
+    state.ui.sending = value;
+
+}
+
+
+export function setInitialized(value){
+
+    state.ui.initialized = value;
 
 }
