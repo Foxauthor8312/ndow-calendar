@@ -49,19 +49,19 @@ export const API = {
 
     ROSTER :
 
-        '/communications/event',
+        '/event-communications/event-roster',
 
     HISTORY :
 
-        '/communications/event',
+        '/event-communications',
 
     SEND :
 
-        '/communications/send',
+        '/event-communications/send',
 
     ATTENDANCE :
 
-        '/attendance'
+        '/event-communications/attendance'
 
 };
 
