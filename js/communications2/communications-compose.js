@@ -98,149 +98,185 @@ function renderCompose(){
 
     container.innerHTML = `
 
-<div class="comm-card">
+<div
+    style="
+        display:grid;
+        grid-template-columns:1fr 430px;
+        gap:20px;
+        align-items:start;
+    "
+>
 
-    <div class="comm-card-header">
-
-        Compose Communication
-
-    </div>
-
-    <div class="comm-card-body">
-
-        <label class="comm-label">
-
-            Template
-
-        </label>
-
-        <select
-            id="communicationTemplate"
-            class="comm-select"
-        >
-
-            <option value="${COMMUNICATION_TYPES.REMINDER}">
-
-                Reminder
-
-            </option>
-
-            <option value="${COMMUNICATION_TYPES.SURVEY}">
-
-                Survey
-
-            </option>
-
-            <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-
-                We Missed You
-
-            </option>
-
-            <option value="${COMMUNICATION_TYPES.CUSTOM}">
-
-                Custom
-
-            </option>
-
-        </select>
-
-        <br><br>
-
-        <label class="comm-label">
-
-            Subject
-
-        </label>
-
-        <input
-            id="communicationSubject"
-            class="comm-input"
-            type="text"
-        >
-
-    </div>
-
-</div>
-
-<div class="comm-card">
-
-    <div class="comm-card-header">
-
-        Email Preview
-
-    </div>
+    <!-- LEFT COLUMN -->
 
     <div
-        id="communicationsPreview"
-        class="comm-preview">
-
-    </div>
-
-</div>
-
-<div class="comm-card">
-
-    <div class="comm-card-header">
-
-        Recipients
-
-    </div>
-
-    <div
-        id="communicationsRecipients">
-
-    </div>
-
-</div>
-
-<div class="comm-card">
-
-    <label>
-
-        <input
-            id="sendCopy"
-            type="checkbox"
-        >
-
-        Send me a copy
-
-    </label>
-
-    <br><br>
-
-    <label class="comm-label">
-
-        Additional Recipient
-
-    </label>
-
-    <input
-        id="additionalRecipient"
-        class="comm-input"
-        type="email"
-        placeholder="name@example.com"
+        style="
+            display:flex;
+            flex-direction:column;
+            gap:18px;
+        "
     >
 
-</div>
+        <div class="comm-card">
 
-<div class="comm-flex-end">
+            <div class="comm-card-header">
 
-    <button
-        class="comm-button"
-        onclick="closeCommunicationsWorkspace()">
+                Compose Communication
 
-        Cancel
+            </div>
 
-    </button>
+            <div class="comm-card-body">
 
-    <button
-        class="comm-button comm-button-primary"
-        onclick="sendCommunication()">
+                <label class="comm-label">
 
-        Send Email
+                    Template
 
-    </button>
+                </label>
+
+                <select
+                    id="communicationTemplate"
+                    class="comm-select"
+                >
+
+                    <option value="${COMMUNICATION_TYPES.REMINDER}">
+                        Reminder
+                    </option>
+
+                    <option value="${COMMUNICATION_TYPES.SURVEY}">
+                        Survey
+                    </option>
+
+                    <option value="${COMMUNICATION_TYPES.NO_SHOW}">
+                        We Missed You
+                    </option>
+
+                    <option value="${COMMUNICATION_TYPES.CUSTOM}">
+                        Custom
+                    </option>
+
+                </select>
+
+                <br><br>
+
+                <label class="comm-label">
+
+                    Subject
+
+                </label>
+
+                <input
+                    id="communicationSubject"
+                    class="comm-input"
+                    type="text"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="comm-card">
+
+            <div class="comm-card-header">
+
+                Recipients
+
+            </div>
+
+            <div
+                id="communicationsRecipients">
+
+            </div>
+
+        </div>
+
+        <div class="comm-card">
+
+            <label>
+
+                <input
+                    id="sendCopy"
+                    type="checkbox"
+                >
+
+                Send me a copy
+
+            </label>
+
+            <br><br>
+
+            <label class="comm-label">
+
+                Additional Recipient
+
+            </label>
+
+            <input
+                id="additionalRecipient"
+                class="comm-input"
+                type="email"
+                placeholder="name@example.com"
+            >
+
+            <div
+                class="comm-flex-end"
+                style="
+                    margin-top:20px;
+                "
+            >
+
+                <button
+                    class="comm-button"
+                    onclick="closeCommunicationsWorkspace()">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    class="comm-button comm-button-primary"
+                    onclick="sendCommunication()">
+
+                    Send Email
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+
+    <div>
+
+        <div
+            class="comm-card"
+            style="
+                height:100%;
+            "
+        >
+
+            <div class="comm-card-header">
+
+                Email Preview
+
+            </div>
+
+            <div
+                id="communicationsPreview"
+                class="comm-preview"
+                style="
+                    min-height:650px;
+                    overflow:auto;
+                "
+            >
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -249,7 +285,6 @@ function renderCompose(){
     initializeCompose();
 
 }
-
 
 /*==============================================================================
     INITIALIZE
