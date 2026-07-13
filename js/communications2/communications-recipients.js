@@ -143,6 +143,22 @@ function renderRecipientList(){
 
     }
 
+    const header =
+
+        document.getElementById(
+
+            'recipientCountHeader'
+
+        );
+
+    if(header){
+
+        header.textContent =
+
+            `${state.selectedRecipients.length} Selected`;
+
+    }
+
     list.innerHTML = '';
 
     state.roster.forEach(
@@ -171,36 +187,58 @@ function renderRecipientList(){
 
 `
 
-<label
-    class="comm-recipient">
-
-<input
-    type="checkbox"
-    ${checked}
-    onchange="toggleRecipient(${student.customer_id})"
+<div
+    class="comm-recipient-row"
+    style="
+        display:grid;
+        grid-template-columns:26px 1fr;
+        gap:12px;
+        align-items:center;
+        padding:10px 8px;
+        border-bottom:1px solid #ECEFF3;
+    "
 >
 
-<div>
+    <input
+        type="checkbox"
+        ${checked}
+        onchange="toggleRecipient(${student.customer_id})"
+    >
 
-<div>
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+        "
+    >
 
-${student.student_name}
+        <div
+            style="
+                font-weight:600;
+                color:#19304B;
+            "
+        >
+
+            ${student.student_name}
+
+        </div>
+
+        <div
+            style="
+                font-size:13px;
+                color:#6B7280;
+            "
+        >
+
+            ${student.student_email}
+
+        </div>
+
+    </div>
 
 </div>
-
-<div
-    style="
-        font-size:12px;
-        color:#6b7280;
-    ">
-
-${student.student_email}
-
-</div>
-
-</div>
-
-</label>
 
 `
 
@@ -353,6 +391,22 @@ function updateRecipientCount(){
     if(label){
 
         label.textContent =
+
+            `${state.selectedRecipients.length} Selected`;
+
+    }
+
+    const header =
+
+        document.getElementById(
+
+            'recipientCountHeader'
+
+        );
+
+    if(header){
+
+        header.textContent =
 
             `${state.selectedRecipients.length} Selected`;
 
