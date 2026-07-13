@@ -181,8 +181,9 @@ console.log(
 async function loadWorkspaceData(){
 
     await loadWorkspaceRoster();
-
-    await loadWorkspaceLocation();
+/*
+await loadWorkspaceLocation();
+*/
 
     await loadWorkspaceHistory();
 
