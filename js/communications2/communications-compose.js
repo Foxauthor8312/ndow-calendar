@@ -80,7 +80,23 @@ export function openCompose(){
     RENDER
 ==============================================================================*/
 
-container.innerHTML = `
+function renderCompose(){
+
+    const container =
+
+        document.getElementById(
+
+            'communicationsContent'
+
+        );
+
+    if(!container){
+
+        return;
+
+    }
+
+    container.innerHTML = `
 
 <div
     style="
@@ -268,7 +284,9 @@ container.innerHTML = `
 
 `;
 
-initializeCompose();
+    initializeCompose();
+
+}
 
 /*==============================================================================
     INITIALIZE
