@@ -42,11 +42,23 @@ from
 
 function headers(){
 
+    const token =
+
+        localStorage.getItem(
+
+            'token'
+
+        );
+
     return {
 
-        ...authHeaders(),
+        Authorization :
 
-        'Content-Type' : 'application/json'
+            `Bearer ${token}`,
+
+        'Content-Type' :
+
+            'application/json'
 
     };
 
