@@ -64,6 +64,16 @@ from
 
 './communications-preview.js';
 
+import {
+
+    renderAttendance
+
+}
+
+from
+
+'./communications-attendance.js';
+
 
 /*==============================================================================
     OPEN
@@ -169,9 +179,11 @@ function renderCompose(){
 
     </div>
 
-    <!-- =========================================
-         RECIPIENTS
-    ========================================== -->
+${renderAttendance()}
+
+<!-- =========================================
+     RECIPIENTS
+========================================== -->
 
     <div class="comm-card">
 
