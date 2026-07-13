@@ -80,116 +80,133 @@ export function openCompose(){
     RENDER
 ==============================================================================*/
 
-function renderCompose(){
-
-    const container =
-
-        document.getElementById(
-
-            'communicationsContent'
-
-        );
-
-    if(!container){
-
-        return;
-
-    }
-
-    container.innerHTML = `
+container.innerHTML = `
 
 <div
     style="
-        display:grid;
-        grid-template-columns:1fr 430px;
+        display:flex;
+        flex-direction:column;
         gap:20px;
-        align-items:start;
     "
 >
 
-    <!-- LEFT COLUMN -->
+    <!-- =========================================
+         COMPOSE
+    ========================================== -->
 
-    <div
-        style="
-            display:flex;
-            flex-direction:column;
-            gap:18px;
-        "
-    >
+    <div class="comm-card">
 
-        <div class="comm-card">
+        <div class="comm-card-header">
 
-            <div class="comm-card-header">
-
-                Compose Communication
-
-            </div>
-
-            <div class="comm-card-body">
-
-                <label class="comm-label">
-
-                    Template
-
-                </label>
-
-                <select
-                    id="communicationTemplate"
-                    class="comm-select"
-                >
-
-                    <option value="${COMMUNICATION_TYPES.REMINDER}">
-                        Reminder
-                    </option>
-
-                    <option value="${COMMUNICATION_TYPES.SURVEY}">
-                        Survey
-                    </option>
-
-                    <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-                        We Missed You
-                    </option>
-
-                    <option value="${COMMUNICATION_TYPES.CUSTOM}">
-                        Custom
-                    </option>
-
-                </select>
-
-                <br><br>
-
-                <label class="comm-label">
-
-                    Subject
-
-                </label>
-
-                <input
-                    id="communicationSubject"
-                    class="comm-input"
-                    type="text"
-                >
-
-            </div>
+            ✉ Compose Communication
 
         </div>
 
-        <div class="comm-card">
+        <div class="comm-card-body">
 
-            <div class="comm-card-header">
+            <label class="comm-label">
 
-                Recipients
+                Template
 
-            </div>
+            </label>
 
-            <div
-                id="communicationsRecipients">
+            <select
+                id="communicationTemplate"
+                class="comm-select"
+                style="width:100%;"
+            >
 
-            </div>
+                <option value="${COMMUNICATION_TYPES.REMINDER}">
+                    Reminder
+                </option>
+
+                <option value="${COMMUNICATION_TYPES.SURVEY}">
+                    Survey
+                </option>
+
+                <option value="${COMMUNICATION_TYPES.NO_SHOW}">
+                    We Missed You
+                </option>
+
+                <option value="${COMMUNICATION_TYPES.CUSTOM}">
+                    Custom
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <label class="comm-label">
+
+                Subject
+
+            </label>
+
+            <input
+                id="communicationSubject"
+                class="comm-input"
+                type="text"
+                style="width:100%;"
+            >
 
         </div>
 
-        <div class="comm-card">
+    </div>
+
+    <!-- =========================================
+         RECIPIENTS
+    ========================================== -->
+
+    <div class="comm-card">
+
+        <div
+            class="comm-card-header"
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            "
+        >
+
+            <span>
+
+                👥 Recipients
+
+            </span>
+
+            <span
+                id="recipientCountHeader"
+                style="
+                    font-size:13px;
+                    font-weight:600;
+                    color:#19304B;
+                "
+            >
+
+            </span>
+
+        </div>
+
+        <div
+            id="communicationsRecipients">
+
+        </div>
+
+    </div>
+
+    <!-- =========================================
+         SEND OPTIONS
+    ========================================== -->
+
+    <div class="comm-card">
+
+        <div class="comm-card-header">
+
+            ✈ Send Options
+
+        </div>
+
+        <div class="comm-card-body">
 
             <label>
 
@@ -215,12 +232,13 @@ function renderCompose(){
                 class="comm-input"
                 type="email"
                 placeholder="name@example.com"
+                style="width:100%;"
             >
 
             <div
                 class="comm-flex-end"
                 style="
-                    margin-top:20px;
+                    margin-top:22px;
                 "
             >
 
@@ -246,45 +264,11 @@ function renderCompose(){
 
     </div>
 
-    <!-- RIGHT COLUMN -->
-
-    <div>
-
-        <div
-            class="comm-card"
-            style="
-                height:100%;
-            "
-        >
-
-            <div class="comm-card-header">
-
-                Email Preview
-
-            </div>
-
-            <div
-                id="communicationsPreview"
-                class="comm-preview"
-                style="
-                    min-height:650px;
-                    overflow:auto;
-                "
-            >
-
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
 
 `;
 
-    initializeCompose();
-
-}
+initializeCompose();
 
 /*==============================================================================
     INITIALIZE
