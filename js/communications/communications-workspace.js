@@ -2,109 +2,155 @@
 ==========================================================
  NDOW Volunteer Portal
  Communications Workspace
+----------------------------------------------------------
+ Purpose:
+    Main Communications Workspace controller.
+
+ Responsibilities:
+    • Open/Close workspace
+    • Store current event
+    • Render Event Context sidebar
+    • Launch Compose workspace
+
+ NOTE:
+    All communication functions (preview, templates,
+    recipients, sending, etc.) are handled by their
+    individual modules.
 ==========================================================
 */
 
+'use strict';
 
-window.openCommunicationsWorkspace =
-function(event){
+/*=========================================================
+  OPEN WORKSPACE
+=========================================================*/
 
- console.log("OPEN WORKSPACE", event);
+window.openCommunicationsWorkspace = function (event) {
+
+    if (!event) return;
+
+    console.log(
+        '[Communications] Opening workspace',
+        event
+    );
+
+    window.currentCommunicationEvent = event;
+    window.inCommunicationsWorkspace = true;
 
     const workspace =
         document.getElementById(
             'communicationsWorkspace'
         );
 
-     // Ensure the workspace is attached to <body>
-    if (workspace.parentElement !== document.body) {
-
-        document.body.appendChild(workspace);
-
-    }
-
- console.log('Workspace:', workspace);
-
-console.log(
-    'Subtitle:',
-    document.getElementById(
-        'communicationsHeaderSubtitle'
-    )
-);
-
-console.log(
-    'Sidebar:',
-    document.getElementById(
-        'communicationsSidebar'
-    )
-);
-
-console.log(
-    'Content:',
-    document.getElementById(
-        'communicationsContent'
-    )
-);
-
-    if(!workspace || !event){
+    if (!workspace) {
+        console.error(
+            'Communications workspace not found.'
+        );
         return;
     }
 
-    // Remember the current event
+    if (
+        workspace.parentElement !==
+        document.body
+    ) {
+        document.body.appendChild(
+            workspace
+        );
+    }
 
-    window.currentCommunicationEvent =
-        event;
- 
-    window.inCommunicationsWorkspace =
-    true;
-
-    // Hide the Event Details modal
-
-    const modal =
+    const eventModal =
         document.getElementById(
             'eventModal'
         );
 
-    if(modal){
-        modal.style.display = 'none';
+    if (eventModal) {
+        eventModal.style.display = 'none';
     }
 
-    // Show Communications Workspace
-
-    workspace.style.display =
-        'block';
+    workspace.style.display = 'block';
     workspace.style.zIndex = '99999';
 
-    // Header
+    renderCommunicationsSidebar(event);
 
     document.getElementById(
         'communicationsHeaderSubtitle'
     ).textContent =
-        event.title;
+        `${event.title}`;
 
- // Sidebar
+    loadCompose();
 
-document.getElementById(
-    'communicationsSidebar'
-).innerHTML = `
+};
+
+
+/*=========================================================
+  CLOSE WORKSPACE
+=========================================================*/
+
+window.closeCommunicationsWorkspace = function () {
+
+    window.inCommunicationsWorkspace = false;
+
+    const workspace =
+        document.getElementById(
+            'communicationsWorkspace'
+        );
+
+    if (workspace) {
+        workspace.style.display = 'none';
+    }
+
+};
+
+
+/*=========================================================
+  SIDEBAR
+=========================================================*/
+
+function renderCommunicationsSidebar(event) {
+
+    const sidebar =
+        document.getElementById(
+            'communicationsSidebar'
+        );
+
+    if (!sidebar) return;
+
+    sidebar.innerHTML = `
 
 <div class="comm-sidebar-section">
 
-    <div class="comm-event-title">
+    <div
+        style="
+            font-size:22px;
+            font-weight:700;
+            color:#19304B;
+            margin-bottom:6px;
+        ">
+        Event
+    </div>
+
+    <div
+        class="comm-event-title">
         ${event.title}
     </div>
 
-    <div class="comm-id">
+    <div
+        class="comm-id">
         Event #${event.id}
-    </div>
-
-    <div class="comm-program">
-        ${event.program || ''}
     </div>
 
 </div>
 
+
 <div class="comm-sidebar-section">
+
+    <div class="comm-label">
+        Program
+    </div>
+
+    <div class="comm-value">
+        ${event.program || '-'}
+    </div>
 
     <div class="comm-label">
         Status
@@ -115,11 +161,19 @@ document.getElementById(
     </div>
 
     <div class="comm-label">
-        Date / Time
+        Date
     </div>
 
     <div class="comm-value">
-        ${event.time || event.date || ''}
+        ${event.date || ''}
+    </div>
+
+    <div class="comm-label">
+        Time
+    </div>
+
+    <div class="comm-value">
+        ${event.time || ''}
     </div>
 
     <div class="comm-label">
@@ -134,77 +188,12 @@ document.getElementById(
 
 <hr class="comm-divider">
 
-<div class="comm-sidebar-heading">
-    Communications
+<div
+    class="comm-sidebar-heading">
+
+    Communication Status
+
 </div>
-
-<button
-    class="comm-nav active"
-    onclick="
-        setActiveCommNav(this);
-        loadCompose();
-    "
->
-    Reminder
-</button>
-
-<button
-    class="comm-nav"
-    onclick="
-        setActiveCommNav(this);
-        comingSoon('History');
-    "
->
-    History
-</button>
-
-<button
-    class="comm-nav"
-    onclick="
-        setActiveCommNav(this);
-        comingSoon('Templates');
-    "
->
-    Announcements
-</button>
-
-<hr class="comm-divider">
-
-<div class="comm-sidebar-heading">
-    Follow-Up
-</div>
-
-<button
-    class="comm-nav"
-    onclick="
-        setActiveCommNav(this);
-        loadAttendance();
-    "
->
-    Attendance
-</button>
-
-<button
-    class="comm-nav"
-    onclick="
-        setActiveCommNav(this);
-        loadReview();
-    "
->
-    Survey
-</button>
-
-<button
-    class="comm-nav"
-    onclick="
-        setActiveCommNav(this);
-        comingSoon('Automation');
-    "
->
-    Automation
-</button>
-
-<hr class="comm-divider">
 
 <div id="communicationsStatusSummary">
 
@@ -214,7 +203,9 @@ document.getElementById(
             Registered
         </span>
 
-        <span class="comm-status-value comm-count">
+        <span
+            id="registeredStudentCount"
+            class="comm-status-value">
             —
         </span>
 
@@ -226,7 +217,9 @@ document.getElementById(
             Reminder
         </span>
 
-        <span class="comm-status-value">
+        <span
+            id="reminderStatus"
+            class="comm-status-value">
             Not Sent
         </span>
 
@@ -238,7 +231,9 @@ document.getElementById(
             Attendance
         </span>
 
-        <span class="comm-status-value">
+        <span
+            id="attendanceStatus"
+            class="comm-status-value">
             Pending
         </span>
 
@@ -250,7 +245,9 @@ document.getElementById(
             Survey
         </span>
 
-        <span class="comm-status-value">
+        <span
+            id="surveyStatus"
+            class="comm-status-value">
             Pending
         </span>
 
@@ -258,110 +255,73 @@ document.getElementById(
 
 </div>
 
+<hr class="comm-divider">
+
+<div
+    class="comm-sidebar-heading">
+
+    Communication History
+
+</div>
+
+<div
+    id="communicationsHistoryContainer"
+    style="
+        font-size:13px;
+        color:#666;
+        line-height:1.6;
+    ">
+
+    Loading history...
+
+</div>
+
 `;
-loadCompose();
 
-};
+}
 
-window.closeCommunicationsWorkspace =
-function(){
 
-    window.inCommunicationsWorkspace =
-        false;
+/*=========================================================
+  COMPOSE
+=========================================================*/
 
-    document.getElementById(
-        'communicationsWorkspace'
-    ).style.display =
-        'none';
+window.loadCompose = function () {
 
-};
-
-window.loadCompose =
-function(){
-
-    if(
+    if (
         typeof openEventCommunication ===
         'function'
-    ){
+    ) {
 
         openEventCommunication(
             window.currentCommunicationEvent
         );
 
-    }
-    else{
-
-        document.getElementById(
-            'communicationsContent'
-        ).innerHTML = `
-            <h2>
-                Compose Email
-            </h2>
-
-            <p>
-                Communications module
-                has not loaded.
-            </p>
-        `;
+        return;
 
     }
-
-};
-
-window.loadAttendance =
-function(){
-
-    if(
-        typeof openAttendance ===
-        'function'
-    ){
-
-        openAttendance(
-            window.currentCommunicationEvent
-        );
-
-    }
-
-};
-
-function setActiveCommNav(button){
-
-    document
-        .querySelectorAll('.comm-nav')
-        .forEach(btn =>
-
-            btn.classList.remove(
-                'active'
-            )
-
-        );
-
-    button.classList.add(
-        'active'
-    );
-
-}
-
-window.setActiveCommNav =
-    setActiveCommNav;
-
-window.comingSoon =
-function(name){
 
     document.getElementById(
         'communicationsContent'
     ).innerHTML = `
 
-        <h2>${name}</h2>
+        <div
+            style="
+                padding:40px;
+            ">
 
-        <p>
-            This module will be
-            implemented in a future
-            release.
-        </p>
+            <h2>
+                Event Communications
+            </h2>
+
+            <p>
+
+                Communications module
+                is not available.
+
+            </p>
+
+        </div>
 
     `;
 
 };
-
-
