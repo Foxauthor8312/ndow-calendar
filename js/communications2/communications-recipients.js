@@ -374,11 +374,67 @@ function(){
     COUNT
 ===========================================================================*/
 
+/*===========================================================================
+    COUNT
+===========================================================================*/
+
 function updateRecipientCount(){
 
     const state =
 
         getState();
+
+    let recipients =
+
+        [...state.roster];
+
+    const selector =
+
+        document.getElementById(
+
+            'communicationTemplate'
+
+        );
+
+    const currentFunction =
+
+        selector ?
+
+            selector.value :
+
+            COMMUNICATION_TYPES.REMINDER;
+
+    switch(currentFunction){
+
+        case COMMUNICATION_TYPES.SURVEY:
+
+            recipients =
+
+                recipients.filter(
+
+                    student =>
+
+                        student.attended
+
+                );
+
+            break;
+
+        case COMMUNICATION_TYPES.NO_SHOW:
+
+            recipients =
+
+                recipients.filter(
+
+                    student =>
+
+                        !student.attended
+
+                );
+
+            break;
+
+    }
 
     const label =
 
@@ -392,7 +448,7 @@ function updateRecipientCount(){
 
         label.textContent =
 
-            `${state.selectedRecipients.length} Selected`;
+            `${recipients.length} Recipient(s)`;
 
     }
 
@@ -406,9 +462,39 @@ function updateRecipientCount(){
 
     if(header){
 
-        header.textContent =
+        switch(currentFunction){
 
-            `${state.selectedRecipients.length} Selected`;
+            case COMMUNICATION_TYPES.SURVEY:
+
+                header.textContent =
+
+                    `Survey Recipients (${recipients.length})`;
+
+                break;
+
+            case COMMUNICATION_TYPES.NO_SHOW:
+
+                header.textContent =
+
+                    `No-Show Recipients (${recipients.length})`;
+
+                break;
+
+            case COMMUNICATION_TYPES.CUSTOM:
+
+                header.textContent =
+
+                    `Custom Recipients (${recipients.length})`;
+
+                break;
+
+            default:
+
+                header.textContent =
+
+                    `Recipients (${recipients.length})`;
+
+        }
 
     }
 
