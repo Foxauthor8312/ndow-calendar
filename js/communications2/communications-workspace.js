@@ -12,11 +12,12 @@
  Responsibilities:
     • Open workspace
     • Close workspace
-    • Initialize communications modules
+    • Initialize workspace
     • Load event information
     • Load roster
     • Load location
     • Load history
+    • Initialize workspace modules
 
  Used By:
     • Event Details
@@ -57,6 +58,26 @@ from
 
 import {
 
+    initializeRecipients
+
+}
+
+from
+
+'./communications-recipients.js';
+
+import {
+
+    initializeHistory
+
+}
+
+from
+
+'./communications-history.js';
+
+import {
+
     loadCommunicationLocation
 
 }
@@ -78,9 +99,9 @@ from
 './communications-api.js';
 
 
-/*===========================================================================
-    OPEN
-===========================================================================*/
+/*==============================================================================
+    OPEN WORKSPACE
+==============================================================================*/
 
 export async function openWorkspace(event){
 
@@ -100,12 +121,26 @@ export async function openWorkspace(event){
 
     resetState();
 
+ console.log(
+
+    '[Communications] State Reset'
+
+);
+
     setCurrentEvent(
 
         event
 
     );
 
+console.log(
+
+    '[Communications] Event Loaded',
+
+    event.id
+
+);
+ 
     showWorkspace();
 
     updateHeader(
@@ -120,16 +155,39 @@ export async function openWorkspace(event){
 
     );
 
-    await initializeWorkspace();
+    await loadWorkspaceData();
+
+ console.log(
+
+    '[Communications] Workspace Data Loaded'
+
+);
+
+    initializeWorkspaceModules();
 
 }
 
 
-/*===========================================================================
-    INITIALIZE
-===========================================================================*/
+/*==============================================================================
+    LOAD WORKSPACE DATA
+==============================================================================*/
 
-async function initializeWorkspace(){
+async function loadWorkspaceData(){
+
+    await loadWorkspaceRoster();
+
+    await loadWorkspaceLocation();
+
+    await loadWorkspaceHistory();
+
+}
+
+
+/*==============================================================================
+    LOAD ROSTER
+==============================================================================*/
+
+async function loadWorkspaceRoster(){
 
     const state =
 
@@ -157,13 +215,26 @@ async function initializeWorkspace(){
 
         console.error(
 
-            'Roster',
+            '[Communications] Unable to load roster',
 
             error
 
         );
 
     }
+
+}
+
+
+/*==============================================================================
+    LOAD LOCATION
+==============================================================================*/
+
+async function loadWorkspaceLocation(){
+
+    const state =
+
+        getState();
 
     try{
 
@@ -187,13 +258,26 @@ async function initializeWorkspace(){
 
         console.error(
 
-            'Location',
+            '[Communications] Unable to load location',
 
             error
 
         );
 
     }
+
+}
+
+
+/*==============================================================================
+    LOAD HISTORY
+==============================================================================*/
+
+async function loadWorkspaceHistory(){
+
+    const state =
+
+        getState();
 
     try{
 
@@ -217,7 +301,7 @@ async function initializeWorkspace(){
 
         console.error(
 
-            'History',
+            '[Communications] Unable to load history',
 
             error
 
@@ -225,14 +309,27 @@ async function initializeWorkspace(){
 
     }
 
+}
+
+
+/*==============================================================================
+    INITIALIZE MODULES
+==============================================================================*/
+
+function initializeWorkspaceModules(){
+
     openCompose();
+
+    initializeRecipients();
+
+    initializeHistory();
 
 }
 
 
-/*===========================================================================
-    SHOW
-===========================================================================*/
+/*==============================================================================
+    SHOW WORKSPACE
+==============================================================================*/
 
 function showWorkspace(){
 
@@ -243,6 +340,12 @@ function showWorkspace(){
             'communicationsWorkspace'
 
         );
+
+    if(!workspace){
+
+        return;
+
+    }
 
     if(
 
@@ -287,9 +390,9 @@ function showWorkspace(){
 }
 
 
-/*===========================================================================
-    CLOSE
-===========================================================================*/
+/*==============================================================================
+    CLOSE WORKSPACE
+==============================================================================*/
 
 export function closeWorkspace(){
 
@@ -314,9 +417,9 @@ export function closeWorkspace(){
 }
 
 
-/*===========================================================================
+/*==============================================================================
     HEADER
-===========================================================================*/
+==============================================================================*/
 
 function updateHeader(event){
 
@@ -339,9 +442,9 @@ function updateHeader(event){
 }
 
 
-/*===========================================================================
+/*==============================================================================
     SIDEBAR
-===========================================================================*/
+==============================================================================*/
 
 function renderSidebar(event){
 
@@ -448,9 +551,9 @@ function renderSidebar(event){
 }
 
 
-/*===========================================================================
-    GLOBALS
-===========================================================================*/
+/*==============================================================================
+    GLOBAL ENTRY POINTS
+==============================================================================*/
 
 window.openCommunicationsWorkspace =
 
