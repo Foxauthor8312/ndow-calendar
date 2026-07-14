@@ -272,10 +272,17 @@ No developer notes.
   >
 
     <input
-      type="checkbox"
-      disabled
-      ${note.fixed ? 'checked' : ''}
-    >
+  type="checkbox"
+
+  ${note.fixed ? 'checked' : ''}
+
+  onchange="
+    toggleDeveloperNote(
+      ${note.id},
+      this.checked
+    );
+  "
+>
 
     <div>
 
@@ -415,5 +422,20 @@ async function(){
     );
 
   }
+
+};
+
+
+/*==============================================================================
+    TOGGLE FIXED
+==============================================================================*/
+
+window.toggleDeveloperNote =
+async function(
+  id,
+  fixed
+){
+
+  // We'll add the code next.
 
 };
