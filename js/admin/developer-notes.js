@@ -26,22 +26,24 @@ console.log('Developer Notes module loaded');
     OPEN
 ==============================================================================*/
 
-window.openDeveloperNotes =
-function(){
+window.openDeveloperNotes = function(){
 
-  const modal =
-    document.getElementById(
-      'developerNotes'
+    // Hide Dashboard
+    closeDashboard();
+
+    const modal =
+        document.getElementById(
+            'developerNotes'
+        );
+
+    modal.classList.remove(
+        'hidden'
     );
 
-  modal.classList.remove(
-    'hidden'
-  );
+    modal.style.display =
+        'flex';
 
-  modal.style.display =
-    'flex';
-
-  renderDeveloperNotes();
+    renderDeveloperNotes();
 
 };
 
@@ -50,20 +52,22 @@ function(){
     CLOSE
 ==============================================================================*/
 
-window.closeDeveloperNotes =
-function(){
+window.closeDeveloperNotes = function(){
 
-  const modal =
-    document.getElementById(
-      'developerNotes'
+    const modal =
+        document.getElementById(
+            'developerNotes'
+        );
+
+    modal.classList.add(
+        'hidden'
     );
 
-  modal.classList.add(
-    'hidden'
-  );
+    modal.style.display =
+        'none';
 
-  modal.style.display =
-    'none';
+    // Return to Dashboard
+    openDashboard();
 
 };
 
