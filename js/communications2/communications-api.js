@@ -150,14 +150,6 @@ export async function loadHistory(eventId){
 
 }
 
-router.post(
-    '/preview',
-    auth,
-    async (req, res) => {
-
-        // same rendering pipeline as Send
-
-    }
 
 /*==============================================================================
     SEND COMMUNICATION
