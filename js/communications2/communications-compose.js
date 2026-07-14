@@ -425,51 +425,69 @@ async function updateTemplate(){
         Build Email
     ----------------------------------------------------------*/
 
-const email =
+let email;
 
-    await previewCommunication({
+try{
 
-        eventId:
+    email =
 
-            state.currentEvent.id,
+        await previewCommunication({
 
-        eventName:
+            eventId:
 
-            state.currentEvent.title,
+                state.currentEvent.id,
 
-        eventDate:
+            eventName:
 
-            state.currentEvent.date,
+                state.currentEvent.title,
 
-        eventLocation:
+            eventDate:
 
-            state.currentEvent.location,
+                state.currentEvent.date,
 
-        eventProgram:
+            eventLocation:
 
-            state.currentEvent.program,
+                state.currentEvent.location,
 
-        specialDirections:
+            eventProgram:
 
-            state.location?.directions || '',
+                state.currentEvent.program,
 
-        communicationType:
+            specialDirections:
 
-            type,
+                state.location?.directions || '',
 
-        message:
+            communicationType:
 
-            '',
+                type,
 
-        recipients:[{
+            message:'',
 
-            student_name:'Preview User',
+            recipients:[{
 
-            student_email:'preview@example.com'
+                student_name:'Preview User',
 
-        }]
+                student_email:'preview@example.com'
 
-    });
+            }]
+
+        });
+
+}
+
+catch(err){
+
+    console.error(err);
+
+    alert(
+
+        'Unable to generate email preview.'
+
+    );
+
+    return;
+
+}
 
 state.preview = {
 
@@ -479,41 +497,9 @@ state.preview = {
 
     subject:
 
-        document.getElementById(
-
-            'communicationSubject'
-
-        )?.value || ''
+        email.subject
 
 };
-
-    const subject =
-
-        document.getElementById(
-
-            'communicationSubject'
-
-        );
-
-    if(subject){
-
-        subject.value =
-
-            email.subject;
-
-    }
-
-    renderPreview();
-
-    renderDynamicPanel();
-
-    if(window.renderRecipients){
-
-        window.renderRecipients();
-
-    }
-
-}
 
 
 /*==============================================================================
