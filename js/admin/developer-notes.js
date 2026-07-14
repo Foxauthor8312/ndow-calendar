@@ -179,23 +179,152 @@ async function renderDeveloperNotes(){
 window.loadDeveloperNotes =
 async function(){
 
-    document.getElementById(
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+
+        'https://ndow-calendar-server.onrender.com/api/developer-notes',
+
+        {
+
+          headers:{
+
+            Authorization:
+              `Bearer ${token}`
+
+          }
+
+        }
+
+      );
+
+    const result =
+      await response.json();
+
+    if(!response.ok){
+
+      throw new Error(
+
+        result.error ||
+
+        'Unable to load notes.'
+
+      );
+
+    }
+
+    const notes =
+      result.notes || [];
+
+    const list =
+      document.getElementById(
         'developerNotesList'
-    ).innerHTML = `
+      );
+
+    if(notes.length === 0){
+
+      list.innerHTML = `
 
 <div style="
-    color:#6b7280;
-    font-size:15px;
+  color:#6b7280;
 ">
 
-No developer notes yet.
+No developer notes.
 
 </div>
 
 `;
 
-}
+      return;
 
+    }
+
+    list.innerHTML =
+
+      notes.map(note => `
+
+<div
+  style="
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    padding:12px;
+    margin-bottom:12px;
+    background:${
+      note.fixed
+        ? '#f3f4f6'
+        : '#ffffff'
+    };
+  "
+>
+
+  <label
+    style="
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    "
+  >
+
+    <input
+      type="checkbox"
+      disabled
+      ${note.fixed ? 'checked' : ''}
+    >
+
+    <div>
+
+      <div style="
+        font-weight:600;
+        ${
+          note.fixed
+            ? 'text-decoration:line-through;color:#6b7280;'
+            : ''
+        }
+      ">
+        ${note.note}
+      </div>
+
+      <div style="
+        margin-top:6px;
+        font-size:12px;
+        color:#6b7280;
+      ">
+
+        ${
+          new Date(
+            note.created_at
+          ).toLocaleString()
+        }
+
+      </div>
+
+    </div>
+
+  </label>
+
+</div>
+
+`).join('');
+
+  }
+
+  catch(err){
+
+    console.error(err);
+
+    alert(
+      err.message
+    );
+
+  }
+
+};
 
 /*==============================================================================
     SAVE
