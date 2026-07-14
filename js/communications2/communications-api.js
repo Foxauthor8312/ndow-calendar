@@ -150,6 +150,14 @@ export async function loadHistory(eventId){
 
 }
 
+router.post(
+    '/preview',
+    auth,
+    async (req, res) => {
+
+        // same rendering pipeline as Send
+
+    }
 
 /*==============================================================================
     SEND COMMUNICATION
@@ -190,6 +198,56 @@ export async function sendCommunication(payload){
             result.error ||
 
             'Unable to send communication.'
+
+        );
+
+    }
+
+    return result;
+
+}
+
+
+
+/*==============================================================================
+    PREVIEW COMMUNICATION
+==============================================================================*/
+
+export async function previewCommunication(payload){
+
+    const response =
+
+        await fetch(
+
+            `${API_BASE}${API.PREVIEW}`,
+
+            {
+
+                method : 'POST',
+
+                headers : headers(),
+
+                body : JSON.stringify(
+
+                    payload
+
+                )
+
+            }
+
+        );
+
+    const result =
+
+        await response.json();
+
+    if(!response.ok){
+
+        throw new Error(
+
+            result.error ||
+
+            'Unable to preview communication.'
 
         );
 
