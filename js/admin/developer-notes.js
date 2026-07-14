@@ -26,28 +26,22 @@ console.log('Developer Notes module loaded');
     OPEN
 ==============================================================================*/
 
-window.openDeveloperNotes = function(){
+window.openDeveloperNotes =
+function(){
 
-    console.log('Developer Notes clicked');
+  const modal =
+    document.getElementById(
+      'developerNotes'
+    );
 
-    const modal =
-        document.getElementById(
-            'developerNotesModal'
-        );
+  modal.classList.remove(
+    'hidden'
+  );
 
-    console.log(modal);
+  modal.style.display =
+    'flex';
 
-    if(!modal){
-
-        alert('developerNotesModal not found');
-
-        return;
-
-    }
-
-    modal.style.display = 'flex';
-
-    renderDeveloperNotes();
+  renderDeveloperNotes();
 
 };
 
@@ -56,15 +50,22 @@ window.openDeveloperNotes = function(){
     CLOSE
 ==============================================================================*/
 
-window.closeDeveloperNotes = function(){
+window.closeDeveloperNotes =
+function(){
 
+  const modal =
     document.getElementById(
-        'developerNotesModal'
-    ).style.display =
-        'none';
+      'developerNotes'
+    );
+
+  modal.classList.add(
+    'hidden'
+  );
+
+  modal.style.display =
+    'none';
 
 };
-
 
 /*==============================================================================
     RENDER
