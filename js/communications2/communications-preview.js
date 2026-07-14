@@ -74,10 +74,10 @@ export function renderPreview(){
         background:white;
         border:1px solid #DBE3EC;
         border-radius:10px;
-        padding:36px;
-        min-height:700px;
-        box-shadow:0 2px 10px rgba(0,0,0,.06);
+        padding:20px;
+        height:calc(100vh - 220px);
         overflow:auto;
+        box-shadow:0 2px 10px rgba(0,0,0,.06);
     "
 >
 
