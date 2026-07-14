@@ -500,7 +500,34 @@ state.preview = {
         email.subject
 
 };
+const subject =
 
+    document.getElementById(
+
+        'communicationSubject'
+
+    );
+
+if(subject){
+
+    subject.value =
+
+        email.subject;
+
+}
+
+renderPreview();
+
+renderDynamicPanel();
+
+if(window.renderRecipients){
+
+    window.renderRecipients();
+
+}
+
+}
+ 
 
 /*==============================================================================
     GLOBALS
