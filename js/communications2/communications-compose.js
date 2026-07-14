@@ -16,6 +16,16 @@
 
 import {
 
+    previewCommunication
+
+}
+
+from
+
+'./communications-api.js';
+
+import {
+
     COMMUNICATION_TYPES
 
 }
@@ -371,7 +381,7 @@ function initializeCompose(){
     TEMPLATE
 ==============================================================================*/
 
-function updateTemplate(){
+async function updateTemplate(){
 
     const state =
 
@@ -415,21 +425,67 @@ function updateTemplate(){
         Build Email
     ----------------------------------------------------------*/
 
-    const email =
+const email =
 
-        buildTemplate(
+    await previewCommunication({
+
+        eventId:
+
+            state.currentEvent.id,
+
+        eventName:
+
+            state.currentEvent.title,
+
+        eventDate:
+
+            state.currentEvent.date,
+
+        eventLocation:
+
+            state.currentEvent.location,
+
+        eventProgram:
+
+            state.currentEvent.program,
+
+        specialDirections:
+
+            state.location?.directions || '',
+
+        communicationType:
 
             type,
 
-            state.currentEvent,
+        message:
 
-            state.location
+            '',
 
-        );
+        recipients:[{
 
-    state.preview =
+            student_name:'Preview User',
 
-        email;
+            student_email:'preview@example.com'
+
+        }]
+
+    });
+
+state.preview = {
+
+    html:
+
+        email.html,
+
+    subject:
+
+        document.getElementById(
+
+            'communicationSubject'
+
+        )?.value || ''
+
+};
 
     const subject =
 
