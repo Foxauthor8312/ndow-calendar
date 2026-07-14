@@ -20,7 +20,6 @@
 
 'use strict';
 
-console.log('Developer Notes module loaded');
 
 /*==============================================================================
     OPEN
@@ -28,22 +27,19 @@ console.log('Developer Notes module loaded');
 
 window.openDeveloperNotes = function(){
 
-    // Hide Dashboard
-    closeDashboard();
-
-    const modal =
-        document.getElementById(
-            'developerNotes'
-        );
-
-    modal.classList.remove(
-        'hidden'
+  const modal =
+    document.getElementById(
+      'developerNotes'
     );
 
-    modal.style.display =
-        'flex';
+  modal.classList.remove(
+    'hidden'
+  );
 
-    renderDeveloperNotes();
+  modal.style.display =
+    'flex';
+
+  renderDeveloperNotes();
 
 };
 
@@ -54,22 +50,21 @@ window.openDeveloperNotes = function(){
 
 window.closeDeveloperNotes = function(){
 
-    const modal =
-        document.getElementById(
-            'developerNotes'
-        );
-
-    modal.classList.add(
-        'hidden'
+  const modal =
+    document.getElementById(
+      'developerNotes'
     );
 
-    modal.style.display =
-        'none';
+  modal.classList.add(
+    'hidden'
+  );
 
-    // Return to Dashboard
-    openDashboard();
+  modal.style.display =
+    'none';
 
 };
+
+
 
 /*==============================================================================
     RENDER
