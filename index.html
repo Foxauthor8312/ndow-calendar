@@ -11122,6 +11122,8 @@ function closeSystemConsole(){
 
 }
 
+	
+
 function showInstructorImportModal(){
 
   const modal =
@@ -17537,11 +17539,61 @@ ${regionTotal}
       ✕
     </button>
 
+<div
+  id="systemConsole"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      max-width:1000px;
+      background:#111827;
+      color:#e5e7eb;
+      font-family:monospace;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeSystemConsole()"
+    >
+      ✕
+    </button>
+
     <div id="systemConsoleBody"></div>
 
   </div>
 
-</div>
+</div>   <!-- CLOSE systemConsole -->
+
+<div
+  id="developerNotes"
+  class="modal hidden"
+>
+
+  <div
+    class="modal-content"
+    style="
+      max-width:1000px;
+      background:#ffffff;
+      color:#19304B;
+    "
+  >
+
+    <button
+      class="modal-close"
+      onclick="closeDeveloperNotes()"
+    >
+      ✕
+    </button>
+
+    <div id="developerNotesBody"></div>
+
+  </div>
+
+</div>   <!-- CLOSE developerNotes -->
+
 <div
   id="loadingOverlay"
   style="
@@ -17786,37 +17838,6 @@ ${regionTotal}
 
 </div>
 
-<!-- ========================================
-     Developer Notes Modal
-======================================== -->
-
-<div
-  id="developerNotesModal"
-  class="modal"
-  style="display:none;">
-
-  <div
-    class="modal-content"
-    style="
-      width:900px;
-      max-width:90vw;
-      max-height:85vh;
-      overflow:hidden;
-    ">
-
-    <div
-      id="developerNotesBody"
-      style="
-        padding:24px;
-        overflow-y:auto;
-        max-height:85vh;
-      ">
-
-    </div>
-
-  </div>
-
-</div>	
 
 <script src="js/help.js"></script>
 
