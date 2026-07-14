@@ -24,14 +24,35 @@
     OPEN
 ==============================================================================*/
 
-window.openDeveloperNotes =
-function(){
+window.openDeveloperNotes = function(){
 
-    openModal(
-        'developerNotesModal'
-    );
+    const modal =
+        document.getElementById(
+            'developerNotesModal'
+        );
+
+    if(!modal){
+        return;
+    }
+
+    modal.style.display =
+        'flex';
 
     renderDeveloperNotes();
+
+};
+
+
+/*==============================================================================
+    CLOSE
+==============================================================================*/
+
+window.closeDeveloperNotes = function(){
+
+    document.getElementById(
+        'developerNotesModal'
+    ).style.display =
+        'none';
 
 };
 
@@ -50,11 +71,34 @@ async function renderDeveloperNotes(){
     body.innerHTML = `
 
 <div style="
-    font-size:28px;
-    font-weight:700;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     margin-bottom:24px;
 ">
-    DEVELOPER NOTES
+
+    <div style="
+        font-size:28px;
+        font-weight:700;
+    ">
+        DEVELOPER NOTES
+    </div>
+
+    <button
+        onclick="closeDeveloperNotes()"
+        style="
+            background:#dc2626;
+            color:white;
+            border:none;
+            border-radius:8px;
+            padding:10px 16px;
+            cursor:pointer;
+            font-weight:600;
+        "
+    >
+        Close
+    </button>
+
 </div>
 
 <div style="
@@ -131,6 +175,7 @@ async function loadDeveloperNotes(){
 
 <div style="
     color:#6b7280;
+    font-size:15px;
 ">
 
 No developer notes yet.
