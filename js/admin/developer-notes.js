@@ -176,7 +176,8 @@ async function renderDeveloperNotes(){
     LOAD
 ==============================================================================*/
 
-async function loadDeveloperNotes(){
+window.loadDeveloperNotes =
+async function(){
 
     document.getElementById(
         'developerNotesList'
@@ -200,10 +201,11 @@ No developer notes yet.
     SAVE
 ==============================================================================*/
 
-async function saveDeveloperNote(){
+window.saveDeveloperNote =
+async function(){
 
     alert(
         'Database connection coming next.'
     );
 
-}
+};
