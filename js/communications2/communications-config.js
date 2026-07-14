@@ -48,23 +48,21 @@ export const API_BASE =
 export const API = {
 
     ROSTER :
-
         '/event-communications/event-roster',
 
     HISTORY :
-
         '/event-communications',
 
     SEND :
-
         '/event-communications/send',
 
-    ATTENDANCE :
+    PREVIEW :
+        '/event-communications/preview',
 
+    ATTENDANCE :
         '/event-communications/attendance'
 
 };
-
 
 
 /*===========================================================================
