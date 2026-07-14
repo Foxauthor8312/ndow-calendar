@@ -28,17 +28,24 @@ console.log('Developer Notes module loaded');
 
 window.openDeveloperNotes = function(){
 
+    console.log('Developer Notes clicked');
+
     const modal =
         document.getElementById(
             'developerNotesModal'
         );
 
+    console.log(modal);
+
     if(!modal){
+
+        alert('developerNotesModal not found');
+
         return;
+
     }
 
-    modal.style.display =
-        'flex';
+    modal.style.display = 'flex';
 
     renderDeveloperNotes();
 
