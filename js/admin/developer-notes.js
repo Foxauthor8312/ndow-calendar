@@ -204,8 +204,87 @@ No developer notes yet.
 window.saveDeveloperNote =
 async function(){
 
-    alert(
-        'Database connection coming next.'
+  const textarea =
+    document.getElementById(
+      'developerNoteText'
     );
+
+  const note =
+    textarea.value.trim();
+
+  if(!note){
+
+    alert(
+      'Please enter a note.'
+    );
+
+    return;
+
+  }
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+
+        'https://ndow-calendar-server.onrender.com/api/developer-notes',
+
+        {
+
+          method:'POST',
+
+          headers:{
+
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+
+          },
+
+          body:JSON.stringify({
+
+            note
+
+          })
+
+        }
+
+      );
+
+    const result =
+      await response.json();
+
+    if(!response.ok){
+
+      throw new Error(
+
+        result.error ||
+
+        'Unable to save note.'
+
+      );
+
+    }
+
+    textarea.value = '';
+
+    loadDeveloperNotes();
+
+  }
+
+  catch(err){
+
+    alert(
+      err.message
+    );
+
+  }
 
 };
