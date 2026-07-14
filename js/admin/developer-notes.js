@@ -436,6 +436,67 @@ async function(
   fixed
 ){
 
-  // We'll add the code next.
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+
+        `https://ndow-calendar-server.onrender.com/api/developer-notes/${id}`,
+
+        {
+
+          method:'PUT',
+
+          headers:{
+
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+
+          },
+
+          body:JSON.stringify({
+
+            fixed
+
+          })
+
+        }
+
+      );
+
+    const result =
+      await response.json();
+
+    if(!response.ok){
+
+      throw new Error(
+
+        result.error ||
+
+        'Unable to update note.'
+
+      );
+
+    }
+
+    loadDeveloperNotes();
+
+  }
+
+  catch(err){
+
+    alert(
+      err.message
+    );
+
+  }
 
 };
