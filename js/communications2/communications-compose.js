@@ -16,7 +16,7 @@
 
 import {
 
-    previewCommunication
+    sendCommunication as sendCommunicationRequest
 
 }
 
@@ -532,9 +532,79 @@ if(window.renderRecipients){
     SEND
 ==============================================================================*/
 
+/*==============================================================================
+    SEND
+==============================================================================*/
+
 async function sendCommunication(){
 
-    alert('Send function connected.');
+    const state =
+
+        getState();
+
+    try{
+
+        const result =
+
+            await sendCommunicationRequest({
+
+                eventId:
+
+                    state.currentEvent.id,
+
+                eventName:
+
+                    state.currentEvent.title,
+
+                eventDate:
+
+                    state.currentEvent.date,
+
+                eventLocation:
+
+                    state.currentEvent.location,
+
+                eventProgram:
+
+                    state.currentEvent.program,
+
+                communicationType:
+
+                    state.currentTemplate,
+
+                subject:
+
+                    state.preview.subject,
+
+                message:
+
+                    state.preview.html,
+
+                recipients:
+
+                    state.selectedRecipients
+
+            });
+
+        alert(
+
+            `${result.recipients} email(s) sent successfully.`
+
+        );
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+        alert(
+
+            err.message
+
+        );
+
+    }
 
 }
 
