@@ -16,6 +16,8 @@
 
 import {
 
+    previewCommunication,
+
     sendCommunication as sendCommunicationRequest
 
 }
