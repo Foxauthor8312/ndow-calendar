@@ -527,14 +527,26 @@ if(window.renderRecipients){
 }
 
 }
- 
+
+/*==============================================================================
+    SEND
+==============================================================================*/
+
+async function sendCommunication(){
+
+    alert('Send function connected.');
+
+}
 
 /*==============================================================================
     GLOBALS
 ==============================================================================*/
 
 window.changeCommunicationTemplate =
-
     updateTemplate;
 
+window.sendCommunication =
+    sendCommunication;
+
 }
+
