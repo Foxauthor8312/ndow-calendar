@@ -720,40 +720,29 @@ button:hover{
   font-variant-numeric:tabular-nums;
 }
 	
-.footer {
+<footer class="footer">
 
-  height: 32px;
+    <div class="footer-left">
+        © 2026 Barry Mattison. All Rights Reserved.
+    </div>
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    <div class="footer-center">
+        v<span id="versionDisplay"></span>
+        •
+        <span id="versionTime"></span>
+    </div>
 
-  padding: 0 10px;
+    <div class="footer-right">
+        User:
+        <span id="loggedInUser"></span>
 
-  border-top: 1px solid #DBE3EC;
+        &nbsp;&nbsp;
 
-  background: #F8FAFC;
+        <span id="footerClock"></span>
+    </div>
 
-  color: #6B7280;
+</footer>
 
-  font-size: 11px;
-  font-weight: 500;
-
-  flex-shrink: 0;
-
-}
-
-.footer-content {
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-
-  white-space: nowrap;
-
-}
 	
 .subtitle{
 	
@@ -1756,106 +1745,87 @@ function closeChangePinModal(){
      START HEADER
 ======================================== -->
 
-	
 <header>
 
-<div class="title-block">
+  <!-- ========================================
+       TITLE
+  ========================================= -->
 
-  <h1>NDOW Instructor Event Calendar</h1>
+  <div class="title-block">
 
-  <div class="subtitle">
-    Instructor-maintained Event Reference
+    <h1>NDOW INSTRUCTOR EVENT CALENDAR</h1>
+
   </div>
 
-  <div class="header-status">
-    Last Updated:
-    <span id="lastUpdated">
-      --
-    </span>
-  </div>
+  <!-- ========================================
+       MONTH NAVIGATION
+  ========================================= -->
 
-</div>
-
-<!-- END TITLE BLOCK -->
-
-
-<!-- START MONTH NAVIGATION -->
-
-<div class="controls">
-
-  <button
-    class="month-square"
-    onclick="prevMonth()"
-    title="Previous Month"
-  >
-    ‹
-  </button>
-
-  <h3 id="monthLabel"></h3>
-
-  <button
-    class="month-square"
-    onclick="nextMonth()"
-    title="Next Month"
-  >
-    ›
-  </button>
-
-</div>
-
-<!-- END MONTH NAVIGATION -->
-
-<!-- END MONTH NAVIGATION -->
-
-<div class="account-controls">
-
-  <div id="userDisplay" class="user-display">
-    Logged in
-  </div>
-
-  <div class="account-buttons">
-
-	<button
-  class="month-square"
-  onclick="refreshScreen()"
-  title="Refresh"
->
-  ↻
-</button>  
-
-    <button onclick="logout()">
-      Logout
-    </button>
+  <div class="controls">
 
     <button
-      class="admin-button"
-      onclick="openHelpModal()"
+      class="month-square"
+      onclick="prevMonth()"
+      title="Previous Month"
     >
-      Help
+      ‹
     </button>
 
-    <div class="dashboard-block">
+    <h3 id="monthLabel"></h3>
+
+    <button
+      class="month-square"
+      onclick="nextMonth()"
+      title="Next Month"
+    >
+      ›
+    </button>
+
+  </div>
+
+  <!-- ========================================
+       ACCOUNT CONTROLS
+  ========================================= -->
+
+  <div class="account-controls">
+
+    <div class="account-buttons">
 
       <button
-        id="dashboardButton"
-        class="admin-button dashboard-btn"
-        onclick="openDashboard()"
+        class="month-square"
+        onclick="refreshScreen()"
+        title="Refresh"
       >
-        Dashboard
+        ↻
       </button>
 
-      <div class="header-time">
-        <span id="currentTime">
-          --
-        </span>
+      <button onclick="logout()">
+        Logout
+      </button>
+
+      <button
+        class="admin-button"
+        onclick="openHelpModal()"
+      >
+        Help
+      </button>
+
+      <div class="dashboard-block">
+
+        <button
+          id="dashboardButton"
+          class="admin-button dashboard-btn"
+          onclick="openDashboard()"
+        >
+          Dashboard
+        </button>
+
       </div>
 
     </div>
 
   </div>
 
-</div>
-	
 </header>
 
 
