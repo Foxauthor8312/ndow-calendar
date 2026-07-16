@@ -4791,9 +4791,11 @@ function logout(showMessage = false){
     'token'
   );
 
-  document.getElementById(
-    'userDisplay'
-  ).innerText = 'Logged in';
+const userSpan = document.getElementById('loggedInUser');
+
+if (userSpan) {
+  userSpan.innerText = 'Guest';
+}
 
   if(showMessage){
 
@@ -7274,15 +7276,11 @@ if(
       localStorage.getItem('user')
     );
 
-  if(savedUser){
+ const userSpan = document.getElementById('loggedInUser');
 
-    document.getElementById(
-      'userDisplay'
-    ).innerText =
-      'Logged in as: ' +
-      savedUser.username;
-
-  }
+if (userSpan) {
+  userSpan.innerText = savedUser.username;
+}
 
 }, 100);
 
