@@ -3329,12 +3329,8 @@ console.log(
 systemStatus.lastSync =
   new Date();
 
-document.getElementById(
-  'lastUpdated'
-).innerText =
-  systemStatus.lastSync
-    .toLocaleString();
-
+document.getElementById('lastUpdated')?.innerText =
+  systemStatus.lastSync.toLocaleString();
     systemStatus.syncDuration =
       (
         (
