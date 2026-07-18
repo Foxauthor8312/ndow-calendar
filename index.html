@@ -1298,35 +1298,44 @@ body{
 
       </div>
 
-      <div class="password-wrap">
+<div id="pinSection" style="display:none;">
+
+    <div
+        id="welcomeMessage"
+        class="welcome-message">
+    </div>
+
+    <div class="password-wrap">
 
         <span class="input-icon">
-          <i class="fa-solid fa-lock"></i>
+            <i class="fa-solid fa-lock"></i>
         </span>
 
         <input
-          type="password"
-          id="userPin"
-          autocomplete="new-password"
-          placeholder="6-digit PIN"
-          class="login-input password-input"
-          maxlength="6"
+            type="password"
+            id="userPin"
+            autocomplete="new-password"
+            placeholder="6-digit PIN"
+            class="login-input password-input"
+            maxlength="6"
         >
 
         <span
-          class="toggle-password"
-          onclick="togglePassword()"
-        >
-          <i class="fa-regular fa-eye"></i>
+            class="toggle-password"
+            onclick="togglePassword()">
+            <i class="fa-regular fa-eye"></i>
         </span>
 
-      </div>
+    </div>
+
+</div>
 
       <button
-        id="loginButton"
-        onclick="checkLogin()">
-        Login
+		    id="loginButton"
+		    onclick="continueLogin()">
+		    Continue
       </button>
+		
 	  <div style="
 		  margin-top:10px;
 		  text-align:center;
