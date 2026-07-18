@@ -3632,6 +3632,101 @@ async function wakeServer(){
   }
 
 }
+//====================================================
+// LOGIN PHASE 1 - USERNAME VALIDATION
+// (Continue button / Reveal PIN workflow)
+//====================================================
+	async function continueLogin() {
+
+  const username =
+    document.getElementById('userName')
+      .value
+      .trim();
+
+  if (!username) {
+
+    document.getElementById('loginError').innerText =
+      'Please enter your username.';
+
+    return;
+
+  }
+
+  try {
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/validate-user',
+        {
+
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            username
+          })
+
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if (!data.success) {
+
+      document.getElementById('loginError').innerText =
+        data.message || 'Username not found.';
+
+      return;
+
+    }
+
+    document.getElementById('loginError').innerText = '';
+
+    document.getElementById('welcomeMessage').innerText =
+      `Welcome ${data.user.full_name}`;
+
+    document.getElementById('pinSection').style.display =
+      'block';
+
+    document.getElementById('userName').disabled =
+      true;
+
+    const button =
+      document.getElementById('loginButton');
+
+    button.innerText =
+      'Login';
+
+    button.onclick =
+      checkLogin;
+
+    if (data.user.must_change_pin) {
+
+      window.pendingLoginData = {
+        user: data.user
+      };
+
+      document.getElementById(
+        'changePinModal'
+      ).style.display =
+        'flex';
+
+    }
+
+  } catch (err) {
+
+    console.error(err);
+
+    document.getElementById('loginError').innerText =
+      'Unable to connect to the server.';
+
+  }
+
+}
 	
 async function checkLogin(){
 
