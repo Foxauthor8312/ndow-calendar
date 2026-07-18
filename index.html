@@ -1822,9 +1822,11 @@ async function submitForgotPin(){
 
         }
 
-        alert(
-            'A temporary PIN has been emailed to you.\n\nPlease check your inbox.'
-        );
+       alert(result.message);
+
+		closeForgotPinModal();
+			
+		document.getElementById('userPin').focus();
 
         closeForgotPinModal();
 
