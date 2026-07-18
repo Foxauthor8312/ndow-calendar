@@ -1373,14 +1373,12 @@ body{
 
 <div class="login-links">
 
-    <a href="#" id="forgotUsername">
-        Forgot Username?
-    </a>
+    <a href="#"
+       id="forgotPin"
+       onclick="openForgotPinModal(); return false;">
 
-    <span class="login-link-divider">|</span>
-
-    <a href="#" id="forgotPin">
         Forgot PIN?
+
     </a>
 
 </div>
@@ -1415,6 +1413,94 @@ body{
 </div>
 
 </div> <!-- loginScreen -->
+
+<!-- ========================================
+     Forgot PIN Modal
+======================================== -->
+
+<div
+    id="forgotPinModal"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.75);
+        z-index:100001;
+        justify-content:center;
+        align-items:center;
+    ">
+
+    <div
+        style="
+            background:white;
+            width:100%;
+            max-width:420px;
+            border-radius:10px;
+            padding:24px;
+            box-sizing:border-box;
+        ">
+
+        <h2 style="margin-top:0;color:#19304B;">
+            Reset PIN
+        </h2>
+
+        <p>
+            Enter your User ID and your email address.
+            A temporary PIN will be emailed to you.
+        </p>
+
+        <input
+            id="resetUsername"
+            type="text"
+            placeholder="User ID"
+            style="
+                width:100%;
+                margin-bottom:12px;
+                padding:10px;
+                box-sizing:border-box;
+            ">
+
+        <input
+            id="resetEmail"
+            type="email"
+            placeholder="Email Address"
+            style="
+                width:100%;
+                margin-bottom:12px;
+                padding:10px;
+                box-sizing:border-box;
+            ">
+
+        <div
+            id="forgotPinError"
+            style="
+                color:#c62828;
+                margin-bottom:12px;
+            ">
+        </div>
+
+        <button
+            onclick="submitForgotPin()"
+            style="width:100%;">
+
+            Email Temporary PIN
+
+        </button>
+
+        <button
+            onclick="closeForgotPinModal()"
+            style="
+                width:100%;
+                margin-top:10px;
+            ">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</div>	
 
 <div
 	
@@ -1627,6 +1713,8 @@ async function submitChangePin(){
 
 }
 
+	
+
 function openChangePinModal(){
 
   document.getElementById(
@@ -1644,6 +1732,112 @@ function closeChangePinModal(){
     'none';
 
 }
+
+//====================================================
+// Forgot PIN
+//====================================================
+
+function openForgotPinModal(){
+
+    document.getElementById(
+        'forgotPinModal'
+    ).style.display = 'flex';
+
+}
+
+function closeForgotPinModal(){
+
+    document.getElementById(
+        'forgotPinModal'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'forgotPinError'
+    ).innerText = '';
+
+}
+
+async function submitForgotPin(){
+
+    const username =
+        document.getElementById(
+            'resetUsername'
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            'resetEmail'
+        ).value.trim();
+
+    const errorBox =
+        document.getElementById(
+            'forgotPinError'
+        );
+
+    errorBox.innerText = '';
+
+    if(!username || !email){
+
+        errorBox.innerText =
+            'Please enter your User ID and email address.';
+
+        return;
+
+    }
+
+    try{
+
+        const response =
+            await fetch(
+                'https://ndow-calendar-server.onrender.com/api/forgot-pin',
+                {
+
+                    method:'POST',
+
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+
+                    body:JSON.stringify({
+
+                        username,
+
+                        email
+
+                    })
+
+                }
+            );
+
+        const result =
+            await response.json();
+
+        if(!result.success){
+
+            errorBox.innerText =
+                result.message ||
+                'Unable to reset PIN.';
+
+            return;
+
+        }
+
+        alert(
+            'A temporary PIN has been emailed to you.\n\nPlease check your inbox.'
+        );
+
+        closeForgotPinModal();
+
+    }catch(err){
+
+        console.error(err);
+
+        errorBox.innerText =
+            'Unable to contact the server.';
+
+    }
+
+}	
 
 </script>
 
