@@ -7526,17 +7526,34 @@ async function requestInstructor(eventUrl){
 
     }
 
-    alert(
-      'Instructor request submitted successfully.'
-    );
+showMessage({
+    type: 'success',
+    title: 'Request Submitted',
+    message: 'Your instructor assignment request has been submitted successfully.',
+    details: [
+        ['Request ID', requestId],
+        ['Recipients', recipients.length],
+        ['Events', selectedEvents.length]
+    ],
+    buttons: [
+        {
+            text: 'Close'
+        }
+    ]
+});
 
   } catch(err){
 
     console.error(err);
 
-    alert(
-      'Failed to submit instructor request.'
-    );
+   showMessage({
+    type: 'error',
+    title: 'Request Failed',
+    message: 'The instructor assignment request could not be submitted.',
+    details: [
+        ['Reason', err.message]
+    ]
+});
 
   }
 
