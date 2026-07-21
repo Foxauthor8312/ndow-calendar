@@ -3867,6 +3867,41 @@ async function wakeServer(){
   }
 
 }
+
+	//====================================================
+// LOGIN PANEL LOADING OVERLAY
+//====================================================
+function showLoginPanelLoading() {
+
+  const overlay =
+    document.getElementById(
+      'loginPanelLoading'
+    );
+
+  if (overlay) {
+
+    overlay.style.display =
+      'flex';
+
+  }
+
+}
+
+function hideLoginPanelLoading() {
+
+  const overlay =
+    document.getElementById(
+      'loginPanelLoading'
+    );
+
+  if (overlay) {
+
+    overlay.style.display =
+      'none';
+
+  }
+
+}
 //====================================================
 // LOGIN PHASE 1 - USERNAME VALIDATION
 // (Continue button / Reveal PIN workflow)
