@@ -1280,7 +1280,45 @@ body{
 
 </div>
 	  
-    <div class="login-form">
+   <div class="login-form">
+
+  <!-- Login Panel Loading Overlay -->
+  <div id="loginPanelLoading"
+       style="
+         display:none;
+         position:absolute;
+         inset:0;
+         background:rgba(255,255,255,.88);
+         justify-content:center;
+         align-items:center;
+         flex-direction:column;
+         z-index:100;
+         border-radius:12px;
+         text-align:center;
+       ">
+
+    <div class="spinner"></div>
+
+    <div style="
+      margin-top:18px;
+      font-size:18px;
+      font-weight:600;
+      color:#19304B;
+    ">
+      Connecting...
+    </div>
+
+    <div style="
+      margin-top:8px;
+      font-size:14px;
+      color:#555;
+      max-width:280px;
+      line-height:1.4;
+    ">
+      Starting secure cloud services.<br>
+      Please wait...
+    </div>
+
 
       <div class="input-wrap">
 
@@ -3833,7 +3871,7 @@ async function wakeServer(){
 // LOGIN PHASE 1 - USERNAME VALIDATION
 // (Continue button / Reveal PIN workflow)
 //====================================================
-	async function continueLogin() {
+async function continueLogin() {
 
   const username =
     document.getElementById('userName')
@@ -3849,28 +3887,34 @@ async function wakeServer(){
 
   }
 
-  try {
+ // Show login panel loading overlay
+showLoginPanelLoading();
 
-    const response =
-      await fetch(
-        'https://ndow-calendar-server.onrender.com/api/validate-user',
-        {
+try {
 
-          method: 'POST',
+  const response =
+    await fetch(
+      'https://ndow-calendar-server.onrender.com/api/validate-user',
+      {
 
-          headers: {
-            'Content-Type': 'application/json'
-          },
+        method: 'POST',
 
-          body: JSON.stringify({
-            username
-          })
+        headers: {
+          'Content-Type': 'application/json'
+        },
 
-        }
-      );
+        body: JSON.stringify({
+          username
+        })
 
-    const data =
-      await response.json();
+      }
+    );
+
+  const data =
+    await response.json();
+
+  // Hide loading overlay as soon as we receive a response
+  hideLoginPanelLoading();
 
     if (!data.success) {
 
@@ -3916,6 +3960,9 @@ async function wakeServer(){
 
   } catch (err) {
 
+    // Always hide loading overlay on error
+    hideLoginPanelLoading();
+
     console.error(err);
 
     document.getElementById('loginError').innerText =
@@ -3924,7 +3971,6 @@ async function wakeServer(){
   }
 
 }
-	
 async function checkLogin(){
 
   const overlay =
