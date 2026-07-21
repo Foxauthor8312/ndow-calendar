@@ -85,6 +85,8 @@ Login Panel
 
 .login-form{
 
+    position:relative;
+
     width:100%;
 
     display:flex;
