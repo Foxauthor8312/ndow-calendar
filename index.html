@@ -18120,7 +18120,7 @@ ${regionTotal}
 
 </div>
 
-<!-- ==========================================================
+<<!-- ==========================================================
      Communications Workspace
 ========================================================== -->
 
@@ -18184,60 +18184,64 @@ ${regionTotal}
     <!-- Workspace -->
 
     <div
-    class="comm-flex"
-    style="
-        display:grid;
-        grid-template-columns:460px 1fr;
-        height:calc(100vh - 70px);
-    ">
-
- <div
-    id="communicationsSidebar"
-    class="comm-sidebar"
-    style="
-        background:#F4F8FB;
-        border-right:1px solid #DBE3EC;
-        padding:24px;
-        overflow:hidden;
-    ">
-
-<div
-    id="communicationsPreviewPanel"
-    style="
-        display:flex;
-        flex-direction:column;
-        border-left:1px solid #DBE3EC;
-        padding:24px;
-        background:#F8FAFC;
-        overflow:hidden;
-    "
->
-
-    <div
+        class="comm-flex"
         style="
-            font-size:18px;
-            font-weight:700;
-            margin-bottom:16px;
-            color:#19304B;
-        "
-    >
+            display:grid;
+            grid-template-columns:460px 1fr;
+            height:calc(100vh - 70px);
+        ">
 
-        Email Preview
+        <!-- Left Workflow -->
+
+        <div
+            id="communicationsSidebar"
+            class="comm-sidebar"
+            style="
+                background:#F4F8FB;
+                border-right:1px solid #DBE3EC;
+                padding:24px;
+                overflow:auto;
+            ">
+
+            <div id="communicationsLeftPane"></div>
+
+        </div>
+
+        <!-- Preview -->
+
+        <div
+            id="communicationsPreviewPanel"
+            style="
+                display:flex;
+                flex-direction:column;
+                padding:24px;
+                background:#F8FAFC;
+                overflow:hidden;
+            ">
+
+            <div
+                style="
+                    font-size:18px;
+                    font-weight:700;
+                    margin-bottom:16px;
+                    color:#19304B;
+                ">
+                Email Preview
+            </div>
+
+            <div
+                id="communicationsPreview"
+                style="
+                    flex:1;
+                    overflow:auto;
+                ">
+            </div>
+
+        </div>
 
     </div>
 
-    <div
-    id="communicationsPreview"
-    style="
-        flex:1;
-        overflow:auto;
-    "
-></div>
-
 </div>
-
-</div>
-
 
 <script src="js/help.js"></script>
 
@@ -18250,11 +18254,10 @@ ${regionTotal}
 
 <script src="js/instructor-requests.js"></script>
 
-<script type="module" src="js/admin/developer-notes.js"></script>	
-
-
-
-		
+<script
+    type="module"
+    src="js/admin/developer-notes.js">
+</script>
 
 <script>
 
