@@ -305,42 +305,7 @@ function renderDynamicPanel(){
 
 <div class="comm-card">
 
-    <div
-        class="comm-card-header"
-        style="
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-        "
-    >
-
-        <span>
-
-            👥 Recipients
-
-        </span>
-
-        <span
-            id="recipientCountHeader"
-            style="
-                font-size:13px;
-                font-weight:600;
-                color:#19304B;
-            "
-        >
-
-        </span>
-
-    </div>
-
-    <div
-        id="communicationsRecipients">
-
-    </div>
-
-</div>
-
-`;
+ `;
 
         if(window.renderRecipients){
 
