@@ -157,6 +157,28 @@ async function renderDeveloperNotes(){
 
 </div>
 
+<div style="
+    margin-bottom:16px;
+">
+
+    <label style="
+        font-weight:600;
+        cursor:pointer;
+        color:#19304B;
+    ">
+
+        <input
+            type="checkbox"
+            id="showCompletedNotes"
+            onchange="loadDeveloperNotes()"
+        >
+
+        Show Completed Notes
+
+    </label>
+
+</div>
+
 <div
     id="developerNotesList"
 >
@@ -167,9 +189,7 @@ async function renderDeveloperNotes(){
 
 `;
 
-    loadDeveloperNotes();
-
-}
+loadDeveloperNotes();
 
 
 /*==============================================================================
@@ -222,12 +242,24 @@ async function(){
     const notes =
       result.notes || [];
 
+   const showCompleted =
+  document.getElementById(
+    'showCompletedNotes'
+  )?.checked || false;
+
+const filteredNotes =
+  showCompleted
+    ? notes
+    : notes.filter(
+        note => !note.fixed
+      );
+
     const list =
       document.getElementById(
         'developerNotesList'
       );
 
-    if(notes.length === 0){
+   if(filteredNotes.length === 0){
 
       list.innerHTML = `
 
@@ -247,7 +279,7 @@ No developer notes.
 
     list.innerHTML =
 
-      notes.map(note => `
+      filteredNotes.map(note => `
 
 <div
   style="
