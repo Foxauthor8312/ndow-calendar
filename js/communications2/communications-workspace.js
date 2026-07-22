@@ -576,16 +576,22 @@ function renderSidebar(event){
 
 <div class="comm-sidebar-heading">
 
-    Communication History
+    Recipients
 
 </div>
 
-<div id="communicationsHistory">
+<div
+    id="communicationsRecipients"
+    style="
+        flex:1;
+        overflow-y:auto;
+        margin-top:10px;
+    "
+>
 
     Loading...
 
 </div>
-
 `;
 
 }
