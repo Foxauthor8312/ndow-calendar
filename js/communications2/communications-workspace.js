@@ -483,10 +483,10 @@ function updateHeader(event){
 
 
 /*==============================================================================
-    SIDEBAR
+    WORKSPACE SHELL
 ==============================================================================*/
 
-function renderSidebar(event){
+function renderSidebar(){
 
     const sidebar =
 
@@ -502,142 +502,22 @@ function renderSidebar(event){
 
     }
 
-sidebar.innerHTML = `
+    sidebar.innerHTML = `
 
 <div
+    id="communicationsLeftPane"
     style="
         display:flex;
         flex-direction:column;
         height:100%;
-        gap:12px;
     "
 >
-
-    <!-- Event Header -->
-
-    <div
-        style="
-            border-bottom:1px solid #DBE3EC;
-            padding-bottom:10px;
-        "
-    >
-
-        <div
-            style="
-                display:flex;
-                justify-content:space-between;
-                align-items:flex-start;
-            "
-        >
-
-            <div
-                style="
-                    font-size:20px;
-                    font-weight:700;
-                    color:#19304B;
-                "
-            >
-                ${event.title}
-            </div>
-
-            <div
-                style="
-                    font-size:12px;
-                    color:#6B7280;
-                    font-weight:600;
-                "
-            >
-                Event #${event.id}
-            </div>
-
-        </div>
-
-        <div
-            style="
-                margin-top:4px;
-                font-size:13px;
-                color:#374151;
-            "
-        >
-            ${event.program || ''}
-        </div>
-
-        <div
-            style="
-                font-size:13px;
-                color:#374151;
-            "
-        >
-            ${event.date || ''}
-            ${event.time ? ' • ' + event.time : ''}
-        </div>
-
-        <div
-            style="
-                font-size:13px;
-                color:#374151;
-            "
-        >
-            ${event.location || ''}
-        </div>
-
-    </div>
-
-    <!-- Compose -->
-
-    <div id="communicationsComposeHeader">
-
-    </div>
-
-    <!-- Recipients -->
-
-    <div
-        style="
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            font-weight:700;
-            color:#19304B;
-        "
-    >
-
-        <span>Recipients</span>
-
-        <span
-            id="recipientCount"
-            style="
-                font-size:12px;
-                color:#6B7280;
-            "
-        ></span>
-
-    </div>
-
-    <div
-        id="communicationsRecipients"
-        style="
-            flex:1;
-            overflow-y:auto;
-            border:1px solid #DBE3EC;
-            border-radius:6px;
-            background:#fff;
-        "
-    >
-
-        Loading...
-
-    </div>
-
-    <!-- Send Options -->
-
-    <div id="communicationsSendOptions">
-
-    </div>
 
 </div>
 
 `;
-}   
+
+}
 
 /*==============================================================================
     GLOBAL ENTRY POINTS
