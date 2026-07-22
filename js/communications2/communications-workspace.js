@@ -502,99 +502,100 @@ function renderSidebar(event){
 
     }
 
-    sidebar.innerHTML = `
-
-<div class="comm-sidebar-section">
-
-    <div class="comm-event-title">
-
-        ${event.title}
-
-    </div>
-
-    <div class="comm-id">
-
-        Event #${event.id}
-
-    </div>
-
-</div>
-
-<div class="comm-sidebar-section">
-
-    <div class="comm-label">
-
-        Program
-
-    </div>
-
-    <div class="comm-value">
-
-        ${event.program || '-'}
-
-    </div>
-
-    <div class="comm-label">
-
-        Date
-
-    </div>
-
-    <div class="comm-value">
-
-        ${event.date || ''}
-
-    </div>
-
-    <div class="comm-label">
-
-        Time
-
-    </div>
-
-    <div class="comm-value">
-
-        ${event.time || ''}
-
-    </div>
-
-    <div class="comm-label">
-
-        Location
-
-    </div>
-
-    <div class="comm-value">
-
-        ${event.location || ''}
-
-    </div>
-
-</div>
-
-<hr class="comm-divider">
-
-<div class="comm-sidebar-heading">
-
-    Recipients
-
-</div>
+sidebar.innerHTML = `
 
 <div
-    id="communicationsRecipients"
+    class="comm-card"
     style="
-        flex:1;
-        overflow-y:auto;
-        margin-top:10px;
+        margin-bottom:10px;
     "
 >
 
-    Loading...
+    <div
+        class="comm-card-body"
+        style="
+            padding:10px 12px;
+            line-height:1.2;
+        "
+    >
+
+        <div
+            style="
+                font-size:18px;
+                font-weight:700;
+                color:#19304B;
+                margin-bottom:2px;
+            "
+        >
+            ${event.title}
+        </div>
+
+        <div
+            style="
+                font-size:12px;
+                color:#6B7280;
+                margin-bottom:4px;
+            "
+        >
+            Event #${event.id}
+        </div>
+
+        <div style="font-size:13px;">
+            ${event.program || ''}
+        </div>
+
+        <div style="font-size:13px;">
+            ${event.date || ''}
+            ${event.time ? ' • ' + event.time : ''}
+        </div>
+
+        <div
+            style="
+                font-size:13px;
+            "
+        >
+            ${event.location || ''}
+        </div>
+
+    </div>
 
 </div>
-`;
 
-}
+<div class="comm-card">
+
+    <div class="comm-card-header">
+
+        Recipients
+
+    </div>
+
+    <div
+        class="comm-card-body"
+        style="
+            padding:0;
+            display:flex;
+            flex-direction:column;
+            height:100%;
+        "
+    >
+
+        <div
+            id="communicationsRecipients"
+            style="
+                flex:1;
+                overflow-y:auto;
+            "
+        >
+
+            Loading...
+
+        </div>
+
+    </div>
+
+</div>
+
+`;
 
 
 /*==============================================================================
