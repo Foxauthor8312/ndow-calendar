@@ -88,6 +88,7 @@ export function openCompose(){
 }
 
 
+
 /*==============================================================================
     RENDER
 ==============================================================================*/
@@ -115,69 +116,74 @@ container.innerHTML = `
         display:flex;
         flex-direction:column;
         height:100%;
-        gap:12px;
+        gap:14px;
     "
 >
 
     <div
         id="communicationsEventHeader"
-        class="comm-card-body"
         style="
             border-bottom:1px solid #DBE3EC;
-            padding-bottom:10px;
+            padding-bottom:12px;
         "
-    >
+    ></div>
+
+    <div>
+
+        <label class="comm-label">
+            Function
+        </label>
+
+        <select
+            id="communicationTemplate"
+            class="comm-select"
+            style="width:100%;"
+        >
+
+            <option value="${COMMUNICATION_TYPES.REMINDER}">
+                Reminder Email
+            </option>
+
+            <option value="attendance">
+                Attendance
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.SURVEY}">
+                Survey Email
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.NO_SHOW}">
+                We Missed You Email
+            </option>
+
+            <option value="${COMMUNICATION_TYPES.CUSTOM}">
+                Custom Email
+            </option>
+
+        </select>
+
     </div>
 
-    <label class="comm-label">
-        Function
-    </label>
+    <div>
 
-    <select
-        id="communicationTemplate"
-        class="comm-select"
-        style="width:100%;"
-    >
+        <label class="comm-label">
+            Subject
+        </label>
 
-        <option value="${COMMUNICATION_TYPES.REMINDER}">
-            Reminder Email
-        </option>
+        <input
+            id="communicationSubject"
+            class="comm-input"
+            type="text"
+            style="width:100%;"
+        >
 
-        <option value="attendance">
-            Attendance
-        </option>
-
-        <option value="${COMMUNICATION_TYPES.SURVEY}">
-            Survey Email
-        </option>
-
-        <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-            We Missed You Email
-        </option>
-
-        <option value="${COMMUNICATION_TYPES.CUSTOM}">
-            Custom Email
-        </option>
-
-    </select>
-
-    <label class="comm-label">
-        Subject
-    </label>
-
-    <input
-        id="communicationSubject"
-        class="comm-input"
-        type="text"
-        style="width:100%;"
-    >
+    </div>
 
     <div
         style="
             display:flex;
             justify-content:space-between;
             align-items:center;
-            margin-top:8px;
         "
     >
 
@@ -191,17 +197,73 @@ container.innerHTML = `
         id="communicationsRecipients"
         style="
             flex:1;
-            overflow-y:auto;
+            overflow:auto;
             border:1px solid #DBE3EC;
             border-radius:6px;
+            padding:8px;
+        "
+    >
+        Loading...
+    </div>
+
+    <div id="communicationsDynamicPanel"></div>
+
+    <div
+        style="
+            border-top:1px solid #DBE3EC;
+            padding-top:12px;
         "
     >
 
-        Loading...
+        <label>
 
-    </div>
+            <input
+                id="sendCopy"
+                type="checkbox"
+            >
 
-    <div id="communicationsDynamicPanel">
+            Send me a copy
+
+        </label>
+
+        <br><br>
+
+        <label class="comm-label">
+            Additional Recipient
+        </label>
+
+        <input
+            id="additionalRecipient"
+            class="comm-input"
+            type="email"
+            placeholder="name@example.com"
+            style="width:100%;"
+        >
+
+        <div
+            style="
+                display:flex;
+                justify-content:flex-end;
+                gap:10px;
+                margin-top:16px;
+            "
+        >
+
+            <button
+                class="comm-button"
+                onclick="closeCommunicationsWorkspace()"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="comm-button comm-button-primary"
+                onclick="sendCommunication()"
+            >
+                Send Email
+            </button>
+
+        </div>
 
     </div>
 
@@ -212,8 +274,43 @@ container.innerHTML = `
 
 
     initializeCompose();
+
+    renderEventHeader();
  }
 
+
+function renderEventHeader(){
+
+    const state = getState();
+
+    const panel =
+        document.getElementById(
+            'communicationsEventHeader'
+        );
+
+    if(!panel || !state.currentEvent){
+        return;
+    }
+
+    panel.innerHTML = `
+        <div style="font-size:18px;font-weight:700;color:#19304B;">
+            ${state.currentEvent.title}
+        </div>
+
+        <div style="margin-top:4px;color:#666;">
+            ${state.currentEvent.date || ''}
+        </div>
+
+        <div style="margin-top:2px;color:#666;">
+            ${state.currentEvent.location || ''}
+        </div>
+
+        <div style="margin-top:2px;color:#589FD6;font-size:13px;">
+            ${state.currentEvent.program || ''}
+        </div>
+    `;
+
+}
  /*==============================================================================
     DYNAMIC PANEL
 ==============================================================================*/
