@@ -586,5 +586,4 @@ window.changeCommunicationTemplate =
 window.sendCommunication =
     sendCommunication;
 
-}
 
