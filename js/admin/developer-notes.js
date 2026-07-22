@@ -190,7 +190,7 @@ async function renderDeveloperNotes(){
 `;
 
 loadDeveloperNotes();
-
+}   // <-- THIS IS MISSING
 
 /*==============================================================================
     LOAD
