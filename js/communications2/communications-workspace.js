@@ -596,7 +596,7 @@ sidebar.innerHTML = `
 </div>
 
 `;
-
+}   // <-- THIS IS MISSING
 
 /*==============================================================================
     GLOBAL ENTRY POINTS
