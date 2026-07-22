@@ -18204,9 +18204,12 @@ ${regionTotal}
 <div
     id="communicationsPreviewPanel"
     style="
+        display:flex;
+        flex-direction:column;
         border-left:1px solid #DBE3EC;
         padding:24px;
         background:#F8FAFC;
+        overflow:hidden;
     "
 >
 
@@ -18224,9 +18227,12 @@ ${regionTotal}
     </div>
 
     <div
-        id="communicationsPreview">
-
-    </div>
+    id="communicationsPreview"
+    style="
+        flex:1;
+        overflow:auto;
+    "
+></div>
 
 </div>
 
