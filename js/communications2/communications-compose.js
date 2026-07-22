@@ -94,13 +94,13 @@ export function openCompose(){
 
 function renderCompose(){
 
-    const container =
+const container =
 
-        document.getElementById(
+    document.getElementById(
 
-            'communicationsContent'
+        'communicationsLeftPane'
 
-        );
+    );
 
     if(!container){
 
@@ -108,78 +108,106 @@ function renderCompose(){
 
     }
 
-    container.innerHTML = `
+container.innerHTML = `
 
 <div
     style="
         display:flex;
         flex-direction:column;
-        gap:20px;
+        height:100%;
+        gap:12px;
     "
 >
 
-<div class="comm-card">
+    <div
+        id="communicationsEventHeader"
+        class="comm-card-body"
+        style="
+            border-bottom:1px solid #DBE3EC;
+            padding-bottom:10px;
+        "
+    >
+    </div>
 
-    <div class="comm-card-header">
+    <label class="comm-label">
+        Function
+    </label>
 
-        ✉ Compose Communication
+    <select
+        id="communicationTemplate"
+        class="comm-select"
+        style="width:100%;"
+    >
+
+        <option value="${COMMUNICATION_TYPES.REMINDER}">
+            Reminder Email
+        </option>
+
+        <option value="attendance">
+            Attendance
+        </option>
+
+        <option value="${COMMUNICATION_TYPES.SURVEY}">
+            Survey Email
+        </option>
+
+        <option value="${COMMUNICATION_TYPES.NO_SHOW}">
+            We Missed You Email
+        </option>
+
+        <option value="${COMMUNICATION_TYPES.CUSTOM}">
+            Custom Email
+        </option>
+
+    </select>
+
+    <label class="comm-label">
+        Subject
+    </label>
+
+    <input
+        id="communicationSubject"
+        class="comm-input"
+        type="text"
+        style="width:100%;"
+    >
+
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-top:8px;
+        "
+    >
+
+        <strong>Recipients</strong>
+
+        <span id="recipientCount"></span>
 
     </div>
 
-    <div class="comm-card-body">
+    <div
+        id="communicationsRecipients"
+        style="
+            flex:1;
+            overflow-y:auto;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+        "
+    >
 
-        <label class="comm-label">
+        Loading...
 
-            Function
+    </div>
 
-        </label>
-
-        <select
-            id="communicationTemplate"
-            class="comm-select"
-            style="width:100%;"
-        >
-
-            <option value="${COMMUNICATION_TYPES.REMINDER}">
-                Reminder Email
-            </option>
-
-            <option value="attendance">
-                Attendance
-            </option>
-
-            <option value="${COMMUNICATION_TYPES.SURVEY}">
-                Survey Email
-            </option>
-
-            <option value="${COMMUNICATION_TYPES.NO_SHOW}">
-                We Missed You Email
-            </option>
-
-            <option value="${COMMUNICATION_TYPES.CUSTOM}">
-                Custom Email
-            </option>
-
-        </select>
-
-        <br><br>
-
-        <label class="comm-label">
-
-            Subject
-
-        </label>
-
-        <input
-            id="communicationSubject"
-            class="comm-input"
-            type="text"
-            style="width:100%;"
-        >
+    <div id="communicationsDynamicPanel">
 
     </div>
 
 </div>
+
+`;
 
 <div id="communicationsDynamicPanel">
 
@@ -495,10 +523,6 @@ if(window.renderRecipients){
 }
 
 }
-
-/*==============================================================================
-    SEND
-==============================================================================*/
 
 /*==============================================================================
     SEND
