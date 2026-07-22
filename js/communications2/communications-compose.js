@@ -258,6 +258,7 @@ function renderCompose(){
 `;
 
     initializeCompose();
+ }
 
  /*==============================================================================
     DYNAMIC PANEL
