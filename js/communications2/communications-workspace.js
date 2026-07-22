@@ -505,46 +505,69 @@ function renderSidebar(event){
 sidebar.innerHTML = `
 
 <div
-    class="comm-card"
     style="
-        margin-bottom:10px;
+        display:flex;
+        flex-direction:column;
+        height:100%;
+        gap:12px;
     "
 >
 
+    <!-- Event Header -->
+
     <div
-        class="comm-card-body"
         style="
-            padding:10px 12px;
-            line-height:1.2;
+            border-bottom:1px solid #DBE3EC;
+            padding-bottom:10px;
         "
     >
 
         <div
             style="
-                font-size:18px;
-                font-weight:700;
-                color:#19304B;
-                margin-bottom:2px;
+                display:flex;
+                justify-content:space-between;
+                align-items:flex-start;
             "
         >
-            ${event.title}
+
+            <div
+                style="
+                    font-size:20px;
+                    font-weight:700;
+                    color:#19304B;
+                "
+            >
+                ${event.title}
+            </div>
+
+            <div
+                style="
+                    font-size:12px;
+                    color:#6B7280;
+                    font-weight:600;
+                "
+            >
+                Event #${event.id}
+            </div>
+
         </div>
 
         <div
             style="
-                font-size:12px;
-                color:#6B7280;
-                margin-bottom:4px;
+                margin-top:4px;
+                font-size:13px;
+                color:#374151;
             "
         >
-            Event #${event.id}
-        </div>
-
-        <div style="font-size:13px;">
             ${event.program || ''}
         </div>
 
-        <div style="font-size:13px;">
+        <div
+            style="
+                font-size:13px;
+                color:#374151;
+            "
+        >
             ${event.date || ''}
             ${event.time ? ' • ' + event.time : ''}
         </div>
@@ -552,6 +575,7 @@ sidebar.innerHTML = `
         <div
             style="
                 font-size:13px;
+                color:#374151;
             "
         >
             ${event.location || ''}
@@ -559,44 +583,61 @@ sidebar.innerHTML = `
 
     </div>
 
-</div>
+    <!-- Compose -->
 
-<div class="comm-card">
+    <div id="communicationsComposeHeader">
 
-    <div class="comm-card-header">
+    </div>
 
-        Recipients
+    <!-- Recipients -->
+
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            font-weight:700;
+            color:#19304B;
+        "
+    >
+
+        <span>Recipients</span>
+
+        <span
+            id="recipientCount"
+            style="
+                font-size:12px;
+                color:#6B7280;
+            "
+        ></span>
 
     </div>
 
     <div
-        class="comm-card-body"
+        id="communicationsRecipients"
         style="
-            padding:0;
-            display:flex;
-            flex-direction:column;
-            height:100%;
+            flex:1;
+            overflow-y:auto;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            background:#fff;
         "
     >
 
-        <div
-            id="communicationsRecipients"
-            style="
-                flex:1;
-                overflow-y:auto;
-            "
-        >
+        Loading...
 
-            Loading...
+    </div>
 
-        </div>
+    <!-- Send Options -->
+
+    <div id="communicationsSendOptions">
 
     </div>
 
 </div>
 
 `;
-}   // <-- THIS IS MISSING
+}   
 
 /*==============================================================================
     GLOBAL ENTRY POINTS
