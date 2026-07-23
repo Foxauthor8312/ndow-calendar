@@ -4917,9 +4917,21 @@ if (needHoursOnly) {
   const cutoff = new Date(today);
   cutoff.setDate(cutoff.getDate() - 30);
 
-  const eventDate = new Date(
-  event.date + 'T00:00:00'
-);
+// Normalize the event date regardless of source
+const rawDate =
+  event.event_date ||
+  event.date ||
+  event.start_date ||
+  '';
+
+const eventDate = new Date(rawDate);
+
+if (isNaN(eventDate.getTime())) {
+  return false;
+}
+
+// Normalize to midnight for comparisons
+eventDate.setHours(0, 0, 0, 0);
 
   // Ignore invalid dates
   if (isNaN(eventDate.getTime())) {
