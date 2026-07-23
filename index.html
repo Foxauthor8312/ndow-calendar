@@ -2295,6 +2295,27 @@ async function submitForgotPin(){
 
     </select>
 
+<label
+  style="
+    display:flex;
+    align-items:center;
+    gap:4px;
+    margin-left:10px;
+    font-size:12px;
+  "
+>
+
+  <input
+    type="checkbox"
+    id="needHoursOnly"
+    onchange="renderCalendar(currentDate)"
+  >
+
+  Need Hours
+
+</label>
+
+	  
     <label
       style="
         display:flex;
@@ -4677,6 +4698,16 @@ function renderCalendar(){
 
   calendar.innerHTML = '';
 
+  const myEventsOnly =
+    document.getElementById(
+      'myEventsOnly'
+    )?.checked;
+
+  const needHoursOnly =
+    document.getElementById(
+      'needHoursOnly'
+    )?.checked;
+
   const year =
     currentDate.getFullYear();
 
@@ -4797,12 +4828,7 @@ function renderCalendar(){
           return false;
         }
 		  
-        const myEventsOnly =
-  document.getElementById(
-    'myEventsOnly'
-  )?.checked;
-
-if(myEventsOnly){
+if(myEventsOnly || needHoursOnly){
 
   const currentUser =
 
