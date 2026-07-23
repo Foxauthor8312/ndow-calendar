@@ -3083,14 +3083,21 @@ try {
 
   if (response.ok) {
 
-    const result =
-      await response.json();
+const result =
+  await response.json();
 
-    completedEventIds =
-      new Set(
-        (result.completedEvents || [])
-          .map(r => String(r.event_id))
-      );
+completedEventIds =
+  new Set(
+    (result.completedEvents || [])
+      .map(row =>
+        Number(row.event_id)
+      )
+  );
+
+console.log(
+  'Completed Event IDs:',
+  [...completedEventIds]
+);
 
     console.log(
       'Completed Events:',
