@@ -18,14 +18,13 @@ export async function buildPendingHours(events) {
 
     const response =
         await fetch(
-
-'https://ndow-calendar-server.onrender.com/api/hours/my-hours',
-
-        {
-            headers: {
-                Authorization: `Bearer ${token}`
+            'https://ndow-calendar-server.onrender.com/api/hours/my-hours',
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        });
+        );
 
     if (!response.ok) {
 
@@ -50,82 +49,35 @@ export async function buildPendingHours(events) {
         submittedEventIds.size
     );
 
-//--------------------------------------------------
-// Build Pending Hours List
-//--------------------------------------------------
+    //--------------------------------------------------
+    // Build Pending List
+    //--------------------------------------------------
 
-export async function buildPendingHours(events) {
+    for (const event of events) {
 
-    pendingHours = [];
+        // Skip events that have not been completed
+        if (event.status !== 'Event Completed') {
+            continue;
+        }
 
-    const token =
-        localStorage.getItem('token');
+        // Skip future events
+        if (new Date(event.date) > new Date()) {
+            continue;
+        }
 
-    const response =
-        await fetch(
+        // Skip events already submitted
+        if (submittedEventIds.has(Number(event.id))) {
+            continue;
+        }
 
-'https://ndow-calendar-server.onrender.com/api/hours/my-hours',
-
-        {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-
-    if (!response.ok) {
-
-        throw new Error(
-            'Unable to load volunteer hours.'
-        );
+        pendingHours.push(event);
 
     }
-
-    const submittedHours =
-        await response.json();
-
-    const submittedEventIds =
-        new Set(
-            submittedHours.map(
-                row => Number(row.event_id)
-            )
-        );
 
     console.log(
-        'Submitted Hours:',
-        submittedEventIds.size
+        'Pending Hours:',
+        pendingHours.length
     );
-
-  //--------------------------------------------------
-// Build Pending List
-//--------------------------------------------------
-
-for (const event of events) {
-
-   // Skip events that have not been completed
-if (event.status !== 'Event Completed') {
-    continue;
-} 
-
-    // Skip future events
-if (new Date(event.date) > new Date()) {
-    continue;
-}
-
-    // Skip events already submitted
-    if (submittedEventIds.has(Number(event.id))) {
-        continue;
-    }
-
-    pendingHours.push(event);
-
-}
-
-console.log(
-    'Pending Hours:',
-    pendingHours.length
-);
-
-}
 
 }
 
@@ -136,7 +88,7 @@ console.log(
 
 export async function refreshPendingHours() {
 
-    return buildPendingHours();
+    return pendingHours;
 
 }
 
