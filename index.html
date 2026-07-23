@@ -4861,6 +4861,28 @@ if(myEventsOnly || needHoursOnly){
     return false;
   }
 
+  // Need Hours only shows past events
+
+  if(needHoursOnly){
+
+    const today =
+      new Date();
+
+    today.setHours(
+      0,0,0,0
+    );
+
+    const eventDate =
+      new Date(
+        event.event_date
+      );
+
+    if(eventDate >= today){
+      return false;
+    }
+
+  }
+
 }
 		  
 const categoryFilters =
