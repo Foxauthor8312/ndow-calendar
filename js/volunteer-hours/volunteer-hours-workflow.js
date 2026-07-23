@@ -2,7 +2,7 @@
 // Volunteer Hours Workflow
 //==================================================
 
-window.pendingHours = [];
+let pendingHours = [];
 
 
 //--------------------------------------------------
@@ -31,7 +31,7 @@ export async function refreshPendingHours() {
 
 export function getPendingHours() {
 
-    return window.pendingHours;
+    return pendingHours;
 
 }
 
@@ -42,6 +42,6 @@ export function getPendingHours() {
 
 export function getPendingHoursCount() {
 
-    return window.pendingHours.length;
+    return pendingHours.length;
 
 }
