@@ -4918,8 +4918,8 @@ if (needHoursOnly) {
   cutoff.setDate(cutoff.getDate() - 30);
 
   const eventDate = new Date(
-    event.event_date + 'T00:00:00'
-  );
+  event.date + 'T00:00:00'
+);
 
   // Ignore invalid dates
   if (isNaN(eventDate.getTime())) {
