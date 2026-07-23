@@ -4905,8 +4905,9 @@ if(myEventsOnly || needHoursOnly){
     return false;
   }
 
-// Need Hours only shows events from the
-// last 30 days that have already occurred.
+// Need Hours only shows your completed events
+// from the last 30 days that do not already
+// have volunteer hours submitted.
 
 if (needHoursOnly) {
 
@@ -4920,6 +4921,11 @@ if (needHoursOnly) {
     event.event_date + 'T00:00:00'
   );
 
+  // Ignore invalid dates
+  if (isNaN(eventDate.getTime())) {
+    return false;
+  }
+
   // Future event
   if (eventDate >= today) {
     return false;
@@ -4930,8 +4936,19 @@ if (needHoursOnly) {
     return false;
   }
 
+  // Volunteer hours already submitted
+  if (
+    completedEventIds &&
+    completedEventIds.has(
+      Number(event.id)
+    )
+  ) {
+    return false;
+  }
+
 }
-}  	
+
+} // End myEventsOnly || needHoursOnly
 		  
 const categoryFilters =
   activeFilters.filter(
