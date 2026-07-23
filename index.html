@@ -4872,10 +4872,9 @@ if(myEventsOnly || needHoursOnly){
       0,0,0,0
     );
 
-    const eventDate =
-      new Date(
-        event.event_date
-      );
+   const eventDate = new Date(
+      event.event_date + 'T00:00:00'
+);
 
     if(eventDate >= today){
       return false;
