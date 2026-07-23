@@ -2935,6 +2935,7 @@ const systemStatus = {
 };
 	
 let events = [];
+let completedEventIds = new Set();	
 let activeFilters = [];
 let activeRegion = '';
 let selectedEvent = null;
@@ -3064,6 +3065,47 @@ const response = await fetch(
 
   events =
    data.events || [];
+
+// Load completed volunteer hours for this instructor
+
+completedEventIds.clear();
+
+try {
+
+  const response =
+    await fetch(
+      `${API_BASE}/hours/completed-events`,
+      {
+        headers: authHeaders()
+      }
+    );
+
+  if (response.ok) {
+
+    const result =
+      await response.json();
+
+    completedEventIds =
+      new Set(
+        (result.completedEvents || [])
+          .map(r => String(r.event_id))
+      );
+
+    console.log(
+      'Completed Events:',
+      completedEventIds.size
+    );
+
+  }
+
+} catch (err) {
+
+  console.error(
+    'Unable to load completed events:',
+    err
+  );
+
+}	  
 
 const rawEventCount =
   (data.events || []).length;
@@ -4861,25 +4903,29 @@ if(myEventsOnly || needHoursOnly){
     return false;
   }
 
-  // Need Hours only shows past events
+// Need Hours only shows events from the
+// last 30 days that have already occurred.
 
-  if(needHoursOnly){
+if (needHoursOnly) {
 
-    const today =
-      new Date();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-    today.setHours(
-      0,0,0,0
-    );
+  const cutoff = new Date(today);
+  cutoff.setDate(cutoff.getDate() - 30);
 
-   const eventDate = new Date(
-      event.event_date + 'T00:00:00'
-);
+  const eventDate = new Date(
+    event.event_date + 'T00:00:00'
+  );
 
-    if(eventDate >= today){
-      return false;
-    }
+  // Future event
+  if (eventDate >= today) {
+    return false;
+  }
 
+  // Older than 30 days
+  if (eventDate < cutoff) {
+    return false;
   }
 
 }
