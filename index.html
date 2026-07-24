@@ -2936,8 +2936,10 @@ const systemStatus = {
 	
 let events = [];
 let completedEventIds = new Set();	
-	let submittedEvents =
-  new Set();
+submittedEvents =
+    new Set(
+        submittedResult.submittedEvents || []
+    );
 let activeFilters = [];
 let activeRegion = '';
 let selectedEvent = null;
@@ -4988,13 +4990,15 @@ eventDate.setHours(0, 0, 0, 0);
   }
 
 // Volunteer hours already submitted
-// TEMPORARILY DISABLED
-// if (
-//   completedEventIds &&
-//   completedEventIds.has(Number(event.id))
-// ) {
-//   return false;
-// }
+
+if (
+    submittedEvents &&
+    submittedEvents.has(
+        String(event.id)
+    )
+) {
+    return false;
+}
 
 }
 
