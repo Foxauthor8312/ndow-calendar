@@ -2936,6 +2936,7 @@ const systemStatus = {
 	
 let events = [];
 let completedEventIds = new Set();	
+let submittedEvents = new Set();	
 // submittedEvents =
 //    new Set(
 //        submittedResult.submittedEvents || []
@@ -3074,31 +3075,26 @@ const response = await fetch(
 // Load submitted volunteer hours
 // ----------------------------------------
 
-//const submittedResponse =
-//  await fetch(
+const submittedResponse =
+  await fetch(
+    `${API_BASE}/volunteer-hours-submitted/${currentUser.customerId}`,
+    {
+      headers: authHeaders()
+    }
+  );
 
-//`${API_BASE}/volunteer-hours-submitted/${currentUser.customerId}`,
-//
-//    {
-//      headers: {
-//        Authorization:
-//          `Bearer ${token}`
-//      }
-//    }
-//  );
+const submittedResult =
+  await submittedResponse.json();
 
-//const submittedResult =
-//  await submittedResponse.json();
+submittedEvents =
+  new Set(
+    submittedResult.submittedEvents || []
+  );
 
-//submittedEvents =
-//  new Set(
-//    submittedResult.submittedEvents || []
-//  );
-//
-//console.log(
-//  'Submitted Events:',
-//  submittedEvents
-//); 
+console.log(
+  'Submitted Events:',
+  submittedEvents
+);
 
 // Load completed volunteer hours for this instructor
 
