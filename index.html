@@ -2936,10 +2936,10 @@ const systemStatus = {
 	
 let events = [];
 let completedEventIds = new Set();	
-submittedEvents =
-    new Set(
-        submittedResult.submittedEvents || []
-    );
+// submittedEvents =
+//    new Set(
+//        submittedResult.submittedEvents || []
+//    );
 let activeFilters = [];
 let activeRegion = '';
 let selectedEvent = null;
@@ -3087,8 +3087,8 @@ const submittedResponse =
     }
   );
 
-const submittedResult =
-  await submittedResponse.json();
+//const submittedResult =
+//  await submittedResponse.json();
 
 submittedEvents =
   new Set(
