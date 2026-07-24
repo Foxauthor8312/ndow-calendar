@@ -2936,6 +2936,8 @@ const systemStatus = {
 	
 let events = [];
 let completedEventIds = new Set();	
+	let submittedEvents =
+  new Set();
 let activeFilters = [];
 let activeRegion = '';
 let selectedEvent = null;
@@ -3065,6 +3067,36 @@ const response = await fetch(
 
   events =
    data.events || [];
+
+	 // ----------------------------------------
+// Load submitted volunteer hours
+// ----------------------------------------
+
+const submittedResponse =
+  await fetch(
+
+`${API_BASE}/volunteer-hours-submitted/${currentUser.customerId}`,
+
+    {
+      headers: {
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+  );
+
+const submittedResult =
+  await submittedResponse.json();
+
+submittedEvents =
+  new Set(
+    submittedResult.submittedEvents || []
+  );
+
+console.log(
+  'Submitted Events:',
+  submittedEvents
+); 
 
 // Load completed volunteer hours for this instructor
 
@@ -4955,15 +4987,16 @@ eventDate.setHours(0, 0, 0, 0);
     return false;
   }
 
-  // Volunteer hours already submitted
- // Volunteer hours already submitted
-// TEMPORARILY DISABLED
-// if (
-//   completedEventIds &&
-//   completedEventIds.has(Number(event.id))
-// ) {
-//   return false;
-// }
+// Volunteer hours already submitted
+
+if (
+    submittedEvents &&
+    submittedEvents.has(
+        String(event.id)
+    )
+) {
+    return false;
+}
 
 }
 
