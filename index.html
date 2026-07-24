@@ -4988,15 +4988,13 @@ eventDate.setHours(0, 0, 0, 0);
   }
 
 // Volunteer hours already submitted
-
-if (
-    submittedEvents &&
-    submittedEvents.has(
-        String(event.id)
-    )
-) {
-    return false;
-}
+// TEMPORARILY DISABLED
+// if (
+//   completedEventIds &&
+//   completedEventIds.has(Number(event.id))
+// ) {
+//   return false;
+// }
 
 }
 
