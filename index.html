@@ -3074,31 +3074,31 @@ const response = await fetch(
 // Load submitted volunteer hours
 // ----------------------------------------
 
-const submittedResponse =
-  await fetch(
+//const submittedResponse =
+//  await fetch(
 
-`${API_BASE}/volunteer-hours-submitted/${currentUser.customerId}`,
-
-    {
-      headers: {
-        Authorization:
-          `Bearer ${token}`
-      }
-    }
-  );
+//`${API_BASE}/volunteer-hours-submitted/${currentUser.customerId}`,
+//
+//    {
+//      headers: {
+//        Authorization:
+//          `Bearer ${token}`
+//      }
+//    }
+//  );
 
 //const submittedResult =
 //  await submittedResponse.json();
 
-submittedEvents =
-  new Set(
-    submittedResult.submittedEvents || []
-  );
-
-console.log(
-  'Submitted Events:',
-  submittedEvents
-); 
+//submittedEvents =
+//  new Set(
+//    submittedResult.submittedEvents || []
+//  );
+//
+//console.log(
+//  'Submitted Events:',
+//  submittedEvents
+//); 
 
 // Load completed volunteer hours for this instructor
 
@@ -4991,14 +4991,14 @@ eventDate.setHours(0, 0, 0, 0);
 
 // Volunteer hours already submitted
 
-if (
-    submittedEvents &&
-    submittedEvents.has(
-        String(event.id)
-    )
-) {
-    return false;
-}
+// if (
+//     submittedEvents &&
+//     submittedEvents.has(
+//         String(event.id)
+//     )
+// ) {
+//     return false;
+// }
 
 }
 
