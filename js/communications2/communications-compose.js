@@ -690,6 +690,7 @@ async function sendCommunication(){
             `${result.recipients} email(s) sent successfully.`
 
         );
+     closeCommunicationsWorkspace();
 
     }
 
