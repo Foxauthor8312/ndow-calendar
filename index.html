@@ -3075,8 +3075,9 @@ const response = await fetch(
 // Get authenticated user
 // ----------------------------------------
 
-const token =
-  localStorage.getItem('token');
+// ----------------------------------------
+// Get authenticated user
+// ----------------------------------------
 
 const user =
   JSON.parse(
@@ -3093,31 +3094,23 @@ console.log(
   token
 );
 
-	 // ----------------------------------------
-// Load submitted volunteer hours
-// ----------------------------------------
+const submittedResponse =
+  await fetch(
+    `https://ndow-calendar-server.onrender.com/api/volunteer-hours-submitted/${user.ndow_customer_id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
 
-//const submittedResponse =
-//  await fetch(
-//    `${API_BASE}/volunteer-hours-submitted/${currentUser.customerId}`,
-//    {
-//      headers: authHeaders()
-//    }
-//  );
-//
-//const submittedResult =
-//  await submittedResponse.json();
-//
-//submittedEvents =
-//  new Set(
-//    submittedResult.submittedEvents || []
-//  );
-//
-//console.log(
-//  'Submitted Events:',
-//  submittedEvents
-//);
+const submittedResult =
+  await submittedResponse.json();
 
+console.log(
+  'Submitted Result:',
+  submittedResult
+);
 // Load completed volunteer hours for this instructor
 
 
