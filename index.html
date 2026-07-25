@@ -4970,6 +4970,18 @@ if(myEventsOnly || needHoursOnly){
     return false;
   }
 
+  // Exclude canceled events from Need Hours
+  if(
+    needHoursOnly &&
+    event.status === 'Canceled'
+  ){
+    return false;
+  }
+
+  // Need Hours only shows your completed events
+  // from the last 30 days that do not already
+  // have volunteer hours submitted.
+
 // Need Hours only shows your completed events
 // from the last 30 days that do not already
 // have volunteer hours submitted.
