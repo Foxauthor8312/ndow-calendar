@@ -3075,10 +3075,6 @@ const response = await fetch(
 // Get authenticated user
 // ----------------------------------------
 
-// ----------------------------------------
-// Get authenticated user
-// ----------------------------------------
-
 const user =
   JSON.parse(
     localStorage.getItem('user')
@@ -3104,12 +3100,14 @@ const submittedResponse =
     }
   );
 
-const submittedResult =
-  await submittedResponse.json();
+const submittedEvents =
+  new Set(
+    submittedResult.submittedEvents || []
+  );
 
 console.log(
-  'Submitted Result:',
-  submittedResult
+  'Submitted Events:',
+  submittedEvents
 );
 // Load completed volunteer hours for this instructor
 
