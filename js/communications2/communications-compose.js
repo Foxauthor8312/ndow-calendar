@@ -661,4 +661,7 @@ window.changeCommunicationTemplate =
 window.sendCommunication =
     sendCommunication;
 
+window.updatePreview =
+    updateTemplate;
+
 
