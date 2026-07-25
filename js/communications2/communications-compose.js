@@ -215,30 +215,31 @@ container.innerHTML = `
         "
     >
 
-        <label>
-
-            <input
-                id="sendCopy"
-                type="checkbox"
-            >
-
-            Send me a copy
-
-        </label>
-
-        <br><br>
-
-        <label class="comm-label">
-            Additional Recipient
-        </label>
-
-        <input
-            id="additionalRecipient"
-            class="comm-input"
-            type="email"
-            placeholder="name@example.com"
-            style="width:100%;"
-        >
+       <label class="comm-label">
+           Additional Recipient #1
+       </label>
+       
+       <input
+           id="additionalRecipient1"
+           class="comm-input"
+           type="email"
+           placeholder="name@example.com"
+           style="width:100%;"
+       >
+       
+       <br><br>
+       
+       <label class="comm-label">
+           Additional Recipient #2
+       </label>
+       
+       <input
+           id="additionalRecipient2"
+           class="comm-input"
+           type="email"
+           placeholder="name@example.com"
+           style="width:100%;"
+       >
 
         <br><br>
         
@@ -584,6 +585,60 @@ async function sendCommunication(){
 
         getState();
 
+    const recipients = [
+
+        ...state.selectedRecipients
+
+    ];
+
+    const additional1 =
+
+        document.getElementById(
+
+            'additionalRecipient1'
+
+        )?.value.trim();
+
+    if(additional1){
+
+        recipients.push({
+
+            student_name:
+
+                'Additional Recipient #1',
+
+            student_email:
+
+                additional1
+
+        });
+
+    }
+
+    const additional2 =
+
+        document.getElementById(
+
+            'additionalRecipient2'
+
+        )?.value.trim();
+
+    if(additional2){
+
+        recipients.push({
+
+            student_name:
+
+                'Additional Recipient #2',
+
+            student_email:
+
+                additional2
+
+        });
+
+    }
+
     try{
 
         const result =
@@ -619,13 +674,14 @@ async function sendCommunication(){
                     state.preview.subject,
 
                 message:
+
                     document.getElementById(
+
                         'communicationNotes'
+
                     )?.value || '',
 
-                recipients:
-
-                    state.selectedRecipients
+                recipients
 
             });
 
