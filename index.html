@@ -2936,7 +2936,7 @@ const systemStatus = {
 	
 let events = [];
 let completedEventIds = new Set();	
-// let submittedEvents = new Set();	
+let submittedEvents = new Set();	
 // submittedEvents =
 //    new Set(
 //        submittedResult.submittedEvents || []
@@ -3071,14 +3071,19 @@ const response = await fetch(
   events =
    data.events || [];
 
-	  // ----------------------------------------
-// Get authenticated user
+// ----------------------------------------
+// Load submitted volunteer hours
 // ----------------------------------------
 
 const user =
   JSON.parse(
-    localStorage.getItem('user')
+    localStorage.getItem('user') || '{}'
   );
+
+if (!user.ndow_customer_id) {
+  console.error('Missing ndow_customer_id');
+  return;
+}
 
 console.log(
   'Calendar User:',
@@ -3100,17 +3105,24 @@ const submittedResponse =
     }
   );
 
+ if (!submittedResponse.ok) {
+  throw new Error(
+    `Submitted events API returned ${submittedResponse.status}`
+  );
+}
+
 const submittedResult =
   await submittedResponse.json();
 
-const submittedEvents =
+submittedEvents =
   new Set(
-    submittedResult.submittedEvents || []
+    (submittedResult.submittedEvents || [])
+      .map(Number)
   );
 
 console.log(
   'Submitted Events:',
-  submittedEvents
+  [...submittedEvents]
 );
 // Load completed volunteer hours for this instructor
 
@@ -5003,15 +5015,12 @@ eventDate.setHours(0, 0, 0, 0);
 
 // Volunteer hours already submitted
 
-// if (
-//     submittedEvents &&
-//     submittedEvents.has(
-//         String(event.id)
-//     )
-// ) {
-//     return false;
-// }
-
+if (
+    submittedEvents.has(
+        Number(event.id)
+    )
+) {
+    return false;
 }
 
 } // End myEventsOnly || needHoursOnly
