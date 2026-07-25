@@ -266,19 +266,26 @@ container.innerHTML = `
             "
         >
 
-            <button
-                class="comm-button"
-                onclick="closeCommunicationsWorkspace()"
-            >
-                Cancel
-            </button>
-
-            <button
-                class="comm-button comm-button-primary"
-                onclick="sendCommunication()"
-            >
-                Send Email
-            </button>
+        <button
+            class="comm-button"
+            onclick="closeCommunicationsWorkspace()"
+        >
+            Cancel
+        </button>
+        
+        <button
+            class="comm-button"
+            onclick="updatePreview()"
+        >
+            Update Preview
+        </button>
+        
+        <button
+            class="comm-button comm-button-primary"
+            onclick="sendCommunication()"
+        >
+            Send Email
+        </button>
 
         </div>
 
