@@ -1823,7 +1823,7 @@ async function submitForgotPin(){
     if(!username || !email){
 
         errorBox.innerText =
-            'Please enter your User ID and email address.';
+            'Please enter your Login Username and email address.';
 
         return;
 
@@ -3070,6 +3070,28 @@ const response = await fetch(
 
   events =
    data.events || [];
+
+	  // ----------------------------------------
+// Get authenticated user
+// ----------------------------------------
+
+const token =
+  localStorage.getItem('token');
+
+const user =
+  JSON.parse(
+    localStorage.getItem('user')
+  );
+
+console.log(
+  'Calendar User:',
+  user
+);
+
+console.log(
+  'Calendar Token:',
+  token
+);
 
 	 // ----------------------------------------
 // Load submitted volunteer hours
