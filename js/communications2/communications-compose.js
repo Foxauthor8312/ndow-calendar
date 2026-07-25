@@ -240,6 +240,23 @@ container.innerHTML = `
             style="width:100%;"
         >
 
+        <br><br>
+
+<label class="comm-label">
+    Additional Notes
+</label>
+
+<textarea
+    id="communicationNotes"
+    class="comm-input"
+    rows="5"
+    placeholder="Optional information to include in this email..."
+    style="
+        width:100%;
+        resize:vertical;
+    "
+></textarea>
+
         <div
             style="
                 display:flex;
@@ -480,7 +497,10 @@ try{
 
                 type,
 
-            message:'',
+            mesmessage:
+             document.getElementById(
+                 'communicationNotes'
+             )?.value || '',
 
             recipients:[{
 
@@ -592,8 +612,9 @@ async function sendCommunication(){
                     state.preview.subject,
 
                 message:
-
-                    state.preview.html,
+                    document.getElementById(
+                        'communicationNotes'
+                    )?.value || '',
 
                 recipients:
 
