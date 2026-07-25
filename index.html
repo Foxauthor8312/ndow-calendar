@@ -3100,6 +3100,9 @@ const submittedResponse =
     }
   );
 
+const submittedResult =
+  await submittedResponse.json();
+
 const submittedEvents =
   new Set(
     submittedResult.submittedEvents || []
