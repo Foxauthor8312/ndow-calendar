@@ -241,21 +241,21 @@ container.innerHTML = `
         >
 
         <br><br>
-
-<label class="comm-label">
-    Additional Notes
-</label>
-
-<textarea
-    id="communicationNotes"
-    class="comm-input"
-    rows="5"
-    placeholder="Optional information to include in this email..."
-    style="
-        width:100%;
-        resize:vertical;
-    "
-></textarea>
+        
+        <label class="comm-label">
+            Additional Notes
+        </label>
+        
+        <textarea
+            id="communicationNotes"
+            class="comm-input"
+            rows="5"
+            placeholder="Optional information to include in this email..."
+            style="
+                width:100%;
+                resize:vertical;
+            "
+        ></textarea>
 
         <div
             style="
@@ -497,7 +497,7 @@ try{
 
                 type,
 
-            mesmessage:
+            message:
              document.getElementById(
                  'communicationNotes'
              )?.value || '',
