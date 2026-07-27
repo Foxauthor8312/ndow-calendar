@@ -13428,15 +13428,10 @@ async function loadRouteAddressDropdowns(){
       // Origin
       //
       const originOption =
-        document.createElement(
-          'option'
-        );
+        document.createElement('option');
 
-      originOption.value =
-        a.id;
-
-      originOption.textContent =
-        label;
+      originOption.value = a.id;
+      originOption.textContent = label;
 
       originOption.dataset.address =
         [
@@ -13448,29 +13443,19 @@ async function loadRouteAddressDropdowns(){
         .filter(Boolean)
         .join(', ');
 
-      originOption.dataset.lat =
-        a.latitude;
+      originOption.dataset.lat = a.latitude;
+      originOption.dataset.lng = a.longitude;
 
-      originOption.dataset.lng =
-        a.longitude;
-
-      origin.appendChild(
-        originOption
-      );
+      origin.appendChild(originOption);
 
       //
       // Destination
       //
       const destinationOption =
-        document.createElement(
-          'option'
-        );
+        document.createElement('option');
 
-      destinationOption.value =
-        a.id;
-
-      destinationOption.textContent =
-        label;
+      destinationOption.value = a.id;
+      destinationOption.textContent = label;
 
       destinationOption.dataset.address =
         [
@@ -13482,15 +13467,29 @@ async function loadRouteAddressDropdowns(){
         .filter(Boolean)
         .join(', ');
 
-      destinationOption.dataset.lat =
-        a.latitude;
+      destinationOption.dataset.lat = a.latitude;
+      destinationOption.dataset.lng = a.longitude;
 
-      destinationOption.dataset.lng =
-        a.longitude;
+      destination.appendChild(destinationOption);
 
-      destination.appendChild(
-        destinationOption
-      );
+    });
+
+    //
+    // Handle "Add New Address..."
+    //
+    [origin, destination].forEach(select => {
+
+      select.onchange = () => {
+
+        if(select.value !== '__NEW__'){
+          return;
+        }
+
+        pendingRouteDropdown = select.id;
+
+        openAddressLibrary();
+
+      };
 
     });
 
