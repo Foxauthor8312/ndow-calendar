@@ -6911,22 +6911,6 @@ if(
 
 selectedEvent = event;
 
-const coordResponse =
-  await fetch(
-    `https://ndow-calendar-server.onrender.com/api/event-location/${event.id}`
-  );
-
-const coordResult =
-  await coordResponse.json();
-
-selectedEvent.latitude =
-  coordResult.latitude;
-
-selectedEvent.longitude =
-  coordResult.longitude;
-
-submittedHoursRecord = null;
-
 try {
 
   const user =
