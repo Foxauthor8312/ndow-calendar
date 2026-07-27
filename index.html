@@ -48,6 +48,14 @@
 <link rel="stylesheet" href="css/login-background.css">
 <link rel="stylesheet" href="css/login-panel.css">
 	
+<!-- MapQuest Place Search -->
+<link
+  rel="stylesheet"
+  href="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.css"
+/>
+
+<script src="https://api.mqcdn.com/sdk/place-search-js/v1.0.0/place-search.js"></script>
+	
 
 <style>
 
@@ -17131,13 +17139,21 @@ geographic analysis.
     >
 <div class="address-form-grid">
 	  
-    <label>Location Name</label>
-    <input
-     id="addressLocationName"
-     class="full-width"
-    >
+ <label>Location Name</label>
+<input
+  id="addressLocationName"
+  class="full-width"
+>
 
-   <label>Type</label>
+<label>Search Address</label>
+<input
+  id="addressSearch"
+  class="full-width"
+  type="search"
+  placeholder="Start typing an address or place..."
+>
+
+<label>Type</label>
 <select id="addressType">
   <option value="NDOW">
     NDOW
