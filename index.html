@@ -6202,15 +6202,19 @@ calculateHours();
        Stops:
        ${result.waypointCount - 2}`;
 
-  } catch(err){
+ catch (err) {
 
-    console.error(err);
+  console.error(err);
 
-    alert(
-      'Route calculation failed.'
-    );
+  res.status(500).json({
 
-  }
+    success: false,
+
+    message: err.message
+
+  });
+
+}
 
 }
 
