@@ -5637,9 +5637,14 @@ window.currentEvent =
     id="routeOrigin"
     style="width:100%;"
   >
-    <option value="">
-      Select Origin
-    </option>
+<option value="">
+  Select Origin
+</option>
+
+<option value="__NEW__">
+  ➕ Add New Address...
+</option>
+
   </select>
 </label>
 
@@ -5649,46 +5654,63 @@ window.currentEvent =
     id="routeDestination"
     style="width:100%;"
   >
+<option value="">
+  Select Origin
+</option>
+
+<option value="__NEW__">
+  ➕ Add New Address...
+</option>
+
+  </select>
+</label>
+
+<label>
+  Stop 1
+  <select
+    id="routeStop1"
+    style="width:100%;"
+  >
     <option value="">
-      Select Destination
+      None
     </option>
   </select>
 </label>
 
- <label>
-  Stop 1
-  <input
-    type="text"
-    id="routeStop1"
-    style="width:100%;"
-  >
-</label>
-
 <label>
   Stop 2
-  <input
-    type="text"
+  <select
     id="routeStop2"
     style="width:100%;"
   >
+    <option value="">
+      None
+    </option>
+  </select>
 </label>
 
 <label>
   Stop 3
-  <input
-    type="text"
+  <select
     id="routeStop3"
     style="width:100%;"
   >
+    <option value="">
+      None
+    </option>
+  </select>
 </label>
 
 <label>
   Stop 4
-  <input
-    type="text"
+  <select
     id="routeStop4"
     style="width:100%;"
   >
+    <option value="">
+      None
+    </option>
+  </select>
 </label>
 
   <div
@@ -6061,80 +6083,132 @@ function renderRouteMap(){
 
 }
 	
-async function calculateRoute(){
+const originSelect =
+  document.getElementById(
+    'routeOrigin'
+  );
 
-  try {
+const destinationSelect =
+  document.getElementById(
+    'routeDestination'
+  );
 
-    const origin =
-      document.getElementById(
-        'routeOrigin'
-      ).value.trim();
+const originOption =
+  originSelect.selectedOptions[0];
 
-    const destinationSelect =
-      document.getElementById(
-        'routeDestination'
-      );
+const destinationOption =
+  destinationSelect.selectedOptions[0];
 
-    const destinationOption =
-      destinationSelect.selectedOptions[0];
+if(
+  !originOption ||
+  !destinationOption ||
+  !originOption.dataset.lat ||
+  !destinationOption.dataset.lat
+){
 
-    const destinationLat =
-      Number(
-        destinationOption.dataset.lat
-      );
+  alert(
+    'Please select both an origin and destination.'
+  );
 
-    const destinationLng =
-      Number(
-        destinationOption.dataset.lng
-      );
+  return;
 
-    const stops = [
+}
 
-      document.getElementById(
-        'routeStop1'
-      )?.value || '',
+const originLat =
+  Number(
+    originOption.dataset.lat
+  );
 
-      document.getElementById(
-        'routeStop2'
-      )?.value || '',
+const originLng =
+  Number(
+    originOption.dataset.lng
+  );
 
-      document.getElementById(
-        'routeStop3'
-      )?.value || '',
+const destinationLat =
+  Number(
+    destinationOption.dataset.lat
+  );
 
-      document.getElementById(
-        'routeStop4'
-      )?.value || ''
+const destinationLng =
+  Number(
+    destinationOption.dataset.lng
+  );
 
-    ].filter(
-      stop => stop.trim()
+const stops = [];
+
+[
+  'routeStop1',
+  'routeStop2',
+  'routeStop3',
+  'routeStop4'
+].forEach(id=>{
+
+  const select =
+    document.getElementById(
+      id
     );
 
-    const response =
-      await fetch(
+  if(
+    !select ||
+    !select.value ||
+    select.value === '__NEW__'
+  ){
+    return;
+  }
 
-        'https://ndow-calendar-server.onrender.com/api/calculate',
+  const option =
+    select.selectedOptions[0];
 
-        {
+  if(
+    option &&
+    option.dataset.lat &&
+    option.dataset.lng
+  ){
 
-          method: 'POST',
+    stops.push({
 
-          headers: {
-            'Content-Type': 'application/json'
-          },
+      lat:Number(
+        option.dataset.lat
+      ),
 
-          body: JSON.stringify({
+      lng:Number(
+        option.dataset.lng
+      )
 
-            origin,
-            destinationLat,
-            destinationLng,
-            stops
+    });
 
-          })
+  }
 
-        }
+});
 
-      );
+const response =
+  await fetch(
+
+    'https://ndow-calendar-server.onrender.com/api/calculate',
+
+    {
+
+      method:'POST',
+
+      headers:{
+        'Content-Type':'application/json'
+      },
+
+      body:JSON.stringify({
+
+        originLat,
+        originLng,
+
+        destinationLat,
+        destinationLng,
+
+        stops
+
+      })
+
+    }
+
+  );
 
     if (!response.ok) {
 
@@ -6532,11 +6606,9 @@ window.pendingHoursEntry = {
     )?.value || '',
 
   route_destination:
-    document.getElementById(
-      'routeDestination'
-    )?.value ||
-    selectedEvent.location ||
-    '',
+  document.getElementById(
+    'routeDestination'
+  )?.value || '',
 
   route_stops:
     JSON.stringify([
@@ -13300,96 +13372,119 @@ async function loadRouteAddressDropdowns(){
       return;
     }
 
+    const addresses =
+      (result.addresses || [])
+        .filter(a => a.active);
 
-const addresses =
-  (result.addresses || [])
-    .filter(
-      a => a.active
-    );
+    const origin =
+      document.getElementById(
+        'routeOrigin'
+      );
 
-  const origin =
-  document.getElementById(
-    'routeOrigin'
-  );
+    const destination =
+      document.getElementById(
+        'routeDestination'
+      );
 
-const destination =
-  document.getElementById(
-    'routeDestination'
-  );
+    if(
+      !origin ||
+      !destination
+    ){
+      return;
+    }
 
-if(
-  !origin ||
-  !destination
-){
-  return;
-}
+    origin.innerHTML = `
+      <option value="">
+        Select Origin
+      </option>
+      <option value="__NEW__">
+        ➕ Add New Address...
+      </option>
+    `;
 
-origin.innerHTML =
-  '<option value="">Select Origin</option>';
+    destination.innerHTML = `
+      <option value="">
+        Select Destination
+      </option>
+      <option value="__NEW__">
+        ➕ Add New Address...
+      </option>
+    `;
 
-destination.innerHTML =
-  '<option value="">Select Destination</option>';
+    addresses.forEach(a => {
 
-addresses.forEach(a => {
+      const label =
+        `${a.is_favorite ? '★ ' : ''}${a.location_name}`;
 
-  const label =
-    `${a.is_favorite ? '★ ' : ''}${a.location_name}`;
+      //
+      // Origin
+      //
+      const originOption =
+        document.createElement(
+          'option'
+        );
 
-  const fullAddress =
-    [
-      a.address1,
-      a.city,
-      a.state,
-      a.zip
-    ]
-    .filter(Boolean)
-    .join(', ');
+      originOption.value =
+        a.id;
 
-  // -------------------------
-  // Origin
-  // -------------------------
+      originOption.textContent =
+        label;
 
-  const originOption =
-    document.createElement(
-      'option'
-    );
+      originOption.dataset.address =
+        [
+          a.address1,
+          a.city,
+          a.state,
+          a.zip
+        ]
+        .filter(Boolean)
+        .join(', ');
 
-  originOption.value =
-    fullAddress;
+      originOption.dataset.lat =
+        a.latitude;
 
-  originOption.textContent =
-    label;
+      originOption.dataset.lng =
+        a.longitude;
 
-  origin.appendChild(
-    originOption
-  );
+      origin.appendChild(
+        originOption
+      );
 
-  // -------------------------
-  // Destination
-  // -------------------------
+      //
+      // Destination
+      //
+      const destinationOption =
+        document.createElement(
+          'option'
+        );
 
-  const destinationOption =
-    document.createElement(
-      'option'
-    );
+      destinationOption.value =
+        a.id;
 
-  destinationOption.value =
-    fullAddress;
+      destinationOption.textContent =
+        label;
 
-  destinationOption.textContent =
-    label;
+      destinationOption.dataset.address =
+        [
+          a.address1,
+          a.city,
+          a.state,
+          a.zip
+        ]
+        .filter(Boolean)
+        .join(', ');
 
-  destinationOption.dataset.lat =
-    a.latitude;
+      destinationOption.dataset.lat =
+        a.latitude;
 
-  destinationOption.dataset.lng =
-    a.longitude;
+      destinationOption.dataset.lng =
+        a.longitude;
 
-  destination.appendChild(
-    destinationOption
-  );
+      destination.appendChild(
+        destinationOption
+      );
 
-});
+    });
 
   }catch(err){
 
