@@ -9233,22 +9233,41 @@ if(data.success){
 
   await loadAddresses();
 
-  if(pendingRouteDropdown){
+  if (pendingRouteDropdown) {
 
-    await loadRouteAddressDropdowns();
+  const dropdownId = pendingRouteDropdown;
 
-    if(data.addressId){
+  await loadRouteAddressDropdowns();
 
-      document.getElementById(
-        pendingRouteDropdown
-      ).value =
-        String(data.addressId);
+  if (data.addressId) {
 
-    }
-
-    pendingRouteDropdown = null;
+    document.getElementById(
+      dropdownId
+    ).value = String(data.addressId);
 
   }
+
+  pendingRouteDropdown = null;
+
+  // Close the Admin workspace
+  document.getElementById(
+    'adminModal'
+  ).style.display = 'none';
+
+  document.getElementById(
+    'adminModal'
+  ).classList.add('hidden');
+
+  // Restore previous modals
+  document.getElementById(
+    'eventModal'
+  ).style.display = 'flex';
+
+  document.getElementById(
+    'hoursModal'
+  ).style.display = 'flex';
+
+}
 
 }else{
 
