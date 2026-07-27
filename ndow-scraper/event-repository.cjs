@@ -14,9 +14,10 @@
     • Insert new events
     • Update existing events
     • Preserve operational fields
+    • Link events to master addresses table
 
- Module Ver. : 1.0.0
- Build       : 2026.07.04.001
+ Module Ver. : 1.1.0
+ Build       : 2026.07.26.001
 
  Developer   : Barry Mattison
 ==============================================================================
@@ -36,9 +37,44 @@ module.exports = async function syncEvents(
 
     for (const event of events) {
 
+        // --------------------------------------------------
+        // Locate matching address record
+        // --------------------------------------------------
+
+        let addressId = null;
+
+        if (event.location) {
+
+            const { data: address } =
+                await supabase
+                    .from('addresses')
+                    .select('id')
+                    .ilike(
+                        'location_name',
+                        event.location.trim()
+                    )
+                    .maybeSingle();
+
+            if (address) {
+
+                addressId =
+                    address.id;
+
+            }
+            else {
+
+                console.warn(
+                    `Address not found: ${event.location}`
+                );
+
+            }
+
+        }
+
         const row = {
 
-            event_id: event.id,
+            event_id:
+                event.id,
 
             title:
                 event.title || '',
@@ -63,6 +99,9 @@ module.exports = async function syncEvents(
 
             location:
                 event.location || '',
+
+            address_id:
+                addressId,
 
             description:
                 event.description || '',
