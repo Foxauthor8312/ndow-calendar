@@ -8738,19 +8738,17 @@ function initializeAddressSearch(){
     key: publicConfig.mapquestApiKey,
 
     container: document.getElementById(
-      'addressSearch'
+        'addressLookup'
     ),
 
     collection: [
-      'address',
-      'poi'
+        'address',
+        'poi'
     ],
 
     limit: 8
 
-  });
-
-}
+});
 
 async function loadAddresses(){
 
@@ -15183,16 +15181,11 @@ id="adminSidebar"
     gap:10px;
   ">
 
-    <input
-      id="addressSearch"
-      type="text"
-      placeholder="Search addresses..."
-      oninput="loadAddresses()"
-      style="
-        flex:1;
-        max-width:350px;
-      "
-    >
+   <input
+    id="addressLookup"
+    type="search"
+    placeholder="Start typing an address or place..."
+>
 
 <button
   onclick="loadAddresses()"
