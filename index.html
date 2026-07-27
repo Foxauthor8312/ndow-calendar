@@ -2945,6 +2945,7 @@ const systemStatus = {
 let events = [];
 let completedEventIds = new Set();
 let submittedEvents = new Set();
+let addressSearchWidget = null;
 
 // submittedEvents =
 //    new Set(
@@ -8729,11 +8730,11 @@ function openAddAddressModal(){
 
 function initializeAddressSearch(){
 
-  if(addressSearch){
+  if(addressSearchWidget){
     return;
   }
 
-  addressSearch = placeSearch({
+  addressSearchWidget = placeSearch({
 
     key: publicConfig.mapquestApiKey,
 
@@ -8750,7 +8751,7 @@ function initializeAddressSearch(){
 
   });
 
-}   // <<< THIS IS MISSING
+}
 
 async function loadAddresses(){
 
