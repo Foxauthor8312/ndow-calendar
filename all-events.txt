@@ -15,7 +15,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.087Z",
+      "scrapedAt": "2026-07-27T20:41:28.515Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 14, 2025 12:00PM -  1:00PM PDT",
@@ -40,7 +40,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.087Z",
+      "scrapedAt": "2026-07-27T20:41:28.515Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 21, 2025 12:00PM -  1:00PM PDT",
@@ -65,7 +65,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.515Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 28, 2025 12:00PM -  1:00PM PDT",
@@ -90,7 +90,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.515Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Dec 03, 2025  9:00AM -  2:00PM PST",
@@ -115,7 +115,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.515Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Dec 10, 2025  9:00AM -  2:00PM PST",
@@ -140,7 +140,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.515Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Dec 17, 2025  9:00AM -  2:00PM PST",
@@ -165,7 +165,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jan 13, 2026  2:00PM -  3:00PM PST",
@@ -190,7 +190,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jan 20, 2026  2:00PM -  3:00PM PST",
@@ -215,38 +215,13 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jan 27, 2026  2:00PM -  3:00PM PST",
     "program": "School Events",
     "status": "Event Completed",
     "description": "Hidden Valley KYN Lesson 3",
-    "ndowResults": []
-  },
-  {
-    "id": "4565",
-    "title": "Know Your Nevada - ECS - L2",
-    "date": "Feb 05, 2026",
-    "location": "Excel Christian School 850 Baring Blvd Sparks, NV 89434",
-    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4565",
-    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4565/event_instructors",
-    "text": "Feb 5\nKnow Your Nevada - ECS - L2 Unlisted\n\n■ Event Completed 499 of 499 seats remaining\n\nLocation:\n\nExcel Christian School\n850 Baring Blvd\nSparks, NV 89434\n\nTaught by:\n\nMargaret Stewart Lord\nDate & Times:\nFeb 05, 2026 2:00PM - 3:00PM PST\nView",
-    "instructors": [
-      {
-        "name": "Margaret Stewart Lord",
-        "role": "PRIMARY",
-        "email": ""
-      }
-    ],
-    "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
-      "source": "ndow-scraper-v2"
-    },
-    "time": "Feb 05, 2026  2:00PM -  3:00PM PST",
-    "program": "School Events",
-    "status": "Event Completed",
-    "description": "Know Your Nevada - Excel Christian - lesson 2",
     "ndowResults": []
   },
   {
@@ -265,13 +240,38 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Feb 05, 2026  2:00PM -  3:00PM PST",
     "program": "School Events",
     "status": "Event Completed",
     "description": "Know Your Nevada - Excel Christian - lesson 1",
+    "ndowResults": []
+  },
+  {
+    "id": "4565",
+    "title": "Know Your Nevada - ECS - L2",
+    "date": "Feb 05, 2026",
+    "location": "Excel Christian School 850 Baring Blvd Sparks, NV 89434",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4565",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4565/event_instructors",
+    "text": "Feb 5\nKnow Your Nevada - ECS - L2 Unlisted\n\n■ Event Completed 499 of 499 seats remaining\n\nLocation:\n\nExcel Christian School\n850 Baring Blvd\nSparks, NV 89434\n\nTaught by:\n\nMargaret Stewart Lord\nDate & Times:\nFeb 05, 2026 2:00PM - 3:00PM PST\nView",
+    "instructors": [
+      {
+        "name": "Margaret Stewart Lord",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Feb 05, 2026  2:00PM -  3:00PM PST",
+    "program": "School Events",
+    "status": "Event Completed",
+    "description": "Know Your Nevada - Excel Christian - lesson 2",
     "ndowResults": []
   },
   {
@@ -290,7 +290,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Feb 19, 2026  2:00PM -  3:00PM PST",
@@ -315,7 +315,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 02, 2026 12:00PM -  2:00PM PST",
@@ -340,7 +340,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 02, 2026 12:00PM -  3:00PM PST",
@@ -365,7 +365,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 03, 2026 12:00PM -  2:00PM PST",
@@ -390,7 +390,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 03, 2026  6:00PM -  8:00PM PST",
@@ -415,7 +415,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 04, 2026 10:00AM - 12:00PM PST",
@@ -440,7 +440,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 06, 2026 10:00AM -  1:00PM PST",
@@ -465,7 +465,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 10, 2026  7:00AM - 12:30PM PDT",
@@ -490,7 +490,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 11, 2026 11:30AM -  1:45PM PDT",
@@ -515,7 +515,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 12, 2026 11:30AM -  2:00PM PDT",
@@ -540,7 +540,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 13, 2026  7:00AM - 12:00PM PDT",
@@ -565,7 +565,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 16, 2026  8:00AM - 11:00AM PDT",
@@ -573,55 +573,6 @@
     "status": "Event Completed",
     "description": "test",
     "ndowResults": []
-  },
-  {
-    "id": "4478",
-    "title": "NASP Virtual Tournament- Las Vegas Academy",
-    "date": "Mar 16, 2026",
-    "location": "Las Vegas Academy 315 S 7th St Las Vegas, NV 89101",
-    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4478",
-    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4478/event_instructors",
-    "text": "Mar 16\nNASP Virtual Tournament- Las Vegas Academy Private Event\n\n■ Canceled 2 of 2 seats remaining\n\nLocation:\n\nLas Vegas Academy\n315 S 7th St\nLas Vegas, NV 89101\n\nTaught by:\n\nBarry E Mattison\nDate & Times:\nMar 16, 2026 10:00AM - 11:00AM PDT\nView Copy Event Cancel Event\nCopy the Following Event\n\nEvent Name\n\nNASP Virtual Tournament- Las Vegas Academy\n\nLocation\n\nLas Vegas Academy\n315 S 7th St\nLas Vegas, NV 89101\n\nEnrollment\n\n2\n\nWaitlist Enabled?\n\nNo\nCancel Submit\nCancel Event\nAre you sure that you want to cancel this event? Students will no longer be able to register, and the event will not be held.\nClose Cancel Event",
-    "instructors": [
-      {
-        "name": "Martin Olson",
-        "role": "ASSISTANT",
-        "email": "mgoinvegas@embarqmail.com",
-        "customerId": "1451248"
-      },
-      {
-        "name": "Barry Mattison",
-        "role": "PRIMARY",
-        "email": "lvrcav8tr@gmail.com",
-        "customerId": "4017707"
-      }
-    ],
-    "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
-      "source": "ndow-scraper-v2"
-    },
-    "program": "Archery Education",
-    "status": "Canceled",
-    "time": "Mar 16, 2026 10:00AM - 11:00AM PDT",
-    "description": "NASP virtual shoot 2026 make-up shoot",
-    "ndowResults": [
-      {
-        "customerId": "1451248",
-        "name": "Martin Olson",
-        "hours": 0,
-        "breakHours": 0,
-        "travelHours": 0,
-        "mileage": 0
-      },
-      {
-        "customerId": "4017707",
-        "name": "Barry Mattison",
-        "hours": 4.5,
-        "breakHours": 0,
-        "travelHours": 2,
-        "mileage": 40
-      }
-    ]
   },
   {
     "id": "4487",
@@ -639,7 +590,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 16, 2026 10:00AM - 11:30AM PDT",
@@ -664,13 +615,38 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 16, 2026 10:00AM - 12:00PM PDT",
     "program": "School Events",
     "status": "Event Completed",
     "description": "TIC Release - Debbie Smith HS - Oxbow",
+    "ndowResults": []
+  },
+  {
+    "id": "4488",
+    "title": "NASP Virtual Tournament - The Meadows School",
+    "date": "Mar 16, 2026",
+    "location": "The Meadows School 8601 Scholar Ln Las Vegas, NV 89128",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4488",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4488/event_instructors",
+    "text": "Mar 16\nNASP Virtual Tournament - The Meadows School Private Event\n\n■ Event Completed 100 of 100 seats remaining\n\nLocation:\n\nThe Meadows School\n8601 Scholar Ln\nLas Vegas, NV 89128\n\nTaught by:\n\nNia Anabela Dippon\nDate & Times:\nMar 16, 2026 10:00AM - 11:00AM PDT\nView",
+    "instructors": [
+      {
+        "name": "Nia Anabela Dippon",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Mar 16, 2026 10:00AM - 11:00AM PDT",
+    "program": "School Events",
+    "status": "Event Completed",
+    "description": "Virtual NASP tournament for The Meadows School",
     "ndowResults": []
   },
   {
@@ -696,7 +672,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 16, 2026 10:00AM - 11:00AM PDT",
@@ -723,29 +699,53 @@
     ]
   },
   {
-    "id": "4488",
-    "title": "NASP Virtual Tournament - The Meadows School",
+    "id": "4478",
+    "title": "NASP Virtual Tournament- Las Vegas Academy",
     "date": "Mar 16, 2026",
-    "location": "The Meadows School 8601 Scholar Ln Las Vegas, NV 89128",
-    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4488",
-    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4488/event_instructors",
-    "text": "Mar 16\nNASP Virtual Tournament - The Meadows School Private Event\n\n■ Event Completed 100 of 100 seats remaining\n\nLocation:\n\nThe Meadows School\n8601 Scholar Ln\nLas Vegas, NV 89128\n\nTaught by:\n\nNia Anabela Dippon\nDate & Times:\nMar 16, 2026 10:00AM - 11:00AM PDT\nView",
+    "location": "Las Vegas Academy 315 S 7th St Las Vegas, NV 89101",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4478",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4478/event_instructors",
+    "text": "Mar 16\nNASP Virtual Tournament- Las Vegas Academy Private Event\n\n■ Canceled 2 of 2 seats remaining\n\nLocation:\n\nLas Vegas Academy\n315 S 7th St\nLas Vegas, NV 89101\n\nTaught by:\n\nBarry E Mattison\nDate & Times:\nMar 16, 2026 10:00AM - 11:00AM PDT\nView Copy Event Cancel Event\nCopy the Following Event\n\nEvent Name\n\nNASP Virtual Tournament- Las Vegas Academy\n\nLocation\n\nLas Vegas Academy\n315 S 7th St\nLas Vegas, NV 89101\n\nEnrollment\n\n2\n\nWaitlist Enabled?\n\nNo\nCancel Submit\nCancel Event\nAre you sure that you want to cancel this event? Students will no longer be able to register, and the event will not be held.\nClose Cancel Event",
     "instructors": [
       {
-        "name": "Nia Anabela Dippon",
+        "name": "Martin Olson",
+        "role": "ASSISTANT",
+        "email": "mgoinvegas@embarqmail.com",
+        "customerId": "1451248"
+      },
+      {
+        "name": "Barry Mattison",
         "role": "PRIMARY",
-        "email": ""
+        "email": "lvrcav8tr@gmail.com",
+        "customerId": "4017707"
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
+    "program": "Archery Education",
+    "status": "Canceled",
     "time": "Mar 16, 2026 10:00AM - 11:00AM PDT",
-    "program": "School Events",
-    "status": "Event Completed",
-    "description": "Virtual NASP tournament for The Meadows School",
-    "ndowResults": []
+    "description": "NASP virtual shoot 2026 make-up shoot",
+    "ndowResults": [
+      {
+        "customerId": "1451248",
+        "name": "Martin Olson",
+        "hours": 0,
+        "breakHours": 0,
+        "travelHours": 0,
+        "mileage": 0
+      },
+      {
+        "customerId": "4017707",
+        "name": "Barry Mattison",
+        "hours": 4.5,
+        "breakHours": 0,
+        "travelHours": 2,
+        "mileage": 40
+      }
+    ]
   },
   {
     "id": "4459",
@@ -763,7 +763,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 16, 2026 11:00AM - 12:00PM PDT",
@@ -788,7 +788,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 16, 2026  1:45PM -  3:45PM PDT",
@@ -813,7 +813,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 17, 2026  9:00AM - 10:00AM PDT",
@@ -875,7 +875,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 17, 2026  9:00AM - 11:30AM PDT",
@@ -957,7 +957,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 17, 2026  9:30AM - 10:30AM PDT",
@@ -982,7 +982,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 17, 2026  5:30PM -  7:30PM PDT",
@@ -1007,7 +1007,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 17, 2026  6:00PM -  8:00PM PDT",
@@ -1032,7 +1032,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 18, 2026  7:00AM - 12:00PM PDT",
@@ -1094,7 +1094,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 18, 2026  9:00AM - 11:00AM PDT",
@@ -1176,7 +1176,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 19, 2026  9:00AM - 12:00PM PDT",
@@ -1201,7 +1201,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 19, 2026  9:30AM - 10:30AM PDT",
@@ -1226,7 +1226,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 19, 2026 10:00AM - 12:00PM PDT",
@@ -1251,7 +1251,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 19, 2026  4:00PM -  5:00PM PDT",
@@ -1276,7 +1276,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 20, 2026  9:00AM - 11:00AM PDT",
@@ -1301,7 +1301,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 20, 2026  1:00PM -  2:00PM PDT",
@@ -1326,7 +1326,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 20, 2026  1:00PM -  3:00PM PDT",
@@ -1351,7 +1351,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026  8:00AM -  5:00PM PDT",
@@ -1376,7 +1376,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026  8:00AM -  1:00PM PDT",
@@ -1401,7 +1401,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026  8:00AM -  5:00PM PDT",
@@ -1426,7 +1426,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026  8:00AM -  5:00PM PDT",
@@ -1451,7 +1451,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026  9:00AM -  3:00PM PDT",
@@ -1476,7 +1476,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:46:23.088Z",
+      "scrapedAt": "2026-07-27T20:41:28.516Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026  9:00AM -  5:00PM PDT",
@@ -1501,7 +1501,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.946Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026 10:00AM -  2:00PM PDT",
@@ -1526,7 +1526,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.946Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 21, 2026 10:00AM -  4:00PM PDT",
@@ -1551,7 +1551,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.946Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 22, 2026  8:00AM -  5:00PM PDT",
@@ -1576,7 +1576,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.946Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 22, 2026  8:00AM -  5:00PM PDT",
@@ -1601,7 +1601,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.946Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 22, 2026  9:00AM -  5:00PM PDT",
@@ -1626,7 +1626,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 22, 2026  4:00PM -  6:00PM PDT",
@@ -1651,7 +1651,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 23, 2026  8:00AM -  5:00PM PDT",
@@ -1676,7 +1676,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 23, 2026  1:45PM -  3:45PM PDT",
@@ -1701,7 +1701,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 24, 2026  8:00AM - 12:00PM PDT",
@@ -1726,7 +1726,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 24, 2026 10:00AM - 12:00PM PDT",
@@ -1751,7 +1751,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 24, 2026 10:00AM - 12:00PM PDT",
@@ -1776,7 +1776,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 24, 2026 12:30PM -  1:30PM PDT",
@@ -1801,7 +1801,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 24, 2026  6:00PM -  8:00PM PDT",
@@ -1826,7 +1826,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 25, 2026  7:00AM -  2:00PM PDT",
@@ -1851,7 +1851,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 25, 2026  8:00AM - 11:30AM PDT",
@@ -1876,7 +1876,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 25, 2026 10:00AM - 11:00AM PDT",
@@ -1901,7 +1901,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 25, 2026 12:00PM -  5:00PM PDT",
@@ -1926,7 +1926,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 25, 2026  6:00PM -  8:00PM PDT",
@@ -1951,7 +1951,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 25, 2026  6:30PM -  8:30PM PDT",
@@ -1976,7 +1976,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 26, 2026  7:00AM - 10:15AM PDT",
@@ -2001,7 +2001,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 26, 2026  8:30AM -  9:15AM PDT",
@@ -2026,7 +2026,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 26, 2026  9:30AM - 11:30AM PDT",
@@ -2051,7 +2051,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 26, 2026 10:00AM -  2:00PM PDT",
@@ -2076,7 +2076,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 26, 2026 11:45AM -  2:00PM PDT",
@@ -2138,7 +2138,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 27, 2026 10:00AM - 12:00PM PDT",
@@ -2220,7 +2220,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 27, 2026  6:00PM -  7:30PM PDT",
@@ -2245,7 +2245,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM - 12:00PM PDT",
@@ -2270,7 +2270,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  9:30AM PDT",
@@ -2295,7 +2295,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  9:30AM PDT",
@@ -2320,7 +2320,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  5:00PM PDT",
@@ -2345,7 +2345,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  5:00PM PDT",
@@ -2370,7 +2370,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  5:00PM PDT",
@@ -2395,7 +2395,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  5:00PM PDT",
@@ -2420,7 +2420,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  8:00AM -  5:00PM PDT",
@@ -2445,7 +2445,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  9:00AM - 11:00AM PDT",
@@ -2470,7 +2470,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 28, 2026  9:00AM -  5:00PM PDT",
@@ -2508,7 +2508,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.880Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Archery Education",
@@ -2565,7 +2565,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 29, 2026  8:00AM - 12:00PM PDT",
@@ -2607,7 +2607,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 29, 2026  8:00AM -  5:00PM PDT",
@@ -2632,7 +2632,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 29, 2026  9:00AM - 11:00AM PDT",
@@ -2657,7 +2657,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 30, 2026  9:00AM - 12:00PM PDT",
@@ -2682,7 +2682,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 31, 2026  8:00AM -  5:00PM PDT",
@@ -2707,7 +2707,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 31, 2026  8:00AM -  5:00PM PDT",
@@ -2732,7 +2732,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 31, 2026  9:00AM - 12:00PM PDT",
@@ -2757,7 +2757,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Mar 31, 2026  5:00PM -  7:00PM PDT",
@@ -2782,7 +2782,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 01, 2026  9:00AM - 12:00PM PDT",
@@ -2807,7 +2807,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 01, 2026  6:30PM -  7:30PM PDT",
@@ -2832,7 +2832,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 02, 2026 12:00AM -  7:00AM PDT",
@@ -2857,7 +2857,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 02, 2026  9:00AM - 12:00PM PDT",
@@ -2882,7 +2882,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:47:55.881Z",
+      "scrapedAt": "2026-07-27T20:43:08.947Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 02, 2026  9:00AM - 10:30AM PDT",
@@ -2907,7 +2907,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.408Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 02, 2026 10:00AM -  2:00PM PDT",
@@ -2932,7 +2932,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.408Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 02, 2026  1:30PM -  2:30PM PDT",
@@ -2957,7 +2957,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.408Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 02, 2026  4:00PM -  5:00PM PDT",
@@ -2982,7 +2982,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.408Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 03, 2026  8:00AM -  5:00PM PDT",
@@ -3007,7 +3007,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.408Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 03, 2026  6:00PM -  7:30PM PDT",
@@ -3032,7 +3032,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 04, 2026  7:00AM - 11:00AM PDT",
@@ -3057,7 +3057,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 04, 2026  8:00AM -  5:00PM PDT",
@@ -3082,7 +3082,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 04, 2026  8:00AM -  5:00PM PDT",
@@ -3107,7 +3107,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 07, 2026  8:00AM - 11:00AM PDT",
@@ -3132,7 +3132,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 07, 2026  5:30PM -  7:00PM PDT",
@@ -3157,7 +3157,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 08, 2026  8:00AM -  2:00PM PDT",
@@ -3231,7 +3231,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 08, 2026 10:00AM -  8:00PM PDT",
@@ -3474,7 +3474,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 08, 2026 10:00AM -  8:00PM PDT",
@@ -3700,7 +3700,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 09, 2026 10:00AM - 12:00PM PDT",
@@ -3725,7 +3725,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 10, 2026  8:00AM - 10:00AM PDT",
@@ -3750,7 +3750,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 11, 2026  8:00AM -  5:00PM PDT",
@@ -3775,7 +3775,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 11, 2026  8:00AM -  5:00PM PDT",
@@ -3800,7 +3800,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 11, 2026  8:00AM -  5:00PM PDT",
@@ -3825,7 +3825,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 11, 2026  8:00AM -  5:00PM PDT",
@@ -3850,7 +3850,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 12, 2026  8:00AM -  5:00PM PDT",
@@ -3875,7 +3875,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 14, 2026  8:00AM - 12:00PM PDT",
@@ -3900,7 +3900,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 14, 2026  8:00AM -  9:00AM PDT",
@@ -3925,7 +3925,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 14, 2026  5:00PM -  7:00PM PDT",
@@ -3950,7 +3950,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 14, 2026  7:00PM -  8:00PM PDT",
@@ -3975,7 +3975,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 15, 2026 10:00AM -  2:00PM PDT",
@@ -4000,7 +4000,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 15, 2026  2:00PM -  3:15PM PDT",
@@ -4025,7 +4025,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 16, 2026  9:00AM - 10:00AM PDT",
@@ -4050,7 +4050,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 16, 2026 11:00AM - 12:00PM PDT",
@@ -4075,7 +4075,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 16, 2026  1:00PM -  2:00PM PDT",
@@ -4100,7 +4100,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 17, 2026 10:00AM - 11:00AM PDT",
@@ -4125,7 +4125,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 17, 2026 10:00AM - 11:00AM PDT",
@@ -4150,7 +4150,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 17, 2026 10:00AM - 11:00AM PDT",
@@ -4175,7 +4175,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:00AM -  5:00PM PDT",
@@ -4200,7 +4200,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:00AM -  5:00PM PDT",
@@ -4225,7 +4225,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:00AM -  5:00PM PDT",
@@ -4250,7 +4250,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:00AM -  5:00PM PDT",
@@ -4275,7 +4275,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:00AM -  5:00PM PDT",
@@ -4300,7 +4300,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:30AM -  4:00PM PDT",
@@ -4325,7 +4325,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 18, 2026  8:30AM - 11:30AM PDT",
@@ -4350,7 +4350,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 19, 2026  8:00AM -  5:00PM PDT",
@@ -4375,7 +4375,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 19, 2026  9:00AM - 11:00AM PDT",
@@ -4400,7 +4400,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 20, 2026 12:00PM -  2:00PM PDT",
@@ -4432,7 +4432,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 21, 2026  8:00AM - 11:00AM PDT",
@@ -4474,7 +4474,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 21, 2026 11:00AM -  1:00PM PDT",
@@ -4499,7 +4499,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 21, 2026  5:30PM -  7:30PM PDT",
@@ -4524,7 +4524,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 21, 2026  6:00PM -  8:00PM PDT",
@@ -4549,7 +4549,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 22, 2026  8:45AM -  9:45AM PDT",
@@ -4574,7 +4574,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 22, 2026  9:10AM - 10:00AM PDT",
@@ -4599,7 +4599,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 22, 2026 10:30AM - 12:00PM PDT",
@@ -4624,7 +4624,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:49:16.409Z",
+      "scrapedAt": "2026-07-27T20:44:38.199Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 22, 2026  1:00PM -  2:00PM PDT",
@@ -4649,7 +4649,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 23, 2026 10:00AM - 11:00AM PDT",
@@ -4699,7 +4699,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 23, 2026 10:00AM -  3:00PM PDT",
@@ -4765,7 +4765,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 24, 2026  8:00AM -  5:00PM PDT",
@@ -4790,7 +4790,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM -  5:00PM PDT",
@@ -4815,7 +4815,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM -  5:00PM PDT",
@@ -4840,7 +4840,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM -  5:00PM PDT",
@@ -4865,7 +4865,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM -  5:00PM PDT",
@@ -4890,7 +4890,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM -  5:00PM PDT",
@@ -4915,7 +4915,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM - 12:00PM PDT",
@@ -4940,7 +4940,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  8:00AM -  9:00PM PDT",
@@ -4978,7 +4978,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026  9:00AM -  1:00PM PDT",
@@ -5028,7 +5028,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 25, 2026 10:00AM -  1:00PM PDT",
@@ -5072,7 +5072,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 26, 2026  7:30AM - 10:00AM PDT",
@@ -5130,7 +5130,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 26, 2026  8:00AM -  5:00PM PDT",
@@ -5155,7 +5155,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 26, 2026 10:00AM -  1:00PM PDT",
@@ -5180,7 +5180,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 27, 2026  8:00AM -  5:00PM PDT",
@@ -5205,7 +5205,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 27, 2026  1:00PM -  2:00PM PDT",
@@ -5230,7 +5230,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 28, 2026 10:00AM - 12:00PM PDT",
@@ -5255,7 +5255,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 28, 2026 10:00AM - 12:00PM PDT",
@@ -5280,7 +5280,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 28, 2026 11:00AM -  1:00PM PDT",
@@ -5305,7 +5305,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 28, 2026 11:00AM -  5:00PM PDT",
@@ -5330,7 +5330,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 28, 2026  5:45PM -  7:45PM PDT",
@@ -5355,7 +5355,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 29, 2026  8:00AM -  5:00PM PDT",
@@ -5380,7 +5380,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 29, 2026  8:45AM -  9:45AM PDT",
@@ -5405,7 +5405,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.351Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 29, 2026 12:00PM -  1:00PM PDT",
@@ -5430,7 +5430,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 29, 2026  1:00PM -  2:00PM PDT",
@@ -5455,7 +5455,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 29, 2026  6:30PM -  7:30PM PDT",
@@ -5480,7 +5480,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026 12:30AM - 12:30PM PDT",
@@ -5505,7 +5505,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026 10:00AM -  2:00PM PDT",
@@ -5555,7 +5555,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026 10:00AM -  2:00PM PDT",
@@ -5621,7 +5621,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026 10:00AM -  2:00PM PDT",
@@ -5646,7 +5646,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026 12:00PM -  2:00PM PDT",
@@ -5671,7 +5671,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026  1:00PM -  3:00PM PDT",
@@ -5696,7 +5696,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  8:00AM -  5:00PM PDT",
@@ -5721,7 +5721,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Apr 30, 2026  5:30PM -  6:30PM PDT",
@@ -5771,7 +5771,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  8:00AM - 12:00PM PDT",
@@ -5837,7 +5837,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 01, 2026 10:00AM -  3:00PM PDT",
@@ -5862,7 +5862,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 01, 2026  6:00PM -  7:30PM PDT",
@@ -5887,7 +5887,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 01, 2026  6:00PM -  7:30PM PDT",
@@ -5912,7 +5912,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  8:00AM -  8:00PM PDT",
@@ -5937,7 +5937,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  8:00AM -  5:00PM PDT",
@@ -5962,7 +5962,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  8:00AM - 12:00PM PDT",
@@ -5987,7 +5987,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  9:00AM -  5:00PM PDT",
@@ -6012,7 +6012,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 02, 2026  1:00PM -  2:00PM PDT",
@@ -6037,7 +6037,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 03, 2026  8:00AM -  5:00PM PDT",
@@ -6062,7 +6062,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 03, 2026  8:00AM -  2:00PM PDT",
@@ -6106,7 +6106,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Archery Education",
@@ -6164,7 +6164,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 04, 2026  8:00AM -  5:00PM PDT",
@@ -6189,7 +6189,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 04, 2026  8:00AM -  5:00PM PDT",
@@ -6214,7 +6214,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:55:14.334Z",
+      "scrapedAt": "2026-07-27T20:50:45.352Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 04, 2026  9:00AM - 10:00AM PDT",
@@ -6239,7 +6239,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 04, 2026 10:00AM - 11:00AM PDT",
@@ -6264,7 +6264,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 04, 2026 11:00AM - 12:00PM PDT",
@@ -6289,7 +6289,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 04, 2026  1:00PM -  2:00PM PDT",
@@ -6314,7 +6314,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 05, 2026  8:00AM -  5:00PM PDT",
@@ -6358,7 +6358,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 05, 2026 10:00AM - 12:00PM PDT",
@@ -6416,7 +6416,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 05, 2026 11:00AM -  1:00PM PDT",
@@ -6441,7 +6441,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 05, 2026  5:30PM -  7:30PM PDT",
@@ -6466,7 +6466,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 06, 2026  8:45AM -  9:45AM PDT",
@@ -6491,7 +6491,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 06, 2026  1:00PM -  2:00PM PDT",
@@ -6516,7 +6516,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026  8:00AM -  8:30AM PDT",
@@ -6541,7 +6541,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026  9:00AM - 10:00AM PDT",
@@ -6566,7 +6566,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026  9:00AM -  1:00PM PDT",
@@ -6591,7 +6591,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026  9:00AM - 10:00AM PDT",
@@ -6616,7 +6616,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026 10:00AM -  2:00PM PDT",
@@ -6641,7 +6641,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026 10:30AM - 11:30AM PDT",
@@ -6666,7 +6666,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 07, 2026  1:00PM -  2:00PM PDT",
@@ -6691,7 +6691,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  7:00AM -  2:00PM PDT",
@@ -6716,7 +6716,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  8:00AM -  5:00PM PDT",
@@ -6741,7 +6741,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  8:00AM -  5:00PM PDT",
@@ -6766,7 +6766,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  8:00AM -  5:00PM PDT",
@@ -6791,7 +6791,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  8:00AM -  1:00PM PDT",
@@ -6816,7 +6816,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  8:00AM - 10:00AM PDT",
@@ -6841,7 +6841,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026  9:00AM -  1:00PM PDT",
@@ -6866,7 +6866,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 09, 2026 12:00PM -  9:00PM PDT",
@@ -6898,7 +6898,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 11, 2026  8:00AM - 10:00AM PDT",
@@ -6940,7 +6940,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 11, 2026  9:00AM - 10:00AM PDT",
@@ -6965,7 +6965,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 11, 2026 10:00AM - 11:00AM PDT",
@@ -6990,7 +6990,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 11, 2026 11:00AM - 12:00PM PDT",
@@ -7015,7 +7015,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 11, 2026  1:00PM -  2:00PM PDT",
@@ -7040,7 +7040,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 12, 2026  1:00PM -  2:00PM PDT",
@@ -7065,7 +7065,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 13, 2026  1:00PM -  2:00PM PDT",
@@ -7090,7 +7090,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 13, 2026  6:00PM -  7:30PM PDT",
@@ -7115,7 +7115,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 13, 2026  6:30PM -  8:30PM PDT",
@@ -7140,7 +7140,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 14, 2026  9:00AM -  1:00PM PDT",
@@ -7165,7 +7165,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 14, 2026  1:00PM -  2:00PM PDT",
@@ -7190,7 +7190,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 15, 2026  8:00AM - May 17, 2026  1:00PM",
@@ -7215,7 +7215,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.443Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 18, 2026  8:00AM - 10:00AM PDT",
@@ -7240,7 +7240,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 18, 2026  9:00AM - 11:00AM PDT",
@@ -7265,7 +7265,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 18, 2026  4:00PM -  5:00PM PDT",
@@ -7290,7 +7290,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  8:00AM - 12:00PM PDT",
@@ -7328,7 +7328,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  8:00AM - 12:00PM PDT",
@@ -7378,7 +7378,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  8:30AM -  9:30AM PDT",
@@ -7403,7 +7403,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  9:00AM - 12:30PM PDT",
@@ -7428,7 +7428,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026 10:00AM - 12:00PM PDT",
@@ -7453,7 +7453,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026 11:00AM -  1:00PM PDT",
@@ -7478,7 +7478,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  5:30PM -  7:00PM PDT",
@@ -7503,7 +7503,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  5:30PM -  7:30PM PDT",
@@ -7528,7 +7528,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 19, 2026  6:00PM -  8:00PM PDT",
@@ -7553,7 +7553,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 20, 2026  8:00AM - 11:00AM PDT",
@@ -7578,7 +7578,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:56:52.987Z",
+      "scrapedAt": "2026-07-27T20:52:34.444Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 20, 2026  6:30PM -  8:30PM PDT",
@@ -7603,7 +7603,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 21, 2026  9:00AM -  1:00PM PDT",
@@ -7628,7 +7628,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 21, 2026 10:00AM -  2:00PM PDT",
@@ -7653,7 +7653,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 21, 2026  4:00PM -  5:00PM PDT",
@@ -7678,7 +7678,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 23, 2026 10:30AM - 11:30AM PDT",
@@ -7703,7 +7703,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 26, 2026  9:00AM - 10:00AM PDT",
@@ -7728,7 +7728,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 26, 2026 10:00AM - 11:00AM PDT",
@@ -7753,7 +7753,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 26, 2026 11:00AM - 12:00PM PDT",
@@ -7778,7 +7778,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 29, 2026  8:00AM - 12:00PM PDT",
@@ -7803,7 +7803,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 29, 2026  9:00AM -  1:00PM PDT",
@@ -7828,7 +7828,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 29, 2026  9:00AM - May 31, 2026  6:00PM",
@@ -7853,7 +7853,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 30, 2026  8:00AM - 10:00AM PDT",
@@ -7878,7 +7878,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 30, 2026  8:00AM - 11:00AM PDT",
@@ -7903,7 +7903,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 30, 2026  7:00PM -  9:00PM PDT",
@@ -7928,7 +7928,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 31, 2026  8:00AM -  1:00PM PDT",
@@ -7953,7 +7953,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "May 31, 2026  8:00AM -  5:00PM PDT",
@@ -7985,7 +7985,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 02, 2026 10:00AM - 12:00PM PDT",
@@ -8027,7 +8027,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 02, 2026 10:00AM - 11:00AM PDT",
@@ -8052,7 +8052,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 03, 2026  2:00PM -  3:30PM PDT",
@@ -8096,7 +8096,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 04, 2026  9:00AM - 11:00AM PDT",
@@ -8161,7 +8161,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 05, 2026 11:00AM -  3:00PM PDT",
@@ -8203,7 +8203,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 05, 2026  6:00PM -  7:00PM PDT",
@@ -8235,7 +8235,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 05, 2026  7:00PM -  8:30PM PDT",
@@ -8277,7 +8277,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026  8:00AM -  5:00PM PDT",
@@ -8302,7 +8302,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026  8:00AM -  5:00PM PDT",
@@ -8327,7 +8327,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026  8:00AM - 12:00PM PDT",
@@ -8352,7 +8352,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026  8:00AM - 12:00PM PDT",
@@ -8377,7 +8377,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026  9:00AM - 11:00AM PDT",
@@ -8402,7 +8402,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026  9:00AM - 11:00AM PDT",
@@ -8434,7 +8434,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 06, 2026 12:00PM -  4:00PM PDT",
@@ -8476,7 +8476,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 07, 2026  8:00AM -  5:00PM PDT",
@@ -8501,7 +8501,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 09, 2026 10:30AM - 11:30AM PDT",
@@ -8526,7 +8526,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 10, 2026  1:00PM -  2:00PM PDT",
@@ -8551,7 +8551,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 10, 2026  6:00PM -  7:30PM PDT",
@@ -8576,7 +8576,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 11, 2026 10:00AM - 11:00AM PDT",
@@ -8601,7 +8601,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 11, 2026 11:30AM - 12:30PM PDT",
@@ -8633,7 +8633,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Fishing Classes",
@@ -8754,7 +8754,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 13, 2026  7:00AM - 10:00AM PDT",
@@ -8892,7 +8892,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 13, 2026  7:00AM - 11:00AM PDT",
@@ -8917,7 +8917,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 13, 2026  7:30AM - 10:30AM PDT",
@@ -8942,7 +8942,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 13, 2026  8:00AM - 11:00AM PDT",
@@ -8967,7 +8967,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 13, 2026  8:00AM - 11:00AM PDT",
@@ -8992,7 +8992,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 13, 2026  8:00AM - 12:00PM PDT",
@@ -9017,7 +9017,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 14, 2026  7:00AM - 10:00AM PDT",
@@ -9042,7 +9042,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 14, 2026  8:00AM -  5:00PM PDT",
@@ -9086,7 +9086,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 14, 2026  9:00AM - 12:00PM PDT",
@@ -9144,7 +9144,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 15, 2026  6:30AM -  9:30AM PDT",
@@ -9169,7 +9169,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 16, 2026 12:00PM -  3:00PM PDT",
@@ -9194,7 +9194,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 16, 2026  5:30PM -  8:00PM PDT",
@@ -9219,7 +9219,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 17, 2026 10:00AM - 12:00PM PDT",
@@ -9244,7 +9244,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T18:58:07.164Z",
+      "scrapedAt": "2026-07-27T20:53:56.682Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 17, 2026 10:00AM - 12:00PM PDT",
@@ -9269,7 +9269,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 18, 2026  3:00PM -  6:00PM PDT",
@@ -9294,7 +9294,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 18, 2026  4:00PM -  5:00PM PDT",
@@ -9319,7 +9319,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 20, 2026  7:30AM - 11:30AM PDT",
@@ -9344,7 +9344,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 20, 2026  7:00PM -  9:00PM PDT",
@@ -9382,7 +9382,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 21, 2026  9:00AM - 12:00PM PDT",
@@ -9439,7 +9439,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 22, 2026  7:00AM -  9:30AM PDT",
@@ -9481,7 +9481,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 23, 2026 10:00AM - 11:00AM PDT",
@@ -9506,7 +9506,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 24, 2026  8:00AM -  2:00PM PDT",
@@ -9531,7 +9531,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 24, 2026 10:00AM -  1:00PM PDT",
@@ -9556,7 +9556,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 24, 2026 10:00AM - 12:00PM PDT",
@@ -9581,7 +9581,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 25, 2026  9:00AM - 12:30PM PDT",
@@ -9606,7 +9606,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 25, 2026 11:00AM - 11:30AM PDT",
@@ -9631,7 +9631,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 25, 2026  6:00PM - 10:00PM PDT",
@@ -9663,7 +9663,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 26, 2026 12:00PM -  3:00PM PDT",
@@ -9705,7 +9705,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 27, 2026  8:00AM -  5:00PM PDT",
@@ -9730,7 +9730,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 27, 2026  8:00AM - 12:00PM PDT",
@@ -9755,7 +9755,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 27, 2026 10:00AM -  1:00PM PDT",
@@ -9780,7 +9780,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 27, 2026  7:00PM -  8:30PM PDT",
@@ -9805,7 +9805,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 28, 2026  8:00AM - 12:00PM PDT",
@@ -9849,7 +9849,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 28, 2026  9:00AM - 12:00PM PDT",
@@ -9907,7 +9907,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 29, 2026  8:00AM - 12:00PM PDT",
@@ -9932,7 +9932,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.764Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 30, 2026  1:00PM -  4:00PM PDT",
@@ -9976,7 +9976,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jun 30, 2026  5:30PM -  8:00PM PDT",
@@ -10041,7 +10041,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 02, 2026  6:00PM -  7:30PM PDT",
@@ -10096,7 +10096,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 05, 2026  9:00AM - 12:00PM PDT",
@@ -10165,7 +10165,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 07, 2026 10:00AM - 12:00PM PDT",
@@ -10223,7 +10223,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 07, 2026 10:30AM - 11:30AM PDT",
@@ -10249,7 +10249,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Fishing Classes",
@@ -10283,7 +10283,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 08, 2026 10:00AM -  6:00PM PDT",
@@ -10308,7 +10308,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 08, 2026  1:00PM -  2:00PM PDT",
@@ -10364,7 +10364,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 08, 2026  6:00PM -  8:00PM PDT",
@@ -10438,7 +10438,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 08, 2026  6:30PM -  9:30PM PDT",
@@ -10463,7 +10463,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 09, 2026  8:00AM - Jul 12, 2026  5:00PM",
@@ -10488,7 +10488,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 09, 2026  8:00AM - Jul 10, 2026 12:00PM",
@@ -10514,7 +10514,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Fishing Classes",
@@ -10548,7 +10548,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 09, 2026  4:30PM -  6:30PM PDT",
@@ -10573,7 +10573,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 10, 2026 10:00AM -  1:00PM PDT",
@@ -10598,7 +10598,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 10, 2026  7:30PM -  9:00PM PDT",
@@ -10642,7 +10642,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Archery Education",
@@ -10707,7 +10707,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Advanced Hunter Education",
@@ -10749,7 +10749,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 11, 2026 10:30AM - 11:30AM PDT",
@@ -10774,7 +10774,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 11, 2026  1:00PM -  4:00PM PDT",
@@ -10799,7 +10799,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 12, 2026  7:00AM - 10:00AM PDT",
@@ -10837,7 +10837,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 12, 2026  9:00AM - 12:00PM PDT",
@@ -10887,7 +10887,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 14, 2026  1:00PM -  2:00PM PDT",
@@ -10912,7 +10912,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 14, 2026  1:00PM -  2:00PM PDT",
@@ -10938,7 +10938,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Fishing Classes",
@@ -11003,7 +11003,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 15, 2026  6:00PM -  8:00PM PDT",
@@ -11077,7 +11077,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 16, 2026  4:00PM -  5:00PM PDT",
@@ -11102,7 +11102,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:00:03.536Z",
+      "scrapedAt": "2026-07-27T20:55:59.765Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 17, 2026  8:00AM - Jul 19, 2026  8:00PM",
@@ -11127,7 +11127,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 17, 2026  9:00AM - Jul 19, 2026 12:00PM",
@@ -11152,7 +11152,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 17, 2026  7:30PM -  9:00PM PDT",
@@ -11177,7 +11177,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 18, 2026  7:30AM - 12:30PM PDT",
@@ -11202,7 +11202,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 18, 2026  8:00AM -  5:00PM PDT",
@@ -11258,7 +11258,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 18, 2026  7:00PM -  9:00PM PDT",
@@ -11345,7 +11345,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Advanced Hunter Education",
@@ -11395,7 +11395,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 19, 2026  9:00AM - 12:00PM PDT",
@@ -11420,7 +11420,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 20, 2026  9:00AM - 11:00AM PDT",
@@ -11445,7 +11445,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 21, 2026  2:00PM -  3:00PM PDT",
@@ -11507,7 +11507,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 21, 2026  6:00PM -  7:30PM PDT",
@@ -11620,7 +11620,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 22, 2026  6:00PM -  8:00PM PDT",
@@ -11694,7 +11694,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 23, 2026 10:00AM - 12:00PM PDT",
@@ -11719,7 +11719,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 24, 2026 10:00AM - 11:00AM PDT",
@@ -11744,7 +11744,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 24, 2026  6:00PM -  7:30PM PDT",
@@ -11769,7 +11769,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 24, 2026  7:30PM -  9:30PM PDT",
@@ -11794,7 +11794,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 25, 2026  8:00AM -  5:00PM PDT",
@@ -11819,7 +11819,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 25, 2026  8:00AM - 12:00PM PDT",
@@ -11844,7 +11844,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 25, 2026 10:00AM -  1:00PM PDT",
@@ -11869,7 +11869,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 25, 2026  7:00PM -  8:00PM PDT",
@@ -11907,7 +11907,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 26, 2026  7:00AM - 10:00AM PDT",
@@ -11957,7 +11957,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 26, 2026  8:00AM -  5:00PM PDT",
@@ -12001,7 +12001,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 26, 2026  9:00AM - 12:00PM PDT",
@@ -12050,7 +12050,7 @@
     "location": "Nevada Department of Wildlife - Reno 1100 Valley rd Reno, NV 89512",
     "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4839",
     "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4839/event_instructors",
-    "text": "Jul 27\nHunter Education Unlisted\n\n■ Registration Closed 24 of 25 seats remaining\n\nLocation:\n\nNevada Department of Wildlife - Reno\n1100 Valley rd\nReno, NV 89512\n\nTaught by:\n\nLOGAN D KLONICKE\nDate & Times:\nJul 27, 2026 12:00PM - 1:00PM PDT\nView",
+    "text": "Jul 27\nHunter Education Unlisted\n\n■ Events Results Pending 24 of 25 seats remaining\n\nLocation:\n\nNevada Department of Wildlife - Reno\n1100 Valley rd\nReno, NV 89512\n\nTaught by:\n\nLOGAN D KLONICKE\nDate & Times:\nJul 27, 2026 12:00PM - 1:00PM PDT\nView",
     "instructors": [
       {
         "name": "LOGAN D KLONICKE",
@@ -12059,12 +12059,12 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 27, 2026 12:00PM -  1:00PM PDT",
     "program": "Hunter Education",
-    "status": "Registration Closed",
+    "status": "Events Results Pending",
     "description": "re test",
     "ndowResults": []
   },
@@ -12084,7 +12084,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 28, 2026 10:00AM - 12:00PM PDT",
@@ -12128,7 +12128,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 28, 2026  5:30PM -  8:00PM PDT",
@@ -12217,7 +12217,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 29, 2026  6:00PM -  8:00PM PDT",
@@ -12291,7 +12291,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 29, 2026  6:00PM -  7:30PM PDT",
@@ -12316,7 +12316,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 30, 2026  4:30PM -  6:30PM PDT",
@@ -12341,7 +12341,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jul 31, 2026 11:15AM - 12:15PM PDT",
@@ -12366,7 +12366,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 01, 2026  9:00AM - 11:30AM PDT",
@@ -12391,7 +12391,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 01, 2026  9:00AM -  5:00PM PDT",
@@ -12416,7 +12416,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 01, 2026 11:00AM -  2:00PM PDT",
@@ -12460,7 +12460,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 04, 2026 10:00AM - 12:00PM PDT",
@@ -12518,7 +12518,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 04, 2026  6:30PM -  7:15PM PDT",
@@ -12543,7 +12543,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 05, 2026  1:00PM -  2:00PM PDT",
@@ -12568,7 +12568,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 07, 2026  6:00PM -  7:00PM PDT",
@@ -12593,7 +12593,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 07, 2026  7:30PM -  8:30PM PDT",
@@ -12631,7 +12631,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Advanced Hunter Education",
@@ -12681,7 +12681,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 08, 2026  9:00AM - 11:00AM PDT",
@@ -12697,16 +12697,16 @@
     "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
     "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4599",
     "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4599/event_instructors",
-    "text": "Aug 9\nNRA Range Safety Officer Unlisted\n\n■ Registration Open 12 of 12 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Room C)\n11357 N. Decatur Blvd.\nRoom C\nLas Vegas, NV 89131\n\nTaught by:\n\nKeith Randall Roether\nDate & Times:\nAug 09, 2026 8:00AM - 5:00PM PDT\nView",
+    "text": "Aug 9\nNRA Range Safety Officer Unlisted\n\n■ Registration Open 12 of 12 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Room C)\n11357 N. Decatur Blvd.\nRoom C\nLas Vegas, NV 89131\n\nTaught by:\n\nRichard A Raby\nDate & Times:\nAug 09, 2026 8:00AM - 5:00PM PDT\nView",
     "instructors": [
       {
-        "name": "Keith Randall Roether",
+        "name": "Richard A Raby",
         "role": "PRIMARY",
         "email": ""
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 09, 2026  8:00AM -  5:00PM PDT",
@@ -12722,7 +12722,7 @@
     "location": "Nevada Department of Wildlife - Elko Office 60 Youth Center Rd Elko, NV 89801",
     "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4834",
     "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4834/event_instructors",
-    "text": "Aug 14\nHunter Education\n\n■ Registration Open 14 of 15 seats remaining\n\nLocation:\n\nNevada Department of Wildlife - Elko Office\n60 Youth Center Rd\nElko, NV 89801\n\nTaught by:\n\nTreg R Butterfield\nDate & Times:\nAug 14, 2026 8:00AM - 5:00PM PDT\nView",
+    "text": "Aug 14\nHunter Education\n\n■ Registration Open 13 of 15 seats remaining\n\nLocation:\n\nNevada Department of Wildlife - Elko Office\n60 Youth Center Rd\nElko, NV 89801\n\nTaught by:\n\nTreg R Butterfield\nDate & Times:\nAug 14, 2026 8:00AM - 5:00PM PDT\nView",
     "instructors": [
       {
         "name": "Treg R Butterfield",
@@ -12731,13 +12731,13 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 14, 2026  8:00AM -  5:00PM PDT",
     "program": "Hunter Education",
     "status": "Registration Open",
-    "description": "HUNTER EDUCATION CERTIFICATE $5 class fee.  Please have exact change. \nThis class is partially outdoors, dress accordingly and bring refreshments and snacks. Some instructors work through lunch, only providing shorter breaks throughout the day. \nPlease update your registration status if you are unable to make this class.  \nStudents must print the proof of Home Study from the online course and bring it with them to class or bring a completed workbook. Any age student may gain access to the class with their completed workbook or their online home study completion certificate. \nStudents under the age of 12 must be accompanied by an adult.  That adult does not need to sign up as a participant. \n\nDO NOT BRING ANY FIREARMS TO THIS CLASS. \nThank you for registering for this Hunter Education Course. Please contact jgabrielson@ndow.org, 775-777-2305, or 775-777-2300 with any questions.  These numbers and email are not normally monitored after hours, weekends, or holidays.   Class registration closes 24-48 hours prior to the class start time.",
+    "description": "HUNTER EDUCATION CERTIFICATE $5 class fee.  Please have exact change. \nThis class is partially outdoors, dress accordingly and bring refreshments and snacks. Some instructors work through lunch, only providing shorter breaks throughout the day. \nPlease update your registration status if you are unable to make this class.  \nStudents must print the proof of Home Study from the online course and bring it with them to class or bring a completed workbook. Any age student may gain access to the class with their completed workbook or their online home study completion certificate. \nStudents under the age of 12 must be accompanied by an adult.  That adult does not need to sign up as a participant. \n\nDO NOT BRING ANY FIREARMS TO THIS CLASS. \nThank you for registering for this Hunter Education Course. Please contact jgabrielson@ndow.org, 775-777-2305, or 775-777-2300 with any questions.  These numbers and email are not normally monitored after hours, weekends, or holidays.   Class registration closes 24-48 hours prior to the class start time.",
     "ndowResults": []
   },
   {
@@ -12756,7 +12756,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 14, 2026  5:30PM -  8:00PM PDT",
@@ -12781,7 +12781,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 15, 2026  8:00AM - 12:00PM PDT",
@@ -12813,7 +12813,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Archery Education",
@@ -12856,7 +12856,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "program": "Advanced Hunter Education",
@@ -12890,7 +12890,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.580Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 16, 2026  8:00AM -  5:00PM PDT",
@@ -12915,7 +12915,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.581Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 19, 2026 12:00PM -  1:00PM PDT",
@@ -12940,7 +12940,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.581Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 20, 2026  4:00PM -  5:00PM PDT",
@@ -12965,7 +12965,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.581Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 21, 2026 11:30AM - 12:30PM PDT",
@@ -12990,7 +12990,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:02:07.581Z",
+      "scrapedAt": "2026-07-27T20:58:17.949Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 21, 2026  6:00PM -  7:30PM PDT",
@@ -13015,7 +13015,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.912Z",
+      "scrapedAt": "2026-07-27T21:00:33.389Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 22, 2026  8:00AM - 11:00AM PDT",
@@ -13031,7 +13031,7 @@
     "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
     "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4749",
     "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4749/event_instructors",
-    "text": "Aug 22\nHunter Education\n\n■ Registration Open 24 of 25 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Room C)\n11357 N. Decatur Blvd.\nRoom C\nLas Vegas, NV 89131\n\nTaught by:\n\nRichard A Raby\nDate & Times:\nAug 22, 2026 8:00AM - 5:00PM PDT\nView",
+    "text": "Aug 22\nHunter Education\n\n■ Registration Open 22 of 25 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Room C)\n11357 N. Decatur Blvd.\nRoom C\nLas Vegas, NV 89131\n\nTaught by:\n\nRichard A Raby\nDate & Times:\nAug 22, 2026 8:00AM - 5:00PM PDT\nView",
     "instructors": [
       {
         "name": "Richard A Raby",
@@ -13040,7 +13040,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 22, 2026  8:00AM -  5:00PM PDT",
@@ -13065,7 +13065,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 22, 2026  9:00AM -  2:00PM PDT",
@@ -13090,7 +13090,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 28, 2026  5:30PM -  7:30PM PDT",
@@ -13115,7 +13115,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 29, 2026  7:00AM - 10:00AM PDT",
@@ -13140,7 +13140,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Aug 29, 2026  8:00AM - 10:00AM PDT",
@@ -13165,7 +13165,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 01, 2026 10:00AM - 12:00PM PDT",
@@ -13190,7 +13190,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 01, 2026  5:30PM - Jun 01, 2027  5:30PM",
@@ -13215,13 +13215,38 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 01, 2026  5:30PM -  7:30PM PDT",
     "program": "School Events",
     "status": "Canceled",
     "description": "NASP",
+    "ndowResults": []
+  },
+  {
+    "id": "4840",
+    "title": "Introduction to Trap Shooting",
+    "date": "Sep 02, 2026",
+    "location": "Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4840",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4840/event_instructors",
+    "text": "Sep 2\nIntroduction to Trap Shooting\n\n■ Registration Open 5 of 5 seats remaining\n\nLocation:\n\nClark County Shooting Complex (Shotgun Center)\n11357 N. Decatur Blvd.\nShotgun Center\nLas Vegas, NV 89131\n\nTaught by:\n\nCharles R Ohlandt\nDate & Times:\nSep 02, 2026 5:30PM - 8:30PM PDT\nView",
+    "instructors": [
+      {
+        "name": "Charles R Ohlandt",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Sep 02, 2026  5:30PM -  8:30PM PDT",
+    "program": "Advanced Hunter Education",
+    "status": "Registration Open",
+    "description": "STUDENTS MUST BE PRE-REGISTERED FOR CLASS!   Learn the basics of Trap shooting in this informative instructor lead class. Learn the rotation, stance and follow through procedures for successfully hitting clay targets. Firearms, ammo and supplies are provided. No personal firearms permitted. You will be outside, bring your drinks, hat and sunscreen. You will meet inside the public shotgun range building to preview a 3-minute safety video to receive your yellow card and then proceed to your trap/skeet field. All participants must be registered to participate. Participants must be able to handle and maneuver a 12- or 20-gauge shotgun contingent on instructor (RSO) discretion. This class is free of charge.",
     "ndowResults": []
   },
   {
@@ -13240,7 +13265,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 02, 2026  6:30PM -  8:30PM PDT",
@@ -13265,13 +13290,38 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 03, 2026  6:00PM -  7:15PM PDT",
     "program": "Wildlife Discovery",
     "status": "Registration Open",
     "description": "N/A",
+    "ndowResults": []
+  },
+  {
+    "id": "4841",
+    "title": "Introduction to Sporting Clays",
+    "date": "Sep 05, 2026",
+    "location": "Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4841",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4841/event_instructors",
+    "text": "Sep 5\nIntroduction to Sporting Clays\n\n■ Registration Open 9 of 9 seats remaining\n\nLocation:\n\nClark County Shooting Complex (Shotgun Center)\n11357 N. Decatur Blvd.\nShotgun Center\nLas Vegas, NV 89131\n\nTaught by:\n\nRichard A Raby\nDate & Times:\nSep 05, 2026 8:00AM - 11:00AM PDT\nView",
+    "instructors": [
+      {
+        "name": "Richard A Raby",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Sep 05, 2026  8:00AM - 11:00AM PDT",
+    "program": "Advanced Hunter Education",
+    "status": "Registration Open",
+    "description": "STUDENTS MUST BE PRE-REGISTERED FOR CLASS!  This is an entry level class introducing a shooter to Sporting Clays. Enjoy an invigorating ride through the Clark County’s Sporting Clay’s course on a 4-seater golf cart! A certified instructor will pick up 3 participants to create a team of 4 in a customized golf cart to compete with others in the class. Participants will choose 5 different stations where they will have five opportunities to hit a variety of aerial targets. Instructors will demonstrate shooting techniques and operating procedures throughout the course. Participants must be able to handle and maneuver a 12- or 20-gauge shotgun contingent on instructor (RSO) discretion.  There is no fee for this class. All material and equipment will be provided; no personal firearms will be permitted. All participants must be registered to attend. You will be outside, dress accordingly! Everyone will meet at the public shotgun range to view a 3-minute safety video before heading up to the course. Top shot will receive a certificate!",
     "ndowResults": []
   },
   {
@@ -13290,7 +13340,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 11, 2026  9:00AM - 11:00AM PDT",
@@ -13315,7 +13365,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 11, 2026  2:30PM -  3:15PM PDT",
@@ -13340,13 +13390,63 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 11, 2026  5:30PM -  8:00PM PDT",
     "program": "Fishing Classes",
     "status": "Registration Open",
     "description": "The 2-Day Introduction to Fly Fishing is the most popular course we currently offer. Equipment, basic casts, knots, and basic techniques are covered in a classroom setting on day one. Day two is dedicated to utilizing those new learned skills on the water. We provide all needed equipment. Students 12 and over must have a valid Nevada Fishing License.",
+    "ndowResults": []
+  },
+  {
+    "id": "4845",
+    "title": "Hunter Education",
+    "date": "Sep 12, 2026",
+    "location": "Clark County Shooting Complex Education Center (Room C) 11357 N. Decatur Blvd. Room C Las Vegas, NV 89131",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4845",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4845/event_instructors",
+    "text": "Sep 12\nHunter Education\n\n■ Registration Open 25 of 25 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Room C)\n11357 N. Decatur Blvd.\nRoom C\nLas Vegas, NV 89131\n\nTaught by:\n\nRichard A Raby\nDate & Times:\nSep 12, 2026 8:00AM - 5:00PM PDT\nView",
+    "instructors": [
+      {
+        "name": "Richard A Raby",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Sep 12, 2026  8:00AM -  5:00PM PDT",
+    "program": "Hunter Education",
+    "status": "Registration Open",
+    "description": "STUDENTS MUST BE PRE-REGISTERED FOR CLASS!  NO REGISTRATION ON DAY OF CLASS! Receive your hunter education certificate by attending this instructional class. Students under the age of 18 must attend an in-person class to complete their Hunter Education Certificate. Students may complete their workbook (available at NDOW offices) or complete the online home study course at hunter-ed.com or recademics.com. Students must print the proof of Home Study from the online course and bring it with them to class or bring their completed workbook. Any age student may gain access to the class with a complete workbook or their online home study completion certificate. This class is mostly outdoors, dress accordingly and bring refreshments and snacks and $5 for the volunteer instructor. The Education center is the last building all the way at the top of the complex!",
+    "ndowResults": []
+  },
+  {
+    "id": "4842",
+    "title": "Introduction to Rifle Shooting",
+    "date": "Sep 12, 2026",
+    "location": "Clark County Shooting Complex Education Center (Room E) 11357 N. Decatur Room E Las Vegas, NV 89131",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4842",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4842/event_instructors",
+    "text": "Sep 12\nIntroduction to Rifle Shooting\n\n■ Registration Open 9 of 9 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Room E)\n11357 N. Decatur\nRoom E\nLas Vegas, NV 89131\n\nTaught by:\n\nPhilip James Hiller\nDate & Times:\nSep 12, 2026 8:00AM - 11:00AM PDT\nView",
+    "instructors": [
+      {
+        "name": "Philip James Hiller",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Sep 12, 2026  8:00AM - 11:00AM PDT",
+    "program": "Advanced Hunter Education",
+    "status": "Registration Open",
+    "description": "STUDENTS MUST BE PRE-REGISTERED FOR CLASS!  NO REGISTRATION ON DAY OF CLASS! INTRODUCTION TO RIFLE SHOOTING!  An introductory course that teaches the fundamentals of firearms safety, range etiquette, marksmanship, and firearm handling. Students will be introduced to these topics and then put the skills into practice using .22 LR rifles in a live-fire environment. All materials will be provided for this class; NO personal firearms or ammunition will be permitted. All participants must be registered for this class. This course is free of charge, and there is an age limit of 9 years old contingent on instructor (RSO) discretion. A current Hunter education certificate is suggested prior to class. Please dress accordingly as you will be outdoors.",
     "ndowResults": []
   },
   {
@@ -13365,7 +13465,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 12, 2026 10:00AM - 12:00PM PDT",
@@ -13390,7 +13490,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 18, 2026  9:00AM - 11:00AM PDT",
@@ -13415,7 +13515,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 19, 2026 10:00AM -  3:00PM PDT",
@@ -13440,7 +13540,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 23, 2026 12:30PM -  1:15PM PDT",
@@ -13465,13 +13565,38 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 26, 2026 10:30AM - 11:30AM PDT",
     "program": "Wildlife Discovery",
     "status": "Registration Open",
     "description": "Have you ever seen a coyote strolling through your neighborhood? Has a duck turned your backyard into its new home? Join us in the Large Conference Room at the Clark County Library to learn how we can exist with our wild neighbors. We will learn what to do if you find a baby bird on the sidewalk, how to discourage wildlife from getting too cozy in your yard, and more.Registration is not required. This program is free and open to the public of all ages. Seating is first come, first served and may be limited.  For more information, please call the Clark County Library at 702-507-3427. You can view this event on the library's calendar here: https://events.thelibrarydistrict.org/event/16342835.",
+    "ndowResults": []
+  },
+  {
+    "id": "4844",
+    "title": "Dutch Oven Your Wild Harvest",
+    "date": "Sep 27, 2026",
+    "location": "Clark County Shooting Complex Education Center (Archery Range) 11357 N. Decatur Blvd. Archery Range Las Vegas, NV 89131",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4844",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4844/event_instructors",
+    "text": "Sep 27\nDutch Oven Your Wild Harvest\n\n■ Registration Open 8 of 10 seats remaining\n\nLocation:\n\nClark County Shooting Complex Education Center (Archery Range)\n11357 N. Decatur Blvd.\nArchery Range\nLas Vegas, NV 89131\n\nTaught by:\n\nKaesee L Bourne\nDate & Times:\nSep 27, 2026 10:00AM - 12:00PM PDT\nView",
+    "instructors": [
+      {
+        "name": "Kaesee L Bourne",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Sep 27, 2026 10:00AM - 12:00PM PDT",
+    "program": "Advanced Hunter Education",
+    "status": "Registration Open",
+    "description": "STUDENTS MUST BE PRE-REGISTERED FOR CLASS!  NO REGISTRATION ON DAY OF CLASS! This class takes you to the kitchen, the outdoor kitchen! Any age is welcome. Prepare a wild game dish and then enjoy it for lunch! Menu to be determined! Anyone 11 and under must have a parent or guardian with them during class. Parents and guardians must also be registered for the class. Everything is provided in these free informative classes. You will be outside, so bring your snacks, drinks, hats, and sunscreen.",
     "ndowResults": []
   },
   {
@@ -13490,7 +13615,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 28, 2026  8:00AM - 11:30AM PDT",
@@ -13515,7 +13640,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 29, 2026  4:30PM -  6:30PM PDT",
@@ -13540,13 +13665,38 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Sep 30, 2026 11:20AM -  1:45PM PDT",
     "program": "School Events",
     "status": "Registration Open",
     "description": "Three back-to-back programs for the 2nd classes. 11:20-12:05, 12:10-12:55, 1:00-1:45.",
+    "ndowResults": []
+  },
+  {
+    "id": "4843",
+    "title": "Introduction to Skeet Shooting",
+    "date": "Sep 30, 2026",
+    "location": "Clark County Shooting Complex (Shotgun Center) 11357 N. Decatur Blvd. Shotgun Center Las Vegas, NV 89131",
+    "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4843",
+    "instructorUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4843/event_instructors",
+    "text": "Sep 30\nIntroduction to Skeet Shooting\n\n■ Registration Open 5 of 5 seats remaining\n\nLocation:\n\nClark County Shooting Complex (Shotgun Center)\n11357 N. Decatur Blvd.\nShotgun Center\nLas Vegas, NV 89131\n\nTaught by:\n\nCharles R Ohlandt\nDate & Times:\nSep 30, 2026 6:30PM - 8:30PM PDT\nView",
+    "instructors": [
+      {
+        "name": "Charles R Ohlandt",
+        "role": "PRIMARY",
+        "email": ""
+      }
+    ],
+    "enrichment": {
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
+      "source": "ndow-scraper-v2"
+    },
+    "time": "Sep 30, 2026  6:30PM -  8:30PM PDT",
+    "program": "Advanced Hunter Education",
+    "status": "Registration Open",
+    "description": "STUDENTS MUST BE PRE-REGISTERED FOR CLASS!  NO REGISTRATION ON DAY OF CLASS! Learn the basics of Skeet shooting in this informative instructor lead class. Learn the rotation, stance and follow through procedures for successfully hitting clay targets. Firearms, ammo and supplies are provided. No personal firearms permitted. You will be outside, bring your drinks, hat and sunscreen. You will meet inside the public shotgun range building to preview a 3-minute safety video to receive your yellow card and then proceed to your trap/skeet field. All participants must be registered to participate. Participants must be able to handle and maneuver a 12- or 20-gauge shotgun Participants must be able to handle and maneuver a 12- or 20-gauge shotgun contingent on instructor (RSO) discretion. This class is free of charge.",
     "ndowResults": []
   },
   {
@@ -13565,7 +13715,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 01, 2026 12:50PM -  2:40PM PDT",
@@ -13590,7 +13740,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 02, 2026 12:20PM -  3:40PM PDT",
@@ -13615,7 +13765,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 02, 2026 12:20PM -  3:40PM PDT",
@@ -13640,7 +13790,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 06, 2026 10:00AM - 12:00PM PDT",
@@ -13665,7 +13815,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 06, 2026  5:00PM -  8:00PM PDT",
@@ -13690,7 +13840,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 08, 2026 12:50PM -  2:40PM PDT",
@@ -13715,7 +13865,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 13, 2026  1:15PM -  2:00PM PDT",
@@ -13740,7 +13890,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 14, 2026 12:00PM -  1:00PM PDT",
@@ -13765,7 +13915,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 15, 2026  4:00PM -  5:00PM PDT",
@@ -13790,7 +13940,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 16, 2026  7:45AM - 10:30AM PDT",
@@ -13815,7 +13965,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 21, 2026 12:00PM -  1:00PM PDT",
@@ -13840,7 +13990,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Oct 28, 2026 12:00PM -  1:00PM PDT",
@@ -13865,7 +14015,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Nov 19, 2026  4:00PM -  5:00PM PST",
@@ -13890,7 +14040,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Nov 20, 2026  9:30AM - 10:15AM PST",
@@ -13915,7 +14065,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Dec 18, 2026  9:00AM -  9:45AM PST",
@@ -13940,7 +14090,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Jan 11, 2027 10:00AM - 11:00AM PST",
@@ -13965,7 +14115,7 @@
       }
     ],
     "enrichment": {
-      "scrapedAt": "2026-07-27T19:04:11.913Z",
+      "scrapedAt": "2026-07-27T21:00:33.390Z",
       "source": "ndow-scraper-v2"
     },
     "time": "Feb 05, 2027 10:00AM - 11:00AM PST",
