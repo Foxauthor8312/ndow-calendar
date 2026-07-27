@@ -8738,17 +8738,19 @@ function initializeAddressSearch(){
     key: publicConfig.mapquestApiKey,
 
     container: document.getElementById(
-        'addressLookup'
+      'addressLookup'
     ),
 
     collection: [
-        'address',
-        'poi'
+      'address',
+      'poi'
     ],
 
     limit: 8
 
-});
+  });
+
+}   // <<< THIS IS MISSING
 
 async function loadAddresses(){
 
