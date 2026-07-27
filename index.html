@@ -2935,23 +2935,29 @@ const systemStatus = {
 };
 	
 let events = [];
-let completedEventIds = new Set();	
-let submittedEvents = new Set();	
+let completedEventIds = new Set();
+let submittedEvents = new Set();
+
 // submittedEvents =
 //    new Set(
 //        submittedResult.submittedEvents || []
 //    );
+
 let activeFilters = [];
 let activeRegion = '';
 let selectedEvent = null;
 let submittedHoursRecord = null;
 let volunteerTotals = null;
-	
+
 let departmentContacts = [];
 
 const SERVICE_VALUE_RATE =
   56.55;
-let editingAddressId = null;	
+
+let editingAddressId = null;
+
+let pendingRouteDropdown = null;
+// let pendingRouteAddressId = null;	
 
 	// ========================================
 // DEPARTMENT CONTACTS
@@ -9195,27 +9201,43 @@ const endpoint =
       await response.json();
 	  
 	  
-    if(data.success){
+if(data.success){
 
-	 editingAddressId = null;
-		
-      alert(
-        'Address saved'
-      );
+  editingAddressId = null;
 
-      closeAddressModal();
+  alert(
+    'Address saved'
+  );
 
-      loadAddresses();
+  closeAddressModal();
 
-		
-    }else{
+  await loadAddresses();
 
-      alert(
-        data.message ||
-        'Save failed'
-      );
+  if(pendingRouteDropdown){
+
+    await loadRouteAddressDropdowns();
+
+    if(data.addressId){
+
+      document.getElementById(
+        pendingRouteDropdown
+      ).value =
+        String(data.addressId);
 
     }
+
+    pendingRouteDropdown = null;
+
+  }
+
+}else{
+
+  alert(
+    data.message ||
+    'Save failed'
+  );
+
+}
 
   }catch(err){
 
