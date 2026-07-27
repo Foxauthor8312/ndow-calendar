@@ -8580,6 +8580,26 @@ function openContactsManager(){
 
 function openAddressLibrary(){
 
+  const hoursModal =
+    document.getElementById(
+      'hoursModal'
+    );
+
+  const eventModal =
+    document.getElementById(
+      'eventModal'
+    );
+
+  if(hoursModal){
+    hoursModal.style.display =
+      'none';
+  }
+
+  if(eventModal){
+    eventModal.style.display =
+      'none';
+  }
+
   openAdminPanel();
 
   setTimeout(() => {
@@ -14677,7 +14697,11 @@ function overrideCategory(
      START ADMIN MODAL
 ======================================== -->
 
-<div id="adminModal" class="modal hidden">
+<div
+  id="adminModal"
+  class="modal hidden"
+  style="z-index:100000;"
+>
 
   <div
     class="modal-content"
