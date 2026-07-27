@@ -6070,11 +6070,24 @@ async function calculateRoute(){
         'routeOrigin'
       ).value.trim();
 
-    const destination =
-      document.getElementById(
-        'routeDestination'
-      ).value.trim();
+const destinationSelect =
+  document.getElementById(
+    'routeDestination'
+  );
 
+const destinationOption =
+  destinationSelect.selectedOptions[0];
+
+const destinationLat =
+  Number(
+    destinationOption.dataset.lat
+  );
+
+const destinationLng =
+  Number(
+    destinationOption.dataset.lng
+  );
+	  
     const stops = [
 
       document.getElementById(
@@ -6100,7 +6113,7 @@ async function calculateRoute(){
     const response =
 	  await fetch(
 	
-	'https://ndow-calendar-server.onrender.com/api/calculate',
+			'https://ndow-calendar-server.onrender.com/api/calculate',
 	
 	    {
 
@@ -6111,13 +6124,17 @@ async function calculateRoute(){
               'application/json'
           },
 
-          body:JSON.stringify({
-
-            origin,
-            destination,
-            stops
-
-          })
+			body:JSON.stringify({
+			
+			  origin,
+			
+			  destinationLat,
+			
+			  destinationLng,
+			
+			  stops
+			
+})
 
         }
 
@@ -6892,9 +6909,23 @@ if(
 
 }
 
-	selectedEvent = event;
+selectedEvent = event;
 
-	submittedHoursRecord = null;
+const coordResponse =
+  await fetch(
+    `https://ndow-calendar-server.onrender.com/api/event-location/${event.id}`
+  );
+
+const coordResult =
+  await coordResponse.json();
+
+selectedEvent.latitude =
+  coordResult.latitude;
+
+selectedEvent.longitude =
+  coordResult.longitude;
+
+submittedHoursRecord = null;
 
 try {
 
@@ -13323,17 +13354,49 @@ addresses.forEach(a => {
     .filter(Boolean)
     .join(', ');
 
-  origin.innerHTML += `
-    <option value="${fullAddress}">
-      ${label}
-    </option>
-  `;
+  // -------------------------
+  // Origin
+  // -------------------------
 
-  destination.innerHTML += `
-    <option value="${fullAddress}">
-      ${label}
-    </option>
-  `;
+  const originOption =
+    document.createElement(
+      'option'
+    );
+
+  originOption.value =
+    fullAddress;
+
+  originOption.textContent =
+    label;
+
+  origin.appendChild(
+    originOption
+  );
+
+  // -------------------------
+  // Destination
+  // -------------------------
+
+  const destinationOption =
+    document.createElement(
+      'option'
+    );
+
+  destinationOption.value =
+    fullAddress;
+
+  destinationOption.textContent =
+    label;
+
+  destinationOption.dataset.lat =
+    a.latitude;
+
+  destinationOption.dataset.lng =
+    a.longitude;
+
+  destination.appendChild(
+    destinationOption
+  );
 
 });
 
