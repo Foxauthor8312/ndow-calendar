@@ -28,8 +28,10 @@
 import { renderEventAttendanceRoster }
 from './event-attendance-roster.js';
 
-import { loadEventRoster }
-from '../communications2/communications-api.js';
+import {
+    loadEventRoster
+}
+from '../event-roster.js';
 
 /**
  * ============================================================================
