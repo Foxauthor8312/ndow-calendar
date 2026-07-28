@@ -148,6 +148,10 @@ container.innerHTML = `
                 Attendance
             </option>
 
+            <option value="attendance-roster">
+                Attendance Roster
+            </option>
+
             <option value="${COMMUNICATION_TYPES.SURVEY}">
                 Survey Email
             </option>
@@ -464,6 +468,28 @@ async function updateTemplate(){
         return;
 
     }
+
+ /*----------------------------------------------------------
+    Attendance Roster Report
+----------------------------------------------------------*/
+
+if(type === 'attendance-roster'){
+
+    await openAttendanceRoster(
+
+        state.currentEvent
+
+    );
+
+    selector.value =
+
+        COMMUNICATION_TYPES.REMINDER;
+
+    updateTemplate();
+
+    return;
+
+}
 
     /*----------------------------------------------------------
         Build Email
