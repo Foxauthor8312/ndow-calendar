@@ -25,13 +25,19 @@
 
 'use strict';
 
+import { renderEventAttendanceRoster }
+from './event-attendance-roster.js';
+
+import { loadEventRoster }
+from '../communications2/communications-api.js';
+
 /**
  * ============================================================================
  * Attendance Roster
  * ============================================================================
  */
 
-async function openAttendanceRoster(event){
+export async function openAttendanceRoster(event){
 
     try{
 
@@ -299,11 +305,3 @@ ${html}
 
 }
 
-/**
- * ============================================================================
- * Public Interface
- * ============================================================================
- */
-
-window.openAttendanceRoster =
-    openAttendanceRoster;
