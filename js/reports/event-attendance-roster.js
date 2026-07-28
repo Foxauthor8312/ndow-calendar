@@ -29,7 +29,7 @@
  * Public Entry Point
  * ============================================================================
  */
-function renderEventAttendanceRoster(
+export function renderEventAttendanceRoster(
     event,
     instructors = [],
     roster = []
@@ -43,8 +43,6 @@ function renderEventAttendanceRoster(
 
 }
 
-window.renderEventAttendanceRoster =
-    renderEventAttendanceRoster;
 
 /**
  * ============================================================================
