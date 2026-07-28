@@ -494,9 +494,9 @@ function renderStudentRoster(roster = []){
         Student Name
     </th>
 
-    <th style="width:180px;">
-        Phone
-    </th>
+    <th style="width:240px;">
+       Email
+   </th>>
 
     <th style="width:140px;">
         Status
@@ -557,21 +557,34 @@ function renderStudentRow(
 
     <td>
 
-        ${student.name ?? ''}
+        ${student.student_name ??
+  student.name ??
+  ''}
 
     </td>
 
     <td>
 
-        ${student.phone ?? ''}
+        ${student.phone ??
+  student.student_phone ??
+  student.student_email ??
+  ''}
 
     </td>
 
     <td>
 
-        ${student.registration_status ??
-          student.status ??
-          ''}
+      ${
+    student.registration_status ??
+    student.status ??
+    (
+        student.attended === true
+            ? 'Attended'
+            : student.attended === false
+                ? 'Absent'
+                : 'Registered'
+    )
+}
 
     </td>
 
