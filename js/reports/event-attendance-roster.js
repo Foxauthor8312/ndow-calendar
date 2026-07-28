@@ -121,9 +121,7 @@ th{
 
     ${renderAttendanceSummary(roster)}
 
-    ${renderFooter(event)}
-
-    ${renderQrSection()}
+   ${renderFooter(event)}
 
 </div>
 
@@ -135,9 +133,9 @@ th{
 
     ${renderNotesPage(event)}
 
-    ${renderFooter(event)}
+    ${renderQrSection()}
 
-  
+    ${renderFooter(event)}
 
 </div>
 
@@ -725,8 +723,6 @@ function renderFooter(event){
         "
     >
 
-        QR CODE
-
     </div>
 
 </div>
@@ -838,7 +834,7 @@ function renderQrSection(){
 
 <div style="
     display:flex;
-    justify-content:flex-end;
+    justify-content:space-between;
     margin-top:24px;
     border-top:1px solid #DBE3EC;
     padding-top:16px;
