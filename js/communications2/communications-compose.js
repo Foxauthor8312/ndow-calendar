@@ -76,6 +76,16 @@ from
 
 './communications-attendance.js';
 
+import {
+
+    openAttendanceRoster
+
+}
+
+from
+
+'../reports/event-reports.js';
+
 
 /*==============================================================================
     OPEN
