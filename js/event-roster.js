@@ -75,14 +75,10 @@ export async function displayEventRoster(
     eventId
 ){
 
-    const students =
-        await loadEventRoster(
-            eventId
-        );
+const students =
+    await response.json();
 
-    renderEventRoster(
-        students
-    );
+return students;
 
 }
 
