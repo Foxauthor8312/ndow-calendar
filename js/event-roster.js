@@ -28,16 +28,16 @@
  * ============================================================================
  */
 
-export async function loadEventRoster(eventId){
+async function loadEventRoster(eventId) {
 
-    try{
+    try {
 
         const response =
             await fetch(
                 `/api/event-roster/${eventId}`
             );
 
-        if(!response.ok){
+        if (!response.ok) {
 
             throw new Error(
                 `Roster request failed (${response.status})`
@@ -49,10 +49,10 @@ export async function loadEventRoster(eventId){
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(
-            'Failed to load event roster:',
+            'Roster Load Error:',
             error
         );
 
@@ -62,39 +62,6 @@ export async function loadEventRoster(eventId){
 
 }
 
-/**
- * ============================================================================
- * Legacy Renderer
- *
- * Temporary compatibility wrapper.
- * Can be removed after Communications migrates.
- * ============================================================================
- */
+window.loadEventRoster =
+    loadEventRoster;
 
-export async function displayEventRoster(
-    eventId
-){
-
-const students =
-    await response.json();
-
-return students;
-
-}
-
-/**
- * ============================================================================
- * Default Renderer
- * ============================================================================
- */
-
-function renderEventRoster(
-    students = []
-){
-
-    console.log(
-        'Roster:',
-        students
-    );
-
-}
