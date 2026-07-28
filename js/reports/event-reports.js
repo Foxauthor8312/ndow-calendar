@@ -64,21 +64,7 @@ export async function openAttendanceRoster(event){
       
           getState();
       
-      console.log(
-          'Attendance Report State:',
-          state
-      );
-      
-      console.log(
-          'Roster:',
-          state.roster
-      );
-      
-      console.log(
-          'Selected:',
-          state.selectedRecipients
-      );
-      
+           
       const roster =
 
     state.selectedRecipients || [];
@@ -325,7 +311,8 @@ ${html}
 
 `);
 
-    preview.document.close();
+preview.document.close();
+
 
 }
 
