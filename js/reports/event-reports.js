@@ -29,10 +29,14 @@ import { renderEventAttendanceRoster }
 from './event-attendance-roster.js';
 
 import {
-    loadEventRoster
-}
-from '../event-roster.js';
 
+    getState
+
+}
+
+from
+
+'../communications2/communications-state.js';
 /**
  * ============================================================================
  * Attendance Roster
@@ -56,10 +60,13 @@ export async function openAttendanceRoster(event){
             event.id
         );
 
-        const roster =
-            await loadEventRoster(
-                event.id
-            );
+       const state =
+
+          getState();
+      
+      const roster =
+      
+      state.roster || [];
 
         const instructors =
 
