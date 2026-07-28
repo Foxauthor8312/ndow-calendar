@@ -137,7 +137,7 @@ th{
 
     ${renderFooter(event)}
 
-    ${renderQrSection()}
+  
 
 </div>
 
@@ -839,7 +839,6 @@ function renderQrSection(){
 <div style="
     display:flex;
     justify-content:flex-end;
-    gap:50px;
     margin-top:24px;
     border-top:1px solid #DBE3EC;
     padding-top:16px;
@@ -853,27 +852,7 @@ function renderQrSection(){
             font-size:11px;
             font-weight:bold;
             color:#19304B;
-            margin-bottom:6px;
-        ">
-
-            Scan for NDOW<br>
-            Event Details
-
-        </div>
-
-        <div id="eventQr"></div>
-
-    </div>
-
-    <div style="
-        text-align:center;
-    ">
-
-        <div style="
-            font-size:11px;
-            font-weight:bold;
-            color:#19304B;
-            margin-bottom:6px;
+            margin-bottom:8px;
         ">
 
             Scan to Enter<br>
@@ -881,7 +860,16 @@ function renderQrSection(){
 
         </div>
 
-        <div id="portalQr"></div>
+        <img
+            src="volunteer_portal_qr.png"
+            alt="Volunteer Portal QR Code"
+            style="
+                width:90px;
+                height:auto;
+                display:block;
+                margin:0 auto;
+            "
+        >
 
     </div>
 
