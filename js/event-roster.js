@@ -28,7 +28,7 @@
  * ============================================================================
  */
 
-async function loadEventRoster(eventId) {
+export async function loadEventRoster(eventId){
 
     try {
 
@@ -61,7 +61,3 @@ async function loadEventRoster(eventId) {
     }
 
 }
-
-window.loadEventRoster =
-    loadEventRoster;
-
