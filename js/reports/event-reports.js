@@ -6,49 +6,30 @@
  Layer       : Reports Controller
 
  Purpose:
-    Coordinates generation of event reports.
+    Coordinates generation and preview of Event Reports.
 
  Responsibilities:
-    • Validate event
     • Load roster
-    • Generate report
-    • Display report preview
+    • Generate Attendance Roster
+    • Open report preview
+    • Print report
 
  Used By:
-    • Event Details
-==============================================================================
+    • Event Details Modal
 
- Future Reports
- ------------------------------------------------------------------------------
- • Attendance Roster
- • Instructor Time Report
- • Equipment Checklist
- • Student Sign-In Sheet
- • Event Summary
+ Public Functions:
+    • openAttendanceRoster(event)
 ==============================================================================
 */
 
 'use strict';
 
-import {
-    renderEventAttendanceRoster
-}
-from './event-attendance-roster.js';
-
-import {
-    loadEventRoster
-}
-from '../event-roster.js';
-
 
 /*=============================================================================
-    Public API
+    Attendance Roster
 =============================================================================*/
 
-/**
- * Generate and display the Event Attendance Roster.
- */
-export async function openAttendanceRoster(event){
+async function openAttendanceRoster(event){
 
     try{
 
@@ -61,7 +42,7 @@ export async function openAttendanceRoster(event){
         }
 
         console.log(
-            'Generating Attendance Roster',
+            'Generating Attendance Roster:',
             event.id
         );
 
@@ -71,10 +52,13 @@ export async function openAttendanceRoster(event){
             );
 
         const instructors =
+
             Array.isArray(
                 event.instructors
             )
+
             ? event.instructors
+
             : [];
 
         const html =
@@ -88,9 +72,12 @@ export async function openAttendanceRoster(event){
 
             );
 
-        openReportPreview(
+        showReportPreview(
+
             html,
+
             `Attendance Roster - Event ${event.id}`
+
         );
 
     }
@@ -98,12 +85,15 @@ export async function openAttendanceRoster(event){
     catch(error){
 
         console.error(
-            'Attendance Report',
+
+            'Attendance Report Error:',
+
             error
+
         );
 
         alert(
-            'Unable to generate the attendance roster.'
+            'Unable to generate attendance roster.'
         );
 
     }
@@ -112,34 +102,40 @@ export async function openAttendanceRoster(event){
 
 
 /*=============================================================================
-    Preview Window
+    Report Preview
 =============================================================================*/
 
-function openReportPreview(
+function showReportPreview(
+
     html,
-    title='Report'
+
+    title
+
 ){
 
-    const win =
+    const reportWindow =
+
         window.open(
+
             '',
+
             '_blank',
-            'width=1100,height=900'
+
+            'width=1100,height=900,resizable=yes,scrollbars=yes'
+
         );
 
-    if(!win){
+    if(!reportWindow){
 
         alert(
-            'Popup blocker prevented the report preview.'
+            'Please allow popups to preview reports.'
         );
 
         return;
 
     }
 
-    win.document.open();
-
-    win.document.write(`
+    reportWindow.document.write(`
 
 <!DOCTYPE html>
 
@@ -153,12 +149,12 @@ function openReportPreview(
 
 <style>
 
-html,
 body{
 
     margin:0;
-    padding:0;
+
     background:#E5E7EB;
+
     font-family:Arial,sans-serif;
 
 }
@@ -166,18 +162,18 @@ body{
 .toolbar{
 
     position:sticky;
+
     top:0;
-
-    display:flex;
-    gap:10px;
-
-    padding:12px;
 
     background:#19304B;
 
-    border-bottom:1px solid #102335;
+    padding:12px;
 
-    z-index:1000;
+    display:flex;
+
+    gap:10px;
+
+    z-index:999;
 
 }
 
@@ -198,6 +194,7 @@ body{
 .print{
 
     background:#589FD6;
+
     color:white;
 
 }
@@ -205,6 +202,7 @@ body{
 .close{
 
     background:#DC2626;
+
     color:white;
 
 }
@@ -212,6 +210,7 @@ body{
 .page{
 
     display:flex;
+
     justify-content:center;
 
     padding:24px;
@@ -223,7 +222,36 @@ body{
     background:white;
 
     box-shadow:
-        0 3px 15px rgba(0,0,0,.20);
+
+        0 2px 14px rgba(0,0,0,.20);
+
+}
+
+@media print{
+
+.toolbar{
+
+    display:none;
+
+}
+
+body{
+
+    background:white;
+
+}
+
+.page{
+
+    padding:0;
+
+}
+
+.report{
+
+    box-shadow:none;
+
+}
 
 }
 
@@ -236,16 +264,20 @@ body{
 <div class="toolbar">
 
 <button
+
 class="print"
-onclick="window.print();">
+
+onclick="window.print()">
 
 Print
 
 </button>
 
 <button
+
 class="close"
-onclick="window.close();">
+
+onclick="window.close()">
 
 Close
 
@@ -269,6 +301,15 @@ ${html}
 
 `);
 
-    win.document.close();
+    reportWindow.document.close();
 
 }
+
+
+/*=============================================================================
+    Public Interface
+=============================================================================*/
+
+window.openAttendanceRoster =
+
+    openAttendanceRoster;
