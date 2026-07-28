@@ -121,7 +121,7 @@ th{
 
     ${renderAttendanceSummary(roster)}
 
-   ${renderFooter(event)}
+    ${renderFooter(event)}
 
 </div>
 
@@ -218,7 +218,7 @@ function renderContinuationHeader(){
     return `
 
 <div style="
-    border-bottom:2px solid #19304B;
+    border-top:1px solid #19304B;
     padding-bottom:10px;
     margin-bottom:20px;
 ">
@@ -668,14 +668,14 @@ function renderFooter(event){
 
 <div
     style="
-        margin-top:30px;
-        padding-top:10px;
-        border-top:2px solid #19304B;
+        margin-top:16px;
+        padding-top:6px;
+        border-top:1px solid #19304B;
         font-size:10px;
         color:#555;
         display:flex;
         justify-content:space-between;
-        align-items:flex-end;
+        align-items:center;
     "
 >
 
@@ -693,53 +693,15 @@ function renderFooter(event){
 
     <div
         style="
-            text-align:center;
+            text-align:right;
         "
     >
 
-        Event ID
+        <strong>Event ID:</strong>
 
-        <br>
-
-        <strong>
-
-            ${event?.id ?? ''}
-
-        </strong>
+        ${event?.id ?? ''}
 
     </div>
-
- <div
-    style="
-        text-align:center;
-        width:90px;
-    "
->
-
-    <div
-        style="
-            font-size:9px;
-            font-weight:bold;
-            color:#19304B;
-            margin-bottom:4px;
-            line-height:1.2;
-        "
-    >
-        Volunteer<br>
-        Portal
-    </div>
-
-<img
-    src="images/volunteer_portal_qr.png"
-    alt="Volunteer Portal QR Code"
-    style="
-        width:72px;
-        height:72px;
-        display:block;
-        margin:0 auto;
-    "
->
-</div>
 
 </div>
 
@@ -756,7 +718,7 @@ function renderNotesPage(event){
 
     let lines = '';
 
-    for(let i = 0; i < 18; i++){
+    for(let i = 0; i < 16; i++){
 
         lines += `
 
