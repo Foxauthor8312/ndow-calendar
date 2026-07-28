@@ -1,10 +1,10 @@
 /*
 ==============================================================================
  NDOW Volunteer Portal
- Attendance Roster Renderer
+ Event Attendance Roster
 ------------------------------------------------------------------------------
- Module      : attendance-roster.js
- Layer       : Document Renderer
+ Module      : event-attendance-roster.js
+ Layer       : Report Renderer
 
  Purpose:
     Generates the printable Event Attendance Roster.
@@ -15,12 +15,13 @@
     • Render instructor section
     • Render student roster
     • Render attendance summary
-    • Render footer
-    • Render continuation pages
+    • Render report footer
+    • Render continuation page
 
  Used By:
-    • Communications / Document Workspace
-==============================================================================*/
+    • Event Reports
+==============================================================================
+*/
 
 'use strict';
 
