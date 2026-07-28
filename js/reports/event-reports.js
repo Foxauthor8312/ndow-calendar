@@ -60,13 +60,28 @@ export async function openAttendanceRoster(event){
             event.id
         );
 
-       const state =
-
+      const state =
+      
           getState();
       
-      const roster =
+      console.log(
+          'Attendance Report State:',
+          state
+      );
       
-      state.roster || [];
+      console.log(
+          'Roster:',
+          state.roster
+      );
+      
+      console.log(
+          'Selected:',
+          state.selectedRecipients
+      );
+      
+      const roster =
+
+    state.selectedRecipients || [];
 
         const instructors =
 
