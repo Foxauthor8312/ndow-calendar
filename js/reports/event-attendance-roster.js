@@ -372,24 +372,31 @@ function renderEventInformation(event){
  */
 function renderInstructorSection(instructors = []){
 
-    const lead =
-        instructors.find(i =>
-            (i.role || '').toLowerCase().includes('lead')
-        );
+    const primary =
+
+        instructors.find(i => {
+
+            const role =
+
+                (i.role || '').toLowerCase();
+
+            return role.includes('lead') ||
+                   role.includes('primary');
+
+        });
 
     const assistants =
-        instructors.filter(i =>
-            (i.role || '').toLowerCase().includes('assistant')
-        );
 
-    const volunteers =
         instructors.filter(i => {
 
             const role =
+
                 (i.role || '').toLowerCase();
 
-            return !role.includes('lead') &&
-                   !role.includes('assistant');
+            return !(
+                role.includes('lead') ||
+                role.includes('primary')
+            );
 
         });
 
@@ -406,11 +413,13 @@ function renderInstructorSection(instructors = []){
 <tr>
 
     <th style="width:22%;">
-        Lead Instructor
+        Primary Instructor
     </th>
 
     <td>
-        ${lead?.name ?? ''}
+
+        ${primary?.name ?? '&nbsp;'}
+
     </td>
 
 </tr>
@@ -425,30 +434,10 @@ function renderInstructorSection(instructors = []){
 
         ${
             assistants.length
-            ? assistants
-                .map(i => i.name)
-                .join('<br>')
-            : '&nbsp;'
-        }
-
-    </td>
-
-</tr>
-
-<tr>
-
-    <th>
-        Volunteer(s)
-    </th>
-
-    <td>
-
-        ${
-            volunteers.length
-            ? volunteers
-                .map(i => i.name)
-                .join('<br>')
-            : '&nbsp;'
+                ? assistants
+                    .map(i => i.name)
+                    .join('<br>')
+                : '&nbsp;'
         }
 
     </td>
