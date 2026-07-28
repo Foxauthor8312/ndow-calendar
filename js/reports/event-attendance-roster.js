@@ -165,7 +165,7 @@ function renderHeader(){
     ">
 
         <img
-            src="main/ndow-logo.png"
+            src="ndow-logo.png"
             alt="NDOW"
             style="
                 width:80px;
