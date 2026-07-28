@@ -9,25 +9,27 @@
     Coordinates generation and preview of Event Reports.
 
  Responsibilities:
+    • Load event data
     • Load roster
-    • Generate Attendance Roster
-    • Open report preview
-    • Print report
+    • Generate reports
+    • Display report preview
+    • Print reports
 
  Used By:
-    • Event Details Modal
+    • Communications Workspace
 
  Public Functions:
-    • openAttendanceRoster(event)
+    • openAttendanceRoster()
 ==============================================================================
 */
 
 'use strict';
 
-
-/*=============================================================================
-    Attendance Roster
-=============================================================================*/
+/**
+ * ============================================================================
+ * Attendance Roster
+ * ============================================================================
+ */
 
 async function openAttendanceRoster(event){
 
@@ -42,7 +44,7 @@ async function openAttendanceRoster(event){
         }
 
         console.log(
-            'Generating Attendance Roster:',
+            'Generating Attendance Roster...',
             event.id
         );
 
@@ -85,25 +87,23 @@ async function openAttendanceRoster(event){
     catch(error){
 
         console.error(
-
             'Attendance Report Error:',
-
             error
-
         );
 
         alert(
-            'Unable to generate attendance roster.'
+            'Unable to generate Attendance Roster.'
         );
 
     }
 
 }
 
-
-/*=============================================================================
-    Report Preview
-=============================================================================*/
+/**
+ * ============================================================================
+ * Report Preview Window
+ * ============================================================================
+ */
 
 function showReportPreview(
 
@@ -113,7 +113,7 @@ function showReportPreview(
 
 ){
 
-    const reportWindow =
+    const preview =
 
         window.open(
 
@@ -125,7 +125,7 @@ function showReportPreview(
 
         );
 
-    if(!reportWindow){
+    if(!preview){
 
         alert(
             'Please allow popups to preview reports.'
@@ -135,7 +135,7 @@ function showReportPreview(
 
     }
 
-    reportWindow.document.write(`
+    preview.document.write(`
 
 <!DOCTYPE html>
 
@@ -149,43 +149,46 @@ function showReportPreview(
 
 <style>
 
+html,
 body{
 
     margin:0;
-
-    background:#E5E7EB;
-
-    font-family:Arial,sans-serif;
+    padding:0;
+    background:#E8EDF3;
+    font-family:Arial,Helvetica,sans-serif;
 
 }
 
 .toolbar{
 
     position:sticky;
-
     top:0;
+
+    display:flex;
+    gap:10px;
+
+    padding:12px 16px;
 
     background:#19304B;
 
-    padding:12px;
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.20);
 
-    display:flex;
-
-    gap:10px;
-
-    z-index:999;
+    z-index:1000;
 
 }
 
 .toolbar button{
 
-    padding:10px 18px;
-
     border:none;
 
     border-radius:6px;
 
+    padding:10px 18px;
+
     cursor:pointer;
+
+    font-size:14px;
 
     font-weight:600;
 
@@ -194,7 +197,6 @@ body{
 .print{
 
     background:#589FD6;
-
     color:white;
 
 }
@@ -202,7 +204,6 @@ body{
 .close{
 
     background:#DC2626;
-
     color:white;
 
 }
@@ -210,9 +211,7 @@ body{
 .page{
 
     display:flex;
-
     justify-content:center;
-
     padding:24px;
 
 }
@@ -222,36 +221,35 @@ body{
     background:white;
 
     box-shadow:
-
-        0 2px 14px rgba(0,0,0,.20);
+        0 3px 16px rgba(0,0,0,.20);
 
 }
 
 @media print{
 
-.toolbar{
+    .toolbar{
 
-    display:none;
+        display:none;
 
-}
+    }
 
-body{
+    body{
 
-    background:white;
+        background:white;
 
-}
+    }
 
-.page{
+    .page{
 
-    padding:0;
+        padding:0;
 
-}
+    }
 
-.report{
+    .report{
 
-    box-shadow:none;
+        box-shadow:none;
 
-}
+    }
 
 }
 
@@ -264,20 +262,16 @@ body{
 <div class="toolbar">
 
 <button
-
 class="print"
-
-onclick="window.print()">
+onclick="window.print();">
 
 Print
 
 </button>
 
 <button
-
 class="close"
-
-onclick="window.close()">
+onclick="window.close();">
 
 Close
 
@@ -301,15 +295,15 @@ ${html}
 
 `);
 
-    reportWindow.document.close();
+    preview.document.close();
 
 }
 
-
-/*=============================================================================
-    Public Interface
-=============================================================================*/
+/**
+ * ============================================================================
+ * Public Interface
+ * ============================================================================
+ */
 
 window.openAttendanceRoster =
-
     openAttendanceRoster;
