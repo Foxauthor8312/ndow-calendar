@@ -133,8 +133,6 @@ th{
 
     ${renderNotesPage(event)}
 
-    ${renderQrSection()}
-
     ${renderFooter(event)}
 
 </div>
@@ -487,7 +485,7 @@ function renderStudentRoster(roster = []){
 
     <th style="width:240px;">
        Email
-   </th>>
+   </th>
 
     <th style="width:140px;">
         Status
@@ -711,19 +709,37 @@ function renderFooter(event){
 
     </div>
 
+ <div
+    style="
+        text-align:center;
+        width:90px;
+    "
+>
+
     <div
         style="
-            width:80px;
-            height:80px;
-            border:1px solid #999;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:11px;
+            font-size:9px;
+            font-weight:bold;
+            color:#19304B;
+            margin-bottom:4px;
+            line-height:1.2;
         "
     >
-
+        Volunteer<br>
+        Portal
     </div>
+
+<img
+    src="images/volunteer_portal_qr.png"
+    alt="Volunteer Portal QR Code"
+    style="
+        width:72px;
+        height:72px;
+        display:block;
+        margin:0 auto;
+    "
+>
+</div>
 
 </div>
 
@@ -828,49 +844,3 @@ ${lines}
 
 }
 
-function renderQrSection(){
-
-    return `
-
-<div style="
-    display:flex;
-    justify-content:space-between;
-    margin-top:24px;
-    border-top:1px solid #DBE3EC;
-    padding-top:16px;
-">
-
-    <div style="
-        text-align:center;
-    ">
-
-        <div style="
-            font-size:11px;
-            font-weight:bold;
-            color:#19304B;
-            margin-bottom:8px;
-        ">
-
-            Scan to Enter<br>
-            Volunteer Hours
-
-        </div>
-
-        <img
-            src="volunteer_portal_qr.png"
-            alt="Volunteer Portal QR Code"
-            style="
-                width:90px;
-                height:auto;
-                display:block;
-                margin:0 auto;
-            "
-        >
-
-    </div>
-
-</div>
-
-`;
-
-}
