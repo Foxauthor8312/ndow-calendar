@@ -123,6 +123,8 @@ th{
 
     ${renderFooter(event)}
 
+    ${renderQrSection()}
+
 </div>
 
 <div class="page-break"></div>
@@ -134,6 +136,8 @@ th{
     ${renderNotesPage(event)}
 
     ${renderFooter(event)}
+
+    ${renderQrSection()}
 
 </div>
 
@@ -161,7 +165,7 @@ function renderHeader(){
     ">
 
         <img
-            src="images/ndow-logo.png"
+            src="main/ndow-logo.png"
             alt="NDOW"
             style="
                 width:80px;
@@ -188,7 +192,7 @@ function renderHeader(){
             font-size:14px;
             margin-top:4px;
         ">
-            Volunteer Instructor Event Calendar
+            Volunteer Instructor Program
         </div>
 
         <div style="
@@ -821,6 +825,65 @@ ${lines}
 <li>Return completed roster according to NDOW procedures.</li>
 
 </ul>
+
+</div>
+
+`;
+
+}
+
+function renderQrSection(){
+
+    return `
+
+<div style="
+    display:flex;
+    justify-content:flex-end;
+    gap:50px;
+    margin-top:24px;
+    border-top:1px solid #DBE3EC;
+    padding-top:16px;
+">
+
+    <div style="
+        text-align:center;
+    ">
+
+        <div style="
+            font-size:11px;
+            font-weight:bold;
+            color:#19304B;
+            margin-bottom:6px;
+        ">
+
+            Scan for NDOW<br>
+            Event Details
+
+        </div>
+
+        <div id="eventQr"></div>
+
+    </div>
+
+    <div style="
+        text-align:center;
+    ">
+
+        <div style="
+            font-size:11px;
+            font-weight:bold;
+            color:#19304B;
+            margin-bottom:6px;
+        ">
+
+            Scan to Enter<br>
+            Volunteer Hours
+
+        </div>
+
+        <div id="portalQr"></div>
+
+    </div>
 
 </div>
 
