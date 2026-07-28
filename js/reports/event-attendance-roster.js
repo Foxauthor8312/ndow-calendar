@@ -74,6 +74,8 @@ body{
 
 .event-report{
     width:100%;
+    position:relative;
+    min-height:10in;
 }
 
 .page-break{
@@ -132,6 +134,8 @@ th{
     ${renderContinuationHeader()}
 
     ${renderNotesPage(event)}
+
+    ${renderPortalQr()}
 
     ${renderFooter(event)}
 
@@ -649,6 +653,49 @@ function renderAttendanceSummary(roster = []){
 </tr>
 
 </table>
+
+`;
+
+}
+
+function renderPortalQr(){
+
+    return `
+
+<div
+    style="
+        position:absolute;
+        right:.55in;
+        bottom:.75in;
+        text-align:center;
+    "
+>
+
+    <div
+        style="
+            font-size:9px;
+            font-weight:bold;
+            color:#19304B;
+            margin-bottom:4px;
+            line-height:1.2;
+        "
+    >
+
+        Scan to Enter<br>
+        Volunteer Hours
+
+    </div>
+
+    <img
+        src="volunteer_portal_qr.png"
+        alt="Volunteer Portal QR Code"
+        style="
+            width:72px;
+            height:72px;
+        "
+    >
+
+</div>
 
 `;
 
