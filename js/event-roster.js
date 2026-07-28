@@ -3,45 +3,101 @@
  NDOW Volunteer Portal
 ------------------------------------------------------------------------------
  Module      : event-roster.js
- Description : Event roster display module.
+ Layer       : Shared Data Service
+
+ Purpose:
+    Loads event roster information from the server.
+
+ Responsibilities:
+    • Retrieve student roster
+    • Return roster data
+    • No UI rendering
+
+ Used By:
+    • Communications Workspace
+    • Event Reports
+    • Future Attendance Tools
 ==============================================================================
 */
 
 'use strict';
 
-async function loadEventRoster(eventId) {
+/**
+ * ============================================================================
+ * Load Event Roster
+ * ============================================================================
+ */
 
-    try {
+export async function loadEventRoster(eventId){
+
+    try{
 
         const response =
             await fetch(
                 `/api/event-roster/${eventId}`
             );
 
-        const students =
-            await response.json();
+        if(!response.ok){
 
-        renderEventRoster(
-            students
-        );
+            throw new Error(
+                `Roster request failed (${response.status})`
+            );
+
+        }
+
+        return await response.json();
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(
+            'Failed to load event roster:',
             error
         );
+
+        return [];
 
     }
 
 }
 
+/**
+ * ============================================================================
+ * Legacy Renderer
+ *
+ * Temporary compatibility wrapper.
+ * Can be removed after Communications migrates.
+ * ============================================================================
+ */
+
+export async function displayEventRoster(
+    eventId
+){
+
+    const students =
+        await loadEventRoster(
+            eventId
+        );
+
+    renderEventRoster(
+        students
+    );
+
+}
+
+/**
+ * ============================================================================
+ * Default Renderer
+ * ============================================================================
+ */
+
 function renderEventRoster(
-    students
-) {
+    students = []
+){
 
     console.log(
+        'Roster:',
         students
     );
 
