@@ -8735,7 +8735,10 @@ function openAddAddressModal(){
 
 function initializeAddressSearch(){
 
-  const input = document.getElementById('addressSearch');
+  const input =
+    document.getElementById(
+      'addressSearch'
+    );
 
   if (!input) return;
 
@@ -8755,6 +8758,20 @@ function initializeAddressSearch(){
     limit: 8
 
   });
+
+  addressSearchWidget.on(
+    'change',
+    handleAddressSelected
+  );
+
+}
+
+function handleAddressSelected(result){
+
+  console.log(
+    'MapQuest Selection:',
+    result
+  );
 
 }
 
