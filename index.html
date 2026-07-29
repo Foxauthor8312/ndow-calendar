@@ -8742,7 +8742,9 @@ function initializeAddressSearch(){
 
   if (!input) return;
 
-  if (addressSearchWidget) return;
+  if (addressSearchWidget){
+    return;
+  }
 
   addressSearchWidget = placeSearch({
 
@@ -8758,11 +8760,6 @@ function initializeAddressSearch(){
     limit: 8
 
   });
-
-//  addressSearchWidget.on(
-//    'change',
-//    handleAddressSelected
-//  );
 
 }
 
