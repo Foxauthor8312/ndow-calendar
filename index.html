@@ -8763,13 +8763,12 @@ function initializeAddressSearch(){
 
   addressSearchWidget.on(
     'change',
-    function(e){
+    function(result){
 
-      const result = e.result;
-
-      document.getElementById(
-        'addressAddress1'
-      ).value = result.name || '';
+      console.log(
+        'ADDRESS SELECTED >>>',
+        result
+      );
 
     }
   );
