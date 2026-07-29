@@ -8735,17 +8735,17 @@ function openAddAddressModal(){
 
 function initializeAddressSearch(){
 
-  if(addressSearchWidget){
-    return;
-  }
+  const input = document.getElementById('addressSearch');
+
+  if (!input) return;
+
+  if (addressSearchWidget) return;
 
   addressSearchWidget = placeSearch({
 
     key: publicConfig.mapquestApiKey,
 
-    container: document.getElementById(
-      'addressLookup'
-    ),
+    container: input,
 
     collection: [
       'address',
@@ -8858,52 +8858,22 @@ data = data.sort(
     window.addressesCache =
       data;
 
-    const search =
-      document.getElementById(
-        'addressSearch'
-      )?.value
-        ?.toLowerCase()
-        ?.trim() || '';
-
-    const filtered =
-      data.filter(a =>
-
-        !search ||
-
-        (a.location_name || '')
-          .toLowerCase()
-          .includes(search)
-
-        ||
-
-        (a.city || '')
-          .toLowerCase()
-          .includes(search)
-
-        ||
-
-        (a.location_type || '')
-          .toLowerCase()
-          .includes(search)
-
-      );
-
     list.innerHTML = `
 
-	<table style="
-	  width:100%;
-	  border-collapse:collapse;
-	  font-size:11px;
-	  color:#19304B;
-	">
+		<table style="
+		  width:100%;
+		  border-collapse:collapse;
+		  font-size:11px;
+		  color:#19304B;
+		">
 	
-	<<thead>
+		<<thead>
 
-  <tr style="
-    background:#F8FAFC;
-    border-bottom:1px solid #DBE3EC;
-    color:#19304B;
-  ">
+	  <tr style="
+	    background:#F8FAFC;
+	    border-bottom:1px solid #DBE3EC;
+	    color:#19304B;
+	  ">
 
     <th style="
       width:35px;
@@ -8958,7 +8928,7 @@ data = data.sort(
 
         <tbody>
 
-          ${filtered.map(a => `
+          ${data.map(a => `
 
             <tr style="
               border-bottom:1px solid #DBE3EC;
@@ -15189,13 +15159,7 @@ id="adminSidebar"
     gap:10px;
   ">
 
-   <input
-    id="addressLookup"
-    type="search"
-    placeholder="Start typing an address or place..."
->
-
-<button
+  <button
   onclick="loadAddresses()"
 >
   Refresh
