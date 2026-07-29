@@ -8742,9 +8742,16 @@ function initializeAddressSearch(){
 
   if (!input) return;
 
+
   if (addressSearchWidget){
     return;
   }
+
+		console.log(
+  'CONFIG AT MAPQUEST >>>',
+  publicConfig
+);
+
 
   addressSearchWidget = placeSearch({
 
@@ -12947,9 +12954,12 @@ if(savedUser){
     'https://ndow-calendar-server.onrender.com/api/config/public'
   );
 
-  publicConfig = await response.json();
+publicConfig = await response.json();
 
-}
+console.log(
+  'CONFIG LOADED >>>',
+  publicConfig
+);
 	
 
 async function runCalendarUpdate(){
