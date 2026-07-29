@@ -8742,16 +8742,9 @@ function initializeAddressSearch(){
 
   if (!input) return;
 
-
   if (addressSearchWidget){
     return;
   }
-
-		console.log(
-  'CONFIG AT MAPQUEST >>>',
-  publicConfig
-);
-
 
   addressSearchWidget = placeSearch({
 
@@ -8767,6 +8760,18 @@ function initializeAddressSearch(){
     limit: 8
 
   });
+
+  addressSearchWidget.on(
+    'change',
+    function(result){
+
+      console.log(
+        'ADDRESS SELECTED >>>',
+        result
+      );
+
+    }
+  );
 
 }
 
