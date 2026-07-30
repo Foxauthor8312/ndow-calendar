@@ -8733,45 +8733,21 @@ function openAddAddressModal(){
 
 }
 
-function initializeAddressSearch(){
+function initializeAddressSearch() {
 
-  const input =
-    document.getElementById(
-      'addressSearch'
-    );
+    const input =
+        document.getElementById(
+            'addressSearch'
+        );
 
-  if (!input) return;
-
-  if (addressSearchWidget){
-    return;
-  }
-
-  addressSearchWidget = placeSearch({
-
-    key: publicConfig.mapquestApiKey,
-
-    container: input,
-
-    collection: [
-      'address',
-      'poi'
-    ],
-
-    limit: 8
-
-  });
-
-  addressSearchWidget.on(
-    'change',
-    function(result){
-
-      console.log(
-        'ADDRESS SELECTED >>>',
-        result
-      );
-
+    if (!input) {
+        return;
     }
-  );
+
+    input.addEventListener(
+        'input',
+        handleAddressSearch
+    );
 
 }
 
