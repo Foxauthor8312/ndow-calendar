@@ -37,6 +37,8 @@ import {
 
     setRoster,
 
+    setSelectedRecipients,
+
     setLocation,
 
     setHistory
@@ -59,7 +61,8 @@ from
 
 import {
 
-    initializeRecipients
+    initializeRecipients,
+    getVisibleRecipients
 
 }
 
@@ -214,6 +217,19 @@ const roster =
 setRoster(
 
     roster
+
+);
+
+/*
+----------------------------------------------------------------------
+Initialize the selection using the recipients that are currently
+visible for the active communication type.
+----------------------------------------------------------------------
+*/
+
+setSelectedRecipients(
+
+    getVisibleRecipients()
 
 );
 
