@@ -60,7 +60,7 @@ export function initializeRecipients(){
     VISIBLE RECIPIENTS
 ===========================================================================*/
 
-function getVisibleRecipients(){
+export function getVisibleRecipients(){
 
     const state = getState();
 
