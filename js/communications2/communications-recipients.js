@@ -26,7 +26,6 @@
 import {
 
     getState,
-
     setSelectedRecipients
 
 }
@@ -58,76 +57,54 @@ export function initializeRecipients(){
 
 
 /*===========================================================================
-    RENDER
+    VISIBLE RECIPIENTS
 ===========================================================================*/
 
-export function renderRecipients(){
+function getVisibleRecipients(){
 
-    const state =
+    const state = getState();
 
-        getState();
+    let recipients = [...state.roster];
 
-    const container =
+    const selector =
 
         document.getElementById(
-
-            'communicationsRecipients'
-
+            'communicationTemplate'
         );
 
-    if(!container){
+    const currentFunction =
 
-        return;
+        selector
+            ? selector.value
+            : COMMUNICATION_TYPES.REMINDER;
+
+    switch(currentFunction){
+
+        case COMMUNICATION_TYPES.SURVEY:
+
+            recipients = recipients.filter(
+
+                student => student.attended === true
+
+            );
+
+            break;
+
+        case COMMUNICATION_TYPES.NO_SHOW:
+
+            recipients = recipients.filter(
+
+                student => student.attended === false
+
+            );
+
+            break;
 
     }
 
-    container.innerHTML = `
-
-<div
-    class="comm-recipient-toolbar">
-
-    <button
-        type="button"
-        onclick="selectAllRecipients()">
-
-        Select All
-
-    </button>
-
-    <button
-        type="button"
-        onclick="clearRecipients()">
-
-        Clear All
-
-    </button>
-
-    <span
-        id="recipientCount"
-        style="
-            float:right;
-            font-weight:600;
-        ">
-
-        ${state.selectedRecipients.length}
-        Selected
-
-    </span>
-
-</div>
-
-<div
-    id="recipientList"
-    class="comm-recipient-list">
-
-</div>
-
-`;
-
-    renderRecipientList();
+    return recipients;
 
 }
-
 
 /*===========================================================================
     RECIPIENT LIST
@@ -139,55 +116,56 @@ function renderRecipientList(){
 
         getState();
 
-     let recipients =
+    const recipients =
 
-        [...state.roster];
+        getVisibleRecipients();
 
-    const selector =
+    /*
+    --------------------------------------------------------------------------
+    Keep selected recipients synchronized with the visible recipient list.
+    This prevents hidden recipients from remaining selected.
+    --------------------------------------------------------------------------
+    */
 
-        document.getElementById(
+    const visibleIds =
 
-            'communicationTemplate'
+        new Set(
+
+            recipients.map(
+
+                student => student.customer_id
+
+            )
 
         );
 
-    const currentFunction =
+    const selected =
 
-        selector ?
+        state.selectedRecipients.filter(
 
-            selector.value :
+            recipient =>
 
-            COMMUNICATION_TYPES.REMINDER;
+                visibleIds.has(
 
-    switch(currentFunction){
+                    recipient.customer_id
 
-        case COMMUNICATION_TYPES.SURVEY:
+                )
 
-            recipients =
+        );
 
-                recipients.filter(
+    if(
 
-                    student =>
+        selected.length !==
 
-                        student.attended === true
+        state.selectedRecipients.length
 
-                );
+    ){
 
-            break;
+        setSelectedRecipients(
 
-        case COMMUNICATION_TYPES.NO_SHOW:
+            selected
 
-            recipients =
-
-                recipients.filter(
-
-                    student =>
-
-                        student.attended === false
-
-                );
-
-            break;
+        );
 
     }
 
@@ -217,7 +195,7 @@ function renderRecipientList(){
 
         header.textContent =
 
-            `${state.selectedRecipients.length} Selected`;
+            `${selected.length} Selected`;
 
     }
 
@@ -225,13 +203,13 @@ function renderRecipientList(){
 
     recipients.forEach(
 
-        student=>{
+        student => {
 
             const checked =
 
-                state.selectedRecipients.some(
+                selected.some(
 
-                    recipient=>
+                    recipient =>
 
                         recipient.customer_id ===
 
@@ -312,84 +290,6 @@ function renderRecipientList(){
 
 }
 
-
-/*===========================================================================
-    TOGGLE
-===========================================================================*/
-
-window.toggleRecipient =
-
-function(customerId){
-
-    const state =
-
-        getState();
-
-    const exists =
-
-        state.selectedRecipients.find(
-
-            recipient=>
-
-                recipient.customer_id ===
-
-                customerId
-
-        );
-
-    if(exists){
-
-        setSelectedRecipients(
-
-            state.selectedRecipients.filter(
-
-                recipient=>
-
-                    recipient.customer_id !==
-
-                    customerId
-
-            )
-
-        );
-
-    }
-
-    else{
-
-        const student =
-
-            state.roster.find(
-
-                recipient=>
-
-                    recipient.customer_id ===
-
-                    customerId
-
-            );
-
-        if(student){
-
-            setSelectedRecipients([
-
-                ...state.selectedRecipients,
-
-                student
-
-            ]);
-
-        }
-
-    }
-
-    updateRecipientCount();
-
-    renderRecipientList();
-
-};
-
-
 /*===========================================================================
     SELECT ALL
 ===========================================================================*/
@@ -398,13 +298,13 @@ window.selectAllRecipients =
 
 function(){
 
-    const state =
+    const recipients =
 
-        getState();
+        getVisibleRecipients();
 
     setSelectedRecipients(
 
-        [...state.roster]
+        [...recipients]
 
     );
 
@@ -413,28 +313,6 @@ function(){
     renderRecipientList();
 
 };
-
-
-/*===========================================================================
-    CLEAR
-===========================================================================*/
-
-window.clearRecipients =
-
-function(){
-
-    setSelectedRecipients([]);
-
-    updateRecipientCount();
-
-    renderRecipientList();
-
-};
-
-
-/*===========================================================================
-    COUNT
-===========================================================================*/
 
 /*===========================================================================
     COUNT
@@ -446,57 +324,9 @@ function updateRecipientCount(){
 
         getState();
 
-    let recipients =
+    const recipients =
 
-        [...state.roster];
-
-    const selector =
-
-        document.getElementById(
-
-            'communicationTemplate'
-
-        );
-
-    const currentFunction =
-
-        selector ?
-
-            selector.value :
-
-            COMMUNICATION_TYPES.REMINDER;
-
-    switch(currentFunction){
-
-        case COMMUNICATION_TYPES.SURVEY:
-
-            recipients =
-
-                recipients.filter(
-
-                    student =>
-
-                        student.attended
-
-                );
-
-            break;
-
-        case COMMUNICATION_TYPES.NO_SHOW:
-
-            recipients =
-
-                recipients.filter(
-
-                    student =>
-
-                        !student.attended
-
-                );
-
-            break;
-
-    }
+        getVisibleRecipients();
 
     const label =
 
@@ -510,7 +340,7 @@ function updateRecipientCount(){
 
         label.textContent =
 
-            `${recipients.length} Recipient(s)`;
+            `${state.selectedRecipients.length} Selected`;
 
     }
 
@@ -524,7 +354,15 @@ function updateRecipientCount(){
 
     if(header){
 
-        switch(currentFunction){
+        switch(
+
+            document.getElementById(
+                'communicationTemplate'
+            )?.value ||
+
+            COMMUNICATION_TYPES.REMINDER
+
+        ){
 
             case COMMUNICATION_TYPES.SURVEY:
 
@@ -561,11 +399,3 @@ function updateRecipientCount(){
     }
 
 }
-
-/*===========================================================================
-    GLOBALS
-===========================================================================*/
-
-window.renderRecipients =
-
-    renderRecipients;
