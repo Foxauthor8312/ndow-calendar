@@ -26,6 +26,7 @@
 import {
 
     getState,
+
     setSelectedRecipients
 
 }
@@ -62,47 +63,137 @@ export function initializeRecipients(){
 
 export function getVisibleRecipients(){
 
-    const state = getState();
+    const state =
 
-    let recipients = [...state.roster];
+        getState();
+
+    let recipients =
+
+        [...state.roster];
 
     const selector =
 
         document.getElementById(
+
             'communicationTemplate'
+
         );
 
     const currentFunction =
 
         selector
+
             ? selector.value
+
             : COMMUNICATION_TYPES.REMINDER;
 
     switch(currentFunction){
 
         case COMMUNICATION_TYPES.SURVEY:
 
-            recipients = recipients.filter(
+            recipients =
 
-                student => student.attended === true
+                recipients.filter(
 
-            );
+                    student =>
+
+                        student.attended === true
+
+                );
 
             break;
 
         case COMMUNICATION_TYPES.NO_SHOW:
 
-            recipients = recipients.filter(
+            recipients =
 
-                student => student.attended === false
+                recipients.filter(
 
-            );
+                    student =>
+
+                        student.attended === false
+
+                );
 
             break;
 
     }
 
     return recipients;
+
+}
+
+
+/*===========================================================================
+    RENDER
+===========================================================================*/
+
+function renderRecipients(){
+
+    const state =
+
+        getState();
+
+    const container =
+
+        document.getElementById(
+
+            'communicationsRecipients'
+
+        );
+
+    if(!container){
+
+        return;
+
+    }
+
+    container.innerHTML = `
+
+<div
+    class="comm-recipient-toolbar">
+
+    <button
+        type="button"
+        onclick="selectAllRecipients()">
+
+        Select All
+
+    </button>
+
+    <button
+        type="button"
+        onclick="clearRecipients()">
+
+        Clear All
+
+    </button>
+
+    <span
+        id="recipientCount"
+        style="
+            float:right;
+            font-weight:600;
+        ">
+
+        ${state.selectedRecipients.length}
+        Selected
+
+    </span>
+
+</div>
+
+<div
+    id="recipientList"
+    class="comm-recipient-list">
+
+</div>
+
+`;
+
+    renderRecipientList();
+
+    updateRecipientCount();
 
 }
 
@@ -122,8 +213,7 @@ function renderRecipientList(){
 
     /*
     --------------------------------------------------------------------------
-    Keep selected recipients synchronized with the visible recipient list.
-    This prevents hidden recipients from remaining selected.
+    Synchronize the selected recipients with the currently visible list.
     --------------------------------------------------------------------------
     */
 
@@ -133,7 +223,9 @@ function renderRecipientList(){
 
             recipients.map(
 
-                student => student.customer_id
+                student =>
+
+                    student.customer_id
 
             )
 
@@ -183,22 +275,6 @@ function renderRecipientList(){
 
     }
 
-    const header =
-
-        document.getElementById(
-
-            'recipientCountHeader'
-
-        );
-
-    if(header){
-
-        header.textContent =
-
-            `${selected.length} Selected`;
-
-    }
-
     list.innerHTML = '';
 
     recipients.forEach(
@@ -218,7 +294,6 @@ function renderRecipientList(){
                 )
 
                 ? 'checked'
-
                 : '';
 
             list.insertAdjacentHTML(
@@ -288,7 +363,88 @@ function renderRecipientList(){
 
     );
 
+    updateRecipientCount();
+
 }
+
+/*===========================================================================
+    TOGGLE
+===========================================================================*/
+
+window.toggleRecipient =
+
+function(customerId){
+
+    const state =
+
+        getState();
+
+    const recipients =
+
+        getVisibleRecipients();
+
+    const exists =
+
+        state.selectedRecipients.find(
+
+            recipient =>
+
+                recipient.customer_id ===
+
+                customerId
+
+        );
+
+    if(exists){
+
+        setSelectedRecipients(
+
+            state.selectedRecipients.filter(
+
+                recipient =>
+
+                    recipient.customer_id !==
+
+                    customerId
+
+            )
+
+        );
+
+    }
+
+    else{
+
+        const student =
+
+            recipients.find(
+
+                recipient =>
+
+                    recipient.customer_id ===
+
+                    customerId
+
+            );
+
+        if(student){
+
+            setSelectedRecipients([
+
+                ...state.selectedRecipients,
+
+                student
+
+            ]);
+
+        }
+
+    }
+
+    renderRecipientList();
+
+};
+
 
 /*===========================================================================
     SELECT ALL
@@ -308,7 +464,20 @@ function(){
 
     );
 
-    updateRecipientCount();
+    renderRecipientList();
+
+};
+
+
+/*===========================================================================
+    CLEAR
+===========================================================================*/
+
+window.clearRecipients =
+
+function(){
+
+    setSelectedRecipients([]);
 
     renderRecipientList();
 
@@ -354,15 +523,23 @@ function updateRecipientCount(){
 
     if(header){
 
-        switch(
+        const selector =
 
             document.getElementById(
+
                 'communicationTemplate'
-            )?.value ||
 
-            COMMUNICATION_TYPES.REMINDER
+            );
 
-        ){
+        const currentFunction =
+
+            selector
+
+                ? selector.value
+
+                : COMMUNICATION_TYPES.REMINDER;
+
+        switch(currentFunction){
 
             case COMMUNICATION_TYPES.SURVEY:
 
@@ -399,3 +576,12 @@ function updateRecipientCount(){
     }
 
 }
+
+
+/*===========================================================================
+    GLOBALS
+===========================================================================*/
+
+window.renderRecipients =
+
+    renderRecipients;
