@@ -8768,69 +8768,54 @@ function initializeAddressSearch(){
 
 }
 
-function handleAddressSelected(result){
+function handleAddressSelected(event){
 
-  console.log(result);
+    const result = event.result;
 
-  const props =
-    result.searchAheadResult?.place?.properties || {};
+    const props =
+        result.searchAheadResult?.place?.properties || {};
 
-  // Location Name
-  document.getElementById(
-    'addressLocationName'
-  ).value =
-    result.name || '';
+    console.log(result);
 
-  // Address
-  document.getElementById(
-    'addressAddress1'
-  ).value =
-    props.street ||
-    props.address ||
-    '';
+    document.getElementById(
+        'addressLocationName'
+    ).value =
+        result.name || '';
 
-  // City
-  document.getElementById(
-    'addressCity'
-  ).value =
-    props.city ||
-    result.city ||
-    '';
+    document.getElementById(
+        'addressAddress1'
+    ).value =
+        props.street || '';
 
-  // State
-  document.getElementById(
-    'addressState'
-  ).value =
-    props.stateCode ||
-    result.stateCode ||
-    '';
+    document.getElementById(
+        'addressCity'
+    ).value =
+        props.city || '';
 
-  // ZIP
-  document.getElementById(
-    'addressZip'
-  ).value =
-    props.postalCode ||
-    result.postalCode ||
-    '';
+    document.getElementById(
+        'addressState'
+    ).value =
+        props.stateCode || '';
 
-  // County
-  document.getElementById(
-    'addressRegion'
-  ).value =
-    props.county ||
-    '';
+    document.getElementById(
+        'addressZip'
+    ).value =
+        props.postalCode || '';
 
-  // Latitude
-  document.getElementById(
-    'addressLatitude'
-  ).value =
-    result.latlng?.lat || '';
+    document.getElementById(
+        'addressRegion'
+    ).value =
+        props.county || '';
 
-  // Longitude
-  document.getElementById(
-    'addressLongitude'
-  ).value =
-    result.latlng?.lng || '';
+    document.getElementById(
+        'addressLatitude'
+    ).value =
+        result.latlng?.lat || '';
+
+    document.getElementById(
+        'addressLongitude'
+    ).value =
+        result.latlng?.lng || '';
 
 }
 
