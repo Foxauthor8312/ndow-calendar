@@ -8770,18 +8770,68 @@ function initializeAddressSearch(){
 
 function handleAddressSelected(result){
 
-    console.log(result);
+  console.log(result);
 
-    if (result.type === 'poi') {
+  const props =
+    result.searchAheadResult?.place?.properties || {};
 
-        document.getElementById(
-            'addressLocationName'
-        ).value =
-            result.name || '';
+  // Location Name
+  document.getElementById(
+    'addressLocationName'
+  ).value =
+    result.name || '';
 
-    }
+  // Address
+  document.getElementById(
+    'addressAddress1'
+  ).value =
+    props.street ||
+    props.address ||
+    '';
 
-    // We'll populate the rest of the fields here.
+  // City
+  document.getElementById(
+    'addressCity'
+  ).value =
+    props.city ||
+    result.city ||
+    '';
+
+  // State
+  document.getElementById(
+    'addressState'
+  ).value =
+    props.stateCode ||
+    result.stateCode ||
+    '';
+
+  // ZIP
+  document.getElementById(
+    'addressZip'
+  ).value =
+    props.postalCode ||
+    result.postalCode ||
+    '';
+
+  // County
+  document.getElementById(
+    'addressRegion'
+  ).value =
+    props.county ||
+    '';
+
+  // Latitude
+  document.getElementById(
+    'addressLatitude'
+  ).value =
+    result.latlng?.lat || '';
+
+  // Longitude
+  document.getElementById(
+    'addressLongitude'
+  ).value =
+    result.latlng?.lng || '';
+
 }
 
 async function loadAddresses(){
