@@ -8653,9 +8653,14 @@ function openAddAddressModal(){
     'addressId'
   ).value = '';
 
-  document.getElementById(
-    'addressLocationName'
-  ).value = '';
+  if (result.type === 'poi') {
+
+    document.getElementById(
+        'addressLocationName'
+    ).value =
+        result.name;
+
+}
 
   document.getElementById(
     'addressAddress1'
@@ -8733,30 +8738,94 @@ function openAddAddressModal(){
 
 }
 
-function initializeAddressSearch() {
+function initializeAddressSearch(){
 
-    const input =
-        document.getElementById(
-            'addressSearch'
-        );
-
-    if (!input) {
-        return;
-    }
-
-    input.addEventListener(
-        'input',
-        handleAddressSearch
+  const input =
+    document.getElementById(
+      'addressSearch'
     );
+
+  if (!input) return;
+
+  if (addressSearchWidget){
+    return;
+  }
+
+  addressSearchWidget = placeSearch({
+
+    key: publicConfig.mapquestApiKey,
+
+    container: input,
+
+    collection: [
+      'address',
+      'poi'
+    ],
+
+    limit: 8
+
+  });
+
+  addressSearchWidget.on(
+    'change',
+    handleAddressSelected
+  );
 
 }
 
 function handleAddressSelected(result){
 
-  console.log(
-    'MapQuest Selection:',
-    result
-  );
+    console.log(
+        '=============================='
+    );
+
+    console.log(
+        'MapQuest Result'
+    );
+
+    console.log(result);
+
+    console.log(
+        JSON.stringify(
+            result,
+            null,
+            2
+        )
+    );
+
+    console.log(
+        '=============================='
+    );
+
+    document.getElementById(
+        'addressAddress1'
+    ).value =
+        result.name || '';
+
+    document.getElementById(
+        'addressCity'
+    ).value =
+        result.city || '';
+
+    document.getElementById(
+        'addressState'
+    ).value =
+        result.stateCode || '';
+
+    document.getElementById(
+        'addressZip'
+    ).value =
+        result.postalCode || '';
+
+    document.getElementById(
+        'addressLatitude'
+    ).value =
+        result.latLng?.lat || '';
+
+    document.getElementById(
+        'addressLongitude'
+    ).value =
+        result.latLng?.lng || '';
 
 }
 
