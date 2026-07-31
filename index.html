@@ -8653,14 +8653,9 @@ function openAddAddressModal(){
     'addressId'
   ).value = '';
 
-  if (result.type === 'poi') {
-
-    document.getElementById(
-        'addressLocationName'
-    ).value =
-        result.name;
-
-}
+  document.getElementById(
+    'addressLocationName'
+  ).value = '';
 
   document.getElementById(
     'addressAddress1'
@@ -8775,58 +8770,18 @@ function initializeAddressSearch(){
 
 function handleAddressSelected(result){
 
-    console.log(
-        '=============================='
-    );
-
-    console.log(
-        'MapQuest Result'
-    );
-
     console.log(result);
 
-    console.log(
-        JSON.stringify(
-            result,
-            null,
-            2
-        )
-    );
+    if (result.type === 'poi') {
 
-    console.log(
-        '=============================='
-    );
+        document.getElementById(
+            'addressLocationName'
+        ).value =
+            result.name || '';
 
-    document.getElementById(
-        'addressAddress1'
-    ).value =
-        result.name || '';
+    }
 
-    document.getElementById(
-        'addressCity'
-    ).value =
-        result.city || '';
-
-    document.getElementById(
-        'addressState'
-    ).value =
-        result.stateCode || '';
-
-    document.getElementById(
-        'addressZip'
-    ).value =
-        result.postalCode || '';
-
-    document.getElementById(
-        'addressLatitude'
-    ).value =
-        result.latLng?.lat || '';
-
-    document.getElementById(
-        'addressLongitude'
-    ).value =
-        result.latLng?.lng || '';
-
+    // We'll populate the rest of the fields here.
 }
 
 async function loadAddresses(){
