@@ -1,1 +1,43 @@
+/*==============================================================================
+    MAPQUEST ADDRESS SEARCH
+==============================================================================*/
 
+.mqSuggestion{
+
+    padding:8px 4px;
+
+}
+
+.mqTitle{
+
+    font-weight:600;
+    font-size:14px;
+    color:#19304B;
+
+}
+
+.mqAddress{
+
+    font-size:12px;
+    color:#475569;
+
+}
+
+.mqCity{
+
+    font-size:12px;
+    color:#64748B;
+
+}
+
+.mqCoords{
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    font-family:monospace;
+
+    color:#0F766E;
+
+}
