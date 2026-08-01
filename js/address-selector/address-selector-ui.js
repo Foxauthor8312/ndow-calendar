@@ -10,12 +10,94 @@
     User interface functions for Address Selector.
 
  Responsibilities:
-    • Populate address form
-    • Clear address form
+    • Open Address Modal
+    • Close Address Modal
+    • Populate Address Form
+    • Clear Address Form
 ==============================================================================
 */
 
 'use strict';
+
+import {
+    initializeAddressSearch
+}
+from './address-selector.js';
+
+/*
+==============================================================================
+ Open Address Modal
+==============================================================================
+*/
+
+export function openAddAddressModal(){
+
+    editingAddressId = null;
+
+    clearAddressForm();
+
+    document.getElementById(
+        'addressModalTitle'
+    ).textContent =
+        'Add Address';
+
+    document.getElementById(
+        'addressId'
+    ).value = '';
+
+    document.getElementById(
+        'addressType'
+    ).value = 'NDOW';
+
+    document.getElementById(
+        'addressDescription'
+    ).value = '';
+
+    document.getElementById(
+        'addressFavorite'
+    ).checked = false;
+
+    document.getElementById(
+        'addressActive'
+    ).checked = true;
+
+    const modal =
+        document.getElementById(
+            'addressModal'
+        );
+
+    modal.classList.remove(
+        'hidden'
+    );
+
+    modal.style.display =
+        'flex';
+
+    initializeAddressSearch();
+
+}
+
+/*
+==============================================================================
+ Close Address Modal
+==============================================================================
+*/
+
+export function closeAddressModal(){
+
+    const modal =
+        document.getElementById(
+            'addressModal'
+        );
+
+    modal.classList.add(
+        'hidden'
+    );
+
+    modal.style.display =
+        'none';
+
+}
 
 /*
 ==============================================================================
