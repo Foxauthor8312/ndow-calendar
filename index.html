@@ -8768,6 +8768,25 @@ function initializeAddressSearch(){
 
 }
 
+	/*==============================================================================
+    OPEN MAPQUEST COORDINATE FINDER
+==============================================================================*/
+
+function openCoordinateFinder(){
+
+  window.open(
+
+    'https://developer.mapquest.com/documentation/tools/latitude-longitude-finder/',
+
+    '_blank',
+
+    'noopener,noreferrer'
+
+  );
+
+}
+
+	
 function handleAddressSelected(event){
 
     const result = event.result;
@@ -9522,12 +9541,12 @@ const waitlisted =
 
 list.innerHTML = `
 
-  <div style="
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:15px;
-  ">
+	  <div style="
+	    display:flex;
+	    gap:10px;
+	    flex-wrap:wrap;
+	    margin-bottom:15px;
+	  ">
 
     <div class="adminStatBadge">
       All ${data.requests.length}
@@ -17303,12 +17322,88 @@ geographic analysis.
   <input id="addressLongitude">
 </div>
 
+<div
+  style="
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    gap:12px;
+    align-items:end;
+  "
+>
+
+ <div
+  style="
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  "
+>
+
+  <div>
+
+    <label>Latitude</label>
+
+    <input
+      id="addressLatitude"
+      class="full-width"
+    >
+
+  </div>
+
+  <div>
+
+    <label>Longitude</label>
+
+    <input
+      id="addressLongitude"
+      class="full-width"
+    >
+
+  </div>
+
+</div>
+
+<div
+  style="
+    margin-top:8px;
+    margin-bottom:12px;
+  "
+>
+
+  <button
+    type="button"
+    class="secondary-button"
+    onclick="openCoordinateFinder()"
+  >
+
+    📍 Open MapQuest Latitude / Longitude Finder
+
+  </button>
+
+  <div
+    style="
+      font-size:11px;
+      color:#64748B;
+      margin-top:4px;
+    "
+  >
+
+    Need coordinates? Open the MapQuest tool, paste the address,
+    then copy the latitude and longitude back into the fields above.
+
+  </div>
+
+</div>
+
 <div class="form-group full-width">
+
   <label>Description</label>
+
   <textarea
     id="addressDescription"
     rows="3"
   ></textarea>
+
 </div>
 
 </div>
