@@ -19,18 +19,13 @@
 
 'use strict';
 
-import {
-    initializeAddressSearch
-}
-from './address-selector.js';
-
 /*
 ==============================================================================
  Open Address Modal
 ==============================================================================
 */
 
-export function openAddAddressModal(){
+function openAddAddressModal(){
 
     editingAddressId = null;
 
@@ -83,7 +78,7 @@ export function openAddAddressModal(){
 ==============================================================================
 */
 
-export function closeAddressModal(){
+function closeAddressModal(){
 
     const modal =
         document.getElementById(
@@ -105,7 +100,7 @@ export function closeAddressModal(){
 ==============================================================================
 */
 
-export function populateAddressForm(result){
+function populateAddressForm(result){
 
     const props =
         result.searchAheadResult?.place?.properties || {};
@@ -158,7 +153,7 @@ export function populateAddressForm(result){
 ==============================================================================
 */
 
-export function clearAddressForm(){
+function clearAddressForm(){
 
     document.getElementById(
         'addressLocationName'
@@ -193,3 +188,21 @@ export function clearAddressForm(){
     ).value = '';
 
 }
+
+/*
+==============================================================================
+ Expose Public Functions
+==============================================================================
+*/
+
+window.openAddAddressModal =
+    openAddAddressModal;
+
+window.closeAddressModal =
+    closeAddressModal;
+
+window.populateAddressForm =
+    populateAddressForm;
+
+window.clearAddressForm =
+    clearAddressForm;
