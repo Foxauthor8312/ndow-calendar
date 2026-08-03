@@ -183,9 +183,20 @@ function clearAddressForm(){
         'addressLatitude'
     ).value = '';
 
-    document.getElementById(
+       document.getElementById(
         'addressLongitude'
     ).value = '';
+
+    const search =
+        document.getElementById(
+            'addressSearch'
+        );
+
+    if(search){
+
+        search.value = '';
+
+    }
 
 }
 
