@@ -17041,107 +17041,134 @@ geographic analysis.
       type="hidden"
     >
 <div class="address-form-grid">
-	  
- <label>Location Name</label>
-<input
-  id="addressLocationName"
-  class="full-width"
->
 
-<label>Search Address</label>
-<input
-  id="addressSearch"
-  class="full-width"
-  type="search"
-  placeholder="Start typing an address or place..."
->
+  <div class="form-group full-width">
+    <label>Location Name</label>
+    <input
+      id="addressLocationName"
+    >
+  </div>
 
-<label>Type</label>
-<select id="addressType">
-  <option value="NDOW">
-    NDOW
-  </option>
+  <div class="form-group full-width">
+    <label>Search Address</label>
+    <input
+      id="addressSearch"
+      type="search"
+      placeholder="Start typing an address or place..."
+    >
+  </div>
 
-  <option value="EVENT">
-    Event Location
-  </option>
+  <div class="form-group">
+    <label>Type</label>
+    <select id="addressType">
 
-  <option value="PARTNER">
-    Partner Organization
-  </option>
-</select>
-	
-<div style="
-  font-size:11px;
-  color:#64748b;
-  margin-top:4px;
-">
-  NDOW Facility, Event Location, or Partner Organization
-</div>
-	
+      <option value="NDOW">
+        NDOW
+      </option>
+
+      <option value="EVENT">
+        Event Location
+      </option>
+
+      <option value="PARTNER">
+        Partner Organization
+      </option>
+
+    </select>
+  </div>
+
+  <div
+    class="form-group"
+    style="
+      justify-content:flex-end;
+      font-size:11px;
+      color:#64748B;
+    "
+  >
+
+    NDOW Facility, Event Location,
+    or Partner Organization
+
+  </div>
+
+  <div class="form-group full-width">
     <label>Address</label>
     <input
-  id="addressAddress1"
-  class="full-width"
->
+      id="addressAddress1"
+    >
+  </div>
 
-<div class="form-group">
-  <label>City</label>
-  <input id="addressCity">
+  <div class="form-group">
+    <label>City</label>
+    <input id="addressCity">
+  </div>
+
+  <div class="form-group">
+    <label>State</label>
+    <input
+      id="addressState"
+      value="NV"
+    >
+  </div>
+
+  <div class="form-group">
+    <label>Zip</label>
+    <input id="addressZip">
+  </div>
+
+  <div class="form-group">
+    <label>Region</label>
+
+    <select id="addressRegion">
+
+      <option value="">
+        Select Region
+      </option>
+
+      <option value="Southern">
+        Southern
+      </option>
+
+      <option value="Eastern">
+        Eastern
+      </option>
+
+      <option value="Western">
+        Western
+      </option>
+
+      <option value="Statewide">
+        Statewide
+      </option>
+
+    </select>
+
+  </div>
+
+  <div class="form-group">
+    <label>Latitude</label>
+    <input id="addressLatitude">
+  </div>
+
+  <div class="form-group">
+    <label>Longitude</label>
+    <input id="addressLongitude">
+  </div>
+
+  <div class="form-group full-width">
+
+    <label>Description</label>
+
+    <textarea
+      id="addressDescription"
+      rows="3"
+    ></textarea>
+
+  </div>
+
 </div>
 
-<div class="form-group">
-  <label>State</label>
-  <input
-    id="addressState"
-    value="NV"
-  >
-</div>
-
-<div class="form-group">
-  <label>Zip</label>
-  <input id="addressZip">
-</div>
-
-<div class="form-group">
-  <label>Region</label>
-  <select id="addressRegion">
-    <option value="">Select Region</option>
-    <option value="Southern">Southern</option>
-    <option value="Eastern">Eastern</option>
-    <option value="Western">Western</option>
-    <option value="Statewide">Statewide</option>
-  </select>
-</div>
-
-<div class="form-group">
-  <label>Latitude</label>
-  <input id="addressLatitude">
-</div>
-	
-<div class="form-group">
-  <label>Longitude</label>
-  <input id="addressLongitude">
-</div>
-
-</div>
-
-
-
-<div class="form-group full-width">
-
-  <label>Description</label>
-
-  <textarea
-    id="addressDescription"
-    rows="3"
-  ></textarea>
-
-</div>
-
-</div>
-
-<div style="margin-top:10px;">
+<div style="margin-top:16px;">
 
   <label>
     <input
@@ -17162,18 +17189,20 @@ geographic analysis.
 
 </div>
 
-    <div style="
-      margin-top:16px;
-      text-align:right;
-    ">
+<div
+  style="
+    margin-top:16px;
+    text-align:right;
+  "
+>
 
-      <button
-        onclick="saveAddress()"
-      >
-        Save
-      </button>
+  <button
+    onclick="saveAddress()"
+  >
+    Save
+  </button>
 
-    </div>
+</div>
 
   </div>
 
