@@ -24,8 +24,7 @@
 ==============================================================================
 */
 
-let addressSearchWidget = null;
-
+var addressSearchWidget = null;
 /*
 ==============================================================================
  Initialize Address Search
@@ -94,8 +93,13 @@ function handleAddressSelected(event){
         event.result
     );
 
-}
+    if(addressSearchWidget){
 
+        addressSearchWidget.close();
+
+    }
+
+}
 /*
 ==============================================================================
  Coordinate Finder
