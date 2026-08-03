@@ -1,130 +1,16 @@
 /*
 ==============================================================================
  NDOW Volunteer Portal
- Address Selector
+ Address Selector State
 ------------------------------------------------------------------------------
- Module      : address-selector.js
- Layer       : Frontend Controller
+ Module      : address-selector-state.js
+ Layer       : Frontend State
 
  Purpose:
-    Initializes the MapQuest Address Selector.
-
- Responsibilities:
-    • Initialize MapQuest Place Search
-    • Handle address selection
-    • Launch coordinate finder
-
- Used By:
-    • Address Library
-    • Route Manager
-    • Event Locations
+    Shared state for the Address Selector.
 ==============================================================================
 */
 
 'use strict';
 
-import {
-
-    buildSuggestionTemplate
-
-} from './address-selector-utils.js';
-
-import {
-
-    populateAddressForm
-
-} from './address-selector-ui.js';
-
-let addressSearchWidget = null;
-
-/*
-==============================================================================
- Initialize Address Search
-==============================================================================
-*/
-
-export function initializeAddressSearch(){
-
-    const input =
-        document.getElementById(
-            'addressSearch'
-        );
-
-    if (!input){
-        return;
-    }
-
-    if (addressSearchWidget){
-        return;
-    }
-
-    addressSearchWidget = placeSearch({
-
-        key: publicConfig.mapquestApiKey,
-
-        container: input,
-
-        collection: [
-
-            'address',
-
-            'poi'
-
-        ],
-
-        limit: 8,
-
-        templates: {
-
-            suggestion:
-                buildSuggestionTemplate
-
-        }
-
-    });
-
-    addressSearchWidget.on(
-
-        'change',
-
-        handleAddressSelected
-
-    );
-
-}
-
-/*
-==============================================================================
- Address Selected
-==============================================================================
-*/
-
-function handleAddressSelected(event){
-
-    populateAddressForm(
-
-        event.result
-
-    );
-
-}
-
-/*
-==============================================================================
- Open Coordinate Finder
-==============================================================================
-*/
-
-export function openCoordinateFinder(){
-
-    window.open(
-
-        'https://developer.mapquest.com/documentation/tools/latitude-longitude-finder/',
-
-        '_blank',
-
-        'noopener,noreferrer'
-
-    );
-
-}
+// Reserved for future shared state.
