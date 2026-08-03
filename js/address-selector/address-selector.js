@@ -48,28 +48,18 @@ function initializeAddressSearch(){
 
     addressSearchWidget = placeSearch({
 
-        key: publicConfig.mapquestApiKey,
+    key: publicConfig.mapquestApiKey,
 
-        container: input,
+    container: input,
 
-        collection: [
+    collection: [
+        'address',
+        'poi'
+    ],
 
-            'address',
+    limit: 8
 
-            'poi'
-
-        ],
-
-        limit: 8,
-
-        templates: {
-
-            suggestion:
-                buildSuggestionTemplate
-
-        }
-
-    });
+});
 
     addressSearchWidget.on(
 
