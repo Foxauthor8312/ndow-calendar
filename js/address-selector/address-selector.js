@@ -91,25 +91,6 @@ function handleAddressSelected(event){
     }
 
 }
-/*
-==============================================================================
- Coordinate Finder
-==============================================================================
-*/
-
-function openCoordinateFinder(){
-
-    window.open(
-
-        'https://developer.mapquest.com/documentation/tools/latitude-longitude-finder/',
-
-        '_blank',
-
-        'noopener,noreferrer'
-
-    );
-
-}
 
 /*
 ==============================================================================
@@ -119,6 +100,3 @@ function openCoordinateFinder(){
 
 window.initializeAddressSearch =
     initializeAddressSearch;
-
-window.openCoordinateFinder =
-    openCoordinateFinder;
