@@ -24,7 +24,7 @@
 ==============================================================================
 */
 
-export function buildSuggestionTemplate(result){
+function buildSuggestionTemplate(result){
 
     const props =
         result.searchAheadResult?.place?.properties || {};
@@ -55,8 +55,7 @@ export function buildSuggestionTemplate(result){
 
             <div class="mqCoords">
 
-                📍
-                ${result.latlng?.lat || ''},
+                📍 ${result.latlng?.lat || ''},
                 ${result.latlng?.lng || ''}
 
             </div>
@@ -73,12 +72,25 @@ export function buildSuggestionTemplate(result){
 ==============================================================================
 */
 
-export function formatCoordinates(lat, lng){
+function formatCoordinates(lat, lng){
 
     if(!lat || !lng){
         return '';
+
     }
 
     return `${lat}, ${lng}`;
 
 }
+
+/*
+==============================================================================
+ Public Functions
+==============================================================================
+*/
+
+window.buildSuggestionTemplate =
+    buildSuggestionTemplate;
+
+window.formatCoordinates =
+    formatCoordinates;
