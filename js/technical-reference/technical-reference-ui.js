@@ -244,8 +244,8 @@ function renderTechnicalNavigation(
             'pointer';
 
         item.onclick =
-            ()=>loadTechnicalReference(
-                topic.topic_key
+            ()=>showTechnicalTopic(
+                topic
             );
 
         nav.appendChild(
@@ -253,6 +253,42 @@ function renderTechnicalNavigation(
         );
 
     });
+
+}
+
+/*
+==============================================================================
+ Show Topic
+==============================================================================
+*/
+
+function showTechnicalTopic(topic){
+
+    const panel =
+        document.getElementById(
+            'technicalReferenceContent'
+        );
+
+    if(!panel){
+        return;
+    }
+
+    panel.innerHTML = `
+
+<h1
+    style="
+        margin-top:0;
+        color:#19304B;
+    "
+>
+
+${topic.title}
+
+</h1>
+
+${topic.content}
+
+`;
 
 }
 
@@ -267,3 +303,6 @@ window.buildTechnicalReferenceWorkspace =
 
 window.renderTechnicalNavigation =
     renderTechnicalNavigation;
+
+window.showTechnicalTopic =
+    showTechnicalTopic;
