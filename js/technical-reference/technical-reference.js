@@ -72,6 +72,8 @@ async function openTechnicalReference(){
 
     workspace.style.display =
         'flex';
+ 
+    buildTechnicalReferenceWorkspace();
 
     await initializeTechnicalReference();
 
