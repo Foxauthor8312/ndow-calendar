@@ -9,7 +9,11 @@
 
 const technicalReferenceState = {
 
+    initialized : false,
+
     topics : [],
+
+    currentTopic : null,
 
     currentIndex : -1
 
