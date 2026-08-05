@@ -450,6 +450,83 @@ function showTechnicalTopic(topic){
 
     panel.scrollTop = 0;
 
+    technicalReferenceState.currentIndex =
+        technicalReferenceState.topics.findIndex(
+
+            t => t.topic_key === topic.topic_key
+
+        );
+
+    document
+        .getElementById(
+            'technicalPreviousButton'
+        )
+        .onclick =
+            showPreviousTopic;
+
+    document
+        .getElementById(
+            'technicalNextButton'
+        )
+        .onclick =
+            showNextTopic;
+
+}
+
+/*
+==============================================================================
+ Previous Topic
+==============================================================================
+*/
+
+function showPreviousTopic(){
+
+    if(
+        technicalReferenceState.currentIndex <= 0
+    ){
+        return;
+    }
+
+    technicalReferenceState.currentIndex--;
+
+    showTechnicalTopic(
+
+        technicalReferenceState.topics[
+            technicalReferenceState.currentIndex
+        ]
+
+    );
+
+}
+
+/*
+==============================================================================
+ Next Topic
+==============================================================================
+*/
+
+function showNextTopic(){
+
+    if(
+
+        technicalReferenceState.currentIndex >=
+
+        technicalReferenceState.topics.length - 1
+
+    ){
+        return;
+    }
+
+    technicalReferenceState.currentIndex++;
+
+    showTechnicalTopic(
+
+        technicalReferenceState.topics[
+            technicalReferenceState.currentIndex
+        ]
+
+    );
+
 }
 
 /*
@@ -466,3 +543,5 @@ window.renderTechnicalNavigation =
 
 window.showTechnicalTopic =
     showTechnicalTopic;
+
+
