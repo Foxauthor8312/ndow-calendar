@@ -11692,6 +11692,12 @@ const result =
   Developer Notes
 </button>
 
+<button
+  class="admin-button"
+  onclick="openTechnicalReference()">
+  Technical Reference
+</button>
+
 
 </div>
 
@@ -18598,6 +18604,26 @@ ${regionTotal}
 
 </div>
 
+<!-- ==========================================================
+     Technical Reference Workspace
+========================================================== -->
+
+<div
+    id="technicalReferenceWorkspace"
+    class="hidden"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:#F8FAFC;
+        z-index:6100;
+    "
+>
+
+    <div id="technicalReferenceRoot"></div>
+
+</div>	
+
 <script src="js/help.js"></script>
 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -18684,6 +18710,13 @@ async function downloadRouteMap(){
 <script src="js/address-selector/address-selector-ui.js"></script>
 <script src="js/address-selector/address-selector.js"></script>
 
+<!-- Technical Reference -->
+<script src="js/technical-reference/technical-reference-state.js"></script>
+<script src="js/technical-reference/technical-reference-utils.js"></script>
+<script src="js/technical-reference/technical-reference-api.js"></script>
+<script src="js/technical-reference/technical-reference-ui.js"></script>
+<script src="js/technical-reference/technical-reference.js"></script
+	
 <script src="js/login/login-config.js"></script>
 <script src="js/login/login-storage.js"></script>
 <script src="js/login/login-background.js"></script>
