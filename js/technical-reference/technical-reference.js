@@ -35,14 +35,14 @@ async function initializeTechnicalReference(){
         return;
     }
 
-    technicalReferenceState.categories =
-        await loadTechnicalCategories();
+technicalReferenceState.topics =
+    await loadTechnicalTopics();
 
-    renderTechnicalNavigation(
+renderTechnicalNavigation(
 
-        technicalReferenceState.categories
+    technicalReferenceState.topics
 
-    );
+);
 
     technicalReferenceState.initialized =
         true;
