@@ -243,10 +243,39 @@ function renderTechnicalNavigation(
         item.style.cursor =
             'pointer';
 
-        item.onclick =
-            ()=>showTechnicalTopic(
-                topic
-            );
+item.onclick = () => {
+
+    document
+        .querySelectorAll(
+            '.technical-reference-nav-item'
+        )
+        .forEach(item => {
+
+            item.style.fontWeight =
+                '400';
+
+            item.style.color =
+                '#19304B';
+
+            item.style.background =
+                'transparent';
+
+        });
+
+    item.style.fontWeight =
+        '600';
+
+    item.style.background =
+        '#E8F1FA';
+
+    item.style.borderRadius =
+        '6px';
+
+    showTechnicalTopic(
+        topic
+    );
+
+};
 
         nav.appendChild(
             item
@@ -275,23 +304,54 @@ function showTechnicalTopic(topic){
 
     panel.innerHTML = `
 
-<h1
+<div
     style="
-        margin-top:0;
-        color:#19304B;
+        max-width:900px;
+        margin:auto;
     "
 >
 
-${topic.title}
+    <div
+        style="
+            font-size:34px;
+            font-weight:700;
+            color:#19304B;
+            margin-bottom:10px;
+        "
+    >
 
-</h1>
+        ${topic.title}
 
-${topic.content}
+    </div>
+
+    <div
+        style="
+            width:80px;
+            height:3px;
+            background:#589FD6;
+            margin-bottom:26px;
+        "
+    ></div>
+
+    <div
+        style="
+            line-height:1.7;
+            font-size:16px;
+            color:#334155;
+        "
+    >
+
+        ${topic.content}
+
+    </div>
+
+</div>
 
 `;
 
-}
+    panel.scrollTop = 0;
 
+}
 /*
 ==============================================================================
  Public
