@@ -371,10 +371,25 @@ function showTechnicalTopic(topic){
 
     <div
         style="
-            font-size:34px;
+            font-size:12px;
+            color:#64748B;
+            font-weight:600;
+            text-transform:uppercase;
+            letter-spacing:.08em;
+            margin-bottom:10px;
+        "
+    >
+
+        ${topic.category}
+
+    </div>
+
+    <div
+        style="
+            font-size:36px;
             font-weight:700;
             color:#19304B;
-            margin-bottom:10px;
+            margin-bottom:8px;
         "
     >
 
@@ -384,22 +399,48 @@ function showTechnicalTopic(topic){
 
     <div
         style="
-            width:80px;
+            width:90px;
             height:3px;
             background:#589FD6;
-            margin-bottom:26px;
+            margin-bottom:28px;
         "
     ></div>
 
     <div
         style="
-            line-height:1.7;
+            line-height:1.75;
             font-size:16px;
             color:#334155;
         "
     >
 
         ${topic.content}
+
+    </div>
+
+    <div
+        style="
+            margin-top:50px;
+            padding-top:18px;
+            border-top:1px solid #DBE3EC;
+            display:flex;
+            justify-content:space-between;
+        "
+    >
+
+        <button
+            id="technicalPreviousButton"
+            class="secondary-button"
+        >
+            ← Previous
+        </button>
+
+        <button
+            id="technicalNextButton"
+            class="secondary-button"
+        >
+            Next →
+        </button>
 
     </div>
 
@@ -410,6 +451,7 @@ function showTechnicalTopic(topic){
     panel.scrollTop = 0;
 
 }
+
 /*
 ==============================================================================
  Public
