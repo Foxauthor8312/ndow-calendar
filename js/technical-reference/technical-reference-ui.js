@@ -209,9 +209,7 @@ function buildTechnicalReferenceWorkspace(){
 ==============================================================================
 */
 
-function renderTechnicalNavigation(
-    topics
-){
+function renderTechnicalNavigation(topics){
 
     const nav =
         document.getElementById(
@@ -224,62 +222,122 @@ function renderTechnicalNavigation(
 
     nav.innerHTML = '';
 
+    // Group by Category
+
+    const categories = {};
+
     topics.forEach(topic=>{
 
-        const item =
+        if(!categories[topic.category]){
+
+            categories[topic.category] = [];
+
+        }
+
+        categories[topic.category].push(topic);
+
+    });
+
+    Object.keys(categories).forEach(category=>{
+
+        // Category Header
+
+        const heading =
             document.createElement(
                 'div'
             );
 
-        item.className =
-            'technical-reference-nav-item';
+        heading.textContent =
+            category;
 
-        item.textContent =
-            topic.title;
+        heading.style.fontSize =
+            '12px';
 
-        item.style.padding =
-            '8px 4px';
+        heading.style.fontWeight =
+            '700';
 
-        item.style.cursor =
-            'pointer';
+        heading.style.color =
+            '#64748B';
 
-item.onclick = () => {
+        heading.style.marginTop =
+            '18px';
 
-    document
-        .querySelectorAll(
-            '.technical-reference-nav-item'
-        )
-        .forEach(item => {
+        heading.style.marginBottom =
+            '8px';
 
-            item.style.fontWeight =
-                '400';
+        heading.style.textTransform =
+            'uppercase';
 
-            item.style.color =
-                '#19304B';
-
-            item.style.background =
-                'transparent';
-
-        });
-
-    item.style.fontWeight =
-        '600';
-
-    item.style.background =
-        '#E8F1FA';
-
-    item.style.borderRadius =
-        '6px';
-
-    showTechnicalTopic(
-        topic
-    );
-
-};
+        heading.style.letterSpacing =
+            '.04em';
 
         nav.appendChild(
-            item
+            heading
         );
+
+        // Topics
+
+        categories[category].forEach(topic=>{
+
+            const item =
+                document.createElement(
+                    'div'
+                );
+
+            item.className =
+                'technical-reference-nav-item';
+
+            item.textContent =
+                topic.title;
+
+            item.style.padding =
+                '8px 10px';
+
+            item.style.marginBottom =
+                '2px';
+
+            item.style.cursor =
+                'pointer';
+
+            item.style.borderRadius =
+                '6px';
+
+            item.style.transition =
+                '.15s';
+
+            item.onclick = ()=>{
+
+                document
+                    .querySelectorAll(
+                        '.technical-reference-nav-item'
+                    )
+                    .forEach(link=>{
+
+                        link.style.fontWeight =
+                            '400';
+
+                        link.style.background =
+                            'transparent';
+
+                    });
+
+                item.style.fontWeight =
+                    '600';
+
+                item.style.background =
+                    '#E8F1FA';
+
+                showTechnicalTopic(
+                    topic
+                );
+
+            };
+
+            nav.appendChild(
+                item
+            );
+
+        });
 
     });
 
