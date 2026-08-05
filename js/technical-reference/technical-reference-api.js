@@ -5,6 +5,16 @@
 ------------------------------------------------------------------------------
  Module      : technical-reference-api.js
  Layer       : Frontend API
+
+ Purpose:
+    Technical Reference API interface.
+
+ Responsibilities:
+    • Load technical reference topics
+    • Load individual topic
+
+ Used By:
+    • technical-reference.js
 ==============================================================================
 */
 
@@ -20,14 +30,27 @@ async function loadTechnicalTopics(){
 
     try{
 
+        const token =
+            localStorage.getItem(
+                'token'
+            );
+
         const response =
             await fetch(
 
-                `${API_BASE}/api/help/topics?help_type=technical`,
+                `${TECHNICAL_REFERENCE_API.BASE}${TECHNICAL_REFERENCE_API.TOPICS}`,
 
                 {
 
-                    headers: authHeaders()
+                    headers:{
+
+                        Authorization:
+                            `Bearer ${token}`,
+
+                        'Content-Type':
+                            'application/json'
+
+                    }
 
                 }
 
@@ -36,21 +59,24 @@ async function loadTechnicalTopics(){
         const data =
             await response.json();
 
-        if(!data.success){
+        if(!response.ok || !data.success){
 
             return [];
 
         }
 
-        return data.topics;
+        return data.topics || [];
 
     }
 
     catch(error){
 
         console.error(
+
             'Unable to load Technical Reference.',
+
             error
+
         );
 
         return [];
