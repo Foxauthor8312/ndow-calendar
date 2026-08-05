@@ -5,9 +5,6 @@
 ------------------------------------------------------------------------------
  Module      : technical-reference-api.js
  Layer       : Frontend API
-
- Purpose:
-    Communicates with the Technical Reference API.
 ==============================================================================
 */
 
@@ -15,11 +12,11 @@
 
 /*
 ==============================================================================
- Load Categories
+ Load Technical Topics
 ==============================================================================
 */
 
-async function loadTechnicalCategories(){
+async function loadTechnicalTopics(){
 
     try{
 
@@ -29,7 +26,9 @@ async function loadTechnicalCategories(){
                 `${API_BASE}/api/help/topics?help_type=technical`,
 
                 {
+
                     headers: authHeaders()
+
                 }
 
             );
@@ -50,7 +49,7 @@ async function loadTechnicalCategories(){
     catch(error){
 
         console.error(
-            'Unable to load technical categories:',
+            'Unable to load Technical Reference.',
             error
         );
 
@@ -62,97 +61,22 @@ async function loadTechnicalCategories(){
 
 /*
 ==============================================================================
- Load Topic
+ Load Single Topic
 ==============================================================================
 */
 
 async function loadTechnicalTopic(topicKey){
 
-    try{
+    const topics =
+        await loadTechnicalTopics();
 
-        const response =
-            await fetch(
+    return topics.find(
 
-                `${API_BASE}/api/help/topic/${topicKey}`,
+        topic =>
 
-                {
-                    headers: authHeaders()
-                }
+            topic.topic_key === topicKey
 
-            );
-
-        const data =
-            await response.json();
-
-        if(!data.success){
-
-            return null;
-
-        }
-
-        return data.topic;
-
-    }
-
-    catch(error){
-
-        console.error(
-            'Unable to load technical topic:',
-            error
-        );
-
-        return null;
-
-    }
-
-}
-
-/*
-==============================================================================
- Search Technical Reference
-==============================================================================
-*/
-
-async function searchTechnicalReference(searchText){
-
-    try{
-
-        const response =
-            await fetch(
-
-                `${API_BASE}/api/help/search?q=${
-                    encodeURIComponent(searchText)
-                }&help_type=technical`,
-
-                {
-                    headers: authHeaders()
-                }
-
-            );
-
-        const data =
-            await response.json();
-
-        if(!data.success){
-
-            return [];
-
-        }
-
-        return data.results;
-
-    }
-
-    catch(error){
-
-        console.error(
-            'Technical Reference search failed:',
-            error
-        );
-
-        return [];
-
-    }
+    );
 
 }
 
@@ -162,11 +86,8 @@ async function searchTechnicalReference(searchText){
 ==============================================================================
 */
 
-window.loadTechnicalCategories =
-    loadTechnicalCategories;
+window.loadTechnicalTopics =
+    loadTechnicalTopics;
 
 window.loadTechnicalTopic =
     loadTechnicalTopic;
-
-window.searchTechnicalReference =
-    searchTechnicalReference;
