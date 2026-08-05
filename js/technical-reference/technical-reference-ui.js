@@ -241,13 +241,33 @@ function renderTechnicalNavigation(topics){
     Object.keys(categories).forEach(category=>{
 
         // Category Header
-
+        
         const heading =
             document.createElement(
                 'div'
             );
-
-        heading.textContent =
+        
+        heading.innerHTML = `
+        
+        <span>
+        
+            ▼
+        
+        </span>
+        
+        <span
+            style="
+                margin-left:8px;
+            "
+        >
+        
+            ${category}
+        
+        </span>
+        
+        `;
+        
+        heading.dataset.category =
             category;
 
         heading.style.fontSize =
@@ -270,14 +290,44 @@ function renderTechnicalNavigation(topics){
 
         heading.style.letterSpacing =
             '.04em';
+        heading.style.cursor =
+            'pointer';
 
-        nav.appendChild(
-            heading
+        heading.style.display =
+            'flex';
+        
+        heading.style.alignItems =
+            'center';
+        
+                nav.appendChild(
+                    heading
         );
 
         // Topics
+      const group =
+           document.createElement(
+               'div'
+           );
+       
+       group.dataset.category =
+           category;
+       
+       group.style.marginBottom =
+           '10px';
+       
+       nav.appendChild(
+           heading
+       );
+       
+       nav.appendChild(
+           group
+       );
 
-        categories[category].forEach(topic=>{
+     
+       
+       // Topics
+       
+       categories[category].forEach(topic=>{
 
             const item =
                 document.createElement(
@@ -333,9 +383,9 @@ function renderTechnicalNavigation(topics){
 
             };
 
-            nav.appendChild(
-                item
-            );
+                group.appendChild(
+                    item
+                );
 
         });
 
