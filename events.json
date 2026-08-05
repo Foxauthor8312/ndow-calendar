@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-08-05T19:10:59.765Z",
+  "lastUpdated": "2026-08-05T21:04:21.798Z",
   "metrics": {
-    "finalEvents": 460
+    "finalEvents": 461
   },
   "events": [
     {
@@ -155,7 +155,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -312,7 +312,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -346,7 +346,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -380,7 +380,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -414,7 +414,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -448,7 +448,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -482,7 +482,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -516,7 +516,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -550,7 +550,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -584,7 +584,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -618,7 +618,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -652,7 +652,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -686,7 +686,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -720,7 +720,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -754,7 +754,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -788,7 +788,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -822,7 +822,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -856,7 +856,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -890,7 +890,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -924,7 +924,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -958,7 +958,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -992,7 +992,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1026,7 +1026,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1060,7 +1060,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1094,7 +1094,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1128,7 +1128,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1162,7 +1162,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1196,7 +1196,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1230,7 +1230,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1264,7 +1264,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1298,7 +1298,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1332,7 +1332,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.800Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1366,7 +1366,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.800Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1400,7 +1400,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1434,7 +1434,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1468,7 +1468,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1502,7 +1502,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1536,7 +1536,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1570,7 +1570,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1604,7 +1604,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1638,7 +1638,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1672,7 +1672,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1706,7 +1706,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1740,7 +1740,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1802,7 +1802,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1836,7 +1836,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1870,7 +1870,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1951,7 +1951,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -1985,7 +1985,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2019,7 +2019,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2053,7 +2053,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2087,7 +2087,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2121,7 +2121,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2155,7 +2155,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2189,7 +2189,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2223,7 +2223,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2257,7 +2257,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2291,7 +2291,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2325,7 +2325,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2359,7 +2359,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2393,7 +2393,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2427,7 +2427,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2461,7 +2461,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.800Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2495,7 +2495,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2529,7 +2529,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2563,7 +2563,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2597,7 +2597,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2631,7 +2631,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2665,7 +2665,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2699,7 +2699,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2733,7 +2733,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2767,7 +2767,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2801,7 +2801,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2835,7 +2835,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2869,7 +2869,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2903,7 +2903,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2937,7 +2937,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -2971,7 +2971,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3005,7 +3005,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3039,7 +3039,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3073,7 +3073,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3107,7 +3107,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3169,7 +3169,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3203,7 +3203,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3237,7 +3237,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3271,7 +3271,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3305,7 +3305,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3339,7 +3339,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3373,7 +3373,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3407,7 +3407,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3441,7 +3441,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3475,7 +3475,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3509,7 +3509,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3543,7 +3543,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3577,7 +3577,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3611,7 +3611,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3645,7 +3645,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3679,7 +3679,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3713,7 +3713,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3747,7 +3747,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3781,7 +3781,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3843,7 +3843,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3877,7 +3877,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3911,7 +3911,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3945,7 +3945,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -3979,7 +3979,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4013,7 +4013,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4047,7 +4047,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4081,7 +4081,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4115,7 +4115,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4149,7 +4149,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4183,7 +4183,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4217,7 +4217,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4251,7 +4251,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4408,7 +4408,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4442,7 +4442,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4476,7 +4476,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4510,7 +4510,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4705,7 +4705,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4739,7 +4739,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4773,7 +4773,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4807,7 +4807,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4841,7 +4841,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4875,7 +4875,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4909,7 +4909,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4943,7 +4943,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -4977,7 +4977,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5011,7 +5011,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5045,7 +5045,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5079,7 +5079,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5113,7 +5113,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5147,7 +5147,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5181,7 +5181,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.471Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5215,7 +5215,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5249,7 +5249,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5283,7 +5283,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5317,7 +5317,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5351,7 +5351,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5385,7 +5385,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5755,22 +5755,6 @@
           "mileage": 0
         },
         {
-          "customerId": "4251788",
-          "name": "Caleb Johnson",
-          "hours": 0,
-          "breakHours": 0,
-          "travelHours": 0,
-          "mileage": 0
-        },
-        {
-          "customerId": "1809270",
-          "name": "Matthew Caputo",
-          "hours": 7.75,
-          "breakHours": 0,
-          "travelHours": 2,
-          "mileage": 135
-        },
-        {
           "customerId": "592111",
           "name": "Rhyan Culbertson",
           "hours": 9,
@@ -5884,7 +5868,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5918,7 +5902,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5952,7 +5936,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -5986,7 +5970,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6020,7 +6004,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6054,7 +6038,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6088,7 +6072,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.800Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6122,7 +6106,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6156,7 +6140,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6190,7 +6174,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6224,7 +6208,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.800Z",
+        "scrapedAt": "2026-08-05T20:39:57.492Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6258,7 +6242,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6292,7 +6276,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6411,7 +6395,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6445,7 +6429,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6479,7 +6463,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6513,7 +6497,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6547,7 +6531,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6581,7 +6565,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6615,7 +6599,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6649,7 +6633,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6683,7 +6667,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6717,7 +6701,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6751,7 +6735,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6785,7 +6769,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6819,7 +6803,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6853,7 +6837,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6887,7 +6871,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6921,7 +6905,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6955,7 +6939,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -6989,7 +6973,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7023,7 +7007,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7057,7 +7041,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7091,7 +7075,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7125,7 +7109,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7159,7 +7143,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7193,7 +7177,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7227,7 +7211,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7261,7 +7245,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7295,7 +7279,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7329,7 +7313,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7363,7 +7347,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7397,7 +7381,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7431,7 +7415,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.953Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7465,7 +7449,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7499,7 +7483,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7533,7 +7517,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7567,7 +7551,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7601,7 +7585,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7635,7 +7619,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7669,7 +7653,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7769,7 +7753,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7803,7 +7787,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7837,7 +7821,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7871,7 +7855,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7905,7 +7889,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7939,7 +7923,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -7973,7 +7957,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8007,7 +7991,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.621Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8041,7 +8025,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8075,7 +8059,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8109,7 +8093,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8143,7 +8127,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8177,7 +8161,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8211,7 +8195,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8245,7 +8229,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8326,7 +8310,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8388,7 +8372,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8422,7 +8406,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8522,7 +8506,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.471Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8556,7 +8540,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8590,7 +8574,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.664Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8709,7 +8693,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8809,7 +8793,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8843,7 +8827,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8877,7 +8861,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8911,7 +8895,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8945,7 +8929,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -8979,7 +8963,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.471Z",
+        "scrapedAt": "2026-08-05T20:53:21.798Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9013,7 +8997,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9047,7 +9031,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9081,7 +9065,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9115,7 +9099,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9149,7 +9133,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9183,7 +9167,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9217,7 +9201,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9251,7 +9235,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9313,7 +9297,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9347,7 +9331,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9381,7 +9365,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9415,7 +9399,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9449,7 +9433,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9483,7 +9467,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9517,7 +9501,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9551,7 +9535,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9585,7 +9569,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9619,7 +9603,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9653,7 +9637,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9687,7 +9671,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9721,7 +9705,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9755,7 +9739,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9817,7 +9801,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9851,7 +9835,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9885,7 +9869,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9919,7 +9903,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.471Z",
+        "scrapedAt": "2026-08-05T20:53:21.798Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9953,7 +9937,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -9987,7 +9971,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10106,7 +10090,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10140,7 +10124,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10174,7 +10158,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10208,7 +10192,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10242,7 +10226,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10276,7 +10260,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10310,7 +10294,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10344,7 +10328,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10378,7 +10362,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10412,7 +10396,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10421,7 +10405,7 @@
     {
       "id": "4656",
       "sourceId": "4656",
-      "status": "Registration Open",
+      "status": "Events Results Pending",
       "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4656",
       "title": "WILD Readings (Elko) - American Badger",
       "program": "Wildlife Discovery",
@@ -10446,11 +10430,11 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
-      "text": "Aug 5\nWILD Readings (Elko) - American Badger\n\n■ Registration Open 30 of 30 seats remaining\n\nLocation:\n\nElko MyBrary (Library)\n720 Court St.\nElko, NV 89801\n\nTaught by:\n\nNicole St John\nDate & Times:\nAug 05, 2026 1:00PM - 2:00PM PDT\nView"
+      "text": "Aug 5\nWILD Readings (Elko) - American Badger\n\n■ Events Results Pending 30 of 30 seats remaining\n\nLocation:\n\nElko MyBrary (Library)\n720 Court St.\nElko, NV 89801\n\nTaught by:\n\nNicole St John\nDate & Times:\nAug 05, 2026 1:00PM - 2:00PM PDT\nView"
     },
     {
       "id": "4657",
@@ -10480,7 +10464,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10514,7 +10498,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10548,7 +10532,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10582,7 +10566,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10616,7 +10600,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10906,7 +10890,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10940,7 +10924,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -10974,7 +10958,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11008,7 +10992,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11042,7 +11026,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11123,7 +11107,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11157,7 +11141,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11191,7 +11175,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11225,7 +11209,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11259,7 +11243,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11293,7 +11277,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11327,7 +11311,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11361,7 +11345,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11423,7 +11407,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11457,7 +11441,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11557,7 +11541,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11657,7 +11641,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11738,7 +11722,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11838,7 +11822,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11919,7 +11903,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -11981,7 +11965,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12015,7 +11999,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12115,7 +12099,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12149,7 +12133,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12183,7 +12167,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12217,7 +12201,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12251,7 +12235,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12285,7 +12269,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12319,7 +12303,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12353,7 +12337,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12387,7 +12371,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12421,7 +12405,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12455,7 +12439,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12489,7 +12473,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12523,7 +12507,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.471Z",
+        "scrapedAt": "2026-08-05T20:53:21.798Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12557,7 +12541,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12591,7 +12575,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12625,7 +12609,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.471Z",
+        "scrapedAt": "2026-08-05T20:53:21.798Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12659,7 +12643,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12693,7 +12677,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12727,7 +12711,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12761,7 +12745,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12795,7 +12779,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.953Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12829,7 +12813,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12863,7 +12847,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12897,7 +12881,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12931,7 +12915,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12965,7 +12949,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -12999,7 +12983,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13033,7 +13017,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13067,7 +13051,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:59:49.992Z",
+        "scrapedAt": "2026-08-05T20:51:42.617Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13101,7 +13085,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13135,7 +13119,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13169,7 +13153,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13203,7 +13187,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:52:25.799Z",
+        "scrapedAt": "2026-08-05T20:39:57.491Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13237,7 +13221,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13271,7 +13255,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13305,7 +13289,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13339,7 +13323,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13373,7 +13357,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13407,7 +13391,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:50:52.620Z",
+        "scrapedAt": "2026-08-05T20:38:16.516Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13441,7 +13425,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T18:53:50.663Z",
+        "scrapedAt": "2026-08-05T20:41:25.671Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13475,7 +13459,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13509,7 +13493,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13543,7 +13527,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13577,7 +13561,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13611,7 +13595,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.561Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13645,7 +13629,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13679,7 +13663,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13713,7 +13697,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13747,7 +13731,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13781,7 +13765,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13815,7 +13799,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13849,7 +13833,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13949,7 +13933,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -13983,7 +13967,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14017,7 +14001,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:01:39.472Z",
+        "scrapedAt": "2026-08-05T20:53:21.799Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14051,7 +14035,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14113,7 +14097,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14147,7 +14131,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14209,7 +14193,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14243,7 +14227,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14277,7 +14261,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14311,7 +14295,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14345,7 +14329,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14379,7 +14363,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14413,7 +14397,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14447,7 +14431,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14509,7 +14493,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14543,7 +14527,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14577,7 +14561,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14658,7 +14642,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14739,7 +14723,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14782,7 +14766,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14816,7 +14800,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14850,7 +14834,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14912,7 +14896,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -14946,7 +14930,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15008,7 +14992,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15042,7 +15026,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15142,7 +15126,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15204,7 +15188,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15238,7 +15222,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15272,7 +15256,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15306,7 +15290,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15340,7 +15324,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15374,7 +15358,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15408,7 +15392,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15442,7 +15426,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15476,7 +15460,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15510,7 +15494,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15544,7 +15528,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15578,7 +15562,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15612,7 +15596,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15697,7 +15681,7 @@
         {
           "customerId": "4157504",
           "name": "Magdalina Marinelli",
-          "hours": 0,
+          "hours": 1.25,
           "breakHours": 0,
           "travelHours": 0,
           "mileage": 0
@@ -15712,7 +15696,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15746,7 +15730,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15780,7 +15764,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.364Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15814,7 +15798,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15876,7 +15860,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15910,7 +15894,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15944,7 +15928,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:02:58.823Z",
+        "scrapedAt": "2026-08-05T20:56:04.954Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -15978,7 +15962,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16012,7 +15996,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.418Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16046,7 +16030,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16080,7 +16064,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16114,7 +16098,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16176,7 +16160,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16314,7 +16298,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16452,7 +16436,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16590,7 +16574,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16728,7 +16712,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16762,7 +16746,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16796,7 +16780,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16830,7 +16814,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16864,7 +16848,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16898,7 +16882,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16932,7 +16916,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -16966,7 +16950,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17066,7 +17050,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17147,7 +17131,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17181,7 +17165,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17215,7 +17199,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.364Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17249,7 +17233,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17292,7 +17276,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17335,7 +17319,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17369,7 +17353,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17403,7 +17387,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.364Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17437,7 +17421,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17471,7 +17455,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17505,7 +17489,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17539,7 +17523,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17573,7 +17557,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.364Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17607,7 +17591,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17641,7 +17625,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17675,7 +17659,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17709,7 +17693,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17828,7 +17812,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -17985,7 +17969,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18019,7 +18003,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18053,7 +18037,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18087,7 +18071,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.364Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18121,7 +18105,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18164,7 +18148,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18198,7 +18182,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18232,7 +18216,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18266,7 +18250,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18300,7 +18284,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18381,7 +18365,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18415,7 +18399,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18449,7 +18433,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18483,7 +18467,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:05:01.419Z",
+        "scrapedAt": "2026-08-05T20:58:17.201Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18517,7 +18501,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18551,7 +18535,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18585,7 +18569,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18619,7 +18603,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18653,7 +18637,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18687,7 +18671,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18721,7 +18705,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18755,7 +18739,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18789,7 +18773,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18823,7 +18807,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18857,7 +18841,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18891,7 +18875,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18925,7 +18909,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18959,7 +18943,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -18993,7 +18977,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19036,7 +19020,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19070,7 +19054,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19104,7 +19088,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19138,7 +19122,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19238,7 +19222,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19319,7 +19303,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19400,7 +19384,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19443,7 +19427,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19477,7 +19461,7 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:07:12.793Z",
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19511,11 +19495,11 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.442Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
-      "text": "Aug 27\nBat Walk - Sparks\n\n■ Registration Open 60 of 60 seats remaining\n\nLocation:\n\nCottonwood Park\n777 Spice Islands Dr\nSparks, NV 89431\n\nTaught by:\n\nMargaret Stewart Lord\nDate & Times:\nAug 27, 2026 6:35PM - 8:00PM PDT\nView"
+      "text": "Aug 27\nBat Walk - Sparks\n\n■ Registration Open 59 of 60 seats remaining\n\nLocation:\n\nCottonwood Park\n777 Spice Islands Dr\nSparks, NV 89431\n\nTaught by:\n\nMargaret Stewart Lord\nDate & Times:\nAug 27, 2026 6:35PM - 8:00PM PDT\nView"
     },
     {
       "id": "4860",
@@ -19554,7 +19538,7 @@
         }
       ],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:09:36.443Z",
+        "scrapedAt": "2026-08-05T21:02:52.363Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
@@ -19588,11 +19572,45 @@
       ],
       "ndowResults": [],
       "enrichment": {
-        "scrapedAt": "2026-08-05T19:10:46.920Z",
+        "scrapedAt": "2026-08-05T21:04:05.843Z",
         "source": "ndow-scraper-v2"
       },
       "metadata": {},
       "text": "Dec 11\nWild Neighbors - Lincoln ES Private Event\n\n■ Registration Open 1000 of 1000 seats remaining\n\nLocation:\n\nLincoln Elementary School\n3010 Berg St.\nNorth Las Vegas, NV 89030\n\nTaught by:\n\nClaire Clarke\nDate & Times:\nDec 11, 2026 9:15AM - 10:00AM PST\nView"
+    },
+    {
+      "id": "4862",
+      "sourceId": "4862",
+      "status": "Registration Closed",
+      "sourceUrl": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4862",
+      "title": "Angler Ed Instructor Coordination Meeting",
+      "program": "Fishing Classes",
+      "category": "Event",
+      "date": "2026-08-05",
+      "time": "Aug 05, 2026  6:00PM -  7:00PM PDT",
+      "location": "Nevada Department of Wildlife - Elko Office 60 Youth Center Rd Elko, NV 89801",
+      "description": "Coordination meeting for fall Angler Ed programming.",
+      "url": "https://nevada.events.licensing.app/dashboard/em/assigned_events/4862",
+      "instructors": [
+        {
+          "name": "STEVEN C ALEXANDER",
+          "role": "PRIMARY",
+          "email": "",
+          "customerId": "",
+          "bio": "",
+          "image": "",
+          "specialties": [],
+          "links": {},
+          "enrichment": {}
+        }
+      ],
+      "ndowResults": [],
+      "enrichment": {
+        "scrapedAt": "2026-08-05T21:00:32.562Z",
+        "source": "ndow-scraper-v2"
+      },
+      "metadata": {},
+      "text": "Aug 5\nAngler Ed Instructor Coordination Meeting Private Event\n\n■ Registration Closed 25 of 25 seats remaining\n\nLocation:\n\nNevada Department of Wildlife - Elko Office\n60 Youth Center Rd\nElko, NV 89801\n\nTaught by:\n\nSTEVEN C ALEXANDER\nDate & Times:\nAug 05, 2026 6:00PM - 7:00PM PDT\nView"
     }
   ]
 }
