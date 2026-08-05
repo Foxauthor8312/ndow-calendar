@@ -66,16 +66,22 @@ async function openTechnicalReference(){
         return;
     }
 
-    workspace.classList.remove(
-        'hidden'
-    );
+ if(typeof closeDashboard === 'function'){
 
-    workspace.style.display =
-        'flex';
- 
-    buildTechnicalReferenceWorkspace();
+    closeDashboard();
 
-    await initializeTechnicalReference();
+}
+
+workspace.classList.remove(
+    'hidden'
+);
+
+workspace.style.display =
+    'flex';
+
+buildTechnicalReferenceWorkspace();
+
+await initializeTechnicalReference();
 
 }
 
