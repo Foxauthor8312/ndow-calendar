@@ -333,10 +333,11 @@ ${title}
 
     categories.forEach(category=>{
 
-        const items =
-            notesArray.filter(
-                (note.category || 'BUG') === category.key
-            );
+     const items =
+       notesArray.filter(
+           note =>
+               (note.category || 'BUG') === category.key
+       );
 
         if(items.length === 0){
             return;
