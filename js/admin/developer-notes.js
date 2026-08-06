@@ -116,28 +116,49 @@ async function renderDeveloperNotes(){
     margin-bottom:20px;
 ">
 
-    <textarea
-
-        id="developerNoteText"
-
-        rows="3"
-
-        placeholder="Describe the issue..."
-
+    <div
         style="
+            display:flex;
+            flex-direction:column;
+            gap:10px;
             flex:1;
-            padding:12px;
-            border-radius:8px;
-            border:1px solid #d1d5db;
-            resize:vertical;
         "
+    >
 
-    ></textarea>
+        <select
+            id="developerNoteCategory"
+            style="
+                padding:10px;
+                border:1px solid #d1d5db;
+                border-radius:8px;
+            "
+        >
+
+            <option value="BUG">🐞 Bug</option>
+            <option value="UI_UX">🎨 UI / UX</option>
+            <option value="ENHANCEMENT">✨ Enhancement</option>
+            <option value="DOCUMENTATION">📚 Documentation</option>
+            <option value="TECHNICAL_DEBT">🔧 Technical Debt</option>
+            <option value="FUTURE_IDEA">💡 Future Idea</option>
+
+        </select>
+
+        <textarea
+            id="developerNoteText"
+            rows="3"
+            placeholder="Describe the issue..."
+            style="
+                padding:12px;
+                border-radius:8px;
+                border:1px solid #d1d5db;
+                resize:vertical;
+            "
+        ></textarea>
+
+    </div>
 
     <button
-
         onclick="saveDeveloperNote()"
-
         style="
             background:#2563eb;
             color:white;
@@ -148,11 +169,8 @@ async function renderDeveloperNotes(){
             font-weight:600;
             height:48px;
         "
-
     >
-
         Add Note
-
     </button>
 
 </div>
@@ -189,8 +207,9 @@ async function renderDeveloperNotes(){
 
 `;
 
-loadDeveloperNotes();
-}   // <-- THIS IS MISSING
+    loadDeveloperNotes();
+
+}
 
 /*==============================================================================
     LOAD
@@ -239,117 +258,218 @@ async function(){
 
     }
 
-    const notes =
-      result.notes || [];
+const notes =
+    result.notes || [];
 
-   const showCompleted =
-  document.getElementById(
-    'showCompletedNotes'
-  )?.checked || false;
+const showCompleted =
+    document.getElementById(
+        'showCompletedNotes'
+    )?.checked || false;
 
-const filteredNotes =
-  showCompleted
-    ? notes
-    : notes.filter(
+const activeNotes =
+    notes.filter(
         note => !note.fixed
-      );
+    );
 
-    const list =
-      document.getElementById(
+const completedNotes =
+    notes.filter(
+        note => note.fixed
+    );
+
+const categories = [
+
+    {
+        key:'BUG',
+        label:'🐞 Bugs'
+    },
+
+    {
+        key:'UI_UX',
+        label:'🎨 UI / UX'
+    },
+
+    {
+        key:'ENHANCEMENT',
+        label:'✨ Enhancements'
+    },
+
+    {
+        key:'DOCUMENTATION',
+        label:'📚 Documentation'
+    },
+
+    {
+        key:'TECHNICAL_DEBT',
+        label:'🔧 Technical Debt'
+    },
+
+    {
+        key:'FUTURE_IDEA',
+        label:'💡 Future Ideas'
+    }
+
+];
+
+const list =
+    document.getElementById(
         'developerNotesList'
-      );
+    );
 
-   if(filteredNotes.length === 0){
+function renderSection(title, notesArray){
 
-      list.innerHTML = `
+    let html = '';
 
+    html += `
 <div style="
-  color:#6b7280;
+    margin-top:24px;
+    margin-bottom:12px;
+    font-size:22px;
+    font-weight:700;
+    color:#19304B;
 ">
+${title}
+</div>
+`;
 
-No developer notes.
+    categories.forEach(category=>{
+
+        const items =
+            notesArray.filter(
+                (note.category || 'BUG') === category.key
+            );
+
+        if(items.length === 0){
+            return;
+        }
+
+        html += `
+<div style="
+    margin-top:18px;
+    margin-bottom:8px;
+    font-size:17px;
+    font-weight:700;
+    color:#19304B;
+    border-bottom:1px solid #DBE3EC;
+    padding-bottom:4px;
+">
+${category.label}
+</div>
+`;
+
+        items.forEach(note=>{
+
+            html += `
+
+<div
+    style="
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:12px;
+        margin-bottom:10px;
+        background:${note.fixed ? '#F8FAFC' : '#FFFFFF'};
+    "
+>
+
+<label
+    style="
+        display:flex;
+        gap:10px;
+        align-items:flex-start;
+    "
+>
+
+<input
+    type="checkbox"
+    ${note.fixed ? 'checked' : ''}
+    onchange="
+        toggleDeveloperNote(
+            ${note.id},
+            this.checked
+        );
+    "
+>
+
+<div>
+
+<div
+    style="
+        font-weight:600;
+        ${note.fixed
+            ? 'text-decoration:line-through;color:#64748B;'
+            : ''
+        }
+    "
+>
+
+${note.note}
+
+</div>
+
+<div
+    style="
+        margin-top:6px;
+        font-size:12px;
+        color:#64748B;
+    "
+>
+
+${new Date(
+    note.created_at
+).toLocaleString()}
+
+</div>
+
+</div>
+
+</label>
 
 </div>
 
 `;
 
-      return;
+        });
 
-    }
+    });
 
-    list.innerHTML =
+    return html;
 
-      filteredNotes.map(note => `
+}
 
-<div
-  style="
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    padding:12px;
-    margin-bottom:12px;
-    background:${
-      note.fixed
-        ? '#f3f4f6'
-        : '#ffffff'
-    };
-  "
->
-
-  <label
-    style="
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-    "
-  >
-
-    <input
-  type="checkbox"
-
-  ${note.fixed ? 'checked' : ''}
-
-  onchange="
-    toggleDeveloperNote(
-      ${note.id},
-      this.checked
+let html =
+    renderSection(
+        'ACTIVE NOTES',
+        activeNotes
     );
-  "
+
+if(showCompleted){
+
+    html +=
+        renderSection(
+            'COMPLETED NOTES',
+            completedNotes
+        );
+
+}
+
+if(
+    html.trim() === ''
+){
+
+    html = `
+<div
+    style="
+        color:#64748B;
+    "
 >
 
-    <div>
-
-      <div style="
-        font-weight:600;
-        ${
-          note.fixed
-            ? 'text-decoration:line-through;color:#6b7280;'
-            : ''
-        }
-      ">
-        ${note.note}
-      </div>
-
-      <div style="
-        margin-top:6px;
-        font-size:12px;
-        color:#6b7280;
-      ">
-
-        ${
-          new Date(
-            note.created_at
-          ).toLocaleString()
-        }
-
-      </div>
-
-    </div>
-
-  </label>
+No developer notes.
 
 </div>
+`;
 
-`).join('');
+}
+
+list.innerHTML = html;
 
   }
 
@@ -377,7 +497,12 @@ async function(){
       'developerNoteText'
     );
 
-  const note =
+  const category =
+    document.getElementById(
+        'developerNoteCategory'
+    ).value;
+
+const note =
     textarea.value.trim();
 
   if(!note){
@@ -417,9 +542,10 @@ async function(){
           },
 
           body:JSON.stringify({
-
-            note
-
+          
+              note,
+              category
+          
           })
 
         }
@@ -441,7 +567,11 @@ async function(){
 
     }
 
-    textarea.value = '';
+   textarea.value = '';
+    
+    document.getElementById(
+        'developerNoteCategory'
+    ).value = 'BUG';
 
     loadDeveloperNotes();
 
