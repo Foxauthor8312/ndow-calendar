@@ -129,7 +129,7 @@ async function openTechnicalReference(){
             </div>
 
             <img
-                src="images/EKC-image.png"
+                src="images/EKC-panel.png"
                 alt="Engineering Knowledge Center"
                 style="
                     width:100%;
