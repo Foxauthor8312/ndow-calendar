@@ -1,4 +1,3 @@
-
 /*
 ==============================================================================
  NDOW Volunteer Portal
@@ -24,6 +23,14 @@
 
 /*
 ==============================================================================
+ Preserve Original Workspace
+==============================================================================
+*/
+
+let technicalReferenceOriginalContent = null;
+
+/*
+==============================================================================
  Initialize Workspace
 ==============================================================================
 */
@@ -36,14 +43,14 @@ async function initializeTechnicalReference(){
         return;
     }
 
-technicalReferenceState.topics =
-    await loadTechnicalTopics();
+    technicalReferenceState.topics =
+        await loadTechnicalTopics();
 
-renderTechnicalNavigation(
+    renderTechnicalNavigation(
 
-    technicalReferenceState.topics
+        technicalReferenceState.topics
 
-);
+    );
 
     technicalReferenceState.initialized =
         true;
@@ -67,22 +74,86 @@ async function openTechnicalReference(){
         return;
     }
 
- if(typeof closeDashboard === 'function'){
+    if(typeof closeDashboard === 'function'){
+        closeDashboard();
+    }
 
-    closeDashboard();
+    workspace.classList.remove(
+        'hidden'
+    );
 
-}
+    workspace.style.display =
+        'flex';
 
-workspace.classList.remove(
-    'hidden'
-);
+    /*
+    --------------------------------------------------------------------------
+    Preserve original workspace only once.
+    --------------------------------------------------------------------------
+    */
 
-workspace.style.display =
-    'flex';
+    if(technicalReferenceOriginalContent === null){
 
-buildTechnicalReferenceWorkspace();
+        technicalReferenceOriginalContent =
+            workspace.innerHTML;
 
-await initializeTechnicalReference();
+    }
+
+    /*
+    --------------------------------------------------------------------------
+    Temporary Engineering Knowledge Center Preview
+    --------------------------------------------------------------------------
+    */
+
+    workspace.innerHTML = `
+        <div style="
+            width:100%;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background:#F8FAFC;
+            overflow:auto;
+            padding:40px;
+        ">
+
+            <div style="
+                font-family:'IBM Plex Sans',sans-serif;
+                font-size:28px;
+                font-weight:600;
+                color:#19304B;
+                margin-bottom:24px;
+            ">
+                Engineering Knowledge Center
+            </div>
+
+            <img
+                src="images/EKC-image.png"
+                alt="Engineering Knowledge Center"
+                style="
+                    width:100%;
+                    max-width:1400px;
+                    height:auto;
+                    display:block;
+                    border-radius:12px;
+                    box-shadow:0 10px 30px rgba(0,0,0,.15);
+                "
+            >
+
+        </div>
+    `;
+
+    return;
+
+    /*
+    --------------------------------------------------------------------------
+    Existing implementation
+    --------------------------------------------------------------------------
+
+    buildTechnicalReferenceWorkspace();
+
+    await initializeTechnicalReference();
+    */
 
 }
 
@@ -101,6 +172,19 @@ function closeTechnicalReference(){
 
     if(!workspace){
         return;
+    }
+
+    /*
+    --------------------------------------------------------------------------
+    Restore original workspace for future use.
+    --------------------------------------------------------------------------
+    */
+
+    if(technicalReferenceOriginalContent !== null){
+
+        workspace.innerHTML =
+            technicalReferenceOriginalContent;
+
     }
 
     workspace.classList.add(
