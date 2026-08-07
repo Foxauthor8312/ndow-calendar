@@ -132,13 +132,14 @@ async function openTechnicalReference(){
                 src="images/login/EKC-panel.png"
                 alt="Engineering Knowledge Center"
                 style="
-                    width:100%;
-                    max-width:1400px;
-                    height:auto;
-                    display:block;
-                    border-radius:12px;
-                    box-shadow:0 10px 30px rgba(0,0,0,.15);
-                "
+                  max-width:95%;
+                  max-height:85vh;
+                  width:auto;
+                  height:auto;
+                  display:block;
+                  border-radius:12px;
+                  box-shadow:0 10px 30px rgba(0,0,0,.15);
+              "
             >
 
         </div>
