@@ -19,189 +19,223 @@
 ==============================================================================
 */
 
-function buildTechnicalReferenceWorkspace(){
-
-    const root =
-        document.getElementById(
-            'technicalReferenceRoot'
-        );
-
-    if(!root){
-        return;
-    }
-
-    root.innerHTML = `
+<!-- Content -->
 
 <div
+    id="technicalReferenceContent"
     style="
-        display:flex;
-        flex-direction:column;
-        height:100vh;
-        background:#F8FAFC;
+        padding:34px;
+        overflow:auto;
+        background:white;
     "
 >
 
-    <!-- Header -->
-
     <div
         style="
-            height:72px;
-            background:#19304B;
-            color:white;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:0 24px;
-            border-bottom:1px solid #10263d;
+            max-width:900px;
+            margin:0 auto;
+            font-family:'IBM Plex Sans',sans-serif;
         "
     >
 
-        <div>
-
-            <div
-                style="
-                    font-size:26px;
-                    font-weight:700;
-                "
-            >
-
-                NDOW Technical Reference
-
-            </div>
-
-            <div
-                style="
-                    font-size:13px;
-                    opacity:.85;
-                "
-            >
-
-                System Architecture • Developer Guide • Engineering Reference
-
-            </div>
-
-        </div>
-
-        <button
-            onclick="closeTechnicalReference()"
+        <div
             style="
-                background:white;
-                color:#19304B;
-                border:none;
-                border-radius:6px;
-                padding:8px 18px;
-                cursor:pointer;
+                font-size:14px;
                 font-weight:600;
+                color:#589FD6;
+                text-transform:uppercase;
+                letter-spacing:.08em;
+                margin-bottom:8px;
             "
         >
 
-            Close
+            ENGINEERING KNOWLEDGE CENTER
 
-        </button>
+        </div>
 
-    </div>
+        <h1
+            style="
+                margin:0 0 20px 0;
+                font-size:26px;
+                font-weight:600;
+                color:#19304B;
+            "
+        >
 
-    <!-- Body -->
+            Welcome
 
-    <div
-        style="
-            display:grid;
-            grid-template-columns:320px 1fr;
-            flex:1;
-            overflow:hidden;
-        "
-    >
+        </h1>
 
-        <!-- Navigation -->
+        <p
+            style="
+                font-size:14px;
+                line-height:1.8;
+                color:#334155;
+            "
+        >
+
+            Welcome to the Engineering Knowledge Center (EKC), a
+            centralized engineering reference system designed to preserve,
+            organize, and connect engineering knowledge.
+
+        </p>
+
+        <p
+            style="
+                font-size:14px;
+                line-height:1.8;
+                color:#334155;
+            "
+        >
+
+            Unlike a traditional technical manual, the EKC is organized
+            around engineering concepts, system architecture, operational
+            workflows, engineering decisions, and the relationships between
+            them. Whether you are learning the system for the first time,
+            troubleshooting a problem, or expanding an existing feature, the
+            Engineering Knowledge Center provides a structured path to the
+            information you need.
+
+        </p>
 
         <div
             style="
-                background:#F4F8FB;
-                border-right:1px solid #DBE3EC;
-                padding:20px;
-                overflow:auto;
+                margin-top:36px;
+                margin-bottom:30px;
             "
         >
 
-            <input
-                id="technicalReferenceSearch"
-                type="search"
-                placeholder="Search Technical Reference..."
-                style="
-                    width:100%;
-                    box-sizing:border-box;
-                    padding:10px;
-                    margin-bottom:18px;
-                    border:1px solid #CBD5E1;
-                    border-radius:6px;
-                "
-            >
-
             <div
                 style="
-                    font-size:12px;
-                    font-weight:700;
-                    color:#64748B;
-                    margin-bottom:10px;
-                    letter-spacing:.05em;
+                    font-size:20px;
+                    font-weight:600;
+                    color:#19304B;
+                    margin-bottom:18px;
                 "
             >
 
-                CONTENTS
+                The Four Engineering Centers
 
             </div>
 
             <div
-                id="technicalReferenceNavigation"
+                style="
+                    display:grid;
+                    grid-template-columns:repeat(2,minmax(280px,1fr));
+                    gap:18px;
+                "
             >
+
+                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #19304B;border-radius:8px;">
+                    <div style="font-size:17px;font-weight:600;color:#19304B;">Foundations</div>
+                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
+                        Learn the concepts, terminology, and engineering principles that support everything else.
+                    </div>
+                </div>
+
+                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #589FD6;border-radius:8px;">
+                    <div style="font-size:17px;font-weight:600;color:#19304B;">Architecture</div>
+                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
+                        Understand how the system is designed and how its components work together.
+                    </div>
+                </div>
+
+                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #F29647;border-radius:8px;">
+                    <div style="font-size:17px;font-weight:600;color:#19304B;">Portal Systems</div>
+                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
+                        Explore application features, workflows, and operational modules.
+                    </div>
+                </div>
+
+                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #7A9E7F;border-radius:8px;">
+                    <div style="font-size:17px;font-weight:600;color:#19304B;">Engineering & Operations</div>
+                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
+                        Development, deployment, troubleshooting, and long-term maintenance.
+                    </div>
+                </div>
 
             </div>
 
         </div>
 
-        <!-- Content -->
-
         <div
-            id="technicalReferenceContent"
             style="
-                padding:34px;
-                overflow:auto;
-                background:white;
+                background:#F8FAFC;
+                border:1px solid #DBE3EC;
+                border-radius:10px;
+                padding:22px;
             "
         >
 
-            <h1
+            <div
                 style="
+                    font-size:20px;
+                    font-weight:600;
                     color:#19304B;
-                    margin-top:0;
+                    margin-bottom:12px;
                 "
             >
 
-                Welcome
+                Begin Exploring
 
-            </h1>
+            </div>
 
-            <p>
+            <p
+                style="
+                    font-size:14px;
+                    line-height:1.8;
+                    color:#475569;
+                    margin-bottom:20px;
+                "
+            >
 
-                Welcome to the NDOW Technical Reference.
+                Use the navigation panel to browse Engineering Centers,
+                search for topics, and follow Knowledge Connections
+                throughout the system.
 
             </p>
 
-            <p>
+            <button
+                style="
+                    background:#19304B;
+                    color:white;
+                    border:none;
+                    border-radius:8px;
+                    padding:12px 22px;
+                    cursor:pointer;
+                    font-weight:600;
+                "
+                onclick="alert('Engineering Roadmap coming next...')"
+            >
 
-                Select a topic from the navigation panel to begin.
+                View Engineering Roadmap
 
-            </p>
+            </button>
+
+        </div>
+
+        <div
+            style="
+                margin-top:40px;
+                text-align:center;
+                font-size:14px;
+                color:#64748B;
+                font-style:italic;
+                line-height:1.8;
+            "
+        >
+
+            Build carefully.<br>
+            Document thoroughly.<br>
+            Preserve knowledge.<br>
+            Strengthen the whole.<br>
+            Leave the system better than you found it.
 
         </div>
 
     </div>
 
 </div>
-
-`;
-
-}
 
 /*
 ==============================================================================
