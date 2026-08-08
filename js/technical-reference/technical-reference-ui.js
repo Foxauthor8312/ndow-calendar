@@ -19,217 +19,213 @@
 ==============================================================================
 */
 
-<!-- Content -->
+function buildTechnicalReferenceWorkspace(){
+
+    const workspace =
+        document.getElementById(
+            'technicalReferenceWorkspace'
+        );
+
+    if(!workspace){
+        return;
+    }
+
+    workspace.innerHTML = `
 
 <div
-    id="technicalReferenceContent"
     style="
-        padding:34px;
-        overflow:auto;
-        background:white;
+        display:flex;
+        flex-direction:column;
+        height:100%;
+        background:#F8FAFC;
+        font-family:'IBM Plex Sans',sans-serif;
     "
 >
 
+    <!-- Header -->
+
     <div
         style="
-            max-width:900px;
-            margin:0 auto;
-            font-family:'IBM Plex Sans',sans-serif;
+            background:#19304B;
+            color:white;
+            padding:18px 24px;
+            border-bottom:1px solid #16304A;
         "
     >
 
         <div
             style="
-                font-size:14px;
+                font-size:22px;
                 font-weight:600;
-                color:#589FD6;
-                text-transform:uppercase;
-                letter-spacing:.08em;
-                margin-bottom:8px;
             "
         >
 
-            ENGINEERING KNOWLEDGE CENTER
-
-        </div>
-
-        <h1
-            style="
-                margin:0 0 20px 0;
-                font-size:26px;
-                font-weight:600;
-                color:#19304B;
-            "
-        >
-
-            Welcome
-
-        </h1>
-
-        <p
-            style="
-                font-size:14px;
-                line-height:1.8;
-                color:#334155;
-            "
-        >
-
-            Welcome to the Engineering Knowledge Center (EKC), a
-            centralized engineering reference system designed to preserve,
-            organize, and connect engineering knowledge.
-
-        </p>
-
-        <p
-            style="
-                font-size:14px;
-                line-height:1.8;
-                color:#334155;
-            "
-        >
-
-            Unlike a traditional technical manual, the EKC is organized
-            around engineering concepts, system architecture, operational
-            workflows, engineering decisions, and the relationships between
-            them. Whether you are learning the system for the first time,
-            troubleshooting a problem, or expanding an existing feature, the
-            Engineering Knowledge Center provides a structured path to the
-            information you need.
-
-        </p>
-
-        <div
-            style="
-                margin-top:36px;
-                margin-bottom:30px;
-            "
-        >
-
-            <div
-                style="
-                    font-size:20px;
-                    font-weight:600;
-                    color:#19304B;
-                    margin-bottom:18px;
-                "
-            >
-
-                The Four Engineering Centers
-
-            </div>
-
-            <div
-                style="
-                    display:grid;
-                    grid-template-columns:repeat(2,minmax(280px,1fr));
-                    gap:18px;
-                "
-            >
-
-                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #19304B;border-radius:8px;">
-                    <div style="font-size:17px;font-weight:600;color:#19304B;">Foundations</div>
-                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
-                        Learn the concepts, terminology, and engineering principles that support everything else.
-                    </div>
-                </div>
-
-                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #589FD6;border-radius:8px;">
-                    <div style="font-size:17px;font-weight:600;color:#19304B;">Architecture</div>
-                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
-                        Understand how the system is designed and how its components work together.
-                    </div>
-                </div>
-
-                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #F29647;border-radius:8px;">
-                    <div style="font-size:17px;font-weight:600;color:#19304B;">Portal Systems</div>
-                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
-                        Explore application features, workflows, and operational modules.
-                    </div>
-                </div>
-
-                <div style="padding:18px;border:1px solid #DBE3EC;border-left:6px solid #7A9E7F;border-radius:8px;">
-                    <div style="font-size:17px;font-weight:600;color:#19304B;">Engineering & Operations</div>
-                    <div style="margin-top:8px;font-size:14px;color:#475569;line-height:1.6;">
-                        Development, deployment, troubleshooting, and long-term maintenance.
-                    </div>
-                </div>
-
-            </div>
+            Engineering Knowledge Center
 
         </div>
 
         <div
             style="
-                background:#F8FAFC;
-                border:1px solid #DBE3EC;
-                border-radius:10px;
-                padding:22px;
+                margin-top:4px;
+                font-size:13px;
+                opacity:.85;
+            "
+        >
+
+            Engineering Reference System
+
+        </div>
+
+    </div>
+
+    <!-- Body -->
+
+    <div
+        style="
+            flex:1;
+            display:flex;
+            overflow:hidden;
+        "
+    >
+
+        <!-- Navigation -->
+
+        <div
+            style="
+                width:300px;
+                background:white;
+                border-right:1px solid #DBE3EC;
+                display:flex;
+                flex-direction:column;
             "
         >
 
             <div
                 style="
-                    font-size:20px;
-                    font-weight:600;
-                    color:#19304B;
-                    margin-bottom:12px;
+                    padding:18px;
+                    border-bottom:1px solid #DBE3EC;
                 "
             >
 
-                Begin Exploring
+                <input
+                    id="technicalReferenceSearch"
+                    type="text"
+                    placeholder="Search Knowledge..."
+                    style="
+                        width:100%;
+                        padding:10px;
+                        border:1px solid #DBE3EC;
+                        border-radius:6px;
+                        font-size:14px;
+                    "
+                >
 
             </div>
 
-            <p
+            <div
+                id="technicalReferenceNavigation"
                 style="
-                    font-size:14px;
-                    line-height:1.8;
-                    color:#475569;
-                    margin-bottom:20px;
+                    flex:1;
+                    overflow:auto;
+                    padding:18px;
                 "
-            >
-
-                Use the navigation panel to browse Engineering Centers,
-                search for topics, and follow Knowledge Connections
-                throughout the system.
-
-            </p>
-
-            <button
-                style="
-                    background:#19304B;
-                    color:white;
-                    border:none;
-                    border-radius:8px;
-                    padding:12px 22px;
-                    cursor:pointer;
-                    font-weight:600;
-                "
-                onclick="alert('Engineering Roadmap coming next...')"
-            >
-
-                View Engineering Roadmap
-
-            </button>
+            ></div>
 
         </div>
 
+        <!-- Content -->
+
         <div
+            id="technicalReferenceContent"
             style="
-                margin-top:40px;
-                text-align:center;
-                font-size:14px;
-                color:#64748B;
-                font-style:italic;
-                line-height:1.8;
+                flex:1;
+                overflow:auto;
+                padding:36px;
+                background:white;
             "
         >
 
-            Build carefully.<br>
-            Document thoroughly.<br>
-            Preserve knowledge.<br>
-            Strengthen the whole.<br>
-            Leave the system better than you found it.
+            <div
+                style="
+                    max-width:900px;
+                    margin:auto;
+                "
+            >
+
+                <div
+                    style="
+                        font-size:14px;
+                        font-weight:600;
+                        color:#589FD6;
+                        text-transform:uppercase;
+                        letter-spacing:.08em;
+                    "
+                >
+
+                    ENGINEERING KNOWLEDGE CENTER
+
+                </div>
+
+                <h1
+                    style="
+                        font-size:26px;
+                        font-weight:600;
+                        color:#19304B;
+                        margin:12px 0 20px;
+                    "
+                >
+
+                    Welcome
+
+                </h1>
+
+                <p
+                    style="
+                        font-size:14px;
+                        line-height:1.8;
+                        color:#334155;
+                    "
+                >
+
+                    Welcome to the Engineering Knowledge Center (EKC),
+                    a centralized engineering reference system designed
+                    to preserve, organize, and connect engineering
+                    knowledge.
+
+                </p>
+
+                <p
+                    style="
+                        font-size:14px;
+                        line-height:1.8;
+                        color:#334155;
+                    "
+                >
+
+                    Select an Engineering Center or topic from the
+                    navigation panel to begin exploring.
+
+                </p>
+
+                <button
+                    style="
+                        margin-top:30px;
+                        background:#19304B;
+                        color:white;
+                        border:none;
+                        border-radius:8px;
+                        padding:12px 24px;
+                        cursor:pointer;
+                        font-weight:600;
+                    "
+                    onclick="alert('Roadmap coming next...');"
+                >
+
+                    View Engineering Roadmap
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -237,6 +233,9 @@
 
 </div>
 
+`;
+
+}
 /*
 ==============================================================================
  Render Navigation
