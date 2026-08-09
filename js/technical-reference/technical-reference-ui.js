@@ -215,10 +215,43 @@ function renderOrientation(){
         "
     >
 
+  <div
+    style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        width:100%;
+        max-width:1920px;
+        margin-top:28px;
+    "
+>
+
+    <button
+        onclick="
+            closeTechnicalReference();
+            if(typeof openDashboard==='function'){
+                openDashboard();
+            }
+        "
+        style="
+            background:#64748B;
+            color:white;
+            border:none;
+            border-radius:8px;
+            padding:14px 28px;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+        "
+    >
+
+        ✕ Close
+
+    </button>
+
     <button
         onclick="showEngineeringRoadmap();"
         style="
-            margin-top:28px;
             background:#19304B;
             color:white;
             border:none;
@@ -227,7 +260,6 @@ function renderOrientation(){
             font-size:16px;
             font-weight:600;
             cursor:pointer;
-            transition:.2s;
         "
     >
 
@@ -284,10 +316,64 @@ function showEngineeringRoadmap(){
         "
     >
 
+   <div
+    style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        width:100%;
+        max-width:1920px;
+        margin-top:28px;
+    "
+>
+
+    <button
+        onclick="
+            closeTechnicalReference();
+            if(typeof openDashboard==='function'){
+                openDashboard();
+            }
+        "
+        style="
+            background:#64748B;
+            color:white;
+            border:none;
+            border-radius:8px;
+            padding:14px 28px;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+        "
+    >
+
+        ✕ Close
+
+    </button>
+
     <button
         onclick="renderOrientation();"
         style="
-            margin-top:28px;
+            background:#64748B;
+            color:white;
+            border:none;
+            border-radius:8px;
+            padding:14px 28px;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+        "
+    >
+
+        ← Back
+
+    </button>
+
+    <button
+        onclick="
+            buildTechnicalReferenceWorkspace();
+            initializeTechnicalReference();
+        "
+        style="
             background:#19304B;
             color:white;
             border:none;
@@ -299,12 +385,11 @@ function showEngineeringRoadmap(){
         "
     >
 
-        ← Back
+        Enter Knowledge Center →
 
     </button>
 
 </div>
-
 `;
 
 }
