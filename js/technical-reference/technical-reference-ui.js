@@ -146,13 +146,18 @@ function buildTechnicalReferenceWorkspace(){
              Dynamic Content
         ======================================================= -->
 
-        <div
+         <div
             id="technicalReferenceContent"
             style="
                 flex:1;
                 overflow:auto;
-                background:white;
-                padding:28px 36px;
+                padding:30px;
+                background:
+                    linear-gradient(
+                        180deg,
+                        #F8FAFC 0%,
+                        #EEF3F8 100%
+                    );
             "
         ></div>
 
@@ -199,9 +204,24 @@ function renderOrientation(){
         display:flex;
         flex-direction:column;
         align-items:center;
+        justify-content:center;
         padding:24px;
+        height:100%;
     "
 >
+
+    <div
+        style="
+            width:100%;
+            max-width:1850px;
+            background:rgba(255,255,255,.82);
+            border:1px solid #DBE3EC;
+            border-radius:18px;
+            padding:24px;
+            box-shadow:
+                0 10px 35px rgba(25,48,75,.08);
+        "
+    >
 
     <img
         src="images/login/EKC-preamble.png"
@@ -214,6 +234,8 @@ function renderOrientation(){
             box-shadow:0 12px 30px rgba(0,0,0,.18);
         "
     >
+    
+</div> 
 
   <div
     style="
@@ -300,9 +322,24 @@ function showEngineeringRoadmap(){
         display:flex;
         flex-direction:column;
         align-items:center;
+        justify-content:center;
         padding:24px;
+        height:100%;
     "
 >
+
+    <div
+        style="
+            width:100%;
+            max-width:1850px;
+            background:rgba(255,255,255,.82);
+            border:1px solid #DBE3EC;
+            border-radius:18px;
+            padding:24px;
+            box-shadow:
+                0 10px 35px rgba(25,48,75,.08);
+        "
+    >
 
     <img
         src="images/login/EKC-panel.png"
@@ -315,6 +352,8 @@ function showEngineeringRoadmap(){
             box-shadow:0 12px 30px rgba(0,0,0,.18);
         "
     >
+    
+</div> 
 
    <div
     style="
