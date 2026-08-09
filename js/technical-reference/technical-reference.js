@@ -85,8 +85,6 @@ async function openTechnicalReference(){
 
     buildTechnicalReferenceWorkspace();
 
-    await initializeTechnicalReference();
-
 }
 
 /*
