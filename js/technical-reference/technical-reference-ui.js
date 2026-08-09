@@ -17,7 +17,7 @@
 ==============================================================================
  Build Workspace
 ------------------------------------------------------------------------------
- Replaces the existing buildTechnicalReferenceWorkspace() function.
+ Initializes the Engineering Knowledge Center workspace.
 ==============================================================================
 */
 
@@ -31,6 +31,8 @@ function buildTechnicalReferenceWorkspace(){
     if(!workspace){
         return;
     }
+
+    injectTechnicalReferenceStyles();
 
     workspace.innerHTML = `
 
@@ -63,9 +65,7 @@ function buildTechnicalReferenceWorkspace(){
                 font-weight:600;
             "
         >
-
             Engineering Knowledge Center
-
         </div>
 
         <div
@@ -75,9 +75,7 @@ function buildTechnicalReferenceWorkspace(){
                 opacity:.82;
             "
         >
-
             Preserving Engineering Knowledge
-
         </div>
 
     </div>
@@ -94,59 +92,59 @@ function buildTechnicalReferenceWorkspace(){
         "
     >
 
-        <!-- ======================================================
-             Navigation
-        ======================================================= -->
+  <!-- ======================================================
+     Navigation Panel
+======================================================= -->
 
-        <div
-            style="
-                width:350px;
-                background:white;
-                border-right:1px solid #DBE3EC;
-                display:flex;
-                flex-direction:column;
-            "
-        >
+<div
+    id="technicalReferenceSidebar"
+    style="
+        width:300px;
+        background:#FFFFFF;
+        border-right:1px solid #DBE3EC;
+        display:flex;
+        flex-direction:column;
+    "
+>
 
-            <div
-                style="
-                    padding:16px;
-                    border-bottom:1px solid #DBE3EC;
-                "
-            >
+    <!-- ==================================================
+         Navigation Header
+    =================================================== -->
 
-                <input
-                    id="technicalReferenceSearch"
-                    type="text"
-                    placeholder="Search Engineering Knowledge..."
-                    style="
-                        width:100%;
-                        padding:10px;
-                        border:1px solid #DBE3EC;
-                        border-radius:6px;
-                        font-size:14px;
-                        outline:none;
-                    "
-                >
+    <div
+        id="technicalReferenceNavigationHeader"
+        style="
+            padding:14px 18px;
+            border-bottom:1px solid #DBE3EC;
+            font-size:14px;
+            font-weight:600;
+            color:#19304B;
+            background:#F8FAFC;
+        "
+    >
+        Navigation
+    </div>
 
-            </div>
+    <!-- ==================================================
+         Dynamic Navigation
+    =================================================== -->
 
-            <div
-                id="technicalReferenceNavigation"
-                style="
-                    flex:1;
-                    overflow:auto;
-                    padding:18px;
-                "
-            ></div>
+    <div
+        id="technicalReferenceNavigation"
+        style="
+            flex:1;
+            overflow:auto;
+            padding:14px;
+        "
+    ></div>
 
-        </div>
+</div>
 
         <!-- ======================================================
              Dynamic Content
         ======================================================= -->
 
-         <div
+        <div
             id="technicalReferenceContent"
             style="
                 flex:1;
@@ -167,13 +165,111 @@ function buildTechnicalReferenceWorkspace(){
 
 `;
 
-    /*
-    ==============================================================
-    Initial Screen
-    ==============================================================
-    */
-
     renderOrientation();
+
+}
+
+function injectTechnicalReferenceStyles(){
+
+    if(
+        document.getElementById(
+            'technicalReferenceStyles'
+        )
+    ){
+        return;
+    }
+
+    const style =
+        document.createElement(
+            'style'
+        );
+
+    style.id =
+        'technicalReferenceStyles';
+
+    style.textContent = `
+
+.technical-nav-button{
+
+    width:100%;
+    margin-bottom:10px;
+
+    padding:10px 14px;
+
+    border:none;
+    border-radius:6px;
+
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+}
+
+.technical-nav-button.primary{
+
+    background:#19304B;
+    color:#FFFFFF;
+
+}
+
+.technical-nav-button.secondary{
+
+    background:#64748B;
+    color:#FFFFFF;
+
+}
+
+.technical-nav-button:hover{
+
+    opacity:.92;
+
+}
+
+`;
+
+    document.head.appendChild(
+        style
+    );
+
+}
+
+
+/*
+==============================================================================
+ Presentation Navigation
+------------------------------------------------------------------------------
+ Displays navigation controls while viewing the EKC presentation pages.
+==============================================================================
+*/
+
+function renderPresentationNavigation(
+    title,
+    buttons
+){
+
+    const header =
+        document.getElementById(
+            'technicalReferenceNavigationHeader'
+        );
+
+    const nav =
+        document.getElementById(
+            'technicalReferenceNavigation'
+        );
+
+    if(!header || !nav){
+        return;
+    }
+
+    header.textContent =
+        title;
+
+    nav.innerHTML =
+        buttons;
 
 }
 
@@ -181,8 +277,7 @@ function buildTechnicalReferenceWorkspace(){
 ==============================================================================
  Render Orientation
 ------------------------------------------------------------------------------
- Purpose:
-    Displays the Engineering Knowledge Center Preamble.
+ Displays the Engineering Knowledge Center Preamble.
 ==============================================================================
 */
 
@@ -197,6 +292,35 @@ function renderOrientation(){
         return;
     }
 
+    renderPresentationNavigation(
+
+        'Engineering Knowledge Center',
+
+        `
+
+<button
+    class="technical-nav-button secondary"
+    onclick="
+        closeTechnicalReference();
+        if(typeof openDashboard==='function'){
+            openDashboard();
+        }
+    "
+>
+    ✕ Close
+</button>
+
+<button
+    class="technical-nav-button primary"
+    onclick="showEngineeringRoadmap();"
+>
+    Continue →
+</button>
+
+`
+
+    );
+
     panel.innerHTML = `
 
 <div
@@ -205,8 +329,8 @@ function renderOrientation(){
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        padding:24px;
         height:100%;
+        padding:24px;
     "
 >
 
@@ -223,77 +347,26 @@ function renderOrientation(){
         "
     >
 
-    <img
-        src="images/login/EKC-preamble.png"
-        alt="Engineering Knowledge Center Preamble"
-        style="
-            width:100%;
-            max-width:1920px;
-            height:auto;
-            border-radius:10px;
-            box-shadow:0 12px 30px rgba(0,0,0,.18);
-        "
-    >
-    
-</div> 
+        <img
+            src="images/login/EKC-preamble.png"
+            alt="Engineering Knowledge Center Preamble"
+            style="
+                width:100%;
+                height:auto;
+                border-radius:10px;
+                box-shadow:
+                    0 12px 30px rgba(0,0,0,.18);
+            "
+        >
 
-  <div
-    style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        width:100%;
-        max-width:1920px;
-        margin-top:28px;
-    "
->
-
-    <button
-        onclick="
-            closeTechnicalReference();
-            if(typeof openDashboard==='function'){
-                openDashboard();
-            }
-        "
-        style="
-            background:#64748B;
-            color:white;
-            border:none;
-            border-radius:8px;
-            padding:14px 28px;
-            font-size:16px;
-            font-weight:600;
-            cursor:pointer;
-        "
-    >
-
-        ✕ Close
-
-    </button>
-
-    <button
-        onclick="showEngineeringRoadmap();"
-        style="
-            background:#19304B;
-            color:white;
-            border:none;
-            border-radius:8px;
-            padding:14px 34px;
-            font-size:16px;
-            font-weight:600;
-            cursor:pointer;
-        "
-    >
-
-        Continue →
-
-    </button>
+    </div>
 
 </div>
 
 `;
 
 }
+
 
 /*
 ==============================================================================
@@ -315,6 +388,45 @@ function showEngineeringRoadmap(){
         return;
     }
 
+    renderPresentationNavigation(
+
+        'Engineering Roadmap',
+
+        `
+
+<button
+    class="technical-nav-button secondary"
+    onclick="
+        closeTechnicalReference();
+        if(typeof openDashboard==='function'){
+            openDashboard();
+        }
+    "
+>
+    ✕ Close
+</button>
+
+<button
+    class="technical-nav-button secondary"
+    onclick="renderOrientation();"
+>
+    ← Back
+</button>
+
+<button
+    class="technical-nav-button primary"
+    onclick="
+        buildTechnicalReferenceWorkspace();
+        initializeTechnicalReference();
+    "
+>
+    Enter Knowledge Center →
+</button>
+
+`
+
+    );
+
     panel.innerHTML = `
 
 <div
@@ -323,8 +435,8 @@ function showEngineeringRoadmap(){
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        padding:24px;
         height:100%;
+        padding:24px;
     "
 >
 
@@ -341,113 +453,58 @@ function showEngineeringRoadmap(){
         "
     >
 
-    <img
-        src="images/login/EKC-panel.png"
-        alt="Engineering Knowledge Center Roadmap"
-        style="
-            width:100%;
-            max-width:1920px;
-            height:auto;
-            border-radius:10px;
-            box-shadow:0 12px 30px rgba(0,0,0,.18);
-        "
-    >
-    
-</div> 
+        <img
+            src="images/login/EKC-panel.png"
+            alt="Engineering Knowledge Center Roadmap"
+            style="
+                width:100%;
+                height:auto;
+                border-radius:10px;
+                box-shadow:
+                    0 12px 30px rgba(0,0,0,.18);
+            "
+        >
 
-   <div
-    style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        width:100%;
-        max-width:1920px;
-        margin-top:28px;
-    "
->
-
-    <button
-        onclick="
-            closeTechnicalReference();
-            if(typeof openDashboard==='function'){
-                openDashboard();
-            }
-        "
-        style="
-            background:#64748B;
-            color:white;
-            border:none;
-            border-radius:8px;
-            padding:14px 28px;
-            font-size:16px;
-            font-weight:600;
-            cursor:pointer;
-        "
-    >
-
-        ✕ Close
-
-    </button>
-
-    <button
-        onclick="renderOrientation();"
-        style="
-            background:#64748B;
-            color:white;
-            border:none;
-            border-radius:8px;
-            padding:14px 28px;
-            font-size:16px;
-            font-weight:600;
-            cursor:pointer;
-        "
-    >
-
-        ← Back
-
-    </button>
-
-    <button
-        onclick="
-            buildTechnicalReferenceWorkspace();
-            initializeTechnicalReference();
-        "
-        style="
-            background:#19304B;
-            color:white;
-            border:none;
-            border-radius:8px;
-            padding:14px 34px;
-            font-size:16px;
-            font-weight:600;
-            cursor:pointer;
-        "
-    >
-
-        Enter Knowledge Center →
-
-    </button>
+    </div>
 
 </div>
+
 `;
 
 }
+
 /*
 ==============================================================================
  Render Navigation
+------------------------------------------------------------------------------
+ Displays the Engineering Center navigation tree.
 ==============================================================================
 */
 
 function renderTechnicalNavigation(topics){
+
+    const header =
+        document.getElementById(
+            'technicalReferenceNavigationHeader'
+        );
 
     const nav =
         document.getElementById(
             'technicalReferenceNavigation'
         );
 
-    if(!nav){
+    if(!header || !nav){
         return;
     }
+
+    /*
+    --------------------------------------------------------------------------
+    Switch from Presentation Mode to Knowledge Center Mode.
+    --------------------------------------------------------------------------
+    */
+
+    header.textContent =
+        'Engineering Centers';
 
     nav.innerHTML = '';
 
@@ -488,70 +545,64 @@ function renderTechnicalNavigation(topics){
         }
 
         /*
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
         Engineering Center Header
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
         */
 
-        const header =
+        const centerHeader =
             document.createElement(
                 'div'
             );
 
-        header.style.marginTop =
-            '18px';
+        centerHeader.style.marginTop =
+            '16px';
 
-        header.style.marginBottom =
-            '10px';
+        centerHeader.style.marginBottom =
+            '8px';
 
-        header.style.padding =
+        centerHeader.style.padding =
             '10px 12px';
 
-        header.style.borderLeft =
-            `5px solid ${centers[center].color}`;
+        centerHeader.style.borderLeft =
+            `4px solid ${centers[center].color}`;
 
-        header.style.background =
+        centerHeader.style.background =
             '#F8FAFC';
 
-        header.style.borderRadius =
+        centerHeader.style.borderRadius =
             '6px';
 
-        header.style.fontSize =
+        centerHeader.style.fontSize =
             '13px';
 
-        header.style.fontWeight =
+        centerHeader.style.fontWeight =
             '700';
 
-        header.style.color =
+        centerHeader.style.color =
             '#19304B';
 
-        header.style.cursor =
+        centerHeader.style.cursor =
             'pointer';
 
-        header.innerHTML = `
-            <span
-                class="technical-arrow"
-            >
-                ▼
-            </span>
+        centerHeader.innerHTML = `
 
-            <span
-                style="
-                    margin-left:8px;
-                "
-            >
-                ${center}
-            </span>
-        `;
+<span class="technical-arrow">▼</span>
+
+<span style="margin-left:8px;">
+    ${center}
+</span>
+
+`;
 
         nav.appendChild(
-            header
+            centerHeader
         );
 
         /*
-        --------------------------------------------------------------
-        Topic Group
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
+        Topic Container
+        ----------------------------------------------------------------------
         */
 
         const group =
@@ -567,14 +618,14 @@ function renderTechnicalNavigation(topics){
         );
 
         /*
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
         Expand / Collapse
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
         */
 
         let expanded = true;
 
-        header.onclick = ()=>{
+        centerHeader.onclick = ()=>{
 
             expanded =
                 !expanded;
@@ -584,7 +635,7 @@ function renderTechnicalNavigation(topics){
                     ? 'block'
                     : 'none';
 
-            header.querySelector(
+            centerHeader.querySelector(
                 '.technical-arrow'
             ).textContent =
                 expanded
@@ -594,9 +645,9 @@ function renderTechnicalNavigation(topics){
         };
 
         /*
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
         Topics
-        --------------------------------------------------------------
+        ----------------------------------------------------------------------
         */
 
         centerTopics.forEach(topic=>{
@@ -613,7 +664,7 @@ function renderTechnicalNavigation(topics){
                 topic.title;
 
             item.style.padding =
-                '8px 12px';
+                '7px 12px';
 
             item.style.marginBottom =
                 '2px';
@@ -625,16 +676,14 @@ function renderTechnicalNavigation(topics){
                 'pointer';
 
             item.style.fontSize =
-                '14px';
+                '13px';
 
             item.style.transition =
                 '.15s';
 
             item.onmouseenter = ()=>{
 
-                if(
-                    item.dataset.active === 'true'
-                ){
+                if(item.dataset.active==='true'){
                     return;
                 }
 
@@ -645,9 +694,7 @@ function renderTechnicalNavigation(topics){
 
             item.onmouseleave = ()=>{
 
-                if(
-                    item.dataset.active === 'true'
-                ){
+                if(item.dataset.active==='true'){
                     return;
                 }
 
@@ -703,6 +750,8 @@ function renderTechnicalNavigation(topics){
 /*
 ==============================================================================
  Show Topic
+------------------------------------------------------------------------------
+ Displays the selected Engineering Knowledge Center article.
 ==============================================================================
 */
 
@@ -719,27 +768,18 @@ function showTechnicalTopic(topic){
 
     const centerColors = {
 
-        'Foundations' :
-            '#19304B',
-
-        'Architecture' :
-            '#589FD6',
-
-        'Portal Systems' :
-            '#F29647',
-
-        'Engineering & Operations' :
-            '#7A9E7F'
+        'Foundations' : '#19304B',
+        'Architecture' : '#589FD6',
+        'Portal Systems' : '#F29647',
+        'Engineering & Operations' : '#7A9E7F'
 
     };
 
     const center =
-
         topic.engineering_center ||
         'Foundations';
 
     const color =
-
         centerColors[center] ||
         '#19304B';
 
@@ -747,7 +787,7 @@ function showTechnicalTopic(topic){
 
 <div
     style="
-        max-width:980px;
+        max-width:1100px;
         margin:auto;
     "
 >
@@ -763,9 +803,9 @@ function showTechnicalTopic(topic){
             color:white;
             padding:6px 14px;
             border-radius:6px;
-            font-size:13px;
+            font-size:12px;
             font-weight:600;
-            letter-spacing:.04em;
+            letter-spacing:.05em;
             margin-bottom:18px;
         "
     >
@@ -780,10 +820,11 @@ function showTechnicalTopic(topic){
 
     <div
         style="
-            font-size:26px;
+            font-size:24px;
             font-weight:600;
             color:#19304B;
             margin-bottom:12px;
+            line-height:1.35;
         "
     >
 
@@ -796,27 +837,28 @@ function showTechnicalTopic(topic){
             width:90px;
             height:3px;
             background:${color};
-            margin-bottom:28px;
+            margin-bottom:26px;
         "
     ></div>
 
     <!-- ==========================================================
-         Metadata Card
+         Metadata
     =========================================================== -->
 
     <div
         style="
             display:grid;
             grid-template-columns:repeat(4,1fr);
-            gap:18px;
-            margin-bottom:32px;
+            gap:16px;
+            margin-bottom:30px;
             background:#F8FAFC;
             border:1px solid #DBE3EC;
-            border-radius:8px;
+            border-radius:10px;
             padding:18px;
+            box-shadow:
+                0 4px 12px rgba(25,48,75,.05);
         "
     >
-
         <div>
 
             <div
@@ -926,8 +968,8 @@ function showTechnicalTopic(topic){
 
     <div
         style="
-            font-size:14px;
-            line-height:1.85;
+            font-size:15px;
+            line-height:1.9;
             color:#334155;
             margin-bottom:40px;
         "
