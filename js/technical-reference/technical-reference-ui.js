@@ -388,11 +388,11 @@ function showEngineeringRoadmap(){
         return;
     }
 
-    renderPresentationNavigation(
+renderPresentationNavigation(
 
-        'Engineering Roadmap',
+    'Engineering Roadmap',
 
-        `
+    `
 
 <button
     class="technical-nav-button secondary"
@@ -415,18 +415,14 @@ function showEngineeringRoadmap(){
 
 <button
     class="technical-nav-button primary"
-    onclick="
-        buildTechnicalReferenceWorkspace();
-        initializeTechnicalReference();
-    "
+    onclick="initializeTechnicalReference();"
 >
     Enter Knowledge Center →
 </button>
 
 `
 
-    );
-
+);
     panel.innerHTML = `
 
 <div
