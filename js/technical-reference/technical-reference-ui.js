@@ -501,6 +501,8 @@ renderPresentationNavigation(
 
 `;
 
+enableHotspotDragging();
+
 }
 
 /*
