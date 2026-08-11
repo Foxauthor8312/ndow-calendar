@@ -445,7 +445,7 @@ renderPresentationNavigation(
     "
 >
 
-   <div
+ <div
     id="ekcRoadmapContainer"
     style="
         position:relative;
@@ -467,9 +467,9 @@ renderPresentationNavigation(
         "
     >
 
-</div>
-
-    <!-- Computer Fundamentals Hotspot -->
+    <!-- ======================================================
+         Test Hotspot
+    ======================================================= -->
 
     <div
         id="computerFundamentalsHotspot"
@@ -479,16 +479,17 @@ renderPresentationNavigation(
             left:0;
             top:0;
 
-            width:100px;
-            height:40px;
+            width:150px;
+            height:50px;
+
+            background:rgba(255,0,0,.25);
+            border:2px solid red;
 
             cursor:pointer;
         "
 
         onclick="
-            loadTechnicalReference(
-                'computer-fundamentals'
-            );
+            alert('Hotspot Clicked');
         "
 
     ></div>
