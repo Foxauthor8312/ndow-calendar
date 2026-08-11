@@ -165,73 +165,139 @@ function renderSelectedRegion(){
     style="
         font-size:12px;
         color:#64748B;
-        margin-bottom:10px;
+        margin-bottom:14px;
     "
 >
     ${region.documentKey}
 </div>
 
-<div
+<table
     style="
+        width:100%;
+        border-collapse:collapse;
         font-size:13px;
-        line-height:1.8;
-        color:#334155;
     "
 >
 
-    Left
+<tr>
+    <td style="padding:2px 0;">Left</td>
+    <td align="right">
+        <input
+            id="designerLeft"
+            type="number"
+            step="0.001"
+            value="${region.leftPercent}"
+            style="width:72px;"
+        >
+    </td>
+</tr>
 
-    <input
-        id="designerLeft"
-        type="number"
-        step="0.001"
-        value="${region.leftPercent}"
-        style="
-            width:70px;
-            margin-left:8px;
-            margin-right:18px;
-        "
-    >
+<tr>
+    <td style="padding:2px 0;">Top</td>
+    <td align="right">
+        <input
+            id="designerTop"
+            type="number"
+            step="0.001"
+            value="${region.topPercent}"
+            style="width:72px;"
+        >
+    </td>
+</tr>
 
-    Top
+<tr>
+    <td style="padding:2px 0;">Width</td>
+    <td align="right">
+        <input
+            id="designerWidth"
+            type="number"
+            step="0.001"
+            value="${region.widthPercent}"
+            style="width:72px;"
+        >
+    </td>
+</tr>
 
-    ${region.topPercent}%
+<tr>
+    <td style="padding:2px 0;">Height</td>
+    <td align="right">
+        <input
+            id="designerHeight"
+            type="number"
+            step="0.001"
+            value="${region.heightPercent}"
+            style="width:72px;"
+        >
+    </td>
+</tr>
 
-</div>
+</table>
 
 <div
     style="
-        font-size:13px;
-        line-height:1.4;
-        color:#334155;
-        margin-bottom:10px;
-    "
->
-    W:${region.widthPercent}%&nbsp;&nbsp;
-    H:${region.heightPercent}%
-</div>
-
-<div
-    style="
-        margin-top:12px;
+        margin-top:14px;
         text-align:right;
     "
 >
 
-    <button
-        onclick="applyDesignerCoordinates();"
-        style="
-            padding:4px 12px;
-            font-size:12px;
-            cursor:pointer;
-        "
-    >
-        Apply
-    </button>
+<button
+    onclick="applyDesignerCoordinates();"
+>
+    Apply
+</button>
 
 </div>
 
 `;
+
+}
+
+/*
+==============================================================================
+ Apply Designer Coordinates
+==============================================================================
+*/
+
+function applyDesignerCoordinates(){
+
+    const region =
+        technicalReferenceState.designer.selectedRegion;
+
+    if(!region){
+        return;
+    }
+
+    region.leftPercent =
+        parseFloat(
+            document.getElementById(
+                'designerLeft'
+            ).value
+        );
+
+    region.topPercent =
+        parseFloat(
+            document.getElementById(
+                'designerTop'
+            ).value
+        );
+
+    region.widthPercent =
+        parseFloat(
+            document.getElementById(
+                'designerWidth'
+            ).value
+        );
+
+    region.heightPercent =
+        parseFloat(
+            document.getElementById(
+                'designerHeight'
+            ).value
+        );
+
+    renderRoadmapHotspots();
+
+    renderSelectedRegion();
 
 }
 
