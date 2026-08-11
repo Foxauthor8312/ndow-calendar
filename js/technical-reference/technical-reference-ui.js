@@ -489,8 +489,10 @@ renderPresentationNavigation(
         "
 
         onclick="
-            alert('Hotspot Clicked');
-        "
+          loadTechnicalReference(
+           'computer-fundamentals'
+        );
+"
 
     ></div>
 
