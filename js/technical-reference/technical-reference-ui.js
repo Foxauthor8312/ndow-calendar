@@ -1173,6 +1173,87 @@ function showNextTopic(){
 
 /*
 ==============================================================================
+ Enable Hotspot Dragging
+==============================================================================
+*/
+
+function enableHotspotDragging(){
+
+    const hotspot =
+        document.getElementById(
+            'computerFundamentalsHotspot'
+        );
+
+    if(!hotspot){
+        return;
+    }
+
+    let dragging = false;
+
+    let startX = 0;
+    let startY = 0;
+
+    hotspot.addEventListener(
+        'mousedown',
+        e=>{
+
+            dragging = true;
+
+            startX =
+                e.clientX -
+                hotspot.offsetLeft;
+
+            startY =
+                e.clientY -
+                hotspot.offsetTop;
+
+        }
+    );
+
+    document.addEventListener(
+        'mousemove',
+        e=>{
+
+            if(!dragging){
+                return;
+            }
+
+            hotspot.style.left =
+                (e.clientX - startX) + 'px';
+
+            hotspot.style.top =
+                (e.clientY - startY) + 'px';
+
+        }
+    );
+
+    document.addEventListener(
+        'mouseup',
+        ()=>{
+
+            if(!dragging){
+                return;
+            }
+
+            dragging = false;
+
+            console.log(
+
+                'left:',
+                hotspot.style.left,
+
+                'top:',
+                hotspot.style.top
+
+            );
+
+        }
+    );
+
+}
+
+/*
+==============================================================================
  Public
 ==============================================================================
 */
