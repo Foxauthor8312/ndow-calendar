@@ -15,6 +15,6 @@ const TECHNICAL_REFERENCE_API = {
 
     TOPICS :
 
-        '/api/help/topics?help_type=technical'
+       '/api/knowledge/topics'
 
 };
