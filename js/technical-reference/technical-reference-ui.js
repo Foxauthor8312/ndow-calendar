@@ -436,20 +436,49 @@ renderPresentationNavigation(
         "
     >
 
-    <img
-    src="images/login/EKC-panel.png"
-    alt="Engineering Knowledge Center Roadmap"
+<div
     style="
+        position:relative;
+        display:inline-block;
         width:100%;
         max-width:1850px;
-        height:auto;
-        border-radius:10px;
-        box-shadow:
-            0 20px 45px rgba(25,48,75,.20);
     "
 >
 
-    </div>
+    <img
+        src="images/login/EKC-panel.png"
+        alt="Engineering Knowledge Center Roadmap"
+        style="
+            width:100%;
+            display:block;
+            border-radius:10px;
+            box-shadow:0 20px 45px rgba(25,48,75,.20);
+        "
+    >
+
+    <!-- Computer Fundamentals Hotspot -->
+
+    <div
+        id="computerFundamentalsHotspot"
+        style="
+            position:absolute;
+
+            left:0;
+            top:0;
+
+            width:100px;
+            height:40px;
+
+            cursor:pointer;
+        "
+
+        onclick="
+            loadTechnicalReference(
+                'computer-fundamentals'
+            );
+        "
+
+    ></div>
 
 </div>
 
