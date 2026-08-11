@@ -15,21 +15,20 @@
 
 /*
 ==============================================================================
- Enable Editor
+ Enable Roadmap Designer
 ==============================================================================
 */
 
 function enableRoadmapDesigner(){
 
-    technicalReferenceState.editor.enabled =
+    technicalReferenceState.designer.enabled =
         true;
 
     console.log(
-        'Engineering Mode Enabled'
+        'Roadmap Designer Enabled'
     );
 
 }
-
 
 
 /*
@@ -43,7 +42,7 @@ function selectRoadmapRegion(
     hotspot
 ){
 
-    technicalReferenceState.editor.selectedRegion =
+    technicalReferenceState.designer.selectedRegion =
         region;
 
     document
@@ -67,7 +66,7 @@ function selectRoadmapRegion(
         'rgba(0,174,239,.25)';
 
     console.log(
-        technicalReferenceState.editor.selectedRegion
+        technicalReferenceState.designer.selectedRegion
     );
 
     renderSelectedRegion();
@@ -201,14 +200,20 @@ function renderSelectedRegion(){
 
 /*
 ==============================================================================
- Disable Editor
+ Disable Roadmap Designer
 ==============================================================================
 */
 
 function disableRoadmapDesigner(){
 
+    technicalReferenceState.designer.enabled =
+        false;
+
+    technicalReferenceState.designer.selectedRegion =
+        null;
+
     console.log(
-        'Engineering Mode Disabled'
+        'Roadmap Designer Disabled'
     );
 
 }
