@@ -15,7 +15,19 @@ const technicalReferenceState = {
 
     currentTopic : null,
 
-    currentIndex : -1
+    currentIndex : -1,
+
+    editor : {
+
+        enabled : false,
+
+        selectedRegion : null,
+
+        dragging : false,
+
+        resizing : false
+
+    }
 
 };
 
