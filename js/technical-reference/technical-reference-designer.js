@@ -19,7 +19,7 @@
 ==============================================================================
 */
 
-function enableHotspotEditor(){
+function enableRoadmapDesigner(){
 
     technicalReferenceState.editor.enabled =
         true;
@@ -49,6 +49,21 @@ function renderRoadmapRegions(){
         return;
     }
 
+ const roadmapImage =
+    container.querySelector(
+        'img'
+    );
+    
+    if(!roadmapImage){
+        return;
+    }
+    
+    const imageWidth =
+        roadmapImage.clientWidth;
+    
+    const imageHeight =
+        roadmapImage.clientHeight;
+
     roadmapHotspots.forEach(region=>{
 
         const hotspot =
@@ -66,16 +81,28 @@ function renderRoadmapRegions(){
             'absolute';
 
         hotspot.style.left =
-            region.left + 'px';
-
+            percentToPixels(
+                region.leftPercent,
+                imageWidth
+            ) + 'px';
+        
         hotspot.style.top =
-            region.top + 'px';
-
+            percentToPixels(
+                region.topPercent,
+                imageHeight
+            ) + 'px';
+        
         hotspot.style.width =
-            region.width + 'px';
-
+            percentToPixels(
+                region.widthPercent,
+                imageWidth
+            ) + 'px';
+        
         hotspot.style.height =
-            region.height + 'px';
+            percentToPixels(
+                region.heightPercent,
+                imageHeight
+            ) + 'px';
 
         hotspot.style.background =
             'rgba(255,0,0,.20)';
@@ -183,93 +210,99 @@ function renderSelectedRegion(){
     }
 
     const region =
-        technicalReferenceState.editor.selectedRegion;
+        technicalReferenceState.designer.selectedRegion;
+
+    header.textContent =
+        'Engineering Roadmap';
 
     if(!region){
 
-        header.textContent =
-            'Engineering Mode';
+        nav.innerHTML = `
 
-        nav.innerHTML =
-            '<div style="color:#64748B;">No region selected.</div>';
+<hr style="margin:18px 0;">
+
+<div
+    style="
+        font-size:15px;
+        font-weight:600;
+        color:#19304B;
+        margin-bottom:10px;
+    "
+>
+    Roadmap Designer
+</div>
+
+<div
+    style="
+        font-size:13px;
+        color:#64748B;
+    "
+>
+    No region selected.
+</div>
+
+`;
 
         return;
 
     }
 
-    header.textContent =
-        'Engineering Mode';
-
     nav.innerHTML = `
+
+<hr style="margin:18px 0;">
 
 <div
     style="
-        display:flex;
-        flex-direction:column;
-        gap:14px;
+        font-size:15px;
+        font-weight:600;
+        color:#19304B;
+        margin-bottom:10px;
     "
 >
+    Roadmap Designer
+</div>
 
-    <div>
+<div
+    style="
+        font-size:14px;
+        font-weight:600;
+        color:#19304B;
+    "
+>
+    ${region.title}
+</div>
 
-        <div style="font-size:12px;font-weight:600;color:#64748B;">
-            Title
-        </div>
+<div
+    style="
+        font-size:12px;
+        color:#64748B;
+        margin-bottom:10px;
+    "
+>
+    ${region.documentKey}
+</div>
 
-        <div>${region.title}</div>
+<div
+    style="
+        font-size:13px;
+        line-height:1.4;
+        color:#334155;
+    "
+>
+    L:${region.leftPercent}%&nbsp;&nbsp;
+    T:${region.topPercent}%
+</div>
 
-    </div>
-
-    <div>
-
-        <div style="font-size:12px;font-weight:600;color:#64748B;">
-            Document Key
-        </div>
-
-        <div>${region.documentKey}</div>
-
-    </div>
-
-    <div>
-
-        <div style="font-size:12px;font-weight:600;color:#64748B;">
-            Left
-        </div>
-
-        <div>${region.left}</div>
-
-    </div>
-
-    <div>
-
-        <div style="font-size:12px;font-weight:600;color:#64748B;">
-            Top
-        </div>
-
-        <div>${region.top}</div>
-
-    </div>
-
-    <div>
-
-        <div style="font-size:12px;font-weight:600;color:#64748B;">
-            Width
-        </div>
-
-        <div>${region.width}</div>
-
-    </div>
-
-    <div>
-
-        <div style="font-size:12px;font-weight:600;color:#64748B;">
-            Height
-        </div>
-
-        <div>${region.height}</div>
-
-    </div>
-
+<div
+    style="
+        font-size:13px;
+        line-height:1.4;
+        color:#334155;
+        margin-bottom:10px;
+    "
+>
+    W:${region.widthPercent}%&nbsp;&nbsp;
+    H:${region.heightPercent}%
 </div>
 
 `;
@@ -282,7 +315,7 @@ function renderSelectedRegion(){
 ==============================================================================
 */
 
-function disableHotspotEditor(){
+function disableRoadmapDesigner(){
 
     console.log(
         'Engineering Mode Disabled'
