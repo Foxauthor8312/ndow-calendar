@@ -31,6 +31,12 @@ function renderRoadmapHotspots(){
         return;
     }
 
+ container
+    .querySelectorAll(
+        '.roadmap-region'
+    )
+    .forEach(item=>item.remove());
+
  const roadmapImage =
     container.querySelector(
         'img'
