@@ -467,7 +467,7 @@ renderPresentationNavigation(
 
 renderRoadmapRegions();
 
-enableHotspotEditor();
+enableRoadmapDesigner();
 
 }
 
