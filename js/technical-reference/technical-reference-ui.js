@@ -400,12 +400,6 @@ renderPresentationNavigation(
     ← Back
 </button>
 
-<button
-    class="technical-nav-button primary"
-    onclick="initializeTechnicalReference();"
->
-    Enter Knowledge Center →
-</button>
 
 `
 
