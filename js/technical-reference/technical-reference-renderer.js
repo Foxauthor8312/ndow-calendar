@@ -98,7 +98,7 @@ function renderRoadmapHotspots(){
    hotspot.onclick = ()=>{
 
     if(
-        technicalReferenceState.editor.enabled
+        technicalReferenceState.designer.enabled
     ){
 
         selectRoadmapRegion(
