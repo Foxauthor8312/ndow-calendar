@@ -461,41 +461,13 @@ renderPresentationNavigation(
         "
     >
 
-    <!-- ======================================================
-         Test Hotspot
-    ======================================================= -->
-
-    <div
-        id="computerFundamentalsHotspot"
-        style="
-             position:absolute;
-         
-             left:0px;
-             top:0px;
-         
-             width:80px;
-             height:20px;
-         
-             background:rgba(255,0,0,.20);
-             border:2px dashed #FF0000;
-         
-             cursor:move;
-             user-select:none;
-         "
-
-        onclick="
-          loadTechnicalReference(
-           'computer-fundamentals'
-        );
-"
-
-    ></div>
-
-</div>
+  </div>
 
 `;
 
-enableHotspotDragging();
+renderRoadmapRegions();
+
+enableHotspotEditor();
 
 }
 
