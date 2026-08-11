@@ -465,7 +465,7 @@ renderPresentationNavigation(
 
 `;
 
-renderRoadmapRegions();
+renderRoadmapHotspots();
 
 enableRoadmapDesigner();
 
