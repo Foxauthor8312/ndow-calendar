@@ -174,12 +174,29 @@ function renderSelectedRegion(){
 <div
     style="
         font-size:13px;
-        line-height:1.4;
+        line-height:1.8;
         color:#334155;
     "
 >
-    L:${region.leftPercent}%&nbsp;&nbsp;
-    T:${region.topPercent}%
+
+    Left
+
+    <input
+        id="designerLeft"
+        type="number"
+        step="0.001"
+        value="${region.leftPercent}"
+        style="
+            width:70px;
+            margin-left:8px;
+            margin-right:18px;
+        "
+    >
+
+    Top
+
+    ${region.topPercent}%
+
 </div>
 
 <div
