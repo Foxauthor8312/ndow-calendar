@@ -445,16 +445,29 @@ renderPresentationNavigation(
     "
 >
 
+   <div
+    id="ekcRoadmapContainer"
+    style="
+        position:relative;
+        display:inline-block;
+        width:100%;
+        max-width:1850px;
+    "
+>
+
     <img
         src="images/login/EKC-panel.png"
         alt="Engineering Knowledge Center Roadmap"
         style="
             width:100%;
+            height:auto;
             display:block;
             border-radius:10px;
             box-shadow:0 20px 45px rgba(25,48,75,.20);
         "
     >
+
+</div>
 
     <!-- Computer Fundamentals Hotspot -->
 
