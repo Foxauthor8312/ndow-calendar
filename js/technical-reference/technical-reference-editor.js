@@ -21,6 +21,9 @@
 
 function enableHotspotEditor(){
 
+    technicalReferenceState.editor.enabled =
+        true;
+
     console.log(
         'Engineering Mode Enabled'
     );
@@ -83,19 +86,72 @@ function renderRoadmapRegions(){
         hotspot.style.cursor =
             'pointer';
 
-        hotspot.onclick = ()=>{
+   hotspot.onclick = ()=>{
 
-            loadTechnicalReference(
-                region.documentKey
-            );
+    if(
+        technicalReferenceState.editor.enabled
+    ){
 
-        };
+        selectRoadmapRegion(
+            region,
+            hotspot
+        );
+
+        return;
+
+    }
+
+    loadTechnicalReference(
+        region.documentKey
+    );
+
+};
 
         container.appendChild(
             hotspot
         );
 
     });
+
+}
+
+/*
+==============================================================================
+ Select Roadmap Region
+==============================================================================
+*/
+
+function selectRoadmapRegion(
+    region,
+    hotspot
+){
+
+    technicalReferenceState.editor.selectedRegion =
+        region;
+
+    document
+        .querySelectorAll(
+            '.roadmap-region'
+        )
+        .forEach(item=>{
+
+            item.style.border =
+                '2px dashed #FF0000';
+
+            item.style.background =
+                'rgba(255,0,0,.20)';
+
+        });
+
+    hotspot.style.border =
+        '2px solid #00AEEF';
+
+    hotspot.style.background =
+        'rgba(0,174,239,.25)';
+
+    console.log(
+        technicalReferenceState.editor.selectedRegion
+    );
 
 }
 
