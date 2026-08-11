@@ -17,18 +17,17 @@ const technicalReferenceState = {
 
     currentIndex : -1,
 
-    editor : {
+ designer : {
 
-        enabled : false,
+    enabled : false,
 
-        selectedRegion : null,
+    selectedRegion : null,
 
-        dragging : false,
+    dragging : false,
 
-        resizing : false
+    resizing : false
 
-    }
-
+}
 };
 
 window.technicalReferenceState =
