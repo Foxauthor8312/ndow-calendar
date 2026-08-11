@@ -1004,7 +1004,7 @@ function showTechnicalTopic(topic){
         "
     >
 
-        ${topic.content}
+          ${topic.body || ''}
 
     </div>
 
