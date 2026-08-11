@@ -55,16 +55,22 @@ function renderRoadmapHotspots(){
 
     roadmapHotspots.forEach(region=>{
 
-        const hotspot =
-            document.createElement(
-                'div'
-            );
+ const hotspot =
+    document.createElement(
+        'div'
+    );
 
-        hotspot.className =
-            'roadmap-region';
+hotspot.id =
+    region.id;
 
-        hotspot.dataset.documentKey =
-            region.documentKey;
+hotspot.className =
+    'roadmap-region';
+
+hotspot.dataset.documentKey =
+    region.documentKey;
+
+hotspot.dataset.regionId =
+    region.id;
 
         hotspot.style.position =
             'absolute';
