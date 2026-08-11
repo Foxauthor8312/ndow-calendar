@@ -153,6 +153,127 @@ function selectRoadmapRegion(
         technicalReferenceState.editor.selectedRegion
     );
 
+    renderSelectedRegion();
+
+}
+
+/*
+==============================================================================
+ Render Selected Region
+==============================================================================
+*/
+
+function renderSelectedRegion(){
+
+    const header =
+        document.getElementById(
+            'technicalReferenceNavigationHeader'
+        );
+
+    const nav =
+        document.getElementById(
+            'technicalReferenceNavigation'
+        );
+
+    if(
+        !header ||
+        !nav
+    ){
+        return;
+    }
+
+    const region =
+        technicalReferenceState.editor.selectedRegion;
+
+    if(!region){
+
+        header.textContent =
+            'Engineering Mode';
+
+        nav.innerHTML =
+            '<div style="color:#64748B;">No region selected.</div>';
+
+        return;
+
+    }
+
+    header.textContent =
+        'Engineering Mode';
+
+    nav.innerHTML = `
+
+<div
+    style="
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+    "
+>
+
+    <div>
+
+        <div style="font-size:12px;font-weight:600;color:#64748B;">
+            Title
+        </div>
+
+        <div>${region.title}</div>
+
+    </div>
+
+    <div>
+
+        <div style="font-size:12px;font-weight:600;color:#64748B;">
+            Document Key
+        </div>
+
+        <div>${region.documentKey}</div>
+
+    </div>
+
+    <div>
+
+        <div style="font-size:12px;font-weight:600;color:#64748B;">
+            Left
+        </div>
+
+        <div>${region.left}</div>
+
+    </div>
+
+    <div>
+
+        <div style="font-size:12px;font-weight:600;color:#64748B;">
+            Top
+        </div>
+
+        <div>${region.top}</div>
+
+    </div>
+
+    <div>
+
+        <div style="font-size:12px;font-weight:600;color:#64748B;">
+            Width
+        </div>
+
+        <div>${region.width}</div>
+
+    </div>
+
+    <div>
+
+        <div style="font-size:12px;font-weight:600;color:#64748B;">
+            Height
+        </div>
+
+        <div>${region.height}</div>
+
+    </div>
+
+</div>
+
+`;
+
 }
 
 /*
