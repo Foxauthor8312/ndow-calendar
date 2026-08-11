@@ -474,19 +474,20 @@ renderPresentationNavigation(
     <div
         id="computerFundamentalsHotspot"
         style="
-            position:absolute;
-
-            left:0;
-            top:0;
-
-            width:150px;
-            height:50px;
-
-            background:rgba(255,0,0,.25);
-            border:2px solid red;
-
-            cursor:pointer;
-        "
+             position:absolute;
+         
+             left:0px;
+             top:0px;
+         
+             width:80px;
+             height:20px;
+         
+             background:rgba(255,0,0,.20);
+             border:2px dashed #FF0000;
+         
+             cursor:move;
+             user-select:none;
+         "
 
         onclick="
           loadTechnicalReference(
