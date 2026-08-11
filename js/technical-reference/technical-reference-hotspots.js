@@ -21,8 +21,17 @@ const roadmapHotspots = [
 
     {
 
+        id :
+            'computer-fundamentals',
+
+        title :
+            'Computer Fundamentals',
+
         documentKey :
             'computer-fundamentals',
+
+        visible :
+            true,
 
         left :
             0,
