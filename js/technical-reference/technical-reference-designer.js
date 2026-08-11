@@ -211,6 +211,26 @@ function renderSelectedRegion(){
     H:${region.heightPercent}%
 </div>
 
+<div
+    style="
+        margin-top:12px;
+        text-align:right;
+    "
+>
+
+    <button
+        onclick="applyDesignerCoordinates();"
+        style="
+            padding:4px 12px;
+            font-size:12px;
+            cursor:pointer;
+        "
+    >
+        Apply
+    </button>
+
+</div>
+
 `;
 
 }
