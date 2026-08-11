@@ -135,7 +135,7 @@ async function loadTechnicalReference(
     technicalReferenceState.currentTopic =
         topic;
 
-    renderTechnicalTopic(
+    showTechnicalTopic(
         topic
     );
 
