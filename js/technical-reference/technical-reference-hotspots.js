@@ -33,17 +33,17 @@ const roadmapHotspots = [
         visible :
             true,
 
-        left :
+        leftPercent :
             0,
 
-        top :
+        topPercent :
             0,
 
-        width :
-            80,
+        widthPercent :
+            4,
 
-        height :
-            20
+        heightPercent :
+            2
 
     }
 
