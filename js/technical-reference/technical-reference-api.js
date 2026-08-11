@@ -87,22 +87,71 @@ async function loadTechnicalTopics(){
 
 /*
 ==============================================================================
- Load Single Topic
+ Load Single Document
 ==============================================================================
 */
 
-async function loadTechnicalTopic(topicKey){
+async function loadTechnicalTopic(
+    documentKey
+){
 
-    const topics =
-        await loadTechnicalTopics();
+    try{
 
-    return topics.find(
+        const token =
+            localStorage.getItem(
+                'token'
+            );
 
-        topic =>
+        const response =
+            await fetch(
 
-            topic.topic_key === topicKey
+                `${TECHNICAL_REFERENCE_API.BASE}/api/knowledge/document/${documentKey}`,
 
-    );
+                {
+
+                    headers:{
+
+                        Authorization:
+                            `Bearer ${token}`,
+
+                        'Content-Type':
+                            'application/json'
+
+                    }
+
+                }
+
+            );
+
+        const data =
+            await response.json();
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            return null;
+
+        }
+
+        return data.document;
+
+    }
+
+    catch(error){
+
+        console.error(
+
+            'Unable to load Engineering Knowledge document.',
+
+            error
+
+        );
+
+        return null;
+
+    }
 
 }
 
