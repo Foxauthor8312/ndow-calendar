@@ -254,6 +254,6 @@ function endRoadmapDrawing(
     technicalReferenceState.designer.currentSelection =
         selection;
 
-    openHotspotDialog();
+    openRoadmapRegionModal();
 
 }
