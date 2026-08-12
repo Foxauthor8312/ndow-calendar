@@ -467,6 +467,8 @@ renderPresentationNavigation(
 
 renderRoadmapHotspots();
 
+ initializeRoadmapDrawing();
+
 enableRoadmapDesigner();
 
 }
