@@ -251,13 +251,24 @@ function endRoadmapDrawing(
 
     };
 
-technicalReferenceState.designer.currentSelection = {
+    technicalReferenceState.designer.currentSelection = {
 
-    leftPercent,
-    topPercent,
-    widthPercent,
-    heightPercent
+        leftPercent :
+            selection.leftPercent,
 
-};
+        topPercent :
+            selection.topPercent,
+
+        widthPercent :
+            selection.widthPercent,
+
+        heightPercent :
+            selection.heightPercent
+
+    };
+
+    openRoadmapRegionModal();
+
+}
 
 openRoadmapRegionModal();
