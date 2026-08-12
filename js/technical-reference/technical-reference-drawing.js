@@ -36,3 +36,36 @@ function initializeRoadmapDrawing(){
     );
 
 }
+
+/*
+==============================================================================
+ Begin Drawing
+==============================================================================
+*/
+
+function beginRoadmapDrawing(
+    event
+){
+
+    if(
+        !technicalReferenceState.designer.enabled
+    ){
+        return;
+    }
+
+    technicalReferenceState.designer.drawing =
+        true;
+
+    technicalReferenceState.designer.startX =
+        event.offsetX;
+
+    technicalReferenceState.designer.startY =
+        event.offsetY;
+
+    console.log(
+        'Draw Start:',
+        event.offsetX,
+        event.offsetY
+    );
+
+}
