@@ -178,7 +178,9 @@ function continueRoadmapDrawing(
 ==============================================================================
 */
 
-function endRoadmapDrawing(){
+function endRoadmapDrawing(
+    event
+){
 
     if(
         !technicalReferenceState.designer.drawing
@@ -189,8 +191,71 @@ function endRoadmapDrawing(){
     technicalReferenceState.designer.drawing =
         false;
 
+    const left =
+        parseFloat(
+            drawingRectangle.style.left
+        );
+
+    const top =
+        parseFloat(
+            drawingRectangle.style.top
+        );
+
+    const width =
+        parseFloat(
+            drawingRectangle.style.width
+        );
+
+    const height =
+        parseFloat(
+            drawingRectangle.style.height
+        );
+
+    const roadmapImage =
+        document
+            .querySelector(
+                '#ekcRoadmapContainer img'
+            );
+
+    const imageWidth =
+        roadmapImage.clientWidth;
+
+    const imageHeight =
+        roadmapImage.clientHeight;
+
+    const selection = {
+
+        leftPercent :
+            pixelsToPercent(
+                left,
+                imageWidth
+            ),
+
+        topPercent :
+            pixelsToPercent(
+                top,
+                imageHeight
+            ),
+
+        widthPercent :
+            pixelsToPercent(
+                width,
+                imageWidth
+            ),
+
+        heightPercent :
+            pixelsToPercent(
+                height,
+                imageHeight
+            )
+
+    };
+
+    technicalReferenceState.designer.currentSelection =
+        selection;
+
     console.log(
-        'Draw Complete'
+        selection
     );
 
 }
