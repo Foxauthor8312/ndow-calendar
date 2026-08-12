@@ -15,6 +15,14 @@
 
 /*
 ==============================================================================
+ Drawing Rectangle
+==============================================================================
+*/
+
+let drawingRectangle = null;
+
+/*
+==============================================================================
  Initialize Drawing
 ==============================================================================
 */
@@ -78,13 +86,7 @@ function beginRoadmapDrawing(
         event.offsetY
     );
 
- /*
-==============================================================================
- Drawing Rectangle
-==============================================================================
-*/
-
-let drawingRectangle = null;
+}
 
 /*
 ==============================================================================
@@ -178,13 +180,17 @@ function continueRoadmapDrawing(
 
 function endRoadmapDrawing(){
 
+    if(
+        !technicalReferenceState.designer.drawing
+    ){
+        return;
+    }
+
     technicalReferenceState.designer.drawing =
         false;
 
     console.log(
         'Draw Complete'
     );
-
-}
 
 }
