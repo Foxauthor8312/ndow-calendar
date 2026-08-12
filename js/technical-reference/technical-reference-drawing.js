@@ -254,8 +254,6 @@ function endRoadmapDrawing(
     technicalReferenceState.designer.currentSelection =
         selection;
 
-    console.log(
-        selection
-    );
+    openHotspotDialog();
 
 }
