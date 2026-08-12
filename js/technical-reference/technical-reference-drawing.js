@@ -35,6 +35,16 @@ function initializeRoadmapDrawing(){
         beginRoadmapDrawing
     );
 
+    container.addEventListener(
+        'mousemove',
+        continueRoadmapDrawing
+    );
+
+    container.addEventListener(
+        'mouseup',
+        endRoadmapDrawing
+    );
+
 }
 
 /*
@@ -67,5 +77,114 @@ function beginRoadmapDrawing(
         event.offsetX,
         event.offsetY
     );
+
+ /*
+==============================================================================
+ Drawing Rectangle
+==============================================================================
+*/
+
+let drawingRectangle = null;
+
+/*
+==============================================================================
+ Continue Drawing
+==============================================================================
+*/
+
+function continueRoadmapDrawing(
+    event
+){
+
+    if(
+        !technicalReferenceState.designer.drawing
+    ){
+        return;
+    }
+
+    const container =
+        document.getElementById(
+            'ekcRoadmapContainer'
+        );
+
+    if(!drawingRectangle){
+
+        drawingRectangle =
+            document.createElement(
+                'div'
+            );
+
+        drawingRectangle.style.position =
+            'absolute';
+
+        drawingRectangle.style.border =
+            '2px dashed #00AEEF';
+
+        drawingRectangle.style.background =
+            'rgba(0,174,239,.20)';
+
+        drawingRectangle.style.pointerEvents =
+            'none';
+
+        container.appendChild(
+            drawingRectangle
+        );
+
+    }
+
+    const left =
+        Math.min(
+            technicalReferenceState.designer.startX,
+            event.offsetX
+        );
+
+    const top =
+        Math.min(
+            technicalReferenceState.designer.startY,
+            event.offsetY
+        );
+
+    const width =
+        Math.abs(
+            event.offsetX -
+            technicalReferenceState.designer.startX
+        );
+
+    const height =
+        Math.abs(
+            event.offsetY -
+            technicalReferenceState.designer.startY
+        );
+
+    drawingRectangle.style.left =
+        left + 'px';
+
+    drawingRectangle.style.top =
+        top + 'px';
+
+    drawingRectangle.style.width =
+        width + 'px';
+
+    drawingRectangle.style.height =
+        height + 'px';
+
+}
+
+/*
+==============================================================================
+ Finish Drawing
+==============================================================================
+*/
+
+function endRoadmapDrawing(){
+
+    technicalReferenceState.designer.drawing =
+        false;
+
+    console.log(
+        'Draw Complete'
+    );
+
+}
 
 }
