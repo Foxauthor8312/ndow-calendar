@@ -127,8 +127,10 @@ Height<br>
 Cancel
 </button>
 
-<button>
-Save
+<button
+    onclick="saveRoadmapRegion();"
+>
+    Save
 </button>
 
 </div>
@@ -161,5 +163,56 @@ function closeRoadmapRegionModal(){
             'roadmapRegionOverlay'
         )
         ?.remove();
+
+}
+
+/*
+==============================================================================
+ Save Roadmap Region
+==============================================================================
+*/
+
+function saveRoadmapRegion(){
+
+    const selection =
+        technicalReferenceState.designer.currentSelection;
+
+    if(!selection){
+        return;
+    }
+
+    roadmapHotspots.push({
+
+        id :
+            crypto.randomUUID(),
+
+        title :
+            'New Region',
+
+        documentKey :
+            '',
+
+        visible :
+            true,
+
+        leftPercent :
+            selection.leftPercent,
+
+        topPercent :
+            selection.topPercent,
+
+        widthPercent :
+            selection.widthPercent,
+
+        heightPercent :
+            selection.heightPercent
+
+    });
+
+    closeRoadmapRegionModal();
+
+    disableRoadmapDesigner();
+
+    renderRoadmapHotspots();
 
 }
