@@ -186,11 +186,38 @@ function saveRoadmapRegion(){
         id :
             crypto.randomUUID(),
 
-        title :
-            'New Region',
+       const topic =
+    document.getElementById(
+        'roadmapTopic'
+    ).value;
 
-        documentKey :
-            '',
+roadmapHotspots.push({
+
+    id :
+        crypto.randomUUID(),
+
+    title :
+        topic,
+
+    documentKey :
+        topic,
+
+    visible :
+        true,
+
+    leftPercent :
+        selection.leftPercent,
+
+    topPercent :
+        selection.topPercent,
+
+    widthPercent :
+        selection.widthPercent,
+
+    heightPercent :
+        selection.heightPercent
+
+});
 
         visible :
             true,
