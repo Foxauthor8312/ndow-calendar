@@ -30,6 +30,8 @@ function enableRoadmapDesigner(){
         )
         .forEach(item=>item.remove());
 
+    renderRoadmapHotspots();
+
     console.log(
         'Roadmap Designer Enabled'
     );
