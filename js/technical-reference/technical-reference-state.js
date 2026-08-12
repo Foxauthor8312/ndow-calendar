@@ -26,7 +26,7 @@ const technicalReferenceState = {
     startX : 0,
     startY : 0,
 
-    currentHotspot : null
+    currentSelection : null
 
 }
 };
