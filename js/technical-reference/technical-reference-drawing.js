@@ -254,6 +254,7 @@ function endRoadmapDrawing(
     technicalReferenceState.designer.currentSelection =
         selection;
 
+ 
     openRoadmapRegionModal();
 
 }
