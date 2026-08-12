@@ -55,6 +55,12 @@ function renderRoadmapHotspots(){
 
     roadmapHotspots.forEach(region=>{
 
+     if(
+    technicalReferenceState.designer.enabled
+){
+    return;
+}
+
  const hotspot =
     document.createElement(
         'div'
@@ -108,7 +114,9 @@ hotspot.dataset.regionId =
         hotspot.style.cursor =
             'pointer';
 
-   hotspot.onclick = ()=>{
+  hotspot.onclick = (event)=>{
+
+    event.stopPropagation();
 
     if(
         technicalReferenceState.designer.enabled
