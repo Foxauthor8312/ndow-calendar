@@ -251,10 +251,13 @@ function endRoadmapDrawing(
 
     };
 
-    technicalReferenceState.designer.currentSelection =
-        selection;
+technicalReferenceState.designer.currentSelection = {
 
- 
-    openRoadmapRegionModal();
+    leftPercent,
+    topPercent,
+    widthPercent,
+    heightPercent
 
-}
+};
+
+openRoadmapRegionModal();
