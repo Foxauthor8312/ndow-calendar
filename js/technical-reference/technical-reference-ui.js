@@ -465,11 +465,11 @@ renderPresentationNavigation(
 
 `;
 
+enableRoadmapDesigner();
+
 renderRoadmapHotspots();
 
- initializeRoadmapDrawing();
-
-enableRoadmapDesigner();
+initializeRoadmapDrawing();
 
 }
 
