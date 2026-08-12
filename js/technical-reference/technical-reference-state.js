@@ -21,11 +21,12 @@ const technicalReferenceState = {
 
     enabled : false,
 
-    selectedRegion : null,
+    drawing : false,
 
-    dragging : false,
+    startX : 0,
+    startY : 0,
 
-    resizing : false
+    currentHotspot : null
 
 }
 };
