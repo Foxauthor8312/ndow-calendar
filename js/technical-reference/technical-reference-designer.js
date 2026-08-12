@@ -24,6 +24,12 @@ function enableRoadmapDesigner(){
     technicalReferenceState.designer.enabled =
         true;
 
+    document
+        .querySelectorAll(
+            '.roadmap-region'
+        )
+        .forEach(item=>item.remove());
+
     console.log(
         'Roadmap Designer Enabled'
     );
