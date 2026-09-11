@@ -1660,7 +1660,7 @@ const referencedDocument =
                     color:#64748B;
                 "
             >
-                Version ${document.version}
+                Version ${referencedDocument.version}
             </div>
                     `
                     : ''
