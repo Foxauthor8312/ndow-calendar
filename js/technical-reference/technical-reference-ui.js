@@ -1031,12 +1031,29 @@ function renderTechnicalNavigation(topics){
                     */
 
                     categoryTopics.forEach(
-                        topic=>{
-
-                            const item =
-                                document.createElement(
-                                    'div'
-                                );
+                       topic=>{
+                   
+                           /*
+                           ----------------------------------------------------------------------
+                           START HERE Topic
+                           ----------------------------------------------------------------------
+                           Project History & Engineering Decisions is presented in the
+                           START HERE learning path and should not appear a second time
+                           in the normal Foundations navigation.
+                           ----------------------------------------------------------------------
+                           */
+                   
+                           if(
+                               topic.topic ===
+                               'Project History & Engineering Decisions'
+                           ){
+                               return;
+                           }
+                   
+                           const item =
+                               document.createElement(
+                                   'div'
+                               );
 
                             item.className =
                                 'technical-reference-nav-item';
