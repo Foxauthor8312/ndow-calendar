@@ -1170,6 +1170,17 @@ function renderTechnicalNavigation(topics){
 ==============================================================================
 */
 
+/*
+==============================================================================
+ Show Knowledge Topic
+------------------------------------------------------------------------------
+ Displays a Knowledge Center topic using the database topic model.
+
+ The Knowledge Center provides orientation and source references.
+ The Technical Reference Manual remains the authoritative source.
+==============================================================================
+*/
+
 function showTechnicalTopic(topic){
 
     const panel =
@@ -1177,28 +1188,121 @@ function showTechnicalTopic(topic){
             'technicalReferenceContent'
         );
 
-    if(!panel){
+    if(!panel || !topic){
         return;
     }
 
+    /*
+    --------------------------------------------------------------------------
+    Engineering Center
+    --------------------------------------------------------------------------
+    */
+
+    const category =
+        topic.knowledge_categories ||
+        {};
+
+    const center =
+        category.knowledge_centers ||
+        {};
+
+    const centerName =
+        center.name ||
+        topic.engineering_center ||
+        'Engineering Knowledge Center';
+
+    const categoryName =
+        category.name ||
+        topic.category ||
+        '';
+
+
     const centerColors = {
 
-        'Foundations' : '#19304B',
-        'Architecture' : '#589FD6',
-        'Portal Systems' : '#F29647',
-        'Engineering & Operations' : '#7A9E7F'
+        'Foundations' :
+            '#19304B',
+
+        'Architecture' :
+            '#589FD6',
+
+        'Portal Systems' :
+            '#F29647',
+
+        'Engineering & Operations' :
+            '#7A9E7F'
 
     };
 
-    const center =
-    topic.knowledge_categories &&
-    topic.knowledge_categories.knowledge_centers
-        ? topic.knowledge_categories.knowledge_centers.name
-        : 'Foundations';
-
     const color =
-        centerColors[center] ||
+        centerColors[
+            centerName
+        ] ||
         '#19304B';
+
+
+    /*
+    --------------------------------------------------------------------------
+    Topic Data
+    --------------------------------------------------------------------------
+    */
+
+    const title =
+        topic.topic ||
+        topic.title ||
+        'Untitled Topic';
+
+    const summary =
+        topic.summary ||
+        '';
+
+    const definition =
+        topic.definition ||
+        '';
+
+    const status =
+        topic.status ||
+        'Draft';
+
+    const priority =
+        topic.priority !== undefined
+            ? topic.priority
+            : '-';
+
+
+    /*
+    --------------------------------------------------------------------------
+    Primary Technical Reference
+    --------------------------------------------------------------------------
+    */
+
+    const references =
+        Array.isArray(
+            topic.knowledge_references
+        )
+            ? topic.knowledge_references
+            : [];
+
+    const primaryReference =
+        references.find(
+            reference =>
+                reference.reference_type ===
+                'primary'
+        ) ||
+        references[0] ||
+        null;
+
+    const document =
+        primaryReference &&
+        primaryReference.knowledge_documents
+            ? primaryReference.knowledge_documents
+            : null;
+
+
+    /*
+    --------------------------------------------------------------------------
+    Render
+    --------------------------------------------------------------------------
+    */
 
     panel.innerHTML = `
 
@@ -1210,7 +1314,7 @@ function showTechnicalTopic(topic){
 >
 
     <!-- ==========================================================
-         Engineering Center Banner
+         Engineering Center
     =========================================================== -->
 
     <div
@@ -1226,28 +1330,26 @@ function showTechnicalTopic(topic){
             margin-bottom:18px;
         "
     >
-
-        ${center}
-
+        ${centerName}
     </div>
 
+
     <!-- ==========================================================
-         Article Title
+         Topic Title
     =========================================================== -->
 
     <div
         style="
-            font-size:24px;
+            font-size:26px;
             font-weight:600;
             color:#19304B;
             margin-bottom:12px;
             line-height:1.35;
         "
     >
-
-        ${topic.topic}
-
+        ${title}
     </div>
+
 
     <div
         style="
@@ -1258,29 +1360,40 @@ function showTechnicalTopic(topic){
         "
     ></div>
 
+
     <!-- ==========================================================
-         Metadata
+         Topic Metadata
     =========================================================== -->
 
     <div
         style="
             display:grid;
-            grid-template-columns:repeat(4,1fr);
+            grid-template-columns:
+                repeat(4,minmax(0,1fr));
+
             gap:16px;
+
             margin-bottom:30px;
+
             background:#F8FAFC;
+
             border:1px solid #DBE3EC;
+
             border-radius:10px;
+
             padding:18px;
+
             box-shadow:
-                0 4px 12px rgba(25,48,75,.05);
+                0 4px 12px
+                rgba(25,48,75,.05);
         "
     >
+
         <div>
 
             <div
                 style="
-                    font-size:12px;
+                    font-size:11px;
                     font-weight:600;
                     color:#64748B;
                     text-transform:uppercase;
@@ -1297,16 +1410,17 @@ function showTechnicalTopic(topic){
                     font-weight:600;
                 "
             >
-                ${center}
+                ${centerName}
             </div>
 
         </div>
+
 
         <div>
 
             <div
                 style="
-                    font-size:12px;
+                    font-size:11px;
                     font-weight:600;
                     color:#64748B;
                     text-transform:uppercase;
@@ -1322,26 +1436,23 @@ function showTechnicalTopic(topic){
                     color:#19304B;
                 "
             >
-               ${
-                   topic.knowledge_categories
-                       ? topic.knowledge_categories.name
-                       : '-'
-               }
+                ${categoryName || '-'}
             </div>
 
         </div>
+
 
         <div>
 
             <div
                 style="
-                    font-size:12px;
+                    font-size:11px;
                     font-weight:600;
                     color:#64748B;
                     text-transform:uppercase;
                 "
             >
-                Difficulty
+                Status
             </div>
 
             <div
@@ -1351,22 +1462,23 @@ function showTechnicalTopic(topic){
                     color:#19304B;
                 "
             >
-                ${topic.difficulty || 'Standard'}
+                ${status}
             </div>
 
         </div>
+
 
         <div>
 
             <div
                 style="
-                    font-size:12px;
+                    font-size:11px;
                     font-weight:600;
                     color:#64748B;
                     text-transform:uppercase;
                 "
             >
-                Reading Time
+                Priority
             </div>
 
             <div
@@ -1376,29 +1488,205 @@ function showTechnicalTopic(topic){
                     color:#19304B;
                 "
             >
-                ${topic.reading_time || '5 min'}
+                ${priority}
             </div>
 
         </div>
 
     </div>
 
+
     <!-- ==========================================================
-         Article
+         Summary
+    =========================================================== -->
+
+    ${
+        summary
+            ? `
+
+    <div
+        style="
+            background:#FFFFFF;
+            border:1px solid #DBE3EC;
+            border-radius:10px;
+            padding:24px;
+            margin-bottom:22px;
+        "
+    >
+
+        <div
+            style="
+                font-size:20px;
+                font-weight:600;
+                color:#19304B;
+                margin-bottom:12px;
+            "
+        >
+            Summary
+        </div>
+
+        <div
+            style="
+                font-size:15px;
+                line-height:1.8;
+                color:#334155;
+            "
+        >
+            ${summary}
+        </div>
+
+    </div>
+
+            `
+            : ''
+    }
+
+
+    <!-- ==========================================================
+         Definition
+    =========================================================== -->
+
+    ${
+        definition
+            ? `
+
+    <div
+        style="
+            background:#FFFFFF;
+            border:1px solid #DBE3EC;
+            border-radius:10px;
+            padding:24px;
+            margin-bottom:22px;
+        "
+    >
+
+        <div
+            style="
+                font-size:20px;
+                font-weight:600;
+                color:#19304B;
+                margin-bottom:12px;
+            "
+        >
+            Definition
+        </div>
+
+        <div
+            style="
+                font-size:15px;
+                line-height:1.8;
+                color:#334155;
+            "
+        >
+            ${definition}
+        </div>
+
+    </div>
+
+            `
+            : ''
+    }
+
+
+    <!-- ==========================================================
+         Technical Reference
     =========================================================== -->
 
     <div
         style="
-            font-size:15px;
-            line-height:1.9;
-            color:#334155;
-            margin-bottom:40px;
+            background:#F8FAFC;
+            border:1px solid #DBE3EC;
+            border-radius:10px;
+            padding:24px;
+            margin-bottom:30px;
         "
     >
 
-          ${topic.summary || topic.definition || ''}
+        <div
+            style="
+                font-size:20px;
+                font-weight:600;
+                color:#19304B;
+                margin-bottom:14px;
+            "
+        >
+            Technical Reference
+        </div>
+
+
+        ${
+            primaryReference && document
+                ? `
+
+        <div
+            style="
+                font-size:15px;
+                color:#334155;
+                line-height:1.8;
+            "
+        >
+
+            <div
+                style="
+                    font-weight:600;
+                    color:#19304B;
+                    margin-bottom:6px;
+                "
+            >
+                ${document.title || 'Technical Reference Manual'}
+            </div>
+
+            <div>
+                Chapter ${primaryReference.chapter || '-'}
+                ${
+                    primaryReference.section
+                        ? ` · Section ${primaryReference.section}`
+                        : ''
+                }
+                ${
+                    primaryReference.subsection
+                        ? ` · ${primaryReference.subsection}`
+                        : ''
+                }
+            </div>
+
+            ${
+                document.version
+                    ? `
+            <div
+                style="
+                    margin-top:4px;
+                    font-size:13px;
+                    color:#64748B;
+                "
+            >
+                Version ${document.version}
+            </div>
+                    `
+                    : ''
+            }
+
+        </div>
+
+                `
+                : `
+
+        <div
+            style="
+                font-size:14px;
+                color:#64748B;
+                line-height:1.7;
+            "
+        >
+            No authoritative Technical Reference
+            has been linked to this topic yet.
+        </div>
+
+                `
+        }
 
     </div>
+
 
     <!-- ==========================================================
          Knowledge Connections
@@ -1406,10 +1694,10 @@ function showTechnicalTopic(topic){
 
     <div
         style="
-            background:#F8FAFC;
+            background:#FFFFFF;
             border:1px solid #DBE3EC;
-            border-radius:8px;
-            padding:22px;
+            border-radius:10px;
+            padding:24px;
             margin-bottom:36px;
         "
     >
@@ -1422,9 +1710,7 @@ function showTechnicalTopic(topic){
                 margin-bottom:12px;
             "
         >
-
             Knowledge Connections
-
         </div>
 
         <div
@@ -1435,15 +1721,22 @@ function showTechnicalTopic(topic){
             "
         >
 
-            Related Articles<br>
-            Source Files<br>
-            Database Tables<br>
-            REST APIs<br>
-            Engineering Notes
+            ${
+                references.length
+                    ? `${references.length}
+                       Technical Reference
+                       connection${
+                           references.length === 1
+                               ? ''
+                               : 's'
+                       }`
+                    : 'No additional connections recorded.'
+            }
 
         </div>
 
     </div>
+
 
     <!-- ==========================================================
          Navigation
@@ -1480,31 +1773,63 @@ function showTechnicalTopic(topic){
 
     panel.scrollTop = 0;
 
+
+    /*
+    --------------------------------------------------------------------------
+    Current Topic Index
+    --------------------------------------------------------------------------
+    */
+
+    technicalReferenceState.currentTopic =
+        topic;
+
     technicalReferenceState.currentIndex =
         technicalReferenceState.topics.findIndex(
 
-            t =>
-
-               t =>
-
-                t.id ===
+            item =>
+                item.id ===
                 topic.id
 
         );
 
-    document
-        .getElementById(
+
+    /*
+    --------------------------------------------------------------------------
+    Navigation Buttons
+    --------------------------------------------------------------------------
+    */
+
+    const previousButton =
+        document.getElementById(
             'technicalPreviousButton'
-        )
-        .onclick =
+        );
+
+    const nextButton =
+        document.getElementById(
+            'technicalNextButton'
+        );
+
+    if(previousButton){
+
+        previousButton.onclick =
             showPreviousTopic;
 
-    document
-        .getElementById(
-            'technicalNextButton'
-        )
-        .onclick =
+        previousButton.disabled =
+            technicalReferenceState.currentIndex <= 0;
+
+    }
+
+    if(nextButton){
+
+        nextButton.onclick =
             showNextTopic;
+
+        nextButton.disabled =
+            technicalReferenceState.currentIndex < 0 ||
+            technicalReferenceState.currentIndex >=
+                technicalReferenceState.topics.length - 1;
+
+    }
 
 }
 
