@@ -29,14 +29,29 @@
 
 async function initializeTechnicalReference(){
 
+    /*
+    --------------------------------------------------------------------------
+    Load topics from database
+    --------------------------------------------------------------------------
+    */
+
     if(
-        technicalReferenceState.initialized
+        !technicalReferenceState.initialized
     ){
-        return;
+
+        technicalReferenceState.topics =
+            await loadTechnicalTopics();
+
+        technicalReferenceState.initialized =
+            true;
+
     }
 
-    technicalReferenceState.topics =
-        await loadTechnicalTopics();
+    /*
+    --------------------------------------------------------------------------
+    Render database-driven navigation
+    --------------------------------------------------------------------------
+    */
 
     renderTechnicalNavigation(
 
@@ -44,10 +59,8 @@ async function initializeTechnicalReference(){
 
     );
 
-    technicalReferenceState.initialized =
-        true;
-
 }
+
 
 /*
 ==============================================================================
@@ -84,6 +97,14 @@ async function openTechnicalReference(){
     */
 
     buildTechnicalReferenceWorkspace();
+
+    /*
+    --------------------------------------------------------------------------
+    Load Knowledge Center Navigation
+    --------------------------------------------------------------------------
+    */
+
+    await initializeTechnicalReference();
 
 }
 
