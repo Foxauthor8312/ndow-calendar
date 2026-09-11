@@ -1174,8 +1174,10 @@ function showTechnicalTopic(topic){
     };
 
     const center =
-        topic.engineering_center ||
-        'Foundations';
+    topic.knowledge_categories &&
+    topic.knowledge_categories.knowledge_centers
+        ? topic.knowledge_categories.knowledge_centers.name
+        : 'Foundations';
 
     const color =
         centerColors[center] ||
@@ -1226,7 +1228,7 @@ function showTechnicalTopic(topic){
         "
     >
 
-        ${topic.title}
+        ${topic.topic}
 
     </div>
 
@@ -1303,7 +1305,11 @@ function showTechnicalTopic(topic){
                     color:#19304B;
                 "
             >
-                ${topic.category || '-'}
+               ${
+                   topic.knowledge_categories
+                       ? topic.knowledge_categories.name
+                       : '-'
+               }
             </div>
 
         </div>
@@ -1373,7 +1379,7 @@ function showTechnicalTopic(topic){
         "
     >
 
-          ${topic.body || ''}
+          ${topic.summary || topic.definition || ''}
 
     </div>
 
@@ -1462,8 +1468,10 @@ function showTechnicalTopic(topic){
 
             t =>
 
-                t.topic_key ===
-                topic.topic_key
+               t =>
+
+                t.id ===
+                topic.id
 
         );
 
