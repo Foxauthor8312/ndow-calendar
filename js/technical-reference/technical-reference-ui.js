@@ -474,10 +474,20 @@ initializeRoadmapDrawing();
 }
 
 /*
+/*
 ==============================================================================
  Render Navigation
 ------------------------------------------------------------------------------
  Displays the Engineering Center navigation tree.
+
+ Data Source:
+    knowledge_centers
+        ↓
+    knowledge_categories
+        ↓
+    knowledge_topics
+
+ The navigation is database-driven.
 ==============================================================================
 */
 
@@ -497,6 +507,643 @@ function renderTechnicalNavigation(topics){
         return;
     }
 
+    /*
+    --------------------------------------------------------------------------
+    Switch from Presentation Mode to Knowledge Center Mode.
+    --------------------------------------------------------------------------
+    */
+
+    header.textContent =
+        'Engineering Knowledge Center';
+
+    nav.innerHTML = '';
+
+    /*
+    --------------------------------------------------------------------------
+    Engineering Center Colors
+    --------------------------------------------------------------------------
+    */
+
+    const centerColors = {
+
+        'Foundations' :
+            '#19304B',
+
+        'Architecture' :
+            '#589FD6',
+
+        'Portal Systems' :
+            '#F29647',
+
+        'Engineering & Operations' :
+            '#7A9E7F'
+
+    };
+
+    /*
+    --------------------------------------------------------------------------
+    Helper: Create Expand / Collapse Header
+    --------------------------------------------------------------------------
+    */
+
+    function createSectionHeader(
+        label,
+        color,
+        level = 0
+    ){
+
+        const header =
+            document.createElement(
+                'div'
+            );
+
+        header.style.marginTop =
+            level === 0
+                ? '16px'
+                : '8px';
+
+        header.style.marginBottom =
+            '4px';
+
+        header.style.padding =
+            level === 0
+                ? '10px 12px'
+                : '7px 10px';
+
+        header.style.borderLeft =
+            `4px solid ${color}`;
+
+        header.style.background =
+            level === 0
+                ? '#F8FAFC'
+                : '#FFFFFF';
+
+        header.style.borderRadius =
+            '6px';
+
+        header.style.fontSize =
+            level === 0
+                ? '13px'
+                : '12px';
+
+        header.style.fontWeight =
+            '700';
+
+        header.style.color =
+            '#19304B';
+
+        header.style.cursor =
+            'pointer';
+
+        header.innerHTML = `
+
+<span class="technical-arrow">
+    ▼
+</span>
+
+<span style="margin-left:8px;">
+    ${label}
+</span>
+
+`;
+
+        return header;
+
+    }
+
+    /*
+    --------------------------------------------------------------------------
+    START HERE
+    --------------------------------------------------------------------------
+    */
+
+    const startHeader =
+        createSectionHeader(
+            'START HERE',
+            '#19304B',
+            0
+        );
+
+    nav.appendChild(
+        startHeader
+    );
+
+    const startGroup =
+        document.createElement(
+            'div'
+        );
+
+    startGroup.style.marginBottom =
+        '10px';
+
+    nav.appendChild(
+        startGroup
+    );
+
+    let startExpanded = true;
+
+    startHeader.onclick = ()=>{
+
+        startExpanded =
+            !startExpanded;
+
+        startGroup.style.display =
+            startExpanded
+                ? 'block'
+                : 'none';
+
+        startHeader.querySelector(
+            '.technical-arrow'
+        ).textContent =
+            startExpanded
+                ? '▼'
+                : '►';
+
+    };
+
+    /*
+    --------------------------------------------------------------------------
+    Project History / Engineering Decisions
+    --------------------------------------------------------------------------
+    */
+
+    const startItem =
+        document.createElement(
+            'div'
+        );
+
+    startItem.className =
+        'technical-reference-nav-item';
+
+    startItem.textContent =
+        'Project History & Engineering Decisions';
+
+    startItem.style.padding =
+        '7px 12px 7px 28px';
+
+    startItem.style.marginBottom =
+        '2px';
+
+    startItem.style.borderRadius =
+        '6px';
+
+    startItem.style.cursor =
+        'pointer';
+
+    startItem.style.fontSize =
+        '13px';
+
+    startItem.style.transition =
+        '.15s';
+
+    startItem.onmouseenter = ()=>{
+
+        if(startItem.dataset.active === 'true'){
+            return;
+        }
+
+        startItem.style.background =
+            '#F1F5F9';
+
+    };
+
+    startItem.onmouseleave = ()=>{
+
+        if(startItem.dataset.active === 'true'){
+            return;
+        }
+
+        startItem.style.background =
+            'transparent';
+
+    };
+
+    startItem.onclick = ()=>{
+
+        document
+            .querySelectorAll(
+                '.technical-reference-nav-item'
+            )
+            .forEach(item=>{
+
+                item.dataset.active =
+                    'false';
+
+                item.style.background =
+                    'transparent';
+
+                item.style.fontWeight =
+                    '400';
+
+            });
+
+        startItem.dataset.active =
+            'true';
+
+        startItem.style.background =
+            '#E8F1FA';
+
+        startItem.style.fontWeight =
+            '600';
+
+        showTechnicalTopic({
+
+            topic:
+                'Project History & Engineering Decisions',
+
+            summary:
+                'Project history and engineering decisions.',
+
+            definition:
+                '',
+
+            engineering_center:
+                'Foundations',
+
+            category:
+                'Project History & Decisions'
+
+        });
+
+    };
+
+    startGroup.appendChild(
+        startItem
+    );
+
+    /*
+    --------------------------------------------------------------------------
+    Build Center / Category / Topic Hierarchy
+    --------------------------------------------------------------------------
+    */
+
+    const centerMap =
+        new Map();
+
+    /*
+    --------------------------------------------------------------------------
+    Group topics by Engineering Center
+    --------------------------------------------------------------------------
+    */
+
+    (topics || []).forEach(topic=>{
+
+        const category =
+            topic.knowledge_categories;
+
+        if(!category){
+            return;
+        }
+
+        const center =
+            category.knowledge_centers;
+
+        if(!center){
+            return;
+        }
+
+        if(!centerMap.has(center.id)){
+
+            centerMap.set(
+                center.id,
+                {
+                    center,
+                    categories:new Map()
+                }
+            );
+
+        }
+
+        const centerData =
+            centerMap.get(
+                center.id
+            );
+
+        if(
+            !centerData.categories.has(
+                category.id
+            )
+        ){
+
+            centerData.categories.set(
+
+                category.id,
+
+                {
+                    category,
+                    topics:[]
+                }
+
+            );
+
+        }
+
+        centerData.categories
+            .get(
+                category.id
+            )
+            .topics
+            .push(
+                topic
+            );
+
+    });
+
+    /*
+    --------------------------------------------------------------------------
+    Sort Engineering Centers
+    --------------------------------------------------------------------------
+    */
+
+    const centers =
+        Array.from(
+            centerMap.values()
+        )
+        .sort(
+            (a,b)=>
+                (a.center.sort_order || 0)
+                -
+                (b.center.sort_order || 0)
+        );
+
+    /*
+    --------------------------------------------------------------------------
+    Render Engineering Centers
+    --------------------------------------------------------------------------
+    */
+
+    centers.forEach(
+        centerData=>{
+
+            const center =
+                centerData.center;
+
+            const color =
+                centerColors[
+                    center.name
+                ] ||
+                '#19304B';
+
+            const centerHeader =
+                createSectionHeader(
+                    center.name,
+                    color,
+                    0
+                );
+
+            nav.appendChild(
+                centerHeader
+            );
+
+            const centerGroup =
+                document.createElement(
+                    'div'
+                );
+
+            centerGroup.style.marginBottom =
+                '12px';
+
+            nav.appendChild(
+                centerGroup
+            );
+
+            let centerExpanded =
+                true;
+
+            centerHeader.onclick = ()=>{
+
+                centerExpanded =
+                    !centerExpanded;
+
+                centerGroup.style.display =
+                    centerExpanded
+                        ? 'block'
+                        : 'none';
+
+                centerHeader.querySelector(
+                    '.technical-arrow'
+                ).textContent =
+                    centerExpanded
+                        ? '▼'
+                        : '►';
+
+            };
+
+            /*
+            ------------------------------------------------------------------
+            Sort Categories
+            ------------------------------------------------------------------
+            */
+
+            const categories =
+                Array.from(
+                    centerData.categories.values()
+                )
+                .sort(
+                    (a,b)=>
+                        (a.category.sort_order || 0)
+                        -
+                        (b.category.sort_order || 0)
+                );
+
+            /*
+            ------------------------------------------------------------------
+            Render Categories
+            ------------------------------------------------------------------
+            */
+
+            categories.forEach(
+                categoryData=>{
+
+                    const category =
+                        categoryData.category;
+
+                    const categoryHeader =
+                        createSectionHeader(
+                            category.name,
+                            color,
+                            1
+                        );
+
+                    categoryHeader.style.marginLeft =
+                        '10px';
+
+                    categoryHeader.style.borderLeft =
+                        `3px solid ${color}`;
+
+                    centerGroup.appendChild(
+                        categoryHeader
+                    );
+
+                    const categoryGroup =
+                        document.createElement(
+                            'div'
+                        );
+
+                    categoryGroup.style.marginBottom =
+                        '6px';
+
+                    centerGroup.appendChild(
+                        categoryGroup
+                    );
+
+                    let categoryExpanded =
+                        true;
+
+                    categoryHeader.onclick = ()=>{
+
+                        categoryExpanded =
+                            !categoryExpanded;
+
+                        categoryGroup.style.display =
+                            categoryExpanded
+                                ? 'block'
+                                : 'none';
+
+                        categoryHeader.querySelector(
+                            '.technical-arrow'
+                        ).textContent =
+                            categoryExpanded
+                                ? '▼'
+                                : '►';
+
+                    };
+
+                    /*
+                    --------------------------------------------------------------
+                    Sort Topics
+                    --------------------------------------------------------------
+                    */
+
+                    const categoryTopics =
+                        categoryData.topics
+                            .slice()
+                            .sort(
+                                (a,b)=>
+                                    (a.sort_order || 0)
+                                    -
+                                    (b.sort_order || 0)
+                            );
+
+                    /*
+                    --------------------------------------------------------------
+                    Render Topics
+                    --------------------------------------------------------------
+                    */
+
+                    categoryTopics.forEach(
+                        topic=>{
+
+                            const item =
+                                document.createElement(
+                                    'div'
+                                );
+
+                            item.className =
+                                'technical-reference-nav-item';
+
+                            item.textContent =
+                                topic.topic;
+
+                            item.style.padding =
+                                '6px 12px 6px 44px';
+
+                            item.style.marginBottom =
+                                '1px';
+
+                            item.style.borderRadius =
+                                '6px';
+
+                            item.style.cursor =
+                                'pointer';
+
+                            item.style.fontSize =
+                                '13px';
+
+                            item.style.color =
+                                '#334155';
+
+                            item.style.transition =
+                                '.15s';
+
+                            item.onmouseenter = ()=>{
+
+                                if(
+                                    item.dataset.active ===
+                                    'true'
+                                ){
+                                    return;
+                                }
+
+                                item.style.background =
+                                    '#F1F5F9';
+
+                            };
+
+                            item.onmouseleave = ()=>{
+
+                                if(
+                                    item.dataset.active ===
+                                    'true'
+                                ){
+                                    return;
+                                }
+
+                                item.style.background =
+                                    'transparent';
+
+                            };
+
+                            item.onclick = ()=>{
+
+                                document
+                                    .querySelectorAll(
+                                        '.technical-reference-nav-item'
+                                    )
+                                    .forEach(
+                                        link=>{
+
+                                            link.dataset.active =
+                                                'false';
+
+                                            link.style.background =
+                                                'transparent';
+
+                                            link.style.fontWeight =
+                                                '400';
+
+                                        }
+                                    );
+
+                                item.dataset.active =
+                                    'true';
+
+                                item.style.background =
+                                    '#E8F1FA';
+
+                                item.style.fontWeight =
+                                    '600';
+
+                                showTechnicalTopic(
+                                    topic
+                                );
+
+                            };
+
+                            categoryGroup.appendChild(
+                                item
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
     /*
     --------------------------------------------------------------------------
     Switch from Presentation Mode to Knowledge Center Mode.
