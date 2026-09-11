@@ -1291,11 +1291,11 @@ function showTechnicalTopic(topic){
         references[0] ||
         null;
 
-    const document =
-        primaryReference &&
-        primaryReference.knowledge_documents
-            ? primaryReference.knowledge_documents
-            : null;
+const referencedDocument =
+    primaryReference &&
+    primaryReference.knowledge_documents
+        ? primaryReference.knowledge_documents
+        : null;
 
 
     /*
@@ -1615,7 +1615,7 @@ function showTechnicalTopic(topic){
 
 
         ${
-            primaryReference && document
+           primaryReference && referencedDocument
                 ? `
 
         <div
@@ -1633,7 +1633,7 @@ function showTechnicalTopic(topic){
                     margin-bottom:6px;
                 "
             >
-                ${document.title || 'Technical Reference Manual'}
+                ${referencedDocument.title || 'Technical Reference Manual'}
             </div>
 
             <div>
@@ -1651,7 +1651,7 @@ function showTechnicalTopic(topic){
             </div>
 
             ${
-                document.version
+                referencedDocument.version
                     ? `
             <div
                 style="
