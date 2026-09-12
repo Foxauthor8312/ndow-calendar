@@ -1700,6 +1700,21 @@ const referencedDocument =
         </div>
 
                 `
+                : `
+
+        <div
+            style="
+                font-size:14px;
+                color:#64748B;
+                line-height:1.7;
+            "
+        >
+            No authoritative Technical Reference
+            has been linked to this topic yet.
+        </div>
+
+                `
+        }
 
 
     <!-- ==========================================================
