@@ -687,6 +687,50 @@ function renderTechnicalNavigation(topics){
     --------------------------------------------------------------------------
     */
 
+     const startHeader =
+        createSectionHeader(
+            'START HERE',
+            '#19304B',
+            0
+        );
+
+    nav.appendChild(
+        startHeader
+    );
+
+    const startGroup =
+        document.createElement(
+            'div'
+        );
+
+    startGroup.style.marginBottom =
+        '10px';
+
+    nav.appendChild(
+        startGroup
+    );
+
+    let startExpanded = true;
+
+    startHeader.onclick = ()=>{
+
+        startExpanded =
+            !startExpanded;
+
+        startGroup.style.display =
+            startExpanded
+                ? 'block'
+                : 'none';
+
+        startHeader.querySelector(
+            '.technical-arrow'
+        ).textContent =
+            startExpanded
+                ? '▼'
+                : '►';
+
+    };
+
     /*
     --------------------------------------------------------------------------
     Chapter 1 — Introduction
