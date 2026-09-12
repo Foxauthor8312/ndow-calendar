@@ -1614,8 +1614,8 @@ const referencedDocument =
         </div>
 
 
-        ${
-           primaryReference && referencedDocument
+           ${
+            primaryReference && referencedDocument
                 ? `
 
         <div
@@ -1666,26 +1666,40 @@ const referencedDocument =
                     : ''
             }
 
+            ${
+                referencedDocument.document_key
+                    ? `
+            <div
+                style="
+                    margin-top:16px;
+                "
+            >
+                <button
+                    type="button"
+                    class="technical-nav-button primary"
+                    style="
+                        width:auto;
+                        margin:0;
+                        padding:8px 16px;
+                        font-size:13px;
+                    "
+                    onclick="
+                        window.open(
+                            '${referencedDocument.document_key}',
+                            '_blank'
+                        );
+                    "
+                >
+                    Open Reference →
+                </button>
+            </div>
+                    `
+                    : ''
+            }
+
         </div>
 
                 `
-                : `
-
-        <div
-            style="
-                font-size:14px;
-                color:#64748B;
-                line-height:1.7;
-            "
-        >
-            No authoritative Technical Reference
-            has been linked to this topic yet.
-        </div>
-
-                `
-        }
-
-    </div>
 
 
     <!-- ==========================================================
