@@ -719,31 +719,50 @@ function renderTechnicalNavigation(topics){
 
     startItem.onclick = ()=>{
 
-        document
-            .querySelectorAll(
-                '.technical-reference-nav-item'
-            )
-            .forEach(item=>{
+    document
+        .querySelectorAll(
+            '.technical-reference-nav-item'
+        )
+        .forEach(item=>{
 
-                item.dataset.active =
-                    'false';
+            item.dataset.active =
+                'false';
 
-                item.style.background =
-                    'transparent';
+            item.style.background =
+                'transparent';
 
-                item.style.fontWeight =
-                    '400';
+            item.style.fontWeight =
+                '400';
 
-            });
+        });
 
-        startItem.dataset.active =
-            'true';
+    startItem.dataset.active =
+        'true';
 
-        startItem.style.background =
-            '#E8F1FA';
+    startItem.style.background =
+        '#E8F1FA';
 
-        startItem.style.fontWeight =
-            '600';
+    startItem.style.fontWeight =
+        '600';
+
+    /*
+    --------------------------------------------------------------------------
+    Load the actual database topic
+    --------------------------------------------------------------------------
+    Project History is presented in START HERE rather than the normal
+    Foundations navigation, but it must still use the complete topic object
+    returned by the Knowledge Center API so references and metadata are kept.
+    --------------------------------------------------------------------------
+    */
+
+    const historyTopic =
+        (topics || []).find(
+            topic =>
+                topic.topic ===
+                'Project History & Engineering Decisions'
+        );
+
+    if(!historyTopic){
 
         showTechnicalTopic({
 
@@ -764,7 +783,15 @@ function renderTechnicalNavigation(topics){
 
         });
 
-    };
+        return;
+
+    }
+
+    showTechnicalTopic(
+        historyTopic
+    );
+
+};
 
     startGroup.appendChild(
         startItem
