@@ -1683,12 +1683,11 @@ const referencedDocument =
                         padding:8px 16px;
                         font-size:13px;
                     "
-                    onclick="
-                        window.open(
-                            '${referencedDocument.document_key}',
-                            '_blank'
-                        );
-                    "
+                   onclick="
+                       openTechnicalReferenceDocument(
+                           '${referencedDocument.document_key}'
+                       );
+                   "
                 >
                     Open Reference →
                 </button>
@@ -1918,6 +1917,262 @@ function showNextTopic(){
 
 }
 
+/*
+==============================================================================
+ Open Technical Reference Document
+------------------------------------------------------------------------------
+ Loads the authoritative Technical Reference Manual document by document_key
+ and displays it inside the Engineering Knowledge Center.
+==============================================================================
+*/
+
+async function openTechnicalReferenceDocument(
+    documentKey
+){
+
+    if(!documentKey){
+        return;
+    }
+
+    const panel =
+        document.getElementById(
+            'technicalReferenceContent'
+        );
+
+    if(!panel){
+        return;
+    }
+
+    panel.innerHTML = `
+
+<div
+    style="
+        max-width:1100px;
+        margin:auto;
+    "
+>
+
+    <div
+        style="
+            background:#FFFFFF;
+            border:1px solid #DBE3EC;
+            border-radius:10px;
+            padding:24px;
+        "
+    >
+
+        <div
+            style="
+                font-size:14px;
+                color:#64748B;
+                margin-bottom:18px;
+            "
+        >
+            Loading Technical Reference...
+        </div>
+
+    </div>
+
+</div>
+
+`;
+
+    try{
+
+        const documentData =
+            await loadTechnicalTopic(
+                documentKey
+            );
+
+        if(
+            !documentData
+        ){
+            throw new Error(
+                'Technical Reference document was not returned.'
+            );
+        }
+
+        const documentTitle =
+            documentData.title ||
+            'Technical Reference Manual';
+
+        const documentBody =
+            documentData.body ||
+            '';
+
+        panel.innerHTML = `
+
+<div
+    style="
+        max-width:1100px;
+        margin:auto;
+    "
+>
+
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+            margin-bottom:24px;
+        "
+    >
+
+        <button
+            type="button"
+            class="technical-nav-button secondary"
+            style="
+                width:auto;
+                margin:0;
+                padding:8px 16px;
+                font-size:13px;
+            "
+            onclick="
+                showTechnicalTopic(
+                    technicalReferenceState.currentTopic
+                );
+            "
+        >
+            ← Back to Topic
+        </button>
+
+        ${
+            documentData.version
+                ? `
+        <div
+            style="
+                font-size:13px;
+                color:#64748B;
+            "
+        >
+            Version ${documentData.version}
+        </div>
+                `
+                : ''
+        }
+
+    </div>
+
+
+    <div
+        style="
+            background:#FFFFFF;
+            border:1px solid #DBE3EC;
+            border-radius:10px;
+            padding:30px;
+            box-shadow:
+                0 4px 12px
+                rgba(25,48,75,.05);
+        "
+    >
+
+        <div
+            style="
+                font-size:28px;
+                font-weight:600;
+                color:#19304B;
+                line-height:1.35;
+                margin-bottom:24px;
+                padding-bottom:18px;
+                border-bottom:1px solid #DBE3EC;
+            "
+        >
+            ${documentTitle}
+        </div>
+
+
+        <div
+            style="
+                font-size:15px;
+                line-height:1.8;
+                color:#334155;
+            "
+        >
+            ${documentBody}
+        </div>
+
+    </div>
+
+</div>
+
+`;
+
+        panel.scrollTop = 0;
+
+    }
+    catch(error){
+
+        console.error(
+            'Technical Reference document load failed:',
+            error
+        );
+
+        panel.innerHTML = `
+
+<div
+    style="
+        max-width:1100px;
+        margin:auto;
+    "
+>
+
+    <div
+        style="
+            background:#FFFFFF;
+            border:1px solid #DC2626;
+            border-radius:10px;
+            padding:24px;
+        "
+    >
+
+        <div
+            style="
+                font-size:20px;
+                font-weight:600;
+                color:#DC2626;
+                margin-bottom:10px;
+            "
+        >
+            Technical Reference Unavailable
+        </div>
+
+        <div
+            style="
+                font-size:14px;
+                color:#64748B;
+                line-height:1.7;
+            "
+        >
+            The authoritative Technical Reference document
+            could not be loaded.
+        </div>
+
+        <button
+            type="button"
+            class="technical-nav-button secondary"
+            style="
+                width:auto;
+                margin-top:18px;
+            "
+            onclick="
+                showTechnicalTopic(
+                    technicalReferenceState.currentTopic
+                );
+            "
+        >
+            ← Back to Topic
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+    }
+
+}
 
 /*
 ==============================================================================
@@ -1933,5 +2188,8 @@ window.renderTechnicalNavigation =
 
 window.showTechnicalTopic =
     showTechnicalTopic;
+
+window.openTechnicalReferenceDocument =
+    openTechnicalReferenceDocument;
 
 
