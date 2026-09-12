@@ -2082,15 +2082,16 @@ async function openTechnicalReferenceDocument(
         </div>
 
 
-        <div
-            style="
-                font-size:15px;
-                line-height:1.8;
-                color:#334155;
-            "
-        >
-            ${documentBody}
-        </div>
+    <div
+    style="
+        font-size:15px;
+        line-height:1.8;
+        color:#334155;
+        white-space:pre-wrap;
+    "
+>
+    ${documentBody}
+</div>
 
     </div>
 
