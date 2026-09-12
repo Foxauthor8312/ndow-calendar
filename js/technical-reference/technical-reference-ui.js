@@ -681,53 +681,108 @@ function renderTechnicalNavigation(topics){
 
     }
 
-    /*
+       /*
     --------------------------------------------------------------------------
     START HERE
     --------------------------------------------------------------------------
     */
 
-    const startHeader =
-        createSectionHeader(
-            'START HERE',
-            '#19304B',
-            0
-        );
+    /*
+    --------------------------------------------------------------------------
+    Chapter 1 — Introduction
+    --------------------------------------------------------------------------
+    */
 
-    nav.appendChild(
-        startHeader
-    );
-
-    const startGroup =
+    const chapter1Item =
         document.createElement(
             'div'
         );
 
-    startGroup.style.marginBottom =
-        '10px';
+    chapter1Item.className =
+        'technical-reference-nav-item';
 
-    nav.appendChild(
-        startGroup
-    );
+    chapter1Item.textContent =
+        'Chapter 1 — Introduction';
 
-    let startExpanded = true;
+    chapter1Item.style.padding =
+        '7px 12px 7px 28px';
 
-    startHeader.onclick = ()=>{
+    chapter1Item.style.marginBottom =
+        '2px';
 
-        startExpanded =
-            !startExpanded;
+    chapter1Item.style.borderRadius =
+        '6px';
 
-        startGroup.style.display =
-            startExpanded
-                ? 'block'
-                : 'none';
+    chapter1Item.style.cursor =
+        'pointer';
 
-        startHeader.querySelector(
-            '.technical-arrow'
-        ).textContent =
-            startExpanded
-                ? '▼'
-                : '►';
+    chapter1Item.style.fontSize =
+        '13px';
+
+    chapter1Item.style.transition =
+        '.15s';
+
+    chapter1Item.onmouseenter = ()=>{
+
+        if(
+            chapter1Item.dataset.active ===
+            'true'
+        ){
+            return;
+        }
+
+        chapter1Item.style.background =
+            '#F1F5F9';
+
+    };
+
+    chapter1Item.onmouseleave = ()=>{
+
+        if(
+            chapter1Item.dataset.active ===
+            'true'
+        ){
+            return;
+        }
+
+        chapter1Item.style.background =
+            'transparent';
+
+    };
+
+    chapter1Item.onclick = ()=>{
+
+        document
+            .querySelectorAll(
+                '.technical-reference-nav-item'
+            )
+            .forEach(
+                item=>{
+
+                    item.dataset.active =
+                        'false';
+
+                    item.style.background =
+                        'transparent';
+
+                    item.style.fontWeight =
+                        '400';
+
+                }
+            );
+
+        chapter1Item.dataset.active =
+            'true';
+
+        chapter1Item.style.background =
+            '#E8F1FA';
+
+        chapter1Item.style.fontWeight =
+            '600';
+
+        openTechnicalReferenceDocument(
+            'trm-chapter-1-introduction'
+        );
 
     };
 
@@ -768,7 +823,10 @@ function renderTechnicalNavigation(topics){
 
     startItem.onmouseenter = ()=>{
 
-        if(startItem.dataset.active === 'true'){
+        if(
+            startItem.dataset.active ===
+            'true'
+        ){
             return;
         }
 
@@ -779,7 +837,10 @@ function renderTechnicalNavigation(topics){
 
     startItem.onmouseleave = ()=>{
 
-        if(startItem.dataset.active === 'true'){
+        if(
+            startItem.dataset.active ===
+            'true'
+        ){
             return;
         }
 
@@ -790,79 +851,92 @@ function renderTechnicalNavigation(topics){
 
     startItem.onclick = ()=>{
 
-    document
-        .querySelectorAll(
-            '.technical-reference-nav-item'
-        )
-        .forEach(item=>{
+        document
+            .querySelectorAll(
+                '.technical-reference-nav-item'
+            )
+            .forEach(
+                item=>{
 
-            item.dataset.active =
-                'false';
+                    item.dataset.active =
+                        'false';
 
-            item.style.background =
-                'transparent';
+                    item.style.background =
+                        'transparent';
 
-            item.style.fontWeight =
-                '400';
+                    item.style.fontWeight =
+                        '400';
 
-        });
+                }
+            );
 
-    startItem.dataset.active =
-        'true';
+        startItem.dataset.active =
+            'true';
 
-    startItem.style.background =
-        '#E8F1FA';
+        startItem.style.background =
+            '#E8F1FA';
 
-    startItem.style.fontWeight =
-        '600';
+        startItem.style.fontWeight =
+            '600';
+
+        /*
+        ----------------------------------------------------------------------
+        Load the actual database topic
+        ----------------------------------------------------------------------
+        Project History is presented in START HERE rather than the normal
+        Foundations navigation, but it must still use the complete topic
+        object returned by the Knowledge Center API so references and
+        metadata are kept.
+        ----------------------------------------------------------------------
+        */
+
+        const historyTopic =
+            (topics || []).find(
+                topic =>
+                    topic.topic ===
+                    'Project History & Engineering Decisions'
+            );
+
+        if(!historyTopic){
+
+            showTechnicalTopic({
+
+                topic:
+                    'Project History & Engineering Decisions',
+
+                summary:
+                    'Project history and engineering decisions.',
+
+                definition:
+                    '',
+
+                engineering_center:
+                    'Foundations',
+
+                category:
+                    'Project History & Decisions'
+
+            });
+
+            return;
+
+        }
+
+        showTechnicalTopic(
+            historyTopic
+        );
+
+    };
 
     /*
     --------------------------------------------------------------------------
-    Load the actual database topic
-    --------------------------------------------------------------------------
-    Project History is presented in START HERE rather than the normal
-    Foundations navigation, but it must still use the complete topic object
-    returned by the Knowledge Center API so references and metadata are kept.
+    Render START HERE items
     --------------------------------------------------------------------------
     */
 
-    const historyTopic =
-        (topics || []).find(
-            topic =>
-                topic.topic ===
-                'Project History & Engineering Decisions'
-        );
-
-    if(!historyTopic){
-
-        showTechnicalTopic({
-
-            topic:
-                'Project History & Engineering Decisions',
-
-            summary:
-                'Project history and engineering decisions.',
-
-            definition:
-                '',
-
-            engineering_center:
-                'Foundations',
-
-            category:
-                'Project History & Decisions'
-
-        });
-
-        return;
-
-    }
-
-    showTechnicalTopic(
-        historyTopic
+    startGroup.appendChild(
+        chapter1Item
     );
-
-};
 
     startGroup.appendChild(
         startItem
