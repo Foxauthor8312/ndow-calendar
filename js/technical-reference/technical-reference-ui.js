@@ -230,6 +230,77 @@ function injectTechnicalReferenceStyles(){
 
 }
 
+.technical-reference-document{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:15px;
+    line-height:1.7;
+    color:#334155;
+}
+
+.technical-reference-document h1{
+    margin:0 0 24px;
+    color:#19304B;
+    font-size:30px;
+    line-height:1.25;
+}
+
+.technical-reference-document h2{
+    margin:0 0 24px;
+    color:#19304B;
+    font-size:28px;
+    line-height:1.25;
+}
+
+.technical-reference-document h3{
+    margin:30px 0 12px;
+    color:#19304B;
+    font-size:20px;
+    line-height:1.35;
+}
+
+.technical-reference-document h4{
+    margin:24px 0 10px;
+    color:#19304B;
+    font-size:17px;
+    line-height:1.4;
+}
+
+.technical-reference-document p{
+    margin:0 0 14px;
+}
+
+.technical-reference-document ul,
+.technical-reference-document ol{
+    margin:10px 0 18px 28px;
+}
+
+.technical-reference-document li{
+    margin-bottom:6px;
+}
+
+.technical-reference-document strong{
+    font-weight:700;
+}
+
+.technical-reference-document em{
+    font-style:italic;
+}
+
+.technical-reference-document code{
+    padding:2px 5px;
+    border-radius:4px;
+    background:#F1F5F9;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:.92em;
+}
+
+.technical-reference-document blockquote{
+    margin:20px 0;
+    padding:14px 20px;
+    border-left:4px solid #589FD6;
+    background:#F8FAFC;
+}
+
 `;
 
     document.head.appendChild(
@@ -2023,9 +2094,10 @@ async function openTechnicalReferenceDocument(
             documentData.title ||
             'Technical Reference Manual';
 
-        const documentBody =
-            documentData.body ||
-            '';
+       const documentBody =
+           documentData.body_html ||
+           documentData.body ||
+           '';
 
         panel.innerHTML = `
 
@@ -2109,22 +2181,15 @@ async function openTechnicalReferenceDocument(
         </div>
 
 
-    <div
-    style="
-        font-size:15px;
-        line-height:1.8;
-        color:#334155;
-        white-space:pre-wrap;
-    "
->
-    ${documentBody}
-</div>
-
-    </div>
-
-</div>
-
-`;
+        <div class="technical-reference-document">
+            ${documentBody}
+        </div>
+        
+            </div>
+        
+        </div>
+        
+        `;
 
         panel.scrollTop = 0;
 
