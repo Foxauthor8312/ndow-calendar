@@ -2305,23 +2305,37 @@ async function openTechnicalReferenceDocument(
         "
     >
 
-        <button
-            type="button"
-            class="technical-nav-button secondary"
-            style="
-                width:auto;
-                margin:0;
-                padding:8px 16px;
-                font-size:13px;
-            "
-            onclick="
-                showTechnicalTopic(
-                    technicalReferenceState.currentTopic
-                );
-            "
-        >
-            ← Back to Topic
-        </button>
+<button
+    type="button"
+    class="technical-nav-button secondary"
+    style="
+        width:auto;
+        margin:0;
+        padding:8px 16px;
+        font-size:13px;
+    "
+    onclick="
+        if(
+            typeof technicalReferenceSearchState !== 'undefined' &&
+            technicalReferenceSearchState.active &&
+            typeof returnToTechnicalReferenceSearch === 'function'
+        ){
+            returnToTechnicalReferenceSearch();
+        }
+        else{
+            showTechnicalTopic(
+                technicalReferenceState.currentTopic
+            );
+        }
+    "
+>
+    ${
+        typeof technicalReferenceSearchState !== 'undefined' &&
+        technicalReferenceSearchState.active
+            ? '← Back to Search Results'
+            : '← Back to Topic'
+    }
+</button>
 
         ${
             documentData.version
