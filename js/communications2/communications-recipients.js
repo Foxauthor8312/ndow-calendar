@@ -132,6 +132,20 @@ export function getVisibleRecipients(){
 
 }
 
+/*===========================================================================
+    RECIPIENT IDENTITY
+===========================================================================*/
+
+function getRecipientId(student){
+
+    return String(
+        student.customer_id ??
+        student.student_email ??
+        ''
+    );
+
+}
+
 
 /*===========================================================================
     RENDER
@@ -146,9 +160,7 @@ function renderRecipients(){
     const container =
 
         document.getElementById(
-
             'communicationsRecipients'
-
         );
 
     if(!container){
@@ -187,12 +199,12 @@ function renderRecipients(){
     </button>
 
     <button
-    type="button"
-    onclick="openSurveyResults()">
+        type="button"
+        onclick="openSurveyResults()">
 
-    View Survey Results
+        View Survey Results
 
-</button>
+    </button>
 
     <span
         id="recipientCount"
@@ -211,7 +223,6 @@ function renderRecipients(){
 <div
     id="recipientList"
     class="comm-recipient-list">
-
 </div>
 
 `;
@@ -221,6 +232,7 @@ function renderRecipients(){
     updateRecipientCount();
 
 }
+
 
 /*===========================================================================
     RECIPIENT LIST
@@ -238,44 +250,40 @@ function renderRecipientList(){
 
     /*
     --------------------------------------------------------------------------
-    Synchronize the selected recipients with the currently visible list.
+    Synchronize selected recipients with the currently visible list.
     --------------------------------------------------------------------------
     */
 
-  const visibleIds =
+    const visibleIds =
 
-    new Set(
+        new Set(
 
-        recipients.map(
+            recipients.map(
 
-            student =>
-
-                student.customer_id ??
-                student.student_email
-
-        )
-
-    );
-
-    const selected =
-
-    state.selectedRecipients.filter(
-
-        recipient =>
-
-            visibleIds.has(
-
-                recipient.customer_id ??
-                recipient.student_email
+                student =>
+                    getRecipientId(student)
 
             )
 
-    );
+        );
+
+    const selected =
+
+        state.selectedRecipients.filter(
+
+            recipient =>
+
+                visibleIds.has(
+
+                    getRecipientId(recipient)
+
+                )
+
+        );
 
     if(
 
         selected.length !==
-
         state.selectedRecipients.length
 
     ){
@@ -291,9 +299,7 @@ function renderRecipientList(){
     const list =
 
         document.getElementById(
-
             'recipientList'
-
         );
 
     if(!list){
@@ -312,16 +318,10 @@ function renderRecipientList(){
 
                 selected.some(
 
-  recipient =>
+                    recipient =>
 
-    (
-        recipient.customer_id ??
-        recipient.student_email
-    ) ===
-    (
-        student.customer_id ??
-        student.student_email
-    )
+                        getRecipientId(recipient) ===
+                        getRecipientId(student)
 
                 )
 
@@ -350,8 +350,8 @@ function renderRecipientList(){
         type="checkbox"
         ${checked}
         onchange="toggleRecipient(
-       '${student.customer_id ?? student.student_email}'
-   )"
+            '${student.customer_id ?? student.student_email}'
+        )"
     >
 
     <div
@@ -401,6 +401,7 @@ function renderRecipientList(){
 
 }
 
+
 /*===========================================================================
     TOGGLE
 ===========================================================================*/
@@ -417,17 +418,17 @@ function(recipientId){
 
         getVisibleRecipients();
 
+    const normalizedId =
+        String(recipientId);
+
     const exists =
 
         state.selectedRecipients.find(
 
             recipient =>
 
-                (
-                    recipient.customer_id ??
-                    recipient.student_email
-                ) ===
-                recipientId
+                getRecipientId(recipient) ===
+                normalizedId
 
         );
 
@@ -439,11 +440,8 @@ function(recipientId){
 
                 recipient =>
 
-                    (
-                        recipient.customer_id ??
-                        recipient.student_email
-                    ) !==
-                    recipientId
+                    getRecipientId(recipient) !==
+                    normalizedId
 
             )
 
@@ -459,11 +457,8 @@ function(recipientId){
 
                 recipient =>
 
-                    (
-                        recipient.customer_id ??
-                        recipient.student_email
-                    ) ===
-                    recipientId
+                    getRecipientId(recipient) ===
+                    normalizedId
 
             );
 
