@@ -7228,7 +7228,18 @@ modalBody.innerHTML = `
     line-height:1.5;
   ">
 
-    ${event.location}
+    <a
+  href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location || '')}"
+  target="_blank"
+  rel="noopener noreferrer"
+  style="
+    color:#2563eb;
+    text-decoration:none;
+    cursor:pointer;
+  "
+>
+  ${event.location || ''}
+</a>
 
     ${
       Array.isArray(event.instructors) &&
