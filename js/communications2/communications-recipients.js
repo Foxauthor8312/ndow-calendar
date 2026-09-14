@@ -217,33 +217,35 @@ function renderRecipientList(){
     --------------------------------------------------------------------------
     */
 
-    const visibleIds =
+  const visibleIds =
 
-        new Set(
+    new Set(
 
-            recipients.map(
+        recipients.map(
 
-                student =>
+            student =>
 
-                    student.customer_id
+                student.customer_id ??
+                student.student_email
 
-            )
+        )
 
-        );
+    );
 
     const selected =
 
-        state.selectedRecipients.filter(
+    state.selectedRecipients.filter(
 
-            recipient =>
+        recipient =>
 
-                visibleIds.has(
+            visibleIds.has(
 
-                    recipient.customer_id
+                recipient.customer_id ??
+                recipient.student_email
 
-                )
+            )
 
-        );
+    );
 
     if(
 
@@ -285,11 +287,16 @@ function renderRecipientList(){
 
                 selected.some(
 
-                    recipient =>
+  recipient =>
 
-                        recipient.customer_id ===
-
-                        student.customer_id
+    (
+        recipient.customer_id ??
+        recipient.student_email
+    ) ===
+    (
+        student.customer_id ??
+        student.student_email
+    )
 
                 )
 
@@ -317,7 +324,9 @@ function renderRecipientList(){
     <input
         type="checkbox"
         ${checked}
-        onchange="toggleRecipient(${student.customer_id})"
+        onchange="toggleRecipient(
+       '${student.customer_id ?? student.student_email}'
+   )"
     >
 
     <div
@@ -373,7 +382,7 @@ function renderRecipientList(){
 
 window.toggleRecipient =
 
-function(customerId){
+function(recipientId){
 
     const state =
 
@@ -389,9 +398,11 @@ function(customerId){
 
             recipient =>
 
-                recipient.customer_id ===
-
-                customerId
+                (
+                    recipient.customer_id ??
+                    recipient.student_email
+                ) ===
+                recipientId
 
         );
 
@@ -403,9 +414,11 @@ function(customerId){
 
                 recipient =>
 
-                    recipient.customer_id !==
-
-                    customerId
+                    (
+                        recipient.customer_id ??
+                        recipient.student_email
+                    ) !==
+                    recipientId
 
             )
 
@@ -421,9 +434,11 @@ function(customerId){
 
                 recipient =>
 
-                    recipient.customer_id ===
-
-                    customerId
+                    (
+                        recipient.customer_id ??
+                        recipient.student_email
+                    ) ===
+                    recipientId
 
             );
 
