@@ -25,8 +25,17 @@
 
 import {
 
-    getState,
+    COMMUNICATION_TYPES
 
+}
+
+from
+
+'./communications-config.js';
+
+import {
+
+    getState,
     setSelectedRecipients
 
 }
@@ -37,13 +46,13 @@ from
 
 import {
 
-    COMMUNICATION_TYPES
+    addManualStudent
 
 }
 
 from
 
-'./communications-config.js';
+'../event-roster.js';
 
 
 /*===========================================================================
@@ -599,6 +608,278 @@ function updateRecipientCount(){
     }
 
 }
+/*===========================================================================
+    ADD MANUAL STUDENT
+===========================================================================*/
+
+window.openAddStudentModal =
+
+function(){
+
+    const state =
+
+        getState();
+
+    if(!state.currentEvent){
+
+        alert(
+            'No event is currently selected.'
+        );
+
+        return;
+
+    }
+
+    if(
+        document.getElementById(
+            'addManualStudentModal'
+        )
+    ){
+
+        return;
+
+    }
+
+    const modal =
+
+        document.createElement('div');
+
+    modal.id =
+        'addManualStudentModal';
+
+    modal.style.cssText = `
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.35);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        z-index:100000;
+    `;
+
+    modal.innerHTML = `
+
+<div
+    style="
+        width:420px;
+        max-width:90vw;
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        box-shadow:0 10px 30px rgba(0,0,0,.18);
+        padding:24px;
+    "
+>
+
+    <div
+        style="
+            font-size:18px;
+            font-weight:700;
+            color:#19304B;
+            margin-bottom:18px;
+        "
+    >
+        Add Student
+    </div>
+
+    <label class="comm-label">
+        Student Name
+    </label>
+
+    <input
+        id="manualStudentName"
+        class="comm-input"
+        type="text"
+        placeholder="First and last name"
+        style="
+            width:100%;
+            margin-bottom:14px;
+        "
+    >
+
+    <label class="comm-label">
+        Email Address
+    </label>
+
+    <input
+        id="manualStudentEmail"
+        class="comm-input"
+        type="email"
+        placeholder="student@example.com"
+        style="
+            width:100%;
+        "
+    >
+
+    <div
+        style="
+            display:flex;
+            justify-content:flex-end;
+            gap:10px;
+            margin-top:20px;
+        "
+    >
+
+        <button
+            type="button"
+            class="comm-button"
+            onclick="closeAddStudentModal()"
+        >
+            Cancel
+        </button>
+
+        <button
+            type="button"
+            class="comm-button comm-button-primary"
+            onclick="saveManualStudent()"
+        >
+            Add Student
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+    document.body.appendChild(modal);
+
+    document
+        .getElementById(
+            'manualStudentName'
+        )
+        ?.focus();
+
+};
+
+
+/*===========================================================================
+    CLOSE ADD STUDENT MODAL
+===========================================================================*/
+
+window.closeAddStudentModal =
+
+function(){
+
+    const modal =
+
+        document.getElementById(
+            'addManualStudentModal'
+        );
+
+    if(modal){
+
+        modal.remove();
+
+    }
+
+};
+
+
+/*===========================================================================
+    SAVE MANUAL STUDENT
+===========================================================================*/
+
+window.saveManualStudent =
+
+async function(){
+
+    const state =
+
+        getState();
+
+    const nameInput =
+
+        document.getElementById(
+            'manualStudentName'
+        );
+
+    const emailInput =
+
+        document.getElementById(
+            'manualStudentEmail'
+        );
+
+    const studentName =
+        nameInput?.value.trim();
+
+    const studentEmail =
+        emailInput?.value.trim();
+
+    if(!studentName){
+
+        alert(
+            'Student name is required.'
+        );
+
+        nameInput?.focus();
+
+        return;
+
+    }
+
+    if(!studentEmail){
+
+        alert(
+            'Student email is required.'
+        );
+
+        emailInput?.focus();
+
+        return;
+
+    }
+
+    try{
+
+        const student =
+
+            await addManualStudent(
+
+                state.currentEvent.id,
+
+                studentName,
+
+                studentEmail
+
+            );
+
+        state.roster = [
+
+            ...state.roster,
+
+            student
+
+        ];
+
+        closeAddStudentModal();
+
+        renderRecipientList();
+
+        updateRecipientCount();
+
+    }
+
+    catch(error){
+
+        console.error(
+
+            'Unable to add manual student:',
+
+            error
+
+        );
+
+        alert(
+
+            error.message ||
+            'Unable to add student.'
+
+        );
+
+    }
+
+};
 
 
 /*===========================================================================
