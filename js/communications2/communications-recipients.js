@@ -945,14 +945,224 @@ async function(){
 
         }
 
-        console.log(
-            'Survey Results:',
-            data
-        );
+        const modal =
+            document.createElement('div');
 
-        alert(
-            `${data.count} completed survey${data.count === 1 ? '' : 's'} found.`
-        );
+        modal.id =
+            'surveyResultsModal';
+
+        modal.style.cssText = `
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.35);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            z-index:100000;
+        `;
+
+        const reviews =
+            data.reviews || [];
+
+        const rows =
+            reviews.length
+
+                ? reviews.map(review => `
+
+                    <tr>
+
+                        <td>
+                            ${review.recipient_name || ''}
+                        </td>
+
+                        <td>
+                            ${review.recipient_email || ''}
+                        </td>
+
+                        <td align="center">
+                            ${review.class_information_rating || '-'}
+                        </td>
+
+                        <td align="center">
+                            ${review.instructor_rating || '-'}
+                        </td>
+
+                        <td align="center">
+                            ${review.recommendation_rating || '-'}
+                        </td>
+
+                        <td>
+                            ${review.comments || ''}
+                        </td>
+
+                        <td>
+                            ${
+                                review.completed_at
+                                    ? new Date(
+                                        review.completed_at
+                                      ).toLocaleDateString()
+                                    : ''
+                            }
+                        </td>
+
+                    </tr>
+
+                `).join('')
+
+                : `
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            style="
+                                text-align:center;
+                                padding:30px;
+                                color:#6B7280;
+                            "
+                        >
+                            No completed surveys found.
+                        </td>
+
+                    </tr>
+
+                `;
+
+        modal.innerHTML = `
+
+<div
+    style="
+        width:1100px;
+        max-width:94vw;
+        max-height:85vh;
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        box-shadow:0 10px 30px rgba(0,0,0,.18);
+        padding:24px;
+        display:flex;
+        flex-direction:column;
+    "
+>
+
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:18px;
+        "
+    >
+
+        <div>
+
+            <div
+                style="
+                    font-size:20px;
+                    font-weight:700;
+                    color:#19304B;
+                "
+            >
+                Survey Results
+            </div>
+
+            <div
+                style="
+                    margin-top:4px;
+                    color:#6B7280;
+                "
+            >
+                ${state.currentEvent.name || 'Current Event'}
+                &nbsp;•&nbsp;
+                ${data.count}
+                completed
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            class="comm-button"
+            onclick="closeSurveyResults()"
+        >
+            Close
+        </button>
+
+    </div>
+
+    <div
+        style="
+            overflow:auto;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+        "
+    >
+
+        <table
+            style="
+                width:100%;
+                border-collapse:collapse;
+                font-size:13px;
+            "
+        >
+
+            <thead>
+
+                <tr
+                    style="
+                        background:#F8FAFC;
+                        color:#19304B;
+                        border-bottom:1px solid #DBE3EC;
+                    "
+                >
+
+                    <th style="padding:10px;text-align:left;">
+                        Student
+                    </th>
+
+                    <th style="padding:10px;text-align:left;">
+                        Email
+                    </th>
+
+                    <th style="padding:10px;">
+                        Class
+                    </th>
+
+                    <th style="padding:10px;">
+                        Instructor
+                    </th>
+
+                    <th style="padding:10px;">
+                        Recommend
+                    </th>
+
+                    <th style="padding:10px;text-align:left;">
+                        Comments
+                    </th>
+
+                    <th style="padding:10px;text-align:left;">
+                        Completed
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                ${rows}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+`;
+
+        document.body.appendChild(modal);
 
     }
 
@@ -967,6 +1177,28 @@ async function(){
             error.message ||
             'Unable to load survey results.'
         );
+
+    }
+
+};
+
+
+/*===========================================================================
+    CLOSE SURVEY RESULTS
+===========================================================================*/
+
+window.closeSurveyResults =
+
+function(){
+
+    const modal =
+        document.getElementById(
+            'surveyResultsModal'
+        );
+
+    if(modal){
+
+        modal.remove();
 
     }
 
