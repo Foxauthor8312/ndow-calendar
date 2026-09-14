@@ -81,7 +81,7 @@ export async function addManualStudent(
 
         const response =
             await fetch(
-                `/api/event-communications/event-roster/${eventId}/student`,
+                `https://ndow-calendar-server.onrender.com/api/event-communications/event-roster/${eventId}/student`,
                 {
                     method: 'POST',
 
