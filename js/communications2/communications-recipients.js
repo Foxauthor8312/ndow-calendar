@@ -186,6 +186,14 @@ function renderRecipients(){
 
     </button>
 
+    <button
+    type="button"
+    onclick="openSurveyResults()">
+
+    View Survey Results
+
+</button>
+
     <span
         id="recipientCount"
         style="
@@ -881,6 +889,88 @@ async function(){
 
 };
 
+
+/*===========================================================================
+    VIEW SURVEY RESULTS
+===========================================================================*/
+
+window.openSurveyResults =
+
+async function(){
+
+    const state =
+        getState();
+
+    if(!state.currentEvent){
+
+        alert(
+            'No event is currently selected.'
+        );
+
+        return;
+
+    }
+
+    try{
+
+        const token =
+            localStorage.getItem('token');
+
+        const response =
+            await fetch(
+                `https://ndow-calendar-server.onrender.com/api/event-communications/reviews/${state.currentEvent.id}`,
+                {
+                    headers: {
+
+                        ...(token
+                            ? {
+                                Authorization:
+                                    `Bearer ${token}`
+                              }
+                            : {})
+
+                    }
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(!response.ok || !data.success){
+
+            throw new Error(
+                data.message ||
+                'Unable to load survey results.'
+            );
+
+        }
+
+        console.log(
+            'Survey Results:',
+            data
+        );
+
+        alert(
+            `${data.count} completed survey${data.count === 1 ? '' : 's'} found.`
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            'Survey Results Error:',
+            error
+        );
+
+        alert(
+            error.message ||
+            'Unable to load survey results.'
+        );
+
+    }
+
+};
 
 /*===========================================================================
     GLOBALS
