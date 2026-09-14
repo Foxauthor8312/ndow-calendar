@@ -169,6 +169,14 @@ function renderRecipients(){
 
     </button>
 
+    <button
+        type="button"
+        onclick="openAddStudentModal()">
+
+        + Add Student
+
+    </button>
+
     <span
         id="recipientCount"
         style="
