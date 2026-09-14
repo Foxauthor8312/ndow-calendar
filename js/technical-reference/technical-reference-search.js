@@ -475,6 +475,230 @@ function escapeTechnicalReferenceSearch(value) {
 
 }
 
+/*
+------------------------------------------------------------------------------
+ Show Search View
+------------------------------------------------------------------------------
+*/
+
+function showTechnicalReferenceSearch() {
+
+  const panel =
+    document.getElementById(
+      'technicalReferenceContent'
+    );
+
+  if (!panel) {
+    return;
+  }
+
+
+  /*
+  --------------------------------------------------------------------------
+  Navigation Header
+  --------------------------------------------------------------------------
+  */
+
+  const header =
+    document.getElementById(
+      'technicalReferenceNavigationHeader'
+    );
+
+  if (header) {
+
+    header.textContent =
+      'Knowledge Center Search';
+
+  }
+
+
+  /*
+  --------------------------------------------------------------------------
+  Search Interface
+  --------------------------------------------------------------------------
+  */
+
+  panel.innerHTML = `
+
+<div
+  style="
+    max-width:1100px;
+    margin:0 auto;
+  "
+>
+
+  <div
+    style="
+      margin-bottom:28px;
+    "
+  >
+
+    <div
+      style="
+        font-size:28px;
+        font-weight:600;
+        color:#19304B;
+        margin-bottom:8px;
+      "
+    >
+      Search Engineering Knowledge Center
+    </div>
+
+    <div
+      style="
+        font-size:14px;
+        color:#64748B;
+        line-height:1.6;
+      "
+    >
+      Search technical topics, systems, configuration,
+      troubleshooting information, and engineering references.
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================================
+       Search Box
+  =========================================================== -->
+
+  <div
+    style="
+      display:flex;
+      gap:10px;
+      margin-bottom:24px;
+    "
+  >
+
+    <input
+      id="technicalReferenceSearchInput"
+      type="search"
+      placeholder="Search the Engineering Knowledge Center..."
+      autocomplete="off"
+      style="
+        flex:1;
+        min-width:0;
+        padding:12px 14px;
+        border:1px solid #DBE3EC;
+        border-radius:7px;
+        background:#FFFFFF;
+        color:#19304B;
+        font-family:'IBM Plex Sans',sans-serif;
+        font-size:14px;
+        outline:none;
+      "
+    >
+
+    <button
+      type="button"
+      class="technical-nav-button primary"
+      style="
+        width:auto;
+        margin:0;
+        padding:10px 20px;
+      "
+      id="technicalReferenceSearchButton"
+    >
+      Search
+    </button>
+
+  </div>
+
+
+  <!-- ==========================================================
+       Results
+  =========================================================== -->
+
+  <div
+    id="technicalReferenceSearchResults"
+  >
+
+    <div
+      style="
+        padding:24px;
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        color:#64748B;
+        font-size:14px;
+      "
+    >
+      Enter a search term to search the Engineering Knowledge Center.
+    </div>
+
+  </div>
+
+</div>
+
+`;
+
+
+  /*
+  --------------------------------------------------------------------------
+  Search Controls
+  --------------------------------------------------------------------------
+  */
+
+  const input =
+    document.getElementById(
+      'technicalReferenceSearchInput'
+    );
+
+  const button =
+    document.getElementById(
+      'technicalReferenceSearchButton'
+    );
+
+
+  if (!input || !button) {
+    return;
+  }
+
+
+  /*
+  --------------------------------------------------------------------------
+  Execute Search
+  --------------------------------------------------------------------------
+  */
+
+  const executeSearch = () => {
+
+    searchTechnicalReference(
+      input.value
+    );
+
+  };
+
+
+  button.onclick =
+    executeSearch;
+
+
+  input.addEventListener(
+    'keydown',
+    event => {
+
+      if (
+        event.key === 'Enter'
+      ) {
+
+        executeSearch();
+
+      }
+
+    }
+  );
+
+
+  /*
+  --------------------------------------------------------------------------
+  Focus Search Box
+  --------------------------------------------------------------------------
+  */
+
+  input.focus();
+
+}
 
 /*
 ------------------------------------------------------------------------------
@@ -484,6 +708,9 @@ function escapeTechnicalReferenceSearch(value) {
 
 window.searchTechnicalReference =
   searchTechnicalReference;
+
+window.showTechnicalReferenceSearch =
+  showTechnicalReferenceSearch;
 
 window.renderTechnicalReferenceSearchResults =
   renderTechnicalReferenceSearchResults;
