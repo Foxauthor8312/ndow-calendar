@@ -588,6 +588,45 @@ function renderTechnicalNavigation(topics){
 
     nav.innerHTML = '';
 
+ /*
+------------------------------------------------------------------------------
+ CLOSE KNOWLEDGE CENTER
+------------------------------------------------------------------------------
+*/
+
+const closeButton =
+    document.createElement(
+        'button'
+    );
+
+closeButton.className =
+    'technical-nav-button secondary';
+
+closeButton.textContent =
+    '✕ Close Knowledge Center';
+
+closeButton.style.marginBottom =
+    '10px';
+
+closeButton.onclick = () => {
+
+    closeTechnicalReference();
+
+    if(
+        typeof openDashboard ===
+        'function'
+    ){
+
+        openDashboard();
+
+    }
+
+};
+
+nav.appendChild(
+    closeButton
+);
+
 /*
 ------------------------------------------------------------------------------
  SEARCH
