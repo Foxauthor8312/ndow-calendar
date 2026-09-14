@@ -438,22 +438,22 @@ function openTechnicalReferenceSearchResult(
   */
 
   if (
-    typeof loadTechnicalTopic ===
+    typeof openTechnicalReferenceDocument ===
     'function'
-  ) {
+) {
 
-    loadTechnicalTopic(
-      result.documentKey
+    openTechnicalReferenceDocument(
+        result.documentKey
     );
 
     return;
 
-  }
+}
 
 
-  console.warn(
-    'loadTechnicalTopic() is not available.'
-  );
+console.warn(
+    'openTechnicalReferenceDocument() is not available.'
+);
 
 }
 
