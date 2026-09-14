@@ -61,3 +61,79 @@ export async function loadEventRoster(eventId){
     }
 
 }
+
+/**
+ * ============================================================================
+ * Add Manual Student
+ * ============================================================================
+ */
+
+export async function addManualStudent(
+    eventId,
+    studentName,
+    studentEmail
+){
+
+    try {
+
+        const token =
+            localStorage.getItem('token');
+
+        const response =
+            await fetch(
+                `/api/event-communications/event-roster/${eventId}/student`,
+                {
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type':
+                            'application/json',
+
+                        ...(token
+                            ? {
+                                Authorization:
+                                    `Bearer ${token}`
+                              }
+                            : {})
+                    },
+
+                    body: JSON.stringify({
+
+                        studentName:
+                            studentName.trim(),
+
+                        studentEmail:
+                            studentEmail.trim()
+
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message ||
+                `Unable to add student (${response.status})`
+            );
+
+        }
+
+        return data.student;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Manual Student Add Error:',
+            error
+        );
+
+        throw error;
+
+    }
+
+}
