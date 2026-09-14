@@ -21,6 +21,14 @@ let technicalReferenceSearchResults = [];
 
 let technicalReferenceSearchQuery = '';
 
+let technicalReferenceSearchState = {
+
+  active: false,
+
+  index: -1
+
+};
+
 
 /*
 ------------------------------------------------------------------------------
@@ -431,6 +439,17 @@ function openTechnicalReferenceSearchResult(
     return;
   }
 
+ /*
+------------------------------------------------------------------------------
+ Preserve Search State
+------------------------------------------------------------------------------
+*/
+
+technicalReferenceSearchState.active =
+  true;
+
+technicalReferenceSearchState.index =
+  index;
 
   /*
     The documentKey is the authoritative connection
@@ -702,6 +721,33 @@ function showTechnicalReferenceSearch() {
 
 /*
 ------------------------------------------------------------------------------
+ Return to Current Search
+------------------------------------------------------------------------------
+*/
+
+function returnToTechnicalReferenceSearch() {
+
+  showTechnicalReferenceSearch();
+
+  const input =
+    document.getElementById(
+      'technicalReferenceSearchInput'
+    );
+
+  if (input) {
+
+    input.value =
+      technicalReferenceSearchQuery;
+
+  }
+
+  renderTechnicalReferenceSearchResults();
+
+}
+
+
+/*
+------------------------------------------------------------------------------
  Global API
 ------------------------------------------------------------------------------
 */
@@ -717,3 +763,6 @@ window.renderTechnicalReferenceSearchResults =
 
 window.openTechnicalReferenceSearchResult =
   openTechnicalReferenceSearchResult;
+
+window.returnToTechnicalReferenceSearch =
+  returnToTechnicalReferenceSearch;
