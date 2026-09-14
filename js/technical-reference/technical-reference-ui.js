@@ -588,6 +588,36 @@ function renderTechnicalNavigation(topics){
 
     nav.innerHTML = '';
 
+/*
+------------------------------------------------------------------------------
+ SEARCH
+------------------------------------------------------------------------------
+*/
+
+const searchButton =
+    document.createElement(
+        'button'
+    );
+
+searchButton.className =
+    'technical-nav-button primary';
+
+searchButton.textContent =
+    '🔎 Search Knowledge Center';
+
+searchButton.style.marginBottom =
+    '14px';
+
+searchButton.onclick = () => {
+
+    showTechnicalReferenceSearch();
+
+};
+
+nav.appendChild(
+    searchButton
+);
+ 
     /*
     --------------------------------------------------------------------------
     Engineering Center Colors
