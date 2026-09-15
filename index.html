@@ -12156,11 +12156,39 @@ function renderSystemConsole(){
   body.innerHTML = `
 
 <div style="
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-size:28px;
   font-weight:700;
   margin-bottom:24px;
 ">
-  SYSTEM CONSOLE
+
+  <span>
+    SYSTEM CONSOLE
+  </span>
+
+  <button
+    type="button"
+    onclick="openSystemConsoleHelp()"
+    title="System Console Help"
+    style="
+      width:30px;
+      height:30px;
+      padding:0;
+      border:1px solid #64748b;
+      border-radius:6px;
+      background:#1e293b;
+      color:#f8fafc;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      line-height:28px;
+    "
+  >
+    ?
+  </button>
+
 </div>
 
 <div style="
@@ -18827,6 +18855,11 @@ ${regionTotal}
     type="module"
     src="js/admin/developer-notes.js">
 </script>
+
+<script
+    type="module"
+    src="js/system-console-help.js">
+</script>	
 
 <script>
 
