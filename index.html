@@ -7241,6 +7241,33 @@ modalBody.innerHTML = `
   ${event.location || ''}
 </a>
 
+${
+  event.description
+    ? `
+
+      <button
+        type="button"
+        onclick="showEventDescription()"
+        style="
+          display:block;
+          margin-top:10px;
+          padding:7px 12px;
+          background:#f3f4f6;
+          border:1px solid #d1d5db;
+          border-radius:6px;
+          color:#19304B;
+          font-size:12px;
+          font-weight:600;
+          cursor:pointer;
+        "
+      >
+        View Event Description
+      </button>
+
+    `
+    : ''
+}
+
     ${
       Array.isArray(event.instructors) &&
       event.instructors.some(i =>
@@ -7813,6 +7840,97 @@ $${Math.round(
 
 }
 
+	}
+
+function showEventDescription(){
+
+  const event = selectedEvent;
+
+  if (!event || !event.description){
+    return;
+  }
+
+  const descriptionModal =
+    document.createElement('div');
+
+  descriptionModal.id =
+    'eventDescriptionModal';
+
+  descriptionModal.style.cssText = `
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10000;
+  `;
+
+  descriptionModal.innerHTML = `
+
+    <div style="
+      width:min(650px,90vw);
+      max-height:80vh;
+      background:#FFFFFF;
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    ">
+
+      <div style="
+        padding:16px 20px;
+        background:#19304B;
+        color:#FFFFFF;
+        font-size:16px;
+        font-weight:600;
+      ">
+        Event Description
+      </div>
+
+      <div style="
+        padding:20px;
+        overflow-y:auto;
+        color:#374151;
+        font-size:14px;
+        line-height:1.6;
+        white-space:pre-wrap;
+      ">
+        ${event.description}
+      </div>
+
+      <div style="
+        padding:12px 20px;
+        border-top:1px solid #DBE3EC;
+        text-align:right;
+      ">
+        <button
+          type="button"
+          onclick="
+            document.getElementById(
+              'eventDescriptionModal'
+            ).remove();
+          "
+          style="
+            padding:7px 14px;
+            background:#19304B;
+            color:#FFFFFF;
+            border:none;
+            border-radius:6px;
+            font-size:12px;
+            font-weight:600;
+            cursor:pointer;
+          "
+        >
+          Close
+        </button>
+      </div>
+
+    </div>
+  `;
+
+  document.body.appendChild(descriptionModal);
 }
 
 function toggleCustomEmail(){
