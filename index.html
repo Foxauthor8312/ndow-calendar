@@ -12804,13 +12804,20 @@ async function reprocessEvents(){
 
 if(savedUser){
 
-  document.getElementById(
-    'userDisplay'
-  ).innerText =
-    'Logged in as: ' +
-    savedUser.username;
+  const userDisplay =
+    document.getElementById(
+      'userDisplay'
+    );
 
-} 
+  if(userDisplay){
+
+    userDisplay.innerText =
+      'Logged in as: ' +
+      savedUser.username;
+
+  }
+
+}
 
     renderSystemConsole();
 
