@@ -2363,19 +2363,86 @@ async function submitForgotPin(){
      START CALENDAR
 ======================================== -->
 
+<!-- ========================================
+     CALENDAR AREA
+======================================== -->
+
 <div
-  id="calendarViewport"
   style="
+    display:flex;
     flex:1;
     min-height:0;
-    overflow-y:auto;
-    overflow-x:hidden;
-    border-left:20px solid #19304B;
-    padding-left:10px;
+    overflow:hidden;
   "
 >
 
-  <div class="calendar" id="calendar"></div>
+  <!-- ======================================
+       PROPOSED EVENTS
+  ======================================= -->
+
+  <div
+    id="proposedEventsPanel"
+    style="
+      width:290px;
+      min-width:290px;
+      min-height:0;
+      margin-right:12px;
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:8px;
+      overflow-y:auto;
+      overflow-x:hidden;
+    "
+  >
+
+    <div
+      style="
+        position:sticky;
+        top:0;
+        z-index:2;
+        padding:14px 16px;
+        background:#19304B;
+        color:#FFFFFF;
+        font-size:15px;
+        font-weight:700;
+        letter-spacing:.3px;
+      "
+    >
+      PROPOSED EVENTS
+    </div>
+
+    <div
+      id="proposedEventsList"
+      style="
+        padding:10px;
+      "
+    >
+      Loading...
+    </div>
+
+  </div>
+
+
+  <!-- ======================================
+       MAIN CALENDAR
+  ======================================= -->
+
+  <div
+    id="calendarViewport"
+    style="
+      flex:1;
+      min-width:0;
+      min-height:0;
+      overflow-y:auto;
+      overflow-x:hidden;
+      border-left:20px solid #19304B;
+      padding-left:10px;
+    "
+  >
+
+    <div class="calendar" id="calendar"></div>
+
+  </div>
 
 </div>
 
@@ -3764,6 +3831,8 @@ lastUpdated &&
         : 'HEALTHY';
 
     renderCalendar();
+
+	renderProposedEvents(); 
 
 	renderSystemConsole();
 
@@ -18860,6 +18929,11 @@ ${regionTotal}
     type="module"
     src="js/system-console-help.js">
 </script>	
+
+<script
+    type="module"
+    src="js/proposed-events.js">
+</script>
 
 <script>
 
