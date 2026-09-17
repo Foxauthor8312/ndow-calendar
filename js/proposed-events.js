@@ -289,7 +289,7 @@ async function renderProposedEvents() {
             event.instructors_needed
           )}
 
-                  <button
+        <button
           type="button"
           onclick="editProposedEvent(${Number(event.id)})"
           style="
@@ -326,7 +326,7 @@ async function renderProposedEvents() {
         >
           Hide
         </button>
-        
+
         </div>
 
       </div>
@@ -375,11 +375,13 @@ window.loadProposedEvents =
 window.renderProposedEvents =
   renderProposedEvents;
 
+
 // ========================================
 // PROPOSED EVENT MODAL
 // ========================================
 
 let editingProposedEventId = null;
+
 window.openProposedEventModal =
   function () {
 
@@ -621,8 +623,7 @@ window.openProposedEventModal =
             "
           >
 
-
-          <label
+                    <label
             style="
               display:block;
               margin-bottom:5px;
@@ -733,13 +734,14 @@ window.closeProposedEventModal =
         'proposedEventModal'
       );
 
-if (modal) {
-  modal.remove();
-}
+    if (modal) {
+      modal.remove();
+    }
 
-editingProposedEventId = null;
+    editingProposedEventId = null;
 
   };
+
 
 // ========================================
 // EDIT PROPOSED EVENT
@@ -805,55 +807,7 @@ window.editProposedEvent =
       }
 
 
-
       /*
-      ------------------------------------
-      Load the current event
-      ------------------------------------
-      */
-
-      const getResponse =
-        await fetch(
-          PROPOSED_EVENTS_API,
-          {
-            headers: {
-              'Authorization':
-                `Bearer ${token}`
-            }
-          }
-        );
-
-      const getResult =
-        await getResponse.json();
-
-      if (
-        !getResponse.ok ||
-        !getResult.success
-      ) {
-
-        throw new Error(
-          getResult.error ||
-          'Unable to load proposed event.'
-        );
-
-      }
-
-      const event =
-        getResult.events.find(
-          item =>
-            Number(item.id) ===
-            Number(eventId)
-        );
-
-      if (!event) {
-
-        throw new Error(
-          'Proposed event could not be found.'
-        );
-
-      }
-
-           /*
       ------------------------------------
       Open the existing modal
       ------------------------------------
@@ -1039,6 +993,7 @@ window.hideProposedEvent =
 
       }
 
+
       const response =
         await fetch(
           `${PROPOSED_EVENTS_API}/${eventId}`,
@@ -1081,6 +1036,7 @@ window.hideProposedEvent =
           }
         );
 
+
       const result =
         await response.json();
 
@@ -1115,7 +1071,6 @@ window.hideProposedEvent =
     }
 
   };
-
 
 // ========================================
 // SAVE PROPOSED EVENT
@@ -1193,18 +1148,18 @@ window.saveProposedEvent =
 
     try {
 
-const response =
-  await fetch(
-    editingProposedEventId
-      ? `${PROPOSED_EVENTS_API}/${editingProposedEventId}`
-      : PROPOSED_EVENTS_API,
-    {
-      method:
-        editingProposedEventId
-          ? 'PATCH'
-          : 'POST',
+      const response =
+        await fetch(
+          editingProposedEventId
+            ? `${PROPOSED_EVENTS_API}/${editingProposedEventId}`
+            : PROPOSED_EVENTS_API,
+          {
+            method:
+              editingProposedEventId
+                ? 'PATCH'
+                : 'POST',
 
-            headers:{
+            headers: {
               'Content-Type':
                 'application/json',
 
@@ -1214,6 +1169,7 @@ const response =
 
             body:
               JSON.stringify({
+
                 event_date:
                   date,
 
@@ -1231,6 +1187,7 @@ const response =
 
                 notes:
                   notes || null
+
               })
           }
         );
@@ -1240,8 +1197,10 @@ const response =
         await response.json();
 
 
-      if (!response.ok ||
-          !result.success) {
+      if (
+        !response.ok ||
+        !result.success
+      ) {
 
         throw new Error(
           result.error ||
