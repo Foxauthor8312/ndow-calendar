@@ -288,6 +288,26 @@ async function renderProposedEvents() {
           ${Number(
             event.instructors_needed
           )}
+
+                  <button
+          type="button"
+          onclick="editProposedEvent(${Number(event.id)})"
+          style="
+            width:100%;
+            margin-top:10px;
+            padding:6px 8px;
+            border:1px solid #DBE3EC;
+            border-radius:5px;
+            background:#F8FAFC;
+            color:#19304B;
+            font-size:11px;
+            font-weight:600;
+            cursor:pointer;
+          "
+        >
+          Edit
+        </button>
+        
         </div>
 
       </div>
