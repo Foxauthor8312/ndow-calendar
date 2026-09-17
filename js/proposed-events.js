@@ -360,6 +360,7 @@ window.renderProposedEvents =
 // PROPOSED EVENT MODAL
 // ========================================
 
+let editingProposedEventId = null;
 window.openProposedEventModal =
   function () {
 
@@ -713,12 +714,189 @@ window.closeProposedEventModal =
         'proposedEventModal'
       );
 
-    if (modal) {
-      modal.remove();
-    }
+if (modal) {
+  modal.remove();
+}
+
+editingProposedEventId = null;
 
   };
 
+// ========================================
+// EDIT PROPOSED EVENT
+// ========================================
+
+window.editProposedEvent =
+  async function (eventId) {
+
+    const token =
+      localStorage.getItem('token');
+
+    if (!token) {
+
+      alert(
+        'Your session has expired. Please log in again.'
+      );
+
+      return;
+
+    }
+
+    try {
+
+      const response =
+        await fetch(
+          PROPOSED_EVENTS_API,
+          {
+            headers: {
+              'Authorization':
+                `Bearer ${token}`
+            }
+          }
+        );
+
+      const result =
+        await response.json();
+
+      if (
+        !response.ok ||
+        !result.success
+      ) {
+
+        throw new Error(
+          result.error ||
+          'Unable to load proposed event.'
+        );
+
+      }
+
+      const event =
+        result.events.find(
+          item =>
+            Number(item.id) ===
+            Number(eventId)
+        );
+
+      if (!event) {
+
+        throw new Error(
+          'Proposed event could not be found.'
+        );
+
+      }
+
+      /*
+      ------------------------------------
+      Open the existing modal
+      ------------------------------------
+      */
+
+      openProposedEventModal();
+
+      editingProposedEventId =
+        Number(event.id);
+
+      /*
+      ------------------------------------
+      Populate fields
+      ------------------------------------
+      */
+
+      document.getElementById(
+        'proposedEventDate'
+      ).value =
+        event.event_date || '';
+
+      document.getElementById(
+        'proposedEventName'
+      ).value =
+        event.event_name || '';
+
+      document.getElementById(
+        'proposedEventCategory'
+      ).value =
+        event.category || '';
+
+      document.getElementById(
+        'proposedEventLocation'
+      ).value =
+        event.location || '';
+
+      document.getElementById(
+        'proposedEventInstructors'
+      ).value =
+        event.instructors_needed || 1;
+
+      document.getElementById(
+        'proposedEventNotes'
+      ).value =
+        event.notes || '';
+
+      /*
+      ------------------------------------
+      Change modal title
+      ------------------------------------
+      */
+
+      const modal =
+        document.getElementById(
+          'proposedEventModal'
+        );
+
+      if (modal) {
+
+        const title =
+          modal.querySelector(
+            'span'
+          );
+
+        if (title) {
+
+          title.textContent =
+            'Edit Proposed Event';
+
+        }
+
+        const buttons =
+          modal.querySelectorAll(
+            'button'
+          );
+
+        buttons.forEach(
+          button => {
+
+            if (
+              button.textContent.trim() ===
+              'Save Proposed Event'
+            ) {
+
+              button.textContent =
+                'Save Changes';
+
+            }
+
+          }
+        );
+
+      }
+
+    }
+
+    catch (err) {
+
+      console.error(
+        'EDIT PROPOSED EVENT ERROR:',
+        err
+      );
+
+      alert(
+        err.message ||
+        'Unable to load proposed event.'
+      );
+
+    }
+
+  };
 
 // ========================================
 // SAVE PLACEHOLDER
@@ -800,11 +978,16 @@ window.saveProposedEvent =
 
     try {
 
-      const response =
-        await fetch(
-          PROPOSED_EVENTS_API,
-          {
-            method:'POST',
+const response =
+  await fetch(
+    editingProposedEventId
+      ? `${PROPOSED_EVENTS_API}/${editingProposedEventId}`
+      : PROPOSED_EVENTS_API,
+    {
+      method:
+        editingProposedEventId
+          ? 'PATCH'
+          : 'POST',
 
             headers:{
               'Content-Type':
