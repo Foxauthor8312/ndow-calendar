@@ -2397,21 +2397,45 @@ async function submitForgotPin(){
   "
 >
 
-    <div
-      style="
-        position:sticky;
-        top:0;
-        z-index:2;
-        padding:14px 16px;
-        background:#19304B;
-        color:#FFFFFF;
-        font-size:15px;
-        font-weight:700;
-        letter-spacing:.3px;
-      "
-    >
-      PROPOSED EVENTS
-    </div>
+<div
+  style="
+    position:sticky;
+    top:0;
+    z-index:2;
+    padding:10px 12px;
+    background:#19304B;
+    color:#FFFFFF;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.3px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  "
+>
+  <span>PROPOSED EVENTS</span>
+
+  <button
+    type="button"
+    onclick="openProposedEventModal()"
+    title="Add Proposed Event"
+    style="
+      width:26px;
+      height:26px;
+      padding:0;
+      border:1px solid rgba(255,255,255,.7);
+      border-radius:5px;
+      background:#FFFFFF;
+      color:#19304B;
+      font-size:18px;
+      font-weight:700;
+      line-height:22px;
+      cursor:pointer;
+    "
+  >
+    +
+  </button>
+</div>
 
 <div
   id="proposedEventsList"
