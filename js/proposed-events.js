@@ -335,3 +335,380 @@ window.loadProposedEvents =
 
 window.renderProposedEvents =
   renderProposedEvents;
+
+// ========================================
+// PROPOSED EVENT MODAL
+// ========================================
+
+window.openProposedEventModal =
+  function () {
+
+    if (
+      document.getElementById(
+        'proposedEventModal'
+      )
+    ) {
+      return;
+    }
+
+    const modal =
+      document.createElement('div');
+
+    modal.id =
+      'proposedEventModal';
+
+    modal.style.cssText = `
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:10000;
+    `;
+
+    modal.innerHTML = `
+
+      <div
+        style="
+          width:460px;
+          max-width:90vw;
+          background:#FFFFFF;
+          border-radius:8px;
+          box-shadow:0 10px 30px rgba(0,0,0,.25);
+          overflow:hidden;
+        "
+      >
+
+        <!-- HEADER -->
+
+        <div
+          style="
+            padding:14px 18px;
+            background:#19304B;
+            color:#FFFFFF;
+            font-size:16px;
+            font-weight:700;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+          "
+        >
+
+          <span>
+            Add Proposed Event
+          </span>
+
+          <button
+            type="button"
+            onclick="closeProposedEventModal()"
+            style="
+              border:none;
+              background:transparent;
+              color:#FFFFFF;
+              font-size:22px;
+              cursor:pointer;
+              line-height:1;
+            "
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <div
+          style="
+            padding:18px;
+          "
+        >
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            Date
+          </label>
+
+          <input
+            id="proposedEventDate"
+            type="date"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+            "
+          >
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            Event Name
+          </label>
+
+          <input
+            id="proposedEventName"
+            type="text"
+            placeholder="Event name"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+            "
+          >
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            Category
+          </label>
+
+          <select
+            id="proposedEventCategory"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+              background:#FFFFFF;
+            "
+          >
+
+            <option value="">
+              Select Category
+            </option>
+
+            <option>Hunter Education</option>
+            <option>Fishing</option>
+            <option>Advanced Hunter Education</option>
+            <option>Wildlife</option>
+            <option>Urban Wildlife</option>
+            <option>Archery</option>
+            <option>Boating</option>
+            <option>School</option>
+            <option>Volunteer</option>
+            <option>Other</option>
+
+          </select>
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            Location
+          </label>
+
+          <input
+            id="proposedEventLocation"
+            type="text"
+            placeholder="Location"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+            "
+          >
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            Instructors Needed
+          </label>
+
+          <input
+            id="proposedEventInstructors"
+            type="number"
+            min="1"
+            step="1"
+            value="1"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+            "
+          >
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            Notes
+          </label>
+
+          <textarea
+            id="proposedEventNotes"
+            rows="3"
+            placeholder="Optional notes"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:18px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+              resize:vertical;
+            "
+          ></textarea>
+
+
+          <!-- BUTTONS -->
+
+          <div
+            style="
+              display:flex;
+              justify-content:flex-end;
+              gap:8px;
+            "
+          >
+
+            <button
+              type="button"
+              onclick="closeProposedEventModal()"
+              style="
+                padding:8px 14px;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                background:#FFFFFF;
+                color:#374151;
+                font-size:12px;
+                cursor:pointer;
+              "
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              onclick="saveProposedEvent()"
+              style="
+                padding:8px 14px;
+                border:1px solid #19304B;
+                border-radius:6px;
+                background:#19304B;
+                color:#FFFFFF;
+                font-size:12px;
+                font-weight:600;
+                cursor:pointer;
+              "
+            >
+              Save Proposed Event
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(modal);
+
+
+    modal.addEventListener(
+      'click',
+      function (event) {
+
+        if (
+          event.target === modal
+        ) {
+          closeProposedEventModal();
+        }
+
+      }
+    );
+
+  };
+
+
+// ========================================
+// CLOSE PROPOSED EVENT MODAL
+// ========================================
+
+window.closeProposedEventModal =
+  function () {
+
+    const modal =
+      document.getElementById(
+        'proposedEventModal'
+      );
+
+    if (modal) {
+      modal.remove();
+    }
+
+  };
+
+
+// ========================================
+// SAVE PLACEHOLDER
+// ========================================
+
+window.saveProposedEvent =
+  function () {
+
+    alert(
+      'Database save will be connected in the next step.'
+    );
+
+  };
