@@ -307,6 +307,25 @@ async function renderProposedEvents() {
         >
           Edit
         </button>
+
+        <button
+          type="button"
+          onclick="hideProposedEvent(${Number(event.id)})"
+          style="
+            width:100%;
+            margin-top:6px;
+            padding:6px 8px;
+            border:1px solid #DBE3EC;
+            border-radius:5px;
+            background:#FFFFFF;
+            color:#64748B;
+            font-size:11px;
+            font-weight:600;
+            cursor:pointer;
+          "
+        >
+          Hide
+        </button>
         
         </div>
 
@@ -784,6 +803,165 @@ window.editProposedEvent =
         );
 
       }
+
+     // ========================================
+// HIDE PROPOSED EVENT
+// ========================================
+
+window.hideProposedEvent =
+  async function (eventId) {
+
+    if (
+      !confirm(
+        'Hide this proposed event?'
+      )
+    ) {
+      return;
+    }
+
+    const token =
+      localStorage.getItem('token');
+
+    if (!token) {
+
+      alert(
+        'Your session has expired. Please log in again.'
+      );
+
+      return;
+    }
+
+    try {
+
+      /*
+      ------------------------------------
+      Load the current event
+      ------------------------------------
+      */
+
+      const getResponse =
+        await fetch(
+          PROPOSED_EVENTS_API,
+          {
+            headers: {
+              'Authorization':
+                `Bearer ${token}`
+            }
+          }
+        );
+
+      const getResult =
+        await getResponse.json();
+
+      if (
+        !getResponse.ok ||
+        !getResult.success
+      ) {
+
+        throw new Error(
+          getResult.error ||
+          'Unable to load proposed event.'
+        );
+
+      }
+
+      const event =
+        getResult.events.find(
+          item =>
+            Number(item.id) ===
+            Number(eventId)
+        );
+
+      if (!event) {
+
+        throw new Error(
+          'Proposed event could not be found.'
+        );
+
+      }
+
+      /*
+      ------------------------------------
+      Hide event
+      ------------------------------------
+      */
+
+      const response =
+        await fetch(
+          `${PROPOSED_EVENTS_API}/${eventId}`,
+          {
+            method: 'PATCH',
+
+            headers: {
+              'Content-Type':
+                'application/json',
+
+              'Authorization':
+                `Bearer ${token}`
+            },
+
+            body:
+              JSON.stringify({
+
+                event_date:
+                  event.event_date,
+
+                event_name:
+                  event.event_name,
+
+                category:
+                  event.category,
+
+                location:
+                  event.location,
+
+                instructors_needed:
+                  event.instructors_needed,
+
+                notes:
+                  event.notes,
+
+                active:
+                  false
+
+              })
+          }
+        );
+
+      const result =
+        await response.json();
+
+      if (
+        !response.ok ||
+        !result.success
+      ) {
+
+        throw new Error(
+          result.error ||
+          'Unable to hide proposed event.'
+        );
+
+      }
+
+      await renderProposedEvents();
+
+    }
+
+    catch (err) {
+
+      console.error(
+        'HIDE PROPOSED EVENT ERROR:',
+        err
+      );
+
+      alert(
+        err.message ||
+        'Unable to hide proposed event.'
+      );
+
+    }
+
+  };
 
       /*
       ------------------------------------
