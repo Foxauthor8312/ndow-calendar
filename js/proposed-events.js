@@ -704,11 +704,156 @@ window.closeProposedEventModal =
 // SAVE PLACEHOLDER
 // ========================================
 
-window.saveProposedEvent =
-  function () {
+// ========================================
+// SAVE PROPOSED EVENT
+// ========================================
 
-    alert(
-      'Database save will be connected in the next step.'
-    );
+window.saveProposedEvent =
+  async function () {
+
+    const date =
+      document.getElementById(
+        'proposedEventDate'
+      ).value;
+
+    const name =
+      document.getElementById(
+        'proposedEventName'
+      ).value.trim();
+
+    const category =
+      document.getElementById(
+        'proposedEventCategory'
+      ).value;
+
+    const location =
+      document.getElementById(
+        'proposedEventLocation'
+      ).value.trim();
+
+    const instructors =
+      document.getElementById(
+        'proposedEventInstructors'
+      ).value;
+
+    const notes =
+      document.getElementById(
+        'proposedEventNotes'
+      ).value.trim();
+
+
+    // ------------------------------------
+    // VALIDATION
+    // ------------------------------------
+
+    if (
+      !date ||
+      !name ||
+      !category ||
+      !location ||
+      !instructors
+    ) {
+
+      alert(
+        'Please complete all required fields.'
+      );
+
+      return;
+
+    }
+
+
+    const token =
+      localStorage.getItem('token');
+
+
+    if (!token) {
+
+      alert(
+        'Your session has expired. Please log in again.'
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+      const response =
+        await fetch(
+          PROPOSED_EVENTS_API,
+          {
+            method:'POST',
+
+            headers:{
+              'Content-Type':
+                'application/json',
+
+              'Authorization':
+                `Bearer ${token}`
+            },
+
+            body:
+              JSON.stringify({
+                event_date:
+                  date,
+
+                event_name:
+                  name,
+
+                category:
+                  category,
+
+                location:
+                  location,
+
+                instructors_needed:
+                  Number(instructors),
+
+                notes:
+                  notes || null
+              })
+          }
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if (!response.ok ||
+          !result.success) {
+
+        throw new Error(
+          result.error ||
+          'Unable to save proposed event.'
+        );
+
+      }
+
+
+      // ------------------------------------
+      // SUCCESS
+      // ------------------------------------
+
+      closeProposedEventModal();
+
+      await renderProposedEvents();
+
+
+    } catch (err) {
+
+      console.error(
+        'SAVE PROPOSED EVENT ERROR:',
+        err
+      );
+
+      alert(
+        err.message ||
+        'Unable to save proposed event.'
+      );
+
+    }
 
   };
