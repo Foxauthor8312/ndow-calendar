@@ -288,6 +288,32 @@ async function renderProposedEvents() {
           ${Number(
             event.instructors_needed
           )}
+        </div>
+
+        ${
+          event.notes
+            ? `
+              <div style="
+                margin-top:8px;
+                padding-top:7px;
+                border-top:1px solid #DBE3EC;
+                color:#475569;
+                font-size:11px;
+                line-height:1.4;
+              ">
+                <span style="
+                  color:#19304B;
+                  font-weight:700;
+                ">
+                  Notes:
+                </span>
+                ${escapeProposedEventText(
+                  event.notes
+                )}
+              </div>
+            `
+            : ''
+        }
 
         <button
           type="button"
