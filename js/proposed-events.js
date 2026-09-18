@@ -1255,15 +1255,15 @@ if (
   !category ||
   !addressId ||
   !instructors
-)
+) {
 
-      alert(
-        'Please complete all required fields.'
-      );
+  alert(
+    'Please complete all required fields.'
+  );
 
-      return;
+  return;
 
-    }
+}
 
 
     const token =
