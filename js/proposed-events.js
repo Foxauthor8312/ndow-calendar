@@ -939,7 +939,7 @@ window.editProposedEvent =
       ------------------------------------
       */
 
-      openProposedEventModal();
+      await openProposedEventModal();
 
       editingProposedEventId =
         Number(event.id);
