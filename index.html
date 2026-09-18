@@ -2053,31 +2053,39 @@ async function submitForgotPin(){
 
   </div>
 
-  <!-- ========================================
-       MONTH NAVIGATION
-  ========================================= -->
+ <!-- ========================================
+     MONTH NAVIGATION
+========================================= -->
 
-  <div class="controls">
+<div class="controls">
 
-    <button
-      class="month-square"
-      onclick="prevMonth()"
-      title="Previous Month"
-    >
-      ‹
-    </button>
+  <button
+    class="month-square"
+    onclick="prevMonth()"
+    title="Previous Month"
+  >
+    ‹
+  </button>
 
-    <h3 id="monthLabel"></h3>
+  <h3 id="monthLabel"></h3>
 
-    <button
-      class="month-square"
-      onclick="nextMonth()"
-      title="Next Month"
-    >
-      ›
-    </button>
+  <button
+    class="month-square"
+    onclick="nextMonth()"
+    title="Next Month"
+  >
+    ›
+  </button>
 
-  </div>
+  <button
+    type="button"
+    onclick="printCurrentMonth()"
+    title="Print the current calendar month"
+  >
+    🖨 Print Month
+  </button>
+
+</div>
 
   <!-- ========================================
        ACCOUNT CONTROLS
