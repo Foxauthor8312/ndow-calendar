@@ -23,6 +23,11 @@
 const PROPOSED_EVENTS_API =
   'https://ndow-calendar-server.onrender.com/api/proposed-events';
 
+const PROPOSED_EVENT_ADDRESSES_API =
+  'https://ndow-calendar-server.onrender.com/api/proposed-events/addresses';
+
+let proposedEventAddresses = [];
+
 
 // ========================================
 // LOAD PROPOSED EVENTS
@@ -89,6 +94,83 @@ async function loadProposedEvents() {
 
     console.error(
       'PROPOSED EVENTS EXCEPTION:',
+      error
+    );
+
+    return [];
+
+  }
+
+}
+
+// ========================================
+// LOAD PROPOSED EVENT ADDRESSES
+// ========================================
+
+async function loadProposedEventAddresses() {
+
+  try {
+
+    const token =
+      localStorage.getItem('token');
+
+    if (!token) {
+      console.warn(
+        'PROPOSED EVENTS: No authentication token found.'
+      );
+      return [];
+    }
+
+    const response =
+      await fetch(
+        PROPOSED_EVENT_ADDRESSES_API,
+        {
+          method: 'GET',
+
+          headers: {
+            'Authorization':
+              'Bearer ' + token,
+
+            'Content-Type':
+              'application/json'
+          }
+        }
+      );
+
+    if (!response.ok) {
+
+      console.error(
+        'PROPOSED EVENT ADDRESSES API ERROR:',
+        response.status
+      );
+
+      return [];
+    }
+
+    const result =
+      await response.json();
+
+    if (!result.success) {
+
+      console.error(
+        'PROPOSED EVENT ADDRESSES LOAD FAILED:',
+        result
+      );
+
+      return [];
+    }
+
+    proposedEventAddresses =
+      Array.isArray(result.addresses)
+        ? result.addresses
+        : [];
+
+    return proposedEventAddresses;
+
+  } catch (error) {
+
+    console.error(
+      'PROPOSED EVENT ADDRESSES EXCEPTION:',
       error
     );
 
@@ -409,7 +491,9 @@ window.renderProposedEvents =
 let editingProposedEventId = null;
 
 window.openProposedEventModal =
-  function () {
+  async function () {
+
+    await loadProposedEventAddresses();
 
     if (
       document.getElementById(
@@ -604,20 +688,36 @@ window.openProposedEventModal =
             Location
           </label>
 
-          <input
-            id="proposedEventLocation"
-            type="text"
-            placeholder="Location"
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:8px;
-              margin-bottom:14px;
-              border:1px solid #DBE3EC;
-              border-radius:6px;
-              font-size:13px;
-            "
-          >
+   <select
+  id="proposedEventLocation"
+  style="
+    width:100%;
+    box-sizing:border-box;
+    padding:8px;
+    margin-bottom:14px;
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+    font-size:13px;
+    background:#FFFFFF;
+  "
+>
+  <option value="">
+    Select Location
+  </option>
+
+  ${
+    proposedEventAddresses
+      .map(address => `
+        <option value="${Number(address.id)}">
+          ${escapeProposedEventText(
+            address.location_name
+          )}
+        </option>
+      `)
+      .join('')
+  }
+
+</select>
 
 
           <label
@@ -866,11 +966,12 @@ window.editProposedEvent =
       ).value =
         event.category || '';
 
-      document.getElementById(
-        'proposedEventLocation'
-      ).value =
-        event.location || '';
-
+document.getElementById(
+  'proposedEventLocation'
+).value =
+  event.address_id
+    ? String(event.address_id)
+    : '';
       document.getElementById(
         'proposedEventInstructors'
       ).value =
@@ -1120,10 +1221,18 @@ window.saveProposedEvent =
         'proposedEventCategory'
       ).value;
 
-    const location =
-      document.getElementById(
-        'proposedEventLocation'
-      ).value.trim();
+   const locationSelect =
+  document.getElementById(
+    'proposedEventLocation'
+  );
+
+const addressId =
+  locationSelect.value;
+
+const location =
+  locationSelect.options[
+    locationSelect.selectedIndex
+  ]?.textContent.trim() || '';
 
     const instructors =
       document.getElementById(
@@ -1140,13 +1249,13 @@ window.saveProposedEvent =
     // VALIDATION
     // ------------------------------------
 
-    if (
-      !date ||
-      !name ||
-      !category ||
-      !location ||
-      !instructors
-    ) {
+if (
+  !date ||
+  !name ||
+  !category ||
+  !addressId ||
+  !instructors
+)
 
       alert(
         'Please complete all required fields.'
@@ -1193,28 +1302,31 @@ window.saveProposedEvent =
                 `Bearer ${token}`
             },
 
-            body:
-              JSON.stringify({
+body:
+  JSON.stringify({
 
-                event_date:
-                  date,
+    event_date:
+      date,
 
-                event_name:
-                  name,
+    event_name:
+      name,
 
-                category:
-                  category,
+    category:
+      category,
 
-                location:
-                  location,
+    address_id:
+      Number(addressId),
 
-                instructors_needed:
-                  Number(instructors),
+    location:
+      location,
 
-                notes:
-                  notes || null
+    instructors_needed:
+      Number(instructors),
 
-              })
+    notes:
+      notes || null
+
+  })
           }
         );
 
