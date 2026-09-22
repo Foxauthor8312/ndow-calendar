@@ -1408,9 +1408,15 @@ body:
     event_date:
       date,
 
+    start_time:
+      startTime || null,
+
+    end_time:
+      endTime || null,
+
     event_name:
       name,
-
+   
     category:
       category,
 
