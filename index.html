@@ -5919,17 +5919,12 @@ const currentEmail =
 
 const isInstructor =
 
-  Array.isArray(
-    event.instructors
-  ) &&
+  window.ndowAssignmentIds instanceof Set &&
 
-  event.instructors.some(
-    i =>
-      (i.email || '')
-        .toLowerCase()
-        .trim()
-      ===
-      currentEmail
+  window.ndowAssignmentIds.has(
+    String(
+      event.id
+    ).trim()
   );
 
 div.innerHTML = `
