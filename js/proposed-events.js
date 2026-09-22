@@ -332,17 +332,31 @@ async function renderProposedEvents() {
   )}
 </div>
 
-        <div style="
-          color:#19304B;
-          font-size:13px;
-          font-weight:700;
-          line-height:1.35;
-          margin-bottom:5px;
-        ">
-          ${escapeProposedEventText(
-            event.event_name
-          )}
-        </div>
+<div style="
+  color:#19304B;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.35;
+  margin-bottom:5px;
+">
+  ${escapeProposedEventText(
+    event.event_name
+  )}
+  <span style="
+    color:#64748B;
+    font-size:11px;
+    font-weight:600;
+  ">
+    — ${
+      date.toLocaleDateString(
+        'en-US',
+        {
+          weekday:'long'
+        }
+      )
+    }
+  </span>
+</div>
 
         <div style="
           color:#589FD6;
