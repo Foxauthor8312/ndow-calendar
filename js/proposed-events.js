@@ -613,6 +613,60 @@ window.openProposedEventModal =
               color:#374151;
             "
           >
+            Start Time
+          </label>
+
+          <input
+            id="proposedEventStartTime"
+            type="time"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+            "
+          >
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
+            End Time
+          </label>
+
+          <input
+            id="proposedEventEndTime"
+            type="time"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:8px;
+              margin-bottom:14px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+            "
+          >
+
+
+          <label
+            style="
+              display:block;
+              margin-bottom:5px;
+              font-size:12px;
+              font-weight:600;
+              color:#374151;
+            "
+          >
             Event Name
           </label>
 
@@ -951,15 +1005,29 @@ window.editProposedEvent =
       ------------------------------------
       */
 
-      document.getElementById(
-        'proposedEventDate'
-      ).value =
-        event.event_date || '';
+ document.getElementById(
+  'proposedEventDate'
+).value =
+  event.event_date || '';
 
-      document.getElementById(
-        'proposedEventName'
-      ).value =
-        event.event_name || '';
+document.getElementById(
+  'proposedEventStartTime'
+).value =
+  event.start_time
+    ? event.start_time.substring(0, 5)
+    : '';
+
+document.getElementById(
+  'proposedEventEndTime'
+).value =
+  event.end_time
+    ? event.end_time.substring(0, 5)
+    : '';
+
+document.getElementById(
+  'proposedEventName'
+).value =
+  event.event_name || '';
 
       document.getElementById(
         'proposedEventCategory'
@@ -1206,15 +1274,25 @@ window.hideProposedEvent =
 window.saveProposedEvent =
   async function () {
 
-    const date =
-      document.getElementById(
-        'proposedEventDate'
-      ).value;
+const date =
+  document.getElementById(
+    'proposedEventDate'
+  ).value;
 
-    const name =
-      document.getElementById(
-        'proposedEventName'
-      ).value.trim();
+const startTime =
+  document.getElementById(
+    'proposedEventStartTime'
+  ).value;
+
+const endTime =
+  document.getElementById(
+    'proposedEventEndTime'
+  ).value;
+
+const name =
+  document.getElementById(
+    'proposedEventName'
+  ).value.trim();
 
     const category =
       document.getElementById(
@@ -1266,8 +1344,23 @@ if (
 }
 
 
-    const token =
-      localStorage.getItem('token');
+if (
+  startTime &&
+  endTime &&
+  startTime >= endTime
+) {
+
+  alert(
+    'End time must be later than start time.'
+  );
+
+  return;
+
+}
+
+
+const token =
+  localStorage.getItem('token');
 
 
     if (!token) {
