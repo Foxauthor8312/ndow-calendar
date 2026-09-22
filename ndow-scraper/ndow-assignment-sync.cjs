@@ -1,24 +1,3 @@
-/*
-==============================================================================
- NDOW INSTRUCTOR ASSIGNMENT SYNC
-------------------------------------------------------------------------------
- Purpose:
-    • Opens NDOW in a visible browser
-    • Instructor logs in manually
-    • Discovers events available to that account
-    • Opens each event's Event Instructors page
-    • Checks whether the logged-in NDOW customer is an instructor
-    • Saves ONLY the matching event IDs and customer ID
-
- IMPORTANT:
-    • No credentials are saved.
-    • No session cookies are saved.
-    • No Supabase connection.
-    • No production files are modified.
-    • This is a standalone assignment-sync tool.
-==============================================================================
-*/
-
 'use strict';
 
 const puppeteer = require('puppeteer');
@@ -29,187 +8,161 @@ const NDOW_BASE =
 const NDOW_URL =
   `${NDOW_BASE}/dashboard/em/assigned_programs_events`;
 
-
-/*
-==============================================================================
- DETECT LOGGED-IN ACCOUNT
-==============================================================================
-*/
-
-async function detectLoggedInInstructor(page) {
-
-  try {
-
-    const bodyText =
-      await page.evaluate(
-        () => document.body.innerText || ''
-      );
-
-    const helloMatch =
-      bodyText.match(
-        /Hello!\s*([^\r\n]+)/i
-      );
-
-    if (
-      helloMatch &&
-      helloMatch[1]
-    ){
-
-      return helloMatch[1].trim();
-
-    }
-
-  } catch(err){
-
-    // Ignore and continue.
-
-  }
-
-  return '';
-
-}
+const API_URL =
+  'https://ndow-calendar-server.onrender.com/api/ndow-assignments/sync';
 
 
-/*
-==============================================================================
- READ EVENT INSTRUCTORS
-------------------------------------------------------------------------------
- Returns only the information required to determine whether the logged-in
- NDOW customer is assigned to the event.
-==============================================================================
-*/
+// ============================================================
+// NDOW ASSIGNMENT SYNC
+// ============================================================
+// Beta utility.
+//
+// 1. Instructor logs into NDOW manually.
+// 2. Read all Assigned Events available to that account.
+// 3. Check each Event Instructors page.
+// 4. Keep only events containing the supplied customer ID.
+// 5. Send ONLY the event IDs to the Calendar API.
+//
+// No NDOW credentials are stored.
+// No NDOW cookies are stored.
+// No event data is sent to the Calendar API.
+// ============================================================
 
-async function readEventInstructors(
-  page,
-  event
-){
 
-  const instructorUrl =
-    `${event.url}/event_instructors`;
+// ------------------------------------------------------------
+// Read instructors from an Event Instructors page
+// ------------------------------------------------------------
+
+async function readEventInstructors(page, eventUrl) {
+
+  const url =
+    `${eventUrl}/event_instructors`;
 
   try {
 
     await page.goto(
-      instructorUrl,
+      url,
       {
         waitUntil: 'domcontentloaded',
-        timeout: 60000
+        timeout: 30000
       }
     );
 
-    try {
+    await page.waitForSelector(
+      '[data-react-class="instructors/SearchInstructorsForm"]',
+      {
+        timeout: 10000
+      }
+    );
 
-      await page.waitForSelector(
-        '[data-react-class="instructors/SearchInstructorsForm"]',
-        {
-          timeout: 10000
-        }
-      );
+    return await page.evaluate(() => {
 
-    } catch(err){
+      const node =
+        document.querySelector(
+          '[data-react-class="instructors/SearchInstructorsForm"]'
+        );
 
-      // Continue. The evaluate below will determine
-      // whether instructor data is available.
+      if (!node) return [];
 
-    }
+      const raw =
+        node.getAttribute('data-react-props');
 
+      if (!raw) return [];
 
-    const instructors =
-      await page.evaluate(() => {
+      let props;
 
-        const reactNode =
-          document.querySelector(
-            '[data-react-class="instructors/SearchInstructorsForm"]'
+      try {
+
+        props =
+          JSON.parse(raw);
+
+      } catch {
+
+        props =
+          JSON.parse(
+            raw.replace(/&quot;/g, '"')
           );
 
-        if(!reactNode){
+      }
 
-          return [];
+      return (
+        props.instructors || []
+      ).map(instructor => ({
 
-        }
+        customerId:
+          String(
+            instructor.customer_id || ''
+          ).trim()
 
-        const rawProps =
-          reactNode.getAttribute(
-            'data-react-props'
-          );
+      }));
 
-        if(!rawProps){
+    });
 
-          return [];
+  } catch {
 
-        }
-
-        let props;
-
-        try {
-
-          props =
-            JSON.parse(
-              rawProps
-            );
-
-        } catch(err){
-
-          props =
-            JSON.parse(
-              rawProps.replace(
-                /&quot;/g,
-                '"'
-              )
-            );
-
-        }
-
-        return (
-          props.instructors || []
-        ).map(instructor => ({
-
-          customerId:
-            String(
-              instructor.customer_id || ''
-            ),
-
-          name:
-            `${instructor.customer?.first_name || ''} ${instructor.customer?.last_name || ''}`
-              .trim(),
-
-          role:
-            instructor.is_primary
-              ? 'PRIMARY'
-              : 'ASSISTANT'
-
-        }));
-
-      });
-
-
-    return {
-      instructors,
-      error: ''
-    };
-
-
-  } catch(err){
-
-    return {
-      instructors: [],
-      error:
-        err.message ||
-        String(err)
-    };
+    return [];
 
   }
 
 }
 
 
-/*
-==============================================================================
- MAIN
-==============================================================================
-*/
+// ------------------------------------------------------------
+// Read events from current Assigned Events page
+// ------------------------------------------------------------
 
-async function main(){
+async function readAssignedEvents(page) {
+
+  return await page.evaluate(
+    baseUrl => {
+
+      const cards =
+        [
+          ...document.querySelectorAll('article')
+        ];
+
+      return cards
+        .map(card => {
+
+          const link =
+            card.querySelector('a');
+
+          const href =
+            link?.getAttribute('href') || '';
+
+          const match =
+            href.match(
+              /assigned_events\/(\d+)/
+            );
+
+          if (!match) return null;
+
+          return {
+
+            id: match[1],
+
+            url:
+              href.startsWith('http')
+                ? href
+                : baseUrl + href
+
+          };
+
+        })
+        .filter(Boolean);
+
+    },
+    NDOW_BASE
+  );
+
+}
+
+
+// ------------------------------------------------------------
+// Main
+// ------------------------------------------------------------
+
+async function main() {
 
   let browser;
 
@@ -217,9 +170,30 @@ async function main(){
 
     console.log('');
     console.log('========================================');
-    console.log(' NDOW INSTRUCTOR ASSIGNMENT SYNC');
+    console.log(' NDOW ASSIGNMENT SYNC');
     console.log('========================================');
     console.log('');
+
+    // --------------------------------------------------------
+    // Beta customer ID
+    // --------------------------------------------------------
+
+    const customerId =
+      '562293';
+
+    console.log(
+      `NDOW customer ID: ${customerId}`
+    );
+
+    console.log('');
+    console.log(
+      'Opening NDOW...'
+    );
+
+
+    // --------------------------------------------------------
+    // Browser
+    // --------------------------------------------------------
 
     browser =
       await puppeteer.launch({
@@ -239,40 +213,9 @@ async function main(){
       await browser.newPage();
 
 
-    /*
-    --------------------------------------------------------------------------
-     MANUAL LOGIN
-    --------------------------------------------------------------------------
-    */
-
-    console.log(
-      'Opening NDOW...'
-    );
-
-    console.log('');
-
-    console.log(
-      'A browser window will open.'
-    );
-
-    console.log(
-      'Log into NDOW using the instructor account.'
-    );
-
-    console.log('');
-
-    console.log(
-      'Credentials are NOT saved by this tool.'
-    );
-
-    console.log('');
-
-    console.log(
-      'Waiting for NDOW login...'
-    );
-
-    console.log('');
-
+    // --------------------------------------------------------
+    // Manual login
+    // --------------------------------------------------------
 
     await page.goto(
       NDOW_URL,
@@ -283,11 +226,21 @@ async function main(){
     );
 
 
+    console.log('');
+    console.log(
+      'Log into NDOW in the browser.'
+    );
+
+    console.log(
+      'The sync will continue after login.'
+    );
+
+    console.log('');
+
+
     const loginDeadline =
       Date.now() +
       (120 * 1000);
-
-    let loggedIn = false;
 
 
     while(
@@ -295,36 +248,25 @@ async function main(){
       loginDeadline
     ){
 
-      try {
+      const url =
+        page.url();
 
-        const url =
-          page.url();
+      const passwordField =
+        await page.$(
+          'input[type="password"]'
+        );
 
-        const passwordField =
-          await page.$(
-            'input[type="password"]'
-          );
-
-        const onLoginPage =
-          Boolean(passwordField) ||
-          /login|sign.?in/i.test(url);
+      const loginPage =
+        Boolean(passwordField) ||
+        /login|sign.?in/i.test(url);
 
 
-        if(
-          !onLoginPage &&
-          /\/dashboard\//i.test(url)
-        ){
+      if(
+        !loginPage &&
+        /\/dashboard\//i.test(url)
+      ){
 
-          loggedIn = true;
-
-          break;
-
-        }
-
-      } catch(err){
-
-        // Navigation can temporarily destroy
-        // the execution context.
+        break;
 
       }
 
@@ -340,10 +282,14 @@ async function main(){
     }
 
 
-    if(!loggedIn){
+    if(
+      !/\/dashboard\//i.test(
+        page.url()
+      )
+    ){
 
       throw new Error(
-        'Login was not detected within 120 seconds.'
+        'NDOW login was not detected.'
       );
 
     }
@@ -353,115 +299,30 @@ async function main(){
       'Login detected.'
     );
 
-    console.log(
-      'Waiting for NDOW to settle...'
-    );
-
     console.log('');
 
 
-    await new Promise(
-      resolve =>
-        setTimeout(
-          resolve,
-          3000
-        )
-    );
+    // --------------------------------------------------------
+    // Discover all Assigned Events pages
+    // --------------------------------------------------------
 
+    const events =
+      new Map();
 
-    /*
-    --------------------------------------------------------------------------
-     ACCOUNT NAME
-    --------------------------------------------------------------------------
-    */
-
-    const loggedInInstructor =
-      await detectLoggedInInstructor(
-        page
-      );
-
-
-    console.log(
-      'Logged-in account:',
-      loggedInInstructor ||
-      '(not detected)'
-    );
-
-    console.log('');
-
-
-    /*
-    --------------------------------------------------------------------------
-     OPEN ASSIGNED EVENTS
-    --------------------------------------------------------------------------
-    */
-
-    console.log(
-      'Opening assigned events...'
-    );
-
-    console.log('');
-
-
-    await page.goto(
-      NDOW_URL,
-      {
-        waitUntil: 'domcontentloaded',
-        timeout: 60000
-      }
-    );
-
-
-    await page.waitForSelector(
-      'body',
-      {
-        timeout: 30000
-      }
-    );
-
-
-    /*
-    --------------------------------------------------------------------------
-     DISCOVER ASSIGNED EVENTS
-    --------------------------------------------------------------------------
-    */
-
-    let allEvents = [];
-
-    let currentPage = 1;
+    let pageNumber = 1;
 
 
     while(true){
 
-      const pageUrl =
-        NDOW_URL +
-        '?filter%5Bevents_program_id%5D=' +
-        '&ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending' +
-        '&ordering%5Border_by%5D%5B%5D=desc' +
-        '&page=' +
-        currentPage +
-        '&size=50';
-
-
-      console.log(
-        'Reading assigned events page:',
-        currentPage
-      );
+      const url =
+        `${NDOW_URL}?ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending&ordering%5Border_by%5D%5B%5D=desc&page=${pageNumber}&size=50`;
 
 
       await page.goto(
-        pageUrl,
+        url,
         {
           waitUntil: 'domcontentloaded',
           timeout: 60000
-        }
-      );
-
-
-      await page.waitForSelector(
-        'body',
-        {
-          timeout: 30000
         }
       );
 
@@ -470,126 +331,59 @@ async function main(){
         resolve =>
           setTimeout(
             resolve,
-            1000
+            500
           )
       );
 
 
-      const events =
-        await page.evaluate(
-          baseUrl => {
-
-            const cards =
-              [
-                ...document.querySelectorAll(
-                  'article'
-                )
-              ];
-
-
-            return cards.map(card => {
-
-              const link =
-                card.querySelector(
-                  'a'
-                );
-
-
-              const rawHref =
-                link?.getAttribute(
-                  'href'
-                ) || '';
-
-
-              const url =
-                rawHref.startsWith('http')
-                  ? rawHref
-                  : baseUrl + rawHref;
-
-
-              const idMatch =
-                rawHref.match(
-                  /assigned_events\/(\d+)/
-                );
-
-
-              return {
-
-                id:
-                  idMatch
-                    ? idMatch[1]
-                    : '',
-
-                url
-
-              };
-
-            }).filter(
-              event =>
-                event.id
-            );
-
-          },
-          NDOW_BASE
+      const pageEvents =
+        await readAssignedEvents(
+          page
         );
 
 
       if(
-        events.length === 0
+        pageEvents.length === 0
       ){
-
-        console.log(
-          'No more assigned events.'
-        );
 
         break;
 
       }
 
 
+      for(
+        const event of pageEvents
+      ){
+
+        events.set(
+          event.id,
+          event
+        );
+
+      }
+
+
       console.log(
-        'Events found:',
-        events.length
+        `Assigned Events page ${pageNumber}: ${pageEvents.length}`
       );
 
 
-      allEvents.push(
-        ...events
-      );
-
-
-      currentPage++;
+      pageNumber++;
 
     }
 
 
-    /*
-    --------------------------------------------------------------------------
-     REMOVE DUPLICATES
-    --------------------------------------------------------------------------
-    */
-
-    const uniqueEvents =
+    const allEvents =
       [
-        ...new Map(
-          allEvents.map(
-            event => [
-              event.id,
-              event
-            ]
-          )
-        ).values()
+        ...events.values()
       ];
 
 
     console.log('');
 
     console.log(
-      'Total unique events:',
-      uniqueEvents.length
+      `Events available to account: ${allEvents.length}`
     );
-
-    console.log('');
 
     console.log(
       'Checking instructor assignments...'
@@ -598,167 +392,57 @@ async function main(){
     console.log('');
 
 
-    /*
-    --------------------------------------------------------------------------
-     DETERMINE CUSTOMER ID
-    --------------------------------------------------------------------------
-
-     We don't assume the account name is the identity.
-
-     The first Event Instructors page that contains the logged-in account
-     gives us the authoritative NDOW customer ID.
-    --------------------------------------------------------------------------
-    */
-
-    let loggedInCustomerId = '562293';
+    // --------------------------------------------------------
+    // Check instructor assignments
+    // --------------------------------------------------------
 
     const assignedEventIds = [];
 
-    let checkedCount = 0;
-
-    let failedCount = 0;
-
-
-    /*
-    --------------------------------------------------------------------------
-     CHECK EACH EVENT
-    --------------------------------------------------------------------------
-    */
 
     for(
-      let index = 0;
-      index < uniqueEvents.length;
-      index++
+      let i = 0;
+      i < allEvents.length;
+      i++
     ){
 
       const event =
-        uniqueEvents[index];
-
-
-      const progress =
-        `[${index + 1}/${uniqueEvents.length}]`;
+        allEvents[i];
 
 
       process.stdout.write(
-        `${progress} Event ${event.id} ... `
+        `[${i + 1}/${allEvents.length}] ${event.id} `
       );
 
 
-      const result =
+      const instructors =
         await readEventInstructors(
           page,
-          event
+          event.url
         );
 
 
-      checkedCount++;
+      const assigned =
+        instructors.some(
+          instructor =>
+            instructor.customerId ===
+            customerId
+        );
 
 
-      if(
-        result.error
-      ){
+      if(assigned){
 
-        failedCount++;
+        assignedEventIds.push(
+          event.id
+        );
 
         console.log(
-          `FAILED - ${result.error}`
+          '✓'
         );
-
-        continue;
-
-      }
-
-
-      /*
-      ------------------------------------------------------------------------
-       If we don't know the customer ID yet, try to establish it from the
-       instructor record matching the logged-in NDOW account name.
-      ------------------------------------------------------------------------
-      */
-
-      if(
-        !loggedInCustomerId &&
-        loggedInInstructor
-      ){
-
-        const accountInstructor =
-          result.instructors.find(
-            instructor =>
-              instructor.name
-                .toLowerCase()
-                .trim()
-              ===
-              loggedInInstructor
-                .toLowerCase()
-                .trim()
-          );
-
-
-        if(
-          accountInstructor &&
-          accountInstructor.customerId
-        ){
-
-          loggedInCustomerId =
-            accountInstructor.customerId;
-
-
-          console.log(
-            `NDOW customer ID detected: ${loggedInCustomerId}`
-          );
-
-        }
-
-      }
-
-
-      /*
-      ------------------------------------------------------------------------
-       Once we have the customer ID, determine whether this event belongs
-       to that instructor.
-      ------------------------------------------------------------------------
-      */
-
-      if(
-        loggedInCustomerId
-      ){
-
-        const isInstructor =
-          result.instructors.some(
-            instructor =>
-              String(
-                instructor.customerId
-              ).trim()
-              ===
-              String(
-                loggedInCustomerId
-              ).trim()
-          );
-
-
-        if(isInstructor){
-
-          assignedEventIds.push(
-            String(event.id)
-          );
-
-
-          console.log(
-            `✓ INSTRUCTOR`
-          );
-
-        } else {
-
-          console.log(
-            'not assigned'
-          );
-
-        }
 
       } else {
 
         console.log(
-          'customer ID not established'
+          '-'
         );
 
       }
@@ -766,38 +450,25 @@ async function main(){
     }
 
 
-    /*
-    --------------------------------------------------------------------------
-     RESULT
-    --------------------------------------------------------------------------
-    */
+    // --------------------------------------------------------
+    // Remove duplicates
+    // --------------------------------------------------------
 
-    const output = {
-
-      syncedAt:
-        new Date().toISOString(),
-
-      customerId:
-        loggedInCustomerId,
-
-      eventIds:
-        [
-          ...new Set(
-            assignedEventIds
-          )
-        ]
-
-    };
+    const eventIds =
+      [
+        ...new Set(
+          assignedEventIds
+        )
+      ];
 
 
     console.log('');
-
     console.log(
       '========================================'
     );
 
     console.log(
-      ' NDOW ASSIGNMENT SYNC COMPLETE'
+      `Instructor assignments found: ${eventIds.length}`
     );
 
     console.log(
@@ -806,87 +477,137 @@ async function main(){
 
     console.log('');
 
-    console.log(
-      'NDOW account:',
-      loggedInInstructor ||
-      '(not detected)'
-    );
+
+    if(!eventIds.length){
+
+      console.log(
+        'No instructor assignments found.'
+      );
+
+      await browser.close();
+
+      return;
+
+    }
+
+
+    // --------------------------------------------------------
+    // Send ONLY event IDs to Calendar API
+    // --------------------------------------------------------
 
     console.log(
-      'Customer ID:',
-      loggedInCustomerId ||
-      '(not detected)'
+      'Sending assignments to Calendar...'
     );
 
-    console.log(
-      'Events checked:',
-      checkedCount
-    );
 
-    console.log(
-      'Instructor events:',
-      output.eventIds.length
-    );
+    const response =
+      await page.evaluate(
+        async (apiUrl, ids) => {
 
-    console.log(
-      'Lookup failures:',
-      failedCount
-    );
+          const token =
+            localStorage.getItem('token');
+
+          if(!token){
+
+            throw new Error(
+              'Calendar authentication token not available.'
+            );
+
+          }
+
+
+          const result =
+            await fetch(
+              apiUrl,
+              {
+                method: 'POST',
+
+                headers: {
+                  'Content-Type':
+                    'application/json',
+
+                  'Authorization':
+                    `Bearer ${token}`
+                },
+
+                body:
+                  JSON.stringify({
+                    eventIds: ids
+                  })
+              }
+            );
+
+
+          return {
+            status: result.status,
+            body: await result.json()
+          };
+
+        },
+        API_URL,
+        eventIds
+      );
+
 
     console.log('');
 
     console.log(
-      'Assignment event IDs:'
+      'Calendar API:',
+      response.body
     );
 
-    console.log(
-      JSON.stringify(
-        output.eventIds,
-        null,
-        2
-      )
-    );
 
-    console.log('');
+    if(
+      !response.body?.success
+    ){
 
-    /*
-    --------------------------------------------------------------------------
-     KEEP BROWSER OPEN FOR THIS FIRST TEST
-    --------------------------------------------------------------------------
+      throw new Error(
+        response.body?.error ||
+        'Assignment sync failed.'
+      );
 
-     We will close this after the sync is proven.
-    --------------------------------------------------------------------------
-    */
+    }
 
-    console.log(
-      'Browser left open for inspection.'
-    );
-
-    console.log('');
-
-
-  } catch(err){
 
     console.log('');
 
     console.log(
-      '========================================'
+      'Assignment sync complete.'
     );
 
     console.log(
-      ' NDOW ASSIGNMENT SYNC FAILED'
+      `Assignments synced: ${response.body.count}`
     );
 
-    console.log(
-      '========================================'
+    console.log('');
+
+
+    await browser.close();
+
+  }
+
+  catch(error){
+
+    console.error('');
+
+    console.error(
+      'NDOW assignment sync failed:'
     );
 
     console.error(
-      err.message ||
-      err
+      error.message ||
+      error
     );
 
-    console.log('');
+    console.error('');
+
+    if(browser){
+
+      await browser.close();
+
+    }
+
+    process.exitCode = 1;
 
   }
 
