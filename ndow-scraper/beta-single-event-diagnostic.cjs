@@ -2,7 +2,7 @@
 ==============================================================================
  NDOW BETA SINGLE-EVENT DIAGNOSTIC
 ------------------------------------------------------------------------------
- Event: 4919
+ Event: 4973
  Instructor/customer ID: 562293
 
  Purpose:
@@ -20,7 +20,7 @@
 
 const puppeteer = require('puppeteer');
 
-const EVENT_ID = '4919';
+const EVENT_ID = '4973';
 const CUSTOMER_ID = '562293';
 
 const EVENT_URL =
@@ -83,7 +83,7 @@ async function sleep(ms) {
 
         if (
           !state.hasPassword &&
-          /assigned_events\/4919/i.test(state.url)
+          /assigned_events\/4973/i.test(state.url)
         ) {
           ready = true;
           break;
