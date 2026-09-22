@@ -610,7 +610,7 @@ async function main(){
     --------------------------------------------------------------------------
     */
 
-    let loggedInCustomerId = '';
+    let loggedInCustomerId = '562293';
 
     const assignedEventIds = [];
 
