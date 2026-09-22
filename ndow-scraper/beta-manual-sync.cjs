@@ -1,23 +1,14 @@
 /*
 ==============================================================================
- NDOW Volunteer Calendar
- Beta Manual Instructor Sync
+ NDOW BETA MANUAL INSTRUCTOR SYNC
 ------------------------------------------------------------------------------
-
- Purpose:
-    Temporary beta-testing scraper allowing an instructor to manually
-    authenticate to NDOW using their own NDOW account.
-
- Important:
-    • NDOW credentials are entered directly into the NDOW login page.
-    • Credentials are NOT stored.
-    • No session.json is created.
-    • This tool runs with a visible browser.
-    • Phase 1 only retrieves the instructor's assigned events.
-
- Usage:
-    node ndow-scraper/beta-manual-sync.cjs
-
+ Phase 1:
+   - Opens NDOW in a visible browser
+   - Tester logs in manually
+   - Waits for navigation to finish safely
+   - Scrapes only the logged-in account's assigned events
+   - Saves results locally to beta-assigned-events.json
+   - Does NOT save credentials or session cookies
 ==============================================================================
 */
 
@@ -26,32 +17,36 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-const NDOW_ASSIGNED_EVENTS =
+const NDOW_URL =
   'https://nevada.events.licensing.app/dashboard/em/assigned_programs_events';
 
 const OUTPUT_FILE =
   'ndow-scraper/beta-assigned-events.json';
 
-(async function () {
+async function main() {
 
-  console.log('');
-  console.log('========================================');
-  console.log(' NDOW BETA MANUAL INSTRUCTOR SYNC');
-  console.log('========================================');
-  console.log('');
+  let browser;
 
-  console.log('Opening NDOW...');
-  console.log('');
-  console.log('A browser window will open.');
-  console.log('');
-  console.log('Please log into NDOW using your normal');
-  console.log('NDOW credentials.');
-  console.log('');
-  console.log('Your credentials are NOT saved by this tool.');
-  console.log('');
+  try {
 
-  const browser =
-    await puppeteer.launch({
+    console.log('');
+    console.log('========================================');
+    console.log(' NDOW BETA MANUAL INSTRUCTOR SYNC');
+    console.log('========================================');
+    console.log('');
+    console.log('Opening NDOW...');
+    console.log('');
+    console.log('A browser window will open.');
+    console.log('');
+    console.log('Please log into NDOW using your normal');
+    console.log('NDOW credentials.');
+    console.log('');
+    console.log('Your credentials are NOT saved by this tool.');
+    console.log('');
+    console.log('Waiting for NDOW login...');
+    console.log('');
+
+    browser = await puppeteer.launch({
       headless: false,
       defaultViewport: null,
       args: [
@@ -59,190 +54,153 @@ const OUTPUT_FILE =
       ]
     });
 
-  try {
+    const page = await browser.newPage();
 
-    const page =
-      await browser.newPage();
+    await page.goto(NDOW_URL, {
+      waitUntil: 'domcontentloaded',
+      timeout: 60000
+    });
 
     /*
     --------------------------------------------------------------------------
-     Open NDOW
+    IMPORTANT:
+    Do NOT use waitForNavigation() here.
+
+    NDOW can perform more than one navigation/redirect during login.
+    We instead poll the page URL safely and tolerate execution-context
+    changes while the page is navigating.
     --------------------------------------------------------------------------
     */
 
-    await page.goto(
-      NDOW_ASSIGNED_EVENTS,
-      {
-        waitUntil: 'domcontentloaded',
-        timeout: 60000
+    const loginDeadline =
+      Date.now() + (120 * 1000);
+
+    let loggedIn = false;
+
+    while (Date.now() < loginDeadline) {
+
+      try {
+
+        const url =
+          page.url();
+
+        const passwordField =
+          await page.$(
+            'input[type="password"]'
+          );
+
+        const onLoginPage =
+          Boolean(passwordField) ||
+          /login|sign.?in/i.test(url);
+
+        if (
+          !onLoginPage &&
+          /\/dashboard\//i.test(url)
+        ) {
+          loggedIn = true;
+          break;
+        }
+
+      } catch (err) {
+
+        /*
+        Navigation can destroy the execution context.
+        That is expected during login, so simply wait and try again.
+        */
+
       }
-    );
-
-    /*
-    --------------------------------------------------------------------------
-     Wait for manual authentication
-    --------------------------------------------------------------------------
-
-     We deliberately do NOT enter credentials here.
-
-     Instead, we wait until the NDOW login form disappears and the
-     assigned-events page becomes available.
-    --------------------------------------------------------------------------
-    */
-
-    console.log('Waiting for NDOW login...');
-
-    let authenticated = false;
-
-    for (let attempt = 0; attempt < 120; attempt++) {
 
       await new Promise(
         resolve => setTimeout(resolve, 1000)
       );
 
-      const loginForm =
-        await page.$(
-          'input[type="password"]'
-        );
-
-      const currentUrl =
-        page.url();
-
-      /*
-       * If the password field is gone and we're no longer on the
-       * authentication page, consider authentication complete.
-       */
-
-      if (
-        !loginForm &&
-        currentUrl.includes(
-          '/dashboard/'
-        )
-      ) {
-
-        authenticated = true;
-        break;
-
-      }
-
-      /*
-       * Also allow the user to finish login and arrive at the
-       * assigned-events page even if the URL changes slightly.
-       */
-
-      if (
-        !loginForm &&
-        !currentUrl.includes(
-          '/login'
-        )
-      ) {
-
-        authenticated = true;
-        break;
-
-      }
-
     }
 
-    if (!authenticated) {
+    if (!loggedIn) {
 
       throw new Error(
-        'NDOW login was not detected within the allowed time.'
+        'Login was not detected within 120 seconds.'
       );
 
     }
 
-    console.log('');
-    console.log('NDOW login detected.');
+    console.log('Login detected.');
+    console.log('Waiting for NDOW to settle...');
     console.log('');
 
     /*
+    Give the application a moment to finish redirects,
+    React rendering, and authentication state updates.
+    */
+
+    await new Promise(
+      resolve => setTimeout(resolve, 3000)
+    );
+
+    /*
     --------------------------------------------------------------------------
-     Navigate to assigned events
+    Open the assigned-events page AFTER login.
+    This is important because the page should now represent the tester's
+    authenticated NDOW account.
     --------------------------------------------------------------------------
     */
 
-    await page.goto(
-      NDOW_ASSIGNED_EVENTS,
-      {
-        waitUntil: 'domcontentloaded',
-        timeout: 60000
-      }
-    );
+    console.log('Opening assigned events...');
+
+    await page.goto(NDOW_URL, {
+      waitUntil: 'networkidle2',
+      timeout: 60000
+    });
 
     await page.waitForSelector(
-      'body'
+      'body',
+      { timeout: 30000 }
     );
 
-    console.log(
-      'Loading assigned events...'
-    );
+    console.log('Assigned events page loaded.');
+    console.log('');
 
-    /*
-    --------------------------------------------------------------------------
-     Scrape assigned events
-    --------------------------------------------------------------------------
-    */
-
-    const allEvents = [];
-
+    let allEvents = [];
     let currentPage = 1;
 
     while (true) {
 
       const pageUrl =
-        NDOW_ASSIGNED_EVENTS +
+        NDOW_URL +
         '?filter%5Bevents_program_id%5D=' +
         '&ordering%5Border_by%5D%5B%5D=Start+Date+-+Descending' +
         '&ordering%5Border_by%5D%5B%5D=desc' +
-        '&page=' +
-        currentPage +
+        '&page=' + currentPage +
         '&size=50';
 
       console.log(
-        `Loading assigned events page ${currentPage}...`
+        'Reading assigned events page:',
+        currentPage
       );
 
-      await page.goto(
-        pageUrl,
-        {
-          waitUntil: 'domcontentloaded',
-          timeout: 60000
-        }
-      );
+      await page.goto(pageUrl, {
+        waitUntil: 'networkidle2',
+        timeout: 60000
+      });
 
       await page.waitForSelector(
-        'body'
+        'body',
+        { timeout: 30000 }
       );
 
       const events =
         await page.evaluate(() => {
 
           const cards =
-            document.querySelectorAll(
-              'article'
-            );
+            [...document.querySelectorAll('article')];
 
-          const results = [];
+          return cards.map(card => {
 
-          cards.forEach(card => {
-
-            const linkEl =
+            const link =
               card.querySelector('a');
 
             const rawHref =
-              linkEl?.getAttribute(
-                'href'
-              ) || '';
-
-            const eventId =
-              rawHref.match(
-                /assigned_events\/(\d+)/
-              )?.[1] || '';
-
-            if (!eventId) {
-              return;
-            }
+              link?.getAttribute('href') || '';
 
             const url =
               rawHref.startsWith('http')
@@ -250,268 +208,149 @@ const OUTPUT_FILE =
                 : 'https://nevada.events.licensing.app' +
                   rawHref;
 
+            const idMatch =
+              rawHref.match(
+                /assigned_events\/(\d+)/
+              );
+
             const text =
               card.innerText || '';
 
-            /*
-            --------------------------------------------------------------
-             Extract location
-            --------------------------------------------------------------
-            */
+            return {
+              id: idMatch ? idMatch[1] : '',
+              url,
+              text
+            };
 
-            const locationMatch =
-              text.match(
-                /Location:\s*([\s\S]*?)(?:\s*Taught by:|\s*Date\s*&\s*Times:)/i
-              );
-
-            /*
-            --------------------------------------------------------------
-             Extract date/time
-            --------------------------------------------------------------
-            */
-
-            const timeMatch =
-              text.match(
-                /Date\s*&\s*Times:\s*([\s\S]*?)\s*View$/i
-              );
-
-            /*
-            --------------------------------------------------------------
-             Extract instructor
-            --------------------------------------------------------------
-            */
-
-            const instructorMatch =
-              text.match(
-                /Taught by:\s*([\s\S]*?)(?:\s*Date\s*&\s*Times:|$)/i
-              );
-
-            let location = '';
-
-            if (locationMatch) {
-
-              location =
-                locationMatch[1]
-                  .replace(/\n+/g, ' ')
-                  .replace(/\s+/g, ' ')
-                  .trim();
-
-            }
-
-            let time = '';
-
-            if (timeMatch) {
-
-              time =
-                timeMatch[1]
-                  .replace(/\n+/g, ' ')
-                  .replace(/\s+/g, ' ')
-                  .trim();
-
-            }
-
-            let date = '';
-
-            const dateMatch =
-              time.match(
-                /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
-              );
-
-            if (dateMatch) {
-              date = dateMatch[1];
-            }
-
-            let instructor = '';
-
-            if (instructorMatch) {
-
-              instructor =
-                instructorMatch[1]
-                  .replace(/\n+/g, ' ')
-                  .replace(/\s+/g, ' ')
-                  .trim();
-
-            }
-
-            results.push({
-
-              eventId,
-
-              title:
-                text
-                  .split('\n')
-                  .map(x => x.trim())
-                  .filter(Boolean)[0] || '',
-
-              date,
-
-              time,
-
-              location,
-
-              instructor,
-
-              url
-
-            });
-
-          });
-
-          return results;
+          }).filter(event => event.id);
 
         });
 
       if (events.length === 0) {
 
-        console.log(
-          'No more assigned events found.'
-        );
-
+        console.log('No more assigned events.');
         break;
 
       }
 
-      allEvents.push(
-        ...events
+      console.log(
+        'Events found:',
+        events.length
       );
 
-      console.log(
-        `  Found ${events.length} events.`
-      );
+      for (const event of events) {
+
+        const text =
+          event.text || '';
+
+        const dateMatch =
+          text.match(
+            /([A-Z][a-z]{2}\s+\d{1,2},\s+\d{4})/
+          );
+
+        const locationMatch =
+          text.match(
+            /Location:\s*([\s\S]*?)(?:\s*Taught by:|\s*Date\s*&\s*Times:)/i
+          );
+
+        const instructorMatch =
+          text.match(
+            /Taught by:\s*([\s\S]*?)(?:\s*Date\s*&\s*Times:|$)/i
+          );
+
+        allEvents.push({
+          id: event.id,
+          url: event.url,
+          date: dateMatch
+            ? dateMatch[1]
+            : '',
+          location: locationMatch
+            ? locationMatch[1]
+                .replace(/\n+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+            : '',
+          instructor: instructorMatch
+            ? instructorMatch[1]
+                .replace(/\n+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+            : '',
+          text
+        });
+
+      }
 
       currentPage++;
 
     }
 
     /*
-    --------------------------------------------------------------------------
-     Remove duplicate event IDs
-    --------------------------------------------------------------------------
+    Remove duplicate event IDs.
     */
 
     const uniqueEvents =
-      Array.from(
-        new Map(
-          allEvents.map(
-            event => [
-              event.eventId,
-              event
-            ]
-          )
-        ).values()
-      );
+      [...new Map(
+        allEvents.map(
+          event => [event.id, event]
+        )
+      ).values()];
 
-    /*
-    --------------------------------------------------------------------------
-     Create beta result
-    --------------------------------------------------------------------------
-    */
-
-    const result = {
-
+    const output = {
       scrapedAt:
         new Date().toISOString(),
 
       source:
-        'ndow-beta-manual-sync',
+        'NDOW manual beta instructor sync',
 
       eventCount:
         uniqueEvents.length,
 
       events:
         uniqueEvents
-
     };
-
-    /*
-    --------------------------------------------------------------------------
-     Save results
-    --------------------------------------------------------------------------
-    */
 
     fs.writeFileSync(
       OUTPUT_FILE,
       JSON.stringify(
-        result,
+        output,
         null,
         2
       )
     );
-
-    /*
-    --------------------------------------------------------------------------
-     Console summary
-    --------------------------------------------------------------------------
-    */
 
     console.log('');
     console.log('========================================');
     console.log(' BETA SYNC COMPLETE');
     console.log('========================================');
     console.log('');
-
     console.log(
-      `Assigned events found: ${uniqueEvents.length}`
+      'Assigned events found:',
+      uniqueEvents.length
     );
-
-    console.log('');
-
-    uniqueEvents.forEach(
-      event => {
-
-        console.log(
-          `${event.eventId} | ${event.date} | ${event.title}`
-        );
-
-      }
-    );
-
     console.log('');
     console.log(
-      `Results saved to: ${OUTPUT_FILE}`
+      'Saved:',
+      OUTPUT_FILE
+    );
+    console.log('');
+    console.log(
+      'The browser will remain open for inspection.'
     );
     console.log('');
 
-    console.log(
-      'The browser will remain open for review.'
-    );
-
-    console.log(
-      'Close the browser when finished.'
-    );
+  } catch (err) {
 
     console.log('');
-
-    /*
-    --------------------------------------------------------------------------
-     IMPORTANT:
-     Do NOT save cookies or credentials.
-    --------------------------------------------------------------------------
-    */
-
-  } catch (error) {
-
-    console.error('');
-    console.error(
-      '========================================'
-    );
-
-    console.error(
-      ' BETA SYNC FAILED'
-    );
-
-    console.error(
-      '========================================'
-    );
-
-    console.error('');
-
-    console.error(
-      error.message
-    );
-
-    console.error('');
+    console.log('========================================');
+    console.log(' BETA SYNC FAILED');
+    console.log('========================================');
+    console.log('');
+    console.error(err.message);
+    console.log('');
 
   }
 
-})();
+}
+
+main();
