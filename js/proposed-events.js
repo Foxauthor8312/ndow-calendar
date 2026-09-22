@@ -315,22 +315,6 @@ async function renderProposedEvents() {
           0 1px 2px rgba(0,0,0,.04);
       ">
 
-  <div style="
-  color:#19304B;
-  font-size:13px;
-  font-weight:700;
-  line-height:1.2;
-  margin-bottom:5px;
-">
-  ${date.toLocaleDateString(
-    'en-US',
-    {
-      month:'long',
-      day:'numeric',
-      year:'numeric'
-    }
-  )}
-</div>
 
 <div style="
   color:#19304B;
