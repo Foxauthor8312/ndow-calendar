@@ -296,51 +296,104 @@ async function renderProposedEvents() {
     }
 
 
-    // ------------------------------------
-    // Event card
-    // ------------------------------------
+html += `
 
-    html += `
+  <div style="
+    position:relative;
+    padding:12px;
+    margin-bottom:10px;
+    background:#FFFFFF;
 
-      <div style="
-        padding:12px;
-        margin-bottom:10px;
+    border:1px solid #DBE3EC;
+    border-radius:8px;
 
-        background:#FFFFFF;
-
-        border:1px solid #DBE3EC;
-        border-radius:8px;
-
-        box-shadow:
-          0 1px 2px rgba(0,0,0,.04);
-      ">
-
-
-<div style="
-  color:#19304B;
-  font-size:13px;
-  font-weight:700;
-  line-height:1.35;
-  margin-bottom:5px;
-">
-  ${escapeProposedEventText(
-    event.event_name
-  )}
-  <span style="
-    color:#64748B;
-    font-size:11px;
-    font-weight:600;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,.04);
   ">
-    — ${
-      date.toLocaleDateString(
-        'en-US',
-        {
-          weekday:'long'
+
+    <!-- DAY NUMBER -->
+
+    <div style="
+      position:absolute;
+      top:10px;
+      right:12px;
+      color:#19304B;
+      font-size:16px;
+      font-weight:700;
+      line-height:1;
+    ">
+      ${date.getDate()}
+    </div>
+
+
+    <!-- EVENT NAME + WEEKDAY -->
+
+    <div style="
+      color:#19304B;
+      font-size:13px;
+      font-weight:700;
+      line-height:1.35;
+      margin-bottom:5px;
+      padding-right:28px;
+    ">
+      ${escapeProposedEventText(
+        event.event_name
+      )}
+
+      <span style="
+        color:#64748B;
+        font-size:11px;
+        font-weight:600;
+      ">
+        — ${
+          date.toLocaleDateString(
+            'en-US',
+            {
+              weekday:'long'
+            }
+          )
         }
-      )
+      </span>
+    </div>
+
+
+    <!-- EVENT TIME -->
+
+    ${
+      event.start_time || event.end_time
+        ? `
+          <div style="
+            color:#475569;
+            font-size:11px;
+            font-weight:600;
+            margin-bottom:6px;
+          ">
+            ${
+              event.start_time
+                ? formatProposedEventTime(
+                    event.start_time
+                  )
+                : ''
+            }
+
+            ${
+              event.start_time &&
+              event.end_time
+                ? ' – '
+                : ''
+            }
+
+            ${
+              event.end_time
+                ? formatProposedEventTime(
+                    event.end_time
+                  )
+                : ''
+            }
+          </div>
+        `
+        : ''
     }
-  </span>
-</div>
 
         <div style="
           color:#589FD6;
@@ -454,6 +507,42 @@ async function renderProposedEvents() {
 
 }
 
+// ========================================
+// FORMAT PROPOSED EVENT TIME
+// ========================================
+
+function formatProposedEventTime(time) {
+
+  if (!time) {
+    return '';
+  }
+
+  const parts =
+    String(time).split(':');
+
+  const hours =
+    Number(parts[0]);
+
+  const minutes =
+    parts[1] || '00';
+
+  const suffix =
+    hours >= 12
+      ? 'PM'
+      : 'AM';
+
+  const displayHour =
+    hours % 12 || 12;
+
+  return (
+    displayHour +
+    ':' +
+    minutes +
+    ' ' +
+    suffix
+  );
+
+}
 
 // ========================================
 // ESCAPE DISPLAY TEXT
