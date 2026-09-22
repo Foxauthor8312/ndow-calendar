@@ -2386,6 +2386,79 @@ async function submitForgotPin(){
 
 </div>
 
+<!-- ========================================
+     NDOW ASSIGNMENT SYNC MESSAGE
+======================================== -->
+
+<div
+  id="ndowSyncMessageModal"
+  class="modal hidden"
+  style="z-index:10002;"
+>
+
+  <div
+    class="modal-content"
+    style="
+      width:420px;
+      max-width:90%;
+      height:auto;
+      min-height:0;
+      padding:24px;
+    "
+  >
+
+    <button
+      type="button"
+      class="modal-close"
+      onclick="closeNdowSyncMessage()"
+    >
+      ✕
+    </button>
+
+    <h2 style="
+      margin:0 0 12px 0;
+      color:#19304B;
+      font-size:20px;
+    ">
+      Sync NDOW Assignments?
+    </h2>
+
+    <p style="
+      margin:0 0 24px 0;
+      color:#374151;
+      font-size:14px;
+      line-height:1.5;
+    ">
+      Would you like to synchronize your current
+      NDOW instructor assignments?
+    </p>
+
+    <div style="
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+    ">
+
+      <button
+        type="button"
+        onclick="closeNdowSyncMessage()"
+      >
+        Not Now
+      </button>
+
+      <button
+        type="button"
+        onclick="startNdowAssignmentSync()"
+      >
+        Sync Now
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <!-- ========================================
      START CALENDAR
@@ -4724,6 +4797,56 @@ setTimeout(() => {
 // ========================================
 // LOAD EVENTS
 // ========================================
+// ========================================
+// NDOW ASSIGNMENT SYNC MESSAGE
+// ========================================
+
+function openNdowSyncMessage(){
+
+  const modal =
+    document.getElementById(
+      'ndowSyncMessageModal'
+    );
+
+  if(!modal){
+    console.error(
+      'NDOW sync message modal not found.'
+    );
+    return;
+  }
+
+  modal.classList.remove('hidden');
+  modal.style.display = 'flex';
+
+}
+
+
+function closeNdowSyncMessage(){
+
+  const modal =
+    document.getElementById(
+      'ndowSyncMessageModal'
+    );
+
+  if(!modal){
+    return;
+  }
+
+  modal.classList.add('hidden');
+  modal.style.display = 'none';
+
+}
+
+
+function startNdowAssignmentSync(){
+
+  closeNdowSyncMessage();
+
+  console.log(
+    'NDOW assignment sync requested.'
+  );
+
+}
 
 
 // ========================================
