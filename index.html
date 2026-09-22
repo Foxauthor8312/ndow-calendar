@@ -5091,26 +5091,26 @@ if(myEventsOnly || needHoursOnly){
       localStorage.getItem('user') || '{}'
     );
 
-  const currentEmail =
+const currentCustomerId =
 
-    (currentUser.email || '')
-      .toLowerCase()
-      .trim();
+  String(
+    currentUser.ndow_customer_id || ''
+  ).trim();
 
-  const isInstructor =
+const isInstructor =
 
-    Array.isArray(
-      event.instructors
-    ) &&
+  Array.isArray(
+    event.instructors
+  ) &&
 
-    event.instructors.some(
-      i =>
-        (i.email || '')
-          .toLowerCase()
-          .trim()
-        ===
-        currentEmail
-    );
+  event.instructors.some(
+    i =>
+      String(
+        i.customerId || ''
+      ).trim()
+      ===
+      currentCustomerId
+  );
 
   if(!isInstructor){
     return false;
