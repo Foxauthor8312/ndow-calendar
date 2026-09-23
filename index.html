@@ -12515,6 +12515,15 @@ const result =
   Communications Center
 </button>
 
+<button
+  class="admin-button"
+  onclick="
+    closeDashboard();
+    openProjectsWorkspace();
+  ">
+  Projects
+</button>
+	
 </div>
 
 </div>
@@ -19709,9 +19718,25 @@ ${regionTotal}
 </script>	
 
 <script
-    type="module"
-    src="js/proposed-events.js">
+  type="module"
+  src="js/proposed-events.js">
 </script>
+
+<script
+  type="module"
+  src="js/projects/projects-api.js">
+</script>
+
+<script
+  type="module"
+  src="js/projects/projects-ui.js">
+</script>
+
+<script
+  type="module"
+  src="js/projects/projects-workspace.js">
+</script>
+
 <script src="js/calendar/calendar-print.js"></script>
 	
 <script>
