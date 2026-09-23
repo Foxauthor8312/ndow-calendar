@@ -210,7 +210,37 @@ async function renderProposedEvents() {
   const events =
     await loadProposedEvents();
 
-  if (!events.length) {
+   // --------------------------------------
+  // Hide proposed events whose date has passed
+  // --------------------------------------
+
+  const today =
+    new Date();
+
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
+
+  const activeEvents =
+    events.filter(event => {
+
+      const eventDate =
+        new Date(
+          event.event_date +
+          'T00:00:00'
+        );
+
+      return (
+        !isNaN(eventDate.getTime()) &&
+        eventDate >= today
+      );
+
+    });
+
+  if (!activeEvents.length) {
 
     container.innerHTML = `
       <div style="
@@ -230,11 +260,11 @@ async function renderProposedEvents() {
   // Sort by date
   // --------------------------------------
 
-  events.sort(
-    (a, b) =>
-      new Date(a.event_date) -
-      new Date(b.event_date)
-  );
+ activeEvents.sort(
+  (a, b) =>
+    new Date(a.event_date) -
+    new Date(b.event_date)
+);
 
 
   let html = '';
@@ -242,7 +272,7 @@ async function renderProposedEvents() {
   let currentMonth = '';
 
 
-  events.forEach(event => {
+  activeEvents.forEach(event => {
 
     const date =
       new Date(
