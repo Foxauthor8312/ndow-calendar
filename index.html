@@ -1835,17 +1835,47 @@ async function submitChangePin(){
       loginData.user.phone || ''
     );
 
-    /*
-    ------------------------------------
-    Open profile completion
-    ------------------------------------
-    */
+   /*
+------------------------------------
+Enter application
+------------------------------------
+*/
 
-    closeChangePinModal();
+closeChangePinModal();
 
-    profileFirstLoginMode = true;
+const loginScreen =
+  document.getElementById(
+    'loginScreen'
+  );
 
-    openProfileModal();
+const appContent =
+  document.getElementById(
+    'appContent'
+  );
+
+if(loginScreen){
+
+  loginScreen.style.display =
+    'none';
+
+}
+
+if(appContent){
+
+  appContent.style.display =
+    'flex';
+
+}
+
+/*
+------------------------------------
+Open profile completion
+------------------------------------
+*/
+
+profileFirstLoginMode = true;
+
+openProfileModal();
 
   }catch(err){
 
