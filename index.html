@@ -5239,18 +5239,7 @@ if(status){
           : []
       );
 
-    if(status){
-
-      status.textContent =
-        `Synchronization complete. ${window.ndowAssignmentIds.size} assigned event(s) found.`;
-    }
-
-    if(button){
-
-      button.textContent =
-        'Complete';
-    }
-
+      
 	  await loadNdowAssignments();
 
     /*
@@ -5258,12 +5247,7 @@ if(status){
       after the assignment/star code is installed.
     */
 
-    setTimeout(() => {
-
-      closeNdowSyncMessage();
-
-    }, 1200);
-
+  
   }
   catch(error){
 
@@ -20253,14 +20237,6 @@ async function startNdowAssignmentSync(){
           : []
       );
 
-    if(status){
-
-      status.textContent =
-        `Synchronization complete. ${window.ndowAssignmentIds.size} assigned event(s) found.`;
-
-    }
-
-    if(button){
 
 if(status){
 
@@ -20320,6 +20296,8 @@ if(status){
     `;
   }
 }
+
+await loadNdowAssignments();
 
 button.disabled = false;
 
