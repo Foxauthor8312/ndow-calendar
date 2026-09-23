@@ -1721,6 +1721,12 @@ async function submitChangePin(){
 
   try{
 
+    /*
+    ------------------------------------
+    Change PIN
+    ------------------------------------
+    */
+
     const response =
       await fetch(
         'https://ndow-calendar-server.onrender.com/api/change-pin',
@@ -1756,27 +1762,90 @@ async function submitChangePin(){
 
     }
 
-    closeChangePinModal();
+    /*
+    ------------------------------------
+    Re-authenticate with new PIN
+    ------------------------------------
+    */
 
-    const profileMessage =
-      document.getElementById(
-        'profileMessage'
+    const loginResponse =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/login',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json'
+          },
+
+          body:JSON.stringify({
+
+            username,
+
+            pin:newPin
+
+          })
+
+        }
       );
 
-    if(profileMessage){
+    const loginData =
+      await loginResponse.json();
 
-      profileMessage.innerText =
-        'PIN updated successfully.';
+    if(!loginData.success){
 
-    }else{
+      errorBox.innerText =
+        'PIN was changed, but automatic login failed. Please log in again.';
 
-      alert(
-        'PIN updated successfully.'
+      console.error(
+        'Automatic login failed:',
+        loginData
       );
 
-      location.reload();
+      return;
 
     }
+
+    /*
+    ------------------------------------
+    Store authenticated session
+    ------------------------------------
+    */
+
+    localStorage.setItem(
+      'token',
+      loginData.token
+    );
+
+    localStorage.setItem(
+      'user',
+      JSON.stringify(
+        loginData.user
+      )
+    );
+
+    localStorage.setItem(
+      'email',
+      loginData.user.email || ''
+    );
+
+    localStorage.setItem(
+      'phone',
+      loginData.user.phone || ''
+    );
+
+    /*
+    ------------------------------------
+    Open profile completion
+    ------------------------------------
+    */
+
+    closeChangePinModal();
+
+    profileFirstLoginMode = true;
+
+    openProfileModal();
 
   }catch(err){
 
@@ -10562,6 +10631,12 @@ function closeDashboard(){
 
 }
 
+/* ========================================
+   PROFILE
+======================================== */
+
+let profileFirstLoginMode = false;
+
 function openProfileModal(){
 
   const modal =
@@ -10576,11 +10651,32 @@ function openProfileModal(){
   modal.style.display =
     'flex';
 
+  const firstLoginMessage =
+    document.getElementById(
+      'profileFirstLoginMessage'
+    );
+
+  if(firstLoginMessage){
+
+    firstLoginMessage.style.display =
+      profileFirstLoginMode
+        ? 'block'
+        : 'none';
+
+  }
+
   loadProfile();
 
 }
 
+	
 function closeProfileModal(){
+
+  if(profileFirstLoginMode){
+
+    return;
+
+  }
 
   const modal =
     document.getElementById(
@@ -10682,11 +10778,12 @@ async function saveProfile(){
               document.getElementById(
                 'profilePhone'
               ).value,
+
             region:
               document.getElementById(
                 'profileRegion'
               ).value,
-			  
+
             notify_email:
               document.getElementById(
                 'profileNotifyEmail'
@@ -10705,42 +10802,84 @@ async function saveProfile(){
     const data =
       await response.json();
 
-	const user =
-  JSON.parse(
-    localStorage.getItem(
-      'user'
-    ) || '{}'
-  );
+    if(!response.ok){
 
-user.email =
-  document.getElementById(
-    'profileEmail'
-  ).value;
+      throw new Error(
+        data.message ||
+        'Unable to save profile'
+      );
 
-user.phone =
-  document.getElementById(
-    'profilePhone'
-  ).value;
+    }
 
-user.region =
-  document.getElementById(
-    'profileRegion'
-  ).value;
+    const user =
+      JSON.parse(
+        localStorage.getItem(
+          'user'
+        ) || '{}'
+      );
 
-user.notify_email =
-  document.getElementById(
-    'profileNotifyEmail'
-  ).checked;
+    user.email =
+      document.getElementById(
+        'profileEmail'
+      ).value;
 
-user.notify_sms =
-  document.getElementById(
-    'profileNotifySms'
-  ).checked;
+    user.phone =
+      document.getElementById(
+        'profilePhone'
+      ).value;
 
-localStorage.setItem(
-  'user',
-  JSON.stringify(user)
-);  
+    user.region =
+      document.getElementById(
+        'profileRegion'
+      ).value;
+
+    user.notify_email =
+      document.getElementById(
+        'profileNotifyEmail'
+      ).checked;
+
+    user.notify_sms =
+      document.getElementById(
+        'profileNotifySms'
+      ).checked;
+
+    localStorage.setItem(
+      'user',
+      JSON.stringify(user)
+    );
+
+    /*
+    ------------------------------------
+    First-login profile completion
+    ------------------------------------
+    */
+
+    if(profileFirstLoginMode){
+
+      profileFirstLoginMode = false;
+
+      const firstLoginMessage =
+        document.getElementById(
+          'profileFirstLoginMessage'
+        );
+
+      if(firstLoginMessage){
+
+        firstLoginMessage.style.display =
+          'none';
+
+      }
+
+      document.getElementById(
+        'profileMessage'
+      ).innerText =
+        'Profile completed successfully.';
+
+      closeProfileModal();
+
+      return;
+
+    }
 
     document.getElementById(
       'profileMessage'
@@ -10753,9 +10892,13 @@ localStorage.setItem(
     document.getElementById(
       'profileMessage'
     ).innerText =
+      error.message ||
       'Unable to save profile';
 
-    console.error(error);
+    console.error(
+      'Profile save error:',
+      error
+    );
 
   }
 
@@ -17634,34 +17777,49 @@ geographic analysis.
       ✕
     </button>
 
-    <h2>My Profile</h2>
+   <h2>My Profile</h2>
 
-    <div style="margin-top:18px;">
+<div
+  id="profileFirstLoginMessage"
+  style="
+    display:none;
+    margin:12px 0 18px;
+    padding:12px 14px;
+    background:#F8FAFC;
+    border:1px solid #DBE3EC;
+    border-radius:8px;
+    color:#19304B;
+    line-height:1.5;
+  "
+>
+  Please review and complete your profile before continuing.
+</div>
 
-      <label>
-        Username
-      </label>
+<div style="margin-top:18px;">
 
-      <input
-       id="profileUsername"
-       readonly
-        style="
-          width:100%;
-          padding:10px;
-          margin-top:6px;
-          margin-bottom:14px;
-          border:1px solid #d1d5db;
-          border-radius:8px;
-          box-sizing:border-box;
-          background:#f3f4f6;
-          color:#6b7280;
-		  
-        "
-      >
+  <label>
+    Username
+  </label>
 
-      <label>
-        Email Address
-      </label>
+  <input
+    id="profileUsername"
+    readonly
+    style="
+      width:100%;
+      padding:10px;
+      margin-top:6px;
+      margin-bottom:14px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      box-sizing:border-box;
+      background:#f3f4f6;
+      color:#6b7280;
+    "
+  >
+
+  <label>
+    Email Address
+  </label>
 
       <input
         id="profileEmail"
