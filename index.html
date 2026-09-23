@@ -5129,14 +5129,31 @@ async function startNdowAssignmentSync(){
       'Syncing...';
   }
 
-  if(status){
+if(status){
+  status.style.display = 'block';
 
-    status.style.display = 'block';
+  status.innerHTML = `
+    <div style="
+      font-weight:600;
+      color:#19304B;
+      margin-bottom:8px;
+    ">
+      Syncing your NDOW assignments...
+    </div>
 
-    status.textContent =
-      'Connecting to NDOW and retrieving your assignments...';
-  }
+    <div style="margin-bottom:4px;">
+      ● Connecting to NDOW
+    </div>
 
+    <div style="margin-bottom:4px;">
+      ○ Retrieving your assigned events
+    </div>
+
+    <div>
+      ○ Updating your calendar
+    </div>
+  `;
+}
   try{
 
     const token =
@@ -20127,10 +20144,9 @@ async function startNdowAssignmentSync(){
 
   if(button){
 
-    button.disabled = true;
-
-    button.textContent =
-      'Syncing...';
+	button.disabled = true;
+	button.textContent = 'Syncing...';
+	button.onclick = startNdowAssignmentSync;
 
   }
 
@@ -20225,21 +20241,78 @@ async function startNdowAssignmentSync(){
 
     if(button){
 
-      button.textContent =
-        'Complete';
+if(status){
+
+  const skipped =
+    Array.isArray(result.skippedEventIds)
+      ? result.skippedEventIds
+      : [];
+
+  const savedCount =
+    Number(result.count || 0);
+
+  if(skipped.length){
+
+    status.innerHTML = `
+      <div style="
+        font-weight:600;
+        color:#19304B;
+        margin-bottom:8px;
+      ">
+        ✓ Sync Complete
+      </div>
+
+      <div style="margin-bottom:6px;">
+        ${savedCount}
+        assignment${savedCount === 1 ? '' : 's'}
+        updated.
+      </div>
+
+      <div style="
+        color:#4B5563;
+        line-height:1.4;
+      ">
+        ${skipped.length}
+        assignment${skipped.length === 1 ? '' : 's'}
+        ${skipped.length === 1 ? 'is' : 'are'}
+        waiting for the event to appear on the calendar.
+        It will be picked up automatically during a future sync.
+      </div>
+    `;
+
+  } else {
+
+    status.innerHTML = `
+      <div style="
+        font-weight:600;
+        color:#19304B;
+        margin-bottom:8px;
+      ">
+        ✓ Sync Complete
+      </div>
+
+      <div>
+        ${savedCount}
+        assignment${savedCount === 1 ? '' : 's'}
+        updated.
+      </div>
+    `;
+  }
+}
+
+button.disabled = false;
+
+button.textContent =
+  'Continue';
+
+button.onclick =
+  closeNdowSyncMessage;
 
     }
 
     await loadNdowAssignments();
 
-    setTimeout(
-      () => {
-        closeNdowSyncMessage();
-      },
-      1200
-    );
-
-  }
+   }
 
   catch(error){
 
