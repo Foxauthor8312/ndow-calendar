@@ -4717,6 +4717,8 @@ setTimeout(() => {
  appContent.style.display =
   'flex';
 
+showMyEventsSyncNotice();	
+
 const versionDisplay =
   document.getElementById(
     'versionDisplay'
@@ -19920,6 +19922,33 @@ async function downloadRouteMap(){
 
   </div>
 </div>
+<!-- ========================================
+     MY EVENTS SYNC LOGIN MESSAGE
+======================================== -->
+
+<div
+  id="myEventsSyncNotice"
+  style="
+    display:none;
+    position:fixed;
+    top:82px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10050;
+    padding:10px 18px;
+    background:#19304B;
+    color:#FFFFFF;
+    border-radius:7px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.18);
+    font-size:13px;
+    font-weight:500;
+    text-align:center;
+  "
+>
+  Click <strong>SYNC</strong> to update the ★ stars on your assigned events.
+</div>
+
+	
 <script>
 
 window.ndowAssignmentIds = new Set();
@@ -19976,6 +20005,42 @@ function openNdowSyncMessage(){
   }
 }
 
+	function showMyEventsSyncNotice(){
+
+  const notice =
+    document.getElementById(
+      'myEventsSyncNotice'
+    );
+
+  if(!notice) return;
+
+  notice.style.display =
+    'block';
+
+  setTimeout(() => {
+
+    notice.style.transition =
+      'opacity 0.4s ease';
+
+    notice.style.opacity =
+      '0';
+
+    setTimeout(() => {
+
+      notice.style.display =
+        'none';
+
+      notice.style.opacity =
+        '1';
+
+      notice.style.transition =
+        '';
+
+    }, 400);
+
+  }, 2600);
+
+}
 
 function closeNdowSyncMessage(){
 
