@@ -206,6 +206,14 @@ button{
 button:hover{
   opacity:.9;
 }
+	
+@keyframes ndowSyncSpin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+	
+	
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, minmax(120px, 1fr));
@@ -5137,7 +5145,20 @@ if(status){
       font-weight:600;
       color:#19304B;
       margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:8px;
     ">
+      <span style="
+        display:inline-block;
+        width:12px;
+        height:12px;
+        border:2px solid #DBE3EC;
+        border-top-color:#19304B;
+        border-radius:50%;
+        animation:ndowSyncSpin 0.8s linear infinite;
+      "></span>
+
       Syncing your NDOW assignments...
     </div>
 
@@ -20305,14 +20326,15 @@ button.disabled = false;
 button.textContent =
   'Continue';
 
-button.onclick =
-  closeNdowSyncMessage;
+button.onclick = async () => {
 
-    }
+  closeNdowSyncMessage();
 
-    await loadNdowAssignments();
+  await loadEvents();
 
-   }
+};
+
+}
 
   catch(error){
 
