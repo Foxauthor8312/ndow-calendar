@@ -5144,7 +5144,7 @@ if(status){
     <div style="
       font-weight:600;
       color:#19304B;
-      margin-bottom:8px;
+      margin-bottom:10px;
       display:flex;
       align-items:center;
       gap:8px;
@@ -5162,16 +5162,16 @@ if(status){
       Syncing your NDOW assignments...
     </div>
 
-    <div style="margin-bottom:4px;">
-      ● Connecting to NDOW
+    <div style="color:#4B5563;">
+      Connecting to NDOW and retrieving your current assignments.
     </div>
 
-    <div style="margin-bottom:4px;">
-      ○ Retrieving your assigned events
-    </div>
-
-    <div>
-      ○ Updating your calendar
+    <div style="
+      margin-top:6px;
+      color:#6B7280;
+      font-size:12px;
+    ">
+      This may take a moment.
     </div>
   `;
 }
@@ -20330,7 +20330,9 @@ button.onclick = async () => {
 
   closeNdowSyncMessage();
 
-  await loadEvents();
+  await loadNdowAssignments();
+
+  renderCalendar();
 
 };
 
