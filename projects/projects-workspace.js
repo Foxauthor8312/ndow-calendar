@@ -2771,10 +2771,11 @@ async function updateProjectTaskLifecycle(
     hideProjectTaskEditor();
 
 
-    await loadProjectTasks(
-      currentProject.id,
-      showArchivedProjectTasks
-    );
+    currentProjectTasks =
+  await loadProjectTasks(
+    currentProject.id,
+    showArchivedProjectTasks
+  );
 
 
     renderTasksTab();
@@ -2883,10 +2884,11 @@ async function deleteProjectTask(){
     hideProjectTaskEditor();
 
 
-    await loadProjectTasks(
-      currentProject.id,
-      showArchivedProjectTasks
-    );
+   currentProjectTasks =
+  await loadProjectTasks(
+    currentProject.id,
+    showArchivedProjectTasks
+  );
 
 
     renderTasksTab();
@@ -3119,11 +3121,11 @@ async function saveProjectTask(){
     hideProjectTaskEditor();
 
 
-    await loadProjectTasks(
-      currentProject.id,
-      showArchivedProjectTasks
-    );
-
+   currentProjectTasks =
+  await loadProjectTasks(
+    currentProject.id,
+    showArchivedProjectTasks
+  );
 
     renderTasksTab();
 
