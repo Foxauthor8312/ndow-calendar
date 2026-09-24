@@ -3577,6 +3577,18 @@ window.hideProjectTaskEditor =
 window.saveProjectTask =
   saveProjectTask;
 
+window.toggleArchivedProjectTasks =
+  toggleArchivedProjectTasks;
+
+window.archiveProjectTask =
+  archiveProjectTask;
+
+window.restoreProjectTask =
+  restoreProjectTask;
+
+window.deleteProjectTask =
+  deleteProjectTask;
+
 
 // ========================================
 // HELPERS
