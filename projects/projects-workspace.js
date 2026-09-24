@@ -42,6 +42,8 @@ let currentProjectMembers = [];
 
 let currentProjectNotes = [];
 
+let currentProjectTasks = [];
+
 
 // ========================================
 // OPEN PROJECT
@@ -310,6 +312,67 @@ async function loadProjectNotes(
 
 }
 
+// ========================================
+// LOAD PROJECT TASKS
+// ========================================
+
+async function loadProjectTasks(
+  projectId
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/tasks`,
+      {
+        method:'GET',
+
+        headers:{
+          'Authorization':
+            'Bearer ' + token
+        }
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to load project tasks.'
+    );
+
+  }
+
+
+  return Array.isArray(
+    result.tasks
+  )
+    ? result.tasks
+    : [];
+
+}
 
 // ========================================
 // CREATE PROJECT NOTE
