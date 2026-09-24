@@ -1304,24 +1304,294 @@ function renderTasks(){
         ${
           canEdit
             ? `
-              <button
-                type="button"
-                style="
-                  border:1px solid #19304B;
-                  background:#19304B;
-                  color:#FFFFFF;
-                  border-radius:6px;
-                  padding:8px 14px;
-                  cursor:pointer;
-                  font-weight:600;
-                  white-space:nowrap;
-                "
-              >
-                + Add Task
-              </button>
+<button
+  type="button"
+  onclick="
+    window.showProjectTaskEditor &&
+    window.showProjectTaskEditor();
+  "
+  style="
+    border:1px solid #19304B;
+    background:#19304B;
+    color:#FFFFFF;
+    border-radius:6px;
+    padding:8px 14px;
+    cursor:pointer;
+    font-weight:600;
+    white-space:nowrap;
+  "
+>
+  + Add Task
+</button>
             `
             : ''
         }
+
+      </div>
+
+      <div
+        id="projectTaskEditor"
+        style="
+          display:none;
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:16px;
+        "
+      >
+
+        <div style="
+          font-size:15px;
+          font-weight:600;
+          color:#19304B;
+          margin-bottom:12px;
+        ">
+          Add Task
+        </div>
+
+
+        <div style="
+          display:grid;
+          grid-template-columns:
+            minmax(0, 2fr)
+            minmax(180px, 1fr);
+          gap:12px;
+        ">
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Task Title
+            </label>
+
+            <input
+              id="projectTaskTitle"
+              type="text"
+              maxlength="200"
+              placeholder="Enter task title..."
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+              "
+            >
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Assigned To
+            </label>
+
+            <select
+              id="projectTaskAssignedTo"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+                background:#FFFFFF;
+              "
+            >
+
+              <option value="">
+                Unassigned
+              </option>
+
+              ${currentProjectMembers
+                .map(member => {
+
+                  const name =
+                    member.full_name ||
+                    member.username ||
+                    member.email ||
+                    'Unknown User';
+
+                  return `
+                    <option
+                      value="${member.id}"
+                    >
+                      ${escapeProjectHtml(
+                        name
+                      )}
+                    </option>
+                  `;
+
+                })
+                .join('')}
+
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Priority
+            </label>
+
+            <select
+              id="projectTaskPriority"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+                background:#FFFFFF;
+              "
+            >
+              <option value="low">Low</option>
+              <option value="normal" selected>Normal</option>
+              <option value="high">High</option>
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Due Date
+            </label>
+
+            <input
+              id="projectTaskDueDate"
+              type="date"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+              "
+            >
+
+          </div>
+
+
+          <div style="
+            grid-column:1 / -1;
+          ">
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Description
+            </label>
+
+            <textarea
+              id="projectTaskDescription"
+              rows="4"
+              maxlength="5000"
+              placeholder="Describe the task..."
+              style="
+                width:100%;
+                box-sizing:border-box;
+                resize:vertical;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+              "
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <div style="
+          display:flex;
+          justify-content:flex-end;
+          gap:8px;
+          margin-top:12px;
+        ">
+
+          <button
+            type="button"
+            onclick="
+              window.hideProjectTaskEditor &&
+              window.hideProjectTaskEditor();
+            "
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="button"
+            id="saveProjectTaskButton"
+            onclick="
+              window.saveProjectTask &&
+              window.saveProjectTask();
+            "
+            style="
+              border:1px solid #19304B;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            Save Task
+          </button>
+
+        </div>
 
       </div>
 
@@ -1525,6 +1795,341 @@ function renderTasksList(){
 
 }
 
+// ========================================
+// SHOW TASK EDITOR
+// ========================================
+
+function showProjectTaskEditor(){
+
+  const editor =
+    document.getElementById(
+      'projectTaskEditor'
+    );
+
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  if(!editor){
+
+    return;
+
+  }
+
+
+  editor.style.display =
+    'block';
+
+
+  if(title){
+
+    title.focus();
+
+  }
+
+}
+
+
+// ========================================
+// HIDE TASK EDITOR
+// ========================================
+
+function hideProjectTaskEditor(){
+
+  const editor =
+    document.getElementById(
+      'projectTaskEditor'
+    );
+
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+
+  if(editor){
+
+    editor.style.display =
+      'none';
+
+  }
+
+
+  if(title){
+
+    title.value =
+      '';
+
+  }
+
+
+  if(description){
+
+    description.value =
+      '';
+
+  }
+
+
+  if(assignedTo){
+
+    assignedTo.value =
+      '';
+
+  }
+
+
+  if(priority){
+
+    priority.value =
+      'normal';
+
+  }
+
+
+  if(dueDate){
+
+    dueDate.value =
+      '';
+
+  }
+
+}
+// ========================================
+// SAVE PROJECT TASK
+// ========================================
+
+async function saveProjectTask(){
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+  const button =
+    document.getElementById(
+      'saveProjectTaskButton'
+    );
+
+
+  if(!title){
+
+    return;
+
+  }
+
+
+  const taskTitle =
+    String(
+      title.value || ''
+    ).trim();
+
+
+  if(!taskTitle){
+
+    alert(
+      'Please enter a task title.'
+    );
+
+    title.focus();
+
+    return;
+
+  }
+
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    alert(
+      'No project is currently open.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    if(button){
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        'Saving...';
+
+    }
+
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks`,
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              'Bearer ' + token
+          },
+
+          body:JSON.stringify({
+
+            task_title:
+              taskTitle,
+
+            task_description:
+              String(
+                description?.value || ''
+              ).trim() || null,
+
+            assigned_to:
+              assignedTo?.value
+                ? Number(
+                    assignedTo.value
+                  )
+                : null,
+
+            priority:
+              priority?.value ||
+              'normal',
+
+            due_date:
+              dueDate?.value ||
+              null
+
+          })
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        'Failed to create project task.'
+      );
+
+    }
+
+
+    currentProjectTasks =
+      [
+        result.task,
+        ...currentProjectTasks
+      ];
+
+
+    renderTasksTab();
+
+
+  }catch(error){
+
+    console.error(
+      'Failed to save project task:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to save task.'
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        'Save Task';
+
+    }
+
+  }
+
+}
 
 // ========================================
 // SHOW NOTE EDITOR
@@ -1729,6 +2334,7 @@ function renderNotesTab(){
 }
 
 
+
 // ========================================
 // TAB SELECTION
 // ========================================
@@ -1909,6 +2515,15 @@ window.hideProjectNoteEditor =
 
 window.saveProjectNote =
   saveProjectNote;
+
+window.showProjectTaskEditor =
+  showProjectTaskEditor;
+
+window.hideProjectTaskEditor =
+  hideProjectTaskEditor;
+
+window.saveProjectTask =
+  saveProjectTask;
 
 
 // ========================================
