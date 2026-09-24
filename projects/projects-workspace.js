@@ -3463,23 +3463,101 @@ function selectProjectTab(
 // DISCUSSION
 // ========================================
 
+
+// ========================================
+// LOAD DISCUSSION THREADS
+// ========================================
+
+async function loadProjectDiscussion(){
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    return [];
+
+  }
+
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
+      {
+        method:'GET',
+
+        headers:{
+          'Authorization':
+            'Bearer ' + token
+        }
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to load discussion threads.'
+    );
+
+  }
+
+
+  return Array.isArray(
+    result.discussions
+  )
+    ? result.discussions
+    : [];
+
+}
+
+
+// ========================================
+// RENDER DISCUSSION
+// ========================================
+
 function renderDiscussion(){
 
   const canEdit =
     currentUserCanEditProject();
 
+
   return `
 
-    <div style="
-      max-width:900px;
-    ">
+    <div>
+
+      <!-- =================================
+           HEADER
+           ================================= -->
 
       <div style="
         display:flex;
-        align-items:flex-start;
+        align-items:center;
         justify-content:space-between;
-        gap:16px;
-        margin-bottom:16px;
+        margin-bottom:18px;
       ">
 
         <div>
@@ -3493,43 +3571,897 @@ function renderDiscussion(){
           </div>
 
           <div style="
-            margin-top:3px;
-            font-size:13px;
+            margin-top:4px;
             color:#64748B;
+            font-size:13px;
           ">
             Shared discussion for the project team.
           </div>
 
         </div>
 
+
+        ${
+          canEdit
+            ? `
+              <button
+                type="button"
+                onclick="
+                  window.showNewProjectDiscussion &&
+                  window.showNewProjectDiscussion();
+                "
+                style="
+                  border:none;
+                  border-radius:6px;
+                  background:#19304B;
+                  color:#FFFFFF;
+                  padding:9px 14px;
+                  font-size:13px;
+                  font-weight:600;
+                  cursor:pointer;
+                "
+              >
+                Start New Discussion
+              </button>
+            `
+            : ''
+        }
+
       </div>
 
+
+      <!-- =================================
+           NEW DISCUSSION FORM
+           ================================= -->
 
       ${
         canEdit
           ? `
+            <div
+              id="projectDiscussionEditor"
+              style="
+                display:none;
+                background:#FFFFFF;
+                border:1px solid #DBE3EC;
+                border-radius:8px;
+                padding:18px;
+                margin-bottom:16px;
+              "
+            >
 
+              <div style="
+                font-size:16px;
+                font-weight:600;
+                color:#19304B;
+                margin-bottom:14px;
+              ">
+                Start New Discussion
+              </div>
+
+
+              <div style="
+                margin-bottom:12px;
+              ">
+
+                <label style="
+                  display:block;
+                  font-size:12px;
+                  font-weight:600;
+                  color:#475569;
+                  margin-bottom:5px;
+                ">
+                  Discussion Title
+                </label>
+
+                <input
+                  type="text"
+                  id="projectDiscussionTitle"
+                  maxlength="200"
+                  placeholder="Enter a discussion title"
+                  style="
+                    width:100%;
+                    box-sizing:border-box;
+                    padding:9px 10px;
+                    border:1px solid #DBE3EC;
+                    border-radius:6px;
+                    font-size:14px;
+                  "
+                >
+
+              </div>
+
+
+              <div style="
+                margin-bottom:14px;
+              ">
+
+                <label style="
+                  display:block;
+                  font-size:12px;
+                  font-weight:600;
+                  color:#475569;
+                  margin-bottom:5px;
+                ">
+                  Message
+                </label>
+
+                <textarea
+                  id="projectDiscussionMessage"
+                  rows="5"
+                  placeholder="Enter the opening message..."
+                  style="
+                    width:100%;
+                    box-sizing:border-box;
+                    padding:10px;
+                    border:1px solid #DBE3EC;
+                    border-radius:6px;
+                    font-size:14px;
+                    resize:vertical;
+                  "
+                ></textarea>
+
+              </div>
+
+
+              <div style="
+                display:flex;
+                justify-content:flex-end;
+                gap:8px;
+              ">
+
+                <button
+                  type="button"
+                  onclick="
+                    window.hideNewProjectDiscussion &&
+                    window.hideNewProjectDiscussion();
+                  "
+                  style="
+                    border:1px solid #DBE3EC;
+                    border-radius:6px;
+                    background:#FFFFFF;
+                    color:#475569;
+                    padding:8px 14px;
+                    cursor:pointer;
+                  "
+                >
+                  Cancel
+                </button>
+
+
+                <button
+                  type="button"
+                  id="saveProjectDiscussionButton"
+                  onclick="
+                    window.saveNewProjectDiscussion &&
+                    window.saveNewProjectDiscussion();
+                  "
+                  style="
+                    border:none;
+                    border-radius:6px;
+                    background:#19304B;
+                    color:#FFFFFF;
+                    padding:8px 14px;
+                    font-weight:600;
+                    cursor:pointer;
+                  "
+                >
+                  Start Discussion
+                </button>
+
+              </div>
+
+            </div>
+          `
+          : ''
+      }
+
+
+      <!-- =================================
+           THREAD LIST
+           ================================= -->
+
+      <div>
+
+        ${
+          currentProjectDiscussion.length
+            ? currentProjectDiscussion
+                .map(
+                  discussion =>
+                    renderDiscussionThreadCard(
+                      discussion
+                    )
+                )
+                .join('')
+            : `
+              <div style="
+                background:#FFFFFF;
+                border:1px solid #DBE3EC;
+                border-radius:8px;
+                padding:24px;
+                text-align:center;
+                color:#64748B;
+              ">
+                No discussion threads yet.
+              </div>
+            `
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// DISCUSSION THREAD CARD
+// ========================================
+
+function renderDiscussionThreadCard(
+  discussion
+){
+
+  const title =
+    escapeProjectHtml(
+      discussion.title ||
+      'Untitled Discussion'
+    );
+
+
+  const creator =
+    discussion.creator?.full_name ||
+    discussion.creator?.username ||
+    discussion.creator?.email ||
+    'Project Member';
+
+
+  const replyCount =
+    Number(
+      discussion.reply_count || 0
+    );
+
+
+  const updated =
+    formatNoteDate(
+      discussion.updated_at ||
+      discussion.created_at
+    );
+
+
+  return `
+
+    <div
+      onclick="
+        window.openProjectDiscussion &&
+        window.openProjectDiscussion(
+          ${Number(discussion.id)}
+        );
+      "
+      style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:16px 18px;
+        margin-bottom:10px;
+        cursor:pointer;
+        transition:box-shadow .15s ease;
+      "
+    >
+
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        gap:16px;
+        align-items:flex-start;
+      ">
+
+        <div style="
+          min-width:0;
+        ">
+
+          <div style="
+            font-size:15px;
+            font-weight:600;
+            color:#19304B;
+            margin-bottom:5px;
+          ">
+            ${title}
+          </div>
+
+          <div style="
+            font-size:12px;
+            color:#64748B;
+          ">
+            Started by
+            ${escapeProjectHtml(creator)}
+          </div>
+
+        </div>
+
+
+        <div style="
+          flex-shrink:0;
+          font-size:12px;
+          color:#64748B;
+          text-align:right;
+        ">
+
+          <div>
+            ${
+              replyCount === 1
+                ? '1 post'
+                : `${replyCount} posts`
+            }
+          </div>
+
+          <div style="
+            margin-top:3px;
+          ">
+            ${escapeProjectHtml(updated)}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// SHOW NEW DISCUSSION
+// ========================================
+
+function showNewProjectDiscussion(){
+
+  const editor =
+    document.getElementById(
+      'projectDiscussionEditor'
+    );
+
+  const title =
+    document.getElementById(
+      'projectDiscussionTitle'
+    );
+
+  const message =
+    document.getElementById(
+      'projectDiscussionMessage'
+    );
+
+
+  if(editor){
+
+    editor.style.display =
+      'block';
+
+  }
+
+
+  if(title){
+
+    title.value =
+      '';
+
+    title.focus();
+
+  }
+
+
+  if(message){
+
+    message.value =
+      '';
+
+  }
+
+}
+
+
+// ========================================
+// HIDE NEW DISCUSSION
+// ========================================
+
+function hideNewProjectDiscussion(){
+
+  const editor =
+    document.getElementById(
+      'projectDiscussionEditor'
+    );
+
+
+  if(editor){
+
+    editor.style.display =
+      'none';
+
+  }
+
+}
+
+
+// ========================================
+// SAVE NEW DISCUSSION
+// ========================================
+
+async function saveNewProjectDiscussion(){
+
+  const titleInput =
+    document.getElementById(
+      'projectDiscussionTitle'
+    );
+
+  const messageInput =
+    document.getElementById(
+      'projectDiscussionMessage'
+    );
+
+  const button =
+    document.getElementById(
+      'saveProjectDiscussionButton'
+    );
+
+
+  const title =
+    String(
+      titleInput?.value || ''
+    ).trim();
+
+
+  const messageText =
+    String(
+      messageInput?.value || ''
+    ).trim();
+
+
+  if(!title){
+
+    alert(
+      'Please enter a discussion title.'
+    );
+
+    titleInput?.focus();
+
+    return;
+
+  }
+
+
+  if(!messageText){
+
+    alert(
+      'Please enter a discussion message.'
+    );
+
+    messageInput?.focus();
+
+    return;
+
+  }
+
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    alert(
+      'No project is currently open.'
+    );
+
+    return;
+
+  }
+
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    if(button){
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        'Starting...';
+
+    }
+
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              'Bearer ' + token
+          },
+
+          body:JSON.stringify({
+
+            title:
+              title,
+
+            message_text:
+              messageText
+
+          })
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        'Failed to start discussion.'
+      );
+
+    }
+
+
+    currentProjectDiscussion =
+      await loadProjectDiscussion();
+
+
+    renderDiscussionTab();
+
+
+  }catch(error){
+
+    console.error(
+      'Failed to create discussion:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to start discussion.'
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        'Start Discussion';
+
+    }
+
+  }
+
+}
+
+
+// ========================================
+// OPEN DISCUSSION THREAD
+// ========================================
+
+async function openProjectDiscussion(
+  discussionId
+){
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    return;
+
+  }
+
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  const content =
+    document.getElementById(
+      'projectWorkspaceContent'
+    );
+
+
+  if(!content){
+
+    return;
+
+  }
+
+
+  content.innerHTML = `
+
+    <div style="
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:8px;
+      padding:24px;
+      color:#64748B;
+      text-align:center;
+    ">
+      Loading discussion...
+    </div>
+
+  `;
+
+
+  try{
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions/${discussionId}`,
+        {
+          method:'GET',
+
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        'Failed to load discussion.'
+      );
+
+    }
+
+
+    renderProjectDiscussionThread(
+      result.discussion,
+      result.posts || []
+    );
+
+
+  }catch(error){
+
+    console.error(
+      'Failed to open discussion:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to open discussion.'
+    );
+
+
+    currentProjectDiscussion =
+      await loadProjectDiscussion();
+
+    renderDiscussionTab();
+
+  }
+
+}
+
+
+// ========================================
+// RENDER DISCUSSION THREAD
+// ========================================
+
+function renderProjectDiscussionThread(
+  discussion,
+  posts
+){
+
+  const canEdit =
+    currentUserCanEditProject();
+
+
+  const content =
+    document.getElementById(
+      'projectWorkspaceContent'
+    );
+
+
+  if(!content){
+
+    return;
+
+  }
+
+
+  const title =
+    escapeProjectHtml(
+      discussion?.title ||
+      'Discussion'
+    );
+
+
+  content.innerHTML = `
+
+    <div>
+
+      <!-- =================================
+           BACK
+           ================================= -->
+
+      <button
+        type="button"
+        onclick="
+          window.renderProjectDiscussionList &&
+          window.renderProjectDiscussionList();
+        "
+        style="
+          border:none;
+          background:transparent;
+          color:#19304B;
+          padding:0;
+          margin-bottom:16px;
+          cursor:pointer;
+          font-size:13px;
+          font-weight:600;
+        "
+      >
+        ← Back to Discussion
+      </button>
+
+
+      <!-- =================================
+           THREAD HEADER
+           ================================= -->
+
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:18px;
+        margin-bottom:12px;
+      ">
+
+        <div style="
+          font-size:18px;
+          font-weight:600;
+          color:#19304B;
+          margin-bottom:5px;
+        ">
+          ${title}
+        </div>
+
+        <div style="
+          font-size:12px;
+          color:#64748B;
+        ">
+          ${
+            escapeProjectHtml(
+              discussion?.creator?.full_name ||
+              discussion?.creator?.username ||
+              discussion?.creator?.email ||
+              'Project Member'
+            )
+          }
+        </div>
+
+      </div>
+
+
+      <!-- =================================
+           POSTS
+           ================================= -->
+
+      ${
+        posts.length
+          ? posts
+              .map(
+                post =>
+                  renderDiscussionPost(
+                    post
+                  )
+              )
+              .join('')
+          : `
             <div style="
               background:#FFFFFF;
               border:1px solid #DBE3EC;
               border-radius:8px;
-              padding:16px;
-              margin-bottom:16px;
+              padding:20px;
+              color:#64748B;
+            ">
+              No posts in this discussion.
+            </div>
+          `
+      }
+
+
+      <!-- =================================
+           REPLY
+           ================================= -->
+
+      ${
+        canEdit
+          ? `
+            <div style="
+              background:#FFFFFF;
+              border:1px solid #DBE3EC;
+              border-radius:8px;
+              padding:18px;
+              margin-top:12px;
             ">
 
+              <div style="
+                font-size:14px;
+                font-weight:600;
+                color:#19304B;
+                margin-bottom:8px;
+              ">
+                Reply
+              </div>
+
               <textarea
-                id="projectDiscussionText"
+                id="projectDiscussionReply"
                 rows="4"
-                placeholder="Start a discussion..."
+                placeholder="Add a reply..."
                 style="
                   width:100%;
                   box-sizing:border-box;
-                  resize:vertical;
-                  border:1px solid #CBD5E1;
-                  border-radius:6px;
                   padding:10px;
-                  font:inherit;
-                  color:#19304B;
+                  border:1px solid #DBE3EC;
+                  border-radius:6px;
+                  font-size:14px;
+                  resize:vertical;
                 "
               ></textarea>
 
@@ -3542,112 +4474,31 @@ function renderDiscussion(){
 
                 <button
                   type="button"
-                  id="saveProjectDiscussionButton"
+                  id="projectDiscussionReplyButton"
                   onclick="
-                    window.saveProjectDiscussion &&
-                    window.saveProjectDiscussion();
+                    window.saveProjectDiscussionReply &&
+                    window.saveProjectDiscussionReply(
+                      ${Number(discussion.id)}
+                    );
                   "
                   style="
                     border:none;
+                    border-radius:6px;
                     background:#19304B;
                     color:#FFFFFF;
-                    border-radius:6px;
                     padding:8px 14px;
+                    font-weight:600;
                     cursor:pointer;
                   "
                 >
-                  Post
+                  Post Reply
                 </button>
 
               </div>
 
             </div>
-
           `
           : ''
-      }
-
-
-      ${
-        currentProjectDiscussion.length
-          ? currentProjectDiscussion
-              .map(post => {
-
-                const author =
-                  post.author?.full_name ||
-                  post.author?.username ||
-                  post.author?.email ||
-                  'Project Member';
-
-                return `
-
-                  <div style="
-                    background:#FFFFFF;
-                    border:1px solid #DBE3EC;
-                    border-radius:8px;
-                    padding:16px;
-                    margin-bottom:10px;
-                  ">
-
-                    <div style="
-                      display:flex;
-                      justify-content:space-between;
-                      gap:12px;
-                      margin-bottom:8px;
-                    ">
-
-                      <div style="
-                        font-weight:600;
-                        color:#19304B;
-                      ">
-                        ${escapeProjectHtml(
-                          author
-                        )}
-                      </div>
-
-                      <div style="
-                        color:#64748B;
-                        font-size:12px;
-                        white-space:nowrap;
-                      ">
-                        ${formatNoteDate(
-                          post.created_at
-                        )}
-                      </div>
-
-                    </div>
-
-
-                    <div style="
-                      color:#475569;
-                      line-height:1.6;
-                      white-space:pre-wrap;
-                    ">
-                      ${escapeProjectHtml(
-                        post.message_text
-                      )}
-                    </div>
-
-                  </div>
-
-                `;
-
-              })
-              .join('')
-          : `
-
-              <div style="
-                background:#FFFFFF;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                padding:24px;
-                text-align:center;
-                color:#64748B;
-              ">
-                No discussion posts yet.
-              </div>
-
-            `
       }
 
     </div>
@@ -3658,64 +4509,119 @@ function renderDiscussion(){
 
 
 // ========================================
-// SAVE DISCUSSION POST
+// RENDER DISCUSSION POST
 // ========================================
 
-async function saveProjectDiscussion(){
+function renderDiscussionPost(
+  post
+){
 
-  if(!currentUserCanEditProject()){
+  const author =
+    post?.author?.full_name ||
+    post?.author?.username ||
+    post?.author?.email ||
+    'Project Member';
 
-    alert(
-      'You do not have permission to edit this project.'
-    );
 
-    return;
+  return `
 
-  }
+    <div style="
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:8px;
+      padding:16px 18px;
+      margin-bottom:10px;
+    ">
 
-  if(!currentProject){
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:8px;
+      ">
 
-    return;
+        <div style="
+          font-size:13px;
+          font-weight:600;
+          color:#19304B;
+        ">
+          ${escapeProjectHtml(author)}
+        </div>
 
-  }
+        <div style="
+          font-size:12px;
+          color:#64748B;
+        ">
+          ${escapeProjectHtml(
+            formatNoteDate(
+              post.created_at
+            )
+          )}
+        </div>
+
+      </div>
+
+
+      <div style="
+        color:#334155;
+        line-height:1.6;
+        white-space:pre-wrap;
+      ">
+        ${escapeProjectHtml(
+          post.message_text
+        )}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// SAVE DISCUSSION REPLY
+// ========================================
+
+async function saveProjectDiscussionReply(
+  discussionId
+){
 
   const textarea =
     document.getElementById(
-      'projectDiscussionText'
+      'projectDiscussionReply'
     );
 
   const button =
     document.getElementById(
-      'saveProjectDiscussionButton'
+      'projectDiscussionReplyButton'
     );
 
-  if(!textarea){
-
-    return;
-
-  }
 
   const messageText =
     String(
-      textarea.value || ''
+      textarea?.value || ''
     ).trim();
+
 
   if(!messageText){
 
     alert(
-      'Please enter a discussion message.'
+      'Please enter a reply.'
     );
 
-    textarea.focus();
+    textarea?.focus();
 
     return;
 
   }
+
 
   const token =
     localStorage.getItem(
       'token'
     );
+
 
   if(!token){
 
@@ -3726,6 +4632,7 @@ async function saveProjectDiscussion(){
     return;
 
   }
+
 
   try{
 
@@ -3739,9 +4646,10 @@ async function saveProjectDiscussion(){
 
     }
 
+
     const response =
       await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions/${discussionId}/posts`,
         {
           method:'POST',
 
@@ -3762,8 +4670,10 @@ async function saveProjectDiscussion(){
         }
       );
 
+
     const result =
       await response.json();
+
 
     if(
       !response.ok ||
@@ -3772,30 +4682,30 @@ async function saveProjectDiscussion(){
 
       throw new Error(
         result.message ||
-        'Failed to post discussion message.'
+        'Failed to add reply.'
       );
 
     }
 
-    currentProjectDiscussion =
-      [
-        result.discussion,
-        ...currentProjectDiscussion
-      ];
 
-    renderDiscussionTab();
+    await openProjectDiscussion(
+      discussionId
+    );
+
 
   }catch(error){
 
     console.error(
-      'Failed to save discussion:',
+      'Failed to save discussion reply:',
       error
     );
 
+
     alert(
       error.message ||
-      'Unable to post discussion message.'
+      'Unable to add reply.'
     );
+
 
   }finally{
 
@@ -3805,7 +4715,7 @@ async function saveProjectDiscussion(){
         false;
 
       button.textContent =
-        'Post';
+        'Post Reply';
 
     }
 
@@ -3825,14 +4735,78 @@ function renderDiscussionTab(){
       'projectWorkspaceContent'
     );
 
+
   if(!content){
 
     return;
 
   }
 
+
   content.innerHTML =
     renderDiscussion();
+
+}
+
+
+// ========================================
+// LOAD AND RENDER DISCUSSION
+// ========================================
+
+async function openDiscussionTab(){
+
+  try{
+
+    currentProjectDiscussion =
+      await loadProjectDiscussion();
+
+    renderDiscussionTab();
+
+  }catch(error){
+
+    console.error(
+      'Failed to load discussion:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to load discussion.'
+    );
+
+  }
+
+}
+
+
+// ========================================
+// RETURN TO DISCUSSION LIST
+// ========================================
+
+async function renderProjectDiscussionList(){
+
+  try{
+
+    currentProjectDiscussion =
+      await loadProjectDiscussion();
+
+    renderDiscussionTab();
+
+  }catch(error){
+
+    console.error(
+      'Failed to reload discussions:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to load discussion threads.'
+    );
+
+  }
 
 }
 
@@ -3948,6 +4922,24 @@ window.restoreProjectTask =
 
 window.deleteProjectTask =
   deleteProjectTask;
+
+window.showNewProjectDiscussion =
+  showNewProjectDiscussion;
+
+window.hideNewProjectDiscussion =
+  hideNewProjectDiscussion;
+
+window.saveNewProjectDiscussion =
+  saveNewProjectDiscussion;
+
+window.openProjectDiscussion =
+  openProjectDiscussion;
+
+window.saveProjectDiscussionReply =
+  saveProjectDiscussionReply;
+
+window.renderProjectDiscussionList =
+  renderProjectDiscussionList;
 
 
 // ----------------------------------------
