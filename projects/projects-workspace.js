@@ -52,6 +52,8 @@ let editingProjectTaskId = null;
 
 let showArchivedProjectTasks = false;
 
+let showArchivedProjectDocuments = false;
+
 
 
 // ========================================
