@@ -78,6 +78,11 @@ export async function openProjectWorkspace(
         projectId
       );
 
+   const tasks =
+  await loadProjectTasks(
+    projectId
+  );
+
 
     currentProject =
       project;
@@ -87,6 +92,9 @@ export async function openProjectWorkspace(
 
     currentProjectNotes =
       notes;
+
+   currentProjectTasks =
+  tasks;
 
 
     renderProjectWorkspace();
@@ -1246,6 +1254,277 @@ function renderNotesList(){
 
 }
 
+// ========================================
+// TASKS
+// ========================================
+
+function renderTasks(){
+
+  const canEdit =
+    currentProjectMembers.some(
+      member =>
+        member.permission ===
+        'edit'
+    );
+
+
+  return `
+
+    <div>
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:16px;
+      ">
+
+        <div>
+
+          <div style="
+            font-size:18px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Project Tasks
+          </div>
+
+          <div style="
+            margin-top:3px;
+            font-size:13px;
+            color:#64748B;
+          ">
+            Tasks shared with everyone on this project.
+          </div>
+
+        </div>
+
+
+        ${
+          canEdit
+            ? `
+              <button
+                type="button"
+                style="
+                  border:1px solid #19304B;
+                  background:#19304B;
+                  color:#FFFFFF;
+                  border-radius:6px;
+                  padding:8px 14px;
+                  cursor:pointer;
+                  font-weight:600;
+                  white-space:nowrap;
+                "
+              >
+                + Add Task
+              </button>
+            `
+            : ''
+        }
+
+      </div>
+
+
+      <div id="projectTasksList">
+
+        ${renderTasksList()}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// TASKS LIST
+// ========================================
+
+function renderTasksList(){
+
+  if(!currentProjectTasks.length){
+
+    return `
+
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:24px;
+        color:#64748B;
+        text-align:center;
+      ">
+        No project tasks have been added yet.
+      </div>
+
+    `;
+
+  }
+
+
+  return currentProjectTasks
+    .map(task => {
+
+      const assignedName =
+        task.assigned_user?.full_name ||
+        task.assigned_user?.username ||
+        task.assigned_user?.email ||
+        'Unassigned';
+
+
+      const status =
+        task.status ||
+        'open';
+
+
+      const priority =
+        task.priority ||
+        'normal';
+
+
+      return `
+
+        <div style="
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:12px;
+        ">
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-start;
+            gap:16px;
+          ">
+
+            <div style="
+              min-width:0;
+              flex:1;
+            ">
+
+              <div style="
+                font-size:15px;
+                font-weight:600;
+                color:#19304B;
+              ">
+                ${escapeProjectHtml(
+                  task.task_title
+                )}
+              </div>
+
+
+              ${
+                task.task_description
+                  ? `
+                    <div style="
+                      margin-top:6px;
+                      color:#475569;
+                      font-size:13px;
+                      line-height:1.5;
+                      white-space:pre-wrap;
+                    ">
+                      ${escapeProjectHtml(
+                        task.task_description
+                      )}
+                    </div>
+                  `
+                  : ''
+              }
+
+            </div>
+
+
+            <div style="
+              display:flex;
+              gap:6px;
+              flex-shrink:0;
+            ">
+
+              <span style="
+                padding:4px 8px;
+                border-radius:4px;
+                background:#F8FAFC;
+                border:1px solid #DBE3EC;
+                color:#475569;
+                font-size:12px;
+                text-transform:capitalize;
+              ">
+                ${escapeProjectHtml(
+                  status.replace(
+                    '_',
+                    ' '
+                  )
+                )}
+              </span>
+
+
+              <span style="
+                padding:4px 8px;
+                border-radius:4px;
+                background:#F8FAFC;
+                border:1px solid #DBE3EC;
+                color:#475569;
+                font-size:12px;
+                text-transform:capitalize;
+              ">
+                ${escapeProjectHtml(
+                  priority
+                )}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div style="
+            display:flex;
+            flex-wrap:wrap;
+            gap:18px;
+            margin-top:14px;
+            padding-top:10px;
+            border-top:1px solid #EEF2F6;
+            color:#64748B;
+            font-size:12px;
+          ">
+
+            <span>
+              Assigned to:
+              ${escapeProjectHtml(
+                assignedName
+              )}
+            </span>
+
+
+            ${
+              task.due_date
+                ? `
+                  <span>
+                    Due:
+                    ${escapeProjectHtml(
+                      task.due_date
+                    )}
+                  </span>
+                `
+                : ''
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+    .join('');
+
+}
+
 
 // ========================================
 // SHOW NOTE EDITOR
@@ -1532,6 +1811,16 @@ function selectProjectTab(
 
     content.innerHTML =
       renderNotes();
+
+    return;
+
+  }
+
+
+  if(tab === 'tasks'){
+
+    content.innerHTML =
+      renderTasks();
 
     return;
 
