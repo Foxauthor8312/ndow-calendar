@@ -438,7 +438,7 @@ async function loadProjectDiscussion(
 
   const response =
     await fetch(
-      `${PROJECTS_API_BASE}/api/projects/${projectId}/discussion`,
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/discussions`,
       {
         method:'GET',
 
@@ -468,9 +468,9 @@ async function loadProjectDiscussion(
 
 
   return Array.isArray(
-    result.discussion
+    result.discussions
   )
-    ? result.discussion
+    ? result.discussions
     : [];
 
 }
@@ -568,7 +568,7 @@ async function createProjectDiscussion(
 
   const response =
     await fetch(
-      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussion`,
+      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
       {
         method:'POST',
 
