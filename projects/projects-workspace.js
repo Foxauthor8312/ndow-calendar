@@ -16,8 +16,6 @@
     • Display project members
     • Display shared project notes
     • Create shared project notes
-    • Display project tasks
-    • Display project discussion
     • Provide workspace navigation
 
 ==============================================================================
@@ -48,6 +46,8 @@ let currentProjectTasks = [];
 
 let currentProjectDiscussion = [];
 
+let currentProjectDocuments = [];
+
 let editingProjectTaskId = null;
 
 let showArchivedProjectTasks = false;
@@ -66,6 +66,7 @@ export async function openProjectWorkspace(
     projectId
   );
 
+
   try{
 
     const project =
@@ -73,14 +74,12 @@ export async function openProjectWorkspace(
         projectId
       );
 
-   
-    currentProject =
-      project;
 
     const members =
       await loadProjectMembers(
         projectId
       );
+
 
     const notes =
       await loadProjectNotes(
@@ -97,6 +96,14 @@ export async function openProjectWorkspace(
         projectId
       );
 
+    const documents =
+      await loadProjectDocuments(
+        projectId
+      );
+
+
+    currentProject =
+      project;
 
     currentProjectMembers =
       members;
@@ -110,13 +117,12 @@ export async function openProjectWorkspace(
     currentProjectDiscussion =
       discussion;
 
-    editingProjectTaskId =
-      null;
+    currentProjectDocuments =
+      documents;
 
-    showArchivedProjectTasks =
-      false;
 
     renderProjectWorkspace();
+
 
   }catch(error){
 
@@ -124,6 +130,7 @@ export async function openProjectWorkspace(
       'Failed to open project workspace:',
       error
     );
+
 
     alert(
       error.message ||
@@ -148,6 +155,7 @@ async function loadProject(
       'token'
     );
 
+
   if(!token){
 
     throw new Error(
@@ -155,6 +163,7 @@ async function loadProject(
     );
 
   }
+
 
   const response =
     await fetch(
@@ -169,8 +178,10 @@ async function loadProject(
       }
     );
 
+
   const result =
     await response.json();
+
 
   if(
     !response.ok ||
@@ -184,6 +195,7 @@ async function loadProject(
 
   }
 
+
   const project =
     (result.projects || [])
       .find(
@@ -192,6 +204,7 @@ async function loadProject(
           Number(projectId)
       );
 
+
   if(!project){
 
     throw new Error(
@@ -199,6 +212,7 @@ async function loadProject(
     );
 
   }
+
 
   return project;
 
@@ -218,6 +232,7 @@ async function loadProjectMembers(
       'token'
     );
 
+
   if(!token){
 
     throw new Error(
@@ -225,6 +240,7 @@ async function loadProjectMembers(
     );
 
   }
+
 
   const response =
     await fetch(
@@ -239,8 +255,10 @@ async function loadProjectMembers(
       }
     );
 
+
   const result =
     await response.json();
+
 
   if(
     !response.ok ||
@@ -253,6 +271,7 @@ async function loadProjectMembers(
     );
 
   }
+
 
   return Array.isArray(
     result.members
@@ -276,6 +295,7 @@ async function loadProjectNotes(
       'token'
     );
 
+
   if(!token){
 
     throw new Error(
@@ -283,6 +303,7 @@ async function loadProjectNotes(
     );
 
   }
+
 
   const response =
     await fetch(
@@ -297,8 +318,10 @@ async function loadProjectNotes(
       }
     );
 
+
   const result =
     await response.json();
+
 
   if(
     !response.ok ||
@@ -312,6 +335,7 @@ async function loadProjectNotes(
 
   }
 
+
   return Array.isArray(
     result.notes
   )
@@ -319,7 +343,6 @@ async function loadProjectNotes(
     : [];
 
 }
-
 
 // ========================================
 // LOAD PROJECT TASKS
@@ -335,6 +358,7 @@ async function loadProjectTasks(
       'token'
     );
 
+
   if(!token){
 
     throw new Error(
@@ -343,10 +367,12 @@ async function loadProjectTasks(
 
   }
 
+
   const query =
     showArchived
       ? '?archived=true'
       : '';
+
 
   const response =
     await fetch(
@@ -354,6 +380,128 @@ async function loadProjectTasks(
       {
         method:'GET',
 
+        headers:{
+          'Authorization':
+            'Bearer ' + token
+        }
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to load project tasks.'
+    );
+
+  }
+
+
+  return Array.isArray(
+    result.tasks
+  )
+    ? result.tasks
+    : [];
+
+}
+
+// ========================================
+// LOAD PROJECT DISCUSSION
+// ========================================
+
+async function loadProjectDiscussion(
+  projectId
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/discussion`,
+      {
+        method:'GET',
+
+        headers:{
+          'Authorization':
+            'Bearer ' + token
+        }
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to load project discussion.'
+    );
+
+  }
+
+
+  return Array.isArray(
+    result.discussion
+  )
+    ? result.discussion
+    : [];
+
+}
+
+
+// ========================================
+// LOAD PROJECT DOCUMENTS
+// ========================================
+
+async function loadProjectDocuments(
+  projectId
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/documents`,
+      {
+        method:'GET',
         headers:{
           'Authorization':
             'Bearer ' + token
@@ -371,16 +519,93 @@ async function loadProjectTasks(
 
     throw new Error(
       result.message ||
-      'Failed to load project tasks.'
+      'Failed to load project documents.'
     );
 
   }
 
-  return Array.isArray(
-    result.tasks
-  )
-    ? result.tasks
+  return Array.isArray(result.documents)
+    ? result.documents
     : [];
+
+}
+
+
+// ========================================
+// CREATE DISCUSSION POST
+// ========================================
+
+async function createProjectDiscussion(
+  messageText
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    throw new Error(
+      'No project is currently open.'
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussion`,
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+            'application/json',
+
+          'Authorization':
+            'Bearer ' + token
+        },
+
+        body:JSON.stringify({
+          message_text:
+            messageText
+        })
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to save discussion post.'
+    );
+
+  }
+
+
+  return result.discussion;
 
 }
 
@@ -398,6 +623,7 @@ async function createProjectNote(
       'token'
     );
 
+
   if(!token){
 
     throw new Error(
@@ -405,6 +631,7 @@ async function createProjectNote(
     );
 
   }
+
 
   if(
     !currentProject ||
@@ -416,6 +643,7 @@ async function createProjectNote(
     );
 
   }
+
 
   const response =
     await fetch(
@@ -440,8 +668,10 @@ async function createProjectNote(
       }
     );
 
+
   const result =
     await response.json();
+
 
   if(
     !response.ok ||
@@ -455,22 +685,8 @@ async function createProjectNote(
 
   }
 
+
   return result.note;
-
-}
-
-
-// ========================================
-// CURRENT USER PROJECT PERMISSION
-// ========================================
-
-function currentUserCanEditProject(){
-
-  return Boolean(
-    currentProject &&
-    currentProject.permission ===
-      'edit'
-  );
 
 }
 
@@ -486,19 +702,23 @@ function renderProjectWorkspace(){
       'projectDetailWorkspace'
     );
 
+
   if(existing){
 
     existing.remove();
 
   }
 
+
   const workspace =
     document.createElement(
       'div'
     );
 
+
   workspace.id =
     'projectDetailWorkspace';
+
 
   workspace.style.cssText = `
     position:fixed;
@@ -507,6 +727,7 @@ function renderProjectWorkspace(){
     background:#F8FAFC;
     overflow:auto;
   `;
+
 
   workspace.innerHTML = `
 
@@ -604,7 +825,6 @@ function renderProjectWorkspace(){
         gap:4px;
         border-bottom:1px solid #DBE3EC;
         margin-bottom:20px;
-        overflow-x:auto;
       ">
 
         <button
@@ -622,7 +842,6 @@ function renderProjectWorkspace(){
             font-weight:600;
             padding:10px 14px;
             cursor:pointer;
-            white-space:nowrap;
           "
         >
           Overview
@@ -644,7 +863,6 @@ function renderProjectWorkspace(){
             font-weight:500;
             padding:10px 14px;
             cursor:pointer;
-            white-space:nowrap;
           "
         >
           Notes
@@ -666,7 +884,6 @@ function renderProjectWorkspace(){
             font-weight:500;
             padding:10px 14px;
             cursor:pointer;
-            white-space:nowrap;
           "
         >
           Tasks
@@ -688,10 +905,30 @@ function renderProjectWorkspace(){
             font-weight:500;
             padding:10px 14px;
             cursor:pointer;
-            white-space:nowrap;
           "
         >
           Discussion
+        </button>
+
+
+        <button
+          type="button"
+          id="projectTabDocuments"
+          onclick="
+            window.selectProjectTab &&
+            window.selectProjectTab('documents');
+          "
+          style="
+            border:none;
+            border-bottom:2px solid transparent;
+            background:transparent;
+            color:#64748B;
+            font-weight:500;
+            padding:10px 14px;
+            cursor:pointer;
+          "
+        >
+          Documents
         </button>
 
       </div>
@@ -710,6 +947,7 @@ function renderProjectWorkspace(){
     </div>
 
   `;
+
 
   document.body.appendChild(
     workspace
@@ -909,6 +1147,7 @@ function renderMembers(
 
   }
 
+
   return members
     .map(member => {
 
@@ -917,6 +1156,7 @@ function renderMembers(
         member.username ||
         member.email ||
         'Unknown User';
+
 
       return `
 
@@ -990,21 +1230,21 @@ function renderMembers(
 function renderNotes(){
 
   const canEdit =
-    currentUserCanEditProject();
+    !!currentProject &&
+    currentProject.permission ===
+      'edit';
+
 
   return `
 
-    <div style="
-      max-width:900px;
-    ">
-
+    <div>
 
       <div style="
         display:flex;
         align-items:center;
         justify-content:space-between;
         gap:12px;
-        margin-bottom:14px;
+        margin-bottom:16px;
       ">
 
         <div>
@@ -1038,12 +1278,13 @@ function renderNotes(){
                   window.showProjectNoteEditor();
                 "
                 style="
-                  border:none;
+                  border:1px solid #19304B;
                   background:#19304B;
                   color:#FFFFFF;
                   border-radius:6px;
                   padding:8px 14px;
                   cursor:pointer;
+                  font-weight:600;
                   white-space:nowrap;
                 "
               >
@@ -1056,82 +1297,2713 @@ function renderNotes(){
       </div>
 
 
-      ${
-        canEdit
-          ? `
-            <div
-              id="projectNoteEditor"
-              style="
-                display:none;
-                background:#FFFFFF;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                padding:16px;
-                margin-bottom:16px;
-              "
-            >
+      <div
+        id="projectNoteEditor"
+        style="
+          display:none;
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:16px;
+        "
+      >
 
-              <textarea
-                id="projectNoteText"
-                rows="5"
-                placeholder="Enter a shared project note..."
-                style="
-                  width:100%;
-                  box-sizing:border-box;
-                  resize:vertical;
-                  border:1px solid #CBD5E1;
-                  border-radius:6px;
-                  padding:10px;
-                  font:inherit;
-                  color:#19304B;
-                  outline:none;
-                "
-              ></textarea>
+        <div style="
+          font-size:15px;
+          font-weight:600;
+          color:#19304B;
+          margin-bottom:10px;
+        ">
+          Add a Note
+        </div>
 
 
-              <div style="
-                display:flex;
-                justify-content:flex-end;
-                gap:8px;
-                margin-top:10px;
-              ">
+        <textarea
+          id="projectNoteText"
+          rows="5"
+          maxlength="5000"
+          placeholder="Enter a note for the project..."
+          style="
+            width:100%;
+            box-sizing:border-box;
+            resize:vertical;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            padding:10px;
+            font-family:inherit;
+            font-size:14px;
+            color:#19304B;
+            outline:none;
+          "
+        ></textarea>
 
+
+        <div style="
+          display:flex;
+          justify-content:flex-end;
+          gap:8px;
+          margin-top:10px;
+        ">
+
+          <button
+            type="button"
+            onclick="
+              window.hideProjectNoteEditor &&
+              window.hideProjectNoteEditor();
+            "
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="button"
+            id="saveProjectNoteButton"
+            onclick="
+              window.saveProjectNote &&
+              window.saveProjectNote();
+            "
+            style="
+              border:1px solid #19304B;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            Save Note
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="projectNotesList">
+
+        ${renderNotesList()}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// NOTES LIST
+// ========================================
+
+function renderNotesList(){
+
+  if(!currentProjectNotes.length){
+
+    return `
+
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:24px;
+        color:#64748B;
+        text-align:center;
+      ">
+        No shared notes have been added yet.
+      </div>
+
+    `;
+
+  }
+
+
+  return currentProjectNotes
+    .map(note => {
+
+      const author =
+        note.author?.full_name ||
+        note.author?.username ||
+        note.author?.email ||
+        'Unknown User';
+
+
+      const date =
+        formatNoteDate(
+          note.created_at
+        );
+
+
+      return `
+
+        <div style="
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:12px;
+        ">
+
+          <div style="
+            color:#334155;
+            font-size:14px;
+            line-height:1.6;
+            white-space:pre-wrap;
+          ">
+            ${escapeProjectHtml(
+              note.note_text
+            )}
+          </div>
+
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:12px;
+            margin-top:14px;
+            padding-top:10px;
+            border-top:1px solid #EEF2F6;
+            color:#64748B;
+            font-size:12px;
+          ">
+
+            <span>
+              ${escapeProjectHtml(
+                author
+              )}
+            </span>
+
+            <span>
+              ${escapeProjectHtml(
+                date
+              )}
+            </span>
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+    .join('');
+
+}
+
+// ========================================
+// TASKS
+// ========================================
+
+function renderTasks(){
+
+  const canEdit =
+    !!currentProject &&
+    currentProject.permission ===
+      'edit';
+
+  return `
+
+    <div>
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:16px;
+      ">
+
+        <div>
+
+          <div style="
+            font-size:18px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Project Tasks
+          </div>
+
+          <div style="
+            margin-top:3px;
+            font-size:13px;
+            color:#64748B;
+          ">
+            Tasks shared with everyone on this project.
+          </div>
+
+        </div>
+
+        <div style="
+          display:flex;
+          align-items:center;
+          gap:8px;
+        ">
+
+          <button
+            type="button"
+            onclick="
+              window.toggleArchivedProjectTasks &&
+              window.toggleArchivedProjectTasks();
+            "
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 12px;
+              cursor:pointer;
+              font-weight:600;
+              white-space:nowrap;
+            "
+          >
+            ${
+              showArchivedProjectTasks
+                ? 'Hide Archived'
+                : 'Show Archived'
+            }
+          </button>
+
+          ${
+            canEdit
+              ? `
                 <button
                   type="button"
                   onclick="
-                    window.hideProjectNoteEditor &&
-                    window.hideProjectNoteEditor();
+                    window.showProjectTaskEditor &&
+                    window.showProjectTaskEditor();
                   "
                   style="
-                    border:1px solid #DBE3EC;
-                    background:#FFFFFF;
-                    color:#475569;
-                    border-radius:6px;
-                    padding:8px 14px;
-                    cursor:pointer;
-                  "
-                >
-                  Cancel
-                </button>
-
-
-                <button
-                  type="button"
-                  id="saveProjectNoteButton"
-                  onclick="
-                    window.saveProjectNote &&
-                    window.saveProjectNote();
-                  "
-                  style="
-                    border:none;
+                    border:1px solid #19304B;
                     background:#19304B;
                     color:#FFFFFF;
                     border-radius:6px;
                     padding:8px 14px;
                     cursor:pointer;
+                    font-weight:600;
+                    white-space:nowrap;
                   "
                 >
-                  Save Note
+                  + Add Task
+                </button>
+              `
+              : ''
+          }
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="projectTaskEditor"
+        style="
+          display:none;
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:16px;
+        "
+      >
+
+        <div
+          id="projectTaskEditorTitle"
+          style="
+            font-size:15px;
+            font-weight:600;
+            color:#19304B;
+            margin-bottom:12px;
+          "
+        >
+          Add Task
+        </div>
+
+
+        <div style="
+          display:grid;
+          grid-template-columns:
+            minmax(0, 2fr)
+            minmax(180px, 1fr);
+          gap:12px;
+        ">
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Task Title
+            </label>
+
+            <input
+              id="projectTaskTitle"
+              type="text"
+              maxlength="200"
+              placeholder="Enter task title..."
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+              "
+            >
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Assigned To
+            </label>
+
+            <select
+              id="projectTaskAssignedTo"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+                background:#FFFFFF;
+              "
+            >
+
+              <option value="">
+                Unassigned
+              </option>
+
+              ${currentProjectMembers
+                .map(member => {
+
+                  const name =
+                    member.full_name ||
+                    member.username ||
+                    member.email ||
+                    'Unknown User';
+
+                  return `
+                    <option value="${member.id}">
+                      ${escapeProjectHtml(name)}
+                    </option>
+                  `;
+
+                })
+                .join('')}
+
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Status
+            </label>
+
+            <select
+              id="projectTaskStatus"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+                background:#FFFFFF;
+              "
+            >
+              <option value="open">
+                Open
+              </option>
+
+              <option value="in_progress">
+                In Progress
+              </option>
+
+              <option value="completed">
+                Completed
+              </option>
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Priority
+            </label>
+
+            <select
+              id="projectTaskPriority"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+                background:#FFFFFF;
+              "
+            >
+              <option value="low">
+                Low
+              </option>
+
+              <option value="normal" selected>
+                Normal
+              </option>
+
+              <option value="high">
+                High
+              </option>
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Due Date
+            </label>
+
+            <input
+              id="projectTaskDueDate"
+              type="date"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:9px 10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+              "
+            >
+
+          </div>
+
+
+          <div style="
+            grid-column:1 / -1;
+          ">
+
+            <label style="
+              display:block;
+              font-size:12px;
+              color:#64748B;
+              margin-bottom:5px;
+            ">
+              Description
+            </label>
+
+            <textarea
+              id="projectTaskDescription"
+              rows="4"
+              maxlength="5000"
+              placeholder="Describe the task..."
+              style="
+                width:100%;
+                box-sizing:border-box;
+                resize:vertical;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+                padding:10px;
+                font-family:inherit;
+                font-size:14px;
+                color:#19304B;
+              "
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <div style="
+          display:flex;
+          justify-content:flex-end;
+          gap:8px;
+          margin-top:12px;
+        ">
+
+          <button
+            type="button"
+            id="archiveProjectTaskButton"
+            onclick="
+              window.archiveProjectTask &&
+              window.archiveProjectTask();
+            "
+            style="
+              display:none;
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Archive Task
+          </button>
+
+
+          <button
+            type="button"
+            id="restoreProjectTaskButton"
+            onclick="
+              window.restoreProjectTask &&
+              window.restoreProjectTask();
+            "
+            style="
+              display:none;
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Restore Task
+          </button>
+
+
+          <button
+            type="button"
+            id="deleteProjectTaskButton"
+            onclick="
+              window.deleteProjectTask &&
+              window.deleteProjectTask();
+            "
+            style="
+              display:none;
+              border:1px solid #DC2626;
+              background:#FFFFFF;
+              color:#DC2626;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Delete Task
+          </button>
+
+
+          <button
+            type="button"
+            onclick="
+              window.hideProjectTaskEditor &&
+              window.hideProjectTaskEditor();
+            "
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="button"
+            id="saveProjectTaskButton"
+            onclick="
+              window.saveProjectTask &&
+              window.saveProjectTask();
+            "
+            style="
+              border:1px solid #19304B;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            Save Task
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="projectTasksList">
+
+        ${renderTasksList()}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// TASKS LIST
+// ========================================
+
+function renderTasksList(){
+
+  if(!currentProjectTasks.length){
+
+    return `
+
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:24px;
+        color:#64748B;
+        text-align:center;
+      ">
+        ${
+          showArchivedProjectTasks
+            ? 'No tasks are currently archived.'
+            : 'No active project tasks have been added yet.'
+        }
+      </div>
+
+    `;
+
+  }
+
+
+  const canEdit =
+    !!currentProject &&
+    currentProject.permission ===
+      'edit';
+
+
+  return currentProjectTasks
+    .map(task => {
+
+      const assignedName =
+        task.assigned_user?.full_name ||
+        task.assigned_user?.username ||
+        task.assigned_user?.email ||
+        'Unassigned';
+
+
+      const status =
+        task.status ||
+        'open';
+
+
+      const priority =
+        task.priority ||
+        'normal';
+
+
+      const archived =
+        task.archived === true;
+
+
+      return `
+
+        <div
+          ${
+            canEdit
+              ? `
+                onclick="
+                  window.openProjectTaskEditor &&
+                  window.openProjectTaskEditor(${task.id});
+                "
+              `
+              : ''
+          }
+          style="
+            background:#FFFFFF;
+            border:1px solid ${
+              archived
+                ? '#CBD5E1'
+                : '#DBE3EC'
+            };
+            border-radius:8px;
+            padding:18px;
+            margin-bottom:12px;
+            ${
+              canEdit
+                ? 'cursor:pointer;'
+                : ''
+            }
+            ${
+              archived
+                ? 'opacity:0.72;'
+                : ''
+            }
+          "
+        >
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-start;
+            gap:16px;
+          ">
+
+            <div style="
+              min-width:0;
+              flex:1;
+            ">
+
+              <div style="
+                display:flex;
+                align-items:center;
+                gap:8px;
+                flex-wrap:wrap;
+              ">
+
+                <div style="
+                  font-size:15px;
+                  font-weight:600;
+                  color:#19304B;
+                ">
+                  ${escapeProjectHtml(
+                    task.task_title
+                  )}
+                </div>
+
+                ${
+                  archived
+                    ? `
+                      <span style="
+                        padding:3px 7px;
+                        border-radius:4px;
+                        background:#F1F5F9;
+                        border:1px solid #CBD5E1;
+                        color:#64748B;
+                        font-size:11px;
+                        font-weight:600;
+                      ">
+                        Archived
+                      </span>
+                    `
+                    : ''
+                }
+
+              </div>
+
+
+              ${
+                task.task_description
+                  ? `
+                    <div style="
+                      margin-top:6px;
+                      color:#475569;
+                      font-size:13px;
+                      line-height:1.5;
+                      white-space:pre-wrap;
+                    ">
+                      ${escapeProjectHtml(
+                        task.task_description
+                      )}
+                    </div>
+                  `
+                  : ''
+              }
+
+            </div>
+
+
+            <div style="
+              display:flex;
+              gap:6px;
+              flex-shrink:0;
+              flex-wrap:wrap;
+              justify-content:flex-end;
+            ">
+
+              <span style="
+                padding:4px 8px;
+                border-radius:4px;
+                background:#F8FAFC;
+                border:1px solid #DBE3EC;
+                color:#475569;
+                font-size:12px;
+                text-transform:capitalize;
+              ">
+                ${escapeProjectHtml(
+                  status.replace(
+                    '_',
+                    ' '
+                  )
+                )}
+              </span>
+
+
+              <span style="
+                padding:4px 8px;
+                border-radius:4px;
+                background:#F8FAFC;
+                border:1px solid #DBE3EC;
+                color:#475569;
+                font-size:12px;
+                text-transform:capitalize;
+              ">
+                ${escapeProjectHtml(
+                  priority
+                )}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div style="
+            display:flex;
+            flex-wrap:wrap;
+            gap:18px;
+            margin-top:14px;
+            padding-top:10px;
+            border-top:1px solid #EEF2F6;
+            color:#64748B;
+            font-size:12px;
+          ">
+
+            <span>
+              Assigned to:
+              ${escapeProjectHtml(
+                assignedName
+              )}
+            </span>
+
+
+            ${
+              task.due_date
+                ? `
+                  <span>
+                    Due:
+                    ${escapeProjectHtml(
+                      task.due_date
+                    )}
+                  </span>
+                `
+                : ''
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+    .join('');
+
+}
+
+
+// ========================================
+// OPEN TASK EDITOR
+// ========================================
+
+function openProjectTaskEditor(
+  taskId
+){
+
+  const canEdit =
+    !!currentProject &&
+    currentProject.permission ===
+      'edit';
+
+  if(!canEdit){
+
+    return;
+
+  }
+
+
+  const task =
+    currentProjectTasks.find(
+      item =>
+        Number(item.id) ===
+        Number(taskId)
+    );
+
+
+  if(!task){
+
+    alert(
+      'Task could not be found.'
+    );
+
+    return;
+
+  }
+
+
+  editingProjectTaskId =
+    Number(task.id);
+
+
+  const saveButton =
+    document.getElementById(
+      'saveProjectTaskButton'
+    );
+
+
+  const archiveButton =
+    document.getElementById(
+      'archiveProjectTaskButton'
+    );
+
+
+  const restoreButton =
+    document.getElementById(
+      'restoreProjectTaskButton'
+    );
+
+
+  const deleteButton =
+    document.getElementById(
+      'deleteProjectTaskButton'
+    );
+
+
+  const editor =
+    document.getElementById(
+      'projectTaskEditor'
+    );
+
+
+  const editorTitle =
+    document.getElementById(
+      'projectTaskEditorTitle'
+    );
+
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+
+  const status =
+    document.getElementById(
+      'projectTaskStatus'
+    );
+
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+
+  if(!editor){
+
+    return;
+
+  }
+
+
+  if(editorTitle){
+
+    editorTitle.textContent =
+      task.archived === true
+        ? 'Archived Task'
+        : 'Edit Task';
+
+  }
+
+
+  if(title){
+
+    title.value =
+      task.task_title || '';
+
+  }
+
+
+  if(description){
+
+    description.value =
+      task.task_description || '';
+
+  }
+
+
+  if(assignedTo){
+
+    assignedTo.value =
+      task.assigned_to
+        ? String(task.assigned_to)
+        : '';
+
+  }
+
+
+  if(status){
+
+    status.value =
+      task.status ||
+      'open';
+
+  }
+
+
+  if(priority){
+
+    priority.value =
+      task.priority ||
+      'normal';
+
+  }
+
+
+  if(dueDate){
+
+    dueDate.value =
+      task.due_date || '';
+
+  }
+
+
+  if(archiveButton){
+
+    archiveButton.style.display =
+      task.archived === true
+        ? 'none'
+        : 'inline-block';
+
+  }
+
+
+  if(restoreButton){
+
+    restoreButton.style.display =
+      task.archived === true
+        ? 'inline-block'
+        : 'none';
+
+  }
+
+
+  if(deleteButton){
+
+    deleteButton.style.display =
+      'inline-block';
+
+  }
+
+
+  if(saveButton){
+
+    saveButton.textContent =
+      task.archived === true
+        ? 'Save Changes'
+        : 'Save Changes';
+
+  }
+
+
+  editor.style.display =
+    'block';
+
+
+  if(title){
+
+    title.focus();
+
+  }
+
+}
+
+
+// ========================================
+// SHOW TASK EDITOR
+// ========================================
+
+function showProjectTaskEditor(){
+
+  const canEdit =
+    !!currentProject &&
+    currentProject.permission ===
+      'edit';
+
+  if(!canEdit){
+
+    return;
+
+  }
+
+
+  editingProjectTaskId =
+    null;
+
+
+  const editor =
+    document.getElementById(
+      'projectTaskEditor'
+    );
+
+
+  const editorTitle =
+    document.getElementById(
+      'projectTaskEditorTitle'
+    );
+
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+
+  const status =
+    document.getElementById(
+      'projectTaskStatus'
+    );
+
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+
+  const saveButton =
+    document.getElementById(
+      'saveProjectTaskButton'
+    );
+
+
+  const archiveButton =
+    document.getElementById(
+      'archiveProjectTaskButton'
+    );
+
+
+  const restoreButton =
+    document.getElementById(
+      'restoreProjectTaskButton'
+    );
+
+
+  const deleteButton =
+    document.getElementById(
+      'deleteProjectTaskButton'
+    );
+
+
+  if(!editor){
+
+    return;
+
+  }
+
+
+  if(editorTitle){
+
+    editorTitle.textContent =
+      'Add Task';
+
+  }
+
+
+  if(title){
+
+    title.value =
+      '';
+
+  }
+
+
+  if(description){
+
+    description.value =
+      '';
+
+  }
+
+
+  if(assignedTo){
+
+    assignedTo.value =
+      '';
+
+  }
+
+
+  if(status){
+
+    status.value =
+      'open';
+
+  }
+
+
+  if(priority){
+
+    priority.value =
+      'normal';
+
+  }
+
+
+  if(dueDate){
+
+    dueDate.value =
+      '';
+
+  }
+
+
+  if(saveButton){
+
+    saveButton.textContent =
+      'Save Task';
+
+  }
+
+
+  if(archiveButton){
+
+    archiveButton.style.display =
+      'none';
+
+  }
+
+
+  if(restoreButton){
+
+    restoreButton.style.display =
+      'none';
+
+  }
+
+
+  if(deleteButton){
+
+    deleteButton.style.display =
+      'none';
+
+  }
+
+
+  editor.style.display =
+    'block';
+
+
+  if(title){
+
+    title.focus();
+
+  }
+
+}
+
+
+// ========================================
+// HIDE TASK EDITOR
+// ========================================
+
+function hideProjectTaskEditor(){
+
+  editingProjectTaskId =
+    null;
+
+
+  const editor =
+    document.getElementById(
+      'projectTaskEditor'
+    );
+
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+
+  const status =
+    document.getElementById(
+      'projectTaskStatus'
+    );
+
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+
+  const archiveButton =
+    document.getElementById(
+      'archiveProjectTaskButton'
+    );
+
+
+  const restoreButton =
+    document.getElementById(
+      'restoreProjectTaskButton'
+    );
+
+
+  const deleteButton =
+    document.getElementById(
+      'deleteProjectTaskButton'
+    );
+
+
+  if(editor){
+
+    editor.style.display =
+      'none';
+
+  }
+
+
+  if(title){
+
+    title.value =
+      '';
+
+  }
+
+
+  if(description){
+
+    description.value =
+      '';
+
+  }
+
+
+  if(assignedTo){
+
+    assignedTo.value =
+      '';
+
+  }
+
+
+  if(status){
+
+    status.value =
+      'open';
+
+  }
+
+
+  if(priority){
+
+    priority.value =
+      'normal';
+
+  }
+
+
+  if(dueDate){
+
+    dueDate.value =
+      '';
+
+  }
+
+
+  if(archiveButton){
+
+    archiveButton.style.display =
+      'none';
+
+  }
+
+
+  if(restoreButton){
+
+    restoreButton.style.display =
+      'none';
+
+  }
+
+
+  if(deleteButton){
+
+    deleteButton.style.display =
+      'none';
+
+  }
+
+}
+
+
+// ========================================
+// TOGGLE ARCHIVED TASKS
+// ========================================
+
+async function toggleArchivedProjectTasks(){
+
+  const nextValue =
+    !showArchivedProjectTasks;
+
+  try{
+
+    currentProjectTasks =
+      await loadProjectTasks(
+        currentProject.id,
+        nextValue
+      );
+
+    showArchivedProjectTasks =
+      nextValue;
+
+    renderTasksTab();
+
+  }catch(error){
+
+    console.error(
+      'Failed to toggle archived tasks:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to load archived tasks.'
+    );
+
+  }
+
+}
+
+
+// ========================================
+// ARCHIVE TASK
+// ========================================
+
+async function archiveProjectTask(){
+
+  if(
+    !currentProject ||
+    !editingProjectTaskId
+  ){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      'Archive this task? You can restore it later.'
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  await updateProjectTaskLifecycle(
+    'archive'
+  );
+
+}
+
+
+// ========================================
+// RESTORE TASK
+// ========================================
+
+async function restoreProjectTask(){
+
+  if(
+    !currentProject ||
+    !editingProjectTaskId
+  ){
+
+    return;
+
+  }
+
+
+  await updateProjectTaskLifecycle(
+    'restore'
+  );
+
+}
+
+
+// ========================================
+// UPDATE TASK LIFECYCLE
+// ========================================
+
+async function updateProjectTaskLifecycle(
+  action
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${editingProjectTaskId}/${action}`,
+        {
+          method:'PATCH',
+
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        `Failed to ${action} project task.`
+      );
+
+    }
+
+
+    editingProjectTaskId =
+      null;
+
+
+    hideProjectTaskEditor();
+
+
+    currentProjectTasks =
+  await loadProjectTasks(
+    currentProject.id,
+    showArchivedProjectTasks
+  );
+
+
+    renderTasksTab();
+
+  }catch(error){
+
+    console.error(
+      `Failed to ${action} project task:`,
+      error
+    );
+
+
+    alert(
+      error.message ||
+      `Unable to ${action} task.`
+    );
+
+  }
+
+}
+
+
+// ========================================
+// DELETE TASK
+// ========================================
+
+async function deleteProjectTask(){
+
+  if(
+    !currentProject ||
+    !editingProjectTaskId
+  ){
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      'Delete this task permanently? This cannot be undone.'
+    );
+
+
+  if(!confirmed){
+
+    return;
+
+  }
+
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${editingProjectTaskId}`,
+        {
+          method:'DELETE',
+
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        'Failed to delete project task.'
+      );
+
+    }
+
+
+    editingProjectTaskId =
+      null;
+
+
+    hideProjectTaskEditor();
+
+
+   currentProjectTasks =
+  await loadProjectTasks(
+    currentProject.id,
+    showArchivedProjectTasks
+  );
+
+
+    renderTasksTab();
+
+  }catch(error){
+
+    console.error(
+      'Failed to delete project task:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to delete task.'
+    );
+
+  }
+
+}
+
+
+// ========================================
+// SAVE PROJECT TASK
+// ========================================
+
+async function saveProjectTask(){
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+
+  const status =
+    document.getElementById(
+      'projectTaskStatus'
+    );
+
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+
+  const button =
+    document.getElementById(
+      'saveProjectTaskButton'
+    );
+
+
+  if(!title){
+
+    return;
+
+  }
+
+
+  const taskTitle =
+    String(
+      title.value || ''
+    ).trim();
+
+
+  if(!taskTitle){
+
+    alert(
+      'Please enter a task title.'
+    );
+
+    title.focus();
+
+    return;
+
+  }
+
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    alert(
+      'No project is currently open.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    if(button){
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        'Saving...';
+
+    }
+
+
+    const isEditing =
+      Number.isFinite(
+        editingProjectTaskId
+      );
+
+
+    const url =
+      isEditing
+        ? `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${editingProjectTaskId}`
+        : `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks`;
+
+
+    const response =
+      await fetch(
+        url,
+        {
+          method:
+            isEditing
+              ? 'PATCH'
+              : 'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              'Bearer ' + token
+          },
+
+          body:JSON.stringify({
+
+            task_title:
+              taskTitle,
+
+            task_description:
+              String(
+                description?.value || ''
+              ).trim() || null,
+
+            assigned_to:
+              assignedTo?.value
+                ? Number(
+                    assignedTo.value
+                  )
+                : null,
+
+            status:
+              status?.value ||
+              'open',
+
+            priority:
+              priority?.value ||
+              'normal',
+
+            due_date:
+              dueDate?.value ||
+              null
+
+          })
+
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        (
+          isEditing
+            ? 'Failed to update project task.'
+            : 'Failed to create project task.'
+        )
+      );
+
+    }
+
+
+    editingProjectTaskId =
+      null;
+
+
+    hideProjectTaskEditor();
+
+
+   currentProjectTasks =
+  await loadProjectTasks(
+    currentProject.id,
+    showArchivedProjectTasks
+  );
+
+    renderTasksTab();
+
+
+  }catch(error){
+
+    console.error(
+      'Failed to save project task:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to save task.'
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        'Save Task';
+
+    }
+
+  }
+
+}
+
+// ========================================
+// DOCUMENTS
+// ========================================
+
+function renderDocuments(){
+
+  return `
+
+    <div>
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:16px;
+      ">
+
+        <div>
+          <div style="
+            font-size:18px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Project Documents
+          </div>
+
+          <div style="
+            margin-top:3px;
+            color:#64748B;
+            font-size:12px;
+          ">
+            Documents shared with members of this project.
+          </div>
+        </div>
+
+        <div>
+          <input
+            id="projectDocumentUploadInput"
+            type="file"
+            accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            style="display:none;"
+            onchange="window.uploadProjectDocument && window.uploadProjectDocument(this.files[0]);"
+          >
+
+          <button
+            type="button"
+            onclick="document.getElementById('projectDocumentUploadInput')?.click();"
+            style="
+              border:none;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:8px 12px;
+              cursor:pointer;
+              font-size:12px;
+              font-weight:600;
+            "
+          >
+            + Upload Document
+          </button>
+        </div>
+
+      </div>
+
+      <div id="projectDocumentsList">
+        ${renderProjectDocumentsList()}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function renderProjectDocumentsList(){
+
+  if(!currentProjectDocuments.length){
+
+    return `
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:28px;
+        color:#64748B;
+        text-align:center;
+      ">
+        No project documents have been uploaded yet.
+      </div>
+    `;
+
+  }
+
+  return currentProjectDocuments
+    .map(document => `
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:16px;
+        padding:13px 14px;
+        margin-bottom:8px;
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+      ">
+
+        <div style="
+          min-width:0;
+          display:flex;
+          align-items:center;
+          gap:10px;
+        ">
+
+          <div style="
+            width:30px;
+            height:30px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:6px;
+            background:#F8FAFC;
+            border:1px solid #DBE3EC;
+            font-size:15px;
+            flex:0 0 auto;
+          ">
+            📄
+          </div>
+
+          <div style="min-width:0;">
+            <div style="
+              color:#19304B;
+              font-size:13px;
+              font-weight:600;
+              overflow:hidden;
+              text-overflow:ellipsis;
+              white-space:nowrap;
+            ">
+              ${escapeProjectHtml(document.file_name)}
+            </div>
+
+            <div style="
+              margin-top:2px;
+              color:#94A3B8;
+              font-size:11px;
+            ">
+              ${formatProjectDocumentSize(document.file_size)}
+              ${document.created_at ? ' · ' + formatNoteDate(document.created_at) : ''}
+            </div>
+          </div>
+
+        </div>
+
+        <div style="
+          display:flex;
+          gap:6px;
+          flex:0 0 auto;
+        ">
+
+          <button
+            type="button"
+            onclick="window.viewProjectDocument && window.viewProjectDocument(${Number(document.id)});"
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#19304B;
+              border-radius:5px;
+              padding:6px 9px;
+              cursor:pointer;
+              font-size:11px;
+              font-weight:600;
+            "
+          >
+            View
+          </button>
+
+          <button
+            type="button"
+            onclick="window.downloadProjectDocument && window.downloadProjectDocument(${Number(document.id)}, ${JSON.stringify(document.file_name)});"
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#19304B;
+              border-radius:5px;
+              padding:6px 9px;
+              cursor:pointer;
+              font-size:11px;
+              font-weight:600;
+            "
+          >
+            Download
+          </button>
+
+        </div>
+
+      </div>
+
+    `)
+    .join('');
+
+}
+
+
+function formatProjectDocumentSize(
+  bytes
+){
+
+  const value =
+    Number(bytes || 0);
+
+  if(value < 1024){
+    return value + ' B';
+  }
+
+  if(value < 1024 * 1024){
+    return (value / 1024).toFixed(1) + ' KB';
+  }
+
+  return (value / (1024 * 1024)).toFixed(1) + ' MB';
+
+}
+
+
+async function uploadProjectDocument(
+  file
+){
+
+  if(!file){
+    return;
+  }
+
+  if(!currentProject || !currentProject.id){
+    alert('No project is currently open.');
+    return;
+  }
+
+  if(!file.name.toLowerCase().endsWith('.docx')){
+    alert('Only .docx documents can be uploaded.');
+    return;
+  }
+
+  const token =
+    localStorage.getItem('token');
+
+  if(!token){
+    alert('Your calendar session has expired. Please log in again.');
+    return;
+  }
+
+  try{
+
+    const formData =
+      new FormData();
+
+    formData.append(
+      'file',
+      file
+    );
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents`,
+        {
+          method:'POST',
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          },
+          body:formData
+        }
+      );
+
+    const result =
+      await response.json();
+
+    if(!response.ok || !result.success){
+      throw new Error(
+        result.message ||
+        'Failed to upload document.'
+      );
+    }
+
+    currentProjectDocuments = [
+      result.document,
+      ...currentProjectDocuments
+    ];
+
+    selectProjectTab('documents');
+
+  }catch(error){
+
+    console.error(
+      'Failed to upload project document:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to upload document.'
+    );
+
+  }
+
+}
+
+
+async function viewProjectDocument(
+  documentId
+){
+
+  const token =
+    localStorage.getItem('token');
+
+  if(!token){
+    alert('Your calendar session has expired. Please log in again.');
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents/${documentId}/view`,
+        {
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+    const html =
+      await response.text();
+
+    if(!response.ok){
+      throw new Error(html || 'Unable to open document.');
+    }
+
+    const modal =
+      document.createElement('div');
+
+    modal.id =
+      'projectDocumentViewer';
+
+    modal.style.cssText = `
+      position:fixed;
+      inset:0;
+      z-index:11000;
+      background:rgba(15,23,42,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    `;
+
+    modal.innerHTML = `
+      <div style="
+        width:min(1100px,96vw);
+        height:min(850px,94vh);
+        background:#FFFFFF;
+        border-radius:8px;
+        overflow:hidden;
+        box-shadow:0 20px 50px rgba(0,0,0,.25);
+        display:flex;
+        flex-direction:column;
+      ">
+        <div style="
+          height:46px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          padding:0 14px;
+          border-bottom:1px solid #DBE3EC;
+          color:#19304B;
+          font-weight:600;
+          font-size:13px;
+        ">
+          <span>Project Document</span>
+          <button
+            type="button"
+            onclick="document.getElementById('projectDocumentViewer')?.remove();"
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              border-radius:5px;
+              padding:5px 9px;
+              cursor:pointer;
+              color:#19304B;
+            "
+          >
+            ✕
+          </button>
+        </div>
+        <iframe
+          title="Project Document"
+          style="
+            width:100%;
+            height:100%;
+            border:none;
+            background:#FFFFFF;
+          "
+        ></iframe>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const frame =
+      modal.querySelector('iframe');
+
+    frame.srcdoc =
+      html;
+
+  }catch(error){
+
+    console.error(
+      'Failed to view project document:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to open document.'
+    );
+
+  }
+
+}
+
+
+async function downloadProjectDocument(
+  documentId,
+  fileName
+){
+
+  const token =
+    localStorage.getItem('token');
+
+  if(!token){
+    alert('Your calendar session has expired. Please log in again.');
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents/${documentId}/download`,
+        {
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+    if(!response.ok){
+      const message =
+        await response.text();
+      throw new Error(
+        message ||
+        'Unable to download document.'
+      );
+    }
+
+    const blob =
+      await response.blob();
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const link =
+      document.createElement('a');
+
+    link.href =
+      url;
+
+    link.download =
+      fileName ||
+      'project-document.docx';
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+  }catch(error){
+
+    console.error(
+      'Failed to download project document:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to download document.'
+    );
+
+  }
+
+}
+
+
+// ========================================
+// DISCUSSION
+// ========================================
+
+function renderDiscussion(){
+
+  const canEdit =
+    !!currentProject &&
+    currentProject.permission ===
+      'edit';
+
+
+  return `
+
+    <div>
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:16px;
+      ">
+
+        <div>
+
+          <div style="
+            font-size:18px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Discussion
+          </div>
+
+          <div style="
+            margin-top:3px;
+            font-size:13px;
+            color:#64748B;
+          ">
+            Shared project discussion for everyone on the team.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      ${
+        canEdit
+          ? `
+            <div
+              id="projectDiscussionEditor"
+              style="
+                background:#FFFFFF;
+                border:1px solid #DBE3EC;
+                border-radius:8px;
+                padding:18px;
+                margin-bottom:16px;
+              "
+            >
+
+              <textarea
+                id="projectDiscussionText"
+                rows="4"
+                maxlength="5000"
+                placeholder="Write a message to the project team..."
+                style="
+                  width:100%;
+                  box-sizing:border-box;
+                  resize:vertical;
+                  border:1px solid #DBE3EC;
+                  border-radius:6px;
+                  padding:10px;
+                  font-family:inherit;
+                  font-size:14px;
+                  color:#19304B;
+                  outline:none;
+                "
+              ></textarea>
+
+              <div style="
+                display:flex;
+                justify-content:flex-end;
+                margin-top:10px;
+              ">
+
+                <button
+                  type="button"
+                  id="saveProjectDiscussionButton"
+                  onclick="
+                    window.saveProjectDiscussion &&
+                    window.saveProjectDiscussion();
+                  "
+                  style="
+                    border:1px solid #19304B;
+                    background:#19304B;
+                    color:#FFFFFF;
+                    border-radius:6px;
+                    padding:8px 14px;
+                    cursor:pointer;
+                    font-weight:600;
+                  "
+                >
+                  Post Message
                 </button>
 
               </div>
@@ -1142,91 +4014,193 @@ function renderNotes(){
       }
 
 
-      ${
-        currentProjectNotes.length
-          ? currentProjectNotes
-              .map(note => {
+      <div id="projectDiscussionList">
 
-                const author =
-                  note.author?.full_name ||
-                  note.author?.username ||
-                  note.author?.email ||
-                  'Project Member';
+        ${renderDiscussionList()}
 
-                return `
-
-                  <div style="
-                    background:#FFFFFF;
-                    border:1px solid #DBE3EC;
-                    border-radius:8px;
-                    padding:16px;
-                    margin-bottom:10px;
-                  ">
-
-                    <div style="
-                      display:flex;
-                      justify-content:space-between;
-                      gap:12px;
-                      margin-bottom:8px;
-                    ">
-
-                      <div style="
-                        font-weight:600;
-                        color:#19304B;
-                      ">
-                        ${escapeProjectHtml(
-                          author
-                        )}
-                      </div>
-
-                      <div style="
-                        color:#64748B;
-                        font-size:12px;
-                        white-space:nowrap;
-                      ">
-                        ${formatNoteDate(
-                          note.created_at
-                        )}
-                      </div>
-
-                    </div>
-
-
-                    <div style="
-                      color:#475569;
-                      line-height:1.6;
-                      white-space:pre-wrap;
-                    ">
-                      ${escapeProjectHtml(
-                        note.note_text
-                      )}
-                    </div>
-
-                  </div>
-
-                `;
-
-              })
-              .join('')
-          : `
-
-              <div style="
-                background:#FFFFFF;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                padding:24px;
-                color:#64748B;
-                text-align:center;
-              ">
-                No shared notes yet.
-              </div>
-
-            `
-      }
+      </div>
 
     </div>
 
   `;
+
+}
+
+
+// ========================================
+// DISCUSSION LIST
+// ========================================
+
+function renderDiscussionList(){
+
+  if(!currentProjectDiscussion.length){
+
+    return `
+
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:24px;
+        color:#64748B;
+        text-align:center;
+      ">
+        No discussion posts have been added yet.
+      </div>
+
+    `;
+
+  }
+
+
+  return currentProjectDiscussion
+    .map(post => {
+
+      const author =
+        post.author?.full_name ||
+        post.author?.username ||
+        post.author?.email ||
+        'Unknown User';
+
+      const date =
+        formatNoteDate(
+          post.created_at
+        );
+
+      return `
+
+        <div style="
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:12px;
+        ">
+
+          <div style="
+            color:#334155;
+            font-size:14px;
+            line-height:1.6;
+            white-space:pre-wrap;
+          ">
+            ${escapeProjectHtml(
+              post.message_text
+            )}
+          </div>
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:12px;
+            margin-top:14px;
+            padding-top:10px;
+            border-top:1px solid #EEF2F6;
+            color:#64748B;
+            font-size:12px;
+          ">
+
+            <span>
+              ${escapeProjectHtml(author)}
+            </span>
+
+            <span>
+              ${escapeProjectHtml(date)}
+            </span>
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+    .join('');
+
+}
+
+
+// ========================================
+// SAVE DISCUSSION POST
+// ========================================
+
+async function saveProjectDiscussion(){
+
+  const textarea =
+    document.getElementById(
+      'projectDiscussionText'
+    );
+
+  const button =
+    document.getElementById(
+      'saveProjectDiscussionButton'
+    );
+
+  if(!textarea){
+    return;
+  }
+
+  const messageText =
+    String(
+      textarea.value || ''
+    ).trim();
+
+  if(!messageText){
+
+    alert(
+      'Please enter a message.'
+    );
+
+    textarea.focus();
+    return;
+
+  }
+
+  try{
+
+    if(button){
+      button.disabled = true;
+      button.textContent = 'Posting...';
+    }
+
+    const post =
+      await createProjectDiscussion(
+        messageText
+      );
+
+    currentProjectDiscussion = [
+      post,
+      ...currentProjectDiscussion
+    ];
+
+    renderDiscussionTab();
+
+  }catch(error){
+
+    console.error(
+      'Failed to save discussion post:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to save discussion post.'
+    );
+
+  }finally{
+
+    // The tab is re-rendered after a successful post.
+    // Restore the button only if the editor still exists.
+    const currentButton =
+      document.getElementById(
+        'saveProjectDiscussionButton'
+      );
+
+    if(currentButton){
+      currentButton.disabled = false;
+      currentButton.textContent = 'Post Message';
+    }
+
+  }
 
 }
 
@@ -1242,10 +4216,12 @@ function showProjectNoteEditor(){
       'projectNoteEditor'
     );
 
+
   const textarea =
     document.getElementById(
       'projectNoteText'
     );
+
 
   if(!editor){
 
@@ -1253,8 +4229,10 @@ function showProjectNoteEditor(){
 
   }
 
+
   editor.style.display =
     'block';
+
 
   if(textarea){
 
@@ -1276,10 +4254,12 @@ function hideProjectNoteEditor(){
       'projectNoteEditor'
     );
 
+
   const textarea =
     document.getElementById(
       'projectNoteText'
     );
+
 
   if(editor){
 
@@ -1287,6 +4267,7 @@ function hideProjectNoteEditor(){
       'none';
 
   }
+
 
   if(textarea){
 
@@ -1304,25 +4285,17 @@ function hideProjectNoteEditor(){
 
 async function saveProjectNote(){
 
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
-    return;
-
-  }
-
   const textarea =
     document.getElementById(
       'projectNoteText'
     );
 
+
   const button =
     document.getElementById(
       'saveProjectNoteButton'
     );
+
 
   if(!textarea){
 
@@ -1330,10 +4303,12 @@ async function saveProjectNote(){
 
   }
 
+
   const noteText =
     String(
       textarea.value || ''
     ).trim();
+
 
   if(!noteText){
 
@@ -1347,6 +4322,7 @@ async function saveProjectNote(){
 
   }
 
+
   try{
 
     if(button){
@@ -1359,10 +4335,12 @@ async function saveProjectNote(){
 
     }
 
+
     const note =
       await createProjectNote(
         noteText
       );
+
 
     currentProjectNotes =
       [
@@ -1370,7 +4348,9 @@ async function saveProjectNote(){
         ...currentProjectNotes
       ];
 
+
     renderNotesTab();
+
 
   }catch(error){
 
@@ -1379,10 +4359,12 @@ async function saveProjectNote(){
       error
     );
 
+
     alert(
       error.message ||
       'Unable to save note.'
     );
+
 
   }finally{
 
@@ -1412,1866 +4394,36 @@ function renderNotesTab(){
       'projectWorkspaceContent'
     );
 
+
   if(!content){
 
     return;
 
   }
 
+
   content.innerHTML =
     renderNotes();
 
 }
 
-
 // ========================================
-// END PART 1
-// ========================================
-
-// ========================================
-// LOAD SINGLE TASK
+// RENDER DISCUSSION TAB
 // ========================================
 
-function getProjectTask(
-  taskId
-){
+function renderDiscussionTab(){
 
-  return currentProjectTasks.find(
-    task =>
-      Number(task.id) ===
-      Number(taskId)
-  );
-
-}
-
-
-// ========================================
-// CREATE / UPDATE PROJECT TASK
-// ========================================
-
-async function saveProjectTaskToApi(
-  taskData
-){
-
-  const token =
-    localStorage.getItem(
-      'token'
+  const content =
+    document.getElementById(
+      'projectWorkspaceContent'
     );
 
-  if(!token){
-
-    throw new Error(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-  }
-
-  if(
-    !currentProject ||
-    !currentProject.id
-  ){
-
-    throw new Error(
-      'No project is currently open.'
-    );
-
-  }
-
-  if(
-    !currentUserCanEditProject()
-  ){
-
-    throw new Error(
-      'You do not have permission to edit this project.'
-    );
-
-  }
-
-  const isEditing =
-    Number.isFinite(
-      editingProjectTaskId
-    );
-
-  const url =
-    isEditing
-      ? `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${editingProjectTaskId}`
-      : `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks`;
-
-  const response =
-    await fetch(
-      url,
-      {
-        method:
-          isEditing
-            ? 'PATCH'
-            : 'POST',
-
-        headers:{
-          'Content-Type':
-            'application/json',
-
-          'Authorization':
-            'Bearer ' + token
-        },
-
-        body:JSON.stringify(
-          taskData
-        )
-      }
-    );
-
-  const result =
-    await response.json();
-
-  if(
-    !response.ok ||
-    !result.success
-  ){
-
-    throw new Error(
-      result.message ||
-      (
-        isEditing
-          ? 'Failed to update project task.'
-          : 'Failed to create project task.'
-      )
-    );
-
-  }
-
-  return result.task;
-
-}
-
-
-// ========================================
-// RENDER TASKS
-// ========================================
-
-function renderTasks(){
-
-  const canEdit =
-    currentUserCanEditProject();
-
-  return `
-
-    <div>
-
-      <!-- ===============================
-           TASK HEADER
-           =============================== -->
-
-      <div style="
-        display:flex;
-        align-items:flex-start;
-        justify-content:space-between;
-        gap:16px;
-        margin-bottom:16px;
-      ">
-
-        <div>
-
-          <div style="
-            font-size:18px;
-            font-weight:600;
-            color:#19304B;
-          ">
-            Project Tasks
-          </div>
-
-          <div style="
-            margin-top:3px;
-            font-size:13px;
-            color:#64748B;
-          ">
-            Shared tasks for this project.
-          </div>
-
-        </div>
-
-
-        <div style="
-          display:flex;
-          align-items:center;
-          gap:8px;
-          flex-wrap:wrap;
-          justify-content:flex-end;
-        ">
-
-          ${
-            canEdit
-              ? `
-                <button
-                  type="button"
-                  onclick="
-                    window.showProjectTaskEditor &&
-                    window.showProjectTaskEditor();
-                  "
-                  style="
-                    border:none;
-                    background:#19304B;
-                    color:#FFFFFF;
-                    border-radius:6px;
-                    padding:8px 14px;
-                    cursor:pointer;
-                    white-space:nowrap;
-                  "
-                >
-                  + Add Task
-                </button>
-              `
-              : ''
-          }
-
-
-          <button
-            type="button"
-            onclick="
-              window.toggleArchivedProjectTasks &&
-              window.toggleArchivedProjectTasks();
-            "
-            style="
-              border:1px solid #DBE3EC;
-              background:#FFFFFF;
-              color:#19304B;
-              border-radius:6px;
-              padding:8px 12px;
-              cursor:pointer;
-              white-space:nowrap;
-            "
-          >
-            ${
-              showArchivedProjectTasks
-                ? 'Show Active Tasks'
-                : 'Show Archived'
-            }
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- ===============================
-           TASK EDITOR
-           =============================== -->
-
-      ${
-        canEdit
-          ? `
-
-            <div
-              id="projectTaskEditor"
-              style="
-                display:none;
-                background:#FFFFFF;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                padding:18px;
-                margin-bottom:16px;
-              "
-            >
-
-              <div style="
-                font-size:16px;
-                font-weight:600;
-                color:#19304B;
-                margin-bottom:14px;
-              "
-              id="projectTaskEditorTitle">
-                Add Task
-              </div>
-
-
-              <!-- TASK TITLE -->
-
-              <div style="
-                margin-bottom:12px;
-              ">
-
-                <label style="
-                  display:block;
-                  margin-bottom:5px;
-                  font-size:13px;
-                  font-weight:600;
-                  color:#475569;
-                ">
-                  Task
-                </label>
-
-                <input
-                  id="projectTaskTitle"
-                  type="text"
-                  maxlength="200"
-                  placeholder="Task title"
-                  style="
-                    width:100%;
-                    box-sizing:border-box;
-                    border:1px solid #CBD5E1;
-                    border-radius:6px;
-                    padding:9px 10px;
-                    font:inherit;
-                    color:#19304B;
-                  "
-                />
-
-              </div>
-
-
-              <!-- ASSIGNED / PRIORITY / DUE DATE -->
-
-              <div style="
-                display:grid;
-                grid-template-columns:
-                  minmax(0, 1fr)
-                  minmax(0, 1fr)
-                  minmax(0, 1fr);
-                gap:12px;
-                margin-bottom:12px;
-              ">
-
-
-                <!-- ASSIGNED TO -->
-
-                <div>
-
-                  <label style="
-                    display:block;
-                    margin-bottom:5px;
-                    font-size:13px;
-                    font-weight:600;
-                    color:#475569;
-                  ">
-                    Assigned To
-                  </label>
-
-                  <select
-                    id="projectTaskAssignedTo"
-                    style="
-                      width:100%;
-                      box-sizing:border-box;
-                      border:1px solid #CBD5E1;
-                      border-radius:6px;
-                      padding:9px 10px;
-                      font:inherit;
-                      color:#19304B;
-                      background:#FFFFFF;
-                    "
-                  >
-
-                    <option value="">
-                      Unassigned
-                    </option>
-
-                    ${
-                      currentProjectMembers
-                        .map(member => {
-
-                          const name =
-                            member.full_name ||
-                            member.username ||
-                            member.email ||
-                            'Project Member';
-
-                          return `
-                            <option
-                              value="${escapeProjectHtml(
-                                member.id
-                              )}"
-                            >
-                              ${escapeProjectHtml(
-                                name
-                              )}
-                            </option>
-                          `;
-
-                        })
-                        .join('')
-                    }
-
-                  </select>
-
-                </div>
-
-
-                <!-- PRIORITY -->
-
-                <div>
-
-                  <label style="
-                    display:block;
-                    margin-bottom:5px;
-                    font-size:13px;
-                    font-weight:600;
-                    color:#475569;
-                  ">
-                    Priority
-                  </label>
-
-                  <select
-                    id="projectTaskPriority"
-                    style="
-                      width:100%;
-                      box-sizing:border-box;
-                      border:1px solid #CBD5E1;
-                      border-radius:6px;
-                      padding:9px 10px;
-                      font:inherit;
-                      color:#19304B;
-                      background:#FFFFFF;
-                    "
-                  >
-
-                    <option value="low">
-                      Low
-                    </option>
-
-                    <option
-                      value="normal"
-                      selected
-                    >
-                      Normal
-                    </option>
-
-                    <option value="high">
-                      High
-                    </option>
-
-                  </select>
-
-                </div>
-
-
-                <!-- DUE DATE -->
-
-                <div>
-
-                  <label style="
-                    display:block;
-                    margin-bottom:5px;
-                    font-size:13px;
-                    font-weight:600;
-                    color:#475569;
-                  ">
-                    Due Date
-                  </label>
-
-                  <input
-                    id="projectTaskDueDate"
-                    type="date"
-                    style="
-                      width:100%;
-                      box-sizing:border-box;
-                      border:1px solid #CBD5E1;
-                      border-radius:6px;
-                      padding:9px 10px;
-                      font:inherit;
-                      color:#19304B;
-                    "
-                  />
-
-                </div>
-
-
-              </div>
-
-
-              <!-- STATUS -->
-
-              <div style="
-                margin-bottom:12px;
-              ">
-
-                <label style="
-                  display:block;
-                  margin-bottom:5px;
-                  font-size:13px;
-                  font-weight:600;
-                  color:#475569;
-                ">
-                  Status
-                </label>
-
-                <select
-                  id="projectTaskStatus"
-                  style="
-                    width:100%;
-                    box-sizing:border-box;
-                    border:1px solid #CBD5E1;
-                    border-radius:6px;
-                    padding:9px 10px;
-                    font:inherit;
-                    color:#19304B;
-                    background:#FFFFFF;
-                  "
-                >
-
-                  <option
-                    value="open"
-                    selected
-                  >
-                    Open
-                  </option>
-
-                  <option value="in_progress">
-                    In Progress
-                  </option>
-
-                  <option value="completed">
-                    Completed
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <!-- DESCRIPTION -->
-
-              <div style="
-                margin-bottom:12px;
-              ">
-
-                <label style="
-                  display:block;
-                  margin-bottom:5px;
-                  font-size:13px;
-                  font-weight:600;
-                  color:#475569;
-                ">
-                  Description
-                </label>
-
-                <textarea
-                  id="projectTaskDescription"
-                  rows="4"
-                  placeholder="Optional task details..."
-                  style="
-                    width:100%;
-                    box-sizing:border-box;
-                    resize:vertical;
-                    border:1px solid #CBD5E1;
-                    border-radius:6px;
-                    padding:10px;
-                    font:inherit;
-                    color:#19304B;
-                  "
-                ></textarea>
-
-              </div>
-
-
-              <!-- EDITOR BUTTONS -->
-
-              <div style="
-                display:flex;
-                justify-content:flex-end;
-                gap:8px;
-              ">
-
-                <button
-                  type="button"
-                  onclick="
-                    window.hideProjectTaskEditor &&
-                    window.hideProjectTaskEditor();
-                  "
-                  style="
-                    border:1px solid #DBE3EC;
-                    background:#FFFFFF;
-                    color:#475569;
-                    border-radius:6px;
-                    padding:8px 14px;
-                    cursor:pointer;
-                  "
-                >
-                  Cancel
-                </button>
-
-
-                <button
-                  type="button"
-                  id="saveProjectTaskButton"
-                  onclick="
-                    window.saveProjectTask &&
-                    window.saveProjectTask();
-                  "
-                  style="
-                    border:none;
-                    background:#19304B;
-                    color:#FFFFFF;
-                    border-radius:6px;
-                    padding:8px 14px;
-                    cursor:pointer;
-                  "
-                >
-                  Save Task
-                </button>
-
-              </div>
-
-            </div>
-
-          `
-          : ''
-      }
-
-
-      <!-- ===============================
-           TASK LIST
-           =============================== -->
-
-      <div id="projectTasksList">
-
-        ${renderTasksList()}
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-// ========================================
-// RENDER TASK LIST
-// ========================================
-
-function renderTasksList(){
-
-  const canEdit =
-    currentUserCanEditProject();
-
-  if(!currentProjectTasks.length){
-
-    return `
-
-      <div style="
-        background:#FFFFFF;
-        border:1px solid #DBE3EC;
-        border-radius:8px;
-        padding:28px;
-        text-align:center;
-        color:#64748B;
-      ">
-
-        ${
-          showArchivedProjectTasks
-            ? 'No archived tasks to show.'
-            : 'No active tasks yet.'
-        }
-
-      </div>
-
-    `;
-
-  }
-
-  return currentProjectTasks
-    .map(task => {
-
-      const assigned =
-        task.assigned_user?.full_name ||
-        task.assigned_user?.username ||
-        task.assigned_user?.email ||
-        'Unassigned';
-
-      const creator =
-        task.created_user?.full_name ||
-        task.created_user?.username ||
-        task.created_user?.email ||
-        '';
-
-      const statusLabel =
-        task.status === 'in_progress'
-          ? 'In Progress'
-          : task.status === 'completed'
-            ? 'Completed'
-            : 'Open';
-
-      const priorityLabel =
-        task.priority === 'high'
-          ? 'High'
-          : task.priority === 'low'
-            ? 'Low'
-            : 'Normal';
-
-      const priorityBackground =
-        task.priority === 'high'
-          ? '#FEF2F2'
-          : task.priority === 'low'
-            ? '#F8FAFC'
-            : '#FFF7ED';
-
-      const priorityColor =
-        task.priority === 'high'
-          ? '#B91C1C'
-          : task.priority === 'low'
-            ? '#64748B'
-            : '#C2410C';
-
-      const statusBackground =
-        task.status === 'completed'
-          ? '#F0FDF4'
-          : task.status === 'in_progress'
-            ? '#EFF6FF'
-            : '#F8FAFC';
-
-      const statusColor =
-        task.status === 'completed'
-          ? '#166534'
-          : task.status === 'in_progress'
-            ? '#1D4ED8'
-            : '#475569';
-
-      return `
-
-        <div
-          style="
-            background:#FFFFFF;
-            border:1px solid #DBE3EC;
-            border-radius:8px;
-            padding:16px;
-            margin-bottom:10px;
-          "
-        >
-
-          <div style="
-            display:flex;
-            align-items:flex-start;
-            justify-content:space-between;
-            gap:16px;
-          ">
-
-            <div style="
-              min-width:0;
-              flex:1;
-            ">
-
-              <div style="
-                display:flex;
-                align-items:center;
-                gap:8px;
-                flex-wrap:wrap;
-                margin-bottom:7px;
-              ">
-
-                <div style="
-                  font-size:16px;
-                  font-weight:600;
-                  color:#19304B;
-                ">
-                  ${escapeProjectHtml(
-                    task.task_title
-                  )}
-                </div>
-
-
-                <span style="
-                  padding:3px 7px;
-                  border-radius:4px;
-                  background:${statusBackground};
-                  color:${statusColor};
-                  font-size:11px;
-                  font-weight:600;
-                ">
-                  ${statusLabel}
-                </span>
-
-
-                <span style="
-                  padding:3px 7px;
-                  border-radius:4px;
-                  background:${priorityBackground};
-                  color:${priorityColor};
-                  font-size:11px;
-                  font-weight:600;
-                ">
-                  ${priorityLabel}
-                </span>
-
-
-                ${
-                  task.archived
-                    ? `
-                      <span style="
-                        padding:3px 7px;
-                        border-radius:4px;
-                        background:#F1F5F9;
-                        color:#64748B;
-                        font-size:11px;
-                        font-weight:600;
-                      ">
-                        Archived
-                      </span>
-                    `
-                    : ''
-                }
-
-              </div>
-
-
-              ${
-                task.task_description
-                  ? `
-                    <div style="
-                      color:#475569;
-                      line-height:1.5;
-                      white-space:pre-wrap;
-                      margin-bottom:10px;
-                    ">
-                      ${escapeProjectHtml(
-                        task.task_description
-                      )}
-                    </div>
-                  `
-                  : ''
-              }
-
-
-              <div style="
-                display:flex;
-                flex-wrap:wrap;
-                gap:14px;
-                color:#64748B;
-                font-size:12px;
-              ">
-
-                <span>
-                  <strong>
-                    Assigned:
-                  </strong>
-                  ${escapeProjectHtml(
-                    assigned
-                  )}
-                </span>
-
-
-                ${
-                  task.due_date
-                    ? `
-                      <span>
-                        <strong>
-                          Due:
-                        </strong>
-                        ${escapeProjectHtml(
-                          task.due_date
-                        )}
-                      </span>
-                    `
-                    : ''
-                }
-
-
-                ${
-                  creator
-                    ? `
-                      <span>
-                        <strong>
-                          Created by:
-                        </strong>
-                        ${escapeProjectHtml(
-                          creator
-                        )}
-                      </span>
-                    `
-                    : ''
-                }
-
-              </div>
-
-            </div>
-
-
-            ${
-              canEdit
-                ? `
-
-                  <div style="
-                    display:flex;
-                    gap:6px;
-                    flex-shrink:0;
-                    flex-wrap:wrap;
-                    justify-content:flex-end;
-                  ">
-
-                    ${
-                      task.archived
-                        ? `
-                          <button
-                            type="button"
-                            onclick="
-                              window.restoreProjectTask &&
-                              window.restoreProjectTask(
-                                ${Number(task.id)}
-                              );
-                            "
-                            style="
-                              border:1px solid #DBE3EC;
-                              background:#FFFFFF;
-                              color:#19304B;
-                              border-radius:5px;
-                              padding:6px 9px;
-                              cursor:pointer;
-                              font-size:12px;
-                            "
-                          >
-                            Restore
-                          </button>
-                        `
-                        : `
-                          <button
-                            type="button"
-                            onclick="
-                              window.openProjectTaskEditor &&
-                              window.openProjectTaskEditor(
-                                ${Number(task.id)}
-                              );
-                            "
-                            style="
-                              border:1px solid #DBE3EC;
-                              background:#FFFFFF;
-                              color:#19304B;
-                              border-radius:5px;
-                              padding:6px 9px;
-                              cursor:pointer;
-                              font-size:12px;
-                            "
-                          >
-                            Edit
-                          </button>
-
-                          <button
-                            type="button"
-                            onclick="
-                              window.archiveProjectTask &&
-                              window.archiveProjectTask(
-                                ${Number(task.id)}
-                              );
-                            "
-                            style="
-                              border:1px solid #DBE3EC;
-                              background:#FFFFFF;
-                              color:#64748B;
-                              border-radius:5px;
-                              padding:6px 9px;
-                              cursor:pointer;
-                              font-size:12px;
-                            "
-                          >
-                            Archive
-                          </button>
-                        `
-                    }
-
-
-                    <button
-                      type="button"
-                      onclick="
-                        window.deleteProjectTask &&
-                        window.deleteProjectTask(
-                          ${Number(task.id)}
-                        );
-                      "
-                      style="
-                        border:1px solid #FECACA;
-                        background:#FFFFFF;
-                        color:#B91C1C;
-                        border-radius:5px;
-                        padding:6px 9px;
-                        cursor:pointer;
-                        font-size:12px;
-                      "
-                    >
-                      Delete
-                    </button>
-
-                  </div>
-
-                `
-                : ''
-            }
-
-          </div>
-
-        </div>
-
-      `;
-
-    })
-    .join('');
-
-}
-
-
-// ========================================
-// SHOW TASK EDITOR
-// ========================================
-
-function showProjectTaskEditor(){
-
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
+  if(!content){
     return;
-
   }
 
-  editingProjectTaskId =
-    null;
-
-  const editor =
-    document.getElementById(
-      'projectTaskEditor'
-    );
-
-  const title =
-    document.getElementById(
-      'projectTaskEditorTitle'
-    );
-
-  const saveButton =
-    document.getElementById(
-      'saveProjectTaskButton'
-    );
-
-  const taskTitle =
-    document.getElementById(
-      'projectTaskTitle'
-    );
-
-  const assignedTo =
-    document.getElementById(
-      'projectTaskAssignedTo'
-    );
-
-  const priority =
-    document.getElementById(
-      'projectTaskPriority'
-    );
-
-  const status =
-    document.getElementById(
-      'projectTaskStatus'
-    );
-
-  const dueDate =
-    document.getElementById(
-      'projectTaskDueDate'
-    );
-
-  const description =
-    document.getElementById(
-      'projectTaskDescription'
-    );
-
-  if(!editor){
-
-    return;
-
-  }
-
-  if(title){
-
-    title.textContent =
-      'Add Task';
-
-  }
-
-  if(saveButton){
-
-    saveButton.textContent =
-      'Save Task';
-
-  }
-
-  if(taskTitle){
-
-    taskTitle.value =
-      '';
-
-  }
-
-  if(assignedTo){
-
-    assignedTo.value =
-      '';
-
-  }
-
-  if(priority){
-
-    priority.value =
-      'normal';
-
-  }
-
-  if(status){
-
-    status.value =
-      'open';
-
-  }
-
-  if(dueDate){
-
-    dueDate.value =
-      '';
-
-  }
-
-  if(description){
-
-    description.value =
-      '';
-
-  }
-
-  editor.style.display =
-    'block';
-
-  if(taskTitle){
-
-    taskTitle.focus();
-
-  }
-
-}
-
-
-// ========================================
-// OPEN EXISTING TASK EDITOR
-// ========================================
-
-function openProjectTaskEditor(
-  taskId
-){
-
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
-    return;
-
-  }
-
-  const task =
-    getProjectTask(
-      taskId
-    );
-
-  if(!task){
-
-    alert(
-      'Task could not be found.'
-    );
-
-    return;
-
-  }
-
-  editingProjectTaskId =
-    Number(task.id);
-
-  const editor =
-    document.getElementById(
-      'projectTaskEditor'
-    );
-
-  const title =
-    document.getElementById(
-      'projectTaskEditorTitle'
-    );
-
-  const saveButton =
-    document.getElementById(
-      'saveProjectTaskButton'
-    );
-
-  const taskTitle =
-    document.getElementById(
-      'projectTaskTitle'
-    );
-
-  const assignedTo =
-    document.getElementById(
-      'projectTaskAssignedTo'
-    );
-
-  const priority =
-    document.getElementById(
-      'projectTaskPriority'
-    );
-
-  const status =
-    document.getElementById(
-      'projectTaskStatus'
-    );
-
-  const dueDate =
-    document.getElementById(
-      'projectTaskDueDate'
-    );
-
-  const description =
-    document.getElementById(
-      'projectTaskDescription'
-    );
-
-  if(!editor){
-
-    return;
-
-  }
-
-  if(title){
-
-    title.textContent =
-      'Edit Task';
-
-  }
-
-  if(saveButton){
-
-    saveButton.textContent =
-      'Save Changes';
-
-  }
-
-  if(taskTitle){
-
-    taskTitle.value =
-      task.task_title || '';
-
-  }
-
-  if(assignedTo){
-
-    assignedTo.value =
-      task.assigned_to
-        ? String(
-            task.assigned_to
-          )
-        : '';
-
-  }
-
-  if(priority){
-
-    priority.value =
-      task.priority ||
-      'normal';
-
-  }
-
-  if(status){
-
-    status.value =
-      task.status ||
-      'open';
-
-  }
-
-  if(dueDate){
-
-    dueDate.value =
-      task.due_date || '';
-
-  }
-
-  if(description){
-
-    description.value =
-      task.task_description ||
-      '';
-
-  }
-
-  editor.style.display =
-    'block';
-
-  if(taskTitle){
-
-    taskTitle.focus();
-
-  }
-
-}
-
-
-// ========================================
-// HIDE TASK EDITOR
-// ========================================
-
-function hideProjectTaskEditor(){
-
-  const editor =
-    document.getElementById(
-      'projectTaskEditor'
-    );
-
-  if(editor){
-
-    editor.style.display =
-      'none';
-
-  }
-
-  editingProjectTaskId =
-    null;
-
-}
-
-
-// ========================================
-// SAVE TASK
-// ========================================
-
-async function saveProjectTask(){
-
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
-    return;
-
-  }
-
-  const taskTitle =
-    document.getElementById(
-      'projectTaskTitle'
-    );
-
-  const assignedTo =
-    document.getElementById(
-      'projectTaskAssignedTo'
-    );
-
-  const priority =
-    document.getElementById(
-      'projectTaskPriority'
-    );
-
-  const status =
-    document.getElementById(
-      'projectTaskStatus'
-    );
-
-  const dueDate =
-    document.getElementById(
-      'projectTaskDueDate'
-    );
-
-  const description =
-    document.getElementById(
-      'projectTaskDescription'
-    );
-
-  const button =
-    document.getElementById(
-      'saveProjectTaskButton'
-    );
-
-  const titleValue =
-    String(
-      taskTitle?.value || ''
-    ).trim();
-
-  if(!titleValue){
-
-    alert(
-      'Please enter a task title.'
-    );
-
-    taskTitle?.focus();
-
-    return;
-
-  }
-
-  const taskData = {
-
-    task_title:
-      titleValue,
-
-    task_description:
-      String(
-        description?.value || ''
-      ).trim() ||
-      null,
-
-    assigned_to:
-      assignedTo?.value
-        ? Number(
-            assignedTo.value
-          )
-        : null,
-
-    status:
-      status?.value ||
-      'open',
-
-    priority:
-      priority?.value ||
-      'normal',
-
-    due_date:
-      dueDate?.value ||
-      null
-
-  };
-
-  const isEditing =
-    Number.isFinite(
-      editingProjectTaskId
-    );
-
-  try{
-
-    if(button){
-
-      button.disabled =
-        true;
-
-      button.textContent =
-        isEditing
-          ? 'Saving...'
-          : 'Creating...';
-
-    }
-
-    await saveProjectTaskToApi(
-      taskData
-    );
-
-    editingProjectTaskId =
-      null;
-
-    hideProjectTaskEditor();
-
-    currentProjectTasks =
-      await loadProjectTasks(
-        currentProject.id,
-        showArchivedProjectTasks
-      );
-
-    renderTasksTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to save project task:',
-      error
-    );
-
-    alert(
-      error.message ||
-      'Unable to save task.'
-    );
-
-  }finally{
-
-    if(button){
-
-      button.disabled =
-        false;
-
-      button.textContent =
-        isEditing
-          ? 'Save Changes'
-          : 'Save Task';
-
-    }
-
-  }
-
-}
-
-
-// ========================================
-// END PART 2
-// ========================================
-
-// ========================================
-// TOGGLE ARCHIVED TASKS
-// ========================================
-
-async function toggleArchivedProjectTasks(){
-
-  if(!currentProject){
-
-    return;
-
-  }
-
-  showArchivedProjectTasks =
-    !showArchivedProjectTasks;
-
-  try{
-
-    currentProjectTasks =
-      await loadProjectTasks(
-        currentProject.id,
-        showArchivedProjectTasks
-      );
-
-    renderTasksTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to load archived tasks:',
-      error
-    );
-
-    showArchivedProjectTasks =
-      !showArchivedProjectTasks;
-
-    alert(
-      error.message ||
-      'Unable to load tasks.'
-    );
-
-  }
-
-}
-
-
-// ========================================
-// ARCHIVE TASK
-// ========================================
-
-async function archiveProjectTask(
-  taskId
-){
-
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
-    return;
-
-  }
-
-  if(!currentProject){
-
-    return;
-
-  }
-
-  const task =
-    getProjectTask(
-      taskId
-    );
-
-  if(!task){
-
-    alert(
-      'Task could not be found.'
-    );
-
-    return;
-
-  }
-
-  if(
-    !confirm(
-      `Archive "${task.task_title}"?`
-    )
-  ){
-
-    return;
-
-  }
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-  if(!token){
-
-    alert(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-    return;
-
-  }
-
-  try{
-
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${taskId}/archive`,
-        {
-          method:'PATCH',
-
-          headers:{
-            'Authorization':
-              'Bearer ' + token
-          }
-        }
-      );
-
-    const result =
-      await response.json();
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Failed to archive task.'
-      );
-
-    }
-
-    currentProjectTasks =
-      await loadProjectTasks(
-        currentProject.id,
-        showArchivedProjectTasks
-      );
-
-    renderTasksTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to archive project task:',
-      error
-    );
-
-    alert(
-      error.message ||
-      'Unable to archive task.'
-    );
-
-  }
-
-}
-
-
-// ========================================
-// RESTORE TASK
-// ========================================
-
-async function restoreProjectTask(
-  taskId
-){
-
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
-    return;
-
-  }
-
-  if(!currentProject){
-
-    return;
-
-  }
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-  if(!token){
-
-    alert(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-    return;
-
-  }
-
-  try{
-
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${taskId}/restore`,
-        {
-          method:'PATCH',
-
-          headers:{
-            'Authorization':
-              'Bearer ' + token
-          }
-        }
-      );
-
-    const result =
-      await response.json();
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Failed to restore task.'
-      );
-
-    }
-
-    currentProjectTasks =
-      await loadProjectTasks(
-        currentProject.id,
-        showArchivedProjectTasks
-      );
-
-    renderTasksTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to restore project task:',
-      error
-    );
-
-    alert(
-      error.message ||
-      'Unable to restore task.'
-    );
-
-  }
-
-}
-
-
-// ========================================
-// DELETE TASK
-// ========================================
-
-async function deleteProjectTask(
-  taskId
-){
-
-  if(!currentUserCanEditProject()){
-
-    alert(
-      'You do not have permission to edit this project.'
-    );
-
-    return;
-
-  }
-
-  if(!currentProject){
-
-    return;
-
-  }
-
-  const task =
-    getProjectTask(
-      taskId
-    );
-
-  if(!task){
-
-    alert(
-      'Task could not be found.'
-    );
-
-    return;
-
-  }
-
-  if(
-    !confirm(
-      `Permanently delete "${task.task_title}"? This cannot be undone.`
-    )
-  ){
-
-    return;
-
-  }
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-  if(!token){
-
-    alert(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-    return;
-
-  }
-
-  try{
-
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${taskId}`,
-        {
-          method:'DELETE',
-
-          headers:{
-            'Authorization':
-              'Bearer ' + token
-          }
-        }
-      );
-
-    const result =
-      await response.json();
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Failed to delete task.'
-      );
-
-    }
-
-    currentProjectTasks =
-      await loadProjectTasks(
-        currentProject.id,
-        showArchivedProjectTasks
-      );
-
-    renderTasksTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to delete project task:',
-      error
-    );
-
-    alert(
-      error.message ||
-      'Unable to delete task.'
-    );
-
-  }
+  content.innerHTML =
+    renderDiscussion();
 
 }
 
@@ -3287,17 +4439,18 @@ function renderTasksTab(){
       'projectWorkspaceContent'
     );
 
+
   if(!content){
 
     return;
 
   }
 
+
   content.innerHTML =
     renderTasks();
 
 }
-
 
 // ========================================
 // TAB SELECTION
@@ -3312,18 +4465,22 @@ function selectProjectTab(
       'projectWorkspaceContent'
     );
 
+
   if(!content){
 
     return;
 
   }
 
+
   const tabs = [
     'overview',
     'notes',
     'tasks',
-    'discussion'
+    'discussion',
+    'documents'
   ];
+
 
   tabs.forEach(
     name => {
@@ -3333,14 +4490,17 @@ function selectProjectTab(
           `projectTab${capitalize(name)}`
         );
 
+
       if(!button){
 
         return;
 
       }
 
+
       const active =
         name === tab;
+
 
       button.style.borderBottom =
         active
@@ -3400,763 +4560,11 @@ function selectProjectTab(
 
   }
 
-}
 
+  if(tab === 'documents'){
 
-// ========================================
-// DISCUSSION
-// ========================================
-
-
-// ========================================
-// LOAD DISCUSSION THREADS
-// ========================================
-
-async function loadProjectDiscussion(){
-
-  if(
-    !currentProject ||
-    !currentProject.id
-  ){
-
-    return [];
-
-  }
-
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-
-  if(!token){
-
-    throw new Error(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-  }
-
-
-  const response =
-    await fetch(
-      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
-      {
-        method:'GET',
-
-        headers:{
-          'Authorization':
-            'Bearer ' + token
-        }
-      }
-    );
-
-
-  const result =
-    await response.json();
-
-
-  if(
-    !response.ok ||
-    !result.success
-  ){
-
-    throw new Error(
-      result.message ||
-      'Failed to load discussion threads.'
-    );
-
-  }
-
-
-  return Array.isArray(
-    result.discussions
-  )
-    ? result.discussions
-    : [];
-
-}
-
-
-// ========================================
-// RENDER DISCUSSION
-// ========================================
-
-function renderDiscussion(){
-
-  const canEdit =
-    currentUserCanEditProject();
-
-
-  return `
-
-    <div>
-
-      <!-- =================================
-           HEADER
-           ================================= -->
-
-      <div style="
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        margin-bottom:18px;
-      ">
-
-        <div>
-
-          <div style="
-            font-size:18px;
-            font-weight:600;
-            color:#19304B;
-          ">
-            Discussion
-          </div>
-
-          <div style="
-            margin-top:4px;
-            color:#64748B;
-            font-size:13px;
-          ">
-            Shared discussion for the project team.
-          </div>
-
-        </div>
-
-
-        ${
-          canEdit
-            ? `
-              <button
-                type="button"
-                onclick="
-                  window.showNewProjectDiscussion &&
-                  window.showNewProjectDiscussion();
-                "
-                style="
-                  border:none;
-                  border-radius:6px;
-                  background:#19304B;
-                  color:#FFFFFF;
-                  padding:9px 14px;
-                  font-size:13px;
-                  font-weight:600;
-                  cursor:pointer;
-                "
-              >
-                Start New Discussion
-              </button>
-            `
-            : ''
-        }
-
-      </div>
-
-
-      <!-- =================================
-           NEW DISCUSSION FORM
-           ================================= -->
-
-      ${
-        canEdit
-          ? `
-            <div
-              id="projectDiscussionEditor"
-              style="
-                display:none;
-                background:#FFFFFF;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                padding:18px;
-                margin-bottom:16px;
-              "
-            >
-
-              <div style="
-                font-size:16px;
-                font-weight:600;
-                color:#19304B;
-                margin-bottom:14px;
-              ">
-                Start New Discussion
-              </div>
-
-
-              <div style="
-                margin-bottom:12px;
-              ">
-
-                <label style="
-                  display:block;
-                  font-size:12px;
-                  font-weight:600;
-                  color:#475569;
-                  margin-bottom:5px;
-                ">
-                  Discussion Title
-                </label>
-
-                <input
-                  type="text"
-                  id="projectDiscussionTitle"
-                  maxlength="200"
-                  placeholder="Enter a discussion title"
-                  style="
-                    width:100%;
-                    box-sizing:border-box;
-                    padding:9px 10px;
-                    border:1px solid #DBE3EC;
-                    border-radius:6px;
-                    font-size:14px;
-                  "
-                >
-
-              </div>
-
-
-              <div style="
-                margin-bottom:14px;
-              ">
-
-                <label style="
-                  display:block;
-                  font-size:12px;
-                  font-weight:600;
-                  color:#475569;
-                  margin-bottom:5px;
-                ">
-                  Message
-                </label>
-
-                <textarea
-                  id="projectDiscussionMessage"
-                  rows="5"
-                  placeholder="Enter the opening message..."
-                  style="
-                    width:100%;
-                    box-sizing:border-box;
-                    padding:10px;
-                    border:1px solid #DBE3EC;
-                    border-radius:6px;
-                    font-size:14px;
-                    resize:vertical;
-                  "
-                ></textarea>
-
-              </div>
-
-
-              <div style="
-                display:flex;
-                justify-content:flex-end;
-                gap:8px;
-              ">
-
-                <button
-                  type="button"
-                  onclick="
-                    window.hideNewProjectDiscussion &&
-                    window.hideNewProjectDiscussion();
-                  "
-                  style="
-                    border:1px solid #DBE3EC;
-                    border-radius:6px;
-                    background:#FFFFFF;
-                    color:#475569;
-                    padding:8px 14px;
-                    cursor:pointer;
-                  "
-                >
-                  Cancel
-                </button>
-
-
-                <button
-                  type="button"
-                  id="saveProjectDiscussionButton"
-                  onclick="
-                    window.saveNewProjectDiscussion &&
-                    window.saveNewProjectDiscussion();
-                  "
-                  style="
-                    border:none;
-                    border-radius:6px;
-                    background:#19304B;
-                    color:#FFFFFF;
-                    padding:8px 14px;
-                    font-weight:600;
-                    cursor:pointer;
-                  "
-                >
-                  Start Discussion
-                </button>
-
-              </div>
-
-            </div>
-          `
-          : ''
-      }
-
-
-      <!-- =================================
-           THREAD LIST
-           ================================= -->
-
-      <div>
-
-        ${
-          currentProjectDiscussion.length
-            ? currentProjectDiscussion
-                .map(
-                  discussion =>
-                    renderDiscussionThreadCard(
-                      discussion
-                    )
-                )
-                .join('')
-            : `
-              <div style="
-                background:#FFFFFF;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                padding:24px;
-                text-align:center;
-                color:#64748B;
-              ">
-                No discussion threads yet.
-              </div>
-            `
-        }
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-// ========================================
-// DISCUSSION THREAD CARD
-// ========================================
-
-function renderDiscussionThreadCard(
-  discussion
-){
-
-  const title =
-    escapeProjectHtml(
-      discussion.title ||
-      'Untitled Discussion'
-    );
-
-
-  const creator =
-    discussion.creator?.full_name ||
-    discussion.creator?.username ||
-    discussion.creator?.email ||
-    'Project Member';
-
-
-  const replyCount =
-    Number(
-      discussion.reply_count || 0
-    );
-
-
-  const updated =
-    formatNoteDate(
-      discussion.updated_at ||
-      discussion.created_at
-    );
-
-
-  return `
-
-    <div
-      onclick="
-        window.openProjectDiscussion &&
-        window.openProjectDiscussion(
-          ${Number(discussion.id)}
-        );
-      "
-      style="
-        background:#FFFFFF;
-        border:1px solid #DBE3EC;
-        border-radius:8px;
-        padding:16px 18px;
-        margin-bottom:10px;
-        cursor:pointer;
-        transition:box-shadow .15s ease;
-      "
-    >
-
-      <div style="
-        display:flex;
-        justify-content:space-between;
-        gap:16px;
-        align-items:flex-start;
-      ">
-
-        <div style="
-          min-width:0;
-        ">
-
-          <div style="
-            font-size:15px;
-            font-weight:600;
-            color:#19304B;
-            margin-bottom:5px;
-          ">
-            ${title}
-          </div>
-
-          <div style="
-            font-size:12px;
-            color:#64748B;
-          ">
-            Started by
-            ${escapeProjectHtml(creator)}
-          </div>
-
-        </div>
-
-
-        <div style="
-          flex-shrink:0;
-          font-size:12px;
-          color:#64748B;
-          text-align:right;
-        ">
-
-          <div>
-            ${
-              replyCount === 1
-                ? '1 post'
-                : `${replyCount} posts`
-            }
-          </div>
-
-          <div style="
-            margin-top:3px;
-          ">
-            ${escapeProjectHtml(updated)}
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-// ========================================
-// SHOW NEW DISCUSSION
-// ========================================
-
-function showNewProjectDiscussion(){
-
-  const editor =
-    document.getElementById(
-      'projectDiscussionEditor'
-    );
-
-  const title =
-    document.getElementById(
-      'projectDiscussionTitle'
-    );
-
-  const message =
-    document.getElementById(
-      'projectDiscussionMessage'
-    );
-
-
-  if(editor){
-
-    editor.style.display =
-      'block';
-
-  }
-
-
-  if(title){
-
-    title.value =
-      '';
-
-    title.focus();
-
-  }
-
-
-  if(message){
-
-    message.value =
-      '';
-
-  }
-
-}
-
-
-// ========================================
-// HIDE NEW DISCUSSION
-// ========================================
-
-function hideNewProjectDiscussion(){
-
-  const editor =
-    document.getElementById(
-      'projectDiscussionEditor'
-    );
-
-
-  if(editor){
-
-    editor.style.display =
-      'none';
-
-  }
-
-}
-
-
-// ========================================
-// SAVE NEW DISCUSSION
-// ========================================
-
-async function saveNewProjectDiscussion(){
-
-  const titleInput =
-    document.getElementById(
-      'projectDiscussionTitle'
-    );
-
-  const messageInput =
-    document.getElementById(
-      'projectDiscussionMessage'
-    );
-
-  const button =
-    document.getElementById(
-      'saveProjectDiscussionButton'
-    );
-
-
-  const title =
-    String(
-      titleInput?.value || ''
-    ).trim();
-
-
-  const messageText =
-    String(
-      messageInput?.value || ''
-    ).trim();
-
-
-  if(!title){
-
-    alert(
-      'Please enter a discussion title.'
-    );
-
-    titleInput?.focus();
-
-    return;
-
-  }
-
-
-  if(!messageText){
-
-    alert(
-      'Please enter a discussion message.'
-    );
-
-    messageInput?.focus();
-
-    return;
-
-  }
-
-
-  if(
-    !currentProject ||
-    !currentProject.id
-  ){
-
-    alert(
-      'No project is currently open.'
-    );
-
-    return;
-
-  }
-
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-
-  if(!token){
-
-    alert(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    if(button){
-
-      button.disabled =
-        true;
-
-      button.textContent =
-        'Starting...';
-
-    }
-
-
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
-        {
-          method:'POST',
-
-          headers:{
-            'Content-Type':
-              'application/json',
-
-            'Authorization':
-              'Bearer ' + token
-          },
-
-          body:JSON.stringify({
-
-            title:
-              title,
-
-            message_text:
-              messageText
-
-          })
-        }
-      );
-
-
-    const result =
-      await response.json();
-
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Failed to start discussion.'
-      );
-
-    }
-
-
-    currentProjectDiscussion =
-      await loadProjectDiscussion();
-
-
-    renderDiscussionTab();
-
-
-  }catch(error){
-
-    console.error(
-      'Failed to create discussion:',
-      error
-    );
-
-
-    alert(
-      error.message ||
-      'Unable to start discussion.'
-    );
-
-
-  }finally{
-
-    if(button){
-
-      button.disabled =
-        false;
-
-      button.textContent =
-        'Start Discussion';
-
-    }
-
-  }
-
-}
-
-
-// ========================================
-// OPEN DISCUSSION THREAD
-// ========================================
-
-async function openProjectDiscussion(
-  discussionId
-){
-
-  if(
-    !currentProject ||
-    !currentProject.id
-  ){
-
-    return;
-
-  }
-
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-
-  if(!token){
-
-    alert(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-    return;
-
-  }
-
-
-  const content =
-    document.getElementById(
-      'projectWorkspaceContent'
-    );
-
-
-  if(!content){
+    content.innerHTML =
+      renderDocuments();
 
     return;
 
@@ -4171,586 +4579,24 @@ async function openProjectDiscussion(
       border-radius:8px;
       padding:24px;
       color:#64748B;
-      text-align:center;
-    ">
-      Loading discussion...
-    </div>
-
-  `;
-
-
-  try{
-
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions/${discussionId}`,
-        {
-          method:'GET',
-
-          headers:{
-            'Authorization':
-              'Bearer ' + token
-          }
-        }
-      );
-
-
-    const result =
-      await response.json();
-
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Failed to load discussion.'
-      );
-
-    }
-
-
-    renderProjectDiscussionThread(
-      result.discussion,
-      result.posts || []
-    );
-
-
-  }catch(error){
-
-    console.error(
-      'Failed to open discussion:',
-      error
-    );
-
-
-    alert(
-      error.message ||
-      'Unable to open discussion.'
-    );
-
-
-    currentProjectDiscussion =
-      await loadProjectDiscussion();
-
-    renderDiscussionTab();
-
-  }
-
-}
-
-
-// ========================================
-// RENDER DISCUSSION THREAD
-// ========================================
-
-function renderProjectDiscussionThread(
-  discussion,
-  posts
-){
-
-  const canEdit =
-    currentUserCanEditProject();
-
-
-  const content =
-    document.getElementById(
-      'projectWorkspaceContent'
-    );
-
-
-  if(!content){
-
-    return;
-
-  }
-
-
-  const title =
-    escapeProjectHtml(
-      discussion?.title ||
-      'Discussion'
-    );
-
-
-  content.innerHTML = `
-
-    <div>
-
-      <!-- =================================
-           BACK
-           ================================= -->
-
-      <button
-        type="button"
-        onclick="
-          window.renderProjectDiscussionList &&
-          window.renderProjectDiscussionList();
-        "
-        style="
-          border:none;
-          background:transparent;
-          color:#19304B;
-          padding:0;
-          margin-bottom:16px;
-          cursor:pointer;
-          font-size:13px;
-          font-weight:600;
-        "
-      >
-        ← Back to Discussion
-      </button>
-
-
-      <!-- =================================
-           THREAD HEADER
-           ================================= -->
-
-      <div style="
-        background:#FFFFFF;
-        border:1px solid #DBE3EC;
-        border-radius:8px;
-        padding:18px;
-        margin-bottom:12px;
-      ">
-
-        <div style="
-          font-size:18px;
-          font-weight:600;
-          color:#19304B;
-          margin-bottom:5px;
-        ">
-          ${title}
-        </div>
-
-        <div style="
-          font-size:12px;
-          color:#64748B;
-        ">
-          ${
-            escapeProjectHtml(
-              discussion?.creator?.full_name ||
-              discussion?.creator?.username ||
-              discussion?.creator?.email ||
-              'Project Member'
-            )
-          }
-        </div>
-
-      </div>
-
-
-      <!-- =================================
-           POSTS
-           ================================= -->
-
-      ${
-        posts.length
-          ? posts
-              .map(
-                post =>
-                  renderDiscussionPost(
-                    post
-                  )
-              )
-              .join('')
-          : `
-            <div style="
-              background:#FFFFFF;
-              border:1px solid #DBE3EC;
-              border-radius:8px;
-              padding:20px;
-              color:#64748B;
-            ">
-              No posts in this discussion.
-            </div>
-          `
-      }
-
-
-      <!-- =================================
-           REPLY
-           ================================= -->
-
-      ${
-        canEdit
-          ? `
-            <div style="
-              background:#FFFFFF;
-              border:1px solid #DBE3EC;
-              border-radius:8px;
-              padding:18px;
-              margin-top:12px;
-            ">
-
-              <div style="
-                font-size:14px;
-                font-weight:600;
-                color:#19304B;
-                margin-bottom:8px;
-              ">
-                Reply
-              </div>
-
-              <textarea
-                id="projectDiscussionReply"
-                rows="4"
-                placeholder="Add a reply..."
-                style="
-                  width:100%;
-                  box-sizing:border-box;
-                  padding:10px;
-                  border:1px solid #DBE3EC;
-                  border-radius:6px;
-                  font-size:14px;
-                  resize:vertical;
-                "
-              ></textarea>
-
-
-              <div style="
-                display:flex;
-                justify-content:flex-end;
-                margin-top:10px;
-              ">
-
-                <button
-                  type="button"
-                  id="projectDiscussionReplyButton"
-                  onclick="
-                    window.saveProjectDiscussionReply &&
-                    window.saveProjectDiscussionReply(
-                      ${Number(discussion.id)}
-                    );
-                  "
-                  style="
-                    border:none;
-                    border-radius:6px;
-                    background:#19304B;
-                    color:#FFFFFF;
-                    padding:8px 14px;
-                    font-weight:600;
-                    cursor:pointer;
-                  "
-                >
-                  Post Reply
-                </button>
-
-              </div>
-
-            </div>
-          `
-          : ''
-      }
-
-    </div>
-
-  `;
-
-}
-
-
-// ========================================
-// RENDER DISCUSSION POST
-// ========================================
-
-function renderDiscussionPost(
-  post
-){
-
-  const author =
-    post?.author?.full_name ||
-    post?.author?.username ||
-    post?.author?.email ||
-    'Project Member';
-
-
-  return `
-
-    <div style="
-      background:#FFFFFF;
-      border:1px solid #DBE3EC;
-      border-radius:8px;
-      padding:16px 18px;
-      margin-bottom:10px;
     ">
 
       <div style="
-        display:flex;
-        justify-content:space-between;
-        gap:12px;
-        margin-bottom:8px;
+        font-size:16px;
+        font-weight:600;
+        color:#19304B;
+        margin-bottom:6px;
       ">
-
-        <div style="
-          font-size:13px;
-          font-weight:600;
-          color:#19304B;
-        ">
-          ${escapeProjectHtml(author)}
-        </div>
-
-        <div style="
-          font-size:12px;
-          color:#64748B;
-        ">
-          ${escapeProjectHtml(
-            formatNoteDate(
-              post.created_at
-            )
-          )}
-        </div>
-
+        ${capitalize(tab)}
       </div>
 
-
-      <div style="
-        color:#334155;
-        line-height:1.6;
-        white-space:pre-wrap;
-      ">
-        ${escapeProjectHtml(
-          post.message_text
-        )}
+      <div>
+        This workspace section will be added next.
       </div>
 
     </div>
 
   `;
-
-}
-
-
-// ========================================
-// SAVE DISCUSSION REPLY
-// ========================================
-
-async function saveProjectDiscussionReply(
-  discussionId
-){
-
-  const textarea =
-    document.getElementById(
-      'projectDiscussionReply'
-    );
-
-  const button =
-    document.getElementById(
-      'projectDiscussionReplyButton'
-    );
-
-
-  const messageText =
-    String(
-      textarea?.value || ''
-    ).trim();
-
-
-  if(!messageText){
-
-    alert(
-      'Please enter a reply.'
-    );
-
-    textarea?.focus();
-
-    return;
-
-  }
-
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-
-  if(!token){
-
-    alert(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    if(button){
-
-      button.disabled =
-        true;
-
-      button.textContent =
-        'Posting...';
-
-    }
-
-
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions/${discussionId}/posts`,
-        {
-          method:'POST',
-
-          headers:{
-            'Content-Type':
-              'application/json',
-
-            'Authorization':
-              'Bearer ' + token
-          },
-
-          body:JSON.stringify({
-
-            message_text:
-              messageText
-
-          })
-        }
-      );
-
-
-    const result =
-      await response.json();
-
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Failed to add reply.'
-      );
-
-    }
-
-
-    await openProjectDiscussion(
-      discussionId
-    );
-
-
-  }catch(error){
-
-    console.error(
-      'Failed to save discussion reply:',
-      error
-    );
-
-
-    alert(
-      error.message ||
-      'Unable to add reply.'
-    );
-
-
-  }finally{
-
-    if(button){
-
-      button.disabled =
-        false;
-
-      button.textContent =
-        'Post Reply';
-
-    }
-
-  }
-
-}
-
-
-// ========================================
-// RENDER DISCUSSION TAB
-// ========================================
-
-function renderDiscussionTab(){
-
-  const content =
-    document.getElementById(
-      'projectWorkspaceContent'
-    );
-
-
-  if(!content){
-
-    return;
-
-  }
-
-
-  content.innerHTML =
-    renderDiscussion();
-
-}
-
-
-// ========================================
-// LOAD AND RENDER DISCUSSION
-// ========================================
-
-async function openDiscussionTab(){
-
-  try{
-
-    currentProjectDiscussion =
-      await loadProjectDiscussion();
-
-    renderDiscussionTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to load discussion:',
-      error
-    );
-
-
-    alert(
-      error.message ||
-      'Unable to load discussion.'
-    );
-
-  }
-
-}
-
-
-// ========================================
-// RETURN TO DISCUSSION LIST
-// ========================================
-
-async function renderProjectDiscussionList(){
-
-  try{
-
-    currentProjectDiscussion =
-      await loadProjectDiscussion();
-
-    renderDiscussionTab();
-
-  }catch(error){
-
-    console.error(
-      'Failed to reload discussions:',
-      error
-    );
-
-
-    alert(
-      error.message ||
-      'Unable to load discussion threads.'
-    );
-
-  }
 
 }
 
@@ -4766,11 +4612,13 @@ export function closeProjectWorkspace(){
       'projectDetailWorkspace'
     );
 
+
   if(workspace){
 
     workspace.remove();
 
   }
+
 
   currentProject =
     null;
@@ -4787,6 +4635,9 @@ export function closeProjectWorkspace(){
   currentProjectDiscussion =
     [];
 
+  currentProjectDocuments =
+    [];
+
   editingProjectTaskId =
     null;
 
@@ -4797,93 +4648,62 @@ export function closeProjectWorkspace(){
 
 
 // ========================================
-// END PART 3
-// ========================================
-
-// ========================================
 // GLOBAL FUNCTIONS
 // ========================================
 
 window.openProjectWorkspace =
   openProjectWorkspace;
 
-
 window.closeProjectWorkspace =
   closeProjectWorkspace;
-
 
 window.selectProjectTab =
   selectProjectTab;
 
+window.uploadProjectDocument =
+  uploadProjectDocument;
 
-// ----------------------------------------
-// NOTES
-// ----------------------------------------
+window.viewProjectDocument =
+  viewProjectDocument;
+
+window.downloadProjectDocument =
+  downloadProjectDocument;
 
 window.showProjectNoteEditor =
   showProjectNoteEditor;
 
-
 window.hideProjectNoteEditor =
   hideProjectNoteEditor;
-
 
 window.saveProjectNote =
   saveProjectNote;
 
-
-// ----------------------------------------
-// TASKS
-// ----------------------------------------
+window.saveProjectDiscussion =
+  saveProjectDiscussion;
 
 window.openProjectTaskEditor =
   openProjectTaskEditor;
 
-
 window.showProjectTaskEditor =
   showProjectTaskEditor;
-
 
 window.hideProjectTaskEditor =
   hideProjectTaskEditor;
 
-
 window.saveProjectTask =
   saveProjectTask;
-
 
 window.toggleArchivedProjectTasks =
   toggleArchivedProjectTasks;
 
-
 window.archiveProjectTask =
   archiveProjectTask;
-
 
 window.restoreProjectTask =
   restoreProjectTask;
 
-
 window.deleteProjectTask =
   deleteProjectTask;
-
-window.showNewProjectDiscussion =
-  showNewProjectDiscussion;
-
-window.hideNewProjectDiscussion =
-  hideNewProjectDiscussion;
-
-window.saveNewProjectDiscussion =
-  saveNewProjectDiscussion;
-
-window.openProjectDiscussion =
-  openProjectDiscussion;
-
-window.saveProjectDiscussionReply =
-  saveProjectDiscussionReply;
-
-window.renderProjectDiscussionList =
-  renderProjectDiscussionList;
 
 
 // ========================================
@@ -4920,10 +4740,6 @@ function escapeProjectHtml(
 
 }
 
-
-// ========================================
-// FORMAT PROJECT DATES
-// ========================================
 
 function formatProjectDates(
   startDate,
@@ -4967,10 +4783,6 @@ function formatProjectDates(
 }
 
 
-// ========================================
-// FORMAT DATE / TIME
-// ========================================
-
 function formatNoteDate(
   value
 ){
@@ -5013,10 +4825,6 @@ function formatNoteDate(
 }
 
 
-// ========================================
-// CAPITALIZE
-// ========================================
-
 function capitalize(
   value
 ){
@@ -5031,8 +4839,3 @@ function capitalize(
     ).slice(1);
 
 }
-
-
-// ========================================
-// END PROJECT WORKSPACE
-// ========================================
