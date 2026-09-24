@@ -1834,6 +1834,11 @@ function openProjectTaskEditor(
   editingProjectTaskId =
     Number(task.id);
 
+ const saveButton =
+  document.getElementById(
+    'saveProjectTaskButton'
+  );
+ 
 
   const editor =
     document.getElementById(
@@ -1924,6 +1929,12 @@ function openProjectTaskEditor(
   editor.style.display =
     'block';
 
+ if(saveButton){
+
+  saveButton.textContent =
+    'Save Changes';
+
+}
 
   if(title){
 
@@ -1977,6 +1988,9 @@ function showProjectTaskEditor(){
 // ========================================
 
 function hideProjectTaskEditor(){
+
+ editingProjectTaskId =
+  null;
 
   const editor =
     document.getElementById(
@@ -2169,75 +2183,113 @@ async function saveProjectTask(){
     }
 
 
-    const response =
-      await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks`,
-        {
-          method:'POST',
+   const isEditing =
+  Number.isFinite(
+    editingProjectTaskId
+  );
 
-          headers:{
-            'Content-Type':
-              'application/json',
 
-            'Authorization':
-              'Bearer ' + token
-          },
+const url =
+  isEditing
+    ? `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks/${editingProjectTaskId}`
+    : `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/tasks`;
 
-          body:JSON.stringify({
 
-            task_title:
-              taskTitle,
+const response =
+  await fetch(
+    url,
+    {
+      method:
+        isEditing
+          ? 'PATCH'
+          : 'POST',
 
-            task_description:
-              String(
-                description?.value || ''
-              ).trim() || null,
+      headers:{
+        'Content-Type':
+          'application/json',
 
-            assigned_to:
-              assignedTo?.value
-                ? Number(
-                    assignedTo.value
-                  )
-                : null,
+        'Authorization':
+          'Bearer ' + token
+      },
 
-            priority:
-              priority?.value ||
-              'normal',
+      body:JSON.stringify({
 
-            due_date:
-              dueDate?.value ||
-              null
+        task_title:
+          taskTitle,
 
-          })
-        }
-      );
+        task_description:
+          String(
+            description?.value || ''
+          ).trim() || null,
+
+        assigned_to:
+          assignedTo?.value
+            ? Number(
+                assignedTo.value
+              )
+            : null,
+
+        priority:
+          priority?.value ||
+          'normal',
+
+        due_date:
+          dueDate?.value ||
+          null
+
+      })
+    }
+  );
 
 
     const result =
       await response.json();
 
 
-    if(
-      !response.ok ||
-      !result.success
-    ){
+if(
+  !response.ok ||
+  !result.success
+){
 
-      throw new Error(
-        result.message ||
-        'Failed to create project task.'
-      );
+  throw new Error(
+    result.message ||
+    (
+      isEditing
+        ? 'Failed to update project task.'
+        : 'Failed to create project task.'
+    )
+  );
 
-    }
-
-
-    currentProjectTasks =
-      [
-        result.task,
-        ...currentProjectTasks
-      ];
+}
 
 
-    renderTasksTab();
+if(isEditing){
+
+  currentProjectTasks =
+    currentProjectTasks.map(
+      task =>
+        Number(task.id) ===
+        Number(editingProjectTaskId)
+          ? result.task
+          : task
+    );
+
+}else{
+
+  currentProjectTasks =
+    [
+      result.task,
+      ...currentProjectTasks
+    ];
+
+}
+
+
+editingProjectTaskId =
+  null;
+
+
+renderTasksTab();
 
 
   }catch(error){
