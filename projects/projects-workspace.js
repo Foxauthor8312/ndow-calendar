@@ -52,7 +52,6 @@ let editingProjectTaskId = null;
 
 let showArchivedProjectTasks = false;
 
-let showArchivedProjectTasks = false;
 
 
 // ========================================
@@ -5026,6 +5025,9 @@ export function closeProjectWorkspace(){
   showArchivedProjectTasks =
     false;
 
+ showArchivedProjectDocuments =
+  false;
+
 }
 
 
@@ -5050,15 +5052,6 @@ window.viewProjectDocument =
 
 window.downloadProjectDocument =
   downloadProjectDocument;
-
-window.toggleArchivedProjectDocuments =
-  toggleArchivedProjectDocuments;
-
-window.archiveProjectDocument =
-  archiveProjectDocument;
-
-window.restoreProjectDocument =
-  restoreProjectDocument;
 
 window.toggleArchivedProjectDocuments =
   toggleArchivedProjectDocuments;
