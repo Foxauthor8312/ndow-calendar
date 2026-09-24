@@ -73,6 +73,10 @@ export async function openProjectWorkspace(
         projectId
       );
 
+   
+    currentProject =
+      project;
+
     const members =
       await loadProjectMembers(
         projectId
@@ -93,8 +97,6 @@ export async function openProjectWorkspace(
         projectId
       );
 
-    currentProject =
-      project;
 
     currentProjectMembers =
       members;
