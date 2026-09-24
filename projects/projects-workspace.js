@@ -52,6 +52,8 @@ let editingProjectTaskId = null;
 
 let showArchivedProjectTasks = false;
 
+let showArchivedProjectTasks = false;
+
 
 // ========================================
 // OPEN PROJECT
@@ -481,13 +483,12 @@ async function loadProjectDiscussion(
 // ========================================
 
 async function loadProjectDocuments(
-  projectId
+  projectId,
+  showArchived = false
 ){
 
   const token =
-    localStorage.getItem(
-      'token'
-    );
+    localStorage.getItem('token');
 
   if(!token){
 
@@ -497,11 +498,19 @@ async function loadProjectDocuments(
 
   }
 
+
+  const query =
+    showArchived
+      ? '?archived=true'
+      : '';
+
+
   const response =
     await fetch(
-      `${PROJECTS_API_BASE}/api/projects/${projectId}/documents`,
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/documents${query}`,
       {
         method:'GET',
+
         headers:{
           'Authorization':
             'Bearer ' + token
@@ -509,8 +518,10 @@ async function loadProjectDocuments(
       }
     );
 
+
   const result =
     await response.json();
+
 
   if(
     !response.ok ||
@@ -524,12 +535,14 @@ async function loadProjectDocuments(
 
   }
 
-  return Array.isArray(result.documents)
+
+  return Array.isArray(
+    result.documents
+  )
     ? result.documents
     : [];
 
 }
-
 
 // ========================================
 // CREATE DISCUSSION POST
@@ -3429,34 +3442,78 @@ function renderDocuments(){
           </div>
         </div>
 
-        <div>
-          <input
-            id="projectDocumentUploadInput"
-            type="file"
-            accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            style="display:none;"
-            onchange="window.uploadProjectDocument && window.uploadProjectDocument(this.files[0]);"
-          >
+        <div style="
+          display:flex;
+          align-items:center;
+          gap:8px;
+        ">
 
           <button
             type="button"
-            onclick="document.getElementById('projectDocumentUploadInput')?.click();"
+            onclick="
+              window.toggleArchivedProjectDocuments &&
+              window.toggleArchivedProjectDocuments();
+            "
             style="
-              border:none;
-              background:#19304B;
-              color:#FFFFFF;
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
               border-radius:6px;
               padding:8px 12px;
               cursor:pointer;
               font-size:12px;
               font-weight:600;
+              white-space:nowrap;
             "
           >
-            + Upload Document
+            ${
+              showArchivedProjectDocuments
+                ? 'Show Current'
+                : 'Show Hidden'
+            }
           </button>
+
+
+          <div>
+
+            <input
+              id="projectDocumentUploadInput"
+              type="file"
+              accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              style="display:none;"
+              onchange="
+                window.uploadProjectDocument &&
+                window.uploadProjectDocument(this.files[0]);
+              "
+            >
+
+            <button
+              type="button"
+              onclick="
+                document
+                  .getElementById('projectDocumentUploadInput')
+                  ?.click();
+              "
+              style="
+                border:none;
+                background:#19304B;
+                color:#FFFFFF;
+                border-radius:6px;
+                padding:8px 12px;
+                cursor:pointer;
+                font-size:12px;
+                font-weight:600;
+              "
+            >
+              + Upload Document
+            </button>
+
+          </div>
+
         </div>
 
       </div>
+
 
       <div id="projectDocumentsList">
         ${renderProjectDocumentsList()}
@@ -3482,11 +3539,16 @@ function renderProjectDocumentsList(){
         color:#64748B;
         text-align:center;
       ">
-        No project documents have been uploaded yet.
+        ${
+          showArchivedProjectDocuments
+            ? 'No hidden project documents.'
+            : 'No project documents have been uploaded yet.'
+        }
       </div>
     `;
 
   }
+
 
   return currentProjectDocuments
     .map(document => `
@@ -3502,6 +3564,7 @@ function renderProjectDocumentsList(){
         border:1px solid #DBE3EC;
         border-radius:8px;
       ">
+
 
         <div style="
           min-width:0;
@@ -3525,7 +3588,9 @@ function renderProjectDocumentsList(){
             📄
           </div>
 
+
           <div style="min-width:0;">
+
             <div style="
               color:#19304B;
               font-size:13px;
@@ -3534,8 +3599,29 @@ function renderProjectDocumentsList(){
               text-overflow:ellipsis;
               white-space:nowrap;
             ">
+
               ${escapeProjectHtml(document.file_name)}
+
+              ${
+                document.archived === true
+                  ? `
+                    <span style="
+                      margin-left:7px;
+                      padding:2px 6px;
+                      border-radius:4px;
+                      background:#F1F5F9;
+                      color:#64748B;
+                      font-size:10px;
+                      font-weight:600;
+                    ">
+                      Hidden
+                    </span>
+                  `
+                  : ''
+              }
+
             </div>
+
 
             <div style="
               margin-top:2px;
@@ -3543,11 +3629,17 @@ function renderProjectDocumentsList(){
               font-size:11px;
             ">
               ${formatProjectDocumentSize(document.file_size)}
-              ${document.created_at ? ' · ' + formatNoteDate(document.created_at) : ''}
+              ${
+                document.created_at
+                  ? ' · ' + formatNoteDate(document.created_at)
+                  : ''
+              }
             </div>
+
           </div>
 
         </div>
+
 
         <div style="
           display:flex;
@@ -3555,9 +3647,15 @@ function renderProjectDocumentsList(){
           flex:0 0 auto;
         ">
 
+
           <button
             type="button"
-            onclick="window.viewProjectDocument && window.viewProjectDocument(${Number(document.id)});"
+            onclick="
+              window.viewProjectDocument &&
+              window.viewProjectDocument(
+                ${Number(document.id)}
+              );
+            "
             style="
               border:1px solid #DBE3EC;
               background:#FFFFFF;
@@ -3572,9 +3670,16 @@ function renderProjectDocumentsList(){
             View
           </button>
 
+
           <button
             type="button"
-            onclick="window.downloadProjectDocument && window.downloadProjectDocument(${Number(document.id)}, ${JSON.stringify(document.file_name)});"
+            onclick="
+              window.downloadProjectDocument &&
+              window.downloadProjectDocument(
+                ${Number(document.id)},
+                ${JSON.stringify(document.file_name)}
+              );
+            "
             style="
               border:1px solid #DBE3EC;
               background:#FFFFFF;
@@ -3588,6 +3693,69 @@ function renderProjectDocumentsList(){
           >
             Download
           </button>
+
+
+          ${
+            currentProject &&
+            currentProject.permission === 'edit'
+
+              ? document.archived === true
+
+                ? `
+
+                  <button
+                    type="button"
+                    onclick="
+                      window.restoreProjectDocument &&
+                      window.restoreProjectDocument(
+                        ${Number(document.id)}
+                      );
+                    "
+                    style="
+                      border:1px solid #7A9E7F;
+                      background:#FFFFFF;
+                      color:#527357;
+                      border-radius:5px;
+                      padding:6px 9px;
+                      cursor:pointer;
+                      font-size:11px;
+                      font-weight:600;
+                    "
+                  >
+                    Restore
+                  </button>
+
+                `
+
+                : `
+
+                  <button
+                    type="button"
+                    onclick="
+                      window.archiveProjectDocument &&
+                      window.archiveProjectDocument(
+                        ${Number(document.id)}
+                      );
+                    "
+                    style="
+                      border:1px solid #DBE3EC;
+                      background:#FFFFFF;
+                      color:#475569;
+                      border-radius:5px;
+                      padding:6px 9px;
+                      cursor:pointer;
+                      font-size:11px;
+                      font-weight:600;
+                    "
+                  >
+                    Hide
+                  </button>
+
+                `
+
+              : ''
+          }
+
 
         </div>
 
@@ -3893,6 +4061,195 @@ async function downloadProjectDocument(
     alert(
       error.message ||
       'Unable to download document.'
+    );
+
+  }
+
+}
+
+// ========================================
+// TOGGLE HIDDEN DOCUMENTS
+// ========================================
+
+async function toggleArchivedProjectDocuments(){
+
+  const nextValue =
+    !showArchivedProjectDocuments;
+
+
+  try{
+
+    currentProjectDocuments =
+      await loadProjectDocuments(
+        currentProject.id,
+        nextValue
+      );
+
+
+    showArchivedProjectDocuments =
+      nextValue;
+
+
+    renderDocumentsTab();
+
+  }catch(error){
+
+    console.error(
+      'Failed to toggle archived documents:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to load hidden documents.'
+    );
+
+  }
+
+}
+
+
+// ========================================
+// HIDE DOCUMENT
+// ========================================
+
+async function archiveProjectDocument(
+  documentId
+){
+
+  if(
+    !currentProject ||
+    currentProject.permission !== 'edit'
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      'Hide this document? You can restore it later.'
+    )
+  ){
+
+    return;
+
+  }
+
+
+  await updateProjectDocumentLifecycle(
+    documentId,
+    'archive'
+  );
+
+}
+
+
+// ========================================
+// RESTORE DOCUMENT
+// ========================================
+
+async function restoreProjectDocument(
+  documentId
+){
+
+  if(
+    !currentProject ||
+    currentProject.permission !== 'edit'
+  ){
+
+    return;
+
+  }
+
+
+  await updateProjectDocumentLifecycle(
+    documentId,
+    'restore'
+  );
+
+}
+
+
+// ========================================
+// UPDATE DOCUMENT LIFECYCLE
+// ========================================
+
+async function updateProjectDocumentLifecycle(
+  documentId,
+  action
+){
+
+  const token =
+    localStorage.getItem('token');
+
+
+  if(!token){
+
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents/${documentId}/${action}`,
+        {
+          method:'PATCH',
+
+          headers:{
+            'Authorization':
+              'Bearer ' + token
+          }
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        `Failed to ${action} document.`
+      );
+
+    }
+
+
+    currentProjectDocuments =
+      await loadProjectDocuments(
+        currentProject.id,
+        showArchivedProjectDocuments
+      );
+
+
+    renderDocumentsTab();
+
+  }catch(error){
+
+    console.error(
+      `Failed to ${action} project document:`,
+      error
+    );
+
+
+    alert(
+      error.message ||
+      `Unable to ${action} document.`
     );
 
   }
@@ -4382,6 +4739,29 @@ async function saveProjectNote(){
 
 }
 
+// ========================================
+// RENDER DOCUMENTS TAB
+// ========================================
+
+function renderDocumentsTab(){
+
+  const content =
+    document.getElementById(
+      'projectWorkspaceContent'
+    );
+
+
+  if(!content){
+
+    return;
+
+  }
+
+
+  content.innerHTML =
+    renderDocuments();
+
+}
 
 // ========================================
 // RENDER NOTES TAB
@@ -4638,6 +5018,8 @@ export function closeProjectWorkspace(){
   currentProjectDocuments =
     [];
 
+                                                               
+
   editingProjectTaskId =
     null;
 
@@ -4668,6 +5050,24 @@ window.viewProjectDocument =
 
 window.downloadProjectDocument =
   downloadProjectDocument;
+
+window.toggleArchivedProjectDocuments =
+  toggleArchivedProjectDocuments;
+
+window.archiveProjectDocument =
+  archiveProjectDocument;
+
+window.restoreProjectDocument =
+  restoreProjectDocument;
+
+window.toggleArchivedProjectDocuments =
+  toggleArchivedProjectDocuments;
+
+window.archiveProjectDocument =
+  archiveProjectDocument;
+
+window.restoreProjectDocument =
+  restoreProjectDocument;
 
 window.showProjectNoteEditor =
   showProjectNoteEditor;
