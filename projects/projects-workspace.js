@@ -9,11 +9,13 @@
  Purpose:
     Individual project workspace.
 
- Initial Responsibilities:
+ Responsibilities:
     • Load selected project
     • Load project members
     • Display project information
     • Display project members
+    • Display shared project notes
+    • Create shared project notes
     • Provide workspace navigation
 
 ==============================================================================
@@ -28,6 +30,17 @@
 
 const PROJECTS_API_BASE =
   'https://ndow-calendar-server.onrender.com';
+
+
+// ========================================
+// PROJECT STATE
+// ========================================
+
+let currentProject = null;
+
+let currentProjectMembers = [];
+
+let currentProjectNotes = [];
 
 
 // ========================================
@@ -58,10 +71,23 @@ export async function openProjectWorkspace(
       );
 
 
-  renderProjectWorkspaceWithState(
-  project,
-  members
-);
+    const notes =
+      await loadProjectNotes(
+        projectId
+      );
+
+
+    currentProject =
+      project;
+
+    currentProjectMembers =
+      members;
+
+    currentProjectNotes =
+      notes;
+
+
+    renderProjectWorkspace();
 
 
   }catch(error){
@@ -223,13 +249,154 @@ async function loadProjectMembers(
 
 
 // ========================================
+// LOAD PROJECT NOTES
+// ========================================
+
+async function loadProjectNotes(
+  projectId
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/notes`,
+      {
+        method:'GET',
+
+        headers:{
+          'Authorization':
+            'Bearer ' + token
+        }
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to load project notes.'
+    );
+
+  }
+
+
+  return Array.isArray(
+    result.notes
+  )
+    ? result.notes
+    : [];
+
+}
+
+
+// ========================================
+// CREATE PROJECT NOTE
+// ========================================
+
+async function createProjectNote(
+  noteText
+){
+
+  const token =
+    localStorage.getItem(
+      'token'
+    );
+
+
+  if(!token){
+
+    throw new Error(
+      'Your calendar session has expired. Please log in again.'
+    );
+
+  }
+
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    throw new Error(
+      'No project is currently open.'
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/notes`,
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+            'application/json',
+
+          'Authorization':
+            'Bearer ' + token
+        },
+
+        body:JSON.stringify({
+
+          note_text:
+            noteText
+
+        })
+      }
+    );
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !response.ok ||
+    !result.success
+  ){
+
+    throw new Error(
+      result.message ||
+      'Failed to create project note.'
+    );
+
+  }
+
+
+  return result.note;
+
+}
+
+
+// ========================================
 // RENDER WORKSPACE
 // ========================================
 
-function renderProjectWorkspace(
-  project,
-  members
-){
+function renderProjectWorkspace(){
 
   const existing =
     document.getElementById(
@@ -295,7 +462,7 @@ function renderProjectWorkspace(
               color:#19304B;
             ">
               ${escapeProjectHtml(
-                project.project_name
+                currentProject.project_name
               )}
             </div>
 
@@ -305,8 +472,8 @@ function renderProjectWorkspace(
               font-size:14px;
             ">
               ${formatProjectDates(
-                project.start_date,
-                project.end_date
+                currentProject.start_date,
+                currentProject.end_date
               )}
             </div>
 
@@ -453,10 +620,7 @@ function renderProjectWorkspace(
 
       <div id="projectWorkspaceContent">
 
-        ${renderOverview(
-          project,
-          members
-        )}
+        ${renderOverview()}
 
       </div>
 
@@ -476,10 +640,7 @@ function renderProjectWorkspace(
 // OVERVIEW
 // ========================================
 
-function renderOverview(
-  project,
-  members
-){
+function renderOverview(){
 
   return `
 
@@ -519,7 +680,7 @@ function renderOverview(
           white-space:pre-wrap;
         ">
           ${escapeProjectHtml(
-            project.description ||
+            currentProject.description ||
             'No project description has been entered.'
           )}
         </div>
@@ -554,7 +715,7 @@ function renderOverview(
               color:#19304B;
             ">
               ${escapeProjectHtml(
-                project.start_date || ''
+                currentProject.start_date || ''
               )}
             </div>
 
@@ -581,7 +742,7 @@ function renderOverview(
               color:#19304B;
             ">
               ${escapeProjectHtml(
-                project.end_date || ''
+                currentProject.end_date || ''
               )}
             </div>
 
@@ -623,14 +784,14 @@ function renderOverview(
             font-size:13px;
             color:#64748B;
           ">
-            ${members.length}
+            ${currentProjectMembers.length}
           </div>
 
         </div>
 
 
         ${renderMembers(
-          members
+          currentProjectMembers
         )}
 
       </div>
@@ -743,6 +904,490 @@ function renderMembers(
 
 
 // ========================================
+// NOTES
+// ========================================
+
+function renderNotes(){
+
+  const canEdit =
+    currentProjectMembers.some(
+      member =>
+        member.permission ===
+        'edit'
+    );
+
+
+  return `
+
+    <div>
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:16px;
+      ">
+
+        <div>
+
+          <div style="
+            font-size:18px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Shared Notes
+          </div>
+
+          <div style="
+            margin-top:3px;
+            font-size:13px;
+            color:#64748B;
+          ">
+            Notes shared with everyone on this project.
+          </div>
+
+        </div>
+
+
+        ${
+          canEdit
+            ? `
+              <button
+                type="button"
+                onclick="
+                  window.showProjectNoteEditor &&
+                  window.showProjectNoteEditor();
+                "
+                style="
+                  border:1px solid #19304B;
+                  background:#19304B;
+                  color:#FFFFFF;
+                  border-radius:6px;
+                  padding:8px 14px;
+                  cursor:pointer;
+                  font-weight:600;
+                  white-space:nowrap;
+                "
+              >
+                + Add Note
+              </button>
+            `
+            : ''
+        }
+
+      </div>
+
+
+      <div
+        id="projectNoteEditor"
+        style="
+          display:none;
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:16px;
+        "
+      >
+
+        <div style="
+          font-size:15px;
+          font-weight:600;
+          color:#19304B;
+          margin-bottom:10px;
+        ">
+          Add a Note
+        </div>
+
+
+        <textarea
+          id="projectNoteText"
+          rows="5"
+          maxlength="5000"
+          placeholder="Enter a note for the project..."
+          style="
+            width:100%;
+            box-sizing:border-box;
+            resize:vertical;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            padding:10px;
+            font-family:inherit;
+            font-size:14px;
+            color:#19304B;
+            outline:none;
+          "
+        ></textarea>
+
+
+        <div style="
+          display:flex;
+          justify-content:flex-end;
+          gap:8px;
+          margin-top:10px;
+        ">
+
+          <button
+            type="button"
+            onclick="
+              window.hideProjectNoteEditor &&
+              window.hideProjectNoteEditor();
+            "
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#475569;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="button"
+            id="saveProjectNoteButton"
+            onclick="
+              window.saveProjectNote &&
+              window.saveProjectNote();
+            "
+            style="
+              border:1px solid #19304B;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            Save Note
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="projectNotesList">
+
+        ${renderNotesList()}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+// ========================================
+// NOTES LIST
+// ========================================
+
+function renderNotesList(){
+
+  if(!currentProjectNotes.length){
+
+    return `
+
+      <div style="
+        background:#FFFFFF;
+        border:1px solid #DBE3EC;
+        border-radius:8px;
+        padding:24px;
+        color:#64748B;
+        text-align:center;
+      ">
+        No shared notes have been added yet.
+      </div>
+
+    `;
+
+  }
+
+
+  return currentProjectNotes
+    .map(note => {
+
+      const author =
+        note.author?.full_name ||
+        note.author?.username ||
+        note.author?.email ||
+        'Unknown User';
+
+
+      const date =
+        formatNoteDate(
+          note.created_at
+        );
+
+
+      return `
+
+        <div style="
+          background:#FFFFFF;
+          border:1px solid #DBE3EC;
+          border-radius:8px;
+          padding:18px;
+          margin-bottom:12px;
+        ">
+
+          <div style="
+            color:#334155;
+            font-size:14px;
+            line-height:1.6;
+            white-space:pre-wrap;
+          ">
+            ${escapeProjectHtml(
+              note.note_text
+            )}
+          </div>
+
+
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:12px;
+            margin-top:14px;
+            padding-top:10px;
+            border-top:1px solid #EEF2F6;
+            color:#64748B;
+            font-size:12px;
+          ">
+
+            <span>
+              ${escapeProjectHtml(
+                author
+              )}
+            </span>
+
+            <span>
+              ${escapeProjectHtml(
+                date
+              )}
+            </span>
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+    .join('');
+
+}
+
+
+// ========================================
+// SHOW NOTE EDITOR
+// ========================================
+
+function showProjectNoteEditor(){
+
+  const editor =
+    document.getElementById(
+      'projectNoteEditor'
+    );
+
+
+  const textarea =
+    document.getElementById(
+      'projectNoteText'
+    );
+
+
+  if(!editor){
+
+    return;
+
+  }
+
+
+  editor.style.display =
+    'block';
+
+
+  if(textarea){
+
+    textarea.focus();
+
+  }
+
+}
+
+
+// ========================================
+// HIDE NOTE EDITOR
+// ========================================
+
+function hideProjectNoteEditor(){
+
+  const editor =
+    document.getElementById(
+      'projectNoteEditor'
+    );
+
+
+  const textarea =
+    document.getElementById(
+      'projectNoteText'
+    );
+
+
+  if(editor){
+
+    editor.style.display =
+      'none';
+
+  }
+
+
+  if(textarea){
+
+    textarea.value =
+      '';
+
+  }
+
+}
+
+
+// ========================================
+// SAVE NOTE
+// ========================================
+
+async function saveProjectNote(){
+
+  const textarea =
+    document.getElementById(
+      'projectNoteText'
+    );
+
+
+  const button =
+    document.getElementById(
+      'saveProjectNoteButton'
+    );
+
+
+  if(!textarea){
+
+    return;
+
+  }
+
+
+  const noteText =
+    String(
+      textarea.value || ''
+    ).trim();
+
+
+  if(!noteText){
+
+    alert(
+      'Please enter a note.'
+    );
+
+    textarea.focus();
+
+    return;
+
+  }
+
+
+  try{
+
+    if(button){
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        'Saving...';
+
+    }
+
+
+    const note =
+      await createProjectNote(
+        noteText
+      );
+
+
+    currentProjectNotes =
+      [
+        note,
+        ...currentProjectNotes
+      ];
+
+
+    renderNotesTab();
+
+
+  }catch(error){
+
+    console.error(
+      'Failed to save project note:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to save note.'
+    );
+
+
+  }finally{
+
+    if(button){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        'Save Note';
+
+    }
+
+  }
+
+}
+
+
+// ========================================
+// RENDER NOTES TAB
+// ========================================
+
+function renderNotesTab(){
+
+  const content =
+    document.getElementById(
+      'projectWorkspaceContent'
+    );
+
+
+  if(!content){
+
+    return;
+
+  }
+
+
+  content.innerHTML =
+    renderNotes();
+
+}
+
+
+// ========================================
 // TAB SELECTION
 // ========================================
 
@@ -812,7 +1457,18 @@ function selectProjectTab(
 
   if(tab === 'overview'){
 
-    renderCurrentOverview();
+    content.innerHTML =
+      renderOverview();
+
+    return;
+
+  }
+
+
+  if(tab === 'notes'){
+
+    content.innerHTML =
+      renderNotes();
 
     return;
 
@@ -850,60 +1506,6 @@ function selectProjectTab(
 
 
 // ========================================
-// RETURN TO OVERVIEW
-// ========================================
-
-let currentProject = null;
-let currentProjectMembers = [];
-
-function renderCurrentOverview(){
-
-  if(
-    !currentProject
-  ){
-
-    return;
-
-  }
-
-
-  const content =
-    document.getElementById(
-      'projectWorkspaceContent'
-    );
-
-
-  if(!content){
-
-    return;
-
-  }
-
-
-  content.innerHTML =
-    renderOverview(
-      currentProject,
-      currentProjectMembers
-    );
-
-}
-
-
-// ========================================
-// GLOBAL FUNCTIONS
-// ========================================
-
-window.openProjectWorkspace =
-  openProjectWorkspace;
-
-window.closeProjectWorkspace =
-  closeProjectWorkspace;
-
-window.selectProjectTab =
-  selectProjectTab;
-
-
-// ========================================
 // CLOSE PROJECT
 // ========================================
 
@@ -921,7 +1523,40 @@ export function closeProjectWorkspace(){
 
   }
 
+
+  currentProject =
+    null;
+
+  currentProjectMembers =
+    [];
+
+  currentProjectNotes =
+    [];
+
 }
+
+
+// ========================================
+// GLOBAL FUNCTIONS
+// ========================================
+
+window.openProjectWorkspace =
+  openProjectWorkspace;
+
+window.closeProjectWorkspace =
+  closeProjectWorkspace;
+
+window.selectProjectTab =
+  selectProjectTab;
+
+window.showProjectNoteEditor =
+  showProjectNoteEditor;
+
+window.hideProjectNoteEditor =
+  hideProjectNoteEditor;
+
+window.saveProjectNote =
+  saveProjectNote;
 
 
 // ========================================
@@ -1001,6 +1636,48 @@ function formatProjectDates(
 }
 
 
+function formatNoteDate(
+  value
+){
+
+  if(!value){
+
+    return '';
+
+  }
+
+
+  const date =
+    new Date(value);
+
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return String(
+      value
+    );
+
+  }
+
+
+  return date.toLocaleString(
+    undefined,
+    {
+      month:'short',
+      day:'numeric',
+      year:'numeric',
+      hour:'numeric',
+      minute:'2-digit'
+    }
+  );
+
+}
+
+
 function capitalize(
   value
 ){
@@ -1013,38 +1690,5 @@ function capitalize(
     String(
       value || ''
     ).slice(1);
-
-}
-
-
-// ========================================
-// INITIAL PROJECT STATE
-// ========================================
-
-/*
-  The project data is assigned here through
-  a small wrapper so the renderer always has
-  access to the currently open project.
-*/
-
-const originalRender =
-  renderProjectWorkspace;
-
-function renderProjectWorkspaceWithState(
-  project,
-  members
-){
-
-  currentProject =
-    project;
-
-  currentProjectMembers =
-    members;
-
-
-  originalRender(
-    project,
-    members
-  );
 
 }
