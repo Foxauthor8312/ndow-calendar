@@ -384,64 +384,6 @@ async function loadProjectTasks(
 
 
 // ========================================
-// LOAD PROJECT DISCUSSION
-// ========================================
-
-async function loadProjectDiscussion(
-  projectId
-){
-
-  const token =
-    localStorage.getItem(
-      'token'
-    );
-
-  if(!token){
-
-    throw new Error(
-      'Your calendar session has expired. Please log in again.'
-    );
-
-  }
-
-  const response =
-    await fetch(
-      `${PROJECTS_API_BASE}/api/projects/${projectId}/discussions`,
-      {
-        method:'GET',
-
-        headers:{
-          'Authorization':
-            'Bearer ' + token
-        }
-      }
-    );
-
-  const result =
-    await response.json();
-
-  if(
-    !response.ok ||
-    !result.success
-  ){
-
-    throw new Error(
-      result.message ||
-      'Failed to load project discussions.'
-    );
-
-  }
-
-  return Array.isArray(
-    result.discussions
-  )
-    ? result.discussions
-    : [];
-
-}
-
-
-// ========================================
 // CREATE PROJECT NOTE
 // ========================================
 
