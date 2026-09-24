@@ -44,6 +44,8 @@ let currentProjectNotes = [];
 
 let currentProjectTasks = [];
 
+let editingProjectTaskId = null;
+
 
 // ========================================
 // OPEN PROJECT
@@ -1655,15 +1657,22 @@ function renderTasksList(){
         'normal';
 
 
-      return `
+return `
 
-        <div style="
-          background:#FFFFFF;
-          border:1px solid #DBE3EC;
-          border-radius:8px;
-          padding:18px;
-          margin-bottom:12px;
-        ">
+  <div
+    onclick="
+      window.openProjectTaskEditor &&
+      window.openProjectTaskEditor(${task.id});
+    "
+    style="
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:8px;
+      padding:18px;
+      margin-bottom:12px;
+      cursor:pointer;
+    "
+  >
 
           <div style="
             display:flex;
@@ -1796,6 +1805,135 @@ function renderTasksList(){
 }
 
 // ========================================
+// OPEN TASK EDITOR
+// ========================================
+
+function openProjectTaskEditor(
+  taskId
+){
+
+  const task =
+    currentProjectTasks.find(
+      item =>
+        Number(item.id) ===
+        Number(taskId)
+    );
+
+
+  if(!task){
+
+    alert(
+      'Task could not be found.'
+    );
+
+    return;
+
+  }
+
+
+  editingProjectTaskId =
+    Number(task.id);
+
+
+  const editor =
+    document.getElementById(
+      'projectTaskEditor'
+    );
+
+
+  const title =
+    document.getElementById(
+      'projectTaskTitle'
+    );
+
+
+  const description =
+    document.getElementById(
+      'projectTaskDescription'
+    );
+
+
+  const assignedTo =
+    document.getElementById(
+      'projectTaskAssignedTo'
+    );
+
+
+  const priority =
+    document.getElementById(
+      'projectTaskPriority'
+    );
+
+
+  const dueDate =
+    document.getElementById(
+      'projectTaskDueDate'
+    );
+
+
+  if(!editor){
+
+    return;
+
+  }
+
+
+  if(title){
+
+    title.value =
+      task.task_title || '';
+
+  }
+
+
+  if(description){
+
+    description.value =
+      task.task_description || '';
+
+  }
+
+
+  if(assignedTo){
+
+    assignedTo.value =
+      task.assigned_to
+        ? String(task.assigned_to)
+        : '';
+
+  }
+
+
+  if(priority){
+
+    priority.value =
+      task.priority ||
+      'normal';
+
+  }
+
+
+  if(dueDate){
+
+    dueDate.value =
+      task.due_date || '';
+
+  }
+
+
+  editor.style.display =
+    'block';
+
+
+  if(title){
+
+    title.focus();
+
+  }
+
+}
+
+// ========================================
 // SHOW TASK EDITOR
 // ========================================
 
@@ -1831,6 +1969,7 @@ function showProjectTaskEditor(){
   }
 
 }
+
 
 
 // ========================================
@@ -2537,6 +2676,9 @@ window.hideProjectNoteEditor =
 
 window.saveProjectNote =
   saveProjectNote;
+
+window.openProjectTaskEditor =
+  openProjectTaskEditor;
 
 window.showProjectTaskEditor =
   showProjectTaskEditor;
