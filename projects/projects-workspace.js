@@ -406,7 +406,7 @@ async function loadProjectDiscussion(
 
   const response =
     await fetch(
-      `${PROJECTS_API_BASE}/api/projects/${projectId}/discussion`,
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/discussions`,
       {
         method:'GET',
 
@@ -3741,7 +3741,7 @@ async function saveProjectDiscussion(){
 
     const response =
       await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussion`,
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
         {
           method:'POST',
 
