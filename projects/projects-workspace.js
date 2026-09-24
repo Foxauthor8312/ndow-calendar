@@ -427,13 +427,13 @@ async function loadProjectDiscussion(
 
     throw new Error(
       result.message ||
-      'Failed to load project discussion.'
+      'Failed to load project discussions.'
     );
 
   }
 
   return Array.isArray(
-    result.discussion
+    result.discussions
   )
     ? result.discussions
     : [];
