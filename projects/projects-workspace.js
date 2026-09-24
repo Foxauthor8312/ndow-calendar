@@ -2333,7 +2333,29 @@ function renderNotesTab(){
 
 }
 
+// ========================================
+// RENDER TASKS TAB
+// ========================================
 
+function renderTasksTab(){
+
+  const content =
+    document.getElementById(
+      'projectWorkspaceContent'
+    );
+
+
+  if(!content){
+
+    return;
+
+  }
+
+
+  content.innerHTML =
+    renderTasks();
+
+}
 
 // ========================================
 // TAB SELECTION
