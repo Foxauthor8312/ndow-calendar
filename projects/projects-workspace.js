@@ -435,7 +435,7 @@ async function loadProjectDiscussion(
   return Array.isArray(
     result.discussion
   )
-    ? result.discussion
+    ? result.discussions
     : [];
 
 }
@@ -4940,14 +4940,6 @@ window.saveProjectDiscussionReply =
 
 window.renderProjectDiscussionList =
   renderProjectDiscussionList;
-
-
-// ----------------------------------------
-// DISCUSSION
-// ----------------------------------------
-
-window.saveProjectDiscussion =
-  saveProjectDiscussion;
 
 
 // ========================================
