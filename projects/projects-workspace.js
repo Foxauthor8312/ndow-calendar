@@ -991,22 +991,57 @@ function renderOverview(){
            PROJECT INFORMATION
            =============================== -->
 
-      <div style="
-        background:#FFFFFF;
-        border:1px solid #DBE3EC;
-        border-radius:8px;
-        padding:20px;
-      ">
+<div style="
+  background:#FFFFFF;
+  border:1px solid #DBE3EC;
+  border-radius:8px;
+  padding:20px;
+">
 
-        <div style="
-          font-size:16px;
-          font-weight:600;
-          color:#19304B;
-          margin-bottom:12px;
-        ">
-          Project Information
-        </div>
+  <div style="
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+  ">
 
+    <div style="
+      font-size:16px;
+      font-weight:600;
+      color:#19304B;
+    ">
+      Project Information
+    </div>
+
+    ${
+      currentProject &&
+      currentProject.permission === 'edit'
+        ? `
+          <button
+            type="button"
+            onclick="
+              window.openProjectEditForm &&
+              window.openProjectEditForm();
+            "
+            style="
+              border:1px solid #19304B;
+              background:#FFFFFF;
+              color:#19304B;
+              border-radius:6px;
+              padding:6px 12px;
+              cursor:pointer;
+              font-size:12px;
+              font-weight:600;
+            "
+          >
+            Edit
+          </button>
+        `
+        : ''
+    }
+
+  </div>
 
         <div style="
           color:#475569;
