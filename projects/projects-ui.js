@@ -16,7 +16,8 @@
 
 import {
   loadMyProjects,
-  createProject
+  createProject,
+  updateProject
 } from './projects-api.js';
 
 
