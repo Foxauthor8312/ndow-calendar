@@ -15,7 +15,8 @@
 'use strict';
 
 import {
-  loadMyProjects
+  loadMyProjects,
+  createProject
 } from './projects-api.js';
 
 
@@ -541,6 +542,138 @@ function openNewProjectForm(){
     )
     .onclick =
       () => modal.remove();
+
+
+  document
+    .getElementById(
+      'newProjectCreateButton'
+    )
+    .onclick =
+      async () => {
+
+        const nameInput =
+          document.getElementById(
+            'newProjectName'
+          );
+
+        const descriptionInput =
+          document.getElementById(
+            'newProjectDescription'
+          );
+
+        const startDateInput =
+          document.getElementById(
+            'newProjectStartDate'
+          );
+
+        const endDateInput =
+          document.getElementById(
+            'newProjectEndDate'
+          );
+
+        const errorBox =
+          document.getElementById(
+            'newProjectError'
+          );
+
+        const createButton =
+          document.getElementById(
+            'newProjectCreateButton'
+          );
+
+
+        const projectName =
+          nameInput.value.trim();
+
+
+        if(!projectName){
+
+          errorBox.textContent =
+            'Project name is required.';
+
+          errorBox.style.display =
+            'block';
+
+          nameInput.focus();
+
+          return;
+
+        }
+
+
+        errorBox.style.display =
+          'none';
+
+
+        createButton.disabled =
+          true;
+
+        createButton.textContent =
+          'Creating...';
+
+
+        try{
+
+          const project =
+            await createProject({
+
+              project_name:
+                projectName,
+
+              description:
+                descriptionInput.value.trim(),
+
+              start_date:
+                startDateInput.value ||
+                null,
+
+              end_date:
+                endDateInput.value ||
+                null,
+
+              status:
+                'Active'
+
+            });
+
+
+          console.log(
+            'Project created:',
+            project
+          );
+
+
+          modal.remove();
+
+
+          await openProjectsWorkspace();
+
+
+        }catch(error){
+
+          console.error(
+            'Create project failed:',
+            error
+          );
+
+
+          errorBox.textContent =
+            error.message ||
+            'Unable to create project.';
+
+          errorBox.style.display =
+            'block';
+
+
+          createButton.disabled =
+            false;
+
+          createButton.textContent =
+            'Create Project';
+
+        }
+
+      };
 
 }
 
