@@ -168,3 +168,52 @@ export async function createProject({
   return result.project;
 
 }
+
+export async function updateProject(
+  projectId,
+  {
+    project_name,
+    description,
+    start_date,
+    end_date,
+    status
+  }
+){
+
+  const token =
+    localStorage.getItem('token');
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${projectId}`,
+      {
+        method: 'PATCH',
+
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':
+            `Bearer ${token}`
+        },
+
+        body: JSON.stringify({
+          project_name,
+          description,
+          start_date,
+          end_date,
+          status
+        })
+      }
+    );
+
+  const data =
+    await response.json();
+
+  if (!response.ok || !data.success){
+    throw new Error(
+      data.error ||
+      'Failed to update project'
+    );
+  }
+
+  return data.project;
+}
