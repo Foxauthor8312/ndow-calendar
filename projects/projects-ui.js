@@ -264,6 +264,20 @@ function renderProjectsWorkspace(
 
 }
 
+// ========================================
+// NEW PROJECT
+// ========================================
+
+function openNewProjectForm(){
+
+  alert(
+    'New Project form coming next.'
+  );
+
+}
+
+window.openNewProjectForm =
+  openNewProjectForm;
 
 // ========================================
 // CLOSE PROJECTS WORKSPACE
