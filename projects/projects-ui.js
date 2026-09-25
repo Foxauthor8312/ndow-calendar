@@ -138,20 +138,44 @@ function renderProjectsWorkspace(
 
         </div>
 
-        <button
-          type="button"
-          onclick="closeProjectsWorkspace()"
-          style="
-            border:1px solid #DBE3EC;
-            background:#FFFFFF;
-            color:#19304B;
-            border-radius:6px;
-            padding:8px 14px;
-            cursor:pointer;
-          "
-        >
-          Close
-        </button>
+         <div style="
+          display:flex;
+          gap:8px;
+          align-items:center;
+        ">
+
+          <button
+            type="button"
+            onclick="openNewProjectForm()"
+            style="
+              border:1px solid #19304B;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            + New Project
+          </button>
+
+          <button
+            type="button"
+            onclick="closeProjectsWorkspace()"
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#19304B;
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Close
+          </button>
+
+        </div>
 
       </div>
 
