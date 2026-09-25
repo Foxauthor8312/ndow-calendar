@@ -265,16 +265,285 @@ function renderProjectsWorkspace(
 }
 
 // ========================================
-// NEW PROJECT
+// NEW PROJECT FORM
 // ========================================
 
 function openNewProjectForm(){
 
-  alert(
-    'New Project form coming next.'
+  const existing =
+    document.getElementById(
+      'newProjectModal'
+    );
+
+  if(existing){
+
+    existing.remove();
+
+  }
+
+
+  const modal =
+    document.createElement(
+      'div'
+    );
+
+  modal.id =
+    'newProjectModal';
+
+  modal.style.cssText = `
+    position:fixed;
+    inset:0;
+    z-index:11000;
+    background:rgba(15,23,42,.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  `;
+
+
+  modal.innerHTML = `
+
+    <div style="
+      width:100%;
+      max-width:520px;
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:10px;
+      box-shadow:0 12px 40px rgba(15,23,42,.20);
+      padding:24px;
+    ">
+
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:20px;
+      ">
+
+        <div style="
+          font-size:20px;
+          font-weight:700;
+          color:#19304B;
+        ">
+          New Project
+        </div>
+
+        <button
+          type="button"
+          id="newProjectCloseButton"
+          style="
+            border:0;
+            background:transparent;
+            color:#64748B;
+            font-size:20px;
+            cursor:pointer;
+          "
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <div style="margin-bottom:16px;">
+
+        <label style="
+          display:block;
+          margin-bottom:6px;
+          font-size:13px;
+          font-weight:600;
+          color:#19304B;
+        ">
+          Project Name
+        </label>
+
+        <input
+          id="newProjectName"
+          type="text"
+          maxlength="150"
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px 12px;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            font-size:14px;
+          "
+        >
+
+      </div>
+
+
+      <div style="margin-bottom:16px;">
+
+        <label style="
+          display:block;
+          margin-bottom:6px;
+          font-size:13px;
+          font-weight:600;
+          color:#19304B;
+        ">
+          Description
+        </label>
+
+        <textarea
+          id="newProjectDescription"
+          rows="4"
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px 12px;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            font-size:14px;
+            resize:vertical;
+          "
+        ></textarea>
+
+      </div>
+
+
+      <div style="
+        display:flex;
+        gap:10px;
+        margin-bottom:20px;
+      ">
+
+        <div style="flex:1;">
+
+          <label style="
+            display:block;
+            margin-bottom:6px;
+            font-size:13px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Start Date
+          </label>
+
+          <input
+            id="newProjectStartDate"
+            type="date"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:10px 12px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:14px;
+            "
+          >
+
+        </div>
+
+
+        <div style="flex:1;">
+
+          <label style="
+            display:block;
+            margin-bottom:6px;
+            font-size:13px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            End Date
+          </label>
+
+          <input
+            id="newProjectEndDate"
+            type="date"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:10px 12px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:14px;
+            "
+          >
+
+        </div>
+
+      </div>
+
+
+      <div style="
+        display:flex;
+        justify-content:flex-end;
+        gap:8px;
+      ">
+
+        <button
+          type="button"
+          id="newProjectCancelButton"
+          style="
+            border:1px solid #DBE3EC;
+            background:#FFFFFF;
+            color:#19304B;
+            border-radius:6px;
+            padding:9px 16px;
+            cursor:pointer;
+          "
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          id="newProjectCreateButton"
+          style="
+            border:1px solid #19304B;
+            background:#19304B;
+            color:#FFFFFF;
+            border-radius:6px;
+            padding:9px 16px;
+            cursor:pointer;
+            font-weight:600;
+          "
+        >
+          Create Project
+        </button>
+
+      </div>
+
+      <div
+        id="newProjectError"
+        style="
+          display:none;
+          margin-top:14px;
+          color:#DC2626;
+          font-size:13px;
+        "
+      ></div>
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    modal
   );
 
+
+  document
+    .getElementById(
+      'newProjectCloseButton'
+    )
+    .onclick =
+      () => modal.remove();
+
+
+  document
+    .getElementById(
+      'newProjectCancelButton'
+    )
+    .onclick =
+      () => modal.remove();
+
 }
+
 
 window.openNewProjectForm =
   openNewProjectForm;
