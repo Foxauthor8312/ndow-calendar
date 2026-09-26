@@ -5885,6 +5885,837 @@ export function closeProjectWorkspace(){
 
 }
 
+// ========================================
+// LOAD AVAILABLE PROJECT USERS
+// ========================================
+
+async function loadAvailableProjectUsers(
+  projectId
+){
+
+  const token =
+    localStorage.getItem('token');
+
+  const response =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${projectId}/available-users`,
+      {
+        method:'GET',
+
+        headers:{
+          'Authorization':
+            `Bearer ${token}`
+        }
+      }
+    );
+
+  const data =
+    await response.json();
+
+  if(
+    !response.ok ||
+    !data.success
+  ){
+
+    throw new Error(
+      data.error ||
+      data.message ||
+      'Failed to load available users.'
+    );
+
+  }
+
+  return data.users || [];
+
+}
+
+
+// ========================================
+// OPEN ADD PROJECT MEMBER
+// ========================================
+
+async function openAddProjectMember(){
+
+  if(
+    !currentProject ||
+    currentProject.permission !== 'edit'
+  ){
+
+    alert(
+      'Edit permission is required to manage project members.'
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * Remove any existing dialog first.
+   */
+
+  const existing =
+    document.getElementById(
+      'addProjectMemberModal'
+    );
+
+  if(existing){
+
+    existing.remove();
+
+  }
+
+
+  /*
+   * Create modal shell.
+   */
+
+  const modal =
+    document.createElement('div');
+
+  modal.id =
+    'addProjectMemberModal';
+
+  modal.style.cssText = `
+    position:fixed;
+    inset:0;
+    z-index:2147483647;
+    background:rgba(15,23,42,0.42);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  `;
+
+
+  modal.innerHTML = `
+
+    <div style="
+      width:100%;
+      max-width:560px;
+      max-height:80vh;
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:10px;
+      box-shadow:0 20px 50px rgba(15,23,42,0.20);
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    ">
+
+      <!-- HEADER -->
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:18px 20px;
+        border-bottom:1px solid #DBE3EC;
+      ">
+
+        <div>
+
+          <div style="
+            font-size:17px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Add Project Member
+          </div>
+
+          <div style="
+            margin-top:4px;
+            font-size:12px;
+            color:#64748B;
+          ">
+            Add a user to this project and assign their permission.
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="closeAddProjectMemberButton"
+          style="
+            border:none;
+            background:transparent;
+            color:#64748B;
+            font-size:20px;
+            cursor:pointer;
+            line-height:1;
+            padding:4px;
+          "
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <!-- BODY -->
+
+      <div style="
+        padding:20px;
+        overflow:auto;
+      ">
+
+        <div style="
+          margin-bottom:14px;
+        ">
+
+          <label style="
+            display:block;
+            margin-bottom:6px;
+            font-size:13px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Search Users
+          </label>
+
+          <input
+            id="addProjectMemberSearch"
+            type="text"
+            placeholder="Search name, username, or email..."
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:9px 10px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+              color:#19304B;
+              outline:none;
+            "
+          >
+
+        </div>
+
+
+        <div
+          id="addProjectMemberUserList"
+          style="
+            border:1px solid #DBE3EC;
+            border-radius:7px;
+            max-height:260px;
+            overflow:auto;
+            background:#FFFFFF;
+          "
+        >
+
+          <div style="
+            padding:18px;
+            text-align:center;
+            color:#64748B;
+            font-size:13px;
+          ">
+            Loading users...
+          </div>
+
+        </div>
+
+
+        <div style="
+          margin-top:18px;
+        ">
+
+          <label style="
+            display:block;
+            margin-bottom:6px;
+            font-size:13px;
+            font-weight:600;
+            color:#19304B;
+          ">
+            Permission
+          </label>
+
+          <select
+            id="addProjectMemberPermission"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:9px 10px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              font-size:13px;
+              color:#19304B;
+              background:#FFFFFF;
+            "
+          >
+
+            <option value="view">
+              View
+            </option>
+
+            <option value="edit">
+              Edit
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          id="addProjectMemberStatus"
+          style="
+            margin-top:12px;
+            min-height:18px;
+            font-size:12px;
+            color:#64748B;
+          "
+        ></div>
+
+      </div>
+
+
+      <!-- FOOTER -->
+
+      <div style="
+        display:flex;
+        justify-content:flex-end;
+        gap:8px;
+        padding:14px 20px;
+        border-top:1px solid #DBE3EC;
+        background:#F8FAFC;
+      ">
+
+        <button
+          type="button"
+          id="cancelAddProjectMemberButton"
+          style="
+            border:1px solid #DBE3EC;
+            background:#FFFFFF;
+            color:#475569;
+            border-radius:6px;
+            padding:8px 14px;
+            font-size:13px;
+            cursor:pointer;
+          "
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="button"
+          id="confirmAddProjectMemberButton"
+          disabled
+          style="
+            border:1px solid #19304B;
+            background:#19304B;
+            color:#FFFFFF;
+            border-radius:6px;
+            padding:8px 14px;
+            font-size:13px;
+            cursor:pointer;
+            opacity:0.5;
+          "
+        >
+          Add Member
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    modal
+  );
+
+
+  /*
+   * Element references.
+   */
+
+  const closeButton =
+    document.getElementById(
+      'closeAddProjectMemberButton'
+    );
+
+  const cancelButton =
+    document.getElementById(
+      'cancelAddProjectMemberButton'
+    );
+
+  const searchInput =
+    document.getElementById(
+      'addProjectMemberSearch'
+    );
+
+  const userList =
+    document.getElementById(
+      'addProjectMemberUserList'
+    );
+
+  const permissionSelect =
+    document.getElementById(
+      'addProjectMemberPermission'
+    );
+
+  const statusElement =
+    document.getElementById(
+      'addProjectMemberStatus'
+    );
+
+  const addButton =
+    document.getElementById(
+      'confirmAddProjectMemberButton'
+    );
+
+
+  let availableUsers = [];
+
+  let selectedUserId = null;
+
+
+  /*
+   * Close dialog.
+   */
+
+  function closeDialog(){
+
+    modal.remove();
+
+  }
+
+
+  closeButton.onclick =
+    closeDialog;
+
+  cancelButton.onclick =
+    closeDialog;
+
+
+  /*
+   * Close when clicking outside the panel.
+   */
+
+  modal.addEventListener(
+    'click',
+    event => {
+
+      if(
+        event.target === modal
+      ){
+
+        closeDialog();
+
+      }
+
+    }
+  );
+
+
+  /*
+   * Render user list.
+   */
+
+  function renderUserList(){
+
+    const search =
+      (
+        searchInput.value ||
+        ''
+      )
+        .trim()
+        .toLowerCase();
+
+
+    const filtered =
+      availableUsers.filter(
+        user => {
+
+          const text = [
+
+            user.full_name,
+            user.username,
+            user.email,
+            user.role
+
+          ]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase();
+
+
+          return text.includes(
+            search
+          );
+
+        }
+      );
+
+
+    if(!filtered.length){
+
+      userList.innerHTML = `
+
+        <div style="
+          padding:18px;
+          text-align:center;
+          color:#64748B;
+          font-size:13px;
+        ">
+          No available users found.
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    userList.innerHTML =
+      filtered
+        .map(
+          user => {
+
+            const name =
+              user.full_name ||
+              user.username ||
+              user.email ||
+              'Unknown User';
+
+            const selected =
+              Number(
+                selectedUserId
+              ) === Number(
+                user.id
+              );
+
+
+            return `
+
+              <button
+                type="button"
+                data-user-id="${user.id}"
+                style="
+                  width:100%;
+                  display:flex;
+                  align-items:center;
+                  justify-content:space-between;
+                  gap:12px;
+                  padding:11px 12px;
+                  border:none;
+                  border-bottom:1px solid #EEF2F6;
+                  background:${
+                    selected
+                      ? '#F1F7FC'
+                      : '#FFFFFF'
+                  };
+                  text-align:left;
+                  cursor:pointer;
+                "
+              >
+
+                <div style="
+                  min-width:0;
+                  flex:1;
+                ">
+
+                  <div style="
+                    font-size:13px;
+                    font-weight:600;
+                    color:#19304B;
+                    white-space:nowrap;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                  ">
+                    ${escapeProjectHtml(
+                      name
+                    )}
+                  </div>
+
+                  <div style="
+                    margin-top:2px;
+                    font-size:11px;
+                    color:#64748B;
+                    white-space:nowrap;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                  ">
+                    ${escapeProjectHtml(
+                      user.email || ''
+                    )}
+                  </div>
+
+                </div>
+
+
+                ${
+                  selected
+                    ? `
+                      <span style="
+                        flex-shrink:0;
+                        color:#19304B;
+                        font-size:16px;
+                        font-weight:600;
+                      ">
+                        ✓
+                      </span>
+                    `
+                    : ''
+                }
+
+              </button>
+
+            `;
+
+          }
+        )
+        .join('');
+
+
+    /*
+     * Wire selection buttons.
+     */
+
+    userList
+      .querySelectorAll(
+        'button[data-user-id]'
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            'click',
+            () => {
+
+              selectedUserId =
+                Number(
+                  button.dataset.userId
+                );
+
+
+              addButton.disabled =
+                false;
+
+              addButton.style.opacity =
+                '1';
+
+
+              renderUserList();
+
+            }
+          );
+
+        }
+      );
+
+  }
+
+
+  searchInput.addEventListener(
+    'input',
+    renderUserList
+  );
+
+
+  /*
+   * Load users.
+   */
+
+  try{
+
+    availableUsers =
+      await loadAvailableProjectUsers(
+        currentProject.id
+      );
+
+
+    if(!availableUsers.length){
+
+      userList.innerHTML = `
+
+        <div style="
+          padding:18px;
+          text-align:center;
+          color:#64748B;
+          font-size:13px;
+        ">
+          All available users are already members of this project.
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    renderUserList();
+
+  }catch(error){
+
+    console.error(
+      'Load available project users failed:',
+      error
+    );
+
+
+    userList.innerHTML = `
+
+      <div style="
+        padding:18px;
+        text-align:center;
+        color:#DC2626;
+        font-size:13px;
+      ">
+        ${escapeProjectHtml(
+          error.message ||
+          'Unable to load available users.'
+        )}
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /*
+   * Add selected member.
+   */
+
+  addButton.addEventListener(
+    'click',
+    async () => {
+
+      if(!selectedUserId){
+
+        return;
+
+      }
+
+
+      addButton.disabled =
+        true;
+
+      addButton.style.opacity =
+        '0.5';
+
+      addButton.textContent =
+        'Adding...';
+
+
+      statusElement.textContent =
+        'Adding member...';
+
+
+      try{
+
+        const token =
+          localStorage.getItem('token');
+
+
+        const response =
+          await fetch(
+            `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/members`,
+            {
+              method:'POST',
+
+              headers:{
+                'Content-Type':
+                  'application/json',
+
+                'Authorization':
+                  `Bearer ${token}`
+              },
+
+              body:JSON.stringify({
+
+                user_id:
+                  selectedUserId,
+
+                permission:
+                  permissionSelect.value
+
+              })
+            }
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if(
+          !response.ok ||
+          !data.success
+        ){
+
+          throw new Error(
+            data.error ||
+            data.message ||
+            'Failed to add project member.'
+          );
+
+        }
+
+
+        /*
+         * Reload the current member list.
+         */
+
+        currentProjectMembers =
+          await loadProjectMembers(
+            currentProject.id
+          );
+
+
+        /*
+         * Close Add Member dialog.
+         */
+
+        closeDialog();
+
+
+        /*
+         * Immediately refresh workspace.
+         */
+
+        renderProjectWorkspace();
+
+
+      }catch(error){
+
+        console.error(
+          'Add project member failed:',
+          error
+        );
+
+
+        statusElement.textContent =
+          error.message ||
+          'Unable to add project member.';
+
+
+        statusElement.style.color =
+          '#DC2626';
+
+
+        addButton.disabled =
+          false;
+
+        addButton.style.opacity =
+          '1';
+
+        addButton.textContent =
+          'Add Member';
+
+      }
+
+    }
+  );
+
+}
 
 // ========================================
 // GLOBAL FUNCTIONS
@@ -5898,6 +6729,9 @@ window.updateProjectMemberPermission =
 
 window.removeProjectMember =
   removeProjectMember;
+
+window.openAddProjectMember =
+  openAddProjectMember;
 
 window.openProjectEditForm =
   openProjectEditForm;
