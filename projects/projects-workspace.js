@@ -969,6 +969,353 @@ function renderProjectWorkspace(){
 
 }
 
+// ========================================
+// PROJECT INFORMATION EDIT FORM
+// ========================================
+
+function openProjectEditForm(){
+
+  if (
+    !currentProject ||
+    currentProject.permission !== 'edit'
+  ){
+    return;
+  }
+
+  const existing =
+    document.getElementById(
+      'projectEditModal'
+    );
+
+  if (existing){
+    existing.remove();
+  }
+
+  const modal =
+    document.createElement('div');
+
+  modal.id =
+    'projectEditModal';
+
+  modal.style.cssText = `
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,0.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10000;
+    padding:20px;
+  `;
+
+  modal.innerHTML = `
+
+    <div style="
+      width:100%;
+      max-width:560px;
+      background:#FFFFFF;
+      border:1px solid #DBE3EC;
+      border-radius:10px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.20);
+      overflow:hidden;
+    ">
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:16px 20px;
+        border-bottom:1px solid #DBE3EC;
+      ">
+
+        <div style="
+          font-size:17px;
+          font-weight:600;
+          color:#19304B;
+        ">
+          Edit Project Information
+        </div>
+
+        <button
+          type="button"
+          id="projectEditCancelTop"
+          style="
+            border:0;
+            background:transparent;
+            font-size:20px;
+            color:#64748B;
+            cursor:pointer;
+          "
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <div style="
+        padding:20px;
+      ">
+
+        <label style="
+          display:block;
+          font-size:13px;
+          font-weight:600;
+          color:#334155;
+          margin-bottom:6px;
+        ">
+          Project Name
+        </label>
+
+        <input
+          id="projectEditName"
+          type="text"
+          value="${escapeProjectHtml(
+            currentProject.project_name || ''
+          )}"
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            margin-bottom:16px;
+          "
+        />
+
+
+        <label style="
+          display:block;
+          font-size:13px;
+          font-weight:600;
+          color:#334155;
+          margin-bottom:6px;
+        ">
+          Description
+        </label>
+
+        <textarea
+          id="projectEditDescription"
+          rows="5"
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            resize:vertical;
+            margin-bottom:16px;
+          "
+        >${escapeProjectHtml(
+          currentProject.description || ''
+        )}</textarea>
+
+
+        <div style="
+          display:grid;
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+          gap:12px;
+          margin-bottom:16px;
+        ">
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:13px;
+              font-weight:600;
+              color:#334155;
+              margin-bottom:6px;
+            ">
+              Start Date
+            </label>
+
+            <input
+              id="projectEditStartDate"
+              type="date"
+              value="${
+                currentProject.start_date || ''
+              }"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                padding:10px;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+              "
+            />
+
+          </div>
+
+
+          <div>
+
+            <label style="
+              display:block;
+              font-size:13px;
+              font-weight:600;
+              color:#334155;
+              margin-bottom:6px;
+            ">
+              End Date
+            </label>
+
+            <input
+              id="projectEditEndDate"
+              type="date"
+              value="${
+                currentProject.end_date || ''
+              }"
+              style="
+                width:100%;
+                box-sizing:border-box;
+                padding:10px;
+                border:1px solid #DBE3EC;
+                border-radius:6px;
+              "
+            />
+
+          </div>
+
+        </div>
+
+
+        <label style="
+          display:block;
+          font-size:13px;
+          font-weight:600;
+          color:#334155;
+          margin-bottom:6px;
+        ">
+          Status
+        </label>
+
+        <select
+          id="projectEditStatus"
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            margin-bottom:20px;
+          "
+        >
+
+          <option value="Active">
+            Active
+          </option>
+
+          <option value="Completed">
+            Completed
+          </option>
+
+          <option value="On Hold">
+            On Hold
+          </option>
+
+          <option value="Cancelled">
+            Cancelled
+          </option>
+
+        </select>
+
+
+        <div style="
+          display:flex;
+          justify-content:flex-end;
+          gap:10px;
+        ">
+
+          <button
+            type="button"
+            id="projectEditCancel"
+            style="
+              border:1px solid #DBE3EC;
+              background:#FFFFFF;
+              color:#334155;
+              border-radius:6px;
+              padding:9px 16px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            id="projectEditSave"
+            style="
+              border:1px solid #19304B;
+              background:#19304B;
+              color:#FFFFFF;
+              border-radius:6px;
+              padding:9px 16px;
+              cursor:pointer;
+              font-weight:600;
+            "
+          >
+            Save Changes
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const status =
+    document.getElementById(
+      'projectEditStatus'
+    );
+
+  if (status){
+    status.value =
+      currentProject.status ||
+      'Active';
+  }
+
+  document
+    .getElementById(
+      'projectEditCancelTop'
+    )
+    ?.addEventListener(
+      'click',
+      closeProjectEditForm
+    );
+
+  document
+    .getElementById(
+      'projectEditCancel'
+    )
+    ?.addEventListener(
+      'click',
+      closeProjectEditForm
+    );
+}
+
+
+// ========================================
+// CLOSE PROJECT INFORMATION EDIT FORM
+// ========================================
+
+function closeProjectEditForm(){
+
+  const modal =
+    document.getElementById(
+      'projectEditModal'
+    );
+
+  if (modal){
+    modal.remove();
+  }
+}
+
 
 // ========================================
 // OVERVIEW
