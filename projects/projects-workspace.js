@@ -1647,29 +1647,60 @@ function renderOverview(){
         padding:20px;
       ">
 
-        <div style="
-          display:flex;
-          align-items:center;
-          justify-content:space-between;
-          margin-bottom:14px;
-        ">
+ <div style="
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+">
 
-          <div style="
-            font-size:16px;
-            font-weight:600;
+  <div style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+  ">
+
+    <div style="
+      font-size:16px;
+      font-weight:600;
+      color:#19304B;
+    ">
+      Members
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#64748B;
+    ">
+      ${currentProjectMembers.length}
+    </div>
+
+  </div>
+
+  ${
+    currentProject &&
+    currentProject.permission === 'edit'
+      ? `
+        <button
+          type="button"
+          onclick="window.openAddProjectMember()"
+          style="
+            border:1px solid #589FD6;
+            background:#FFFFFF;
             color:#19304B;
-          ">
-            Members
-          </div>
+            border-radius:6px;
+            padding:6px 10px;
+            font-size:12px;
+            cursor:pointer;
+          "
+        >
+          + Add Member
+        </button>
+      `
+      : ''
+  }
 
-          <div style="
-            font-size:13px;
-            color:#64748B;
-          ">
-            ${currentProjectMembers.length}
-          </div>
-
-        </div>
+</div>
 
 
         ${renderMembers(
@@ -1710,6 +1741,11 @@ function renderMembers(
   }
 
 
+  const canEdit =
+    currentProject &&
+    currentProject.permission === 'edit';
+
+
   return members
     .map(member => {
 
@@ -1718,6 +1754,14 @@ function renderMembers(
         member.username ||
         member.email ||
         'Unknown User';
+
+
+      /*
+       * Project owner protection.
+       * The backend remains the authority for this.
+       */
+      const isOwner =
+        member.role === 'owner';
 
 
       return `
@@ -1733,6 +1777,7 @@ function renderMembers(
 
           <div style="
             min-width:0;
+            flex:1;
           ">
 
             <div style="
@@ -1761,18 +1806,113 @@ function renderMembers(
 
 
           <div style="
+            display:flex;
+            align-items:center;
+            gap:8px;
             flex-shrink:0;
-            padding:4px 8px;
-            border-radius:4px;
-            background:#F8FAFC;
-            border:1px solid #DBE3EC;
-            color:#475569;
-            font-size:12px;
-            text-transform:capitalize;
           ">
-            ${escapeProjectHtml(
-              member.permission || 'view'
-            )}
+
+            ${
+              isOwner
+                ? `
+
+                  <span style="
+                    padding:4px 8px;
+                    border-radius:4px;
+                    background:#E8F0F7;
+                    border:1px solid #DBE3EC;
+                    color:#19304B;
+                    font-size:12px;
+                    font-weight:600;
+                  ">
+                    Owner · Edit
+                  </span>
+
+                `
+
+                : canEdit
+
+                  ? `
+
+                    <select
+                      value="${escapeProjectHtml(
+                        member.permission || 'view'
+                      )}"
+                      onchange="
+                        window.updateProjectMemberPermission(
+                          ${member.id},
+                          this.value
+                        )
+                      "
+                      style="
+                        border:1px solid #DBE3EC;
+                        border-radius:5px;
+                        padding:5px 8px;
+                        font-size:12px;
+                        background:#FFFFFF;
+                        color:#19304B;
+                        cursor:pointer;
+                      "
+                    >
+
+                      <option value="view">
+                        View
+                      </option>
+
+                      <option value="edit">
+                        Edit
+                      </option>
+
+                    </select>
+
+
+                    <button
+                      type="button"
+                      onclick="
+                        window.removeProjectMember(
+                          ${member.id},
+                          '${String(
+                            displayName
+                          ).replace(
+                            /'/g,
+                            "\\'"
+                          )}'
+                        )
+                      "
+                      style="
+                        border:1px solid #DC2626;
+                        background:#FFFFFF;
+                        color:#DC2626;
+                        border-radius:5px;
+                        padding:5px 8px;
+                        font-size:12px;
+                        cursor:pointer;
+                      "
+                    >
+                      Remove
+                    </button>
+
+                  `
+
+                  : `
+
+                    <span style="
+                      padding:4px 8px;
+                      border-radius:4px;
+                      background:#F8FAFC;
+                      border:1px solid #DBE3EC;
+                      color:#475569;
+                      font-size:12px;
+                      text-transform:capitalize;
+                    ">
+                      ${escapeProjectHtml(
+                        member.permission || 'view'
+                      )}
+                    </span>
+
+                  `
+            }
+
           </div>
 
         </div>
@@ -1784,6 +1924,171 @@ function renderMembers(
 
 }
 
+async function updateProjectMemberPermission(
+  memberId,
+  permission
+){
+
+  try{
+
+    if(
+      permission !== 'view' &&
+      permission !== 'edit'
+    ){
+      throw new Error(
+        'Invalid permission'
+      );
+    }
+
+
+    const token =
+      localStorage.getItem('token');
+
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/members/${memberId}`,
+        {
+          method:'PATCH',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+            permission
+          })
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(!response.ok || !data.success){
+
+      throw new Error(
+        data.error ||
+        'Failed to update member permission'
+      );
+
+    }
+
+
+    /*
+     * Reload the member list so the UI
+     * reflects the database immediately.
+     */
+    currentProjectMembers =
+      await loadProjectMembers(
+        currentProject.id
+      );
+
+
+    renderProjectWorkspace();
+
+
+  }catch(error){
+
+    console.error(
+      'Update project member permission failed:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to update member permission.'
+    );
+
+  }
+
+}
+
+async function removeProjectMember(
+  memberId,
+  displayName
+){
+
+  const confirmed =
+    confirm(
+      `Remove ${displayName} from this project?`
+    );
+
+
+  if(!confirmed){
+    return;
+  }
+
+
+  try{
+
+    const token =
+      localStorage.getItem('token');
+
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/members/${memberId}`,
+        {
+          method:'DELETE',
+
+          headers:{
+            'Authorization':
+              `Bearer ${token}`
+          }
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(!response.ok || !data.success){
+
+      throw new Error(
+        data.error ||
+        'Failed to remove project member'
+      );
+
+    }
+
+
+    /*
+     * Reload the member list so the UI
+     * reflects the database immediately.
+     */
+    currentProjectMembers =
+      await loadProjectMembers(
+        currentProject.id
+      );
+
+
+    renderProjectWorkspace();
+
+
+  }catch(error){
+
+    console.error(
+      'Remove project member failed:',
+      error
+    );
+
+
+    alert(
+      error.message ||
+      'Unable to remove project member.'
+    );
+
+  }
+
+}
 
 // ========================================
 // NOTES
@@ -5587,6 +5892,12 @@ export function closeProjectWorkspace(){
 
 window.openProjectWorkspace =
   openProjectWorkspace;
+
+window.updateProjectMemberPermission =
+  updateProjectMemberPermission;
+
+window.removeProjectMember =
+  removeProjectMember;
 
 window.openProjectEditForm =
   openProjectEditForm;
