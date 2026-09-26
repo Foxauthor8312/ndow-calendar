@@ -38,6 +38,19 @@ async function openInstructorReferenceLibrary(){
 
 }
 
+// ========================================
+// OPEN EMERGENCY REFERENCES
+// ========================================
+
+async function openInstructorEmergencyReferences(){
+
+  await openInstructorReferenceLibrary();
+
+  openInstructorReferenceCategory(
+    'Emergency Procedures'
+  );
+
+}
 
 // ========================================
 // CLOSE LIBRARY
@@ -1125,6 +1138,9 @@ function escapeInstructorReferenceHtml(
 
 window.openInstructorReferenceLibrary =
   openInstructorReferenceLibrary;
+
+window.openInstructorEmergencyReferences =
+  openInstructorEmergencyReferences;
 
 window.closeInstructorReferenceLibrary =
   closeInstructorReferenceLibrary;
