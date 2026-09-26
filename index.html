@@ -2217,13 +2217,53 @@ async function submitForgotPin(){
 
     <div class="account-buttons">
 
-      <button
-        class="month-square"
-        onclick="refreshScreen()"
-        title="Refresh"
-      >
-        ↻
-      </button>
+     <div class="account-buttons">
+
+  <button
+    type="button"
+    onclick="openInstructorEmergencyReferences()"
+    title="Emergency Procedures"
+    style="
+      background:#DC2626;
+      color:white;
+      border:none;
+      border-radius:5px;
+      padding:6px 12px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:12px;
+    "
+  >
+    🚨 EMERGENCIES
+  </button>
+
+ <div class="account-buttons">
+
+  <button
+    type="button"
+    onclick="openInstructorEmergencyReferences()"
+    title="Emergency Procedures"
+    style="
+      background:#DC2626;
+      color:white;
+      border:none;
+      border-radius:5px;
+      padding:6px 12px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:12px;
+    "
+  >
+    🚨 EMERGENCIES
+  </button>
+
+  <button
+    class="month-square"
+    onclick="refreshScreen()"
+    title="Refresh"
+  >
+    ↻
+  </button>>
 
       <button onclick="logout()">
         Logout
