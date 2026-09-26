@@ -1297,6 +1297,15 @@ function openProjectEditForm(){
       'click',
       closeProjectEditForm
     );
+
+ document
+  .getElementById(
+    'projectEditSave'
+  )
+  ?.addEventListener(
+    'click',
+    saveProjectEditForm
+  );
 }
 
 
@@ -1314,6 +1323,163 @@ function closeProjectEditForm(){
   if (modal){
     modal.remove();
   }
+}
+
+// ========================================
+// SAVE PROJECT INFORMATION
+// ========================================
+
+async function saveProjectEditForm(){
+
+  if (
+    !currentProject ||
+    currentProject.permission !== 'edit'
+  ){
+    return;
+  }
+
+  const projectName =
+    document.getElementById(
+      'projectEditName'
+    )?.value.trim();
+
+  const description =
+    document.getElementById(
+      'projectEditDescription'
+    )?.value.trim();
+
+  const startDate =
+    document.getElementById(
+      'projectEditStartDate'
+    )?.value || null;
+
+  const endDate =
+    document.getElementById(
+      'projectEditEndDate'
+    )?.value || null;
+
+  const status =
+    document.getElementById(
+      'projectEditStatus'
+    )?.value || 'Active';
+
+
+  if (!projectName){
+
+    alert(
+      'Project Name is required.'
+    );
+
+    return;
+  }
+
+
+  const saveButton =
+    document.getElementById(
+      'projectEditSave'
+    );
+
+  if (saveButton){
+
+    saveButton.disabled = true;
+
+    saveButton.textContent =
+      'Saving...';
+  }
+
+
+  try{
+
+    const token =
+      localStorage.getItem('token');
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}`,
+        {
+          method:'PATCH',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+
+            project_name:
+              projectName,
+
+            description:
+              description || null,
+
+            start_date:
+              startDate,
+
+            end_date:
+              endDate,
+
+            status:
+              status
+
+          })
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !response.ok ||
+      !data.success
+    ){
+
+      throw new Error(
+        data.error ||
+        'Failed to update project'
+      );
+
+    }
+
+
+    currentProject =
+      data.project;
+
+
+    closeProjectEditForm();
+
+    renderProjectWorkspace();
+
+
+  }catch(error){
+
+    console.error(
+      'PROJECT UPDATE ERROR:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to save project changes.'
+    );
+
+
+    if (saveButton){
+
+      saveButton.disabled =
+        false;
+
+      saveButton.textContent =
+        'Save Changes';
+
+    }
+
+  }
+
 }
 
 
@@ -5424,6 +5590,9 @@ window.openProjectWorkspace =
 
 window.openProjectEditForm =
   openProjectEditForm;
+
+window.saveProjectEditForm =
+  saveProjectEditForm;
 
 window.closeProjectWorkspace =
   closeProjectWorkspace;
