@@ -12409,7 +12409,7 @@ const result =
     `)
     .join('');
 
-    container.innerHTML = `
+container.innerHTML = `
 
 <div class="dashboard-summary-line">
 
@@ -12449,6 +12449,7 @@ const result =
 
 </div>
 
+
 <div id="dashboardProgramSummary">
 
   <div
@@ -12470,63 +12471,80 @@ const result =
 
 </div>
 
+
+<!-- ========================================
+     MY NDOW
+======================================== -->
+
 <div
-  class="dashboard-tool-list"
-  style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:82px;
-  "
+  class="dashboard-section dashboard-section-divider"
 >
 
-    <button
-      class="admin-button"
-      onclick="
-        closeDashboard();
-        openAssignmentRequests();
-      ">
-      Instructor Event Requests
-    </button>
+  <h3 class="dashboard-section-title">
+    My NDOW
+  </h3>
+
+  <div
+    class="dashboard-tool-list"
+    style="
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    "
+  >
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openProfileModal();
-      ">
+      "
+    >
       My Profile
     </button>
 
- <button
-  class="admin-button"
-  onclick="
-    closeDashboard();
-    openInstructorTimeReport();
-  ">
-  My Reports
-</button>
 
-<button
-  class="admin-button"
-  onclick="
-    closeDashboard();
-    openCommunicationsWorkspace(window.currentEvent);
-  ">
-  Communications Center
-</button>
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openInstructorTimeReport();
+      "
+    >
+      My Reports
+    </button>
 
-<button
-  class="admin-button"
-  onclick="
-    closeDashboard();
-    openProjectsWorkspace();
-  ">
-  Projects
-</button>
-	
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openAssignmentRequests();
+      "
+    >
+      Instructor Event Requests
+    </button>
+
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openProjectsWorkspace();
+      "
+    >
+      Projects
+    </button>
+
+  </div>
+
 </div>
 
-</div>
+
+<!-- ========================================
+     ADMINISTRATION
+     Admin + Superuser
+======================================== -->
 
 <div
   class="dashboard-section dashboard-section-divider"
@@ -12534,102 +12552,125 @@ const result =
 >
 
   <h3 class="dashboard-section-title">
-    Administrator Tools
+    Administration
   </h3>
 
-<div
-  class="dashboard-tool-list"
-  style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  "
->
+  <div
+    class="dashboard-tool-list"
+    style="
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    "
+  >
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openInstructorRequestCenter();
-      ">
+      "
+    >
       Instructor Request Center
     </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openUserManagement();
-      ">
+      "
+    >
       User Management
     </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openProgramUpdates();
-      ">
+      "
+    >
       Program Updates
     </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openContactsManager();
-      ">
+      "
+    >
       Contacts
     </button>
-<button
-  class="admin-button"
-  onclick="
-    closeDashboard();
-    openAddressLibrary();
-  ">
-  Address Library
-</button>
+
+
+    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openAddressLibrary();
+      "
+    >
+      Address Library
+    </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openHelpManager();
-      ">
+      "
+    >
       Help Manager
     </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openAnalytics();
-      ">
+      "
+    >
       Analytics
     </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openCategories();
-      ">
+      "
+    >
       Categories
     </button>
+
 
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openReleaseManager();
-      ">
+      "
+    >
       Release Management
     </button>
 
- </div>
+  </div>
 
 </div>
 
+
+<!-- ========================================
+     SYSTEM
+     Superuser only
+======================================== -->
 
 <div
   class="dashboard-section dashboard-section-divider"
@@ -12637,46 +12678,54 @@ const result =
 >
 
   <h3 class="dashboard-section-title">
-    System Tools
+    System
   </h3>
 
-<div
-  class="dashboard-tool-list"
-  style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  "
->
+  <div
+    class="dashboard-tool-list"
+    style="
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    "
+  >
 
-<button
-  class="admin-button"
-  onclick="openSystemConsole()">
-  System Console
-</button>
+    <button
+      class="admin-button"
+      onclick="openSystemConsole()"
+    >
+      System Console
+    </button>
 
-<button
-  class="admin-button"
-  onclick="showInstructorImportModal()">
-  Instructor Import
-</button>
 
-<button
-  class="admin-button"
-  onclick="openDeveloperNotes()">
-  Developer Notes
-</button>
+    <button
+      class="admin-button"
+      onclick="showInstructorImportModal()"
+    >
+      Instructor Import
+    </button>
 
-<button
-  class="admin-button"
-  onclick="openTechnicalReference()">
-  Technical Reference
-</button>
 
+    <button
+      class="admin-button"
+      onclick="openDeveloperNotes()"
+    >
+      Developer Notes
+    </button>
+
+
+    <button
+      class="admin-button"
+      onclick="openTechnicalReference()"
+    >
+      Technical Reference
+    </button>
+
+  </div>
 
 </div>
 
-</div>
+`;
 
 `;
   }catch(err){
