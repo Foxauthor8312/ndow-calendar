@@ -5422,6 +5422,9 @@ export function closeProjectWorkspace(){
 window.openProjectWorkspace =
   openProjectWorkspace;
 
+window.openProjectEditForm =
+  openProjectEditForm;
+
 window.closeProjectWorkspace =
   closeProjectWorkspace;
 
