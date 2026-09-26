@@ -997,16 +997,16 @@ function openProjectEditForm(){
   modal.id =
     'projectEditModal';
 
-  modal.style.cssText = `
-    position:fixed;
-    inset:0;
-    background:rgba(15,23,42,0.45);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:10000;
-    padding:20px;
-  `;
+ modal.style.cssText = `
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2147483647 !important;
+  padding:20px;
+`;
 
   modal.innerHTML = `
 
