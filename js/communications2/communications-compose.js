@@ -18,7 +18,9 @@ import {
 
     previewCommunication,
 
-    sendCommunication as sendCommunicationRequest
+    sendCommunication as sendCommunicationRequest,
+
+    loadHistory
 
 }
 
@@ -38,13 +40,25 @@ from
 
 import {
 
-    getState
+    getState,
+
+    setHistory
 
 }
 
 from
 
 './communications-state.js';
+
+import {
+
+    refreshHistory
+
+}
+
+from
+
+'./communications-history.js';
 
 import {
 
@@ -782,13 +796,43 @@ async function sendCommunication(){
 
             });
 
+        try{
+
+            const history =
+
+                await loadHistory(
+
+                    state.currentEvent.id
+
+                );
+
+            setHistory(
+
+                history
+
+            );
+
+            refreshHistory();
+
+        }
+
+        catch(historyError){
+
+            console.error(
+
+                '[Communications] Unable to refresh history',
+
+                historyError
+
+            );
+
+        }
+
         alert(
 
             `${result.recipients} email(s) sent successfully.`
 
         );
-     closeCommunicationsWorkspace();
-
     }
 
     catch(err){
