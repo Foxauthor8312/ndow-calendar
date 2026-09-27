@@ -130,13 +130,48 @@ container.innerHTML = `
     "
 >
 
-    <div
+       <div
         id="communicationsEventHeader"
         style="
             border-bottom:1px solid #DBE3EC;
             padding-bottom:12px;
         "
     ></div>
+
+    <div
+        style="
+            border:1px solid #DBE3EC;
+            border-radius:8px;
+            background:white;
+            padding:10px;
+            flex:0 0 145px;
+            min-height:145px;
+            display:flex;
+            flex-direction:column;
+        "
+    >
+
+        <div
+            style="
+                font-size:14px;
+                font-weight:700;
+                color:#19304B;
+                margin-bottom:8px;
+            "
+        >
+            Communication History
+        </div>
+
+        <div
+            id="communicationsHistory"
+            style="
+                flex:1;
+                min-height:0;
+                overflow:auto;
+            "
+        ></div>
+
+    </div>
 
     <div>
 
