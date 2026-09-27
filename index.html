@@ -3384,9 +3384,13 @@ let pendingRouteDropdown = null;
 
 let publicConfig = {};	
 
-	// ========================================
+// ========================================
 // DEPARTMENT CONTACTS
 // ========================================
+
+async function loadDepartmentContacts(){
+
+  try{
 
     const token =
       localStorage.getItem('token');
@@ -3402,6 +3406,14 @@ let publicConfig = {};
         }
       );
 
+    if(!response.ok){
+
+      throw new Error(
+        `Department contacts returned HTTP ${response.status}`
+      );
+
+    }
+
     const result =
       await response.json();
 
@@ -3415,9 +3427,20 @@ let publicConfig = {};
         departmentContacts
       );
 
+    }else{
+
+      departmentContacts = [];
+
+      console.error(
+        'Department contacts failed:',
+        result.message || result
+      );
+
     }
 
-  } catch(err){
+  }catch(err){
+
+    departmentContacts = [];
 
     console.error(
       'Department contacts failed',
@@ -3427,7 +3450,6 @@ let publicConfig = {};
   }
 
 }
-
 // ========================================
 // START EVENT LOADING
 // ========================================
