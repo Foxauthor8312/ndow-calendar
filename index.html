@@ -20280,17 +20280,61 @@ ${regionTotal}
 
         <!-- Left Workflow -->
 
-        <div
+              <div
             id="communicationsSidebar"
             class="comm-sidebar"
             style="
                 background:#F4F8FB;
                 border-right:1px solid #DBE3EC;
                 padding:24px;
-                overflow:auto;
-            ">
+                overflow:hidden;
+                display:flex;
+                flex-direction:column;
+                gap:16px;
+            "
+        >
 
-            <div id="communicationsLeftPane"></div>
+            <div
+                id="communicationsLeftPane"
+                style="
+                    flex:1;
+                    min-height:0;
+                    overflow:hidden;
+                "
+            ></div>
+
+            <div
+                style="
+                    flex:0 0 190px;
+                    border-top:1px solid #DBE3EC;
+                    padding-top:12px;
+                    display:flex;
+                    flex-direction:column;
+                    min-height:0;
+                "
+            >
+
+                <div
+                    style="
+                        font-size:16px;
+                        font-weight:700;
+                        color:#19304B;
+                        margin-bottom:10px;
+                    "
+                >
+                    Communication History
+                </div>
+
+                <div
+                    id="communicationsHistory"
+                    style="
+                        flex:1;
+                        min-height:0;
+                        overflow:auto;
+                    "
+                ></div>
+
+            </div>
 
         </div>
 
