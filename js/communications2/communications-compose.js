@@ -126,26 +126,26 @@ container.innerHTML = `
         display:flex;
         flex-direction:column;
         height:100%;
-        gap:14px;
+        gap:8px;
     "
 >
 
-       <div
+    <div
         id="communicationsEventHeader"
         style="
             border-bottom:1px solid #DBE3EC;
-            padding-bottom:12px;
+            padding-bottom:8px;
         "
     ></div>
 
     <div
         style="
             border:1px solid #DBE3EC;
-            border-radius:8px;
+            border-radius:6px;
             background:white;
-            padding:10px;
-            flex:0 0 145px;
-            min-height:145px;
+            padding:8px;
+            flex:0 0 115px;
+            min-height:115px;
             display:flex;
             flex-direction:column;
         "
@@ -153,10 +153,10 @@ container.innerHTML = `
 
         <div
             style="
-                font-size:14px;
+                font-size:12px;
                 font-weight:700;
                 color:#19304B;
-                margin-bottom:8px;
+                margin-bottom:5px;
             "
         >
             Communication History
@@ -168,6 +168,8 @@ container.innerHTML = `
                 flex:1;
                 min-height:0;
                 overflow:auto;
+                font-size:12px;
+                line-height:1.25;
             "
         ></div>
 
@@ -366,23 +368,47 @@ function renderEventHeader(){
         return;
     }
 
-    panel.innerHTML = `
-        <div style="font-size:18px;font-weight:700;color:#19304B;">
-            ${state.currentEvent.title}
-        </div>
+panel.innerHTML = `
+    <div
+        style="
+            font-size:16px;
+            font-weight:700;
+            color:#19304B;
+        "
+    >
+        ${state.currentEvent.title}
+    </div>
 
-        <div style="margin-top:4px;color:#666;">
-            ${state.currentEvent.date || ''}
-        </div>
+    <div
+        style="
+            margin-top:2px;
+            color:#666;
+            font-size:12px;
+        "
+    >
+        ${state.currentEvent.date || ''}
+    </div>
 
-        <div style="margin-top:2px;color:#666;">
-            ${state.currentEvent.location || ''}
-        </div>
+    <div
+        style="
+            margin-top:1px;
+            color:#666;
+            font-size:12px;
+        "
+    >
+        ${state.currentEvent.location || ''}
+    </div>
 
-        <div style="margin-top:2px;color:#589FD6;font-size:13px;">
-            ${state.currentEvent.program || ''}
-        </div>
-    `;
+    <div
+        style="
+            margin-top:1px;
+            color:#589FD6;
+            font-size:12px;
+        "
+    >
+        ${state.currentEvent.program || ''}
+    </div>
+`;
 
 }
  /*==============================================================================
