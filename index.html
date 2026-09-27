@@ -18016,6 +18016,173 @@ geographic analysis.
 		  "
 		>
 
+		        <h3
+        style="
+          margin-top:20px;
+          margin-bottom:10px;
+        "
+      >
+        Home Address
+      </h3>
+
+      <label>
+        Street Address
+      </label>
+
+      <input
+        id="profileAddress"
+        type="text"
+        autocomplete="street-address"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+        "
+      >
+
+      <div
+        style="
+          display:grid;
+          grid-template-columns:2fr 1fr 1fr;
+          gap:10px;
+          margin-bottom:14px;
+        "
+      >
+
+        <div>
+
+          <label>
+            City
+          </label>
+
+          <input
+            id="profileCity"
+            type="text"
+            autocomplete="address-level2"
+            style="
+              width:100%;
+              padding:10px;
+              margin-top:6px;
+              border:1px solid #d1d5db;
+              border-radius:8px;
+              box-sizing:border-box;
+            "
+          >
+
+        </div>
+
+        <div>
+
+          <label>
+            State
+          </label>
+
+          <input
+            id="profileState"
+            type="text"
+            maxlength="2"
+            autocomplete="address-level1"
+            style="
+              width:100%;
+              padding:10px;
+              margin-top:6px;
+              border:1px solid #d1d5db;
+              border-radius:8px;
+              box-sizing:border-box;
+              text-transform:uppercase;
+            "
+          >
+
+        </div>
+
+        <div>
+
+          <label>
+            ZIP
+          </label>
+
+          <input
+            id="profileZip"
+            type="text"
+            maxlength="10"
+            autocomplete="postal-code"
+            style="
+              width:100%;
+              padding:10px;
+              margin-top:6px;
+              border:1px solid #d1d5db;
+              border-radius:8px;
+              box-sizing:border-box;
+            "
+          >
+
+        </div>
+
+      </div>
+
+      <div
+        style="
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:10px;
+          margin-bottom:14px;
+        "
+      >
+
+        <div>
+
+          <label>
+            Latitude
+          </label>
+
+          <input
+            id="profileLatitude"
+            type="text"
+            readonly
+            style="
+              width:100%;
+              padding:10px;
+              margin-top:6px;
+              border:1px solid #d1d5db;
+              border-radius:8px;
+              box-sizing:border-box;
+              background:#f3f4f6;
+              color:#6b7280;
+            "
+          >
+
+        </div>
+
+        <div>
+
+          <label>
+            Longitude
+          </label>
+
+          <input
+            id="profileLongitude"
+            type="text"
+            readonly
+            style="
+              width:100%;
+              padding:10px;
+              margin-top:6px;
+              border:1px solid #d1d5db;
+              border-radius:8px;
+              box-sizing:border-box;
+              background:#f3f4f6;
+              color:#6b7280;
+            "
+          >
+
+        </div>
+
+      </div>
+
 		  <option value="Southern">
 		    Southern
 		  </option>
