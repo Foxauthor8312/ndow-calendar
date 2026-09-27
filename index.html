@@ -8250,59 +8250,69 @@ ${
   onchange="toggleCustomEmail()"
 >
 
-${departmentContacts
+${
+  departmentContacts.length
 
-.filter(contact =>
-  contact.active
-)
+    ? departmentContacts
+        .filter(contact =>
+          contact.active
+        )
+        .sort((a, b) => {
 
-.sort((a, b) => {
+          if(a.region !== b.region){
 
-  if(a.region !== b.region){
+            return a.region.localeCompare(
+              b.region
+            );
 
-    return a.region.localeCompare(
-      b.region
-    );
+          }
 
-  }
+          return a.name.localeCompare(
+            b.name
+          );
 
-  return a.name.localeCompare(
-    b.name
-  );
+        })
+        .map(contact => {
 
-})
-  .map(contact => {
+          const selected =
 
-    const selected =
+            contact.program ===
+              event.category
 
-      contact.program ===
-        event.category
+            &&
 
-      &&
+            contact.region ===
+              event.region
 
-      contact.region ===
-        event.region
+              ? 'selected'
+              : '';
 
-        ? 'selected'
+          return `
 
-        : '';
+<option
+  value="${contact.email}"
+  ${selected}
+>
 
-      return `
+  ${contact.region} | ${contact.name} | ${contact.role || ''} | ${contact.email}
 
-  <option
-    value="${contact.email}"
-    ${selected}
-  >
-
-    ${contact.region} | ${contact.name} | ${contact.role} | ${contact.email}
-
-  </option>
+</option>
 
 `;
 
-  })
+        })
+        .join('')
 
-  .join('')}
+    : `
+
+<option value="">
+
+  Loading department contacts...
+
+</option>
+
+`
+}
 
 <option value="custom">
 
@@ -8797,18 +8807,46 @@ async function requestInstructor(eventUrl){
       'phone'
     ) || '';
 
-  let recipient =
+  const contactSelect =
     document.getElementById(
       'contactSelect'
-    ).value;
+    );
+
+  if(!contactSelect){
+    showMessage({
+      type:'error',
+      title:'Request Failed',
+      message:'The department contact selector could not be found.'
+    });
+    return;
+  }
+
+  let recipient =
+    contactSelect.value;
 
   if(recipient === 'custom'){
 
-    recipient =
+    const customEmail =
       document.getElementById(
         'customEmail'
-      ).value.trim();
+      );
 
+    recipient =
+      customEmail
+        ? customEmail.value.trim()
+        : '';
+
+  }
+
+  if(!recipient){
+
+    showMessage({
+      type:'error',
+      title:'Recipient Required',
+      message:'Please select a department contact or enter a custom email address.'
+    });
+
+    return;
   }
 
   const token =
@@ -8821,7 +8859,7 @@ async function requestInstructor(eventUrl){
     const response =
       await fetch(
 
-'https://ndow-calendar-server.onrender.com/api/instructor-request',
+        'https://ndow-calendar-server.onrender.com/api/instructor-request',
 
         {
           method:'POST',
@@ -8869,42 +8907,47 @@ async function requestInstructor(eventUrl){
     const result =
       await response.json();
 
-    if(!result.success){
+    if(!response.ok || !result.success){
 
       throw new Error(
-        'Request failed'
+        result.message ||
+        'The instructor request could not be submitted.'
       );
 
     }
 
-showMessage({
-    type: 'success',
-    title: 'Request Submitted',
-    message: 'Your instructor assignment request has been submitted successfully.',
-    details: [
-        ['Request ID', requestId],
-        ['Recipients', recipients.length],
-        ['Events', selectedEvents.length]
-    ],
-    buttons: [
+    showMessage({
+      type:'success',
+      title:'Instructor Request Sent',
+      message:
+        'Your instructor assignment request has been sent successfully.',
+      details:[
+        ['Event', event.title],
+        ['Sent To', recipient]
+      ],
+      buttons:[
         {
-            text: 'Close'
+          text:'Close'
         }
-    ]
-});
+      ]
+    });
 
   } catch(err){
 
-    console.error(err);
+    console.error(
+      'Instructor request failed:',
+      err
+    );
 
-   showMessage({
-    type: 'error',
-    title: 'Request Failed',
-    message: 'The instructor assignment request could not be submitted.',
-    details: [
+    showMessage({
+      type:'error',
+      title:'Request Failed',
+      message:
+        'The instructor assignment request could not be submitted.',
+      details:[
         ['Reason', err.message]
-    ]
-});
+      ]
+    });
 
   }
 
