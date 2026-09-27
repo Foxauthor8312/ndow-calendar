@@ -10720,8 +10720,6 @@ function closeDashboard(){
 
 let profileFirstLoginMode = false;
 
-let profileAddressesCache = [];
-
 
 /*
 ====================================================
@@ -10775,9 +10773,7 @@ function openProfileModal(){
 function closeProfileModal(){
 
   if(profileFirstLoginMode){
-
     return;
-
   }
 
   const modal =
@@ -10863,10 +10859,12 @@ async function loadProfile(){
       );
 
     if(username){
+
       username.value =
         profile.username ||
         user.username ||
         '';
+
     }
 
 
@@ -10876,8 +10874,10 @@ async function loadProfile(){
       );
 
     if(email){
+
       email.value =
         profile.email || '';
+
     }
 
 
@@ -10887,8 +10887,10 @@ async function loadProfile(){
       );
 
     if(phone){
+
       phone.value =
         profile.phone || '';
+
     }
 
 
@@ -10934,13 +10936,86 @@ async function loadProfile(){
 
     /*
     ----------------------------------------------
-     Home Address
+     Personal Home Address
     ----------------------------------------------
     */
 
-    await loadProfileHomeAddresses(
-      profile.home_address_id
-    );
+    const address =
+      document.getElementById(
+        'profileAddress'
+      );
+
+    if(address){
+
+      address.value =
+        profile.home_address || '';
+
+    }
+
+
+    const city =
+      document.getElementById(
+        'profileCity'
+      );
+
+    if(city){
+
+      city.value =
+        profile.home_city || '';
+
+    }
+
+
+    const state =
+      document.getElementById(
+        'profileState'
+      );
+
+    if(state){
+
+      state.value =
+        profile.home_state || '';
+
+    }
+
+
+    const zip =
+      document.getElementById(
+        'profileZip'
+      );
+
+    if(zip){
+
+      zip.value =
+        profile.home_zip || '';
+
+    }
+
+
+    const latitude =
+      document.getElementById(
+        'profileLatitude'
+      );
+
+    if(latitude){
+
+      latitude.value =
+        profile.home_latitude ?? '';
+
+    }
+
+
+    const longitude =
+      document.getElementById(
+        'profileLongitude'
+      );
+
+    if(longitude){
+
+      longitude.value =
+        profile.home_longitude ?? '';
+
+    }
 
 
     /*
@@ -10965,9 +11040,26 @@ async function loadProfile(){
     user.notify_sms =
       !!profile.notify_sms;
 
-    user.home_address_id =
-      profile.home_address_id ||
-      null;
+    user.home_address =
+      profile.home_address || '';
+
+    user.home_city =
+      profile.home_city || '';
+
+    user.home_state =
+      profile.home_state || '';
+
+    user.home_zip =
+      profile.home_zip || '';
+
+    user.home_latitude =
+      profile.home_latitude ?? null;
+
+    user.home_longitude =
+      profile.home_longitude ?? null;
+
+    delete user.home_address_id;
+
 
     localStorage.setItem(
       'user',
@@ -11002,208 +11094,6 @@ async function loadProfile(){
 
 /*
 ====================================================
- Load Active Addresses
-====================================================
-*/
-
-async function loadProfileHomeAddresses(
-  selectedId
-){
-
-  const select =
-    document.getElementById(
-      'profileHomeAddress'
-    );
-
-  const details =
-    document.getElementById(
-      'profileHomeAddressDetails'
-    );
-
-  if(!select){
-    return;
-  }
-
-
-  select.innerHTML =
-    `
-      <option value="">
-        Select Home Address
-      </option>
-    `;
-
-  if(details){
-
-    details.innerText =
-      '';
-
-  }
-
-
-  try{
-
-    const token =
-      localStorage.getItem(
-        'token'
-      );
-
-    const response =
-      await fetch(
-        'https://ndow-calendar-server.onrender.com/api/address/active',
-        {
-          headers:{
-            Authorization:
-              `Bearer ${token}`
-          }
-        }
-      );
-
-    const result =
-      await response.json();
-
-    if(
-      !response.ok ||
-      !result.success
-    ){
-
-      throw new Error(
-        result.message ||
-        'Unable to load addresses'
-      );
-
-    }
-
-
-    profileAddressesCache =
-      (result.addresses || [])
-        .filter(
-          address =>
-            address.active
-        );
-
-
-    profileAddressesCache.forEach(
-      address => {
-
-        const option =
-          document.createElement(
-            'option'
-          );
-
-        option.value =
-          address.id;
-
-        option.textContent =
-          address.location_name ||
-          [
-            address.address1,
-            address.city,
-            address.state,
-            address.zip
-          ]
-          .filter(Boolean)
-          .join(', ');
-
-        select.appendChild(
-          option
-        );
-
-      }
-    );
-
-
-    select.value =
-      selectedId || '';
-
-
-    updateProfileHomeAddressDetails();
-
-
-    select.onchange =
-      updateProfileHomeAddressDetails;
-
-
-  }catch(error){
-
-    console.error(
-      'Profile address load error:',
-      error
-    );
-
-    if(details){
-
-      details.innerText =
-        'Unable to load addresses.';
-
-    }
-
-  }
-
-}
-
-	
-
-/*
-====================================================
- Display Selected Home Address
-====================================================
-*/
-
-function updateProfileHomeAddressDetails(){
-
-  const select =
-    document.getElementById(
-      'profileHomeAddress'
-    );
-
-  const details =
-    document.getElementById(
-      'profileHomeAddressDetails'
-    );
-
-  if(
-    !select ||
-    !details
-  ){
-
-    return;
-
-  }
-
-
-  const address =
-    profileAddressesCache.find(
-      item =>
-        String(item.id) ===
-        String(select.value)
-    );
-
-
-  if(!address){
-
-    details.innerText =
-      '';
-
-    return;
-
-  }
-
-
-  details.innerText =
-    [
-      address.address1,
-      address.city,
-      address.state,
-      address.zip
-    ]
-    .filter(Boolean)
-    .join(', ');
-
-}
-
-
-/*
-====================================================
  Save Profile
 ====================================================
 */
@@ -11218,20 +11108,58 @@ async function saveProfile(){
       );
 
 
-    const homeAddressSelect =
+    /*
+    ----------------------------------------------
+     Read Personal Home Address
+    ----------------------------------------------
+    */
+
+    const homeAddress =
       document.getElementById(
-        'profileHomeAddress'
-      );
+        'profileAddress'
+      )?.value.trim() || '';
 
+    const homeCity =
+      document.getElementById(
+        'profileCity'
+      )?.value.trim() || '';
 
-    const homeAddressId =
-      homeAddressSelect
-        ? (
-            homeAddressSelect.value ||
-            null
-          )
+    const homeState =
+      document.getElementById(
+        'profileState'
+      )?.value.trim() || '';
+
+    const homeZip =
+      document.getElementById(
+        'profileZip'
+      )?.value.trim() || '';
+
+    const latitudeValue =
+      document.getElementById(
+        'profileLatitude'
+      )?.value.trim() || '';
+
+    const longitudeValue =
+      document.getElementById(
+        'profileLongitude'
+      )?.value.trim() || '';
+
+    const homeLatitude =
+      latitudeValue
+        ? Number(latitudeValue)
         : null;
 
+    const homeLongitude =
+      longitudeValue
+        ? Number(longitudeValue)
+        : null;
+
+
+    /*
+    ----------------------------------------------
+     Save Profile
+    ----------------------------------------------
+    */
 
     const response =
       await fetch(
@@ -11274,8 +11202,23 @@ async function saveProfile(){
                 'profileNotifySms'
               ).checked,
 
-            home_address_id:
-              homeAddressId
+            home_address:
+              homeAddress,
+
+            home_city:
+              homeCity,
+
+            home_state:
+              homeState,
+
+            home_zip:
+              homeZip,
+
+            home_latitude:
+              homeLatitude,
+
+            home_longitude:
+              homeLongitude
 
           })
 
@@ -11339,8 +11282,25 @@ async function saveProfile(){
         'profileNotifySms'
       ).checked;
 
-    user.home_address_id =
-      homeAddressId;
+    user.home_address =
+      homeAddress;
+
+    user.home_city =
+      homeCity;
+
+    user.home_state =
+      homeState;
+
+    user.home_zip =
+      homeZip;
+
+    user.home_latitude =
+      homeLatitude;
+
+    user.home_longitude =
+      homeLongitude;
+
+    delete user.home_address_id;
 
 
     localStorage.setItem(
@@ -18472,48 +18432,172 @@ geographic analysis.
 
       </select>
 
-      <h3
-        style="
-          margin-top:20px;
-          margin-bottom:10px;
-        "
-      >
-        Home Address
-      </h3>
+   <h3
+  style="
+    margin-top:20px;
+    margin-bottom:10px;
+  "
+>
+  Home Address
+</h3>
 
-      <label>
-        Select Home Address
-      </label>
+<label>
+  Street Address
+</label>
 
-      <select
-        id="profileHomeAddress"
-        style="
-          width:100%;
-          padding:10px;
-          margin-top:6px;
-          margin-bottom:8px;
-          border:1px solid #d1d5db;
-          border-radius:8px;
-          box-sizing:border-box;
-          background:#fff;
-        "
-      >
+<input
+  id="profileAddress"
+  type="text"
+  placeholder="Street address"
+  style="
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    box-sizing:border-box;
+  "
+>
 
-        <option value="">
-          Select Home Address
-        </option>
 
-      </select>
+<div
+  style="
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+  "
+>
 
-      <div
-        id="profileHomeAddressDetails"
-        style="
-          min-height:20px;
-          margin-bottom:14px;
-          font-size:13px;
-          color:#6b7280;
-        "
-      ></div>
+  <div style="flex:1;">
+
+    <label>
+      City
+    </label>
+
+    <input
+      id="profileCity"
+      type="text"
+      placeholder="City"
+      style="
+        width:100%;
+        padding:10px;
+        margin-top:6px;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        box-sizing:border-box;
+      "
+    >
+
+  </div>
+
+
+  <div style="width:80px;">
+
+    <label>
+      State
+    </label>
+
+    <input
+      id="profileState"
+      type="text"
+      maxlength="2"
+      placeholder="NV"
+      style="
+        width:100%;
+        padding:10px;
+        margin-top:6px;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        box-sizing:border-box;
+        text-transform:uppercase;
+      "
+    >
+
+  </div>
+
+
+  <div style="width:110px;">
+
+    <label>
+      ZIP
+    </label>
+
+    <input
+      id="profileZip"
+      type="text"
+      maxlength="10"
+      placeholder="ZIP"
+      style="
+        width:100%;
+        padding:10px;
+        margin-top:6px;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        box-sizing:border-box;
+      "
+    >
+
+  </div>
+
+</div>
+
+
+<div
+  style="
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+  "
+>
+
+  <div style="flex:1;">
+
+    <label>
+      Latitude
+    </label>
+
+    <input
+      id="profileLatitude"
+      type="text"
+      readonly
+      style="
+        width:100%;
+        padding:10px;
+        margin-top:6px;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        box-sizing:border-box;
+        background:#f3f4f6;
+      "
+    >
+
+  </div>
+
+
+  <div style="flex:1;">
+
+    <label>
+      Longitude
+    </label>
+
+    <input
+      id="profileLongitude"
+      type="text"
+      readonly
+      style="
+        width:100%;
+        padding:10px;
+        margin-top:6px;
+        border:1px solid #d1d5db;
+        border-radius:8px;
+        box-sizing:border-box;
+        background:#f3f4f6;
+      "
+    >
+
+  </div>
+
+</div>
 
       <h3
         style="
