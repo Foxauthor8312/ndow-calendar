@@ -174,36 +174,48 @@ function renderRecipients(){
 <div
     class="comm-recipient-toolbar">
 
-    <button
+     <button
         type="button"
-        onclick="selectAllRecipients()">
-
+        onclick="selectAllRecipients()"
+        style="
+            padding:4px 8px;
+            font-size:11px;
+        "
+    >
         Select All
-
     </button>
 
     <button
         type="button"
-        onclick="clearRecipients()">
-
+        onclick="clearRecipients()"
+        style="
+            padding:4px 8px;
+            font-size:11px;
+        "
+    >
         Clear All
-
     </button>
 
     <button
         type="button"
-        onclick="openAddStudentModal()">
-
+        onclick="openAddStudentModal()"
+        style="
+            padding:4px 8px;
+            font-size:11px;
+        "
+    >
         + Add Student
-
     </button>
 
     <button
         type="button"
-        onclick="openSurveyResults()">
-
-        View Survey Results
-
+        onclick="openSurveyResults()"
+        style="
+            padding:4px 8px;
+            font-size:11px;
+        "
+    >
+        Survey Results
     </button>
 
     <span
