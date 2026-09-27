@@ -7829,6 +7829,12 @@ if(
 
 selectedEvent = event;
 
+if(!departmentContacts.length){
+
+  await loadDepartmentContacts();
+
+}
+
 try {
 
   const user =
