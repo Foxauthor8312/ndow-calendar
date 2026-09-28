@@ -2247,23 +2247,28 @@ async function submitForgotPin(){
     ↻
   </button>>
 
-      <button onclick="logout()">
+      <button
+        onclick="logout()"
+        title="Sign out of the NDOW Instructor Event Calendar."
+      >
         Logout
       </button>
 
-      <button
+            <button
         class="admin-button"
         onclick="openHelpModal()"
+        title="Open the NDOW Instructor Calendar help system."
       >
         Help
       </button>
-
+		   
       <div class="dashboard-block">
 
-        <button
+               <button
           id="dashboardButton"
           class="admin-button dashboard-btn"
           onclick="openDashboard()"
+          title="Open the instructor dashboard and account tools."
         >
           Dashboard
         </button>
@@ -2325,55 +2330,94 @@ async function submitForgotPin(){
 
 <div class="legend">
 
-  <div class="legend-item" onclick="toggleFilter('Hunter Education')">
+  <div
+    class="legend-item"
+    onclick="toggleFilter('Hunter Education')"
+    title="Show or hide Hunter Education events."
+  >
     <span class="legend-color hunter"></span>
     Hunter Education
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Fishing')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Fishing')"
+    title="Show or hide Fishing events."
+  >
     <span class="legend-color fishing"></span>
     Fishing
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Advanced Hunter Education')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Advanced Hunter Education')"
+    title="Show or hide Advanced Hunter Education events."
+  >
     <span class="legend-color advanced-hunter"></span>
     Advanced Hunter Education
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Wildlife')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Wildlife')"
+    title="Show or hide Wildlife events."
+  >
     <span class="legend-color wildlife"></span>
     Wildlife
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Urban Wildlife')">
+   <div
+    class="legend-item"
+    onclick="toggleFilter('Urban Wildlife')"
+    title="Show or hide Urban Wildlife events."
+  >
     <span class="legend-color urban-wildlife"></span>
     Urban Wildlife
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Archery')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Archery')"
+    title="Show or hide Archery events."
+  >
     <span class="legend-color archery"></span>
     Archery
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Boating')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Boating')"
+    title="Show or hide Boating events."
+  >
     <span class="legend-color boating"></span>
     Boating
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('School')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('School')"
+    title="Show or hide School events."
+  >
     <span class="legend-color school"></span>
     School
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Volunteer')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Volunteer')"
+    title="Show or hide Instructor or other volunteer events."
+  >
     <span class="legend-color volunteer"></span>
     Instructor
   </div>
 
-  <div class="legend-item" onclick="toggleFilter('Canceled')">
+    <div
+    class="legend-item"
+    onclick="toggleFilter('Canceled')"
+    title="Show or hide canceled events."
+  >
     <span class="legend-color Canceled"></span>
     Canceled
-  </div>
 
   <div class="legend-item" onclick="toggleFilter('Other')">
     <span class="legend-color other"></span>
@@ -2556,13 +2600,14 @@ async function submitForgotPin(){
     "
   >
 
-    <button
-      type="button"
-      class="modal-close"
-      onclick="closeNdowSyncMessage()"
-    >
-      ✕
-    </button>
+   <button
+  type="button"
+  class="modal-close"
+  onclick="closeNdowSyncMessage()"
+  title="Close the NDOW assignment synchronization window."
+>
+  ✕
+</button>
 
     <h2 style="
       margin:0 0 8px 0;
@@ -2680,19 +2725,21 @@ async function submitForgotPin(){
     ">
 
       <button
-        type="button"
-        onclick="closeNdowSyncMessage()"
-      >
-        Cancel
-      </button>
+  type="button"
+  onclick="closeNdowSyncMessage()"
+  title="Cancel NDOW synchronization and close this window."
+>
+  Cancel
+</button>
 
       <button
-        type="button"
-        onclick="startNdowAssignmentSync()"
-        id="ndowSyncButton"
-      >
-        Login &amp; Sync
-      </button>
+  type="button"
+  onclick="startNdowAssignmentSync()"
+  id="ndowSyncButton"
+  title="Sign in to NDOW and synchronize your instructor assignments and selected volunteer hours."
+>
+  Login &amp; Sync
+</button>
 
     </div>
 
@@ -13605,48 +13652,40 @@ container.innerHTML = `
       gap:8px;
     "
   >
-
     <button
       class="admin-button"
       onclick="
         closeDashboard();
         openProfileModal();
       "
+      title="View and update your personal NDOW instructor profile and email history."
     >
       My Profile
     </button>
 
 
-    <button
+        <button
       class="admin-button"
       onclick="
         closeDashboard();
         openInstructorTimeReport();
       "
+      title="View your instructor activity and volunteer time reports."
     >
       My Reports
     </button>
 
 	    <button
-      class="admin-button"
-      onclick="
-        closeDashboard();
-        openAnalytics();
-      "
-    >
-      Analytics
-    </button>
+	      class="admin-button"
+	      onclick="
+	        closeDashboard();
+	        openAnalytics();
+	      "
+	      title="View instructor activity and program analytics."
+	    >
+	      Analytics
+	    </button>
 
-
-    <button
-      class="admin-button"
-      onclick="
-        closeDashboard();
-        openAssignmentRequests();
-      "
-    >
-      Instructor Event Requests
-    </button>
 
 <button
   class="admin-button"
@@ -13654,16 +13693,18 @@ container.innerHTML = `
     closeDashboard();
     openInstructorReferenceLibrary();
   "
+  title="Open the instructor reference library and supporting resources."
 >
   Instructor Reference Library
 </button>
 
-    <button
+        <button
       class="admin-button"
       onclick="
         closeDashboard();
         openProjectsWorkspace();
       "
+      title="Open the Projects workspace."
     >
       Projects
     </button>
@@ -13696,89 +13737,95 @@ container.innerHTML = `
     "
   >
 
-    <button
+       <button
       class="admin-button"
       onclick="
         closeDashboard();
         openInstructorRequestCenter();
       "
+      title="Create, review, and manage instructor staffing requests."
     >
       Instructor Request Center
-    </button>
+    </button>>
 
 
-    <button
+       <button
       class="admin-button"
       onclick="
         closeDashboard();
         openUserManagement();
       "
+      title="Manage instructor accounts, roles, and user access."
     >
       User Management
     </button>
 
-
-    <button
+        <button
       class="admin-button"
       onclick="
         closeDashboard();
         openProgramUpdates();
       "
+      title="Manage program information and calendar program updates."
     >
       Program Updates
     </button>
 
 
-    <button
+        <button
       class="admin-button"
       onclick="
         closeDashboard();
         openContactsManager();
       "
+      title="Manage NDOW department and program contact information."
     >
       Contacts
     </button>
 
 
-    <button
+        <button
       class="admin-button"
       onclick="
         closeDashboard();
         openAddressLibrary();
       "
+      title="Manage saved event and facility addresses used by the calendar."
     >
       Address Library
     </button>
 
 
-    <button
+       <button
       class="admin-button"
       onclick="
         closeDashboard();
         openHelpManager();
       "
+      title="Manage help topics and instructional content displayed in the portal."
     >
       Help Manager
     </button>
 
-
-      <button
+          <button
       class="admin-button"
       onclick="
         closeDashboard();
         openCategories();
       "
+      title="Manage calendar event categories and program classifications."
     >
       Categories
     </button>
 
 
-    <button
+       <button
       class="admin-button"
       onclick="
         closeDashboard();
         openReleaseManager();
       "
+      title="View and manage application release information and release notes."
     >
       Release Management
     </button>
@@ -13811,33 +13858,37 @@ container.innerHTML = `
     "
   >
 
-    <button
+        <button
       class="admin-button"
       onclick="openSystemConsole()"
+      title="Open system diagnostics, synchronization status, and technical information."
     >
       System Console
     </button>
 
 
-    <button
+        <button
       class="admin-button"
       onclick="showInstructorImportModal()"
+      title="Import instructor records into the NDOW Volunteer Portal."
     >
       Instructor Import
     </button>
 
 
-    <button
+        <button
       class="admin-button"
       onclick="openDeveloperNotes()"
+      title="Open internal development notes and engineering information."
     >
       Developer Notes
     </button>
 
 
-    <button
+        <button
       class="admin-button"
       onclick="openTechnicalReference()"
+      title="Open the engineering knowledge center and technical reference materials."
     >
       Technical Reference
     </button>
