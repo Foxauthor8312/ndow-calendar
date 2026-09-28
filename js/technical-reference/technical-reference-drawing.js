@@ -270,5 +270,3 @@ function endRoadmapDrawing(
     openRoadmapRegionModal();
 
 }
-
-openRoadmapRegionModal();
