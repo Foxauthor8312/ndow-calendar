@@ -10195,16 +10195,73 @@ if(data.success){
 
 function openAnalytics(){
 
-  openAdminPanel();
+  const modal =
+    document.getElementById(
+      'adminModal'
+    );
 
-  setTimeout(() => {
+  const sidebar =
+    document.getElementById(
+      'adminSidebar'
+    );
 
-    openAdminSection('geo');
+  const geo =
+    document.getElementById(
+      'geoPanel'
+    );
 
-  }, 100);
+  if(
+    !modal ||
+    !geo
+  ){
+
+    return;
+
+  }
+
+  modal.classList.remove(
+    'hidden'
+  );
+
+  modal.style.display =
+    'flex';
+
+  if(sidebar){
+
+    sidebar.style.display =
+      'none';
+
+  }
+
+  document
+    .querySelectorAll(
+      '#adminModal .admin-panel'
+    )
+    .forEach(panel => {
+
+      panel.style.display =
+        'none';
+
+    });
+
+  geo.style.display =
+    'block';
+
+  const geoRegionSelect =
+    document.getElementById(
+      'geoRegionSelect'
+    );
+
+  if(geoRegionSelect){
+
+    geoRegionSelect.value =
+      'ALL';
+
+    loadGeoCounties();
+
+  }
 
 }
-
 function openCategories(){
 
   openAdminPanel();
@@ -13448,6 +13505,16 @@ container.innerHTML = `
       My Reports
     </button>
 
+	    <button
+      class="admin-button"
+      onclick="
+        closeDashboard();
+        openAnalytics();
+      "
+    >
+      Analytics
+    </button>
+
 
     <button
       class="admin-button"
@@ -13573,18 +13640,7 @@ container.innerHTML = `
     </button>
 
 
-    <button
-      class="admin-button"
-      onclick="
-        closeDashboard();
-        openAnalytics();
-      "
-    >
-      Analytics
-    </button>
-
-
-    <button
+      <button
       class="admin-button"
       onclick="
         closeDashboard();
