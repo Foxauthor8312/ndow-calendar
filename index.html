@@ -11426,7 +11426,174 @@ async function loadMyInstructorRequests(){
   }
 
 }
-	
+
+/*
+====================================================
+ Geocode Profile Home Address
+====================================================
+*/
+
+async function geocodeProfileAddress(){
+
+  const address =
+    document.getElementById(
+      'profileAddress'
+    )?.value.trim() || '';
+
+  const city =
+    document.getElementById(
+      'profileCity'
+    )?.value.trim() || '';
+
+  const state =
+    document.getElementById(
+      'profileState'
+    )?.value.trim() || '';
+
+  const zip =
+    document.getElementById(
+      'profileZip'
+    )?.value.trim() || '';
+
+  const latitude =
+    document.getElementById(
+      'profileLatitude'
+    );
+
+  const longitude =
+    document.getElementById(
+      'profileLongitude'
+    );
+
+  if(
+    !address ||
+    !city ||
+    !state ||
+    !zip ||
+    !latitude ||
+    !longitude
+  ){
+
+    return;
+
+  }
+
+  const fullAddress =
+    [
+      address,
+      city,
+      state,
+      zip
+    ]
+    .filter(Boolean)
+    .join(', ');
+
+  try{
+
+    latitude.value = 'Looking up...';
+    longitude.value = 'Looking up...';
+
+    const url =
+      'https://nominatim.openstreetmap.org/search' +
+      '?format=jsonv2' +
+      '&limit=1' +
+      '&countrycodes=us' +
+      '&q=' +
+      encodeURIComponent(
+        fullAddress
+      );
+
+    const response =
+      await fetch(
+        url
+      );
+
+    if(
+      !response.ok
+    ){
+
+      throw new Error(
+        'Address lookup failed'
+      );
+
+    }
+
+    const results =
+      await response.json();
+
+    if(
+      !results ||
+      !results.length
+    ){
+
+      latitude.value = '';
+      longitude.value = '';
+
+      const message =
+        document.getElementById(
+          'profileMessage'
+        );
+
+      if(message){
+
+        message.innerText =
+          'Address could not be located. Please verify the street address, city, state, and ZIP.';
+
+      }
+
+      return;
+
+    }
+
+    const result =
+      results[0];
+
+    latitude.value =
+      Number(
+        result.lat
+      ).toFixed(7);
+
+    longitude.value =
+      Number(
+        result.lon
+      ).toFixed(7);
+
+    const message =
+      document.getElementById(
+        'profileMessage'
+      );
+
+    if(message){
+
+      message.innerText =
+        'Address location found.';
+
+    }
+
+  }catch(error){
+
+    console.error(
+      'Profile address geocode error:',
+      error
+    );
+
+    latitude.value = '';
+    longitude.value = '';
+
+    const message =
+      document.getElementById(
+        'profileMessage'
+      );
+
+    if(message){
+
+      message.innerText =
+        'Unable to locate this address.';
+    }
+
+  }
+
+}	
 
 /*
 ====================================================
@@ -18858,11 +19025,13 @@ geographic analysis.
       ZIP
     </label>
 
-    <input
+        <input
       id="profileZip"
       type="text"
       maxlength="10"
       placeholder="ZIP"
+      onchange="geocodeProfileAddress()"
+      onblur="geocodeProfileAddress()"
       style="
         width:100%;
         padding:10px;
@@ -18943,11 +19112,14 @@ geographic analysis.
           My Instructor Requests
         </h3>
 
-        <div
+             <div
           id="myInstructorRequestsList"
           style="
             margin-top:10px;
             margin-bottom:20px;
+            max-height:280px;
+            overflow-y:auto;
+            padding-right:6px;
           "
         >
           <div
