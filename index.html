@@ -5634,6 +5634,73 @@ function overrideCategory(
 }
 
 // ========================================
+// CURRENT USER NDOW INSTRUCTOR CHECK
+// ========================================
+
+function isCurrentUserNdowInstructor(event){
+
+  if(!event){
+    return false;
+  }
+
+const isInstructor =
+  isCurrentUserNdowInstructor(
+    event
+  );
+
+  if(assignmentMatch){
+    return true;
+  }
+
+  if(
+    !Array.isArray(
+      event.instructors
+    )
+  ){
+    return false;
+  }
+
+  return event.instructors.some(
+    instructor => {
+
+      const instructorCustomerId =
+        String(
+          instructor?.customerId || ''
+        ).trim();
+
+      const instructorEmail =
+        String(
+          instructor?.email || ''
+        )
+        .toLowerCase()
+        .trim();
+
+      return (
+
+        (
+          currentCustomerId &&
+          instructorCustomerId &&
+          currentCustomerId ===
+            instructorCustomerId
+        )
+
+        ||
+
+        (
+          currentEmail &&
+          instructorEmail &&
+          currentEmail ===
+            instructorEmail
+        )
+
+      );
+
+    }
+  );
+
+}
+	
+// ========================================
 // START CALENDAR RENDERING
 // ========================================
 
@@ -5802,27 +5869,10 @@ function renderCalendar(){
 		  
 if(myEventsOnly || needHoursOnly){
 
-  const currentUser =
-
-    JSON.parse(
-      localStorage.getItem('user') || '{}'
+  const isInstructor =
+    isCurrentUserNdowInstructor(
+      event
     );
-
-const currentCustomerId =
-
-  String(
-    currentUser.ndow_customer_id || ''
-  ).trim();
-
-const isInstructor =
-
-  window.ndowAssignmentIds instanceof Set &&
-
-  window.ndowAssignmentIds.has(
-    String(
-      event.id
-    ).trim()
-  );
 
   if(!isInstructor){
     return false;
@@ -5840,60 +5890,79 @@ const isInstructor =
   // from the last 30 days that do not already
   // have volunteer hours submitted.
 
-// Need Hours only shows your completed events
-// from the last 30 days that do not already
-// have volunteer hours submitted.
+  if(needHoursOnly){
 
-if (needHoursOnly) {
+    const today =
+      new Date();
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+    today.setHours(
+      0,
+      0,
+      0,
+      0
+    );
 
-  const cutoff = new Date(today);
-  cutoff.setDate(cutoff.getDate() - 30);
+    const cutoff =
+      new Date(today);
 
-// Normalize the event date regardless of source
-const rawDate =
-  event.event_date ||
-  event.date ||
-  event.start_date ||
-  '';
+    cutoff.setDate(
+      cutoff.getDate() - 30
+    );
 
-const eventDate = new Date(rawDate);
+    // Normalize the event date regardless of source
 
-if (isNaN(eventDate.getTime())) {
-  return false;
-}
+    const rawDate =
+      event.event_date ||
+      event.date ||
+      event.start_date ||
+      '';
 
-// Normalize to midnight for comparisons
-eventDate.setHours(0, 0, 0, 0);
+    const eventDate =
+      new Date(rawDate);
 
-  // Ignore invalid dates
-  if (isNaN(eventDate.getTime())) {
-    return false;
-  }
+    if(
+      isNaN(
+        eventDate.getTime()
+      )
+    ){
+      return false;
+    }
 
-  // Future event
-  if (eventDate >= today) {
-    return false;
-  }
+    eventDate.setHours(
+      0,
+      0,
+      0,
+      0
+    );
 
-  // Older than 30 days
-  if (eventDate < cutoff) {
-    return false;
-  }
+    // Future event
 
-// Volunteer hours already submitted
+    if(
+      eventDate >= today
+    ){
+      return false;
+    }
 
-if (
-    submittedEvents.has(
+    // Older than 30 days
+
+    if(
+      eventDate < cutoff
+    ){
+      return false;
+    }
+
+    // Volunteer hours already submitted
+
+    if(
+      submittedEvents.has(
         Number(event.id)
-    )
-) {
-    return false;
-}
+      )
+    ){
+      return false;
+    }
 
-}
+  }
+
 } // End myEventsOnly || needHoursOnly
 		  
 const categoryFilters =
@@ -6097,13 +6166,8 @@ const currentEmail =
     .trim();
 
 const isInstructor =
-
-  window.ndowAssignmentIds instanceof Set &&
-
-  window.ndowAssignmentIds.has(
-    String(
-      event.id
-    ).trim()
+  isCurrentUserNdowInstructor(
+    event
   );
 
 div.innerHTML = `
@@ -22019,6 +22083,11 @@ if(status){
   const savedCount =
     Number(result.count || 0);
 
+  const hoursSynced =
+    Number(
+      result.hoursSynced || 0
+    );
+
   if(skipped.length){
 
     status.innerHTML = `
@@ -22063,6 +22132,14 @@ if(status){
         ${savedCount}
         assignment${savedCount === 1 ? '' : 's'}
         updated.
+      </div>
+
+      <div style="
+        margin-top:6px;
+      ">
+        ${hoursSynced}
+        NDOW hour record${hoursSynced === 1 ? '' : 's'}
+        synchronized.
       </div>
     `;
   }
