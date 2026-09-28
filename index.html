@@ -8922,23 +8922,20 @@ async function requestInstructor(eventUrl){
 
     }
 
-    showMessage({
-  type:'success',
-  title:'Email Sent — Confirmed',
-  message:
-    'The instructor request email was sent successfully.',
-  details:[
-    ['Event', event.title],
-    ['Sent To', recipient],
-    ['Email Status', 'Confirmed'],
-    ['Assignment Status', 'Pending Department Approval']
-  ],
-  buttons:[
-    {
-      text:'Close'
-    }
-  ]
-});
+alert(
+  'Instructor Request Submitted\n\n' +
+
+  'Event: ' +
+  event.title +
+
+  '\n\nSent To: ' +
+  recipient +
+
+  '\n\nEmail Status: Confirmed' +
+
+  '\n\nAssignment Status: ' +
+  'Pending Department Approval'
+);
 
   } catch(err){
 
