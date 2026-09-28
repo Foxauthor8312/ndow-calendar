@@ -2424,8 +2424,9 @@ async function submitForgotPin(){
     >
       Region:
 
-      <span
+            <span
         onclick="showContextHelp('region_filter')"
+        title="Get help understanding the regional calendar filter."
         style="
           cursor:pointer;
           color:#2563eb;
@@ -2445,9 +2446,10 @@ async function submitForgotPin(){
 
     </span>
 
-    <select
+       <select
       id="regionFilter"
       onchange="setRegionFilter()"
+      title="Filter calendar events by geographic region."
       style="
         padding:5px 8px;
         border-radius:6px;
@@ -2465,12 +2467,14 @@ async function submitForgotPin(){
     </select>
 
 <label
+  title="Show only events where volunteer hours still need attention."
   style="
     display:flex;
     align-items:center;
     gap:4px;
     margin-left:10px;
     font-size:12px;
+    cursor:help;
   "
 >
 
@@ -2484,7 +2488,8 @@ async function submitForgotPin(){
 
 </label>
 
-    <label
+        <label
+      title="Show only events where you are assigned as an instructor."
       style="
         display:flex;
         align-items:center;
@@ -2492,7 +2497,7 @@ async function submitForgotPin(){
         margin-left:8px;
         font-size:11px;
         white-space:nowrap;
-        cursor:pointer;
+        cursor:help;
       "
     >
 
@@ -2509,7 +2514,7 @@ async function submitForgotPin(){
     <button
       type="button"
       onclick="openNdowSyncMessage()"
-      title="Synchronize your NDOW instructor assignments"
+            title="Synchronize your NDOW instructor assignments and optionally retrieve your NDOW volunteer hours.""
       style="
         margin-left:8px;
         padding:5px 9px;
@@ -2747,7 +2752,12 @@ async function submitForgotPin(){
     justify-content:space-between;
   "
 >
-  <span>PROPOSED EVENTS</span>
+ <span
+  title="Events that have been proposed but are not yet part of the main calendar."
+  style="cursor:help;"
+>
+  PROPOSED EVENTS
+</span>
 
   <button
     type="button"
