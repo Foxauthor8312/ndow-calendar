@@ -5643,10 +5643,30 @@ function isCurrentUserNdowInstructor(event){
     return false;
   }
 
-const isInstructor =
-  isCurrentUserNdowInstructor(
-    event
-  );
+  const currentUser =
+    JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
+  const currentCustomerId =
+    String(
+      currentUser.ndow_customer_id || ''
+    ).trim();
+
+  const currentEmail =
+    String(
+      currentUser.email || ''
+    )
+    .toLowerCase()
+    .trim();
+
+  const assignmentMatch =
+    window.ndowAssignmentIds instanceof Set &&
+    window.ndowAssignmentIds.has(
+      String(
+        event.id
+      ).trim()
+    );
 
   if(assignmentMatch){
     return true;
