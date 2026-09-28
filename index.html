@@ -11141,6 +11141,7 @@ async function loadProfile(){
       JSON.stringify(user)
     );
 
+	  await loadMyInstructorRequests();
 
   }catch(error){
 
@@ -11166,6 +11167,266 @@ async function loadProfile(){
 
 }
 
+/* ====================================================
+   MY INSTRUCTOR REQUESTS
+==================================================== */
+
+async function loadMyInstructorRequests(){
+
+  const list =
+    document.getElementById(
+      'myInstructorRequestsList'
+    );
+
+  if(!list){
+    return;
+  }
+
+  list.innerHTML =
+    `
+    <div
+      style="
+        padding:12px;
+        color:#6b7280;
+      "
+    >
+      Loading instructor requests...
+    </div>
+    `;
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/my-instructor-requests',
+        {
+          headers:{
+            Authorization:
+              `Bearer ${token}`
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if(
+      !response.ok ||
+      !data.success
+    ){
+
+      throw new Error(
+        data.message ||
+        'Unable to load instructor requests'
+      );
+
+    }
+
+    if(
+      !data.requests ||
+      !data.requests.length
+    ){
+
+      list.innerHTML =
+        `
+        <div
+          style="
+            padding:12px;
+            background:#F8FAFC;
+            border:1px solid #DBE3EC;
+            border-radius:8px;
+            color:#6b7280;
+          "
+        >
+          You have not submitted any instructor requests.
+        </div>
+        `;
+
+      return;
+    }
+
+    list.innerHTML =
+      data.requests
+        .map(request => {
+
+          let statusText =
+            request.status ||
+            'Pending';
+
+          if(
+            statusText ===
+            'Pending'
+          ){
+
+            statusText =
+              'Pending Department Approval';
+
+          }
+
+          let statusColor =
+            '#6b7280';
+
+          let statusBackground =
+            '#F8FAFC';
+
+          if(
+            request.status ===
+            'Approved'
+          ){
+
+            statusColor =
+              '#166534';
+
+            statusBackground =
+              '#F0FDF4';
+
+          }
+
+          if(
+            request.status ===
+            'Waitlisted'
+          ){
+
+            statusColor =
+              '#92400E';
+
+            statusBackground =
+              '#FFFBEB';
+
+          }
+
+          if(
+            request.status ===
+            'Rejected'
+          ){
+
+            statusColor =
+              '#991B1B';
+
+            statusBackground =
+              '#FEF2F2';
+
+          }
+
+          const submitted =
+            request.created_at
+              ? new Date(
+                  request.created_at
+                ).toLocaleDateString()
+              : '';
+
+          return `
+
+          <div
+            style="
+              border:1px solid #DBE3EC;
+              border-radius:10px;
+              padding:14px;
+              margin-bottom:10px;
+              background:#FFFFFF;
+            "
+          >
+
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                align-items:flex-start;
+                gap:12px;
+                flex-wrap:wrap;
+              "
+            >
+
+              <div
+                style="
+                  font-weight:600;
+                  color:#19304B;
+                  font-size:15px;
+                "
+              >
+                ${request.event_title || ''}
+              </div>
+
+              <div
+                style="
+                  padding:5px 9px;
+                  border-radius:6px;
+                  background:${statusBackground};
+                  color:${statusColor};
+                  font-size:12px;
+                  font-weight:600;
+                  white-space:nowrap;
+                "
+              >
+                ${statusText}
+              </div>
+
+            </div>
+
+            <div
+              style="
+                margin-top:8px;
+                font-size:13px;
+                color:#4B5563;
+                line-height:1.6;
+              "
+            >
+
+              <div>
+                <b>Date:</b>
+                ${request.event_date || '—'}
+              </div>
+
+              <div>
+                <b>Location:</b>
+                ${request.event_location || '—'}
+              </div>
+
+              <div>
+                <b>Submitted:</b>
+                ${submitted || '—'}
+              </div>
+
+            </div>
+
+          </div>
+
+          `;
+
+        })
+        .join('');
+
+  }catch(error){
+
+    console.error(
+      'My instructor requests error:',
+      error
+    );
+
+    list.innerHTML =
+      `
+      <div
+        style="
+          padding:12px;
+          background:#FEF2F2;
+          border:1px solid #FECACA;
+          border-radius:8px;
+          color:#991B1B;
+        "
+      >
+        Unable to load instructor request history.
+      </div>
+      `;
+
+  }
+
+}
+	
 
 /*
 ====================================================
@@ -18673,7 +18934,32 @@ geographic analysis.
   </div>
 
 </div>
+        <h3
+          style="
+            margin-top:20px;
+            margin-bottom:10px;
+          "
+        >
+          My Instructor Requests
+        </h3>
 
+        <div
+          id="myInstructorRequestsList"
+          style="
+            margin-top:10px;
+            margin-bottom:20px;
+          "
+        >
+          <div
+            style="
+              padding:12px;
+              color:#6b7280;
+            "
+          >
+            Loading instructor requests...
+          </div>
+        </div>
+		
       <h3
         style="
           margin-top:20px;
