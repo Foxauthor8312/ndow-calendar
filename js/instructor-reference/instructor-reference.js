@@ -386,25 +386,23 @@ function renderInstructorReferenceLibrary(){
 
                   return `
 
-                    <button
-                      type="button"
-                      onclick="
-                        openInstructorReferenceCategory(
-                          ${JSON.stringify(category.name)}
-                        );
-                      "
-                      style="
-                        text-align:left;
-                        background:white;
-                        border:1px solid #DBE3EC;
-                        border-radius:8px;
-                        padding:20px;
-                        cursor:pointer;
-                        box-shadow:
-                          0 1px 3px
-                          rgba(0,0,0,.05);
-                      "
-                    >
+                   return `
+
+                  <button
+                    type="button"
+                    onclick="openInstructorReferenceCategory('${category.name}')"
+                    style="
+                      text-align:left;
+                      background:white;
+                      border:1px solid #DBE3EC;
+                      border-radius:8px;
+                      padding:20px;
+                      cursor:pointer;
+                      box-shadow:
+                        0 1px 3px
+                        rgba(0,0,0,.05);
+                    "
+                  >
 
                       <div
                         style="
