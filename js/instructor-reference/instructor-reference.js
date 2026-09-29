@@ -385,9 +385,6 @@ function renderInstructorReferenceLibrary(){
                       .length;
 
                   return `
-
-                   return `
-
                   <button
                     type="button"
                     onclick="openInstructorReferenceCategory('${category.name}')"
