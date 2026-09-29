@@ -1051,7 +1051,7 @@ function openInstructorReferenceFolder(
 
          <button
             type="button"
-            onclick="
+            onclick='
               event.preventDefault();
               event.stopPropagation();
               openInstructorReferenceCategory(
