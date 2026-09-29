@@ -906,8 +906,8 @@ function openInstructorReferenceCategory(
                   return `
 
                     <button
-                      onclick='
-                        openInstructorReferenceFolder(
+                        type="button"
+                        onclick="openInstructorReferenceFolder('${category}', '${folder.name}')"
                           ${JSON.stringify(category)},
                           ${JSON.stringify(folder.name)}
                         );
