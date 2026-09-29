@@ -691,34 +691,52 @@ function openInstructorReferenceCategory(
                           Open PDF
                         </button>
 
-                        ${
-                          isAdmin
-                            ? `
-                              <button
-                                onclick="
-                                  toggleInstructorReferenceStatus(
-                                    ${Number(document.id)},
-                                    ${document.active}
-                                  );
-                                "
-                                style="
-                                  background:white;
-                                  color:#19304B;
-                                  border:1px solid #DBE3EC;
-                                  border-radius:6px;
-                                  padding:8px 12px;
-                                  cursor:pointer;
-                                "
-                              >
-                                ${
-                                  document.active
-                                    ? 'Hide'
-                                    : 'Unhide'
-                                }
-                              </button>
-                            `
-                            : ''
-                        }
+                       ${
+  isAdmin
+    ? `
+        <button
+          onclick="
+            openEditInstructorReference(
+              ${Number(document.id)}
+            );
+          "
+          style="
+            background:white;
+            color:#19304B;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            padding:8px 12px;
+            cursor:pointer;
+          "
+        >
+          Edit
+        </button>
+
+        <button
+          onclick="
+            toggleInstructorReferenceStatus(
+              ${Number(document.id)},
+              ${document.active}
+            );
+          "
+          style="
+            background:white;
+            color:#19304B;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            padding:8px 12px;
+            cursor:pointer;
+          "
+        >
+          ${
+            document.active
+              ? 'Hide'
+              : 'Unhide'
+          }
+        </button>
+      `
+    : ''
+}
 
                       </div>
 
@@ -1188,33 +1206,51 @@ function openInstructorReferenceFolder(
                       </button>
 
                       ${
-                        isAdmin
-                          ? `
-                            <button
-                              onclick="
-                                toggleInstructorReferenceStatus(
-                                  ${Number(document.id)},
-                                  ${document.active}
-                                );
-                              "
-                              style="
-                                background:white;
-                                color:#19304B;
-                                border:1px solid #DBE3EC;
-                                border-radius:6px;
-                                padding:8px 12px;
-                                cursor:pointer;
-                              "
-                            >
-                              ${
-                                document.active
-                                  ? 'Hide'
-                                  : 'Unhide'
-                              }
-                            </button>
-                          `
-                          : ''
-                      }
+  isAdmin
+    ? `
+        <button
+          onclick="
+            openEditInstructorReference(
+              ${Number(document.id)}
+            );
+          "
+          style="
+            background:white;
+            color:#19304B;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            padding:8px 12px;
+            cursor:pointer;
+          "
+        >
+          Edit
+        </button>
+
+        <button
+          onclick="
+            toggleInstructorReferenceStatus(
+              ${Number(document.id)},
+              ${document.active}
+            );
+          "
+          style="
+            background:white;
+            color:#19304B;
+            border:1px solid #DBE3EC;
+            border-radius:6px;
+            padding:8px 12px;
+            cursor:pointer;
+          "
+        >
+          ${
+            document.active
+              ? 'Hide'
+              : 'Unhide'
+          }
+        </button>
+      `
+    : ''
+}
 
                     </div>
 
@@ -1381,11 +1417,13 @@ function openAddInstructorReference(){
     );
 
   if(!modal){
+
     console.error(
       'Reference upload modal not found.'
     );
 
     return;
+
   }
 
   modal.classList.remove(
@@ -1422,8 +1460,9 @@ function closeAddInstructorReference(){
 
 }
 
+
 // ========================================
-// TOGGLE REFERENCE FOLDER
+// TOGGLE ADD REFERENCE FOLDER
 // ========================================
 
 function toggleInstructorReferenceFolder(
@@ -1444,7 +1483,9 @@ function toggleInstructorReferenceFolder(
     !folderGroup ||
     !folderSelect
   ){
+
     return;
+
   }
 
   if(
@@ -1479,6 +1520,7 @@ function toggleInstructorReferenceFolder(
 
 }
 
+
 // ========================================
 // UPLOAD REFERENCE
 // ========================================
@@ -1498,6 +1540,11 @@ async function uploadInstructorReference(){
   const categoryInput =
     document.getElementById(
       'instructorReferenceCategory'
+    );
+
+  const folderInput =
+    document.getElementById(
+      'instructorReferenceFolder'
     );
 
   if(
@@ -1522,6 +1569,11 @@ async function uploadInstructorReference(){
 
   const category =
     categoryInput.value;
+
+  const folder =
+    folderInput
+      ? folderInput.value
+      : '';
 
 
   if(!file){
@@ -1567,6 +1619,20 @@ async function uploadInstructorReference(){
 
   }
 
+  if(
+    category !==
+    'Emergency Procedures' &&
+    !folder
+  ){
+
+    alert(
+      'Please select a reference folder.'
+    );
+
+    return;
+
+  }
+
 
   const formData =
     new FormData();
@@ -1585,6 +1651,18 @@ async function uploadInstructorReference(){
     'category',
     category
   );
+
+  if(
+    category !==
+    'Emergency Procedures'
+  ){
+
+    formData.append(
+      'folder',
+      folder
+    );
+
+  }
 
 
   try{
@@ -1637,6 +1715,25 @@ async function uploadInstructorReference(){
     categoryInput.value =
       '';
 
+    if(folderInput){
+
+      folderInput.value =
+        '';
+
+    }
+
+    const folderGroup =
+      document.getElementById(
+        'instructorReferenceFolderGroup'
+      );
+
+    if(folderGroup){
+
+      folderGroup.style.display =
+        'none';
+
+    }
+
 
     await loadInstructorReferenceLibrary();
 
@@ -1654,6 +1751,604 @@ async function uploadInstructorReference(){
     alert(
       error.message ||
       'Unable to upload reference document.'
+    );
+
+  }
+
+}
+
+
+// ========================================
+// EDIT REFERENCE DOCUMENT
+// ========================================
+
+function openEditInstructorReference(
+  documentId
+){
+
+  const referenceDocument =
+    instructorReferenceDocuments.find(
+      item =>
+        Number(item.id) ===
+        Number(documentId)
+    );
+
+  if(!referenceDocument){
+
+    alert(
+      'Reference document could not be found.'
+    );
+
+    return;
+
+  }
+
+
+  let modal =
+    document.getElementById(
+      'instructorReferenceEditModal'
+    );
+
+
+  if(!modal){
+
+    modal =
+      document.createElement(
+        'div'
+      );
+
+    modal.id =
+      'instructorReferenceEditModal';
+
+    modal.style.cssText = `
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.55);
+      padding:20px;
+    `;
+
+    modal.innerHTML = `
+
+      <div
+        style="
+          width:min(560px,100%);
+          background:#ffffff;
+          border-radius:12px;
+          padding:24px;
+          box-shadow:0 20px 60px rgba(0,0,0,.30);
+        "
+      >
+
+        <div
+          style="
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            margin-bottom:20px;
+          "
+        >
+
+          <h2
+            style="
+              margin:0;
+              color:#19304B;
+            "
+          >
+            Edit Reference Document
+          </h2>
+
+          <button
+            type="button"
+            onclick="closeEditInstructorReference()"
+            style="
+              border:0;
+              background:none;
+              font-size:22px;
+              cursor:pointer;
+            "
+          >
+            ✕
+          </button>
+
+        </div>
+
+
+        <label
+          style="
+            display:block;
+            margin-bottom:6px;
+            font-weight:600;
+          "
+        >
+          Document Title
+        </label>
+
+        <input
+          id="instructorReferenceEditTitle"
+          type="text"
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px;
+            margin-bottom:18px;
+          "
+        />
+
+
+        <label
+          style="
+            display:block;
+            margin-bottom:6px;
+            font-weight:600;
+          "
+        >
+          Category
+        </label>
+
+        <select
+          id="instructorReferenceEditCategory"
+          onchange="
+            toggleInstructorReferenceEditFolder(this);
+          "
+          style="
+            width:100%;
+            box-sizing:border-box;
+            padding:10px;
+            margin-bottom:18px;
+          "
+        >
+
+          <option value="">
+            Select category
+          </option>
+
+          <option value="Emergency Procedures">
+            Emergency Procedures
+          </option>
+
+          <option value="NDOW Policies">
+            NDOW Policies
+          </option>
+
+          <option value="Angling Education">
+            Angling Education
+          </option>
+
+          <option value="Hunter Education">
+            Hunter Education
+          </option>
+
+          <option value="Wildlife Discovery">
+            Wildlife Discovery
+          </option>
+
+        </select>
+
+
+        <div
+          id="instructorReferenceEditFolderGroup"
+          style="
+            display:none;
+            margin-bottom:20px;
+          "
+        >
+
+          <label
+            style="
+              display:block;
+              margin-bottom:6px;
+              font-weight:600;
+            "
+          >
+            Folder
+          </label>
+
+          <select
+            id="instructorReferenceEditFolder"
+            style="
+              width:100%;
+              box-sizing:border-box;
+              padding:10px;
+            "
+          >
+
+            <option value="">
+              Select folder
+            </option>
+
+            <option value="Lessons">
+              Lessons
+            </option>
+
+            <option value="Worksheets">
+              Worksheets
+            </option>
+
+            <option value="Flyers & Handouts">
+              Flyers & Handouts
+            </option>
+
+            <option value="Resources">
+              Resources
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          style="
+            display:flex;
+            justify-content:flex-end;
+            gap:10px;
+            margin-top:24px;
+          "
+        >
+
+          <button
+            type="button"
+            onclick="
+              closeEditInstructorReference();
+            "
+            style="
+              padding:10px 18px;
+              cursor:pointer;
+            "
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            onclick="
+              saveInstructorReferenceEdit();
+            "
+            style="
+              padding:10px 18px;
+              cursor:pointer;
+            "
+          >
+            Save Changes
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(
+      modal
+    );
+
+  }
+
+
+  const titleInput =
+    document.getElementById(
+      'instructorReferenceEditTitle'
+    );
+
+  const categoryInput =
+    document.getElementById(
+      'instructorReferenceEditCategory'
+    );
+
+  const folderInput =
+    document.getElementById(
+      'instructorReferenceEditFolder'
+    );
+
+
+  titleInput.value =
+    referenceDocument.title ||
+    '';
+
+  categoryInput.value =
+    referenceDocument.category ||
+    '';
+
+  folderInput.value =
+    referenceDocument.folder ||
+    '';
+
+
+  modal.dataset.documentId =
+    referenceDocument.id;
+
+
+  toggleInstructorReferenceEditFolder(
+    categoryInput
+  );
+
+
+  modal.style.display =
+    'flex';
+
+}
+
+
+// ========================================
+// TOGGLE EDIT FOLDER
+// ========================================
+
+function toggleInstructorReferenceEditFolder(
+  select
+){
+
+  const folderGroup =
+    document.getElementById(
+      'instructorReferenceEditFolderGroup'
+    );
+
+  const folderSelect =
+    document.getElementById(
+      'instructorReferenceEditFolder'
+    );
+
+  if(
+    !folderGroup ||
+    !folderSelect
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    select.value ===
+    'Emergency Procedures'
+  ){
+
+    folderGroup.style.display =
+      'none';
+
+    folderSelect.value =
+      '';
+
+    return;
+
+  }
+
+
+  if(select.value){
+
+    folderGroup.style.display =
+      'block';
+
+  }else{
+
+    folderGroup.style.display =
+      'none';
+
+    folderSelect.value =
+      '';
+
+  }
+
+}
+
+
+// ========================================
+// CLOSE EDIT REFERENCE
+// ========================================
+
+function closeEditInstructorReference(){
+
+  const modal =
+    document.getElementById(
+      'instructorReferenceEditModal'
+    );
+
+  if(!modal){
+    return;
+  }
+
+  modal.style.display =
+    'none';
+
+}
+
+
+// ========================================
+// SAVE EDIT REFERENCE
+// ========================================
+
+async function saveInstructorReferenceEdit(){
+
+  const modal =
+    document.getElementById(
+      'instructorReferenceEditModal'
+    );
+
+  if(!modal){
+
+    return;
+
+  }
+
+
+  const documentId =
+    modal.dataset.documentId;
+
+
+  const titleInput =
+    document.getElementById(
+      'instructorReferenceEditTitle'
+    );
+
+  const categoryInput =
+    document.getElementById(
+      'instructorReferenceEditCategory'
+    );
+
+  const folderInput =
+    document.getElementById(
+      'instructorReferenceEditFolder'
+    );
+
+
+  const title =
+    titleInput.value.trim();
+
+  const category =
+    categoryInput.value;
+
+  const folder =
+    folderInput.value;
+
+
+  if(!title){
+
+    alert(
+      'Please enter a document title.'
+    );
+
+    return;
+
+  }
+
+
+  if(!category){
+
+    alert(
+      'Please select a category.'
+    );
+
+    return;
+
+  }
+
+
+  if(
+    category !==
+    'Emergency Procedures' &&
+    !folder
+  ){
+
+    alert(
+      'Please select a reference folder.'
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const token =
+      localStorage.getItem(
+        'token'
+      );
+
+
+    const response =
+      await fetch(
+        `${INSTRUCTOR_REFERENCE_API}/${documentId}`,
+        {
+          method:'PATCH',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+          },
+
+          body:
+            JSON.stringify({
+
+              title,
+
+              category,
+
+              folder:
+                category ===
+                'Emergency Procedures'
+                  ? null
+                  : folder
+
+            })
+
+          }
+        );
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !data.success
+    ){
+
+      throw new Error(
+        data.error ||
+        'Unable to update reference document.'
+      );
+
+    }
+
+
+    closeEditInstructorReference();
+
+
+    await loadInstructorReferenceLibrary();
+
+
+    /*
+    ------------------------------------
+    Return to the document's new location
+    ------------------------------------
+    */
+
+    if(
+      category ===
+      'Emergency Procedures'
+    ){
+
+      openInstructorReferenceCategory(
+        category
+      );
+
+    }else{
+
+      openInstructorReferenceCategory(
+        category
+      );
+
+      openInstructorReferenceFolder(
+        category,
+        folder
+      );
+
+    }
+
+
+    alert(
+      'Reference document updated successfully.'
+    );
+
+
+  }catch(error){
+
+    console.error(
+      'Reference document edit error:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to update reference document.'
     );
 
   }
@@ -1694,6 +2389,32 @@ function escapeInstructorReferenceHtml(
     );
 
 }
+
+
+// ========================================
+// GLOBAL REFERENCE FUNCTIONS
+// ========================================
+
+window.openAddInstructorReference =
+  openAddInstructorReference;
+
+window.closeAddInstructorReference =
+  closeAddInstructorReference;
+
+window.toggleInstructorReferenceFolder =
+  toggleInstructorReferenceFolder;
+
+window.openEditInstructorReference =
+  openEditInstructorReference;
+
+window.toggleInstructorReferenceEditFolder =
+  toggleInstructorReferenceEditFolder;
+
+window.closeEditInstructorReference =
+  closeEditInstructorReference;
+
+window.saveInstructorReferenceEdit =
+  saveInstructorReferenceEdit;
 
 
 // ========================================
