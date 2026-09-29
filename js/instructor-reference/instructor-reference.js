@@ -1063,28 +1063,24 @@ function openInstructorReferenceFolder(
 
         <div>
 
-         <button
-            type="button"
-            onclick='
-              event.preventDefault();
-              event.stopPropagation();
-              openInstructorReferenceCategory(
-                ${JSON.stringify(category)}
-              );
-              return false;
-            "
-            style="
-              background:transparent;
-              color:white;
-              border:none;
-              padding:0;
-              margin-bottom:5px;
-              cursor:pointer;
-              font-size:12px;
-            "
-          >
-            ← ${escapeInstructorReferenceHtml(category)}
-          </button>
+        <button
+          onclick="
+            openInstructorReferenceCategory(
+              ${JSON.stringify(category)}
+            );
+          "
+          style="
+            background:transparent;
+            color:white;
+            border:none;
+            padding:0;
+            margin-bottom:5px;
+            cursor:pointer;
+            font-size:12px;
+          "
+        >
+          ← ${escapeInstructorReferenceHtml(category)}
+        </button>
 
           <div
             style="
