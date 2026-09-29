@@ -1005,7 +1005,10 @@ function openInstructorReferenceCategory(
 // ========================================
 // OPEN REFERENCE FOLDER
 // ========================================
-
+function openInstructorReferenceFolder(
+  category,
+  folder
+){
 
   const documents =
     instructorReferenceDocuments.filter(
