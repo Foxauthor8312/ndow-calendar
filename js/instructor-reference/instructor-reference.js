@@ -501,6 +501,275 @@ function openInstructorReferenceCategory(
     user.role === 'superuser';
 
 
+  /*
+  --------------------------------------------------
+  Emergency Procedures has no folders.
+  Show documents directly.
+  --------------------------------------------------
+  */
+
+  if(
+    category ===
+    'Emergency Procedures'
+  ){
+
+    root.innerHTML = `
+
+      <div
+        style="
+          height:100%;
+          display:flex;
+          flex-direction:column;
+          background:#F8FAFC;
+        "
+      >
+
+        <div
+          style="
+            background:#19304B;
+            color:white;
+            padding:16px 22px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+          "
+        >
+
+          <div>
+
+            <button
+              onclick="
+                renderInstructorReferenceLibrary();
+              "
+              style="
+                background:transparent;
+                color:white;
+                border:none;
+                padding:0;
+                margin-bottom:5px;
+                cursor:pointer;
+                font-size:12px;
+              "
+            >
+              ← Reference Library
+            </button>
+
+            <div
+              style="
+                font-size:20px;
+                font-weight:700;
+              "
+            >
+              ${category}
+            </div>
+
+          </div>
+
+          <button
+            onclick="
+              closeInstructorReferenceLibrary();
+            "
+            style="
+              background:transparent;
+              color:white;
+              border:1px solid rgba(255,255,255,.55);
+              border-radius:6px;
+              padding:8px 14px;
+              cursor:pointer;
+            "
+          >
+            Close
+          </button>
+
+        </div>
+
+
+        <div
+          style="
+            flex:1;
+            overflow:auto;
+            padding:28px;
+          "
+        >
+
+          <div
+            style="
+              max-width:1000px;
+              margin:0 auto;
+            "
+          >
+
+            ${
+              documents.length === 0
+                ? `
+                  <div
+                    style="
+                      background:white;
+                      border:1px solid #DBE3EC;
+                      border-radius:8px;
+                      padding:30px;
+                      color:#64748B;
+                      text-align:center;
+                    "
+                  >
+                    No emergency reference documents
+                    are currently available.
+                  </div>
+                `
+                :
+                documents.map(
+                  document => `
+
+                    <div
+                      style="
+                        background:white;
+                        border:1px solid #DBE3EC;
+                        border-radius:8px;
+                        padding:16px 18px;
+                        margin-bottom:10px;
+                        display:flex;
+                        align-items:center;
+                        justify-content:space-between;
+                        gap:16px;
+                      "
+                    >
+
+                      <div>
+
+                        <div
+                          style="
+                            font-size:15px;
+                            font-weight:700;
+                            color:#19304B;
+                          "
+                        >
+                          ${escapeInstructorReferenceHtml(
+                            document.title
+                          )}
+                        </div>
+
+                        <div
+                          style="
+                            font-size:12px;
+                            color:#64748B;
+                            margin-top:4px;
+                          "
+                        >
+                          ${escapeInstructorReferenceHtml(
+                            document.file_name
+                          )}
+                        </div>
+
+                      </div>
+
+
+                      <div
+                        style="
+                          display:flex;
+                          gap:8px;
+                          align-items:center;
+                          flex-shrink:0;
+                        "
+                      >
+
+                        <button
+                          onclick="
+                            openInstructorReferenceDocument(
+                              ${Number(document.id)}
+                            );
+                          "
+                          style="
+                            background:#19304B;
+                            color:white;
+                            border:none;
+                            border-radius:6px;
+                            padding:8px 14px;
+                            cursor:pointer;
+                            font-weight:600;
+                          "
+                        >
+                          Open PDF
+                        </button>
+
+                        ${
+                          isAdmin
+                            ? `
+                              <button
+                                onclick="
+                                  toggleInstructorReferenceStatus(
+                                    ${Number(document.id)},
+                                    ${document.active}
+                                  );
+                                "
+                                style="
+                                  background:white;
+                                  color:#19304B;
+                                  border:1px solid #DBE3EC;
+                                  border-radius:6px;
+                                  padding:8px 12px;
+                                  cursor:pointer;
+                                "
+                              >
+                                ${
+                                  document.active
+                                    ? 'Hide'
+                                    : 'Unhide'
+                                }
+                              </button>
+                            `
+                            : ''
+                        }
+
+                      </div>
+
+                    </div>
+
+                  `
+                ).join('')
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+
+  /*
+  --------------------------------------------------
+  All other categories use folders.
+  --------------------------------------------------
+  */
+
+  const folders = [
+    {
+      name:'Lessons',
+      description:
+        'Lesson plans and instructional materials.'
+    },
+    {
+      name:'Worksheets',
+      description:
+        'Student worksheets and activity materials.'
+    },
+    {
+      name:'Flyers & Handouts',
+      description:
+        'Flyers, handouts, and printable materials.'
+    },
+    {
+      name:'Resources',
+      description:
+        'Additional instructor reference resources.'
+    }
+  ];
+
+
   root.innerHTML = `
 
     <div
@@ -587,6 +856,245 @@ function openInstructorReferenceCategory(
           "
         >
 
+          <div
+            style="
+              font-size:14px;
+              color:#475569;
+              margin-bottom:20px;
+            "
+          >
+            Select a reference folder.
+          </div>
+
+
+          <div
+            style="
+              display:grid;
+              grid-template-columns:
+                repeat(
+                  auto-fit,
+                  minmax(220px,1fr)
+                );
+              gap:16px;
+            "
+          >
+
+            ${
+              folders.map(
+                folder => {
+
+                  const count =
+                    documents.filter(
+                      document =>
+                        document.folder ===
+                        folder.name
+                    ).length;
+
+                  return `
+
+                    <button
+                      onclick='
+                        openInstructorReferenceFolder(
+                          ${JSON.stringify(category)},
+                          ${JSON.stringify(folder.name)}
+                        );
+                      '
+                      style="
+                        text-align:left;
+                        background:white;
+                        border:1px solid #DBE3EC;
+                        border-radius:8px;
+                        padding:20px;
+                        cursor:pointer;
+                        box-shadow:
+                          0 1px 3px
+                          rgba(0,0,0,.05);
+                      "
+                    >
+
+                      <div
+                        style="
+                          font-size:16px;
+                          font-weight:700;
+                          color:#19304B;
+                          margin-bottom:8px;
+                        "
+                      >
+                        ${folder.name}
+                      </div>
+
+                      <div
+                        style="
+                          font-size:13px;
+                          line-height:1.45;
+                          color:#64748B;
+                          min-height:38px;
+                        "
+                      >
+                        ${folder.description}
+                      </div>
+
+                      <div
+                        style="
+                          margin-top:14px;
+                          font-size:12px;
+                          font-weight:600;
+                          color:#589FD6;
+                        "
+                      >
+                        ${count}
+                        ${
+                          count === 1
+                            ? ' reference'
+                            : ' references'
+                        }
+                      </div>
+
+                    </button>
+
+                  `;
+
+                }
+              ).join('')
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+// ========================================
+// OPEN REFERENCE FOLDER
+// ========================================
+
+function openInstructorReferenceFolder(
+  category,
+  folder
+){
+
+  const documents =
+    instructorReferenceDocuments.filter(
+      document =>
+        document.category === category &&
+        document.folder === folder
+    );
+
+  const root =
+    document.getElementById(
+      'instructorReferenceRoot'
+    );
+
+  if(!root){
+    return;
+  }
+
+  const user =
+    JSON.parse(
+      localStorage.getItem(
+        'user'
+      ) || '{}'
+    );
+
+  const isAdmin =
+    user.role === 'admin' ||
+    user.role === 'superuser';
+
+
+  root.innerHTML = `
+
+    <div
+      style="
+        height:100%;
+        display:flex;
+        flex-direction:column;
+        background:#F8FAFC;
+      "
+    >
+
+      <div
+        style="
+          background:#19304B;
+          color:white;
+          padding:16px 22px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+        "
+      >
+
+        <div>
+
+          <button
+            onclick="
+              openInstructorReferenceCategory(
+                ${JSON.stringify(category)}
+              );
+            "
+            style="
+              background:transparent;
+              color:white;
+              border:none;
+              padding:0;
+              margin-bottom:5px;
+              cursor:pointer;
+              font-size:12px;
+            "
+          >
+            ← ${escapeInstructorReferenceHtml(category)}
+          </button>
+
+          <div
+            style="
+              font-size:20px;
+              font-weight:700;
+            "
+          >
+            ${escapeInstructorReferenceHtml(folder)}
+          </div>
+
+        </div>
+
+        <button
+          onclick="
+            closeInstructorReferenceLibrary();
+          "
+          style="
+            background:transparent;
+            color:white;
+            border:1px solid rgba(255,255,255,.55);
+            border-radius:6px;
+            padding:8px 14px;
+            cursor:pointer;
+          "
+        >
+          Close
+        </button>
+
+      </div>
+
+
+      <div
+        style="
+          flex:1;
+          overflow:auto;
+          padding:28px;
+        "
+      >
+
+        <div
+          style="
+            max-width:1000px;
+            margin:0 auto;
+          "
+        >
+
           ${
             documents.length === 0
               ? `
@@ -601,7 +1109,7 @@ function openInstructorReferenceCategory(
                   "
                 >
                   No reference documents are currently
-                  available in this category.
+                  available in this folder.
                 </div>
               `
               :
@@ -1203,6 +1711,9 @@ window.closeInstructorReferenceLibrary =
 
 window.openInstructorReferenceCategory =
   openInstructorReferenceCategory;
+
+window.openInstructorReferenceFolder =
+  openInstructorReferenceFolder;
 
 window.openInstructorReferenceDocument =
   openInstructorReferenceDocument;
