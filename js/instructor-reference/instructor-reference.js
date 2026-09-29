@@ -1275,26 +1275,6 @@ function openInstructorReferenceCategory(
 
   `;
 
-  const backButton =
-    document.getElementById(
-      'instructorReferenceBackButton'
-    );
-
-  if(backButton){
-
-    backButton.addEventListener(
-      'click',
-      () => {
-
-        openInstructorReferenceCategory(
-          category
-        );
-
-      }
-    );
-
-  }
-
 }
 
 
