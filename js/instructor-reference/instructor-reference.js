@@ -903,11 +903,13 @@ function openInstructorReferenceCategory(
                         folder.name
                     ).length;
 
-                  return `
+                    return `
 
                     <button
                       type="button"
-                      onclick="openInstructorReferenceFolder('${category}', '${folder.name}')"
+                      class="instructor-reference-folder-button"
+                      data-category="${escapeInstructorReferenceHtml(category)}"
+                      data-folder="${escapeInstructorReferenceHtml(folder.name)}"
                       style="
                         text-align:left;
                         background:white;
@@ -977,8 +979,29 @@ function openInstructorReferenceCategory(
 
   `;
 
-}
+  root
+    .querySelectorAll(
+      '.instructor-reference-folder-button'
+    )
+    .forEach(
+      button => {
 
+        button.addEventListener(
+          'click',
+          () => {
+
+            openInstructorReferenceFolder(
+              button.dataset.category,
+              button.dataset.folder
+            );
+
+          }
+        );
+
+      }
+    );
+
+}
 // ========================================
 // OPEN REFERENCE FOLDER
 // ========================================
