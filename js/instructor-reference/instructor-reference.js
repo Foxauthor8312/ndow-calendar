@@ -1048,11 +1048,15 @@ function openInstructorReferenceFolder(
 
         <div>
 
-          <button
+         <button
+            type="button"
             onclick="
+              event.preventDefault();
+              event.stopPropagation();
               openInstructorReferenceCategory(
                 ${JSON.stringify(category)}
               );
+              return false;
             "
             style="
               background:transparent;
