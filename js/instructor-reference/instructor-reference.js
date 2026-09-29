@@ -905,25 +905,21 @@ function openInstructorReferenceCategory(
 
                   return `
 
-                    <button
+                      <button
                         type="button"
                         onclick="openInstructorReferenceFolder('${category}', '${folder.name}')"
-                          ${JSON.stringify(category)},
-                          ${JSON.stringify(folder.name)}
-                        );
-                      '
-                      style="
-                        text-align:left;
-                        background:white;
-                        border:1px solid #DBE3EC;
-                        border-radius:8px;
-                        padding:20px;
-                        cursor:pointer;
-                        box-shadow:
-                          0 1px 3px
-                          rgba(0,0,0,.05);
-                      "
-                    >
+                        style="
+                          text-align:left;
+                          background:white;
+                          border:1px solid #DBE3EC;
+                          border-radius:8px;
+                          padding:20px;
+                          cursor:pointer;
+                          box-shadow:
+                            0 1px 3px
+                            rgba(0,0,0,.05);
+                        "
+                      >
 
                       <div
                         style="
