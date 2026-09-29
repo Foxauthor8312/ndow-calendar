@@ -387,9 +387,10 @@ function renderInstructorReferenceLibrary(){
                   return `
 
                     <button
+                      type="button"
                       onclick="
-                        window.openInstructorReferenceCategory(
-                          ${JSON.stringify(category)}
+                        openInstructorReferenceCategory(
+                          ${JSON.stringify(category.name)}
                         );
                       "
                       style="
