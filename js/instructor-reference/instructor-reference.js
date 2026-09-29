@@ -914,6 +914,62 @@ function closeAddInstructorReference(){
 
 }
 
+// ========================================
+// TOGGLE REFERENCE FOLDER
+// ========================================
+
+function toggleInstructorReferenceFolder(
+  select
+){
+
+  const folderGroup =
+    document.getElementById(
+      'instructorReferenceFolderGroup'
+    );
+
+  const folderSelect =
+    document.getElementById(
+      'instructorReferenceFolder'
+    );
+
+  if(
+    !folderGroup ||
+    !folderSelect
+  ){
+    return;
+  }
+
+  if(
+    select.value ===
+    'Emergency Procedures'
+  ){
+
+    folderGroup.style.display =
+      'none';
+
+    folderSelect.value =
+      '';
+
+    return;
+
+  }
+
+  if(select.value){
+
+    folderGroup.style.display =
+      'block';
+
+  }else{
+
+    folderGroup.style.display =
+      'none';
+
+    folderSelect.value =
+      '';
+
+  }
+
+}
 
 // ========================================
 // UPLOAD REFERENCE
@@ -1153,6 +1209,9 @@ window.openInstructorReferenceDocument =
 
 window.toggleInstructorReferenceStatus =
   toggleInstructorReferenceStatus;
+
+window.toggleInstructorReferenceFolder =
+  toggleInstructorReferenceFolder;
 
 window.openAddInstructorReference =
   openAddInstructorReference;
