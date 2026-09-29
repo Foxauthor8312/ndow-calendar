@@ -1006,10 +1006,6 @@ function openInstructorReferenceCategory(
 // OPEN REFERENCE FOLDER
 // ========================================
 
-function openInstructorReferenceFolder(
-  category,
-  folder
-){
 
   const documents =
     instructorReferenceDocuments.filter(
@@ -1063,24 +1059,21 @@ function openInstructorReferenceFolder(
 
         <div>
 
-        <button
-          onclick="
-            openInstructorReferenceCategory(
-              ${JSON.stringify(category)}
-            );
-          "
-          style="
-            background:transparent;
-            color:white;
-            border:none;
-            padding:0;
-            margin-bottom:5px;
-            cursor:pointer;
-            font-size:12px;
-          "
-        >
-          ← ${escapeInstructorReferenceHtml(category)}
-        </button>
+      <button
+  type="button"
+  id="instructorReferenceBackButton"
+  style="
+    background:transparent;
+    color:white;
+    border:none;
+    padding:0;
+    margin-bottom:5px;
+    cursor:pointer;
+    font-size:12px;
+  "
+>
+  ← ${escapeInstructorReferenceHtml(category)}
+</button>
 
           <div
             style="
@@ -1281,6 +1274,26 @@ function openInstructorReferenceFolder(
     </div>
 
   `;
+
+  const backButton =
+    document.getElementById(
+      'instructorReferenceBackButton'
+    );
+
+  if(backButton){
+
+    backButton.addEventListener(
+      'click',
+      () => {
+
+        openInstructorReferenceCategory(
+          category
+        );
+
+      }
+    );
+
+  }
 
 }
 
