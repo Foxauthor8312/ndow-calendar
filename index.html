@@ -16357,9 +16357,14 @@ async function addUser(){
       'adminUsername'
     ).value.trim();
 
-  const pin =
+  const email =
     document.getElementById(
-      'adminPin'
+      'adminEmail'
+    ).value.trim();
+
+  const ndow_customer_id =
+    document.getElementById(
+      'adminNdowId'
     ).value.trim();
 
   const role =
@@ -16367,30 +16372,21 @@ async function addUser(){
       'adminRole'
     ).value;
 
-		const email =
-  document.getElementById(
-    'adminEmail'
-  ).value.trim();
+  if(
+    !username ||
+    !email ||
+    !ndow_customer_id
+  ){
 
-const phone =
-  document.getElementById(
-    'adminPhone'
-  ).value.trim();
+    document.getElementById(
+      'adminMessage'
+    ).innerText =
+      'Name, Email Address, and NDOW Customer ID are required.';
 
-const ndow_id =
-  document.getElementById(
-    'adminNdowId'
-  ).value.trim();	
+    return;
 
-const notify_email =
-  document.getElementById(
-    'adminNotifyEmail'
-  ).checked;
+  }
 
-const notify_sms =
-  document.getElementById(
-    'adminNotifySms'
-  ).checked;
   const token =
     localStorage.getItem(
       'token'
@@ -16398,60 +16394,70 @@ const notify_sms =
 
   try {
 
-    const response = await fetch(
-      'https://ndow-calendar-server.onrender.com/api/admin/add-user',
-      {
-        method:'POST',
-    headers:{
-  'Content-Type':'application/json',
-  Authorization:`Bearer ${token}`
-},
-body:JSON.stringify({
-  username,
-  pin,
-  role,
-  email,
-  phone,
-  ndow_id,
-  notify_email,
-  notify_sms
-})
-      }
-    );
+    const response =
+      await fetch(
+        'https://ndow-calendar-server.onrender.com/api/admin/add-user',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            Authorization:
+              `Bearer ${token}`
+          },
+
+          body:JSON.stringify({
+
+            username,
+
+            email,
+
+            ndow_customer_id,
+
+            role
+
+          })
+
+        }
+      );
 
     const data =
       await response.json();
 
     document.getElementById(
       'adminMessage'
-    ).innerText = data.message;
+    ).innerText =
+      data.message ||
+      (
+        data.success
+          ? 'User created successfully.'
+          : 'User creation failed.'
+      );
 
-    loadUsers();
+    if(data.success){
 
-    document.getElementById(
-      'adminUsername'
-    ).value = '';
+      loadUsers();
 
-    document.getElementById(
-      'adminPin'
-    ).value = '';
+      document.getElementById(
+        'adminUsername'
+      ).value = '';
 
-	document.getElementById(
-	  'adminEmail'
-		).value = '';
-	
-	document.getElementById(
-	  'adminPhone'
-	).value = '';
-	
-	document.getElementById(
-	  'adminNotifyEmail'
-	).checked = true;
-	
-	document.getElementById(
-	  'adminNotifySms'
-	).checked = false;
-	  
+      document.getElementById(
+        'adminEmail'
+      ).value = '';
+
+      document.getElementById(
+        'adminNdowId'
+      ).value = '';
+
+      document.getElementById(
+        'adminRole'
+      ).value = 'user';
+
+    }
+
   } catch(err){
 
     console.error(err);
@@ -17423,21 +17429,14 @@ id="adminSidebar"
   "
 >
 
-          <h2>Add User</h2>
+  <h2>Add User</h2>
 
-          <input
-            id="adminUsername"
-            class="admin-input"
-            placeholder="Username"
-            style="margin-top:8px;"
-          >
-
-          <input
-            id="adminPin"
-            class="admin-input"
-            placeholder="PIN"
-            style="margin-top:8px;"
-          >
+<input
+  id="adminUsername"
+  class="admin-input"
+  placeholder="Name"
+  style="margin-top:8px;"
+>
 
 <input
   id="adminEmail"
@@ -17446,107 +17445,48 @@ id="adminSidebar"
   style="margin-top:8px;"
 >
 
-<div style="
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:14px;
-">
+<input
+  id="adminNdowId"
+  class="admin-input"
+  placeholder="NDOW Customer ID"
+  style="margin-top:8px;"
+>
 
-  <input
-    id="adminPhone"
-    class="admin-input"
-    placeholder="Mobile Phone"
-  >
+<select
+  id="adminRole"
+  class="contact-select"
+  style="margin-top:14px;"
+>
+  <option value="user">
+    User
+  </option>
 
-  <input
-    id="adminNdowId"
-    class="admin-input"
-    placeholder="NDOW ID"
-  >
+  <option value="admin">
+    Admin
+  </option>
 
-</div>
-			
-<div style="
-  margin-top:8px;
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-wrap:wrap;
-">
+  <option value="superuser">
+    Superuser
+  </option>
+</select>
 
-  <label style="
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:13px;
-    color:#374151;
-  ">
+<button
+  style="
+    margin-top:18px;
+    width:100%;
+  "
+  onclick="addUser()"
+>
+  Create User
+</button>
 
-    <input
-      type="checkbox"
-      id="adminNotifyEmail"
-      checked
-    >
-
-    Email Notifications
-
-  </label>
-
-  <label style="
-    display:flex;
-    align-items:center;
-    gap:8px;
+<div
+  id="adminMessage"
+  style="
+    margin-top:14px;
     font-size:14px;
-    color:#374151;
-  ">
-
-    <input
-      type="checkbox"
-      id="adminNotifySms"
-    >
-
-    SMS Notifications
-
-  </label>
-
-</div>
-
-          <select
-            id="adminRole"
-            class="contact-select"
-            style="margin-top:14px;"
-          >
-            <option value="user">
-              User
-            </option>
-
-            <option value="admin">
-              Admin
-            </option>
-
-			  <option value="superuser">
-  			  Superuser
-			</option>
-          </select>
-
-          <button
-            style="
-              margin-top:18px;
-              width:100%;
-            "
-            onclick="addUser()"
-          >
-            Create User
-          </button>
-
-          <div
-            id="adminMessage"
-            style="
-              margin-top:14px;
-              font-size:14px;
-            "
-          ></div>
+  "
+></div>
 
           <div style="
             margin-top:30px;
