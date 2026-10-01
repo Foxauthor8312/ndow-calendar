@@ -5172,24 +5172,62 @@ function renderDiscussion(){
               "
             >
 
-              <textarea
-                id="projectDiscussionText"
-                rows="4"
-                maxlength="5000"
-                placeholder="Write a message to the project team..."
-                style="
-                  width:100%;
-                  box-sizing:border-box;
-                  resize:vertical;
-                  border:1px solid #DBE3EC;
-                  border-radius:6px;
-                  padding:10px;
-                  font-family:inherit;
-                  font-size:14px;
-                  color:#19304B;
-                  outline:none;
-                "
-              ></textarea>
+     <div
+  style="
+    margin-bottom:10px;
+  "
+>
+
+  <label
+    style="
+      display:block;
+      font-size:13px;
+      font-weight:600;
+      color:#19304B;
+      margin-bottom:5px;
+    "
+  >
+    Topic
+  </label>
+
+  <input
+    id="projectDiscussionTitle"
+    type="text"
+    maxlength="200"
+    placeholder="Enter a discussion topic..."
+    style="
+      width:100%;
+      box-sizing:border-box;
+      border:1px solid #DBE3EC;
+      border-radius:6px;
+      padding:10px;
+      font-family:inherit;
+      font-size:14px;
+      color:#19304B;
+      outline:none;
+    "
+  >
+
+</div>
+
+<textarea
+  id="projectDiscussionMessage"
+  rows="4"
+  maxlength="5000"
+  placeholder="Write a message to the project team..."
+  style="
+    width:100%;
+    box-sizing:border-box;
+    resize:vertical;
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+    padding:10px;
+    font-family:inherit;
+    font-size:14px;
+    color:#19304B;
+    outline:none;
+  "
+></textarea>
 
               <div style="
                 display:flex;
@@ -5336,9 +5374,14 @@ function renderDiscussionList(){
 
 async function saveProjectDiscussion(){
 
-  const textarea =
+  const titleInput =
     document.getElementById(
-      'projectDiscussionText'
+      'projectDiscussionTitle'
+    );
+
+  const messageInput =
+    document.getElementById(
+      'projectDiscussionMessage'
     );
 
   const button =
@@ -5346,69 +5389,144 @@ async function saveProjectDiscussion(){
       'saveProjectDiscussionButton'
     );
 
-  if(!textarea){
-    return;
-  }
+
+  const title =
+    String(
+      titleInput?.value || ''
+    ).trim();
+
 
   const messageText =
     String(
-      textarea.value || ''
+      messageInput?.value || ''
     ).trim();
+
+
+  if(!title){
+
+    alert(
+      'Please enter a discussion topic.'
+    );
+
+    titleInput?.focus();
+
+    return;
+
+  }
+
 
   if(!messageText){
 
     alert(
-      'Please enter a message.'
+      'Please enter a discussion message.'
     );
 
-    textarea.focus();
+    messageInput?.focus();
+
     return;
 
   }
 
+
   try{
 
     if(button){
-      button.disabled = true;
-      button.textContent = 'Posting...';
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        'Posting...';
+
     }
 
-    const post =
-      await createProjectDiscussion(
-        messageText
+
+    const token =
+      localStorage.getItem(
+        'token'
       );
 
-    currentProjectDiscussion = [
-      post,
-      ...currentProjectDiscussion
-    ];
+
+    const response =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':
+              'application/json',
+
+            'Authorization':
+              'Bearer ' + token
+          },
+
+          body:JSON.stringify({
+
+            title:
+              title,
+
+            message_text:
+              messageText
+
+          })
+        }
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !response.ok ||
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        'Failed to create discussion.'
+      );
+
+    }
+
+
+    currentProjectDiscussion =
+      await loadProjectDiscussion();
+
 
     renderDiscussionTab();
+
 
   }catch(error){
 
     console.error(
-      'Failed to save discussion post:',
+      'Failed to create discussion:',
       error
     );
 
+
     alert(
       error.message ||
-      'Unable to save discussion post.'
+      'Unable to create discussion.'
     );
+
 
   }finally{
 
-    // The tab is re-rendered after a successful post.
-    // Restore the button only if the editor still exists.
     const currentButton =
       document.getElementById(
         'saveProjectDiscussionButton'
       );
 
     if(currentButton){
-      currentButton.disabled = false;
-      currentButton.textContent = 'Post Message';
+
+      currentButton.disabled =
+        false;
+
+      currentButton.textContent =
+        'Post Message';
+
     }
 
   }
