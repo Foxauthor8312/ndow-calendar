@@ -5161,8 +5161,9 @@ function renderDiscussion(){
       ${
         canEdit
           ? `
-            <div
-              id="projectDiscussionEditor"
+  <div
+  id="projectDiscussionEditor"
+  data-project-id="${currentProject.id}"
               style="
                 background:#FFFFFF;
                 border:1px solid #DBE3EC;
@@ -5374,6 +5375,11 @@ function renderDiscussionList(){
 
 async function saveProjectDiscussion(){
 
+  const editor =
+    document.getElementById(
+      'projectDiscussionEditor'
+    );
+
   const titleInput =
     document.getElementById(
       'projectDiscussionTitle'
@@ -5390,6 +5396,12 @@ async function saveProjectDiscussion(){
     );
 
 
+  const projectId =
+    Number(
+      editor?.dataset?.projectId
+    );
+
+
   const title =
     String(
       titleInput?.value || ''
@@ -5400,6 +5412,25 @@ async function saveProjectDiscussion(){
     String(
       messageInput?.value || ''
     ).trim();
+
+
+  if(
+    !Number.isInteger(projectId) ||
+    projectId <= 0
+  ){
+
+    alert(
+      'Invalid project ID.'
+    );
+
+    console.error(
+      'Invalid discussion project ID:',
+      editor?.dataset?.projectId
+    );
+
+    return;
+
+  }
 
 
   if(!title){
@@ -5449,7 +5480,7 @@ async function saveProjectDiscussion(){
 
     const response =
       await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/discussions`,
+        `${PROJECTS_API_BASE}/api/projects/${projectId}/discussions`,
         {
           method:'POST',
 
@@ -5492,7 +5523,9 @@ async function saveProjectDiscussion(){
 
 
     currentProjectDiscussion =
-      await loadProjectDiscussion();
+      await loadProjectDiscussion(
+        projectId
+      );
 
 
     renderDiscussionTab();
@@ -5501,7 +5534,7 @@ async function saveProjectDiscussion(){
   }catch(error){
 
     console.error(
-      'Failed to create discussion:',
+      'Failed to save project discussion:',
       error
     );
 
