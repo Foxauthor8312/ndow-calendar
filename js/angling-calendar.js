@@ -421,7 +421,34 @@ function normalizeAnglingDate(value) {
     return null;
   }
 
-  let dateString = String(value);
+  let dateString =
+    String(value).trim();
+
+  // ----------------------------------------
+  // DATE ONLY — KEEP AS LOCAL DATE
+  // ----------------------------------------
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+
+    const [
+      year,
+      month,
+      day
+    ] =
+      dateString
+        .split('-')
+        .map(Number);
+
+    return new Date(
+      year,
+      month - 1,
+      day
+    );
+  }
+
+  // ----------------------------------------
+  // COMPACT iCAL UTC DATE/TIME
+  // ----------------------------------------
 
   if (/^\d{8}T\d{6}Z$/.test(dateString)) {
 
@@ -431,7 +458,13 @@ function normalizeAnglingDate(value) {
         '$1-$2-$3T$4:$5:$6Z'
       );
 
-  } else if (/^\d{8}T\d{6}$/.test(dateString)) {
+  }
+
+  // ----------------------------------------
+  // COMPACT iCAL LOCAL DATE/TIME
+  // ----------------------------------------
+
+  else if (/^\d{8}T\d{6}$/.test(dateString)) {
 
     dateString =
       dateString.replace(
@@ -439,25 +472,46 @@ function normalizeAnglingDate(value) {
         '$1-$2-$3T$4:$5:$6'
       );
 
-  } else if (/^\d{8}$/.test(dateString)) {
-
-    dateString =
-      dateString.replace(
-        /^(\d{4})(\d{2})(\d{2})$/,
-        '$1-$2-$3'
-      );
-
   }
+
+  // ----------------------------------------
+  // COMPACT DATE ONLY
+  // ----------------------------------------
+
+  else if (/^\d{8}$/.test(dateString)) {
+
+    const year =
+      Number(dateString.slice(0, 4));
+
+    const month =
+      Number(dateString.slice(4, 6));
+
+    const day =
+      Number(dateString.slice(6, 8));
+
+    return new Date(
+      year,
+      month - 1,
+      day
+    );
+  }
+
+  // ----------------------------------------
+  // STANDARD DATE/TIME
+  // ----------------------------------------
 
   const date =
     new Date(dateString);
 
-  if (Number.isNaN(date.getTime())) {
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
     return null;
   }
 
   return date;
-
 }
 
 
