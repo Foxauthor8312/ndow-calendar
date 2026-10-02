@@ -287,6 +287,55 @@ function findMatchingNdowEvent(
       anglingEvent.start
     );
 
+if (
+  String(anglingEvent.title || '')
+    .toLowerCase()
+    .includes('friday flies') &&
+  String(anglingEvent.start || '')
+    .includes('20261009')
+) {
+
+  console.log(
+    'FRIDAY FLIES MATCH TEST:',
+    {
+      anglingTitle:
+        anglingEvent.title,
+
+      anglingStart:
+        anglingEvent.start,
+
+      anglingDate,
+
+      ndow4947:
+        ndowEvents.find(
+          e =>
+            String(e.id) === '4947'
+        ),
+
+      ndow4947Date:
+        anglingDateKey(
+          ndowEvents.find(
+            e =>
+              String(e.id) === '4947'
+          )?.date
+        ),
+
+      titleMatch:
+        anglingTitlesMatch(
+          anglingEvent.title,
+          'Friday Flies- Las Vegas'
+        ),
+
+      locationMatch:
+        anglingLocationsMatch(
+          anglingEvent.location,
+          'NDOW Las Vegas Office 3373 Pepper Lane Las Vegas, NV 89120'
+        )
+    }
+  );
+
+}
+  
   if (!anglingDate) {
     return null;
   }
