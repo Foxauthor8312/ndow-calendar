@@ -2776,7 +2776,6 @@ async function submitForgotPin(){
 <div
   id="proposedEventsPanel"
   style="
-    flex:0 0 260px;
     width:260px;
     min-width:260px;
     min-height:0;
@@ -2840,8 +2839,7 @@ async function submitForgotPin(){
   id="proposedEventsList"
   style="
     padding:10px;
-    flex:1;
-    min-height:0;
+    height:calc(100vh - 190px);
     overflow-y:auto;
     overflow-x:hidden;
     box-sizing:border-box;
@@ -2857,19 +2855,18 @@ async function submitForgotPin(){
        MAIN CALENDAR
   ======================================= -->
 
-  <div
+<div
   id="calendarViewport"
   style="
-    flex:1 1 auto;
-    width:0;
+    flex:1;
     min-width:0;
     min-height:0;
-      overflow-y:auto;
-      overflow-x:hidden;
-      border-left:20px solid #19304B;
-      padding-left:10px;
-    "
-  >
+    overflow-y:auto;
+    overflow-x:hidden;
+    border-left:20px solid #19304B;
+    padding-left:10px;
+  "
+>
 
     <div class="calendar" id="calendar"></div>
 
@@ -4290,12 +4287,14 @@ lastUpdated &&
 
         : 'HEALTHY';
 
-    renderCalendar();
+   renderCalendar();
 
-	renderProposedEvents(); 
+// Proposed Events system is parked.
+// Angling Calendar now owns the proposedEventsList display.
 
-	renderSystemConsole();
+// renderProposedEvents();
 
+renderSystemConsole();
 	await loadAnnouncements();
 
   } catch(err){
