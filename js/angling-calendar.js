@@ -454,6 +454,55 @@ function openAnglingEventDetails(event) {
 
   }
 
+  // ----------------------------------------
+  // LOCATION / MAP LINK
+  // ----------------------------------------
+
+  let locationDisplay =
+    escapeAnglingHtml(location);
+
+  if (location) {
+
+    const locationText =
+      String(location).trim();
+
+    let mapUrl =
+      locationText;
+
+    /*
+      If the location is not already a URL,
+      turn the address/text into a Google Maps
+      search URL.
+    */
+
+    if (!/^https?:\/\//i.test(locationText)) {
+
+      mapUrl =
+        'https://www.google.com/maps/search/?api=1&query=' +
+        encodeURIComponent(locationText);
+
+    }
+
+    locationDisplay = `
+
+      <a
+        href="${escapeAnglingHtml(mapUrl)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          color:#19304B;
+          font-weight:600;
+          text-decoration:none;
+        "
+        title="Open location in Google Maps"
+      >
+        📍 ${escapeAnglingHtml(locationText)}
+      </a>
+
+    `;
+
+  }
+
 
   // ----------------------------------------
   // BUILD DETAILS
@@ -507,13 +556,14 @@ function openAnglingEventDetails(event) {
       }
 
       ${
-        location
-          ? anglingDetailRow(
-              'Location',
-              location
-            )
-          : ''
-      }
+${
+  location
+    ? anglingDetailRow(
+        'Location',
+        locationDisplay
+      )
+    : ''
+}
 
       ${
         status
@@ -714,7 +764,8 @@ function openAnglingEventDetails(event) {
 
 function anglingDetailRow(
   label,
-  value
+  value,
+  allowHtml = false
 ) {
 
   return `
@@ -747,7 +798,9 @@ function anglingDetailRow(
           word-break:break-word;
         "
       >
-        ${escapeAnglingHtml(value)}
+       ${allowHtml
+        ? value
+        : escapeAnglingHtml(value)}
       </div>
 
     </div>
