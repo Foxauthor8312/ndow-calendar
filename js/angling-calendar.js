@@ -361,6 +361,7 @@ function findMatchingNdowEvent(
 
 }
 
+
 // ========================================
 // DATE / TIME FORMATTING
 // ========================================
@@ -1212,7 +1213,7 @@ async function renderAnglingCalendar() {
     '<div style="padding:10px;">Loading...</div>';
 
 
-  const events =
+const events =
   await loadAnglingCalendar();
 
 
@@ -1226,17 +1227,17 @@ if (!events.length) {
 }
 
 
-// ----------------------------------------
+// ========================================
 // LOAD OFFICIAL NDOW EVENTS
-// ----------------------------------------
+// ========================================
 
 const ndowEvents =
   await loadNdowEventsForAnglingMatch();
 
 
-// ----------------------------------------
+// ========================================
 // MATCH ANGling EVENTS TO NDOW EVENTS
-// ----------------------------------------
+// ========================================
 
 events.forEach(
   event => {
@@ -1256,69 +1257,67 @@ events.forEach(
 );
 
 
-if (!events.length) {
+// ========================================
+// DEBUG — NDOW EVENT MATCHING
+// ========================================
 
-    container.innerHTML =
-      '<div style="padding:10px;">No upcoming angling events.</div>';
+console.log(
+  'ANGLING → NDOW MATCHES:',
+  events.map(event => ({
+    title:
+      event.title,
 
-    return;
+    start:
+      event.start,
 
-  }
+    ndowEventNumber:
+      event.ndowEventNumber
+  }))
+);
 
 
-  const now =
-    new Date();
+const now =
+  new Date();
 
 
-  const upcoming =
-    events
-      .filter(event => {
+const upcoming =
+  events
+    .filter(event => {
 
-        if (!event.start) {
-          return false;
-        }
+      if (!event.start) {
+        return false;
+      }
 
-        const date =
+      const date =
+        normalizeAnglingDate(
+          event.start
+        );
+
+      return (
+        date &&
+        date >= now
+      );
+
+    })
+    .sort(
+      (a, b) => {
+
+        const aDate =
           normalizeAnglingDate(
-            event.start
+            a.start
+          );
+
+        const bDate =
+          normalizeAnglingDate(
+            b.start
           );
 
         return (
-          date &&
-          date >= now
+          aDate - bDate
         );
 
-      })
-      .sort(
-        (a, b) => {
-
-          const aDate =
-            normalizeAnglingDate(
-              a.start
-            );
-
-          const bDate =
-            normalizeAnglingDate(
-              b.start
-            );
-
-          return (
-            aDate - bDate
-          );
-
-        }
-      );
-
-
-  if (!upcoming.length) {
-
-    container.innerHTML =
-      '<div style="padding:10px;">No upcoming angling events.</div>';
-
-    return;
-
-  }
-
+      }
+    );
 
   // ----------------------------------------
   // DISPLAY EVENT LIST
