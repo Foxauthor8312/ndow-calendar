@@ -20,12 +20,55 @@ async function loadAnglingCalendar() {
     }
 
     const data =
-      await response.json();
+  await response.json();
 
-    if (
-      !data.success ||
-      !Array.isArray(data.events)
-    ) {
+
+// ========================================
+// UPDATE HEADER TIMESTAMP
+// ========================================
+
+const updatedElement =
+  document.getElementById(
+    'anglingCalendarUpdated'
+  );
+
+if (
+  updatedElement &&
+  data.lastUpdated
+) {
+
+  const updatedDate =
+    new Date(
+      data.lastUpdated
+    );
+
+  updatedElement.textContent =
+    'Calendar data updated: ' +
+    updatedDate.toLocaleDateString(
+      undefined,
+      {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      }
+    ) +
+    ' • ' +
+    updatedDate.toLocaleTimeString(
+      undefined,
+      {
+        hour: 'numeric',
+        minute: '2-digit'
+      }
+    );
+
+}
+
+
+if (
+  !data.success ||
+  !Array.isArray(data.events)
+) {
+  
       throw new Error(
         'Invalid Angling Calendar response.'
       );
