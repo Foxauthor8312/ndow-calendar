@@ -2768,7 +2768,7 @@ async function submitForgotPin(){
 >
 
 <!-- ======================================
-     PROPOSED EVENTS
+   ANGLING CALENDAR
 ======================================= -->
 
 <div
@@ -2803,13 +2803,14 @@ async function submitForgotPin(){
     justify-content:space-between;
   "
 >
- <span
-  title="Events that have been proposed but are not yet part of the main calendar."
+<span
+  title="Angling events and classes from the Angling Calendar."
   style="cursor:help;"
 >
-  PROPOSED EVENTS
+  ANGLING CALENDAR
 </span>
 
+<!--
   <button
     type="button"
     onclick="openProposedEventModal()"
@@ -2830,7 +2831,7 @@ async function submitForgotPin(){
   >
     +
   </button>
-</div>
+-->
 
 <div
   id="proposedEventsList"
@@ -21811,6 +21812,11 @@ ${regionTotal}
 <script
   type="module"
   src="js/proposed-events.js">
+</script>
+
+<script
+  type="module"
+  src="js/angling-calendar.js">
 </script>
 
 <script
