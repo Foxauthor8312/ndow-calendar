@@ -218,8 +218,8 @@ function createAnglingDetailsModal() {
   modal.id =
     'anglingEventDetailsModal';
 
-  modal.className =
-    'modal hidden';
+ modal.className =
+  'angling-event-details-modal';
 
   modal.style.cssText = `
     position:fixed;
