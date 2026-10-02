@@ -1262,19 +1262,36 @@ events.forEach(
 // ========================================
 
 console.log(
-  'ANGLING → NDOW MATCHES:',
-  events.map(event => ({
-    title:
-      event.title,
+  'ANGLING → NDOW MATCH DEBUG:',
+  {
+    ndowEventCount:
+      ndowEvents.length,
 
-    start:
-      event.start,
+    fridayFliesNdow:
+      ndowEvents.filter(
+        e =>
+          String(e.title || '')
+            .toLowerCase()
+            .includes('friday flies')
+      ),
 
-    ndowEventNumber:
-      event.ndowEventNumber
-  }))
+    anglingFridayFlies:
+      events.filter(
+        e =>
+          String(e.title || '')
+            .toLowerCase()
+            .includes('friday flies')
+      ),
+
+    matches:
+      events.map(event => ({
+        title: event.title,
+        start: event.start,
+        ndowEventNumber:
+          event.ndowEventNumber
+      }))
+  }
 );
-
 
 const now =
   new Date();
