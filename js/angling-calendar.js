@@ -788,7 +788,7 @@ function anglingDetailRow(
         ${escapeAnglingHtml(label)}
       </div>
 
-      <div
+       <div
         style="
           padding:10px 12px;
           border-bottom:1px solid #DBE3EC;
@@ -797,9 +797,9 @@ function anglingDetailRow(
           word-break:break-word;
         "
       >
-       ${allowHtml
-        ? value
-        : escapeAnglingHtml(value)}
+        ${allowHtml
+          ? value
+          : escapeAnglingHtml(value)}
       </div>
 
     </div>
