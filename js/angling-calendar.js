@@ -557,10 +557,40 @@ function openAnglingEventDetails(event) {
 
 ${
   location
-    ? anglingDetailRow(
-        'Location',
-        locationDisplay
-      )
+    ? `
+      <div
+        style="
+          display:contents;
+        "
+      >
+
+        <div
+          style="
+            padding:10px 12px;
+            background:#F8FAFC;
+            border-bottom:1px solid #DBE3EC;
+            font-size:12px;
+            font-weight:700;
+            color:#19304B;
+          "
+        >
+          Location
+        </div>
+
+        <div
+          style="
+            padding:10px 12px;
+            border-bottom:1px solid #DBE3EC;
+            font-size:13px;
+            color:#374151;
+            word-break:break-word;
+          "
+        >
+          ${locationDisplay}
+        </div>
+
+      </div>
+    `
     : ''
 }
 
