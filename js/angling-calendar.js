@@ -89,6 +89,277 @@ if (
 
 }
 
+// ========================================
+// LOAD OFFICIAL NDOW EVENTS FOR MATCHING
+// ========================================
+
+const NDOW_EVENTS_URL =
+  'https://foxauthor8312.github.io/ndow-calendar/events.json';
+
+
+async function loadNdowEventsForAnglingMatch() {
+
+  try {
+
+    const response =
+      await fetch(
+        NDOW_EVENTS_URL +
+        '?t=' +
+        Date.now()
+      );
+
+    if (!response.ok) {
+
+      throw new Error(
+        `HTTP ${response.status}`
+      );
+
+    }
+
+    const data =
+      await response.json();
+
+    if (
+      !data ||
+      !Array.isArray(data.events)
+    ) {
+
+      throw new Error(
+        'Invalid NDOW events response.'
+      );
+
+    }
+
+    return data.events;
+
+  } catch (error) {
+
+    console.error(
+      'ANGLING CALENDAR NDOW MATCH LOAD ERROR:',
+      error
+    );
+
+    return [];
+
+  }
+
+}
+
+
+// ========================================
+// NDOW MATCH HELPERS
+// ========================================
+
+function normalizeAnglingMatchText(
+  value
+) {
+
+  return String(value || '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+}
+
+
+function anglingDateKey(
+  value
+) {
+
+  const date =
+    normalizeAnglingDate(value);
+
+  if (!date) {
+    return '';
+  }
+
+  return [
+    date.getFullYear(),
+    String(
+      date.getMonth() + 1
+    ).padStart(2, '0'),
+    String(
+      date.getDate()
+    ).padStart(2, '0')
+  ].join('-');
+
+}
+
+
+function anglingTitlesMatch(
+  anglingTitle,
+  ndowTitle
+) {
+
+  const a =
+    normalizeAnglingMatchText(
+      anglingTitle
+    );
+
+  const b =
+    normalizeAnglingMatchText(
+      ndowTitle
+    );
+
+  if (!a || !b) {
+    return false;
+  }
+
+  return (
+    a === b ||
+    a.includes(b) ||
+    b.includes(a)
+  );
+
+}
+
+
+function anglingLocationsMatch(
+  anglingLocation,
+  ndowLocation
+) {
+
+  const a =
+    normalizeAnglingMatchText(
+      anglingLocation
+    );
+
+  const b =
+    normalizeAnglingMatchText(
+      ndowLocation
+    );
+
+  if (!a || !b) {
+    return false;
+  }
+
+  // Exact or contained address match
+  if (
+    a === b ||
+    a.includes(b) ||
+    b.includes(a)
+  ) {
+    return true;
+  }
+
+  // Try ZIP-code confirmation
+  const zipA =
+    String(anglingLocation)
+      .match(/\b\d{5}(?:-\d{4})?\b/);
+
+  const zipB =
+    String(ndowLocation)
+      .match(/\b\d{5}(?:-\d{4})?\b/);
+
+  if (
+    zipA &&
+    zipB &&
+    zipA[0] === zipB[0]
+  ) {
+    return true;
+  }
+
+  return false;
+
+}
+
+
+// ========================================
+// FIND MATCHING NDOW EVENT
+// ========================================
+
+function findMatchingNdowEvent(
+  anglingEvent,
+  ndowEvents
+) {
+
+  if (
+    !anglingEvent ||
+    !Array.isArray(ndowEvents)
+  ) {
+    return null;
+  }
+
+  const anglingDate =
+    anglingDateKey(
+      anglingEvent.start
+    );
+
+  if (!anglingDate) {
+    return null;
+  }
+
+  // ----------------------------------------
+  // 1. DATE MUST MATCH
+  // ----------------------------------------
+
+  let candidates =
+    ndowEvents.filter(
+      ndowEvent =>
+        anglingDateKey(
+          ndowEvent.date
+        ) === anglingDate
+    );
+
+  if (!candidates.length) {
+    return null;
+  }
+
+
+  // ----------------------------------------
+  // 2. TITLE MUST MATCH
+  // ----------------------------------------
+
+  candidates =
+    candidates.filter(
+      ndowEvent =>
+        anglingTitlesMatch(
+          anglingEvent.title,
+          ndowEvent.title
+        )
+    );
+
+  if (!candidates.length) {
+    return null;
+  }
+
+
+  // ----------------------------------------
+  // 3. UNIQUE TITLE/DATE MATCH
+  // ----------------------------------------
+
+  if (candidates.length === 1) {
+    return candidates[0];
+  }
+
+
+  // ----------------------------------------
+  // 4. LOCATION DISAMBIGUATION
+  // ----------------------------------------
+
+  const locationMatches =
+    candidates.filter(
+      ndowEvent =>
+        anglingLocationsMatch(
+          anglingEvent.location,
+          ndowEvent.location
+        )
+    );
+
+  if (locationMatches.length === 1) {
+    return locationMatches[0];
+  }
+
+
+  // ----------------------------------------
+  // 5. DO NOT GUESS
+  // ----------------------------------------
+
+  return null;
+
+}
 
 // ========================================
 // DATE / TIME FORMATTING
@@ -439,10 +710,13 @@ function openAnglingEventDetails(event) {
     event.end || '';
 
   const location =
-    event.location || '';
+  event.location || '';
 
-  const description =
-    event.description || '';
+const ndowEventNumber =
+  event.ndowEventNumber || '';
+
+const description =
+  event.description || '';
 
   const status =
     event.status || '';
@@ -579,15 +853,24 @@ function openAnglingEventDetails(event) {
       "
     >
 
-      ${anglingDetailRow(
-        'Date',
-        formatAnglingDate(start)
-      )}
+  ${anglingDetailRow(
+  'Date',
+  formatAnglingDate(start)
+)}
 
-      ${anglingDetailRow(
-        'Start',
-        formatAnglingDateTime(start)
-      )}
+${
+  ndowEventNumber
+    ? anglingDetailRow(
+        'NDOW Event',
+        '#' + ndowEventNumber
+      )
+    : ''
+}
+
+${anglingDetailRow(
+  'Start',
+  formatAnglingDateTime(start)
+)}
 
       ${
         end
@@ -930,10 +1213,50 @@ async function renderAnglingCalendar() {
 
 
   const events =
-    await loadAnglingCalendar();
+  await loadAnglingCalendar();
 
 
-  if (!events.length) {
+if (!events.length) {
+
+  container.innerHTML =
+    '<div style="padding:10px;">No upcoming angling events.</div>';
+
+  return;
+
+}
+
+
+// ----------------------------------------
+// LOAD OFFICIAL NDOW EVENTS
+// ----------------------------------------
+
+const ndowEvents =
+  await loadNdowEventsForAnglingMatch();
+
+
+// ----------------------------------------
+// MATCH ANGling EVENTS TO NDOW EVENTS
+// ----------------------------------------
+
+events.forEach(
+  event => {
+
+    const matchingNdowEvent =
+      findMatchingNdowEvent(
+        event,
+        ndowEvents
+      );
+
+    event.ndowEventNumber =
+      matchingNdowEvent
+        ? matchingNdowEvent.id
+        : '';
+
+  }
+);
+
+
+if (!events.length) {
 
     container.innerHTML =
       '<div style="padding:10px;">No upcoming angling events.</div>';
@@ -1046,14 +1369,32 @@ async function renderAnglingCalendar() {
               </div>
 
               <div
-                style="
-                  font-size:12px;
-                  color:#555;
-                "
-              >
-                ${escapeAnglingHtml(date)}
-              </div>
+  style="
+    font-size:12px;
+    color:#555;
+  "
+>
+  ${escapeAnglingHtml(date)}
+</div>
 
+${
+  event.ndowEventNumber
+    ? `
+      <div
+        style="
+          font-size:11px;
+          color:#589FD6;
+          font-weight:600;
+          margin-top:3px;
+        "
+      >
+        NDOW Event #${escapeAnglingHtml(
+          event.ndowEventNumber
+        )}
+      </div>
+    `
+    : ''
+}
               ${
                 location
                   ? `
