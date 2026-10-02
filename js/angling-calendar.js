@@ -555,7 +555,6 @@ function openAnglingEventDetails(event) {
           : ''
       }
 
-      ${
 ${
   location
     ? anglingDetailRow(
