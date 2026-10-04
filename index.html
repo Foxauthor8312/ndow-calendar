@@ -5075,6 +5075,77 @@ document.getElementById(
 
 await loadEvents();
 
+
+/*
+------------------------------------
+Load saved user preferences
+------------------------------------
+*/
+
+document.getElementById(
+  'loadingMessage'
+).innerText =
+  'Loading your calendar preferences...';
+
+
+if(
+  typeof loadUserPreferences ===
+  'function'
+){
+
+  await loadUserPreferences();
+
+}
+
+
+if(
+  typeof applyCalendarPreferences ===
+  'function'
+){
+
+  applyCalendarPreferences();
+
+}
+
+
+if(
+  typeof initializeUserPreferenceListeners ===
+  'function'
+){
+
+  initializeUserPreferenceListeners();
+
+}
+
+
+if(
+  typeof initializeUserPreferencesUI ===
+  'function'
+){
+
+  initializeUserPreferencesUI();
+
+}
+
+
+/*
+------------------------------------
+Render calendar using preferences
+------------------------------------
+*/
+
+if(
+  typeof renderCalendar ===
+  'function'
+){
+
+  renderCalendar(
+    currentDate
+  );
+
+}
+
+
 document.getElementById(
   'loginScreen'
 ).style.display =
@@ -5618,6 +5689,10 @@ async function loadNdowAssignments(){
 // START FILTER SYSTEM
 // ========================================
 
+// ========================================
+// START FILTER SYSTEM
+// ========================================
+
 function setRegionFilter(){
 
   activeRegion =
@@ -5627,7 +5702,23 @@ function setRegionFilter(){
 
   renderCalendar();
 
+  /*
+  ----------------------------------------
+  Save user preference
+  ----------------------------------------
+  */
+
+  if(
+    typeof saveCalendarPreferences ===
+    'function'
+  ){
+
+    saveCalendarPreferences();
+
+  }
+
 }
+
 
 function toggleFilter(category){
 
@@ -5644,7 +5735,8 @@ function toggleFilter(category){
 
   }
 
-    document
+
+  document
     .querySelectorAll('.legend-item')
     .forEach(item => {
 
@@ -5667,7 +5759,24 @@ function toggleFilter(category){
 
     });
 
+
   renderCalendar();
+
+
+  /*
+  ----------------------------------------
+  Save user preference
+  ----------------------------------------
+  */
+
+  if(
+    typeof saveCalendarPreferences ===
+    'function'
+  ){
+
+    saveCalendarPreferences();
+
+  }
 
 }
 
@@ -6613,7 +6722,17 @@ function nextMonth(){
 
   renderCalendar();
 
+  if(
+    typeof saveCalendarPreferences ===
+    'function'
+  ){
+
+    saveCalendarPreferences();
+
+  }
+
 }
+
 
 function prevMonth(){
 
@@ -6622,6 +6741,15 @@ function prevMonth(){
   );
 
   renderCalendar();
+
+  if(
+    typeof saveCalendarPreferences ===
+    'function'
+  ){
+
+    saveCalendarPreferences();
+
+  }
 
 }
 
@@ -22028,6 +22156,11 @@ async function downloadRouteMap(){
 <script
   src="js/instructor-reference/instructor-reference.js">
 </script>	
+
+<!-- User Preferences -->
+<script src="js/user-preferences/user-preferences-api.js"></script>
+<script src="js/user-preferences/user-preferences.js"></script>	
+<script src="js/user-preferences/user-preferences-ui.js"></script>
 	
 <script src="js/login/login-config.js"></script>
 <script src="js/login/login-storage.js"></script>
