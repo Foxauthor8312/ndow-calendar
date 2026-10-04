@@ -3211,9 +3211,15 @@ function openProjectTaskEditor(
 
 
   const assignedTo =
-    document.getElementById(
-      'projectTaskAssignedTo'
-    );
+  document.getElementById(
+    'projectTaskAssignedTo'
+  );
+
+
+const emailAssignee =
+  document.getElementById(
+    'projectTaskEmailAssignee'
+  );
 
 
   const status =
@@ -3267,7 +3273,7 @@ function openProjectTaskEditor(
   }
 
 
-  if(assignedTo){
+   if(assignedTo){
 
     assignedTo.value =
       task.assigned_to
@@ -3276,6 +3282,13 @@ function openProjectTaskEditor(
 
   }
 
+
+  if(emailAssignee){
+
+    emailAssignee.checked =
+      false;
+
+  }
 
   if(status){
 
@@ -3479,12 +3492,25 @@ function showProjectTaskEditor(){
   }
 
 
-  if(assignedTo){
+ if(assignedTo){
 
-    assignedTo.value =
-      '';
+  assignedTo.value =
+    '';
 
-  }
+}
+
+
+const emailAssignee =
+  document.getElementById(
+    'projectTaskEmailAssignee'
+  );
+
+if(emailAssignee){
+
+  emailAssignee.checked =
+    true;
+
+}
 
 
   if(status){
@@ -4029,9 +4055,15 @@ async function saveProjectTask(){
     );
 
 
-  const assignedTo =
+    const assignedTo =
     document.getElementById(
       'projectTaskAssignedTo'
+    );
+
+
+  const emailAssignee =
+    document.getElementById(
+      'projectTaskEmailAssignee'
     );
 
 
@@ -4163,7 +4195,7 @@ async function saveProjectTask(){
             task_title:
               taskTitle,
 
-            task_description:
+                 task_description:
               String(
                 description?.value || ''
               ).trim() || null,
@@ -4174,6 +4206,9 @@ async function saveProjectTask(){
                     assignedTo.value
                   )
                 : null,
+
+            email_assignee:
+              emailAssignee?.checked === true,
 
             status:
               status?.value ||
