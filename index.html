@@ -5409,22 +5409,75 @@ if(status){
       Store assignments in memory only.
     */
 
-    window.ndowAssignmentIds =
-      new Set(
-        Array.isArray(result.eventIds)
-          ? result.eventIds.map(
-              id => String(id).trim()
-            )
-          : []
-      );
+window.ndowAssignmentIds =
+  new Set(
+    Array.isArray(result.eventIds)
+      ? result.eventIds.map(
+          id => String(id).trim()
+        )
+      : []
+  );
 
-      
-	  await loadNdowAssignments();
 
-    /*
-      We will connect the calendar redraw
-      after the assignment/star code is installed.
-    */
+await loadNdowAssignments();
+
+if(status){
+
+  const savedCount =
+    Number(result.count || 0);
+
+  const hoursSynced =
+    Number(result.hoursSynced || 0);
+
+  const includeHours =
+    document.getElementById(
+      'ndowSyncHours'
+    )?.checked === true;
+
+  status.style.display = 'block';
+
+  status.innerHTML = `
+    <div style="
+      font-weight:600;
+      color:#19304B;
+      margin-bottom:10px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    ">
+      <span style="
+        color:#7A9E7F;
+        font-size:18px;
+      ">✓</span>
+
+      Sync Complete
+    </div>
+
+    <div style="
+      color:#4B5563;
+      margin-bottom:6px;
+    ">
+      ${savedCount} NDOW assignments updated.
+    </div>
+
+    ${
+      includeHours
+        ? `
+          <div style="
+            color:#4B5563;
+          ">
+            ${hoursSynced}
+            NDOW volunteer hour records synchronized.
+          </div>
+        `
+        : ''
+    }
+  `;
+}
+
+if(typeof renderCalendar === 'function'){
+  renderCalendar();
+}
 
   
   }
