@@ -4690,14 +4690,31 @@ async function uploadProjectDocument(
         }
       );
 
-    const result =
-      await response.json();
-
-    if(!response.ok || !result.success){
+    const responseText =
+      await response.text();
+    
+    let result = null;
+    
+    try{
+    
+      result =
+        JSON.parse(responseText);
+    
+    }catch(error){
+    
       throw new Error(
-        result.message ||
+        `Upload server returned an unexpected response (${response.status}). Please try again.`
+      );
+    
+    }
+    
+    if(!response.ok || !result.success){
+    
+      throw new Error(
+        result?.message ||
         'Failed to upload document.'
       );
+    
     }
 
     currentProjectDocuments = [
