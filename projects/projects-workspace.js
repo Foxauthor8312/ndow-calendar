@@ -2584,7 +2584,28 @@ function renderTasks(){
                 })
                 .join('')}
 
-            </select>
+                  </select>
+
+            <label style="
+              display:flex;
+              align-items:center;
+              gap:7px;
+              margin-top:8px;
+              font-size:12px;
+              color:#475569;
+              cursor:pointer;
+            ">
+              <input
+                id="projectTaskEmailAssignee"
+                type="checkbox"
+                style="
+                  margin:0;
+                  cursor:pointer;
+                "
+              >
+
+              Send assignment notification email
+            </label>
 
           </div>
 
