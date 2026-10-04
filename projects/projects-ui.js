@@ -259,12 +259,92 @@ function renderProjectsWorkspace(
 
           </div>
 
+          <div style="
+            margin-top:12px;
+            text-align:right;
+          ">
+
+            <button
+              type="button"
+              onclick="
+                event.stopPropagation();
+                hideProjectFromList(
+                  ${Number(project.id)}
+                );
+              "
+              style="
+                border:1px solid #CBD5E1;
+                background:#FFFFFF;
+                color:#64748B;
+                border-radius:6px;
+                padding:5px 10px;
+                cursor:pointer;
+                font-size:12px;
+              "
+            >
+              Hide
+            </button>
+
+          </div>
+
         </div>
 
       `)
+   
       .join('');
 
 }
+
+// ========================================
+// HIDE PROJECT
+// ========================================
+
+async function hideProjectFromList(
+  projectId
+){
+
+  if(
+    !confirm(
+      'Hide this project from your Projects list?'
+    )
+  ){
+    return;
+  }
+
+  try{
+
+    await updateProject(
+      projectId,
+      {
+        archived:true
+      }
+    );
+
+    await openProjectsWorkspace();
+
+  }catch(error){
+
+    console.error(
+      'Failed to hide project:',
+      error
+    );
+
+    alert(
+      error.message ||
+      'Unable to hide project.'
+    );
+
+  }
+
+}
+
+window.hideProjectFromList =
+  hideProjectFromList;
+
+
+// ========================================
+// NEW PROJECT FORM
+// ========================================
 
 // ========================================
 // NEW PROJECT FORM
