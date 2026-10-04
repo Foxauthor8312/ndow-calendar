@@ -389,7 +389,16 @@ function initializeUserPreferenceListeners(){
     );
 
 
-  if(needHours){
+  /*
+  -----------------------------------------------
+  Prevent duplicate listeners
+  -----------------------------------------------
+  */
+
+  if(
+    needHours &&
+    needHours.dataset.preferencesBound !== 'true'
+  ){
 
     needHours.addEventListener(
       'change',
@@ -400,10 +409,16 @@ function initializeUserPreferenceListeners(){
       }
     );
 
+    needHours.dataset.preferencesBound =
+      'true';
+
   }
 
 
-  if(myEvents){
+  if(
+    myEvents &&
+    myEvents.dataset.preferencesBound !== 'true'
+  ){
 
     myEvents.addEventListener(
       'change',
@@ -413,6 +428,9 @@ function initializeUserPreferenceListeners(){
 
       }
     );
+
+    myEvents.dataset.preferencesBound =
+      'true';
 
   }
 
