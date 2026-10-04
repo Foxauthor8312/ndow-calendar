@@ -6711,7 +6711,18 @@ setInterval(updateCurrentTime, 1000);
 
 updateCurrentTime();
 
-function refreshScreen() {
+function refreshScreen(){
+
+  if(
+    typeof resetUserCalendarPreferences ===
+    'function'
+  ){
+
+    resetUserCalendarPreferences();
+
+    return;
+
+  }
 
   location.reload();
 
