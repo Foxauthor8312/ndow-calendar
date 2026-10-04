@@ -5374,10 +5374,14 @@ if(status){
               'Bearer ' + token
           },
 
-          body:JSON.stringify({
-            ndowEmail:email,
-            ndowPassword:password
-          })
+    body:JSON.stringify({
+  ndowEmail:email,
+  ndowPassword:password,
+  includeHours:
+    document.getElementById(
+      'ndowSyncHours'
+    )?.checked === true
+})
         }
       );
 
