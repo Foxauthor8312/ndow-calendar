@@ -22,14 +22,6 @@ function initializeUserPreferencesUI(){
     )
   ){
 
-    /*
-    -----------------------------------------------
-    UI already exists
-    -----------------------------------------------
-    */
-
-    fixUserPreferencesFilterLayout();
-
     return;
 
   }
@@ -140,85 +132,6 @@ function initializeUserPreferencesUI(){
   */
 
   createUserPreferencesModal();
-
-
-  /*
-  -----------------------------------------------
-  Initial layout correction
-  -----------------------------------------------
-  */
-
-  fixUserPreferencesFilterLayout();
-
-}
-
-
-/*
-=========================================================
-FIX CALENDAR FILTER LAYOUT
-=========================================================
-*/
-
-function fixUserPreferencesFilterLayout(){
-
-  const regionControl =
-    document.getElementById(
-      'regionFilter'
-    );
-
-
-  const needHoursControl =
-    document.getElementById(
-      'needHoursOnly'
-    );
-
-
-  if(
-    !regionControl ||
-    !needHoursControl
-  ){
-
-    return;
-
-  }
-
-
-  const filterRow =
-    regionControl.parentElement;
-
-
-  if(!filterRow){
-
-    return;
-
-  }
-
-
-  if(
-    !filterRow.contains(
-      needHoursControl
-    )
-  ){
-
-    return;
-
-  }
-
-
-  filterRow.style.minHeight =
-    '36px';
-
-  filterRow.style.height =
-    '36px';
-
-  filterRow.style.alignItems =
-    'center';
-
-  filterRow.style.overflow =
-    'visible';
-
-  filterRow.style.flexShrink =
-    '0';
 
 }
 
@@ -1229,12 +1142,6 @@ START USER PREFERENCES UI
 
 function startUserPreferencesUI(){
 
-  /*
-  -----------------------------------------------
-  Initialize when calendar controls exist
-  -----------------------------------------------
-  */
-
   const initialize =
     () => {
 
@@ -1252,32 +1159,6 @@ function startUserPreferencesUI(){
 
 
       initializeUserPreferencesUI();
-
-
-      /*
-      ---------------------------------------------
-      Reapply layout after calendar rendering
-      ---------------------------------------------
-      */
-
-      setTimeout(
-        () => {
-
-          fixUserPreferencesFilterLayout();
-
-        },
-        100
-      );
-
-
-      setTimeout(
-        () => {
-
-          fixUserPreferencesFilterLayout();
-
-        },
-        500
-      );
 
 
       return true;
