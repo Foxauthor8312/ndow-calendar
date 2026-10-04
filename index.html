@@ -593,13 +593,15 @@ button:hover{
 
 .legend{
   display:flex;
-  flex-wrap:nowrap;
+  flex-wrap:wrap;
   align-items:center;
-  gap:3px;
+  column-gap:3px;
+  row-gap:4px;
   padding:4px 8px;
   width:100%;
   box-sizing:border-box;
-  overflow-x:auto;
+  overflow:visible;
+  min-height:40px;
 }
 
 .legend-item{
@@ -2449,16 +2451,17 @@ async function submitForgotPin(){
     ?
   </span>
 
-  <div
-    style="
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-left:auto;
-      flex-shrink:0;
-      white-space:nowrap;
-    "
-  >
+<div
+  style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:0;
+    flex-basis:100%;
+    flex-shrink:0;
+    white-space:nowrap; justify-content:flex-end;
+  "
+>
 
     <span
       style="
