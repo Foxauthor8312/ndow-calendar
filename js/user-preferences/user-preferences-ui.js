@@ -963,13 +963,134 @@ RESET PREFERENCES
 =========================================================
 */
 
-async function resetUserCalendarPreferences(){
+function showResetConfirmation(){
+
+  return new Promise(resolve => {
+
+    const overlay =
+      document.createElement('div');
+
+    overlay.style.cssText = `
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:100000;
+    `;
+
+    overlay.innerHTML = `
+
+      <div style="
+        width:360px;
+        max-width:90%;
+        background:#FFFFFF;
+        border-radius:10px;
+        box-shadow:0 12px 35px rgba(0,0,0,.25);
+        overflow:hidden;
+        font-family:Arial,sans-serif;
+      ">
+
+        <div style="
+          padding:16px 18px;
+          background:#19304B;
+          color:#FFFFFF;
+          font-size:15px;
+          font-weight:600;
+        ">
+          Reset Calendar Preferences
+        </div>
+
+        <div style="
+          padding:20px 18px;
+          color:#334155;
+          font-size:13px;
+          line-height:1.5;
+        ">
+          Reset your calendar preferences to the
+          default settings?
+          <br><br>
+          This will reset your saved Region,
+          Hours, My Events, category filters,
+          and calendar month.
+        </div>
+
+        <div style="
+          display:flex;
+          justify-content:flex-end;
+          gap:10px;
+          padding:12px 18px 16px;
+          border-top:1px solid #DBE3EC;
+        ">
+
+          <button
+            type="button"
+            id="resetPreferencesNo"
+            style="
+              padding:8px 18px;
+              border:1px solid #DBE3EC;
+              border-radius:6px;
+              background:#FFFFFF;
+              color:#334155;
+              font-size:12px;
+              cursor:pointer;
+            "
+          >
+            NO
+          </button>
+
+          <button
+            type="button"
+            id="resetPreferencesYes"
+            style="
+              padding:8px 18px;
+              border:0;
+              border-radius:6px;
+              background:#DC2626;
+              color:#FFFFFF;
+              font-size:12px;
+              font-weight:600;
+              cursor:pointer;
+            "
+          >
+            YES
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(overlay);
+
+    document
+      .getElementById('resetPreferencesNo')
+      .onclick = () => {
+
+        overlay.remove();
+        resolve(false);
+
+      };
+
+    document
+      .getElementById('resetPreferencesYes')
+      .onclick = () => {
+
+        overlay.remove();
+        resolve(true);
+
+      };
+
+  });
+
+}
+
+aasync function resetUserCalendarPreferences(){
 
   const confirmed =
-    confirm(
-      'Reset your calendar preferences to the default settings?'
-    );
-
+    await showResetConfirmation();
 
   if(!confirmed){
 
