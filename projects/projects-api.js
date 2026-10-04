@@ -176,7 +176,8 @@ export async function updateProject(
     description,
     start_date,
     end_date,
-    status
+    status,
+    archived
   }
 ){
 
@@ -200,7 +201,8 @@ export async function updateProject(
           description,
           start_date,
           end_date,
-          status
+          status,
+          archived
         })
       }
     );
