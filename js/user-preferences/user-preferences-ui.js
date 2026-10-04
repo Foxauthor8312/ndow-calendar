@@ -22,6 +22,14 @@ function initializeUserPreferencesUI(){
     )
   ){
 
+    /*
+    -----------------------------------------------
+    UI already exists
+    -----------------------------------------------
+    */
+
+    fixUserPreferencesFilterLayout();
+
     return;
 
   }
@@ -61,7 +69,7 @@ function initializeUserPreferencesUI(){
 
   /*
   -----------------------------------------------
-  Create button
+  Create Preferences button
   -----------------------------------------------
   */
 
@@ -93,6 +101,7 @@ function initializeUserPreferencesUI(){
     height:28px;
     cursor:pointer;
     white-space:nowrap;
+    flex-shrink:0;
   `;
 
 
@@ -131,6 +140,85 @@ function initializeUserPreferencesUI(){
   */
 
   createUserPreferencesModal();
+
+
+  /*
+  -----------------------------------------------
+  Initial layout correction
+  -----------------------------------------------
+  */
+
+  fixUserPreferencesFilterLayout();
+
+}
+
+
+/*
+=========================================================
+FIX CALENDAR FILTER LAYOUT
+=========================================================
+*/
+
+function fixUserPreferencesFilterLayout(){
+
+  const regionControl =
+    document.getElementById(
+      'regionFilter'
+    );
+
+
+  const needHoursControl =
+    document.getElementById(
+      'needHoursOnly'
+    );
+
+
+  if(
+    !regionControl ||
+    !needHoursControl
+  ){
+
+    return;
+
+  }
+
+
+  const filterRow =
+    regionControl.parentElement;
+
+
+  if(!filterRow){
+
+    return;
+
+  }
+
+
+  if(
+    !filterRow.contains(
+      needHoursControl
+    )
+  ){
+
+    return;
+
+  }
+
+
+  filterRow.style.minHeight =
+    '36px';
+
+  filterRow.style.height =
+    '36px';
+
+  filterRow.style.alignItems =
+    'center';
+
+  filterRow.style.overflow =
+    'visible';
+
+  filterRow.style.flexShrink =
+    '0';
 
 }
 
@@ -568,7 +656,7 @@ function createUserPreferencesModal(){
     );
 
 
-    /*
+  /*
   -----------------------------------------------
   My Events
   -----------------------------------------------
@@ -602,54 +690,6 @@ function createUserPreferencesModal(){
       }
     );
 
-
-  /*
-  -----------------------------------------------
-  Give the calendar filter row enough height
-  -----------------------------------------------
-  */
-
-  const regionControl =
-    document.getElementById(
-      'regionFilter'
-    );
-
-
-  const needHoursControl =
-    document.getElementById(
-      'needHoursOnly'
-    );
-
-
-  const filterRow =
-    regionControl?.parentElement;
-
-
-  if(
-    filterRow &&
-    needHoursControl &&
-    filterRow.contains(
-      needHoursControl
-    )
-  ){
-
-    filterRow.style.minHeight =
-      '36px';
-
-    filterRow.style.height =
-      'auto';
-
-    filterRow.style.alignItems =
-      'center';
-
-    filterRow.style.overflow =
-      'visible';
-
-    filterRow.style.flexShrink =
-      '0';
-
-  }
-
 }
 
 
@@ -674,7 +714,8 @@ function buildUserPreferenceCategories(){
   }
 
 
-  container.innerHTML = '';
+  container.innerHTML =
+    '';
 
 
   let categories = [];
@@ -691,6 +732,8 @@ function buildUserPreferenceCategories(){
 
   }
   else if(
+    typeof CATEGORY_OPTIONS !==
+    'undefined' &&
     Array.isArray(
       CATEGORY_OPTIONS
     )
@@ -1068,7 +1111,8 @@ async function resetUserCalendarPreferences(){
   }
 
 
-  activeFilters = [];
+  activeFilters =
+    [];
 
 
   document
@@ -1093,7 +1137,6 @@ async function resetUserCalendarPreferences(){
   currentDate =
     new Date();
 
-
   currentDate.setDate(
     1
   );
@@ -1101,7 +1144,7 @@ async function resetUserCalendarPreferences(){
 
   /*
   -----------------------------------------------
-  Save defaults
+  Reset internal preference state
   -----------------------------------------------
   */
 
@@ -1112,13 +1155,17 @@ async function resetUserCalendarPreferences(){
 
     setUserPreferences({
 
-      region: 'ALL',
+      region:
+        'ALL',
 
-      need_hours_only: false,
+      need_hours_only:
+        false,
 
-      my_events_only: false,
+      my_events_only:
+        false,
 
-      active_filters: [],
+      active_filters:
+        [],
 
       calendar_year:
         currentDate.getFullYear(),
@@ -1130,6 +1177,12 @@ async function resetUserCalendarPreferences(){
 
   }
 
+
+  /*
+  -----------------------------------------------
+  Save defaults
+  -----------------------------------------------
+  */
 
   if(
     typeof persistUserPreferences ===
@@ -1170,11 +1223,67 @@ window.resetUserCalendarPreferences =
 
 /*
 =========================================================
-AUTO INITIALIZE
+START USER PREFERENCES UI
 =========================================================
 */
 
 function startUserPreferencesUI(){
+
+  /*
+  -----------------------------------------------
+  Initialize when calendar controls exist
+  -----------------------------------------------
+  */
+
+  const initialize =
+    () => {
+
+      const myEvents =
+        document.getElementById(
+          'myEventsOnly'
+        );
+
+
+      if(!myEvents){
+
+        return false;
+
+      }
+
+
+      initializeUserPreferencesUI();
+
+
+      /*
+      ---------------------------------------------
+      Reapply layout after calendar rendering
+      ---------------------------------------------
+      */
+
+      setTimeout(
+        () => {
+
+          fixUserPreferencesFilterLayout();
+
+        },
+        100
+      );
+
+
+      setTimeout(
+        () => {
+
+          fixUserPreferencesFilterLayout();
+
+        },
+        500
+      );
+
+
+      return true;
+
+    };
+
 
   /*
   -----------------------------------------------
@@ -1183,12 +1292,8 @@ function startUserPreferencesUI(){
   */
 
   if(
-    document.getElementById(
-      'myEventsOnly'
-    )
+    initialize()
   ){
-
-    initializeUserPreferencesUI();
 
     return;
 
@@ -1204,15 +1309,7 @@ function startUserPreferencesUI(){
   setTimeout(
     () => {
 
-      if(
-        document.getElementById(
-          'myEventsOnly'
-        )
-      ){
-
-        initializeUserPreferencesUI();
-
-      }
+      initialize();
 
     },
     500
