@@ -4,88 +4,153 @@ USER PREFERENCES API
 =========================================================
 */
 
-const USER_PREFERENCES_API =
-  `${API_BASE_URL}/api/user-preferences`;
-
 
 /*
----------------------------------------------------------
-LOAD USER PREFERENCES
----------------------------------------------------------
+=========================================================
+GET USER PREFERENCES
+=========================================================
 */
 
 async function fetchUserPreferences(){
 
+  const apiUrl =
+    'https://ndow-calendar-server.onrender.com/api/user-preferences';
+
+
+  const token =
+    localStorage.getItem('token');
+
+
+  if(!token){
+
+    throw new Error(
+      'No authenticated session found.'
+    );
+
+  }
+
+
   const response =
     await fetch(
-      USER_PREFERENCES_API,
+      apiUrl,
       {
         method: 'GET',
+
         headers: {
+
           'Content-Type':
             'application/json',
 
-          Authorization:
-            `Bearer ${localStorage.getItem('token')}`
+          'Authorization':
+            `Bearer ${token}`
+
         }
+
       }
     );
 
 
+  const result =
+    await response.json();
+
+
   if(!response.ok){
 
+    console.error(
+      'Load preferences failed:',
+      result
+    );
+
     throw new Error(
+      result.message ||
       `Unable to load user preferences (${response.status})`
     );
 
   }
 
 
-  return await response.json();
+  return result;
 
 }
 
 
 /*
----------------------------------------------------------
+=========================================================
 SAVE USER PREFERENCES
----------------------------------------------------------
+=========================================================
 */
 
 async function saveUserPreferences(
   preferences
 ){
 
+  const apiUrl =
+    'https://ndow-calendar-server.onrender.com/api/user-preferences';
+
+
+  const token =
+    localStorage.getItem('token');
+
+
+  if(!token){
+
+    throw new Error(
+      'No authenticated session found.'
+    );
+
+  }
+
+
   const response =
     await fetch(
-      USER_PREFERENCES_API,
+      apiUrl,
       {
         method: 'PUT',
+
         headers: {
+
           'Content-Type':
             'application/json',
 
-          Authorization:
-            `Bearer ${localStorage.getItem('token')}`
+          'Authorization':
+            `Bearer ${token}`
+
         },
 
         body:
           JSON.stringify(
             preferences
           )
+
       }
     );
 
 
+  const result =
+    await response.json();
+
+
   if(!response.ok){
 
+    console.error(
+      'Save preferences failed:',
+      result
+    );
+
     throw new Error(
+      result.message ||
       `Unable to save user preferences (${response.status})`
     );
 
   }
 
 
-  return await response.json();
+  console.log(
+    'User preferences API save:',
+    result
+  );
+
+
+  return result;
 
 }
