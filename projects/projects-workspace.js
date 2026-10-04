@@ -4582,14 +4582,14 @@ function renderProjectDocumentsList(){
 
 
           <button
-            type="button"
-            onclick="
+        type="button"
+            onclick='
               window.downloadProjectDocument &&
               window.downloadProjectDocument(
                 ${Number(document.id)},
                 ${JSON.stringify(document.file_name)}
               );
-            "
+            '
             style="
               border:1px solid #DBE3EC;
               background:#FFFFFF;
@@ -4602,7 +4602,7 @@ function renderProjectDocumentsList(){
             "
           >
             Download
-          </button>
+      </button>
 
 
           ${
