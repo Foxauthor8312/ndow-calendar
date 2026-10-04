@@ -1166,3 +1166,80 @@ window.closeUserPreferencesModal =
 
 window.resetUserCalendarPreferences =
   resetUserCalendarPreferences;
+
+
+/*
+=========================================================
+AUTO INITIALIZE
+=========================================================
+*/
+
+function startUserPreferencesUI(){
+
+  /*
+  -----------------------------------------------
+  Try immediately
+  -----------------------------------------------
+  */
+
+  if(
+    document.getElementById(
+      'myEventsOnly'
+    )
+  ){
+
+    initializeUserPreferencesUI();
+
+    return;
+
+  }
+
+
+  /*
+  -----------------------------------------------
+  Calendar controls may not exist yet
+  -----------------------------------------------
+  */
+
+  setTimeout(
+    () => {
+
+      if(
+        document.getElementById(
+          'myEventsOnly'
+        )
+      ){
+
+        initializeUserPreferencesUI();
+
+      }
+
+    },
+    500
+  );
+
+}
+
+
+/*
+=========================================================
+START AFTER PAGE LOAD
+=========================================================
+*/
+
+if(
+  document.readyState ===
+  'loading'
+){
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    startUserPreferencesUI
+  );
+
+}
+else {
+
+  startUserPreferencesUI();
+
+}
