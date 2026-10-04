@@ -5479,6 +5479,19 @@ if(typeof renderCalendar === 'function'){
   renderCalendar();
 }
 
+	  if(button){
+
+  button.disabled = false;
+
+  button.textContent =
+    'Continue';
+
+  button.onclick = () => {
+    closeNdowSyncMessage();
+  };
+
+}
+
   
   }
   catch(error){
@@ -5498,23 +5511,24 @@ if(typeof renderCalendar === 'function'){
     }
 
   }
-  finally{
+finally{
 
-    if(button){
+  if(button){
 
-      button.disabled = false;
+    button.disabled = false;
 
-      if(
-        button.textContent ===
-        'Syncing...'
-      ){
+    if(
+      button.textContent ===
+      'Syncing...'
+    ){
 
-        button.textContent =
-          'Login & Sync';
-      }
+      button.textContent =
+        'Login & Sync';
     }
 
   }
+
+}
 }
 
 
