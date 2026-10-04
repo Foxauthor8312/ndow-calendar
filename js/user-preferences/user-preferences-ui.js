@@ -568,7 +568,7 @@ function createUserPreferencesModal(){
     );
 
 
-  /*
+    /*
   -----------------------------------------------
   My Events
   -----------------------------------------------
@@ -601,6 +601,54 @@ function createUserPreferencesModal(){
 
       }
     );
+
+
+  /*
+  -----------------------------------------------
+  Give the calendar filter row enough height
+  -----------------------------------------------
+  */
+
+  const regionControl =
+    document.getElementById(
+      'regionFilter'
+    );
+
+
+  const needHoursControl =
+    document.getElementById(
+      'needHoursOnly'
+    );
+
+
+  const filterRow =
+    regionControl?.parentElement;
+
+
+  if(
+    filterRow &&
+    needHoursControl &&
+    filterRow.contains(
+      needHoursControl
+    )
+  ){
+
+    filterRow.style.minHeight =
+      '36px';
+
+    filterRow.style.height =
+      'auto';
+
+    filterRow.style.alignItems =
+      'center';
+
+    filterRow.style.overflow =
+      'visible';
+
+    filterRow.style.flexShrink =
+      '0';
+
+  }
 
 }
 
