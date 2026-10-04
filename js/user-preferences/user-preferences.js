@@ -185,87 +185,6 @@ async function persistUserPreferences(){
 
 /*
 =========================================================
-UPDATE ONE PREFERENCE
-=========================================================
-*/
-
-async function updateUserPreference(
-  key,
-  value
-){
-
-  if(
-    !Object.prototype.hasOwnProperty.call(
-      userPreferences,
-      key
-    )
-  ){
-
-    console.warn(
-      `Unknown user preference: ${key}`
-    );
-
-    return;
-
-  }
-
-
-  userPreferences[key] =
-    value;
-
-
-  await persistUserPreferences();
-
-}
-
-
-/*
-=========================================================
-UPDATE MULTIPLE PREFERENCES
-=========================================================
-*/
-
-async function updateUserPreferences(
-  updates
-){
-
-  if(
-    !updates ||
-    typeof updates !== 'object'
-  ){
-
-    return;
-
-  }
-
-
-  Object.keys(updates)
-    .forEach(
-      key => {
-
-        if(
-          Object.prototype.hasOwnProperty.call(
-            userPreferences,
-            key
-          )
-        ){
-
-          userPreferences[key] =
-            updates[key];
-
-        }
-
-      }
-    );
-
-
-  await persistUserPreferences();
-
-}
-
-
-/*
-=========================================================
 CAPTURE CURRENT CALENDAR FILTERS
 =========================================================
 */
@@ -309,12 +228,6 @@ function captureCalendarPreferences(){
     filters;
 
 
-  /*
-  -----------------------------------------------
-  Calendar position
-  -----------------------------------------------
-  */
-
   if(
     currentDate instanceof Date
   ){
@@ -353,12 +266,6 @@ APPLY SAVED CALENDAR FILTERS
 
 function applyCalendarPreferences(){
 
-  /*
-  -----------------------------------------------
-  Region
-  -----------------------------------------------
-  */
-
   const regionFilter =
     document.getElementById(
       'regionFilter'
@@ -373,21 +280,9 @@ function applyCalendarPreferences(){
   }
 
 
-  /*
-  -----------------------------------------------
-  Existing region state
-  -----------------------------------------------
-  */
-
   activeRegion =
     userPreferences.region || 'ALL';
 
-
-  /*
-  -----------------------------------------------
-  Need Hours
-  -----------------------------------------------
-  */
 
   const needHours =
     document.getElementById(
@@ -403,12 +298,6 @@ function applyCalendarPreferences(){
   }
 
 
-  /*
-  -----------------------------------------------
-  My Events
-  -----------------------------------------------
-  */
-
   const myEvents =
     document.getElementById(
       'myEventsOnly'
@@ -423,12 +312,6 @@ function applyCalendarPreferences(){
   }
 
 
-  /*
-  -----------------------------------------------
-  Existing category filters
-  -----------------------------------------------
-  */
-
   activeFilters =
     Array.isArray(
       userPreferences.active_filters
@@ -436,12 +319,6 @@ function applyCalendarPreferences(){
       ? [...userPreferences.active_filters]
       : [];
 
-
-  /*
-  -----------------------------------------------
-  Restore calendar position
-  -----------------------------------------------
-  */
 
   if(
     Number.isInteger(
@@ -461,12 +338,6 @@ function applyCalendarPreferences(){
 
   }
 
-
-  /*
-  -----------------------------------------------
-  Restore legend appearance
-  -----------------------------------------------
-  */
 
   document
     .querySelectorAll(
@@ -494,6 +365,56 @@ function applyCalendarPreferences(){
       }
 
     });
+
+}
+
+
+/*
+=========================================================
+CHECKBOX PREFERENCE LISTENERS
+=========================================================
+*/
+
+function initializeUserPreferenceListeners(){
+
+  const needHours =
+    document.getElementById(
+      'needHoursOnly'
+    );
+
+
+  const myEvents =
+    document.getElementById(
+      'myEventsOnly'
+    );
+
+
+  if(needHours){
+
+    needHours.addEventListener(
+      'change',
+      () => {
+
+        saveCalendarPreferences();
+
+      }
+    );
+
+  }
+
+
+  if(myEvents){
+
+    myEvents.addEventListener(
+      'change',
+      () => {
+
+        saveCalendarPreferences();
+
+      }
+    );
+
+  }
 
 }
 
@@ -543,12 +464,6 @@ window.loadUserPreferences =
 window.persistUserPreferences =
   persistUserPreferences;
 
-window.updateUserPreference =
-  updateUserPreference;
-
-window.updateUserPreferences =
-  updateUserPreferences;
-
 window.captureCalendarPreferences =
   captureCalendarPreferences;
 
@@ -557,6 +472,9 @@ window.saveCalendarPreferences =
 
 window.applyCalendarPreferences =
   applyCalendarPreferences;
+
+window.initializeUserPreferenceListeners =
+  initializeUserPreferenceListeners;
 
 window.resetUserPreferences =
   resetUserPreferences;
