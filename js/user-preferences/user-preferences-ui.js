@@ -1087,7 +1087,7 @@ function showResetConfirmation(){
 
 }
 
-aasync function resetUserCalendarPreferences(){
+async function resetUserCalendarPreferences(){
 
   const confirmed =
     await showResetConfirmation();
