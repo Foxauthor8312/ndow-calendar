@@ -4708,44 +4708,77 @@ async function uploadProjectDocument(
     return;
   }
 
-  if(!currentProject || !currentProject.id){
-    alert('No project is currently open.');
+
+  if(
+    !currentProject ||
+    !currentProject.id
+  ){
+
+    alert(
+      'No project is currently open.'
+    );
+
     return;
+
   }
 
-  if(!file.name.toLowerCase().endsWith('.docx')){
-    alert('Only .docx documents can be uploaded.');
+
+  if(
+    !file.name
+      .toLowerCase()
+      .endsWith('.docx')
+  ){
+
+    alert(
+      'Only .docx documents can be uploaded.'
+    );
+
     return;
+
   }
+
 
   const token =
-    localStorage.getItem('token');
+    localStorage.getItem(
+      'token'
+    );
+
 
   if(!token){
+
     alert(
       'Your calendar session has expired. Please log in again.'
     );
+
     return;
+
   }
+
 
   const MAX_DOCUMENT_SIZE =
     50 * 1024 * 1024;
 
-  if(file.size > MAX_DOCUMENT_SIZE){
+
+  if(
+    file.size >
+    MAX_DOCUMENT_SIZE
+  ){
 
     alert(
       'Document is too large. Maximum size is 50 MB.'
     );
 
     return;
+
   }
 
 
   try{
 
-    // ----------------------------------------
-    // STEP 1 — REQUEST SIGNED SUPABASE UPLOAD
-    // ----------------------------------------
+    // ========================================
+    // STEP 1
+    // REQUEST SIGNED UPLOAD AUTHORIZATION
+    // ========================================
 
     const prepareResponse =
       await fetch(
@@ -4791,10 +4824,6 @@ async function uploadProjectDocument(
     }
 
 
-    // ----------------------------------------
-    // STEP 2 — UPLOAD DIRECTLY TO SUPABASE
-    // ----------------------------------------
-
     const {
       storagePath,
       token:uploadToken
@@ -4808,45 +4837,160 @@ async function uploadProjectDocument(
     ){
 
       throw new Error(
-        'The server did not return a valid upload authorization.'
+        'The server did not return valid upload authorization.'
       );
 
     }
 
 
-    const uploadResponse =
-      await fetch(
-        `${SUPABASE_URL}/storage/v1/object/upload/sign/project-documents/${storagePath}?token=${encodeURIComponent(uploadToken)}`,
-        {
-          method:'PUT',
+    // ========================================
+    // STEP 2
+    // RESUMABLE TUS UPLOAD DIRECTLY TO SUPABASE
+    // ========================================
 
-          headers:{
-            'Content-Type':
-              file.type ||
-              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-          },
+    await new Promise(
+      (
+        resolve,
+        reject
+      ) => {
 
-          body:file
-        }
-      );
+        const upload =
+          new tus.Upload(
+            file,
+            {
 
-
-    if(!uploadResponse.ok){
-
-      const uploadText =
-        await uploadResponse.text();
-
-      throw new Error(
-        uploadText ||
-        'Failed to upload document to storage.'
-      );
-
-    }
+              endpoint:
+                'https://txbrtuhthhmkdwuotvfd.storage.supabase.co/storage/v1/upload/resumable',
 
 
-    // ----------------------------------------
-    // STEP 3 — TELL SERVER UPLOAD IS COMPLETE
-    // ----------------------------------------
+              retryDelays:[
+                0,
+                3000,
+                5000,
+                10000,
+                20000
+              ],
+
+
+              headers:{
+
+                'x-signature':
+                  uploadToken
+
+              },
+
+
+              metadata:{
+
+                bucketName:
+                  'project-documents',
+
+                objectName:
+                  storagePath,
+
+                contentType:
+                  file.type ||
+                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+
+              },
+
+
+              chunkSize:
+                6 * 1024 * 1024,
+
+
+              uploadDataDuringCreation:
+                true,
+
+
+              removeFingerprintOnSuccess:
+                true,
+
+
+              onError:
+                function(error){
+
+                  console.error(
+                    'Supabase resumable upload failed:',
+                    error
+                  );
+
+                  reject(
+                    error
+                  );
+
+                },
+
+
+              onProgress:
+                function(
+                  bytesUploaded,
+                  bytesTotal
+                ){
+
+                  const percent =
+                    (
+                      bytesUploaded /
+                      bytesTotal *
+                      100
+                    ).toFixed(0);
+
+                  console.log(
+                    `Project document upload: ${percent}%`
+                  );
+
+                },
+
+
+              onSuccess:
+                function(){
+
+                  console.log(
+                    'Supabase resumable upload completed.'
+                  );
+
+                  resolve();
+
+                }
+
+            }
+          );
+
+
+        upload
+          .findPreviousUploads()
+          .then(
+            function(
+              previousUploads
+            ){
+
+              if(
+                previousUploads.length
+              ){
+
+                upload.resumeFromPreviousUpload(
+                  previousUploads[0]
+                );
+
+              }
+
+
+              upload.start();
+
+            }
+          )
+          .catch(
+            reject
+          );
+
+      }
+    );
+
+
+    // ========================================
+    // STEP 3
+    // FINALIZE PROJECT DATABASE RECORD
+    // ========================================
 
     const finalizeResponse =
       await fetch(
@@ -4894,9 +5038,9 @@ async function uploadProjectDocument(
     }
 
 
-    // ----------------------------------------
+    // ========================================
     // SUCCESS
-    // ----------------------------------------
+    // ========================================
 
     currentProjectDocuments = [
       finalizeResult.document,
@@ -4909,13 +5053,19 @@ async function uploadProjectDocument(
     );
 
 
-  }
-  catch(error){
+    console.log(
+      'Project document uploaded successfully:',
+      finalizeResult.document
+    );
+
+
+  }catch(error){
 
     console.error(
       'Failed to upload project document:',
       error
     );
+
 
     alert(
       error.message ||
