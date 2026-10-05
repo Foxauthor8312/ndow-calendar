@@ -4843,49 +4843,195 @@ async function uploadProjectDocument(
     }
 
 
-    // ========================================
+// ========================================
 // STEP 2
-// UPLOAD DIRECTLY TO SUPABASE STORAGE
+// RESUMABLE TUS UPLOAD DIRECTLY TO SUPABASE
 // ========================================
 
-const uploadResponse =
+const TUS_ENDPOINT =
+  'https://txbrtuhthhmkdwuotvfd.storage.supabase.co/storage/v1/upload/resumable';
+
+const TUS_CHUNK_SIZE =
+  6 * 1024 * 1024;
+
+
+// ----------------------------------------
+// CREATE TUS UPLOAD
+// ----------------------------------------
+
+const metadata = [
+
+  `bucketName ${btoa('project-documents')}`,
+
+  `objectName ${btoa(storagePath)}`,
+
+  `contentType ${btoa(
+    file.type ||
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  )}`
+
+].join(',');
+
+
+const createUploadResponse =
   await fetch(
-    `https://txbrtuhthhmkdwuotvfd.storage.supabase.co/storage/v1/object/project-documents/${storagePath}`,
+    TUS_ENDPOINT,
     {
       method:'POST',
 
       headers:{
-        'Authorization':
-          'Bearer ' + uploadToken,
 
-        'Content-Type':
-          file.type ||
-          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'Tus-Resumable':
+          '1.0.0',
 
-        'x-upsert':
-          'false'
-      },
+        'Upload-Length':
+          String(file.size),
 
-      body:file
+        'Upload-Metadata':
+          metadata,
+
+        'x-signature':
+          uploadToken
+
+      }
     }
   );
 
 
-if(!uploadResponse.ok){
+if(!createUploadResponse.ok){
 
-  const uploadText =
-    await uploadResponse.text();
+  const createText =
+    await createUploadResponse.text();
 
   throw new Error(
-    uploadText ||
-    `Supabase storage upload failed (${uploadResponse.status}).`
+    createText ||
+    `Unable to create resumable upload (${createUploadResponse.status}).`
+  );
+
+}
+
+
+const uploadUrl =
+  createUploadResponse.headers.get(
+    'Location'
+  );
+
+
+if(!uploadUrl){
+
+  throw new Error(
+    'Supabase did not return a resumable upload URL.'
   );
 
 }
 
 
 console.log(
-  'Supabase storage upload completed.'
+  'Supabase resumable upload created.'
+);
+
+
+// ----------------------------------------
+// SEND FILE IN 6 MB CHUNKS
+// ----------------------------------------
+
+let offset =
+  0;
+
+
+while(
+  offset <
+  file.size
+){
+
+  const chunk =
+    file.slice(
+      offset,
+      Math.min(
+        offset +
+          TUS_CHUNK_SIZE,
+        file.size
+      )
+    );
+
+
+  const chunkResponse =
+    await fetch(
+      uploadUrl,
+      {
+        method:'PATCH',
+
+        headers:{
+
+          'Tus-Resumable':
+            '1.0.0',
+
+          'Upload-Offset':
+            String(offset),
+
+          'Content-Type':
+            'application/offset+octet-stream'
+
+        },
+
+        body:chunk
+      }
+    );
+
+
+  if(!chunkResponse.ok){
+
+    const chunkText =
+      await chunkResponse.text();
+
+    throw new Error(
+      chunkText ||
+      `Supabase upload failed at ${offset} bytes (${chunkResponse.status}).`
+    );
+
+  }
+
+
+  const returnedOffset =
+    chunkResponse.headers.get(
+      'Upload-Offset'
+    );
+
+
+  if(
+    returnedOffset !== null
+  ){
+
+    offset =
+      Number(
+        returnedOffset
+      );
+
+  }else{
+
+    offset +=
+      chunk.size;
+
+  }
+
+
+  const percent =
+    (
+      offset /
+      file.size *
+      100
+    ).toFixed(0);
+
+
+  console.log(
+    `Project document upload: ${percent}%`
+  );
+
+}
+
+
+console.log(
+  'Supabase resumable upload completed.'
 );
 
 
