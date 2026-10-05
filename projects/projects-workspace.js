@@ -4850,7 +4850,7 @@ async function uploadProjectDocument(
 
 const uploadResponse =
   await fetch(
-    `${SUPABASE_URL}/storage/v1/object/project-documents/${storagePath}`,
+    `https://txbrtuhthhmkdwuotvfd.storage.supabase.co/storage/v1/object/project-documents/${storagePath}`,
     {
       method:'POST',
 
