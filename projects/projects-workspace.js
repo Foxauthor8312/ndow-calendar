@@ -22,7 +22,7 @@
 */
 
 'use strict';
-
+import * as tus from 'https://esm.sh/tus-js-client';
 
 // ========================================
 // API
