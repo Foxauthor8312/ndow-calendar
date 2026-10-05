@@ -2562,6 +2562,31 @@ async function submitForgotPin(){
 
     </label>
 
+    </label>
+
+    <label
+      title="Show only NDOW events pending activation."
+      style="
+        display:flex;
+        align-items:center;
+        gap:4px;
+        margin-left:8px;
+        font-size:11px;
+        white-space:nowrap;
+        cursor:help;
+      "
+    >
+
+      <input
+        type="checkbox"
+        id="pendingActivationOnly"
+        onchange="renderCalendar(currentDate)"
+      >
+
+      Pending Activation
+
+    </label>
+
     <button
       type="button"
       onclick="openNdowSyncMessage()"
@@ -6069,6 +6094,11 @@ function renderCalendar(){
       'needHoursOnly'
     )?.checked;
 
+  const pendingActivationOnly =
+  document.getElementById(
+    'pendingActivationOnly'
+  )?.checked;	
+
   const year =
     currentDate.getFullYear();
 
@@ -6188,6 +6218,13 @@ function renderCalendar(){
         ){
           return false;
         }
+
+	if(
+		  pendingActivationOnly &&
+		  event.status !== 'Pending Activation'
+		){
+		  return false;
+	  }	  
 		  
 if(myEventsOnly || needHoursOnly){
 
