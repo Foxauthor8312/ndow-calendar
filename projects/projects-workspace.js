@@ -4824,13 +4824,19 @@ async function uploadProjectDocument(
     }
 
 
-    const {
+      const {
       storagePath,
       token:uploadToken
     } =
       prepareResult;
-
-
+    
+    
+    console.log(
+      'Signed upload token segments:',
+      String(uploadToken).split('.').length
+    );
+    
+    
     if(
       !storagePath ||
       !uploadToken
