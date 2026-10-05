@@ -31,6 +31,9 @@
 const PROJECTS_API_BASE =
   'https://ndow-calendar-server.onrender.com';
 
+const SUPABASE_URL =
+  'https://txbrtuhthhmkdwuotvfd.supabase.co';
+
 
 // ========================================
 // PROJECT STATE
@@ -4719,68 +4722,195 @@ async function uploadProjectDocument(
     localStorage.getItem('token');
 
   if(!token){
-    alert('Your calendar session has expired. Please log in again.');
+    alert(
+      'Your calendar session has expired. Please log in again.'
+    );
     return;
   }
 
-  try{
+  const MAX_DOCUMENT_SIZE =
+    50 * 1024 * 1024;
 
-    const formData =
-      new FormData();
+  if(file.size > MAX_DOCUMENT_SIZE){
 
-    formData.append(
-      'file',
-      file
+    alert(
+      'Document is too large. Maximum size is 50 MB.'
     );
 
-    const response =
+    return;
+  }
+
+
+  try{
+
+    // ----------------------------------------
+    // STEP 1 — REQUEST SIGNED SUPABASE UPLOAD
+    // ----------------------------------------
+
+    const prepareResponse =
       await fetch(
-        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents`,
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents/upload-url`,
         {
           method:'POST',
+
           headers:{
             'Authorization':
-              'Bearer ' + token
+              'Bearer ' + token,
+
+            'Content-Type':
+              'application/json'
           },
-          body:formData
+
+          body:JSON.stringify({
+
+            fileName:
+              file.name,
+
+            fileSize:
+              file.size
+
+          })
         }
       );
 
-    const responseText =
-      await response.text();
-    
-    let result = null;
-    
-    try{
-    
-      result =
-        JSON.parse(responseText);
-    
-    }catch(error){
-    
+
+    const prepareResult =
+      await prepareResponse.json();
+
+
+    if(
+      !prepareResponse.ok ||
+      !prepareResult.success
+    ){
+
       throw new Error(
-        `Upload server returned an unexpected response (${response.status}). Please try again.`
+        prepareResult.message ||
+        'Unable to prepare document upload.'
       );
-    
-    }
-    
-    if(!response.ok || !result.success){
-    
-      throw new Error(
-        result?.message ||
-        'Failed to upload document.'
-      );
-    
+
     }
 
+
+    // ----------------------------------------
+    // STEP 2 — UPLOAD DIRECTLY TO SUPABASE
+    // ----------------------------------------
+
+    const {
+      storagePath,
+      token:uploadToken
+    } =
+      prepareResult;
+
+
+    if(
+      !storagePath ||
+      !uploadToken
+    ){
+
+      throw new Error(
+        'The server did not return a valid upload authorization.'
+      );
+
+    }
+
+
+    const uploadResponse =
+      await fetch(
+        `${SUPABASE_URL}/storage/v1/object/upload/sign/project-documents/${storagePath}?token=${encodeURIComponent(uploadToken)}`,
+        {
+          method:'PUT',
+
+          headers:{
+            'Content-Type':
+              file.type ||
+              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+          },
+
+          body:file
+        }
+      );
+
+
+    if(!uploadResponse.ok){
+
+      const uploadText =
+        await uploadResponse.text();
+
+      throw new Error(
+        uploadText ||
+        'Failed to upload document to storage.'
+      );
+
+    }
+
+
+    // ----------------------------------------
+    // STEP 3 — TELL SERVER UPLOAD IS COMPLETE
+    // ----------------------------------------
+
+    const finalizeResponse =
+      await fetch(
+        `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents/finalize`,
+        {
+          method:'POST',
+
+          headers:{
+            'Authorization':
+              'Bearer ' + token,
+
+            'Content-Type':
+              'application/json'
+          },
+
+          body:JSON.stringify({
+
+            fileName:
+              file.name,
+
+            fileSize:
+              file.size,
+
+            storagePath
+
+          })
+        }
+      );
+
+
+    const finalizeResult =
+      await finalizeResponse.json();
+
+
+    if(
+      !finalizeResponse.ok ||
+      !finalizeResult.success
+    ){
+
+      throw new Error(
+        finalizeResult.message ||
+        'Document uploaded, but the project record could not be created.'
+      );
+
+    }
+
+
+    // ----------------------------------------
+    // SUCCESS
+    // ----------------------------------------
+
     currentProjectDocuments = [
-      result.document,
+      finalizeResult.document,
       ...currentProjectDocuments
     ];
 
-    selectProjectTab('documents');
 
-  }catch(error){
+    selectProjectTab(
+      'documents'
+    );
+
+
+  }
+  catch(error){
 
     console.error(
       'Failed to upload project document:',
@@ -4795,8 +4925,6 @@ async function uploadProjectDocument(
   }
 
 }
-
-
 async function viewProjectDocument(
   documentId
 ){
