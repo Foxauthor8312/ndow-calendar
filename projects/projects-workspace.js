@@ -4844,147 +4844,49 @@ async function uploadProjectDocument(
 
 
     // ========================================
-    // STEP 2
-    // RESUMABLE TUS UPLOAD DIRECTLY TO SUPABASE
-    // ========================================
+// STEP 2
+// UPLOAD DIRECTLY TO SUPABASE STORAGE
+// ========================================
 
-    await new Promise(
-      (
-        resolve,
-        reject
-      ) => {
+const uploadResponse =
+  await fetch(
+    `${SUPABASE_URL}/storage/v1/object/project-documents/${storagePath}`,
+    {
+      method:'POST',
 
-        const upload =
-          new tus.Upload(
-            file,
-            {
+      headers:{
+        'Authorization':
+          'Bearer ' + uploadToken,
 
-              endpoint:
-                'https://txbrtuhthhmkdwuotvfd.storage.supabase.co/storage/v1/upload/resumable',
+        'Content-Type':
+          file.type ||
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 
+        'x-upsert':
+          'false'
+      },
 
-              retryDelays:[
-                0,
-                3000,
-                5000,
-                10000,
-                20000
-              ],
-
-
-              headers:{
-
-                'x-signature':
-                  uploadToken
-
-              },
+      body:file
+    }
+  );
 
 
-              metadata:{
+if(!uploadResponse.ok){
 
-                bucketName:
-                  'project-documents',
+  const uploadText =
+    await uploadResponse.text();
 
-                objectName:
-                  storagePath,
+  throw new Error(
+    uploadText ||
+    `Supabase storage upload failed (${uploadResponse.status}).`
+  );
 
-                contentType:
-                  file.type ||
-                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-
-              },
+}
 
 
-              chunkSize:
-                6 * 1024 * 1024,
-
-
-              uploadDataDuringCreation:
-                true,
-
-
-              removeFingerprintOnSuccess:
-                true,
-
-
-              onError:
-                function(error){
-
-                  console.error(
-                    'Supabase resumable upload failed:',
-                    error
-                  );
-
-                  reject(
-                    error
-                  );
-
-                },
-
-
-              onProgress:
-                function(
-                  bytesUploaded,
-                  bytesTotal
-                ){
-
-                  const percent =
-                    (
-                      bytesUploaded /
-                      bytesTotal *
-                      100
-                    ).toFixed(0);
-
-                  console.log(
-                    `Project document upload: ${percent}%`
-                  );
-
-                },
-
-
-              onSuccess:
-                function(){
-
-                  console.log(
-                    'Supabase resumable upload completed.'
-                  );
-
-                  resolve();
-
-                }
-
-            }
-          );
-
-
-        upload
-          .findPreviousUploads()
-          .then(
-            function(
-              previousUploads
-            ){
-
-              if(
-                previousUploads.length
-              ){
-
-                upload.resumeFromPreviousUpload(
-                  previousUploads[0]
-                );
-
-              }
-
-
-              upload.start();
-
-            }
-          )
-          .catch(
-            reject
-          );
-
-      }
-    );
+console.log(
+  'Supabase storage upload completed.'
+);
 
 
     // ========================================
