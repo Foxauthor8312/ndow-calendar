@@ -4847,7 +4847,73 @@ async function uploadProjectDocument(
       );
 
     }
+// ========================================
+// SMALL DOCUMENT UPLOAD
+// Files 6 MB or smaller
+// ========================================
 
+if(
+  file.size <=
+  6 * 1024 * 1024
+){
+
+  const formData =
+    new FormData();
+
+  formData.append(
+    'file',
+    file
+  );
+
+
+  const smallUploadResponse =
+    await fetch(
+      `${PROJECTS_API_BASE}/api/projects/${currentProject.id}/documents/upload-small`,
+      {
+        method:'POST',
+
+        headers:{
+          'Authorization':
+            'Bearer ' + token
+        },
+
+        body:formData
+      }
+    );
+
+
+  const smallUploadResult =
+    await smallUploadResponse.json();
+
+
+  if(
+    !smallUploadResponse.ok ||
+    !smallUploadResult.success
+  ){
+
+    throw new Error(
+      smallUploadResult.message ||
+      'Failed to upload document.'
+    );
+
+  }
+
+
+  currentProjectDocuments = [
+    smallUploadResult.document,
+    ...currentProjectDocuments
+  ];
+
+
+  selectProjectTab(
+    'documents'
+  );
+
+
+  return;
+
+}
+   
 
 // ========================================
 // STEP 2
