@@ -1204,11 +1204,14 @@ body{
 }
 
 .dashboard-section-title{
-  margin:0 0 8px 0;
+  margin:0 0 10px 0;
+  padding-left:8px;
+  border-left:3px solid #589FD6;
   font-size:13px;
   font-weight:600;
   color:#19304B;
   letter-spacing:.02em;
+  line-height:16px;
 }
 
 .dashboard-summary-line strong{
@@ -1217,10 +1220,19 @@ body{
 }
 
 .dashboard-section-divider{
-  margin-top:18px;
-  padding-top:18px;
-  border-top:1px solid #e5e7eb;
+  margin-top:12px;
+  padding:12px 14px 14px 14px;
+  border:1px solid #DBE3EC;
+  border-radius:7px;
+  background:#F8FAFC;
 }
+
+.dashboard-tool-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}	
 
 .program-summary-grid{
   display:grid;
