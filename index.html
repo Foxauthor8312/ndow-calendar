@@ -1230,9 +1230,15 @@ body{
   background:#589FD6;
 }
 
+.dashboard-section-heading{
+  margin-bottom:3px;
+}
+
 .dashboard-section-description{
-  margin:3px 0 0 0;
-  padding-left:0;
+  display:block;
+  width:100%;
+  margin:0 0 10px 0;
+  padding:0;
   color:#6b7280;
   font-size:11px;
   line-height:15px;
@@ -13974,17 +13980,17 @@ container.innerHTML = `
   class="dashboard-section dashboard-section-divider"
 >
 
-  <div class="dashboard-section-heading">
+ <div class="dashboard-section-heading">
   <div class="dashboard-section-heading-row">
     <h3 class="dashboard-section-title">
       My NDOW
     </h3>
     <div class="dashboard-section-heading-line"></div>
   </div>
+</div>
 
-  <div class="dashboard-section-description">
-    Access your personal information, reports, and resources.
-  </div>
+<div class="dashboard-section-description">
+  Access your personal information, reports, and resources.
 </div>
 
   <div
@@ -14067,17 +14073,18 @@ container.innerHTML = `
   style="${adminSectionStyle}"
 >
 
-  <div class="dashboard-section-heading">
+<div class="dashboard-section-heading">
   <div class="dashboard-section-heading-row">
     <h3 class="dashboard-section-title">
       Administration
     </h3>
     <div class="dashboard-section-heading-line"></div>
   </div>
+</div>
 
-  <div class="dashboard-section-description">
-    Management tools for instructors, programs, contacts, and system content.
-  </div>
+<div class="dashboard-section-description">
+  Management tools for instructors, programs, contacts, and system content.
+</div>
 </div>
 
   <div
@@ -14197,17 +14204,18 @@ container.innerHTML = `
   style="${systemSectionStyle}"
 >
 
-  <div class="dashboard-section-heading">
+ <div class="dashboard-section-heading">
   <div class="dashboard-section-heading-row">
     <h3 class="dashboard-section-title">
       System
     </h3>
     <div class="dashboard-section-heading-line"></div>
   </div>
+</div>
 
-  <div class="dashboard-section-description">
-    Technical tools, developer resources, and system operations.
-  </div>
+<div class="dashboard-section-description">
+  Technical tools, developer resources, and system operations.
+</div>
 </div>
 
   <div
