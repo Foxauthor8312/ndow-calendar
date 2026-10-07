@@ -1204,13 +1204,14 @@ body{
 }
 
 .dashboard-section-title{
-  margin:0 0 10px 0;
-  padding-left:8px;
-  border-left:3px solid #589FD6;
+  margin:0 0 11px 0;
+  padding:0 0 6px 0;
+  border-left:none;
+  border-bottom:2px solid #589FD6;
   font-size:13px;
   font-weight:600;
   color:#19304B;
-  letter-spacing:.02em;
+  letter-spacing:.01em;
   line-height:16px;
 }
 
@@ -1220,11 +1221,12 @@ body{
 }
 
 .dashboard-section-divider{
-  margin-top:12px;
-  padding:12px 14px 14px 14px;
+  margin-top:14px;
+  padding:14px 14px 15px 14px;
   border:1px solid #DBE3EC;
-  border-radius:7px;
+  border-radius:8px;
   background:#F8FAFC;
+  box-shadow:0 1px 2px rgba(25,48,75,.04);
 }
 
 .dashboard-tool-list{
@@ -1232,6 +1234,10 @@ body{
   flex-wrap:wrap;
   gap:8px;
   align-items:center;
+}	
+
+.dashboard-tool-list .admin-button{
+  box-shadow:0 1px 2px rgba(25,48,75,.10);
 }	
 
 .program-summary-grid{
@@ -14053,7 +14059,7 @@ container.innerHTML = `
       title="Create, review, and manage instructor staffing requests."
     >
       Instructor Request Center
-    </button>>
+    </button>
 
 
        <button
