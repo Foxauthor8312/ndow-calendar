@@ -1204,15 +1204,38 @@ body{
 }
 
 .dashboard-section-title{
-  margin:0 0 11px 0;
-  padding:0 0 6px 0;
-  border-left:none;
-  border-bottom:2px solid #589FD6;
-  font-size:13px;
+  margin:0;
+  padding:0;
+  border:none;
+  font-size:14px;
   font-weight:600;
   color:#19304B;
   letter-spacing:.01em;
-  line-height:16px;
+  line-height:17px;
+}
+
+.dashboard-section-heading{
+  margin-bottom:10px;
+}
+
+.dashboard-section-heading-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.dashboard-section-heading-line{
+  flex:1;
+  height:2px;
+  background:#589FD6;
+}
+
+.dashboard-section-description{
+  margin:3px 0 0 0;
+  padding-left:0;
+  color:#6b7280;
+  font-size:11px;
+  line-height:15px;
 }
 
 .dashboard-summary-line strong{
@@ -1221,12 +1244,10 @@ body{
 }
 
 .dashboard-section-divider{
-  margin-top:14px;
-  padding:14px 14px 15px 14px;
-  border:1px solid #DBE3EC;
-  border-radius:8px;
-  background:#F8FAFC;
-  box-shadow:0 1px 2px rgba(25,48,75,.04);
+  margin-top:16px;
+  padding:10px 0 14px 0;
+  border-top:1px solid #DBE3EC;
+  background:transparent;
 }
 
 .dashboard-tool-list{
@@ -13953,9 +13974,18 @@ container.innerHTML = `
   class="dashboard-section dashboard-section-divider"
 >
 
-  <h3 class="dashboard-section-title">
-    My NDOW
-  </h3>
+  <div class="dashboard-section-heading">
+  <div class="dashboard-section-heading-row">
+    <h3 class="dashboard-section-title">
+      My NDOW
+    </h3>
+    <div class="dashboard-section-heading-line"></div>
+  </div>
+
+  <div class="dashboard-section-description">
+    Access your personal information, reports, and resources.
+  </div>
+</div>
 
   <div
     class="dashboard-tool-list"
@@ -14037,9 +14067,18 @@ container.innerHTML = `
   style="${adminSectionStyle}"
 >
 
-  <h3 class="dashboard-section-title">
-    Administration
-  </h3>
+  <div class="dashboard-section-heading">
+  <div class="dashboard-section-heading-row">
+    <h3 class="dashboard-section-title">
+      Administration
+    </h3>
+    <div class="dashboard-section-heading-line"></div>
+  </div>
+
+  <div class="dashboard-section-description">
+    Management tools for instructors, programs, contacts, and system content.
+  </div>
+</div>
 
   <div
     class="dashboard-tool-list"
@@ -14158,9 +14197,18 @@ container.innerHTML = `
   style="${systemSectionStyle}"
 >
 
-  <h3 class="dashboard-section-title">
-    System
-  </h3>
+  <div class="dashboard-section-heading">
+  <div class="dashboard-section-heading-row">
+    <h3 class="dashboard-section-title">
+      System
+    </h3>
+    <div class="dashboard-section-heading-line"></div>
+  </div>
+
+  <div class="dashboard-section-description">
+    Technical tools, developer resources, and system operations.
+  </div>
+</div>
 
   <div
     class="dashboard-tool-list"
