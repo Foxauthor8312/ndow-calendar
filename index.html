@@ -1214,10 +1214,6 @@ body{
   line-height:17px;
 }
 
-.dashboard-section-heading{
-  margin-bottom:10px;
-}
-
 .dashboard-section-heading-row{
   display:flex;
   align-items:center;
@@ -1266,6 +1262,76 @@ body{
 .dashboard-tool-list .admin-button{
   box-shadow:0 1px 2px rgba(25,48,75,.10);
 }	
+
+/* ========================================
+   DASHBOARD STATISTIC CARDS
+======================================== */
+
+.dashboard-stat-cards{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:10px;
+  margin:0 0 18px 0;
+}
+
+.dashboard-stat-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:58px;
+  padding:10px 12px;
+  background:#ffffff;
+  border:1px solid #DBE3EC;
+  border-radius:7px;
+  box-shadow:0 2px 5px rgba(25,48,75,.08);
+  box-sizing:border-box;
+}
+
+.dashboard-stat-icon{
+  width:34px;
+  height:34px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:7px;
+  background:#E8F2FA;
+  color:#19304B;
+  font-size:18px;
+}
+
+.dashboard-stat-content{
+  min-width:0;
+}
+
+.dashboard-stat-label{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.06em;
+  color:#6b7280;
+  line-height:13px;
+  white-space:nowrap;
+}
+
+.dashboard-stat-value{
+  margin-top:2px;
+  font-size:20px;
+  font-weight:600;
+  color:#19304B;
+  line-height:22px;
+}
+
+@media(max-width:700px){
+  .dashboard-stat-cards{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media(max-width:420px){
+  .dashboard-stat-cards{
+    grid-template-columns:1fr;
+  }
+}
 
 .program-summary-grid{
   display:grid;
@@ -13914,48 +13980,75 @@ const result =
 
 container.innerHTML = `
 
-<div class="dashboard-summary-line">
+<!-- Dashboard Statistics -->
 
-  2026 Totals |
+<div class="dashboard-stat-cards">
 
-  Events:
-  <strong>
-    ${result.totals.events || 0}
-  </strong>
+  <div class="dashboard-stat-card">
+    <div class="dashboard-stat-icon">📅</div>
+    <div class="dashboard-stat-content">
+      <div class="dashboard-stat-label">
+        EVENTS
+      </div>
+      <div class="dashboard-stat-value">
+        ${result.totals.events || 0}
+      </div>
+    </div>
+  </div>
 
-  |
+  <div class="dashboard-stat-card">
+    <div class="dashboard-stat-icon">⏱</div>
+    <div class="dashboard-stat-content">
+      <div class="dashboard-stat-label">
+        HOURS
+      </div>
+      <div class="dashboard-stat-value">
+        ${Number(
+          result.totals.hours || 0
+        ).toFixed(1)}
+      </div>
+    </div>
+  </div>
 
-  Hours:
-  <strong>
-    ${Number(
-      result.totals.hours || 0
-    ).toFixed(1)}
-  </strong>
+  <div class="dashboard-stat-card">
+    <div class="dashboard-stat-icon">🚗</div>
+    <div class="dashboard-stat-content">
+      <div class="dashboard-stat-label">
+        MILES
+      </div>
+      <div class="dashboard-stat-value">
+        ${Number(
+          result.totals.mileage || 0
+        ).toFixed(0)}
+      </div>
+    </div>
+  </div>
 
-  |
-
-  Miles:
-  <strong>
-    ${Number(
-      result.totals.mileage || 0
-    ).toFixed(0)}
-  </strong>
-
-  |
-
-  Volunteer Value:
-  <strong>
-    $${Number(
-      result.totals.serviceValue || 0
-    ).toLocaleString()}
-  </strong>
+  <div class="dashboard-stat-card">
+    <div class="dashboard-stat-icon">💲</div>
+    <div class="dashboard-stat-content">
+      <div class="dashboard-stat-label">
+        VOLUNTEER VALUE
+      </div>
+      <div class="dashboard-stat-value">
+        $${Number(
+          result.totals.serviceValue || 0
+        ).toLocaleString()}
+      </div>
+    </div>
+  </div>
 
 </div>
 
 
-<div id="dashboardProgramSummary" style="
-  margin:0 0 18px 0;
-">
+<!-- Program Activity -->
+
+<div id="dashboardProgramSummary"
+  style="
+    margin:0 0 18px 0;
+  "
+>
+
   <div style="
     font-size:11px;
     font-weight:600;
@@ -13970,6 +14063,7 @@ container.innerHTML = `
   <div class="program-summary-grid">
     ${programHtml}
   </div>
+
 </div>
 
 <!-- ========================================
@@ -18956,31 +19050,72 @@ geographic analysis.
       ✕
     </button>
 
-<h2 style="
-      margin:0 0 6px 0;
-      font-size:22px;
-      font-weight:600;
-      color:#19304B;
+    <!-- Dashboard Header -->
+    <div style="
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:0 0 2px 0;
     ">
-      Dashboard
-    </h2>
+
+      <div style="
+        width:36px;
+        height:36px;
+        border-radius:8px;
+        background:#E8F2FA;
+        color:#19304B;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:21px;
+        flex-shrink:0;
+      ">
+        ▣
+      </div>
+
+      <div>
+
+        <h2 style="
+          margin:0;
+          font-size:22px;
+          font-weight:600;
+          color:#19304B;
+          line-height:26px;
+        ">
+          Dashboard
+        </h2>
+
+        <div style="
+          margin-top:1px;
+          color:#6b7280;
+          font-size:11px;
+          font-weight:400;
+          line-height:15px;
+        ">
+          Your NDOW volunteer activity and system workspace
+        </div>
+
+      </div>
+
+    </div>
 
     <div style="
       width:100%;
       height:3px;
       background:#589FD6;
-      margin:0 0 12px 0;
+      margin:6px 0 12px 0;
       border-radius:2px;
     "></div>
 
     <div id="dashboardUserGreeting"
-     style="
-       margin:0 0 18px 0;
-       color:#6b7280;
-       font-size:12px;
-       font-weight:400;
-     ">
-</div>
+      style="
+        margin:0 0 18px 0;
+        color:#19304B;
+        font-size:18px;
+        font-weight:600;
+        line-height:22px;
+      ">
+    </div>
 
     <div id="dashboardContent">
 
