@@ -14459,6 +14459,23 @@ container.innerHTML = `
 
 `;
 
+	    }catch(err){
+
+    console.error(err);
+
+    container.innerHTML = `
+      <div style="
+        color:#dc2626;
+        font-weight:600;
+      ">
+        Failed to load dashboard.
+      </div>
+    `;
+
+  }
+
+}
+
 function openInstructorRequestCenter(){
 
   const modal =
