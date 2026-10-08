@@ -1321,6 +1321,77 @@ body{
   line-height:22px;
 }
 
+/* ========================================
+   DASHBOARD GRAPHICS + TOOL BUTTONS
+======================================== */
+
+.dashboard-section-heading-row{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.dashboard-section-icon{
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#589FD6;
+  color:#ffffff;
+  font-size:15px;
+  line-height:1;
+  box-shadow:0 1px 3px rgba(25,48,75,.15);
+}
+
+.dashboard-section-title{
+  font-size:15px;
+  line-height:20px;
+}
+
+.dashboard-tool-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+.dashboard-tool-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:32px;
+  padding:6px 12px;
+  border-radius:6px;
+  box-shadow:0 2px 4px rgba(25,48,75,.14);
+  transition:
+    background .15s ease,
+    box-shadow .15s ease,
+    transform .1s ease;
+}
+
+.dashboard-tool-button:hover{
+  box-shadow:0 3px 6px rgba(25,48,75,.20);
+  transform:translateY(-1px);
+}
+
+.dashboard-button-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:16px;
+  font-size:14px;
+  line-height:1;
+  color:#ffffff;
+}
+
+.dashboard-tool-button span:last-child{
+  white-space:nowrap;
+}	
+
 @media(max-width:700px){
   .dashboard-stat-cards{
     grid-template-columns:repeat(2, 1fr);
@@ -14074,82 +14145,92 @@ container.innerHTML = `
   class="dashboard-section dashboard-section-divider"
 >
 
- <div class="dashboard-section-heading">
-  <div class="dashboard-section-heading-row">
-    <h3 class="dashboard-section-title">
-      My NDOW
-    </h3>
-    <div class="dashboard-section-heading-line"></div>
+  <div class="dashboard-section-heading">
+
+    <div class="dashboard-section-heading-row">
+
+      <div class="dashboard-section-icon">
+        👤
+      </div>
+
+      <h3 class="dashboard-section-title">
+        My NDOW
+      </h3>
+
+      <div class="dashboard-section-heading-line"></div>
+
+    </div>
+
   </div>
-</div>
 
-<div class="dashboard-section-description">
-  Access your personal information, reports, and resources.
-</div>
+  <div class="dashboard-section-description">
+    Access your personal information, reports, and resources.
+  </div>
 
-  <div
-    class="dashboard-tool-list"
-    style="
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    "
-  >
+  <div class="dashboard-tool-list">
+
     <button
-      class="admin-button"
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openProfileModal();
       "
       title="View and update your personal NDOW instructor profile and email history."
     >
-      My Profile
+      <span class="dashboard-button-icon">👤</span>
+      <span>My Profile</span>
     </button>
 
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openInstructorTimeReport();
       "
       title="View your instructor activity and volunteer time reports."
     >
-      My Reports
+      <span class="dashboard-button-icon">▥</span>
+      <span>My Reports</span>
     </button>
 
-	    <button
-	      class="admin-button"
-	      onclick="
-	        closeDashboard();
-	        openAnalytics();
-	      "
-	      title="View instructor activity and program analytics."
-	    >
-	      Analytics
-	    </button>
+
+    <button
+      class="admin-button dashboard-tool-button"
+      onclick="
+        closeDashboard();
+        openAnalytics();
+      "
+      title="View instructor activity and program analytics."
+    >
+      <span class="dashboard-button-icon">↗</span>
+      <span>Analytics</span>
+    </button>
 
 
-<button
-  class="admin-button"
-  onclick="
-    closeDashboard();
-    openInstructorReferenceLibrary();
-  "
-  title="Open the instructor reference library and supporting resources."
->
-  Instructor Reference Library
-</button>
+    <button
+      class="admin-button dashboard-tool-button"
+      onclick="
+        closeDashboard();
+        openInstructorReferenceLibrary();
+      "
+      title="Open the instructor reference library and supporting resources."
+    >
+      <span class="dashboard-button-icon">▣</span>
+      <span>Instructor Reference Library</span>
+    </button>
 
-        <button
-      class="admin-button"
+
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openProjectsWorkspace();
       "
       title="Open the Projects workspace."
     >
-      Projects
+      <span class="dashboard-button-icon">▰</span>
+      <span>Projects</span>
     </button>
 
   </div>
@@ -14167,120 +14248,131 @@ container.innerHTML = `
   style="${adminSectionStyle}"
 >
 
-<div class="dashboard-section-heading">
-  <div class="dashboard-section-heading-row">
-    <h3 class="dashboard-section-title">
-      Administration
-    </h3>
-    <div class="dashboard-section-heading-line"></div>
+  <div class="dashboard-section-heading">
+
+    <div class="dashboard-section-heading-row">
+
+      <div class="dashboard-section-icon">
+        ⚙
+      </div>
+
+      <h3 class="dashboard-section-title">
+        Administration
+      </h3>
+
+      <div class="dashboard-section-heading-line"></div>
+
+    </div>
+
   </div>
-</div>
 
-<div class="dashboard-section-description">
-  Management tools for instructors, programs, contacts, and system content.
-</div>
-</div>
+  <div class="dashboard-section-description">
+    Management tools for instructors, programs, contacts, and system content.
+  </div>
 
-  <div
-    class="dashboard-tool-list"
-    style="
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    "
-  >
+  <div class="dashboard-tool-list">
 
-       <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openInstructorRequestCenter();
       "
       title="Create, review, and manage instructor staffing requests."
     >
-      Instructor Request Center
+      <span class="dashboard-button-icon">👥</span>
+      <span>Instructor Request Center</span>
     </button>
 
 
-       <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openUserManagement();
       "
       title="Manage instructor accounts, roles, and user access."
     >
-      User Management
+      <span class="dashboard-button-icon">👤</span>
+      <span>User Management</span>
     </button>
 
-        <button
-      class="admin-button"
+
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openProgramUpdates();
       "
       title="Manage program information and calendar program updates."
     >
-      Program Updates
+      <span class="dashboard-button-icon">▤</span>
+      <span>Program Updates</span>
     </button>
 
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openContactsManager();
       "
       title="Manage NDOW department and program contact information."
     >
-      Contacts
+      <span class="dashboard-button-icon">☎</span>
+      <span>Contacts</span>
     </button>
 
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openAddressLibrary();
       "
       title="Manage saved event and facility addresses used by the calendar."
     >
-      Address Library
+      <span class="dashboard-button-icon">●</span>
+      <span>Address Library</span>
     </button>
 
 
-       <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openHelpManager();
       "
       title="Manage help topics and instructional content displayed in the portal."
     >
-      Help Manager
+      <span class="dashboard-button-icon">?</span>
+      <span>Help Manager</span>
     </button>
 
-          <button
-      class="admin-button"
+
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openCategories();
       "
       title="Manage calendar event categories and program classifications."
     >
-      Categories
+      <span class="dashboard-button-icon">◆</span>
+      <span>Categories</span>
     </button>
 
 
-       <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="
         closeDashboard();
         openReleaseManager();
       "
       title="View and manage application release information and release notes."
     >
-      Release Management
+      <span class="dashboard-button-icon">⚙</span>
+      <span>Release Management</span>
     </button>
 
   </div>
@@ -14298,62 +14390,67 @@ container.innerHTML = `
   style="${systemSectionStyle}"
 >
 
- <div class="dashboard-section-heading">
-  <div class="dashboard-section-heading-row">
-    <h3 class="dashboard-section-title">
-      System
-    </h3>
-    <div class="dashboard-section-heading-line"></div>
+  <div class="dashboard-section-heading">
+
+    <div class="dashboard-section-heading-row">
+
+      <div class="dashboard-section-icon">
+        🔧
+      </div>
+
+      <h3 class="dashboard-section-title">
+        System
+      </h3>
+
+      <div class="dashboard-section-heading-line"></div>
+
+    </div>
+
   </div>
-</div>
 
-<div class="dashboard-section-description">
-  Technical tools, developer resources, and system operations.
-</div>
-</div>
+  <div class="dashboard-section-description">
+    Technical tools, developer resources, and system operations.
+  </div>
 
-  <div
-    class="dashboard-tool-list"
-    style="
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    "
-  >
+  <div class="dashboard-tool-list">
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="openSystemConsole()"
       title="Open system diagnostics, synchronization status, and technical information."
     >
-      System Console
+      <span class="dashboard-button-icon">&gt;_</span>
+      <span>System Console</span>
     </button>
 
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="showInstructorImportModal()"
       title="Import instructor records into the NDOW Volunteer Portal."
     >
-      Instructor Import
+      <span class="dashboard-button-icon">☁</span>
+      <span>Instructor Import</span>
     </button>
 
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="openDeveloperNotes()"
       title="Open internal development notes and engineering information."
     >
-      Developer Notes
+      <span class="dashboard-button-icon">▤</span>
+      <span>Developer Notes</span>
     </button>
 
 
-        <button
-      class="admin-button"
+    <button
+      class="admin-button dashboard-tool-button"
       onclick="openTechnicalReference()"
       title="Open the engineering knowledge center and technical reference materials."
     >
-      Technical Reference
+      <span class="dashboard-button-icon">▥</span>
+      <span>Technical Reference</span>
     </button>
 
   </div>
@@ -14361,22 +14458,6 @@ container.innerHTML = `
 </div>
 
 `;
-  }catch(err){
-
-    console.error(err);
-
-    container.innerHTML = `
-      <div style="
-        color:#dc2626;
-        font-weight:600;
-      ">
-        Failed to load dashboard.
-      </div>
-    `;
-
-  }
-
-}
 
 function openInstructorRequestCenter(){
 
