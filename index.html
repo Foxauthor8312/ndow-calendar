@@ -1378,6 +1378,35 @@ body{
   transform:translateY(-1px);
 }
 
+.emergencies-header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #B91C1C;
+  color: #FFFFFF;
+  border: 1px solid #991B1B;
+  border-radius: 6px;
+  padding: 8px 16px;
+  min-height: 36px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  box-shadow: 0 2px 5px rgba(127, 29, 29, .25);
+  transition: background .15s ease, box-shadow .15s ease;
+}
+
+.emergencies-header-button:hover {
+  background: #991B1B;
+  box-shadow: 0 3px 7px rgba(127, 29, 29, .35);
+}
+
+.emergencies-header-button:focus-visible {
+  outline: 3px solid #FCA5A5;
+  outline-offset: 2px;
+}	
 
 .dashboard-button-icon{
   display:inline-flex;
@@ -2432,23 +2461,15 @@ async function submitForgotPin(){
 
  	   <div class="account-buttons">
 
-  <button
-    type="button"
-    onclick="openInstructorEmergencyReferences()"
-    title="Emergency Procedures"
-    style="
-      background:#DC2626;
-      color:white;
-      border:none;
-      border-radius:5px;
-      padding:6px 12px;
-      cursor:pointer;
-      font-weight:700;
-      font-size:12px;
-    "
-  >
-    🚨 EMERGENCIES
-  </button>
+ <button
+  type="button"
+  onclick="openInstructorEmergencyReferences()"
+  title="Open emergency procedures and contacts"
+  class="emergencies-header-button"
+>
+  <span aria-hidden="true">⚠</span>
+  EMERGENCIES
+</button>
 
   <button
     class="month-square"
