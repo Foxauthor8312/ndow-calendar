@@ -1378,14 +1378,27 @@ body{
   transform:translateY(-1px);
 }
 
+
 .dashboard-button-icon{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:16px;
-  font-size:14px;
-  line-height:1;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
   color:#ffffff;
+  line-height:1;
+}
+
+.dashboard-button-icon svg{
+  display:block;
+  width:16px;
+  height:16px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .dashboard-tool-button span:last-child{
@@ -14137,103 +14150,67 @@ container.innerHTML = `
 
 </div>
 
-<!-- ========================================
-     MY NDOW
-======================================== -->
 
-<div
-  class="dashboard-section dashboard-section-divider"
->
+<div class="dashboard-tool-list">
 
-  <div class="dashboard-section-heading">
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openProfileModal();"
+    title="View and update your personal NDOW instructor profile and email history.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M5 21v-2a7 7 0 0 1 14 0v2"/>
+      </svg>
+    </span>
+    <span>My Profile</span>
+  </button>
 
-    <div class="dashboard-section-heading-row">
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openInstructorTimeReport();"
+    title="View your instructor activity and volunteer time reports.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+      </svg>
+    </span>
+    <span>My Reports</span>
+  </button>
 
-      <div class="dashboard-section-icon">
-        👤
-      </div>
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openAnalytics();"
+    title="View instructor activity and program analytics.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 3v18h18"/>
+        <path d="m7 14 5-5 4 3 5-7"/>
+      </svg>
+    </span>
+    <span>Analytics</span>
+  </button>
 
-      <h3 class="dashboard-section-title">
-        My NDOW
-      </h3>
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openInstructorReferenceLibrary();"
+    title="Open the instructor reference library and supporting resources.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 7v14"/>
+        <path d="M3 18V5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v16"/>
+        <path d="M21 18V5a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v16"/>
+      </svg>
+    </span>
+    <span>Instructor Reference Library</span>
+  </button>
 
-      <div class="dashboard-section-heading-line"></div>
-
-    </div>
-
-  </div>
-
-  <div class="dashboard-section-description">
-    Access your personal information, reports, and resources.
-  </div>
-
-  <div class="dashboard-tool-list">
-
-    <button
-      class="admin-button dashboard-tool-button"
-      onclick="
-        closeDashboard();
-        openProfileModal();
-      "
-      title="View and update your personal NDOW instructor profile and email history."
-    >
-      <span class="dashboard-button-icon">👤</span>
-      <span>My Profile</span>
-    </button>
-
-
-    <button
-      class="admin-button dashboard-tool-button"
-      onclick="
-        closeDashboard();
-        openInstructorTimeReport();
-      "
-      title="View your instructor activity and volunteer time reports."
-    >
-      <span class="dashboard-button-icon">▥</span>
-      <span>My Reports</span>
-    </button>
-
-
-    <button
-      class="admin-button dashboard-tool-button"
-      onclick="
-        closeDashboard();
-        openAnalytics();
-      "
-      title="View instructor activity and program analytics."
-    >
-      <span class="dashboard-button-icon">↗</span>
-      <span>Analytics</span>
-    </button>
-
-
-    <button
-      class="admin-button dashboard-tool-button"
-      onclick="
-        closeDashboard();
-        openInstructorReferenceLibrary();
-      "
-      title="Open the instructor reference library and supporting resources."
-    >
-      <span class="dashboard-button-icon">▣</span>
-      <span>Instructor Reference Library</span>
-    </button>
-
-
-    <button
-      class="admin-button dashboard-tool-button"
-      onclick="
-        closeDashboard();
-        openProjectsWorkspace();
-      "
-      title="Open the Projects workspace."
-    >
-      <span class="dashboard-button-icon">▰</span>
-      <span>Projects</span>
-    </button>
-
-  </div>
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openProjectsWorkspace();"
+    title="Open the Projects workspace.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      </svg>
+    </span>
+    <span>Projects</span>
+  </button>
 
 </div>
 
