@@ -1534,9 +1534,14 @@ body{
   }
 
   /* Hide the left-side ANGLING CALENDAR event list */
-  #calendarShell > div[style*="border-left:20px solid #19304B"] {
-    display: none !important;
-  }
+ #proposedEventsList {
+  display: none !important;
+}
+
+#proposedEventsList,
+#proposedEventsList + div {
+  display: none !important;
+}
 
   /* Compact seven-column month grid */
   #calendar {
