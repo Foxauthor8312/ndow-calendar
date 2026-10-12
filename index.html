@@ -2536,50 +2536,48 @@ async function submitForgotPin(){
        ACCOUNT CONTROLS
   ========================================= -->
 
+  
   <div class="account-controls">
-
     <div class="account-buttons">
 
-     <div class="account-buttons">
-
- 	   <div class="account-buttons">
-
- <button
-  type="button"
-  onclick="openInstructorEmergencyReferences()"
-  title="Open emergency procedures and contacts"
-  class="emergencies-header-button"
->
-  <span aria-hidden="true">⚠</span>
-  EMERGENCIES
-</button>
-
-  <button
-    class="month-square"
-    onclick="refreshScreen()"
-    title="Refresh"
-  >
-    ↻
-  </button>>
+      <button
+        type="button"
+        onclick="openInstructorEmergencyReferences()"
+        title="Open emergency procedures and contacts"
+        class="emergencies-header-button"
+      >
+        <span aria-hidden="true">⚠</span>
+        EMERGENCIES
+      </button>
 
       <button
+        type="button"
+        class="month-square"
+        onclick="refreshScreen()"
+        title="Refresh"
+      >
+        ↻
+      </button>
+
+      <button
+        type="button"
         onclick="logout()"
         title="Sign out of the NDOW Instructor Event Calendar."
       >
         Logout
       </button>
 
-            <button
+      <button
+        type="button"
         class="admin-button"
         onclick="openHelpModal()"
         title="Open the NDOW Instructor Calendar help system."
       >
         Help
       </button>
-		   
-      <div class="dashboard-block">
 
-               <button
+      <div class="dashboard-block">
+        <button
           id="dashboardButton"
           class="admin-button dashboard-btn"
           onclick="openDashboard()"
@@ -2587,14 +2585,13 @@ async function submitForgotPin(){
         >
           Dashboard
         </button>
-
       </div>
 
     </div>
-
   </div>
 
 </header>
+
 
 
 <div class="legend">
@@ -2875,7 +2872,6 @@ async function submitForgotPin(){
 
     </label>
 
-    </label>
 
     <label
       title="Show only NDOW events pending activation."
