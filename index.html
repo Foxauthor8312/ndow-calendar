@@ -1507,6 +1507,8 @@ body{
 }
 
 
+
+
 /* ========================================
    MOBILE CALENDAR — NDOW
    Keep desktop styles unchanged
@@ -1514,12 +1516,9 @@ body{
 
 @media (max-width: 600px) {
 
+  /* Hide the month grid on phones only */
   #calendarViewport {
-    min-width: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-left: 4px solid #19304B !important;
-    padding-left: 2px !important;
+    display: none !important;
   }
 
   #calendar {
