@@ -1533,15 +1533,19 @@ body{
     box-sizing: border-box;
   }
 
-  /* Hide the left-side ANGLING CALENDAR event list */
- #proposedEventsList {
-  display: none !important;
-}
+  /* PHONE ONLY: hide the main header */
+  header {
+    display: none !important;
+  }
 
-#proposedEventsList,
-#proposedEventsList + div {
-  display: none !important;
-}
+  /* PHONE ONLY: hide the left-side ANGLING CALENDAR panel */
+  #calendarShell > div[style*="border-left:20px solid #19304B"] {
+    display: none !important;
+  }
+
+  #proposedEventsList {
+    display: none !important;
+  }
 
   /* Compact seven-column month grid */
   #calendar {
