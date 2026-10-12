@@ -1509,6 +1509,7 @@ body{
 
 
 
+
 /* ========================================
    MOBILE CALENDAR — NDOW
    Keep desktop styles unchanged
@@ -1516,11 +1517,26 @@ body{
 
 @media (max-width: 600px) {
 
-  /* Hide the month grid on phones only */
+  /* Restore the real NDOW month grid */
   #calendarViewport {
+    display: block !important;
+    flex: 1 1 auto !important;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-left: 4px solid #19304B !important;
+    padding-left: 2px !important;
+    box-sizing: border-box;
+  }
+
+  /* Hide the left-side ANGLING CALENDAR event list */
+  #calendarShell > div[style*="border-left:20px solid #19304B"] {
     display: none !important;
   }
 
+  /* Compact seven-column month grid */
   #calendar {
     width: 100%;
     min-width: 0;
@@ -1585,7 +1601,47 @@ body{
     content: none;
   }
 
+  /* Hide category legend on phones */
+  .legend-item {
+    display: none !important;
+  }
+
+  /* Compact the NDOW header */
+  header {
+    height: auto !important;
+    min-height: 0;
+    padding: 8px;
+    gap: 6px;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+  }
+
+  header h1 {
+    font-size: 18px !important;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .controls,
+  .account-controls,
+  .account-buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Keep Emergencies red */
+  .emergencies-header-button {
+    background: #B91C1C !important;
+    color: #FFFFFF !important;
+    border-color: #991B1B !important;
+  }
+
 }
+
 
 	
 </style>	
