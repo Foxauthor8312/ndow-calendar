@@ -308,15 +308,12 @@ function openKnowledgeUpload() {
     window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
-function handleKnowledgeUploadSelection(event) {
+
+async function handleKnowledgeUploadSelection(event) {
     const file = event.target.files?.[0];
 
     const info = document.getElementById(
         'knowledgeUploadFileInfo'
-    );
-
-    const message = document.getElementById(
-        'knowledgeUploadMessage'
     );
 
     const preview = document.getElementById(
@@ -329,9 +326,7 @@ function handleKnowledgeUploadSelection(event) {
         return;
     }
 
-    const validExtension = /\.docx$/i.test(file.name);
-
-    if (!validExtension) {
+    if (!/\.docx$/i.test(file.name)) {
         event.target.value = '';
         knowledgeUploadState.file = null;
         info.textContent = 'No document selected.';
@@ -345,27 +340,147 @@ function handleKnowledgeUploadSelection(event) {
     }
 
     knowledgeUploadState.file = file;
-
-    const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+    knowledgeUploadState.html = '';
+    knowledgeUploadState.text = '';
 
     info.textContent =
-        `${file.name} · ${sizeMB} MB`;
-
-    message.style.display = 'none';
+        `${file.name} · ${(file.size / (1024 * 1024)).toFixed(2)} MB`;
 
     document.getElementById(
         'knowledgeUploadTitle'
-    ).value = file.name.replace(/\.docx$/i, '')
+    ).value = file.name
+        .replace(/\.docx$/i, '')
         .replace(/[_-]+/g, ' ');
 
-    preview.textContent =
-        'Document selected. Server-side DOCX conversion must be connected before the formatted preview can be displayed.';
+    preview.textContent = 'Converting DOCX to HTML…';
 
     showKnowledgeUploadMessage(
-        'Document selected. No information has been uploaded or registered.',
+        'Sending the document for conversion. Nothing will be registered.',
         'success'
     );
+
+    try {
+        /*
+         * Use the portal's existing API configuration.
+         */
+        const apiBase =
+            typeof API_BASE !== 'undefined'
+                ? API_BASE
+                : 'https://ndow-calendar-server.onrender.com/api';
+
+        /*
+         * Reuse the portal's existing authentication token.
+         * Do not invent or send a new token.
+         */
+        let token = null;
+
+        if (typeof authToken !== 'undefined' && authToken) {
+            token = authToken;
+        } else if (typeof localStorage !== 'undefined') {
+            token =
+                localStorage.getItem('token') ||
+                localStorage.getItem('authToken');
+        }
+
+        if (!token) {
+            throw new Error(
+                'Your login token was not found. Please sign in again.'
+            );
+        }
+
+        const formData = new FormData();
+        formData.append('document', file);
+
+        const response = await fetch(
+            `${apiBase.replace(/\/$/, '')}/knowledge/convert-docx`,
+            {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+                body: formData
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.error || `Conversion failed (${response.status}).`
+            );
+        }
+
+        knowledgeUploadState.html = result.html || '';
+        knowledgeUploadState.text = result.html || '';
+
+        if (!knowledgeUploadState.html.trim()) {
+            preview.textContent =
+                'Conversion completed, but no HTML content was returned.';
+        } else {
+            /*
+             * Mammoth output is intended for document rendering.
+             * Remove active elements and event-handler attributes
+             * before displaying the preview.
+             */
+            const parsed = new DOMParser().parseFromString(
+                knowledgeUploadState.html,
+                'text/html'
+            );
+
+            parsed.querySelectorAll(
+                'script, iframe, object, embed, form'
+            ).forEach(element => element.remove());
+
+            parsed.body.querySelectorAll('*').forEach(element => {
+                [...element.attributes].forEach(attribute => {
+                    if (
+                        /^on/i.test(attribute.name) ||
+                        (
+                            ['href', 'src'].includes(attribute.name) &&
+                            /^\s*javascript:/i.test(attribute.value)
+                        )
+                    ) {
+                        element.removeAttribute(attribute.name);
+                    }
+                });
+            });
+
+            preview.replaceChildren(
+                parsed.body.cloneNode(true)
+            );
+        }
+
+        const warnings = Array.isArray(result.messages)
+            ? result.messages.length
+            : 0;
+
+        showKnowledgeUploadMessage(
+            warnings
+                ? `Conversion succeeded with ${warnings} conversion message(s). Review the preview carefully. Nothing has been registered.`
+                : 'Conversion succeeded. Review the HTML preview. Nothing has been registered.',
+            'success'
+        );
+
+        console.info('EKC DOCX conversion complete.', {
+            filename: result.filename,
+            htmlCharacters: result.html.length,
+            conversionMessages: result.messages || [],
+            registered: result.registered
+        });
+
+    } catch (error) {
+        console.error('EKC DOCX conversion failed:', error);
+
+        preview.textContent =
+            'The HTML preview could not be generated.';
+
+        showKnowledgeUploadMessage(
+            error.message || 'Unable to convert the selected document.',
+            'error'
+        );
+    }
 }
+
 
 function showKnowledgeUploadMessage(text, type) {
     const message = document.getElementById(
