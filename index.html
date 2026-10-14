@@ -1512,6 +1512,7 @@ body{
 
 
 
+```css
 /* ========================================
    MOBILE CALENDAR — NDOW
    Keep desktop styles unchanged
@@ -1519,39 +1520,70 @@ body{
 
 @media (max-width: 600px) {
 
-  /* Restore the real NDOW month grid */
-  #calendarViewport {
-    display: block !important;
-    flex: 1 1 auto !important;
-    width: 100%;
-    min-width: 0;
-    min-height: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-left: 4px solid #19304B !important;
-    padding-left: 2px !important;
-    box-sizing: border-box;
-  }
-
-  /* PHONE ONLY: hide the main header */
-  header {
-    display: none !important;
-  }
-
-  /* PHONE ONLY: hide the left-side ANGLING CALENDAR panel */
-  #calendarShell > div[style*="border-left:20px solid #19304B"] {
-    display: none !important;
-  }
-
+  /* Hide only the left-side Angling Calendar panel */
+  #proposedEventsPanel,
   #proposedEventsList {
     display: none !important;
   }
 
+  /* Keep the mobile controls visible */
+  header {
+    display: flex !important;
+    height: auto !important;
+    min-height: 0;
+    padding: 8px;
+    gap: 6px;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+  }
+
+  header h1 {
+    font-size: 18px !important;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .controls,
+  .account-controls,
+  .account-buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Let the calendar occupy the available phone width */
+  #calendarShell {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  #calendarViewport {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-left: 0 !important;
+    padding: 0 2px !important;
+    box-sizing: border-box;
+  }
+
   /* Compact seven-column month grid */
   #calendar {
-    width: 100%;
-    min-width: 0;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    display: grid !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
     grid-template-rows: 24px;
     grid-auto-rows: minmax(58px, auto);
     gap: 1px;
@@ -1574,6 +1606,7 @@ body{
     min-height: 58px;
     padding: 3px 2px;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   #calendar .day-number {
@@ -1583,7 +1616,7 @@ body{
     line-height: 1.2;
   }
 
-  /* Larger, vivid category-colored event dots */
+  /* Preserve vivid category-colored event dots */
   #calendar .event {
     display: inline-block;
     vertical-align: top;
@@ -1617,41 +1650,14 @@ body{
     display: none !important;
   }
 
-  /* Compact the NDOW header */
-  header {
-    height: auto !important;
-    min-height: 0;
-    padding: 8px;
-    gap: 6px;
-    flex-direction: column;
-    align-items: stretch;
-    box-sizing: border-box;
-  }
-
-  header h1 {
-    font-size: 18px !important;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .controls,
-  .account-controls,
-  .account-buttons {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 6px;
-  }
-
   /* Keep Emergencies red */
   .emergencies-header-button {
     background: #B91C1C !important;
     color: #FFFFFF !important;
     border-color: #991B1B !important;
   }
-
 }
+```
 
 
 
