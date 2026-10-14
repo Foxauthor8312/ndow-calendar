@@ -445,10 +445,14 @@ async function handleKnowledgeUploadSelection(event) {
                 });
             });
 
-            preview.replaceChildren(
-                parsed.body.cloneNode(true)
-            );
-        }
+           // Apply consistent EKC article typography to the preview.
+        const articlePreview = document.createElement('article');
+        
+             articlePreview.className = 'ekc-article-content';
+             articlePreview.appendChild(parsed.body.cloneNode(true));
+             
+             preview.replaceChildren(articlePreview);
+         }
 
         const warnings = Array.isArray(result.messages)
             ? result.messages.length
