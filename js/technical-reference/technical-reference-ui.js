@@ -656,7 +656,36 @@ searchButton.onclick = () => {
 nav.appendChild(
     searchButton
 );
- 
+
+
+/*
+------------------------------------------------------------------------------
+ UPLOAD NEW ARTICLE
+------------------------------------------------------------------------------
+*/
+
+const uploadButton = document.createElement('button');
+
+uploadButton.type = 'button';
+uploadButton.className = 'technical-nav-button primary';
+uploadButton.textContent = '📄 Upload New Article';
+uploadButton.title = 'Add a document to the Engineering Knowledge Center';
+
+uploadButton.style.marginBottom = '14px';
+
+uploadButton.onclick = () => {
+    if (typeof openKnowledgeUpload === 'function') {
+        openKnowledgeUpload();
+    } else {
+        console.error(
+            'Knowledge upload module has not been loaded.'
+        );
+        alert('The article upload module is not available.');
+    }
+};
+
+nav.appendChild(uploadButton);
+
     /*
     --------------------------------------------------------------------------
     Engineering Center Colors
