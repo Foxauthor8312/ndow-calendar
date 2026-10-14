@@ -517,13 +517,13 @@ async function handleKnowledgeUploadSelection(event) {
                 });
             });
 
-           // Apply consistent EKC article typography to the preview.
-        const articlePreview = document.createElement('article');
-        
-             articlePreview.className = 'ekc-article-content';
-             articlePreview.appendChild(parsed.body.cloneNode(true));
-             
-             preview.replaceChildren(articlePreview);
+       // Apply consistent EKC article typography to the preview.
+          const articlePreview = document.createElement('article');
+          
+          articlePreview.className = 'ekc-article-content';
+          articlePreview.innerHTML = parsed.body.innerHTML;
+          
+          preview.replaceChildren(articlePreview);
          }
 
         const warnings = Array.isArray(result.messages)
