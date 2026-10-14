@@ -1647,15 +1647,10 @@ body{
   #calendar .day.today::after {
     content: none;
   }
-
- /* PHONE ONLY: hide category legend and its items */
-.legend,
-#legend,
-#calendarLegend,
-.legend-container,
-.legend-item {
-  display: none !important;
-}
+  /* PHONE ONLY: hide category legend items, not the calendar wrapper */
+  .legend-item {
+    display: none !important;
+  }
 
   /* Keep Emergencies red */
   .emergencies-header-button {
