@@ -1548,11 +1548,6 @@ body{
     gap: 6px;
   }
 
-	  /* Phone: hide Angling Calendar panel */
-  #proposedEventsPanel {
-    display: none !important;
-  }
-
   /* Phone: give the calendar its available space */
   #calendarShell {
     display: flex !important;
@@ -1565,18 +1560,25 @@ body{
     box-sizing: border-box;
   }
 
+
   #calendarViewport {
     display: block !important;
     flex: 1 1 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     min-width: 0 !important;
     min-height: 0 !important;
+    height: 65vh !important;
+    max-height: 65vh !important;
     border-left: 0 !important;
     padding: 0 2px !important;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
   }
+
+	
  
   /* Compact seven-column month grid */
   #calendar {
