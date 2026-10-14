@@ -1507,116 +1507,111 @@ body{
 }
 
 
+
 /* ========================================
    MOBILE CALENDAR — NDOW
-   Keep desktop styles unchanged
+   Phone-only layout; preserve desktop
 ======================================== */
 
 @media (max-width: 600px) {
 
-  /* Hide only the left-side Angling Calendar panel */
+  /* Hide the separate Angling Calendar sidebar */
   #proposedEventsPanel,
   #proposedEventsList {
     display: none !important;
   }
 
-  /* Keep the mobile controls visible */
+  /* Compact mobile header */
   header {
     display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
     height: auto !important;
     min-height: 0;
     padding: 8px;
-    gap: 6px;
-    flex-direction: column;
-    align-items: stretch;
     box-sizing: border-box;
   }
 
   header h1 {
+    margin: 0;
     font-size: 18px !important;
     line-height: 1.2;
-    margin: 0;
   }
 
   .controls,
   .account-controls,
   .account-buttons {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 6px;
-  }
-
-  /* Phone: give the calendar its available space */
-  #calendarShell {
-    display: flex !important;
-    flex-direction: row !important;
-    flex: 1 1 auto !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    overflow: hidden;
+    width: 100%;
+    min-width: 0;
     box-sizing: border-box;
   }
 
-  /* Mobile: constrain only the calendar-area flex row */
-#calendarShell > div[style*="flex-direction:row"] {
-  display: flex !important;
-  flex-direction: row !important;
-  flex: 1 1 0 !important;
-  width: 0 !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-}
- 
-#calendarViewport {
-  display: block !important;
-  flex: 1 1 0 !important;
-  width: 0 !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  height: 65vh !important;
-  max-height: 65vh !important;
-  min-height: 0 !important;
-  border-left: 0 !important;
-  padding: 0 2px !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch;
-  box-sizing: border-box;
-}
-
- 
-  /* Compact seven-column month grid */
-  #calendar {
-    display: grid !important;
+  /* Allow the calendar area to shrink to phone width */
+  #calendarShell {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: row !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+
+  /* Calendar viewport: one sizing rule only */
+  #calendarViewport {
+    display: block !important;
+    flex: 1 1 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 65vh !important;
+    max-height: 65vh !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 2px !important;
+    border-left: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  /* Fit all seven calendar columns inside the viewport */
+  #calendar {
+    display: grid !important;
     grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
     grid-template-rows: 24px;
     grid-auto-rows: minmax(58px, auto);
     gap: 1px;
-    overflow: visible;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
     box-sizing: border-box;
   }
 
   #calendar .day-name {
-    min-width: 0;
+    min-width: 0 !important;
     height: 24px;
     min-height: 24px;
     padding: 0;
     font-size: 10px;
     line-height: 1;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   #calendar .day {
-    min-width: 0;
+    min-width: 0 !important;
     min-height: 58px;
     padding: 3px 2px;
     overflow: hidden;
@@ -1630,15 +1625,15 @@ body{
     line-height: 1.2;
   }
 
-  /* Preserve vivid category-colored event dots */
+  /* Preserve category-colored event dots */
   #calendar .event {
     display: inline-block;
     vertical-align: top;
-    width: 12px;
-    height: 12px;
-    min-width: 12px;
+    width: 9px;
+    height: 9px;
+    min-width: 9px;
     padding: 0;
-    margin: 1px 2px 2px 0;
+    margin: 1px 1px 2px 0;
     border-radius: 50%;
     overflow: hidden;
     white-space: normal;
@@ -1658,7 +1653,8 @@ body{
   #calendar .day.today::after {
     content: none;
   }
-  /* PHONE ONLY: hide category legend items, not the calendar wrapper */
+
+  /* Hide legend items on phones for now */
   .legend-item {
     display: none !important;
   }
@@ -1670,6 +1666,9 @@ body{
     border-color: #991B1B !important;
   }
 }
+
+
+	
 	
 </style>	
 	
