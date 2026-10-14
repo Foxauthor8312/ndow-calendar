@@ -25,9 +25,76 @@ let knowledgeUploadState = {
 };
 
 function openKnowledgeUpload() {
+
+    // Apply the standard EKC article typography.
+    if (!document.getElementById('ekcArticleTypography')) {
+        const style = document.createElement('style');
+        style.id = 'ekcArticleTypography';
+
+        style.textContent = `
+            .ekc-article-content {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 10pt;
+                font-weight: 400;
+                line-height: 1.65;
+                color: #19304B;
+            }
+
+            .ekc-article-content h1,
+            .ekc-article-content h2,
+            .ekc-article-content h3 {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 14pt;
+                font-weight: 600;
+                line-height: 1.4;
+                color: #19304B;
+            }
+
+            .ekc-article-content h4,
+            .ekc-article-content h5,
+            .ekc-article-content h6 {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 12pt;
+                font-weight: 600;
+                line-height: 1.4;
+                color: #19304B;
+            }
+
+            .ekc-article-content p,
+            .ekc-article-content li,
+            .ekc-article-content td,
+            .ekc-article-content th {
+                font-family: 'IBM Plex Mono', monospace;
+                font-size: 10pt;
+                color: #19304B;
+            }
+
+            .ekc-article-content table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .ekc-article-content th,
+            .ekc-article-content td {
+                border: 1px solid #DBE3EC;
+                padding: 8px;
+                text-align: left;
+                vertical-align: top;
+            }
+
+            .ekc-article-content th {
+                background: #F1F5F9;
+            }
+        `;
+
+        document.head.appendChild(style);
+    }
+
     const panel = document.getElementById(
         'technicalReferenceContent'
     );
+
+    
 
     if (!panel) {
         console.error('EKC content panel was not found.');
