@@ -347,15 +347,20 @@ function openKnowledgeUpload() {
 
                 <div
                     id="knowledgeUploadPreview"
-                    style="
-                        min-height:180px;
-                        padding:18px;
-                        border:1px solid #DBE3EC;
-                        border-radius:8px;
-                        background:#F8FAFC;
-                        line-height:1.7;
-                        overflow-wrap:anywhere;
-                    "
+                   
+                style="
+                    min-height:180px;
+                    max-height:60vh;
+                    overflow-y:auto;
+                    box-sizing:border-box;
+                    padding:18px;
+                    border:1px solid #DBE3EC;
+                    border-radius:8px;
+                    background:#F8FAFC;
+                    line-height:1.7;
+                    overflow-wrap:anywhere;
+                 "
+
                 >
                     <span style="color:#94A3B8;">
                         Select a DOCX document to begin.
