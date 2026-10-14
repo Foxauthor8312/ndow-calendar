@@ -8841,40 +8841,40 @@ modalBody.innerHTML = `
     ${event.program || ''}
   </div>
 
-  ${
-    event.status !== 'Registration Open'
-      ? `
-        <div style="
-          display:inline-block;
-          padding:5px 12px;
-          margin-bottom:12px;
-          border-radius:999px;
-          font-size:12px;
-          font-weight:700;
-          background:${
-            event.status === 'Canceled'
-              ? '#fee2e2'
-              : event.status === 'Registration Closed'
-              ? '#fef3c7'
-              : event.status === 'Events Results Pending'
-              ? '#dbeafe'
-              : '#dcfce7'
-          };
-          color:${
-            event.status === 'Canceled'
-              ? '#b91c1c'
-              : event.status === 'Registration Closed'
-              ? '#92400e'
-              : event.status === 'Events Results Pending'
-              ? '#1d4ed8'
-              : '#166534'
-          };
-        ">
-          ${event.status.toUpperCase()}
-        </div>
-      `
-      : ''
-  }
+${
+  event.status
+    ? `
+      <div style="
+        display:inline-block;
+        padding:5px 12px;
+        margin-bottom:12px;
+        border-radius:999px;
+        font-size:12px;
+        font-weight:700;
+        background:${
+          event.status === 'Canceled'
+            ? '#fee2e2'
+            : event.status === 'Registration Closed'
+            ? '#fef3c7'
+            : event.status === 'Events Results Pending'
+            ? '#dbeafe'
+            : '#dcfce7'
+        };
+        color:${
+          event.status === 'Canceled'
+            ? '#b91c1c'
+            : event.status === 'Registration Closed'
+            ? '#92400e'
+            : event.status === 'Events Results Pending'
+            ? '#1d4ed8'
+            : '#166534'
+        };
+      ">
+        ${event.status.toUpperCase()}
+      </div>
+    `
+    : ''
+}
 
   <div style="
     font-size:14px;
