@@ -1565,6 +1565,19 @@ body{
     box-sizing: border-box;
   }
 
+
+  /* Fix the oversized sticky wrapper causing mobile overflow */
+  #calendarShell > div:first-child {
+    flex: 1 1 0% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+	
   /* Calendar viewport: one sizing rule only */
   #calendarViewport {
     display: block !important;
