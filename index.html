@@ -5911,11 +5911,29 @@ async function startNdowAssignmentSync(){
         : []
     );
 
-    await loadNdowAssignments();
+    
+    // Refresh calendar assignments without blocking
+    // the successful sync summary or hours report.
+    try {
+      await loadNdowAssignments();
 
-    if(typeof renderCalendar === 'function'){
-      renderCalendar();
+      if(typeof renderCalendar === 'function'){
+        renderCalendar();
+      }
+    } catch(refreshError) {
+      console.error(
+        'NDOW sync succeeded, but calendar assignments could not refresh:',
+        refreshError
+      );
     }
+
+    } catch(refreshError) {
+      console.error(
+        'NDOW sync succeeded, but calendar assignments could not refresh:',
+        refreshError
+      );
+    }
+
 
     if(status){
       status.style.display = 'block';
