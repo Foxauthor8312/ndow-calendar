@@ -5841,6 +5841,7 @@ function closeNdowSyncMessage(){
 
 
 
+
 async function startNdowAssignmentSync(){
 
   const emailInput = document.getElementById('ndowSyncEmail');
@@ -5911,29 +5912,19 @@ async function startNdowAssignmentSync(){
         : []
     );
 
-    
-    // Refresh calendar assignments without blocking
-    // the successful sync summary or hours report.
-    try {
+    // Refresh the calendar without blocking the sync report.
+    try{
       await loadNdowAssignments();
 
       if(typeof renderCalendar === 'function'){
         renderCalendar();
       }
-    } catch(refreshError) {
+    } catch(refreshError){
       console.error(
         'NDOW sync succeeded, but calendar assignments could not refresh:',
         refreshError
       );
     }
-
-    } catch(refreshError) {
-      console.error(
-        'NDOW sync succeeded, but calendar assignments could not refresh:',
-        refreshError
-      );
-    }
-
 
     if(status){
       status.style.display = 'block';
@@ -5978,7 +5969,7 @@ async function startNdowAssignmentSync(){
       button.onclick = () => closeNdowSyncMessage();
     }
 
-  }catch(error){
+  } catch(error){
     console.error('NDOW assignment sync failed:', error);
 
     if(status){
@@ -5986,7 +5977,7 @@ async function startNdowAssignmentSync(){
       status.textContent = error.message || 'NDOW synchronization failed.';
     }
 
-  }finally{
+  } finally{
     if(button){
       button.disabled = false;
 
