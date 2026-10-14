@@ -1554,28 +1554,39 @@ body{
     gap: 6px;
   }
 
-  /* Let the calendar occupy the available phone width */
-  #calendarShell {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box;
-  }
+ ```css
+/* PHONE ONLY: hide Angling Calendar panel */
+#proposedEventsPanel {
+  display: none !important;
+}
 
-  #calendarViewport {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    flex: 1 1 auto !important;
-    min-height: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    border-left: 0 !important;
-    padding: 0 2px !important;
-    box-sizing: border-box;
-  }
+/* Let the calendar occupy the available phone width */
+#calendarShell {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#calendarViewport {
+  display: block !important;
+  flex: 1 1 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-left: 0 !important;
+  padding: 0 2px !important;
+  box-sizing: border-box;
+}
+```
 
   /* Compact seven-column month grid */
   #calendar {
@@ -1645,10 +1656,14 @@ body{
     content: none;
   }
 
-  /* Hide category legend on phones */
-  .legend-item {
-    display: none !important;
-  }
+ /* PHONE ONLY: hide category legend and its items */
+.legend,
+#legend,
+#calendarLegend,
+.legend-container,
+.legend-item {
+  display: none !important;
+}
 
   /* Keep Emergencies red */
   .emergencies-header-button {
