@@ -77,12 +77,12 @@
             .slice(0, 12);
     }
 
-    function scoreDocument(document, terms) {
-        const title = String(document.title || '').toLowerCase();
+    function scoreDocument(doc, terms) {
+        const title = String(doc.title || '').toLowerCase();
         const description =
-            String(document.description || '').toLowerCase();
-        const keywords = Array.isArray(document.keywords)
-            ? document.keywords.join(' ').toLowerCase()
+            String(doc.description || '').toLowerCase();
+        const keywords = Array.isArray(doc.keywords)
+            ? doc.keywords.join(' ').toLowerCase()
             : '';
 
         let score = 0;
@@ -110,48 +110,48 @@
     function renderMessage(container, message) {
         container.replaceChildren();
 
-        const paragraph = document.createElement('p');
+        const paragraph = window.document.createElement('p');
         paragraph.textContent = message;
         container.appendChild(paragraph);
     }
 
-    function renderDocumentCard(document, result, container) {
-        const card = document.createElement('article');
+    function renderDocumentCard(doc, result, container) {
+        const card = window.document.createElement('article');
         card.style.cssText =
             'border:1px solid #DBE3EC;border-radius:8px;' +
             'padding:12px;margin:10px 0;background:#fff;';
 
-        const heading = document.createElement('h4');
-        heading.textContent = document.title || 'Untitled document';
+        const heading = window.document.createElement('h4');
+        heading.textContent = doc.title || 'Untitled document';
         heading.style.margin = '0 0 6px';
 
-        const description = document.createElement('p');
+        const description = window.document.createElement('p');
         description.textContent =
-            document.description || 'No description available.';
+            doc.description || 'No description available.';
         description.style.cssText =
             'margin:0 0 8px;color:#475569;font-size:14px;';
 
-        const matchInfo = document.createElement('p');
+        const matchInfo = window.document.createElement('p');
         matchInfo.textContent = result.reasons.join(' · ');
         matchInfo.style.cssText =
             'margin:0 0 10px;color:#64748B;font-size:12px;';
 
-        const status = document.createElement('p');
+        const status = window.document.createElement('p');
         status.style.cssText =
             'font-size:13px;font-weight:600;margin:0 0 8px;';
 
-        const actions = document.createElement('div');
+        const actions = window.document.createElement('div');
         actions.style.cssText =
             'display:flex;gap:8px;flex-wrap:wrap;';
 
-        const acceptButton = document.createElement('button');
+        const acceptButton = window.document.createElement('button');
         acceptButton.type = 'button';
         acceptButton.textContent = 'Accept Reference';
         acceptButton.style.cssText =
             'padding:7px 12px;border:0;border-radius:5px;' +
             'background:#19304B;color:#fff;cursor:pointer;';
 
-        const rejectButton = document.createElement('button');
+        const rejectButton = window.document.createElement('button');
         rejectButton.type = 'button';
         rejectButton.textContent = 'Reject';
         rejectButton.style.cssText =
@@ -159,10 +159,10 @@
             'border-radius:5px;background:#fff;cursor:pointer;';
 
         function updateStatus() {
-            if (acceptedDocuments.has(document.id)) {
+            if (acceptedDocuments.has(doc.id)) {
                 status.textContent = 'Accepted as a reference';
                 acceptButton.textContent = 'Remove Acceptance';
-            } else if (rejectedDocumentIds.has(document.id)) {
+            } else if (rejectedDocumentIds.has(doc.id)) {
                 status.textContent = 'Rejected';
                 acceptButton.textContent = 'Accept Reference';
             } else {
@@ -172,19 +172,19 @@
         }
 
         acceptButton.addEventListener('click', () => {
-            if (acceptedDocuments.has(document.id)) {
-                acceptedDocuments.delete(document.id);
+            if (acceptedDocuments.has(doc.id)) {
+                acceptedDocuments.delete(doc.id);
             } else {
-                acceptedDocuments.set(document.id, document);
-                rejectedDocumentIds.delete(document.id);
+                acceptedDocuments.set(doc.id, doc);
+                rejectedDocumentIds.delete(doc.id);
             }
 
             updateStatus();
         });
 
         rejectButton.addEventListener('click', () => {
-            acceptedDocuments.delete(document.id);
-            rejectedDocumentIds.add(document.id);
+            acceptedDocuments.delete(doc.id);
+            rejectedDocumentIds.add(doc.id);
             updateStatus();
         });
 
@@ -198,15 +198,15 @@
     async function renderKnowledgeRelationships(container) {
         container.replaceChildren();
 
-        const heading = document.createElement('h3');
+        const heading = window.document.createElement('h3');
         heading.textContent = 'References and Relationships';
 
-        const introduction = document.createElement('p');
+        const introduction = window.document.createElement('p');
         introduction.textContent =
             'Review existing active EKC documents that may be relevant ' +
             'to this article. Accept or reject each suggestion.';
 
-        const results = document.createElement('div');
+        const results = window.document.createElement('div');
         results.textContent = 'Searching existing documents…';
 
         container.append(heading, introduction, results);
@@ -264,18 +264,18 @@
 
             const uniqueDocuments = new Map();
 
-            searchResults.flat().forEach(document => {
-                if (document && document.id != null) {
-                    uniqueDocuments.set(document.id, document);
+            searchResults.flat().forEach(doc => {
+                if (doc && doc.id != null) {
+                    uniqueDocuments.set(doc.id, doc);
                 }
             });
 
             const articleTerms = getSearchTerms(getArticleText());
 
             currentDocuments = [...uniqueDocuments.values()]
-                .map(document => ({
-                    document,
-                    ...scoreDocument(document, articleTerms)
+                .map(doc => ({
+                    document: doc,
+                    ...scoreDocument(doc, articleTerms)
                 }))
                 .filter(item => item.score > 0)
                 .sort((a, b) => b.score - a.score)
@@ -292,7 +292,7 @@
 
             results.replaceChildren();
 
-            const summary = document.createElement('p');
+            const summary = window.document.createElement('p');
             summary.textContent =
                 `Found ${currentDocuments.length} potential references. ` +
                 'These are suggestions only; review each one.';
@@ -340,4 +340,3 @@
         resetKnowledgeRelationshipsSelection;
 
 })();
-
