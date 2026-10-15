@@ -181,102 +181,136 @@ function getArticleText() {
     ==========================================================================
     */
 
-    function scoreTopic(topic, article) {
+    
+function scoreTopic(topic, article) {
 
-        const titleWords = tokenize(article.title);
-        const descriptionWords = tokenize(article.description);
-        const bodyWords = tokenize(article.bodyText);
+    const titleWords = tokenize(article.title);
+    const descriptionWords = tokenize(article.description);
+    const bodyWords = tokenize(article.bodyText);
 
-        const topicName = String(topic.topic || '');
-        const aliases = Array.isArray(topic.aliases)
-            ? topic.aliases
-            : typeof topic.aliases === 'string'
-                ? topic.aliases.split(/[,;|]/)
-                : [];
+    const topicName = String(topic.topic || '');
+    const aliases = Array.isArray(topic.aliases)
+        ? topic.aliases
+        : typeof topic.aliases === 'string'
+            ? topic.aliases.split(/[,;|]/)
+            : [];
 
-        const phrases = [
-            topicName,
-            ...aliases.map(String)
-        ].filter(Boolean);
+    const phrases = [topicName, ...aliases]
+        .map(value => String(value).trim())
+        .filter(Boolean);
 
-        const searchableText = [
-            topic.summary || '',
-            topic.definition || ''
-        ].join(' ');
+    const referenceText = [
+        topic.summary || '',
+        topic.definition || ''
+    ].join(' ');
 
-        const topicWords = tokenize(
-            `${phrases.join(' ')} ${searchableText}`
-        );
+    const topicWords = tokenize(
+        `${phrases.join(' ')} ${referenceText}`
+    );
 
+    let score = 0;
+    const reasons = [];
+
+    const title = article.title.toLowerCase();
+    const description = article.description.toLowerCase();
+
+    if (phrases.some(phrase =>
+        phrase.length > 2 && title.includes(phrase.toLowerCase())
+    )) {
+        score += 15;
+        reasons.push('Topic phrase in title');
+    } else if (phrases.some(phrase =>
+        phrase.length > 2 && description.includes(phrase.toLowerCase())
+    )) {
+        score += 9;
+        reasons.push('Topic phrase in summary');
+    }
+
+    let titleHits = 0;
+    let summaryHits = 0;
+    let bodyHits = 0;
+
+    for (const word of topicWords) {
+        if (titleWords.has(word)) titleHits++;
+        if (descriptionWords.has(word)) summaryHits++;
+        if (bodyWords.has(word)) bodyHits++;
+    }
+
+    score += Math.min(titleHits * 5, 20);
+    score += Math.min(summaryHits * 3, 12);
+    score += Math.min(bodyHits, 5);
+
+    if (titleHits) reasons.push(`${titleHits} title keyword(s)`);
+    if (summaryHits) reasons.push(`${summaryHits} summary keyword(s)`);
+    if (bodyHits) reasons.push(`${bodyHits} body keyword(s)`);
+
+    return {
+        score,
+        reasons,
+        topic,
+        category: topic.knowledge_categories || null
+    };
+}
+
+/*
+==============================================================================
+ Find a Concise Relevant Article Excerpt
+==============================================================================
+*/
+
+function findRelevantExcerpt(article, topic, maxLength = 200) {
+
+    const text = String(article.bodyText || '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    if (!text) {
+        return 'No extracted article text is available yet.';
+    }
+
+    const aliases = Array.isArray(topic.aliases)
+        ? topic.aliases
+        : typeof topic.aliases === 'string'
+            ? topic.aliases.split(/[,;|]/)
+            : [];
+
+    const topicWords = tokenize([
+        topic.topic || '',
+        ...aliases,
+        topic.summary || ''
+    ].join(' '));
+
+    // Prefer a sentence containing the most topic-specific terms.
+    const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+
+    let bestSentence = '';
+    let bestScore = 0;
+
+    for (const sentence of sentences) {
+        const words = tokenize(sentence);
         let score = 0;
-        const reasons = [];
-
-        // Exact topic or alias phrase is a strong signal.
-        for (const phrase of phrases) {
-
-            const normalizedPhrase = phrase.trim().toLowerCase();
-
-            if (
-                normalizedPhrase.length > 2 &&
-                article.title.toLowerCase().includes(normalizedPhrase)
-            ) {
-                score += 12;
-                reasons.push('Phrase found in title');
-                break;
-            }
-
-            if (
-                normalizedPhrase.length > 2 &&
-                article.description.toLowerCase().includes(normalizedPhrase)
-            ) {
-                score += 7;
-                reasons.push('Phrase found in summary');
-                break;
-            }
-        }
-
-        let titleHits = 0;
-        let descriptionHits = 0;
-        let bodyHits = 0;
 
         for (const word of topicWords) {
-
-            if (titleWords.has(word)) {
-                titleHits++;
-            }
-
-            if (descriptionWords.has(word)) {
-                descriptionHits++;
-            }
-
-            if (bodyWords.has(word)) {
-                bodyHits++;
-            }
+            if (words.has(word)) score++;
         }
 
-        score += Math.min(titleHits * 4, 16);
-        score += Math.min(descriptionHits * 2, 10);
-        score += Math.min(bodyHits, 8);
-
-        if (titleHits) {
-            reasons.push(`${titleHits} title keyword match(es)`);
+        if (score > bestScore) {
+            bestScore = score;
+            bestSentence = sentence.trim();
         }
-
-        if (descriptionHits) {
-            reasons.push(`${descriptionHits} summary keyword match(es)`);
-        }
-
-        if (bodyHits) {
-            reasons.push(`${bodyHits} article keyword match(es)`);
-        }
-
-        return {
-            score,
-            reasons,
-            topic,
-            category: topic.knowledge_categories || null
-        };
     }
+
+    if (!bestSentence || bestScore === 0) {
+        return 'No specific supporting passage found; verify this suggestion.';
+    }
+
+    if (bestSentence.length > maxLength) {
+        bestSentence =
+            bestSentence.slice(0, maxLength - 1).trimEnd() + '…';
+    }
+
+    return bestSentence;
+}
 
     /*
     ==========================================================================
@@ -492,6 +526,24 @@ function getArticleText() {
 
             row.append(nameBlock, badge);
 
+            
+            const excerptLabel = document.createElement('p');
+            excerptLabel.textContent = 'Relevant article text';
+            excerptLabel.style.cssText =
+                'margin:12px 0 4px;color:#64748B;font-size:11px;font-weight:600;';
+            
+            const excerpt = document.createElement('p');
+            excerpt.textContent = findRelevantExcerpt(
+                getArticleText(),
+                topic,
+                200
+            );
+            excerpt.style.cssText =
+                'margin:0;color:#334155;font-size:12px;line-height:1.5;';
+            
+            card.append(excerptLabel, excerpt);
+
+         
             const reasons = document.createElement('p');
             reasons.textContent = match.reasons.join(' · ') ||
                 'Limited keyword evidence; verify manually.';
