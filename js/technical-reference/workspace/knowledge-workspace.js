@@ -67,16 +67,14 @@
         }
 
         // Reuse the existing upload interface without rewriting its module.
-        if (typeof window.openKnowledgeUpload !== 'function') {
-           console.error(
-               'EKC intake: openKnowledgeUpload() is unavailable.'
-           );
-           return;
-       }
-       
-       // Render the original upload interface directly.
-       // Do not route back through the workspace wrapper.
-       window.openKnowledgeUploadForm();
+   if (typeof window.openKnowledgeUploadForm !== 'function') {
+    console.error(
+        'EKC intake: openKnowledgeUploadForm() is unavailable.'
+    );
+    return;
+}
+
+window.openKnowledgeUploadForm();
 
         // Move the upload interface into its own Document-stage container.
         documentPane = document.createElement('div');
