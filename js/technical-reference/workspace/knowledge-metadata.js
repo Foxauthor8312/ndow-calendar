@@ -117,33 +117,38 @@
     ==========================================================================
     */
 
-    function getArticleText() {
+    
+function getArticleText() {
 
-        const title =
-            document.getElementById('knowledgeUploadTitle')?.value || '';
+    const uploadData =
+        typeof window.getKnowledgeUploadData === 'function'
+            ? window.getKnowledgeUploadData()
+            : {};
 
-        const description =
-            document.getElementById(
-                'knowledgeUploadDescription'
-            )?.value || '';
+    const preview =
+        document.getElementById('knowledgeUploadPreview');
 
-        const preview =
-            document.getElementById('knowledgeUploadPreview');
+    const title = uploadData.title || '';
+    const description = uploadData.description || '';
 
-        // Use rendered preview text, not HTML markup.
-        const bodyText = preview?.innerText || '';
+    // Prefer the extracted text, falling back to visible preview text.
+    const bodyText =
+        uploadData.text ||
+        preview?.innerText ||
+        '';
 
-        return {
-            title: title.trim(),
-            description: description.trim(),
-            bodyText: bodyText.trim(),
-            combined: [
-                title,
-                description,
-                bodyText
-            ].join(' ').toLowerCase()
-        };
-    }
+    return {
+        title: title.trim(),
+        description: description.trim(),
+        bodyText: bodyText.trim(),
+        combined: [
+            title,
+            description,
+            bodyText
+        ].join(' ').toLowerCase()
+    };
+}
+
 
     /*
     ==========================================================================
