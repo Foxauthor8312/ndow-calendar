@@ -1578,6 +1578,17 @@ body{
   }
 
 	
+  /* Keep the footer below the calendar, not beside it */
+  #calendarShell > .footer {
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+	
   /* Calendar viewport: one sizing rule only */
   #calendarViewport {
     display: block !important;
