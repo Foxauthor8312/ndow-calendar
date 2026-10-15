@@ -8,18 +8,6 @@
 
  Purpose:
     Coordinate the four-stage EKC article intake workflow.
-
- Stages:
-    1. Document
-    2. Classify
-    3. References
-    4. Review
-
- Design:
-    - Reuses the existing knowledge-upload.js interface.
-    - Does not perform registration.
-    - Does not publish documents.
-    - Keeps stage-specific logic in separate modules.
 ==============================================================================
 */
 
@@ -45,7 +33,6 @@
     */
 
     function openKnowledgeIntakeWorkspace() {
-
         const host = document.getElementById(
             'technicalReferenceContent'
         );
@@ -57,26 +44,22 @@
             return;
         }
 
-        // Preserve the current session if the workspace is already open.
         if (workspaceInitialized) {
             host.querySelector(
                 '#knowledgeIntakeWorkspace'
             )?.scrollIntoView({ block: 'start' });
-
             return;
         }
 
-        // Reuse the existing upload interface without rewriting its module.
-   if (typeof window.openKnowledgeUploadForm !== 'function') {
-    console.error(
-        'EKC intake: openKnowledgeUploadForm() is unavailable.'
-    );
-    return;
-}
+        if (typeof window.openKnowledgeUploadForm !== 'function') {
+            console.error(
+                'EKC intake: openKnowledgeUploadForm() is unavailable.'
+            );
+            return;
+        }
 
-window.openKnowledgeUploadForm();
+        window.openKnowledgeUploadForm();
 
-        // Move the upload interface into its own Document-stage container.
         documentPane = document.createElement('div');
         documentPane.id = 'knowledgeIntakeDocumentPane';
 
@@ -84,7 +67,6 @@ window.openKnowledgeUploadForm();
             documentPane.appendChild(host.firstChild);
         }
 
-        // Build the intake shell.
         host.innerHTML = `
             <section
                 id="knowledgeIntakeWorkspace"
@@ -96,11 +78,10 @@ window.openKnowledgeUploadForm();
                     font-family:'IBM Plex Sans',sans-serif;
                 "
             >
-            
-
                 <nav
                     id="knowledgeIntakeTabs"
                     aria-label="Article intake stages"
+                    role="tablist"
                     style="
                         display:flex;
                         flex-wrap:wrap;
@@ -136,9 +117,7 @@ window.openKnowledgeUploadForm();
                                 font-weight:600;
                                 cursor:pointer;
                             "
-                        >
-                            ${stage.label}
-                        </button>
+                        >${stage.label}</button>
                     `).join('')}
                 </nav>
 
@@ -169,9 +148,7 @@ window.openKnowledgeUploadForm();
                             font:inherit;
                             cursor:pointer;
                         "
-                    >
-                        Previous
-                    </button>
+                    >Previous</button>
 
                     <span
                         id="knowledgeIntakeStageStatus"
@@ -191,9 +168,7 @@ window.openKnowledgeUploadForm();
                             font:inherit;
                             cursor:pointer;
                         "
-                    >
-                        Next
-                    </button>
+                    >Next</button>
                 </footer>
             </section>
         `;
@@ -204,7 +179,6 @@ window.openKnowledgeUploadForm();
 
         content.appendChild(documentPane);
 
-        // Register navigation handlers once.
         host.querySelectorAll('[data-intake-stage]').forEach(button => {
             button.addEventListener('click', () => {
                 showKnowledgeIntakeStage(
@@ -220,7 +194,6 @@ window.openKnowledgeUploadForm();
             .addEventListener('click', () => moveStage(1));
 
         workspaceInitialized = true;
-
         showKnowledgeIntakeStage('document');
     }
 
@@ -231,7 +204,6 @@ window.openKnowledgeUploadForm();
     */
 
     function showKnowledgeIntakeStage(stageId) {
-
         if (!STAGES.some(stage => stage.id === stageId)) {
             return;
         }
@@ -250,8 +222,7 @@ window.openKnowledgeUploadForm();
             return;
         }
 
-        // Keep the upload form alive when moving between stages.
-        if (documentPane && documentPane.parentElement) {
+        if (documentPane?.parentElement) {
             documentPane.remove();
         }
 
@@ -261,91 +232,67 @@ window.openKnowledgeUploadForm();
             if (documentPane) {
                 content.appendChild(documentPane);
             }
-        } else {
-            const descriptions = {
-                classify: {
-                    title: 'Classify Article',
-                    message:
-                        'Classification is not connected yet. The next module will match the article against existing Centers, Categories, and Topics.'
-                },
-                references: {
-                    title: 'References and Relationships',
-                    message:
-                        'Reference matching is not connected yet. The next module will identify existing documents and proposed topic relationships.'
-                },
-                review: {
-                    title: 'Review and Register',
-                    message:
-                        'Final validation and registration are not connected yet. No document will be registered or published from this placeholder.'
-                }
-            };
-
-         
-   
-        if (stageId === 'classify') {
+        } else if (stageId === 'classify') {
             if (typeof window.renderKnowledgeMetadata === 'function') {
                 window.renderKnowledgeMetadata(content);
             } else {
-                const message = document.createElement('p');
-                message.textContent =
-                    'The EKC classification module has not loaded.';
-                message.style.color = '#B91C1C';
-                content.appendChild(message);
+                showModuleError(
+                    content,
+                    'The EKC classification module has not loaded.'
+                );
             }
-
         } else if (stageId === 'references') {
             if (typeof window.renderKnowledgeRelationships === 'function') {
                 window.renderKnowledgeRelationships(content);
             } else {
-                const message = document.createElement('p');
-                message.textContent =
-                    'The EKC References module has not loaded.';
-                message.style.color = '#B91C1C';
-                content.appendChild(message);
+                showModuleError(
+                    content,
+                    'The EKC References module has not loaded.'
+                );
             }
-
         } else if (stageId === 'review') {
             if (typeof window.renderKnowledgeReview === 'function') {
                 window.renderKnowledgeReview(content);
             } else {
-                const message = document.createElement('p');
-                message.textContent =
-                    'The EKC Review module has not loaded.';
-                message.style.color = '#B91C1C';
-                content.appendChild(message);
+                showModuleError(
+                    content,
+                    'The EKC Review module has not loaded.'
+                );
             }
-
-        } else {
-            const details = descriptions[stageId];
-
-            const panel = document.createElement('section');
-            panel.style.cssText = `
-                padding:24px;
-                border:1px solid #DBE3EC;
-                border-radius:8px;
-                background:#FFFFFF;
-            `;
-
-            const heading = document.createElement('h2');
-            heading.textContent = details.title;
-            heading.style.cssText = `
-                margin:0 0 12px;
-                color:#19304B;
-                font-size:20px;
-            `;
-
-            const message = document.createElement('p');
-            message.textContent = details.message;
-            message.style.cssText = `
-                margin:0;
-                color:#64748B;
-                font-size:14px;
-                line-height:1.7;
-            `;
-            panel.append(heading, message);
         }
 
-        }
+        host.querySelectorAll('[data-intake-stage]').forEach(button => {
+            const active = button.dataset.intakeStage === stageId;
+
+            button.setAttribute('aria-selected', String(active));
+            button.style.borderColor = active
+                ? '#F29647'
+                : '#DBE3EC';
+            button.style.background = active
+                ? '#FFF7ED'
+                : '#FFFFFF';
+        });
+
+        const index = STAGES.findIndex(
+            stage => stage.id === stageId
+        );
+
+        host.querySelector('#knowledgeIntakeBack').disabled =
+            index === 0;
+
+        host.querySelector('#knowledgeIntakeNext').disabled =
+            index === STAGES.length - 1;
+
+        host.querySelector('#knowledgeIntakeStageStatus')
+            .textContent = `Stage ${index + 1} of ${STAGES.length}`;
+    }
+
+    function showModuleError(container, messageText) {
+        const message = document.createElement('p');
+        message.textContent = messageText;
+        message.style.color = '#B91C1C';
+        container.appendChild(message);
+    }
 
     /*
     ==========================================================================
@@ -354,7 +301,6 @@ window.openKnowledgeUploadForm();
     */
 
     function moveStage(direction) {
-
         const currentIndex = STAGES.findIndex(
             stage => stage.id === activeStage
         );
@@ -365,9 +311,7 @@ window.openKnowledgeUploadForm();
             return;
         }
 
-        showKnowledgeIntakeStage(
-            STAGES[nextIndex].id
-        );
+        showKnowledgeIntakeStage(STAGES[nextIndex].id);
     }
 
     /*
@@ -380,5 +324,3 @@ window.openKnowledgeUploadForm();
         openKnowledgeIntakeWorkspace;
 
 })();
-
-
