@@ -281,6 +281,7 @@ window.openKnowledgeUploadForm();
             };
 
          
+   
         if (stageId === 'classify') {
             if (typeof window.renderKnowledgeMetadata === 'function') {
                 window.renderKnowledgeMetadata(content);
@@ -299,6 +300,17 @@ window.openKnowledgeUploadForm();
                 const message = document.createElement('p');
                 message.textContent =
                     'The EKC References module has not loaded.';
+                message.style.color = '#B91C1C';
+                content.appendChild(message);
+            }
+
+        } else if (stageId === 'review') {
+            if (typeof window.renderKnowledgeReview === 'function') {
+                window.renderKnowledgeReview(content);
+            } else {
+                const message = document.createElement('p');
+                message.textContent =
+                    'The EKC Review module has not loaded.';
                 message.style.color = '#B91C1C';
                 content.appendChild(message);
             }
@@ -334,38 +346,6 @@ window.openKnowledgeUploadForm();
             panel.append(heading, message);
             content.appendChild(panel);
         }
-
-        }
-
-        // Update active-tab appearance and accessibility state.
-        host.querySelectorAll('[data-intake-stage]').forEach(button => {
-            const active =
-                button.dataset.intakeStage === stageId;
-
-            button.setAttribute('aria-selected', String(active));
-            button.style.borderColor = active
-                ? '#F29647'
-                : '#DBE3EC';
-            button.style.background = active
-                ? '#FFF7ED'
-                : '#FFFFFF';
-        });
-
-        const index = STAGES.findIndex(
-            stage => stage.id === stageId
-        );
-
-        host.querySelector('#knowledgeIntakeBack').disabled =
-            index === 0;
-
-        host.querySelector('#knowledgeIntakeNext').disabled =
-            index === STAGES.length - 1;
-
-        host.querySelector('#knowledgeIntakeStageStatus')
-            .textContent =
-                `Stage ${index + 1} of ${STAGES.length}`;
-
-    }
 
     /*
     ==========================================================================
