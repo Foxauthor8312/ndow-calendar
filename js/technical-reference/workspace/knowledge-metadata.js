@@ -291,7 +291,7 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
         .trim();
 
     if (!text) {
-        return 'No extracted article text is available yet.';
+        return 'No extracted article text is available.';
     }
 
     const aliases = Array.isArray(topic.aliases)
@@ -303,31 +303,54 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
     const topicWords = tokenize([
         topic.topic || '',
         ...aliases,
-        topic.summary || ''
+        topic.summary || '',
+        topic.definition || ''
     ].join(' '));
 
-    // Prefer a sentence containing the most topic-specific terms.
-    const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+    // Remove generic terms that are unlikely to identify a relevant passage.
+    const genericWords = new Set([
+        'article', 'system', 'portal', 'application',
+        'document', 'information', 'process', 'used',
+        'using', 'provides', 'providing', 'current',
+        'existing', 'standard', 'standards'
+    ]);
+
+    for (const word of genericWords) {
+        topicWords.delete(word);
+    }
+
+    const sentences =
+        text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
 
     let bestSentence = '';
     let bestScore = 0;
 
-    for (const sentence of sentences) {
+    for (const rawSentence of sentences) {
+
+        const sentence = rawSentence.trim();
+
+        if (!sentence || sentence.length < 20) {
+            continue;
+        }
+
         const words = tokenize(sentence);
         let score = 0;
 
         for (const word of topicWords) {
-            if (words.has(word)) score++;
+            if (words.has(word)) {
+                score++;
+            }
         }
 
+        // Prefer concise passages with multiple meaningful matches.
         if (score > bestScore) {
             bestScore = score;
-            bestSentence = sentence.trim();
+            bestSentence = sentence;
         }
     }
 
     if (!bestSentence || bestScore === 0) {
-        return 'No specific supporting passage found; verify this suggestion.';
+        return 'No specific supporting passage found; verify manually.';
     }
 
     if (bestSentence.length > maxLength) {
@@ -337,6 +360,7 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
 
     return bestSentence;
 }
+
 
     /*
     ==========================================================================
