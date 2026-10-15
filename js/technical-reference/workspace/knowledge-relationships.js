@@ -144,51 +144,49 @@
         actions.style.cssText =
             'display:flex;gap:8px;flex-wrap:wrap;';
 
-        const acceptButton = window.document.createElement('button');
-        acceptButton.type = 'button';
-        acceptButton.textContent = 'Accept Reference';
-        acceptButton.style.cssText =
+        
+        const toggleButton = window.document.createElement('button');
+        toggleButton.type = 'button';
+        toggleButton.textContent = 'Accept Reference';
+        toggleButton.style.cssText =
             'padding:7px 12px;border:0;border-radius:5px;' +
-            'background:#19304B;color:#fff;cursor:pointer;';
+            'background:#19304B;color:#fff;' +
+            'font-size:13px;font-weight:600;cursor:pointer;';
 
-        const rejectButton = window.document.createElement('button');
-        rejectButton.type = 'button';
-        rejectButton.textContent = 'Reject';
-        rejectButton.style.cssText =
-            'padding:7px 12px;border:1px solid #DBE3EC;' +
-            'border-radius:5px;background:#fff;cursor:pointer;';
 
+       
         function updateStatus() {
             if (acceptedDocuments.has(doc.id)) {
                 status.textContent = 'Accepted as a reference';
-                acceptButton.textContent = 'Remove Acceptance';
+                toggleButton.textContent = 'Reject Reference';
+                toggleButton.style.background = '#DC2626';
             } else if (rejectedDocumentIds.has(doc.id)) {
                 status.textContent = 'Rejected';
-                acceptButton.textContent = 'Accept Reference';
+                toggleButton.textContent = 'Accept Reference';
+                toggleButton.style.background = '#19304B';
             } else {
                 status.textContent = 'Awaiting review';
-                acceptButton.textContent = 'Accept Reference';
+                toggleButton.textContent = 'Accept Reference';
+                toggleButton.style.background = '#19304B';
             }
         }
 
-        acceptButton.addEventListener('click', () => {
+        toggleButton.addEventListener('click', () => {
             if (acceptedDocuments.has(doc.id)) {
                 acceptedDocuments.delete(doc.id);
+                rejectedDocumentIds.add(doc.id);
+            } else if (rejectedDocumentIds.has(doc.id)) {
+                rejectedDocumentIds.delete(doc.id);
+                acceptedDocuments.set(doc.id, doc);
             } else {
                 acceptedDocuments.set(doc.id, doc);
-                rejectedDocumentIds.delete(doc.id);
             }
 
             updateStatus();
         });
 
-        rejectButton.addEventListener('click', () => {
-            acceptedDocuments.delete(doc.id);
-            rejectedDocumentIds.add(doc.id);
-            updateStatus();
-        });
-
-        actions.append(acceptButton, rejectButton);
+     
+       actions.appendChild(toggleButton);
         card.append(heading, description, matchInfo, status, actions);
         container.appendChild(card);
 
