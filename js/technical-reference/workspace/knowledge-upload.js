@@ -582,4 +582,12 @@ function showKnowledgeUploadMessage(text, type) {
             : '1px solid #BBF7D0';
 }
 
-window.openKnowledgeUpload = openKnowledgeUpload;
+window.openKnowledgeUpload = function () {
+    if (
+        typeof window.openKnowledgeIntakeWorkspace === 'function'
+    ) {
+        window.openKnowledgeIntakeWorkspace();
+    } else {
+        openKnowledgeUpload();
+    }
+};
