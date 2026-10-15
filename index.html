@@ -227,6 +227,12 @@ button:hover{
 }
 
 	
+#calendar .day.selected-day {
+  outline: 2px solid #589FD6;
+  outline-offset: -2px;
+}
+
+	
 .day-name{
   background:#e5e7eb;
   height:28px;
@@ -1637,6 +1643,12 @@ body{
     overflow: hidden;
     box-sizing: border-box;
   }
+
+/* Highlight the selected calendar day */
+#calendar .day.selected-day {
+  outline: 2px solid #589FD6;
+  outline-offset: -2px;
+}
 
   #calendar .day-number {
     position: static;
@@ -3358,6 +3370,25 @@ async function submitForgotPin(){
 >
 
     <div class="calendar" id="calendar"></div>
+
+	
+<div id="selectedDayEvents" style="
+  display:none;
+  width:100%;
+  margin-top:8px;
+  padding:8px 0;
+  border-top:1px solid #DBE3EC;
+  box-sizing:border-box;
+">
+  <div id="selectedDayHeading" style="
+    font-size:13px;
+    font-weight:700;
+    color:#19304B;
+    margin-bottom:4px;
+  "></div>
+  <div id="selectedDayEventList"></div>
+</div>
+
 
   </div>
 
@@ -7002,6 +7033,19 @@ return (
 
 });
 
+	
+cell.style.cursor = 'pointer';
+
+cell.addEventListener('click', () => {
+  document.querySelectorAll('#calendar .day.selected-day')
+    .forEach(dayCell => dayCell.classList.remove('selected-day'));
+
+  cell.classList.add('selected-day');
+
+  renderSelectedDayEvents(dateStr, dayEvents);
+});
+
+
 dayEvents.forEach(event => {
 
   try {
@@ -7157,10 +7201,10 @@ div.innerHTML = `
 div.title =
     `${isCanceled ? 'Canceled - ' : ''}#${event.id} ${cleanTitle}`;
 
-    div.onclick = () =>
-      openEventModal(
-        event.url
-      );
+   div.onclick = (e) => {
+  e.stopPropagation();
+  openEventModal(event.url);
+};
 
     cell.appendChild(div);
 
@@ -7216,6 +7260,71 @@ if(
 
 }
 
+
+function renderSelectedDayEvents(dateStr, dayEvents) {
+  const panel = document.getElementById('selectedDayEvents');
+  const heading = document.getElementById('selectedDayHeading');
+  const list = document.getElementById('selectedDayEventList');
+
+  if (!panel || !heading || !list) return;
+
+  const selectedDate = new Date(dateStr + 'T12:00:00');
+
+  heading.textContent =
+    selectedDate.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    }) + ` — ${dayEvents.length} event${dayEvents.length === 1 ? '' : 's'}`;
+
+  list.replaceChildren();
+  panel.style.display = 'block';
+
+  if (!dayEvents.length) {
+    list.textContent = 'No events scheduled.';
+    list.style.fontSize = '12px';
+    list.style.color = '#64748B';
+    return;
+  }
+
+  dayEvents.forEach(event => {
+    const row = document.createElement('button');
+    row.type = 'button';
+
+    const title = String(event.title || 'Untitled event')
+      .replace(/^[A-Z][a-z]{2}\s+\d{1,2}\s*/, '')
+      .split('Location:')[0]
+      .split('Taught by:')[0]
+      .split('Date & Times:')[0]
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    row.textContent = `#${event.id} — ${title}`;
+
+    Object.assign(row.style, {
+      display: 'block',
+      width: '100%',
+      padding: '7px 4px',
+      border: '0',
+      borderBottom: '1px solid #DBE3EC',
+      background: 'transparent',
+      color: '#19304B',
+      textAlign: 'left',
+      fontSize: '12px',
+      lineHeight: '1.4',
+      cursor: 'pointer',
+      boxSizing: 'border-box'
+    });
+
+    row.addEventListener('click', () => {
+      openEventModal(event.url);
+    });
+
+    list.appendChild(row);
+  });
+}
+	
 
 // ========================================
 // START SESSION MANAGEMENTT
