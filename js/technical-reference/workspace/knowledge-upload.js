@@ -582,5 +582,19 @@ function showKnowledgeUploadMessage(text, type) {
             : '1px solid #BBF7D0';
 }
 
+
+window.getKnowledgeUploadData = function () {
+    return {
+        file: knowledgeUploadState.file,
+        html: knowledgeUploadState.html,
+        text: knowledgeUploadState.text,
+        title:
+            document.getElementById('knowledgeUploadTitle')?.value.trim() || '',
+        description:
+            document.getElementById('knowledgeUploadDescription')?.value.trim() || ''
+    };
+};
+
+
 window.openKnowledgeUpload = openKnowledgeUpload;
 window.openKnowledgeUploadForm = openKnowledgeUpload;
