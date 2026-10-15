@@ -673,16 +673,18 @@ uploadButton.title = 'Add a document to the Engineering Knowledge Center';
 
 uploadButton.style.marginBottom = '14px';
 
+
 uploadButton.onclick = () => {
-    if (typeof openKnowledgeUpload === 'function') {
-        openKnowledgeUpload();
+    if (typeof openKnowledgeIntakeWorkspace === 'function') {
+        openKnowledgeIntakeWorkspace();
     } else {
         console.error(
-            'Knowledge upload module has not been loaded.'
+            'EKC intake workspace controller has not been loaded.'
         );
-        alert('The article upload module is not available.');
+        alert('The article intake workspace is not available.');
     }
 };
+
 
 nav.appendChild(uploadButton);
 
