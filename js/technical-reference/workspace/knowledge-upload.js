@@ -590,18 +590,86 @@ function showKnowledgeUploadMessage(text, type) {
 }
 
 
+
+
 window.getKnowledgeUploadData = function () {
+    const titleElement =
+        document.getElementById('knowledgeUploadTitle');
+
+    const descriptionElement =
+        document.getElementById('knowledgeUploadDescription');
+
+    const html = String(knowledgeUploadState.html || '');
+    const previewElement =
+        document.getElementById('knowledgeUploadPreview');
+
+    let text = String(knowledgeUploadState.text || '').trim();
+
+    if (!text && html) {
+        const parsed = new DOMParser().parseFromString(
+            html,
+            'text/html'
+        );
+
+        text = (parsed.body.textContent || '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    if (!text && previewElement) {
+        text = (previewElement.innerText || '').trim();
+    }
+
+    // Use the entered description first.
+    let description = String(
+        descriptionElement?.value || ''
+    ).trim();
+
+    // If blank, extract the first Summary section from converted HTML.
+    if (!description && html) {
+        const parsed = new DOMParser().parseFromString(
+            html,
+            'text/html'
+        );
+
+        const headings = [
+            ...parsed.body.querySelectorAll('h1, h2, h3, h4')
+        ];
+
+        const summaryHeading = headings.find(heading =>
+            /^summary\s*$/i.test(heading.textContent.trim())
+        );
+
+        if (summaryHeading) {
+            const paragraphs = [];
+            let sibling = summaryHeading.nextElementSibling;
+
+            while (sibling && !/^H[1-4]$/.test(sibling.tagName)) {
+                if (sibling.tagName === 'P') {
+                    const paragraphText =
+                        sibling.textContent.trim();
+
+                    if (paragraphText) {
+                        paragraphs.push(paragraphText);
+                    }
+                }
+
+                sibling = sibling.nextElementSibling;
+            }
+
+            description = paragraphs.join(' ').trim();
+        }
+    }
+
     return {
         file: knowledgeUploadState.file,
-        html: knowledgeUploadState.html,
-        text: knowledgeUploadState.text,
-        title:
-            document.getElementById('knowledgeUploadTitle')?.value.trim() || '',
-        description:
-            document.getElementById('knowledgeUploadDescription')?.value.trim() || ''
+        html,
+        text,
+        title: String(titleElement?.value || '').trim(),
+        description
     };
 };
 
-
 window.openKnowledgeUpload = openKnowledgeUpload;
 window.openKnowledgeUploadForm = openKnowledgeUpload;
+
