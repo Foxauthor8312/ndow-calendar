@@ -483,8 +483,15 @@ async function handleKnowledgeUploadSelection(event) {
         }
 
         knowledgeUploadState.html = result.html || '';
-        knowledgeUploadState.text = result.html || '';
 
+        const textDocument = new DOMParser().parseFromString(
+            knowledgeUploadState.html,
+            'text/html'
+        );
+        
+        knowledgeUploadState.text =
+            textDocument.body.textContent || '';
+     
         if (!knowledgeUploadState.html.trim()) {
             preview.textContent =
                 'Conversion completed, but no HTML content was returned.';
