@@ -342,9 +342,9 @@ window.openKnowledgeUploadForm();
                 font-size:14px;
                 line-height:1.7;
             `;
-
             panel.append(heading, message);
-            content.appendChild(panel);
+        }
+
         }
 
     /*
