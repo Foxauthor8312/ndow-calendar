@@ -583,3 +583,4 @@ function showKnowledgeUploadMessage(text, type) {
 }
 
 window.openKnowledgeUpload = openKnowledgeUpload;
+window.openKnowledgeUploadForm = openKnowledgeUpload;
