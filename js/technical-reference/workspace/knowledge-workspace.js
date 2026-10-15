@@ -76,7 +76,7 @@
        
        // Render the original upload interface directly.
        // Do not route back through the workspace wrapper.
-       window.openKnowledgeUpload();
+       window.openKnowledgeUploadForm();
 
         // Move the upload interface into its own Document-stage container.
         documentPane = document.createElement('div');
