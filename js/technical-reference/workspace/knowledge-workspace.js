@@ -280,18 +280,30 @@ window.openKnowledgeUploadForm();
                 }
             };
 
-            if (stageId === 'classify') {
-              if (typeof window.renderKnowledgeMetadata === 'function') {
-                  window.renderKnowledgeMetadata(content);
-              } else {
-                  const message = document.createElement('p');
-                  message.textContent =
-                      'The EKC classification module has not loaded.';
-                  message.style.color = '#B91C1C';
-                  content.appendChild(message);
-              }
-          } else {
          
+        if (stageId === 'classify') {
+            if (typeof window.renderKnowledgeMetadata === 'function') {
+                window.renderKnowledgeMetadata(content);
+            } else {
+                const message = document.createElement('p');
+                message.textContent =
+                    'The EKC classification module has not loaded.';
+                message.style.color = '#B91C1C';
+                content.appendChild(message);
+            }
+
+        } else if (stageId === 'references') {
+            if (typeof window.renderKnowledgeRelationships === 'function') {
+                window.renderKnowledgeRelationships(content);
+            } else {
+                const message = document.createElement('p');
+                message.textContent =
+                    'The EKC References module has not loaded.';
+                message.style.color = '#B91C1C';
+                content.appendChild(message);
+            }
+
+        } else {
             const details = descriptions[stageId];
 
             const panel = document.createElement('section');
@@ -322,6 +334,7 @@ window.openKnowledgeUploadForm();
             panel.append(heading, message);
             content.appendChild(panel);
         }
+
         }
 
         // Update active-tab appearance and accessibility state.
