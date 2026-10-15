@@ -118,36 +118,62 @@
     */
 
     
+
 function getArticleText() {
 
     const uploadData =
         typeof window.getKnowledgeUploadData === 'function'
-            ? window.getKnowledgeUploadData()
+            ? window.getKnowledgeUploadData() || {}
             : {};
+
+    const titleElement =
+        document.getElementById('knowledgeUploadTitle');
+
+    const descriptionElement =
+        document.getElementById('knowledgeUploadDescription');
 
     const preview =
         document.getElementById('knowledgeUploadPreview');
 
-    const title = uploadData.title || '';
-    const description = uploadData.description || '';
+    const title = String(
+        uploadData.title || titleElement?.value || ''
+    ).trim();
 
-    // Prefer the extracted text, falling back to visible preview text.
-    const bodyText =
-        uploadData.text ||
-        preview?.innerText ||
-        '';
+    const description = String(
+        uploadData.description || descriptionElement?.value || ''
+    ).trim();
+
+    let bodyText = String(
+        uploadData.text || ''
+    );
+
+    // If the upload module supplies HTML, extract readable text.
+    if (/<[a-z][\s\S]*>/i.test(bodyText)) {
+        const parsed = new DOMParser().parseFromString(
+            bodyText,
+            'text/html'
+        );
+
+        bodyText = parsed.body.textContent || '';
+    }
+
+    // Fall back to visible preview text when extracted text is unavailable.
+    if (!bodyText.trim()) {
+        bodyText = preview?.innerText || '';
+    }
+
+    bodyText = bodyText
+        .replace(/\s+/g, ' ')
+        .trim();
 
     return {
-        title: title.trim(),
-        description: description.trim(),
-        bodyText: bodyText.trim(),
-        combined: [
-            title,
-            description,
-            bodyText
-        ].join(' ').toLowerCase()
+        title,
+        description,
+        bodyText,
+        combined: `${title} ${description} ${bodyText}`.toLowerCase()
     };
 }
+
 
 
     /*
