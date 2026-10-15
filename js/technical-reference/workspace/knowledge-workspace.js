@@ -96,23 +96,7 @@
                     font-family:'IBM Plex Sans',sans-serif;
                 "
             >
-                <header style="margin-bottom:20px;">
-                    <h1 style="
-                        margin:0 0 6px;
-                        color:#19304B;
-                        font-size:24px;
-                    ">
-                        Engineering Knowledge Center
-                    </h1>
-
-                    <p style="
-                        margin:0;
-                        color:#64748B;
-                        font-size:14px;
-                    ">
-                        Article intake and registration preparation
-                    </p>
-                </header>
+            
 
                 <nav
                     id="knowledgeIntakeTabs"
