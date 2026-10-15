@@ -418,11 +418,18 @@ async function handleKnowledgeUploadSelection(event) {
     info.textContent =
         `${file.name} · ${(file.size / (1024 * 1024)).toFixed(2)} MB`;
 
-    document.getElementById(
+   
+    const titleElement = document.getElementById(
         'knowledgeUploadTitle'
-    ).value = file.name
+    );
+
+    titleElement.value = file.name
         .replace(/\.docx$/i, '')
         .replace(/[_-]+/g, ' ');
+
+    knowledgeUploadState.title = titleElement.value.trim();
+    knowledgeUploadState.description = '';
+
 
     preview.textContent = 'Converting DOCX to HTML…';
 
@@ -589,9 +596,6 @@ function showKnowledgeUploadMessage(text, type) {
             : '1px solid #BBF7D0';
 }
 
-
-
-
 window.getKnowledgeUploadData = function () {
     const titleElement =
         document.getElementById('knowledgeUploadTitle');
@@ -621,9 +625,13 @@ window.getKnowledgeUploadData = function () {
     }
 
     // Use the entered description first.
+   
     let description = String(
-        descriptionElement?.value || ''
+        descriptionElement?.value ||
+        knowledgeUploadState.description ||
+        ''
     ).trim();
+
 
     // If blank, extract the first Summary section from converted HTML.
     if (!description && html) {
@@ -661,11 +669,16 @@ window.getKnowledgeUploadData = function () {
         }
     }
 
+
     return {
         file: knowledgeUploadState.file,
         html,
         text,
-        title: String(titleElement?.value || '').trim(),
+        title: String(
+            titleElement?.value ||
+            knowledgeUploadState.title ||
+            ''
+        ).trim(),
         description
     };
 };
