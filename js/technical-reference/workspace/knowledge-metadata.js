@@ -155,6 +155,113 @@ let knowledgeCategories = [];
             .sort((a, b) => a.name.localeCompare(b.name));
     }
 
+ 
+    /*
+    ==========================================================================
+     Classification Help Popups
+    ==========================================================================
+    */
+
+    function showClassificationInfo(title, paragraphs) {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position:fixed;inset:0;z-index:10000;
+            display:flex;align-items:center;justify-content:center;
+            padding:20px;background:rgba(15,23,42,.48);
+        `;
+
+        const dialog = document.createElement('section');
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-label', title);
+        dialog.style.cssText = `
+            width:100%;max-width:520px;max-height:80vh;overflow:auto;
+            padding:22px;background:#FFFFFF;border:1px solid #DBE3EC;
+            border-radius:10px;box-shadow:0 18px 50px rgba(15,23,42,.25);
+            font-family:'IBM Plex Sans',sans-serif;color:#334155;
+        `;
+
+        const header = document.createElement('div');
+        header.style.cssText =
+            'display:flex;align-items:flex-start;justify-content:space-between;gap:16px;';
+
+        const heading = document.createElement('h3');
+        heading.textContent = title;
+        heading.style.cssText =
+            'margin:0 0 12px;color:#19304B;font-size:18px;line-height:1.4;';
+
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.textContent = '×';
+        close.setAttribute('aria-label', 'Close information');
+        close.style.cssText =
+            'border:1px solid #DBE3EC;border-radius:5px;background:#F8FAFC;' +
+            'color:#19304B;font-size:22px;line-height:1;padding:3px 9px;cursor:pointer;';
+
+        const content = document.createElement('div');
+        paragraphs.forEach(text => {
+            const paragraph = document.createElement('p');
+            paragraph.textContent = text;
+            paragraph.style.cssText =
+                'margin:0 0 12px;font-size:14px;line-height:1.65;';
+            content.appendChild(paragraph);
+        });
+
+        const footer = document.createElement('div');
+        footer.style.cssText =
+            'display:flex;justify-content:flex-end;margin-top:18px;';
+
+        const done = document.createElement('button');
+        done.type = 'button';
+        done.textContent = 'Close';
+        done.style.cssText =
+            'padding:8px 14px;border:1px solid #19304B;border-radius:5px;' +
+            'background:#19304B;color:#FFFFFF;cursor:pointer;';
+
+        function closePopup() {
+            document.removeEventListener('keydown', onKeyDown);
+            overlay.remove();
+        }
+
+        function onKeyDown(event) {
+            if (event.key === 'Escape') closePopup();
+        }
+
+        close.addEventListener('click', closePopup);
+        done.addEventListener('click', closePopup);
+
+        overlay.addEventListener('click', event => {
+            if (event.target === overlay) closePopup();
+        });
+
+        document.addEventListener('keydown', onKeyDown);
+
+        header.append(heading, close);
+        footer.appendChild(done);
+        dialog.append(header, content, footer);
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+        close.focus();
+    }
+
+    function createInfoButton(title, paragraphs) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = 'ⓘ Info';
+        button.setAttribute('aria-label', `Information about ${title}`);
+        button.style.cssText = `
+            flex:0 0 auto;padding:5px 9px;border:1px solid #589FD6;
+            border-radius:5px;background:#FFFFFF;color:#19304B;
+            font-size:12px;cursor:pointer;white-space:nowrap;
+        `;
+
+        button.addEventListener('click', () => {
+            showClassificationInfo(title, paragraphs);
+        });
+
+        return button;
+    }
+
 
     /*
     ==========================================================================
@@ -501,13 +608,31 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
             const primaryClassification = document.createElement('div');
             primaryClassification.id = 'knowledgePrimaryClassification';
 
-            const topicHeading = document.createElement('h3');
+           const topicHeading = document.createElement('h3');
             topicHeading.textContent = 'Knowledge Topics';
             topicHeading.style.cssText = `
-                margin:24px 0 6px;
+                margin:0 0 6px;
                 color:#19304B;
                 font-size:18px;
             `;
+
+            const topicInfoButton = createInfoButton(
+                'Knowledge Topics',
+                [
+                    'Knowledge Topics are additional classifications that describe what an article covers. They do not replace the article’s primary Engineering Center and Category.',
+                    'The system suggests existing topics by comparing their names, summaries, definitions, and aliases with the article text. Suggestions are aids to review, not automatic decisions.',
+                    'Strong, Possible, and Review required indicate the strength of the keyword match. They are not guarantees that a topic belongs on the article.',
+                    'Choose Accept only when a topic genuinely applies. Choose Reject when it does not. You do not need to accept every suggestion.'
+                ]
+            );
+
+            const topicHeadingRow = document.createElement('div');
+            topicHeadingRow.style.cssText =
+                'display:flex;align-items:center;justify-content:space-between;' +
+                'gap:12px;flex-wrap:wrap;margin-top:24px;';
+
+            topicHeadingRow.append(topicHeading, topicInfoButton);
+            
 
             const topicInstructions = document.createElement('p');
             topicInstructions.textContent =
@@ -534,7 +659,7 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
                 description,
                 articleTitle,
                 primaryClassification,
-                topicHeading,
+                topicHeadingRow,
                 topicInstructions,
                 results,
                 selectionStatus
@@ -578,10 +703,22 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
             'border:1px solid #DBE3EC;border-radius:8px;' +
             'background:#F8FAFC;';
 
+        
         const heading = document.createElement('h3');
         heading.textContent = 'Primary Classification';
         heading.style.cssText =
             'margin:0 0 6px;color:#19304B;font-size:16px;';
+
+        const classificationInfoButton = createInfoButton(
+            'Engineering Centers & Primary Categories',
+            [
+                'Every article should be assigned one primary Engineering Center and one primary Category. The Category must belong to the selected Center.',
+                'Choose the Center that best represents the main system, responsibility, or subject area covered by the article. Then choose the most appropriate existing Category within that Center.',
+                'Use the article’s main purpose to guide the choice, rather than every technology or topic mentioned in the article.',
+                'Knowledge Topics are additional classifications. They do not replace the primary Center and Category. Choose from the existing options; this screen does not create or modify taxonomy records.'
+            ]
+        );
+
 
         const description = document.createElement('p');
         description.textContent =
@@ -668,8 +805,20 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
 
         populateCategories();
 
-        section.append(
+
+        const classificationHeadingRow = document.createElement('div');
+        classificationHeadingRow.style.cssText =
+            'display:flex;align-items:center;justify-content:space-between;' +
+            'gap:12px;flex-wrap:wrap;margin-bottom:6px;';
+
+        classificationHeadingRow.append(
             heading,
+            classificationInfoButton
+        );
+
+       
+        section.append(
+            classificationHeadingRow,
             description,
             centerLabel,
             centerSelect,
