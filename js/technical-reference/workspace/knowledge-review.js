@@ -345,7 +345,6 @@
             }
 
             registerButton.disabled = true;
-            Object.values(statusButtons).forEach(button => { button.disabled = true; });
             registerButton.textContent = 'Registering…';
             registrationStatus.textContent = 'Registering article as Draft…';
 
@@ -402,14 +401,13 @@
                     error.message || 'Registration failed. Please try again.';
                 registrationStatus.style.color = '#B91C1C';
                 registerButton.disabled = false;
-                Object.values(statusButtons).forEach(button => { button.disabled = false; });
                 registerButton.textContent = 'Register Article';
             }
         });
 
         const note = createElement(
             'p',
-            'The selected status is saved by the backend. Registration uses existing EKC taxonomy and relationships.',
+            'Registration saves the article as Draft. Use the status toggle to activate it when it is ready for active EKC search.',
             container
         );
         note.style.cssText =
