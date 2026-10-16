@@ -248,7 +248,9 @@
                 registrationStatus.style.color = '#B45309';
                 return;
             }
-            const token = window.localStorage.getItem('token') || window.localStorage.getItem('authToken') || '';
+            let token = '';
+            if (typeof authToken !== 'undefined' && authToken) token = authToken;
+            token = token || window.localStorage.getItem('token') || window.localStorage.getItem('authToken') || '';
             if (!token) {
                 registrationStatus.textContent = 'Your login token was not found. Please sign in again.';
                 registrationStatus.style.color = '#B91C1C';
