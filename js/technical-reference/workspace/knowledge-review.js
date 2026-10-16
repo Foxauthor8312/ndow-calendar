@@ -231,9 +231,8 @@
 
         const note = createElement(
             'p',
-            'This screen is review-only. It does not register or publish ' +
-            'the article. Center and category IDs must be resolved from ' +
-            'the existing EKC taxonomy before registration is enabled.',
+            'Complete the final review before registering this article as active EKC content. ' +
+            'Registration will use the existing EKC taxonomy and relationships.',
             container
         );
 
