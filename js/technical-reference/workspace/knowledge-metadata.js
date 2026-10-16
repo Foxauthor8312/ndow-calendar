@@ -1063,18 +1063,32 @@ const classificationInfoButton = createInfoButton(
     window.renderKnowledgeMetadata = renderKnowledgeMetadata;
 
   
-    window.getKnowledgeMetadataSelection = function () {
-        return {
-            topicIds: [...selectedTopicIds],
-            rejectedTopicIds: [...rejectedTopicIds],
-            engineering_center_id: selectedCenterId
-                ? Number(selectedCenterId)
-                : null,
-            category_id: selectedCategoryId
-                ? Number(selectedCategoryId)
-                : null
-        };
+ 
+window.getKnowledgeMetadataSelection = function () {
+    const selectedCenter = knowledgeCenters.find(
+        center => String(center.id) === String(selectedCenterId)
+    );
+
+    const selectedCategory = knowledgeCategories.find(
+        category =>
+            String(category.id) === String(selectedCategoryId) &&
+            String(category.center_id) === String(selectedCenterId)
+    );
+
+    return {
+        topicIds: [...selectedTopicIds],
+        rejectedTopicIds: [...rejectedTopicIds],
+        engineering_center_id: selectedCenterId
+            ? Number(selectedCenterId)
+            : null,
+        engineering_center_name: selectedCenter?.name || null,
+        category_id: selectedCategoryId
+            ? Number(selectedCategoryId)
+            : null,
+        category_name: selectedCategory?.name || null
     };
+};
+
 
 
     window.resetKnowledgeMetadataSelection = function () {
