@@ -229,6 +229,66 @@
                 `margin:6px 0;color:${check.passed ? '#166534' : '#92400E'};`;
         });
 
+        const registerButton = createElement('button', 'Register Article', container);
+        registerButton.type = 'button';
+        registerButton.style.cssText = 'margin-top:12px;padding:10px 18px;border:0;border-radius:6px;background:#19304B;color:#FFFFFF;font-weight:600;cursor:pointer;';
+        const registrationStatus = createElement('p', '', container);
+        registrationStatus.setAttribute('role', 'status');
+        registrationStatus.style.cssText = 'margin-top:10px;font-size:13px;line-height:1.5;';
+        registerButton.addEventListener('click', async () => {
+            const missing = [];
+            if (!String(upload.title || '').trim()) missing.push('title');
+            if (!String(upload.description || '').trim()) missing.push('summary');
+            if (!upload.file) missing.push('DOCX source file');
+            if (!hasHtml && !hasBody) missing.push('converted content');
+            if (!classifications.engineering_center_id) missing.push('Engineering Center');
+            if (!classifications.category_id) missing.push('Category');
+            if (missing.length) {
+                registrationStatus.textContent = 'Cannot register yet. Please provide: ' + missing.join(', ') + '.';
+                registrationStatus.style.color = '#B45309';
+                return;
+            }
+            const token = window.localStorage.getItem('token') || window.localStorage.getItem('authToken') || '';
+            if (!token) {
+                registrationStatus.textContent = 'Your login token was not found. Please sign in again.';
+                registrationStatus.style.color = '#B91C1C';
+                return;
+            }
+            const slug = String(upload.title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70) || 'article';
+            const documentKey = 'ekc-' + slug + '-' + Date.now().toString(36);
+            registerButton.disabled = true;
+            registerButton.textContent = 'Registering…';
+            registrationStatus.textContent = 'Registering article…';
+            try {
+                const response = await fetch('https://ndow-calendar-server.onrender.com/api/knowledge/document', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+                    body: JSON.stringify({
+                        title: String(upload.title).trim(),
+                        description: String(upload.description).trim(),
+                        document_key: documentKey,
+                        document_type: 'Engineering Knowledge Article',
+                        version: '1.0',
+                        body: String(upload.text || '').trim(),
+                        body_html: String(upload.html || '').trim(),
+                        engineering_center_id: classifications.engineering_center_id,
+                        category_id: classifications.category_id,
+                        related_documents: acceptedReferences.map(item => Number(item.id)).filter(id => Number.isInteger(id) && id > 0)
+                    })
+                });
+                const result = await response.json();
+                if (!response.ok || !result.success) throw new Error(result.error || 'Registration failed (' + response.status + ').');
+                registrationStatus.textContent = 'Registered as active EKC content. Document key: ' + (result.document?.document_key || documentKey);
+                registrationStatus.style.color = '#166534';
+                registerButton.textContent = 'Article Registered';
+            } catch (error) {
+                registrationStatus.textContent = error.message || 'Registration failed. Please try again.';
+                registrationStatus.style.color = '#B91C1C';
+                registerButton.disabled = false;
+                registerButton.textContent = 'Register Article';
+            }
+        });
+
         const note = createElement(
             'p',
             'Complete the final review before registering this article as active EKC content. ' +
