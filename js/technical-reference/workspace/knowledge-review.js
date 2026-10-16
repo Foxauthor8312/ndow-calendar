@@ -95,8 +95,8 @@
 
         createElement(
             'p',
-            'Review the article and your selections before registration. ' +
-            'New articles must remain Draft and inactive until approved.',
+            'Review the article, summary, classification, and accepted references. ' +
+            'Registering adds the reviewed article to active EKC content.',
             container
         );
 
