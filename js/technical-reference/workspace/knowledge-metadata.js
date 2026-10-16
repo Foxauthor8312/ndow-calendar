@@ -561,6 +561,7 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
         try {
 
             await loadKnowledgeMetadataTopics();
+            preparePrimaryClassification();
 
             const article = getArticleText();
             lastSuggestions = findKnowledgeMetadataMatches(article);
