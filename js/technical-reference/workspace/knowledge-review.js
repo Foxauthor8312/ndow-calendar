@@ -8,7 +8,7 @@
 
  Purpose:
     Review article metadata, classifications, and references before
-    registration. Registration is handled separately.
+    registering the article as active EKC content.
 ==============================================================================
 */
 
@@ -201,6 +201,10 @@
                 passed: Boolean(String(upload.title || '').trim())
             },
             {
+                label: 'Required article summary provided',
+                passed: Boolean(String(upload.description || '').trim())
+            },
+            {
                 label: 'DOCX source selected',
                 passed: Boolean(upload.file)
             },
@@ -248,9 +252,11 @@
                 registrationStatus.style.color = '#B45309';
                 return;
             }
-            let token = '';
-            if (typeof authToken !== 'undefined' && authToken) token = authToken;
-            token = token || window.localStorage.getItem('token') || window.localStorage.getItem('authToken') || '';
+            const token =
+                window.authToken ||
+                window.localStorage.getItem('token') ||
+                window.localStorage.getItem('authToken') ||
+                '';
             if (!token) {
                 registrationStatus.textContent = 'Your login token was not found. Please sign in again.';
                 registrationStatus.style.color = '#B91C1C';
