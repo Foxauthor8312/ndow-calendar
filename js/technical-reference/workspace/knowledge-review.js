@@ -239,6 +239,9 @@
         const registrationStatus = createElement('p', '', container);
         registrationStatus.setAttribute('role', 'status');
         registrationStatus.style.cssText = 'margin-top:10px;font-size:13px;line-height:1.5;';
+        const slug = String(upload.title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70) || 'article';
+        const documentKey = 'ekc-' + slug + '-' + Date.now().toString(36);
+
         registerButton.addEventListener('click', async () => {
             const missing = [];
             if (!String(upload.title || '').trim()) missing.push('title');
@@ -262,8 +265,6 @@
                 registrationStatus.style.color = '#B91C1C';
                 return;
             }
-            const slug = String(upload.title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70) || 'article';
-            const documentKey = 'ekc-' + slug + '-' + Date.now().toString(36);
             registerButton.disabled = true;
             registerButton.textContent = 'Registering…';
             registrationStatus.textContent = 'Registering article…';
