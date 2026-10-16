@@ -193,25 +193,41 @@
         statusLabel.style.cssText =
             'display:block;margin-bottom:6px;color:#19304B;font-weight:600;';
 
-        const statusSelect = createElement('select', undefined, statusSection);
-        statusSelect.setAttribute('aria-label', 'Status when registered');
-        statusSelect.style.cssText =
-            'padding:9px 12px;border:1px solid #DBE3EC;border-radius:6px;' +
-            'background:#FFFFFF;color:#19304B;font:inherit;min-width:180px;';
+        const statusToggle = createElement('div', undefined, statusSection);
+        statusToggle.setAttribute('role', 'group');
+        statusToggle.setAttribute('aria-label', 'Status when registered');
+        statusToggle.style.cssText = 'display:flex;gap:0;max-width:320px;';
+
+        let selectedStatus = 'draft';
+        const statusButtons = {};
+
+        function selectStatus(nextStatus) {
+            selectedStatus = nextStatus;
+            Object.entries(statusButtons).forEach(([status, button]) => {
+                const selected = status === selectedStatus;
+                button.setAttribute('aria-pressed', String(selected));
+                button.style.background = selected ? '#19304B' : '#FFFFFF';
+                button.style.color = selected ? '#FFFFFF' : '#19304B';
+                button.style.borderColor = '#19304B';
+            });
+        }
 
         [
             { value: 'draft', label: 'Draft' },
             { value: 'active', label: 'Active' }
-        ].forEach(optionData => {
-            const option = createElement(
-                'option',
-                optionData.label,
-                statusSelect
-            );
-            option.value = optionData.value;
+        ].forEach((optionData, index) => {
+            const button = createElement('button', optionData.label, statusToggle);
+            button.type = 'button';
+            button.setAttribute('aria-pressed', 'false');
+            button.style.cssText =
+                'padding:9px 18px;border:1px solid #19304B;' +
+                (index === 0 ? 'border-radius:6px 0 0 6px;' : 'border-radius:0 6px 6px 0;margin-left:-1px;') +
+                'background:#FFFFFF;color:#19304B;font:inherit;cursor:pointer;';
+            button.addEventListener('click', () => selectStatus(optionData.value));
+            statusButtons[optionData.value] = button;
         });
 
-        statusSelect.value = 'draft';
+        selectStatus('draft');
 
         const readinessSection = addSection(container, 'Readiness Checks');
         const checks = [
@@ -302,9 +318,8 @@
                 return;
             }
 
-            const selectedStatus = statusSelect.value;
             registerButton.disabled = true;
-            statusSelect.disabled = true;
+            Object.values(statusButtons).forEach(button => { button.disabled = true; });
             registerButton.textContent = 'Registering…';
             registrationStatus.textContent =
                 `Registering article as ${selectedStatus === 'draft' ? 'Draft' : 'Active'}…`;
@@ -359,7 +374,7 @@
                     error.message || 'Registration failed. Please try again.';
                 registrationStatus.style.color = '#B91C1C';
                 registerButton.disabled = false;
-                statusSelect.disabled = false;
+                Object.values(statusButtons).forEach(button => { button.disabled = false; });
                 registerButton.textContent = 'Register Article';
             }
         });
