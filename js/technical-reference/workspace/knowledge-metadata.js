@@ -30,10 +30,16 @@
         'https://ndow-calendar-server.onrender.com/api';
 
     let topics = [];
-    let selectedTopicIds = new Set();
-    let rejectedTopicIds = new Set();
-    let lastSuggestions = [];
-    let loading = false;
+let selectedTopicIds = new Set();
+let rejectedTopicIds = new Set();
+let lastSuggestions = [];
+let loading = false;
+
+let selectedCenterId = '';
+let selectedCategoryId = '';
+
+let knowledgeCenters = [];
+let knowledgeCategories = [];
 
     /*
     ==========================================================================
@@ -110,6 +116,45 @@
             loading = false;
         }
     }
+
+ 
+    /*
+    ==========================================================================
+     Prepare Existing Center and Category Choices
+    ==========================================================================
+    */
+
+    function preparePrimaryClassification() {
+        const centersById = new Map();
+        const categoriesById = new Map();
+
+        topics.forEach(topic => {
+            const category = topic.knowledge_categories;
+            const center = category?.knowledge_centers;
+
+            if (category && category.active === true) {
+                categoriesById.set(String(category.id), {
+                    id: category.id,
+                    name: category.name,
+                    center_id: category.center_id
+                });
+            }
+
+            if (center && center.active === true) {
+                centersById.set(String(center.id), {
+                    id: center.id,
+                    name: center.name
+                });
+            }
+        });
+
+        knowledgeCenters = [...centersById.values()]
+            .sort((a, b) => a.name.localeCompare(b.name));
+
+        knowledgeCategories = [...categoriesById.values()]
+            .sort((a, b) => a.name.localeCompare(b.name));
+    }
+
 
     /*
     ==========================================================================
@@ -467,6 +512,8 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
             );
 
             container.appendChild(panel);
+            preparePrimaryClassification();
+            renderPrimaryClassification(panel);
 
             renderSuggestions(results, selectionStatus);
 
@@ -485,6 +532,124 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
         }
     }
 
+
+    /*
+    ==========================================================================
+     Render Primary Center and Category Selection
+    ==========================================================================
+    */
+
+    function renderPrimaryClassification(container) {
+        const section = document.createElement('section');
+
+        section.style.cssText =
+            'margin:16px 0;padding:16px;' +
+            'border:1px solid #DBE3EC;border-radius:8px;' +
+            'background:#F8FAFC;';
+
+        const heading = document.createElement('h3');
+        heading.textContent = 'Primary Classification';
+        heading.style.cssText =
+            'margin:0 0 6px;color:#19304B;font-size:16px;';
+
+        const description = document.createElement('p');
+        description.textContent =
+            'Choose the article’s primary Engineering Center and Category. ' +
+            'Accepted topics remain additional classifications.';
+        description.style.cssText =
+            'margin:0 0 14px;color:#64748B;font-size:13px;line-height:1.5;';
+
+        const centerLabel = document.createElement('label');
+        centerLabel.textContent = 'Engineering Center';
+        centerLabel.style.cssText =
+            'display:block;margin:10px 0 5px;font-weight:600;color:#334155;';
+
+        const centerSelect = document.createElement('select');
+        centerSelect.style.cssText =
+            'width:100%;max-width:520px;padding:10px;' +
+            'border:1px solid #DBE3EC;border-radius:5px;background:white;';
+
+        const centerPlaceholder = new Option(
+            'Select an Engineering Center',
+            ''
+        );
+        centerSelect.add(centerPlaceholder);
+
+        knowledgeCenters.forEach(center => {
+            centerSelect.add(new Option(center.name, String(center.id)));
+        });
+
+        centerSelect.value = selectedCenterId;
+
+        const categoryLabel = document.createElement('label');
+        categoryLabel.textContent = 'Primary Category';
+        categoryLabel.style.cssText =
+            'display:block;margin:14px 0 5px;font-weight:600;color:#334155;';
+
+        const categorySelect = document.createElement('select');
+        categorySelect.style.cssText = centerSelect.style.cssText;
+
+        function populateCategories() {
+            categorySelect.replaceChildren();
+
+            categorySelect.add(new Option(
+                selectedCenterId
+                    ? 'Select a Category'
+                    : 'Select a Center first',
+                ''
+            ));
+
+            categorySelect.disabled = !selectedCenterId;
+
+            knowledgeCategories
+                .filter(category =>
+                    String(category.center_id) === String(selectedCenterId)
+                )
+                .forEach(category => {
+                    categorySelect.add(new Option(
+                        category.name,
+                        String(category.id)
+                    ));
+                });
+
+            const validCategory = knowledgeCategories.some(category =>
+                String(category.id) === String(selectedCategoryId) &&
+                String(category.center_id) === String(selectedCenterId)
+            );
+
+            if (validCategory) {
+                categorySelect.value = selectedCategoryId;
+            } else {
+                selectedCategoryId = '';
+                categorySelect.value = '';
+            }
+        }
+
+        centerSelect.addEventListener('change', () => {
+            selectedCenterId = centerSelect.value;
+            selectedCategoryId = '';
+            populateCategories();
+        });
+
+        categorySelect.addEventListener('change', () => {
+            selectedCategoryId = categorySelect.value;
+        });
+
+        populateCategories();
+
+        section.append(
+            heading,
+            description,
+            centerLabel,
+            centerSelect,
+            categoryLabel,
+            categorySelect
+        );
+
+        container.appendChild(section);
+    }
+
+ 
     /*
     ==========================================================================
      Render Suggestion Cards
@@ -696,18 +861,29 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
 
     window.renderKnowledgeMetadata = renderKnowledgeMetadata;
 
+  
     window.getKnowledgeMetadataSelection = function () {
         return {
             topicIds: [...selectedTopicIds],
-            rejectedTopicIds: [...rejectedTopicIds]
+            rejectedTopicIds: [...rejectedTopicIds],
+            engineering_center_id: selectedCenterId
+                ? Number(selectedCenterId)
+                : null,
+            category_id: selectedCategoryId
+                ? Number(selectedCategoryId)
+                : null
         };
     };
+
 
     window.resetKnowledgeMetadataSelection = function () {
         selectedTopicIds.clear();
         rejectedTopicIds.clear();
         lastSuggestions = [];
+        selectedCenterId = '';
+        selectedCategoryId = '';
     };
+
 
 })();
 
