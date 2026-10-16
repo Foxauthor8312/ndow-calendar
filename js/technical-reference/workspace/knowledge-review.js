@@ -379,6 +379,116 @@
             }
         });
 
+        const draftSection = addSection(container, 'Manage Saved Drafts');
+        createElement(
+            'p',
+            'Load previously saved drafts here. Activating a draft makes it available in active EKC search.',
+            draftSection
+        );
+        const loadDraftsButton = createElement('button', 'Load Saved Drafts', draftSection);
+        loadDraftsButton.type = 'button';
+        loadDraftsButton.style.cssText =
+            'padding:8px 12px;border:1px solid #19304B;border-radius:6px;' +
+            'background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
+        const draftList = createElement('div', undefined, draftSection);
+        draftList.style.cssText = 'margin-top:12px;';
+
+        function getAuthToken() {
+            return window.authToken ||
+                window.localStorage.getItem('token') ||
+                window.localStorage.getItem('authToken') ||
+                '';
+        }
+
+        async function loadSavedDrafts() {
+            const token = getAuthToken();
+            if (!token) {
+                draftList.textContent = 'Your login token was not found. Please sign in again.';
+                return;
+            }
+
+            loadDraftsButton.disabled = true;
+            loadDraftsButton.textContent = 'Loading…';
+            draftList.replaceChildren();
+
+            try {
+                const response = await fetch(
+                    'https://ndow-calendar-server.onrender.com/api/knowledge/documents?status=draft&limit=100',
+                    { headers: { Authorization: 'Bearer ' + token } }
+                );
+                const result = await response.json();
+                if (!response.ok || !result.success) {
+                    throw new Error(result.error || 'Unable to load saved drafts.');
+                }
+
+                if (!result.documents || result.documents.length === 0) {
+                    createElement('p', 'No saved drafts found.', draftList);
+                    return;
+                }
+
+                result.documents.forEach(documentRecord => {
+                    const row = createElement('div', undefined, draftList);
+                    row.style.cssText =
+                        'display:flex;align-items:center;justify-content:space-between;' +
+                        'gap:12px;padding:10px 0;border-bottom:1px solid #DBE3EC;';
+
+                    const details = createElement('div', undefined, row);
+                    details.style.cssText = 'min-width:0;flex:1;';
+                    createElement('strong', documentRecord.title || documentRecord.document_key, details);
+                    createElement('p', documentRecord.document_key, details).style.cssText =
+                        'margin:4px 0 0;color:#64748B;font-size:12px;overflow-wrap:anywhere;';
+
+                    const activateButton = createElement('button', 'Activate', row);
+                    activateButton.type = 'button';
+                    activateButton.style.cssText =
+                        'padding:7px 10px;border:0;border-radius:6px;' +
+                        'background:#19304B;color:#FFFFFF;font-weight:600;cursor:pointer;';
+
+                    activateButton.addEventListener('click', async () => {
+                        activateButton.disabled = true;
+                        activateButton.textContent = 'Activating…';
+                        try {
+                            const activationResponse = await fetch(
+                                'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
+                                    encodeURIComponent(documentRecord.document_key) + '/status',
+                                {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        Authorization: 'Bearer ' + token
+                                    },
+                                    body: JSON.stringify({ status: 'active' })
+                                }
+                            );
+                            const activationResult = await activationResponse.json();
+                            if (!activationResponse.ok || !activationResult.success) {
+                                throw new Error(
+                                    activationResult.error || 'Unable to activate this draft.'
+                                );
+                            }
+                            row.remove();
+                            if (!draftList.querySelector('div')) {
+                                draftList.textContent = 'No saved drafts found.';
+                            }
+                        } catch (error) {
+                            activateButton.disabled = false;
+                            activateButton.textContent = 'Activate';
+                            registrationStatus.textContent =
+                                error.message || 'Unable to activate this draft.';
+                            registrationStatus.style.color = '#B91C1C';
+                        }
+                    });
+                });
+            } catch (error) {
+                draftList.textContent = error.message || 'Unable to load saved drafts.';
+            } finally {
+                loadDraftsButton.disabled = false;
+                loadDraftsButton.textContent = 'Refresh Saved Drafts';
+            }
+        }
+
+        loadDraftsButton.addEventListener('click', loadSavedDrafts);
+
         const note = createElement(
             'p',
             'The selected status is saved by the backend. Registration uses existing EKC taxonomy and relationships.',
