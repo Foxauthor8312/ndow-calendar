@@ -273,6 +273,7 @@
                         body_html: String(upload.html || '').trim(),
                         engineering_center_id: classifications.engineering_center_id,
                         category_id: classifications.category_id,
+                        topic_ids: Array.isArray(classifications.topicIds) ? classifications.topicIds : [],
                         related_documents: acceptedReferences.map(item => Number(item.id)).filter(id => Number.isInteger(id) && id > 0)
                     })
                 });
