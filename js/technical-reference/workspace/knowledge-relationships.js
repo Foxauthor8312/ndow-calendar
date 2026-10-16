@@ -199,10 +199,21 @@
         const heading = window.document.createElement('h3');
         heading.textContent = 'References and Relationships';
 
-        const introduction = window.document.createElement('p');
-        introduction.textContent =
-            'Review existing active EKC documents that may be relevant ' +
-            'to this article. Accept or reject each suggestion.';
+        
+const introduction = window.document.createElement('p');
+introduction.textContent =
+    'References connect this article to other documents in the ' +
+    'Engineering Knowledge Center that provide useful background, ' +
+    'supporting information, related procedures, or additional ' +
+    'technical details. Review each suggested document before deciding ' +
+    'whether it belongs with this article. Accept a reference when it ' +
+    'helps readers understand, verify, or carry out something discussed ' +
+    'in the article. Reject it when it is unrelated, only shares a few ' +
+    'keywords, or offers no meaningful help to the reader. You do not ' +
+    'need to accept every suggestion. Choose references that add value ' +
+    'and help readers find the right information. References supplement ' +
+    'this article; they do not replace its required content.';
+
 
         const results = window.document.createElement('div');
         results.textContent = 'Searching existing documents…';
