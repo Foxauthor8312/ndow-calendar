@@ -377,6 +377,20 @@ function openKnowledgeUpload() {
 
     fileInput.addEventListener('change', handleKnowledgeUploadSelection);
 
+    // Keep edits in module state because the workspace detaches the
+    // document pane while the user visits Classification, References, and Review.
+    // document.getElementById() cannot find controls inside that detached pane.
+    const titleField = document.getElementById('knowledgeUploadTitle');
+    const descriptionField = document.getElementById('knowledgeUploadDescription');
+
+    titleField?.addEventListener('input', () => {
+        knowledgeUploadState.title = titleField.value;
+    });
+
+    descriptionField?.addEventListener('input', () => {
+        knowledgeUploadState.description = descriptionField.value;
+    });
+
     window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
