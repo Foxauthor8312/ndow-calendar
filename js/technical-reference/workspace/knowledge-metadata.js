@@ -616,15 +616,24 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
                 font-size:18px;
             `;
 
-            const topicInfoButton = createInfoButton(
-                'Knowledge Topics',
-                [
-                    'Knowledge Topics are additional classifications that describe what an article covers. They do not replace the article’s primary Engineering Center and Category.',
-                    'The system suggests existing topics by comparing their names, summaries, definitions, and aliases with the article text. Suggestions are aids to review, not automatic decisions.',
-                    'Strong, Possible, and Review required indicate the strength of the keyword match. They are not guarantees that a topic belongs on the article.',
-                    'Choose Accept only when a topic genuinely applies. Choose Reject when it does not. You do not need to accept every suggestion.'
-                ]
-            );
+           
+const topicInfoButton = createInfoButton(
+    'What Are Knowledge Topics?',
+    [
+        'Knowledge Topics are additional labels that help people find an article when searching for a particular subject. They supplement the article’s primary Engineering Center and Category; they do not replace them.',
+
+        'How to review suggestions: Strong means the article contains several matching words or phrases. Check that the topic actually fits. Possible means some wording matches. Read the topic description and decide whether it applies. Review required means the match is limited. Accept it only if the article genuinely covers that subject.',
+
+        'Accept suggestion: Select this when the topic accurately describes something the article explains or covers.',
+
+        'Reject: Select this when the topic is unrelated, misleading, or only happens to share a few words with the article.',
+
+        'You do not need to accept every suggestion. Choose only topics that would help someone find this article for the right reason.',
+
+        'Topic suggestions are based on text matching. They are recommendations for your review, not automatic classifications. Your selections on this screen are temporary until the workflow saves them.'
+    ]
+);
+
 
             const topicHeadingRow = document.createElement('div');
             topicHeadingRow.style.cssText =
@@ -709,15 +718,27 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
         heading.style.cssText =
             'margin:0 0 6px;color:#19304B;font-size:16px;';
 
-        const classificationInfoButton = createInfoButton(
-            'Engineering Centers & Primary Categories',
-            [
-                'Every article should be assigned one primary Engineering Center and one primary Category. The Category must belong to the selected Center.',
-                'Choose the Center that best represents the main system, responsibility, or subject area covered by the article. Then choose the most appropriate existing Category within that Center.',
-                'Use the article’s main purpose to guide the choice, rather than every technology or topic mentioned in the article.',
-                'Knowledge Topics are additional classifications. They do not replace the primary Center and Category. Choose from the existing options; this screen does not create or modify taxonomy records.'
-            ]
-        );
+ 
+const classificationInfoButton = createInfoButton(
+    'Choosing the Right Engineering Center and Category',
+    [
+        'Every article needs one primary home in the Knowledge Center. Think of the Engineering Center as the main subject area and the Category as the specific subject within that area.',
+
+        'Foundations — The basic knowledge. Choose this when the article explains standards, terminology, design principles, coding practices, accessibility, or other rules and concepts that guide how the system is built. Ask yourself: Does this explain a standard, principle, or fundamental concept?',
+
+        'Architecture — How the system is designed. Choose this when the article explains how the system is structured, how its parts connect, how the database or server is organized, or how security and technical design decisions work. Ask yourself: Does this explain how the system is put together?',
+
+        'Portal Systems — How the application works. Choose this when the article explains a portal feature, a user-facing screen, a module, a workflow, or how volunteers, instructors, and administrators use the application. Ask yourself: Does this explain what the application does or how someone uses it?',
+
+        'Engineering & Operations — How the system is maintained. Choose this when the article explains configuration, deployment, updates, troubleshooting, diagnostics, maintenance, or procedures for keeping the system running. Ask yourself: Does this explain how to build, deploy, fix, or maintain the system?',
+
+        'Choosing the Primary Category: After selecting an Engineering Center, choose the existing Category that most closely matches the article’s main purpose. Only categories belonging to the selected Center will be available.',
+
+        'Important: Choose the home that best represents the article as a whole—not every subject mentioned in it. Use Knowledge Topics to describe additional subjects. This screen does not create new Centers or Categories.'
+    ]
+);
+
+
 
 
         const description = document.createElement('p');
