@@ -468,8 +468,9 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
                 background:#FFFFFF;
             `;
 
+            
             const heading = document.createElement('h2');
-            heading.textContent = 'Classify Article';
+            heading.textContent = 'Knowledge Topics & Classification';
             heading.style.cssText = `
                 margin:0 0 8px;
                 color:#19304B;
@@ -478,8 +479,10 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
 
             const description = document.createElement('p');
             description.textContent =
-                'Review suggested matches from the existing EKC taxonomy. ' +
-                'Suggestions are not saved automatically.';
+                'Work through the steps in order. First choose where the ' +
+                'article belongs, then review the Knowledge Topics that ' +
+                'describe its content. The system suggests options, but ' +
+                'you make the final selections.';
             description.style.cssText = `
                 margin:0 0 18px;
                 color:#64748B;
@@ -495,6 +498,29 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
                 ? `Article: ${article.title}`
                 : 'Enter an article title on the Document tab before classifying.';
 
+            const primaryClassification = document.createElement('div');
+            primaryClassification.id = 'knowledgePrimaryClassification';
+
+            const topicHeading = document.createElement('h3');
+            topicHeading.textContent = 'Knowledge Topics';
+            topicHeading.style.cssText = `
+                margin:24px 0 6px;
+                color:#19304B;
+                font-size:18px;
+            `;
+
+            const topicInstructions = document.createElement('p');
+            topicInstructions.textContent =
+                'Review the suggested topics below. Accept only topics ' +
+                'that genuinely describe this article. Reject suggestions ' +
+                'that do not apply; you do not need to accept them all.';
+            topicInstructions.style.cssText = `
+                margin:0 0 14px;
+                color:#64748B;
+                font-size:13px;
+                line-height:1.6;
+            `;
+
             const results = document.createElement('div');
             results.id = 'knowledgeMetadataResults';
 
@@ -507,15 +533,20 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
                 heading,
                 description,
                 articleTitle,
+                primaryClassification,
+                topicHeading,
+                topicInstructions,
                 results,
                 selectionStatus
             );
 
             container.appendChild(panel);
+
             preparePrimaryClassification();
-            renderPrimaryClassification(panel);
+            renderPrimaryClassification(primaryClassification);
 
             renderSuggestions(results, selectionStatus);
+
 
         } catch (error) {
 
