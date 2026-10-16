@@ -565,6 +565,34 @@ function findRelevantExcerpt(article, topic, maxLength = 200) {
             const article = getArticleText();
             lastSuggestions = findKnowledgeMetadataMatches(article);
 
+            // Suggest the primary Center/Category from the strongest matching
+            // existing topic. This never creates taxonomy records and remains editable.
+            if (!selectedCenterId && lastSuggestions.length) {
+                const bestMatch = lastSuggestions[0];
+                const suggestedCategory = bestMatch.category;
+                const suggestedCenterId = suggestedCategory?.center_id;
+                const suggestedCenter = knowledgeCenters.find(center =>
+                    String(center.id) === String(suggestedCenterId)
+                );
+
+                if (
+                    suggestedCategory &&
+                    suggestedCenter &&
+                    bestMatch.score >= 10
+                ) {
+                    selectedCenterId = String(suggestedCenter.id);
+                    selectedCategoryId = String(suggestedCategory.id);
+                    window.knowledgePrimaryClassificationSuggestion = {
+                        engineering_center_id: Number(suggestedCenter.id),
+                        engineering_center_name: suggestedCenter.name,
+                        category_id: Number(suggestedCategory.id),
+                        category_name: suggestedCategory.name,
+                        based_on_topic: bestMatch.topic?.topic || '',
+                        score: bestMatch.score
+                    };
+                }
+            }
+
             container.replaceChildren();
 
             const panel = document.createElement('section');
@@ -742,9 +770,21 @@ const classificationInfoButton = createInfoButton(
 
 
         const description = document.createElement('p');
+        const suggestion = window.knowledgePrimaryClassificationSuggestion;
+        if (suggestion) {
+            const suggestedBadge = document.createElement('span');
+            suggestedBadge.textContent = 'Suggested';
+            suggestedBadge.style.cssText =
+                'display:inline-block;margin:0 0 8px;padding:3px 8px;' +
+                'border-radius:4px;background:#FFF0E2;color:#98521C;' +
+                'font-size:11px;font-weight:700;letter-spacing:.03em;';
+            section.appendChild(suggestedBadge);
+        }
+
         description.textContent =
-            'Choose the article’s primary Engineering Center and Category. ' +
-            'Accepted topics remain additional classifications.';
+            suggestion
+                ? 'Suggested from the strongest matching existing Knowledge Topic. Review both values; you can change either selection. Accepted topics remain additional classifications.'
+                : 'Choose the article’s primary Engineering Center and Category. Accepted topics remain additional classifications.';
         description.style.cssText =
             'margin:0 0 14px;color:#64748B;font-size:13px;line-height:1.5;';
 
@@ -1097,6 +1137,7 @@ window.getKnowledgeMetadataSelection = function () {
         lastSuggestions = [];
         selectedCenterId = '';
         selectedCategoryId = '';
+        window.knowledgePrimaryClassificationSuggestion = null;
     };
 
 
