@@ -297,7 +297,7 @@ function openKnowledgeUpload() {
                 <textarea
                     id="knowledgeUploadDescription"
                     rows="4"
-                    placeholder="Describe the purpose and scope of this article."
+                    placeholder="Required: 2–4 sentences. A proposed summary may be filled from the document; review and edit it before continuing."
                     style="
                         width:100%;
                         box-sizing:border-box;
@@ -380,6 +380,57 @@ function openKnowledgeUpload() {
     window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
+
+
+/*
+==============================================================================
+ Summary Helpers
+------------------------------------------------------------------------------
+ Prefer an authored Summary section. If absent, create a transparent extractive
+ draft from the document text; the author must review/edit it before saving.
+==============================================================================
+*/
+function extractKnowledgeSummary(html, text) {
+    if (html) {
+        const parsed = new DOMParser().parseFromString(html, 'text/html');
+        const headings = [...parsed.body.querySelectorAll('h1,h2,h3,h4,strong,b')];
+        const heading = headings.find(node =>
+            /^summary\s*:?$/i.test((node.textContent || '').trim())
+        );
+
+        if (heading) {
+            const chunks = [];
+            let node = heading.closest('p,div,section') || heading;
+            node = node.nextElementSibling;
+            while (node && !/^H[1-4]$/.test(node.tagName)) {
+                const value = (node.textContent || '').replace(/\s+/g, ' ').trim();
+                if (value) chunks.push(value);
+                node = node.nextElementSibling;
+            }
+            const authored = chunks.join(' ').trim();
+            if (authored) return { text: authored, source: 'document' };
+        }
+    }
+
+    const cleaned = String(text || '')
+        .replace(/Proposed document key:\s*[^.\n]+/gi, '')
+        .replace(/Version\s+\d+(?:\.\d+)*\s*[|•-]?/gi, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    const sentences = cleaned.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
+    const selected = sentences
+        .map(sentence => sentence.trim())
+        .filter(sentence =>
+            sentence.length >= 45 &&
+            !/^(summary|purpose|scope|prerequisites|main content|references|revision notes)\s*:?$/i.test(sentence) &&
+            !/^\[.*\]$/.test(sentence)
+        )
+        .slice(0, 3);
+    return {
+        text: selected.join(' '),
+        source: selected.length ? 'extractive-draft' : 'none'
+    };
+}
 
 async function handleKnowledgeUploadSelection(event) {
     const file = event.target.files?.[0];
@@ -498,6 +549,33 @@ async function handleKnowledgeUploadSelection(event) {
         
         knowledgeUploadState.text =
             textDocument.body.textContent || '';
+
+        // Prefill the editable Summary field. Existing authored summary wins;
+        // otherwise provide a clearly identified extractive draft for review.
+        const summaryField = document.getElementById(
+            'knowledgeUploadDescription'
+        );
+        if (summaryField && !summaryField.value.trim()) {
+            const proposedSummary = extractKnowledgeSummary(
+                knowledgeUploadState.html,
+                knowledgeUploadState.text
+            );
+            if (proposedSummary.text) {
+                summaryField.value = proposedSummary.text;
+                knowledgeUploadState.description = proposedSummary.text;
+                showKnowledgeUploadMessage(
+                    proposedSummary.source === 'document'
+                        ? 'Summary extracted from the document. Review it before continuing.'
+                        : 'A draft summary was assembled from the document text. Please review and edit it before continuing.',
+                    'success'
+                );
+            } else {
+                showKnowledgeUploadMessage(
+                    'No Summary section or suitable summary text was found. Enter a summary before registration.',
+                    'warning'
+                );
+            }
+        }
      
         if (!knowledgeUploadState.html.trim()) {
             preview.textContent =
