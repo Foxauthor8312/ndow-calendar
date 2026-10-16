@@ -1,4 +1,3 @@
-
 /*
 ==============================================================================
  NDOW Volunteer Portal
@@ -8,7 +7,7 @@
 
  Purpose:
     Review article metadata, classifications, and references before
-    registration. Registration is handled separately.
+    registering the article as Draft or Active EKC content.
 ==============================================================================
 */
 
@@ -68,7 +67,7 @@
         paragraph.style.cssText =
             'margin:6px 0;color:#334155;font-size:14px;';
 
-        const strong = createElement('strong', `${label}: `, paragraph);
+        createElement('strong', `${label}: `, paragraph);
 
         createElement(
             'span',
@@ -95,8 +94,8 @@
 
         createElement(
             'p',
-            'Review the article and your selections before registration. ' +
-            'New articles must remain Draft and inactive until approved.',
+            'Review the article, summary, classification, and accepted references. ' +
+            'Choose whether the registered article should remain a Draft or become Active.',
             container
         );
 
@@ -104,13 +103,10 @@
         const classifications = getClassificationSelection();
         const references = getReferenceSelection();
 
-        const documentSection = addSection(
-            container,
-            'Document Details'
-        );
+        const documentSection = addSection(container, 'Document Details');
 
         addLine(documentSection, 'Title', upload.title);
-        addLine(documentSection, 'Description', upload.description);
+        addLine(documentSection, 'Summary', upload.description);
         addLine(
             documentSection,
             'Source file',
@@ -134,19 +130,16 @@
             'Accepted Classifications'
         );
 
-        
         addLine(
             classificationSection,
             'Engineering Center',
             classifications.engineering_center_name || 'Not selected'
         );
-        
         addLine(
             classificationSection,
             'Primary Category',
             classifications.category_name || 'Not selected'
         );
-
 
         const topicIds = Array.isArray(classifications.topicIds)
             ? classifications.topicIds
@@ -158,11 +151,7 @@
             topicIds.length ? topicIds.join(', ') : 'None selected'
         );
 
-        const referenceSection = addSection(
-            container,
-            'Accepted References'
-        );
-
+        const referenceSection = addSection(container, 'Accepted References');
         const acceptedReferences =
             Array.isArray(references.acceptedDocuments)
                 ? references.acceptedDocuments
@@ -175,11 +164,7 @@
                 referenceSection
             );
         } else {
-            const list = createElement(
-                'ul',
-                undefined,
-                referenceSection
-            );
+            const list = createElement('ul', undefined, referenceSection);
 
             acceptedReferences.forEach(reference => {
                 createElement(
@@ -190,15 +175,23 @@
             });
         }
 
-        const readinessSection = addSection(
-            container,
-            'Readiness Checks'
-        );
+        const statusSection = addSection(container, 'Registration Status');
+        createElement(
+            'p',
+            'New articles are registered as Draft first. After registration, use the single status toggle to activate the article when it is ready for active EKC search.',
+            statusSection
+        ).style.cssText =
+            'margin:0;color:#64748B;font-size:13px;line-height:1.5;';
 
+        const readinessSection = addSection(container, 'Readiness Checks');
         const checks = [
             {
                 label: 'Article title provided',
                 passed: Boolean(String(upload.title || '').trim())
+            },
+            {
+                label: 'Required article summary provided',
+                passed: Boolean(String(upload.description || '').trim())
             },
             {
                 label: 'DOCX source selected',
@@ -209,14 +202,14 @@
                 passed: hasHtml || hasBody
             },
             {
-                 label: 'Engineering Center selected',
-                 passed: Boolean(classifications.engineering_center_id)
-             },
-             {
-                 label: 'Primary Category selected',
-                 passed: Boolean(classifications.category_id)
-             }
-             ];
+                label: 'Engineering Center selected',
+                passed: Boolean(classifications.engineering_center_id)
+            },
+            {
+                label: 'Primary Category selected',
+                passed: Boolean(classifications.category_id)
+            }
+        ];
 
         checks.forEach(check => {
             const line = createElement(
@@ -224,19 +217,199 @@
                 `${check.passed ? '✓' : '○'} ${check.label}`,
                 readinessSection
             );
-
             line.style.cssText =
                 `margin:6px 0;color:${check.passed ? '#166534' : '#92400E'};`;
         });
 
-        const note = createElement(
-            'p',
-            'This screen is review-only. It does not register or publish ' +
-            'the article. Center and category IDs must be resolved from ' +
-            'the existing EKC taxonomy before registration is enabled.',
+        const statusToggleButton = createElement(
+            'button',
+            'Status: Draft — Activate',
             container
         );
+        statusToggleButton.type = 'button';
+        statusToggleButton.disabled = true;
+        statusToggleButton.style.cssText =
+            'margin:12px 0 0 8px;padding:10px 18px;border:1px solid #19304B;' +
+            'border-radius:6px;background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
+        let savedDocumentKey = '';
+        let savedStatus = 'draft';
 
+        statusToggleButton.addEventListener('click', async () => {
+            if (!savedDocumentKey || !savedStatus) return;
+
+            const nextStatus = savedStatus === 'draft' ? 'active' : 'draft';
+            const token =
+                window.authToken ||
+                window.localStorage.getItem('token') ||
+                window.localStorage.getItem('authToken') ||
+                '';
+
+            if (!token) {
+                registrationStatus.textContent =
+                    'Your login token was not found. Please sign in again.';
+                registrationStatus.style.color = '#B91C1C';
+                return;
+            }
+
+            statusToggleButton.disabled = true;
+            statusToggleButton.textContent =
+                nextStatus === 'active' ? 'Activating…' : 'Returning to Draft…';
+
+            try {
+                const response = await fetch(
+                    'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
+                        encodeURIComponent(savedDocumentKey) + '/status',
+                    {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: 'Bearer ' + token
+                        },
+                        body: JSON.stringify({ status: nextStatus })
+                    }
+                );
+                const result = await response.json();
+                if (!response.ok || !result.success) {
+                    throw new Error(result.error || 'Unable to update article status.');
+                }
+
+                savedStatus = nextStatus;
+                statusToggleButton.textContent = savedStatus === 'draft'
+                    ? 'Status: Draft — Activate'
+                    : 'Status: Active — Return to Draft';
+                registrationStatus.textContent = savedStatus === 'active'
+                    ? 'Article is Active and included in active EKC search.'
+                    : 'Article is Draft and excluded from active EKC search.';
+                registrationStatus.style.color = '#166534';
+            } catch (error) {
+                registrationStatus.textContent =
+                    error.message || 'Unable to update article status.';
+                registrationStatus.style.color = '#B91C1C';
+                statusToggleButton.textContent = savedStatus === 'draft'
+                    ? 'Status: Draft — Activate'
+                    : 'Status: Active — Return to Draft';
+            } finally {
+                statusToggleButton.disabled = false;
+            }
+        });
+
+        const registerButton = createElement(
+            'button',
+            'Register Article',
+            container
+        );
+        registerButton.type = 'button';
+        registerButton.style.cssText =
+            'margin-top:12px;padding:10px 18px;border:0;border-radius:6px;' +
+            'background:#19304B;color:#FFFFFF;font-weight:600;cursor:pointer;';
+
+        const registrationStatus = createElement('p', '', container);
+        registrationStatus.setAttribute('role', 'status');
+        registrationStatus.style.cssText =
+            'margin-top:10px;font-size:13px;line-height:1.5;';
+
+        const slug = String(upload.title || '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+            .slice(0, 70) || 'article';
+        const documentKey = 'ekc-' + slug + '-' + Date.now().toString(36);
+
+        registerButton.addEventListener('click', async () => {
+            const missing = [];
+            if (!String(upload.title || '').trim()) missing.push('title');
+            if (!String(upload.description || '').trim()) missing.push('summary');
+            if (!upload.file) missing.push('DOCX source file');
+            if (!hasHtml && !hasBody) missing.push('converted content');
+            if (!classifications.engineering_center_id) missing.push('Engineering Center');
+            if (!classifications.category_id) missing.push('Category');
+
+            if (missing.length) {
+                registrationStatus.textContent =
+                    'Cannot register yet. Please provide: ' + missing.join(', ') + '.';
+                registrationStatus.style.color = '#B45309';
+                return;
+            }
+
+            const token =
+                window.authToken ||
+                window.localStorage.getItem('token') ||
+                window.localStorage.getItem('authToken') ||
+                '';
+
+            if (!token) {
+                registrationStatus.textContent =
+                    'Your login token was not found. Please sign in again.';
+                registrationStatus.style.color = '#B91C1C';
+                return;
+            }
+
+            registerButton.disabled = true;
+            registerButton.textContent = 'Registering…';
+            registrationStatus.textContent = 'Registering article as Draft…';
+
+            try {
+                const response = await fetch(
+                    'https://ndow-calendar-server.onrender.com/api/knowledge/document',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: 'Bearer ' + token
+                        },
+                        body: JSON.stringify({
+                            title: String(upload.title).trim(),
+                            description: String(upload.description).trim(),
+                            document_key: documentKey,
+                            document_type: 'Engineering Knowledge Article',
+                            version: '1.0',
+                            body: String(upload.text || '').trim(),
+                            body_html: String(upload.html || '').trim(),
+                            engineering_center_id: classifications.engineering_center_id,
+                            category_id: classifications.category_id,
+                            topic_ids: Array.isArray(classifications.topicIds)
+                                ? classifications.topicIds
+                                : [],
+                            related_documents: acceptedReferences
+                                .map(item => Number(item.id))
+                                .filter(id => Number.isInteger(id) && id > 0),
+                            status: 'draft'
+                        })
+                    }
+                );
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    throw new Error(
+                        result.error || 'Registration failed (' + response.status + ').'
+                    );
+                }
+
+                savedDocumentKey = result.document?.document_key || documentKey;
+                savedStatus = result.document?.active === true ? 'active' : 'draft';
+                registrationStatus.textContent =
+                    'Article registered as Draft. Document key: ' + savedDocumentKey;
+                registrationStatus.style.color = '#166534';
+                registerButton.textContent = 'Draft Saved';
+                statusToggleButton.disabled = false;
+                statusToggleButton.textContent = savedStatus === 'draft'
+                    ? 'Status: Draft — Activate'
+                    : 'Status: Active — Return to Draft';
+            } catch (error) {
+                registrationStatus.textContent =
+                    error.message || 'Registration failed. Please try again.';
+                registrationStatus.style.color = '#B91C1C';
+                registerButton.disabled = false;
+                registerButton.textContent = 'Register Article';
+            }
+        });
+
+        const note = createElement(
+            'p',
+            'Registration saves the article as Draft. Use the status toggle to activate it when it is ready for active EKC search.',
+            container
+        );
         note.style.cssText =
             'margin-top:16px;color:#64748B;font-size:13px;line-height:1.6;';
     }
@@ -244,4 +417,3 @@
     window.renderKnowledgeReview = renderKnowledgeReview;
 
 })();
-
