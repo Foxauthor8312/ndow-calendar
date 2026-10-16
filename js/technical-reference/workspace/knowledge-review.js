@@ -134,6 +134,20 @@
             'Accepted Classifications'
         );
 
+        
+        addLine(
+            classificationSection,
+            'Engineering Center',
+            classifications.engineering_center_name || 'Not selected'
+        );
+        
+        addLine(
+            classificationSection,
+            'Primary Category',
+            classifications.category_name || 'Not selected'
+        );
+
+
         const topicIds = Array.isArray(classifications.topicIds)
             ? classifications.topicIds
             : [];
@@ -195,10 +209,14 @@
                 passed: hasHtml || hasBody
             },
             {
-                label: 'At least one classification accepted',
-                passed: topicIds.length > 0
-            }
-        ];
+                 label: 'Engineering Center selected',
+                 passed: Boolean(classifications.engineering_center_id)
+             },
+             {
+                 label: 'Primary Category selected',
+                 passed: Boolean(classifications.category_id)
+             }
+             ];
 
         checks.forEach(check => {
             const line = createElement(
