@@ -176,58 +176,12 @@
         }
 
         const statusSection = addSection(container, 'Registration Status');
-        const statusHelp = createElement(
+        createElement(
             'p',
-            'Draft articles are saved but excluded from active EKC search. ' +
-            'An administrator can activate a draft later through the EKC document-status endpoint.',
+            'New articles are registered as Draft first. After registration, use the single status toggle to activate the article when it is ready for active EKC search.',
             statusSection
-        );
-        statusHelp.style.cssText =
-            'margin:0 0 12px;color:#64748B;font-size:13px;line-height:1.5;';
-
-        const statusLabel = createElement(
-            'label',
-            'Status when registered',
-            statusSection
-        );
-        statusLabel.style.cssText =
-            'display:block;margin-bottom:6px;color:#19304B;font-weight:600;';
-
-        const statusToggle = createElement('div', undefined, statusSection);
-        statusToggle.setAttribute('role', 'group');
-        statusToggle.setAttribute('aria-label', 'Status when registered');
-        statusToggle.style.cssText = 'display:flex;gap:0;max-width:320px;';
-
-        let selectedStatus = 'draft';
-        const statusButtons = {};
-
-        function selectStatus(nextStatus) {
-            selectedStatus = nextStatus;
-            Object.entries(statusButtons).forEach(([status, button]) => {
-                const selected = status === selectedStatus;
-                button.setAttribute('aria-pressed', String(selected));
-                button.style.background = selected ? '#19304B' : '#FFFFFF';
-                button.style.color = selected ? '#FFFFFF' : '#19304B';
-                button.style.borderColor = '#19304B';
-            });
-        }
-
-        [
-            { value: 'draft', label: 'Draft' },
-            { value: 'active', label: 'Active' }
-        ].forEach((optionData, index) => {
-            const button = createElement('button', optionData.label, statusToggle);
-            button.type = 'button';
-            button.setAttribute('aria-pressed', 'false');
-            button.style.cssText =
-                'padding:9px 18px;border:1px solid #19304B;' +
-                (index === 0 ? 'border-radius:6px 0 0 6px;' : 'border-radius:0 6px 6px 0;margin-left:-1px;') +
-                'background:#FFFFFF;color:#19304B;font:inherit;cursor:pointer;';
-            button.addEventListener('click', () => selectStatus(optionData.value));
-            statusButtons[optionData.value] = button;
-        });
-
-        selectStatus('draft');
+        ).style.cssText =
+            'margin:0;color:#64748B;font-size:13px;line-height:1.5;';
 
         const readinessSection = addSection(container, 'Readiness Checks');
         const checks = [
@@ -265,6 +219,78 @@
             );
             line.style.cssText =
                 `margin:6px 0;color:${check.passed ? '#166534' : '#92400E'};`;
+        });
+
+        const statusToggleButton = createElement(
+            'button',
+            'Status: Draft — Activate',
+            container
+        );
+        statusToggleButton.type = 'button';
+        statusToggleButton.disabled = true;
+        statusToggleButton.style.cssText =
+            'margin:12px 0 0 8px;padding:10px 18px;border:1px solid #19304B;' +
+            'border-radius:6px;background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
+        let savedDocumentKey = '';
+        let savedStatus = 'draft';
+
+        statusToggleButton.addEventListener('click', async () => {
+            if (!savedDocumentKey || !savedStatus) return;
+
+            const nextStatus = savedStatus === 'draft' ? 'active' : 'draft';
+            const token =
+                window.authToken ||
+                window.localStorage.getItem('token') ||
+                window.localStorage.getItem('authToken') ||
+                '';
+
+            if (!token) {
+                registrationStatus.textContent =
+                    'Your login token was not found. Please sign in again.';
+                registrationStatus.style.color = '#B91C1C';
+                return;
+            }
+
+            statusToggleButton.disabled = true;
+            statusToggleButton.textContent =
+                nextStatus === 'active' ? 'Activating…' : 'Returning to Draft…';
+
+            try {
+                const response = await fetch(
+                    'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
+                        encodeURIComponent(savedDocumentKey) + '/status',
+                    {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: 'Bearer ' + token
+                        },
+                        body: JSON.stringify({ status: nextStatus })
+                    }
+                );
+                const result = await response.json();
+                if (!response.ok || !result.success) {
+                    throw new Error(result.error || 'Unable to update article status.');
+                }
+
+                savedStatus = nextStatus;
+                statusToggleButton.textContent = savedStatus === 'draft'
+                    ? 'Status: Draft — Activate'
+                    : 'Status: Active — Return to Draft';
+                registrationStatus.textContent = savedStatus === 'active'
+                    ? 'Article is Active and included in active EKC search.'
+                    : 'Article is Draft and excluded from active EKC search.';
+                registrationStatus.style.color = '#166534';
+            } catch (error) {
+                registrationStatus.textContent =
+                    error.message || 'Unable to update article status.';
+                registrationStatus.style.color = '#B91C1C';
+                statusToggleButton.textContent = savedStatus === 'draft'
+                    ? 'Status: Draft — Activate'
+                    : 'Status: Active — Return to Draft';
+            } finally {
+                statusToggleButton.disabled = false;
+            }
         });
 
         const registerButton = createElement(
@@ -321,8 +347,7 @@
             registerButton.disabled = true;
             Object.values(statusButtons).forEach(button => { button.disabled = true; });
             registerButton.textContent = 'Registering…';
-            registrationStatus.textContent =
-                `Registering article as ${selectedStatus === 'draft' ? 'Draft' : 'Active'}…`;
+            registrationStatus.textContent = 'Registering article as Draft…';
 
             try {
                 const response = await fetch(
@@ -349,7 +374,7 @@
                             related_documents: acceptedReferences
                                 .map(item => Number(item.id))
                                 .filter(id => Number.isInteger(id) && id > 0),
-                            status: selectedStatus
+                            status: 'draft'
                         })
                     }
                 );
@@ -362,13 +387,16 @@
                     );
                 }
 
+                savedDocumentKey = result.document?.document_key || documentKey;
+                savedStatus = result.document?.active === true ? 'active' : 'draft';
                 registrationStatus.textContent =
-                    `Article registered as ${selectedStatus === 'draft' ? 'Draft' : 'Active'}.` +
-                    ' Document key: ' +
-                    (result.document?.document_key || documentKey);
+                    'Article registered as Draft. Document key: ' + savedDocumentKey;
                 registrationStatus.style.color = '#166534';
-                registerButton.textContent =
-                    selectedStatus === 'draft' ? 'Draft Saved' : 'Article Registered';
+                registerButton.textContent = 'Draft Saved';
+                statusToggleButton.disabled = false;
+                statusToggleButton.textContent = savedStatus === 'draft'
+                    ? 'Status: Draft — Activate'
+                    : 'Status: Active — Return to Draft';
             } catch (error) {
                 registrationStatus.textContent =
                     error.message || 'Registration failed. Please try again.';
@@ -378,116 +406,6 @@
                 registerButton.textContent = 'Register Article';
             }
         });
-
-        const draftSection = addSection(container, 'Manage Saved Drafts');
-        createElement(
-            'p',
-            'Load previously saved drafts here. Activating a draft makes it available in active EKC search.',
-            draftSection
-        );
-        const loadDraftsButton = createElement('button', 'Load Saved Drafts', draftSection);
-        loadDraftsButton.type = 'button';
-        loadDraftsButton.style.cssText =
-            'padding:8px 12px;border:1px solid #19304B;border-radius:6px;' +
-            'background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
-        const draftList = createElement('div', undefined, draftSection);
-        draftList.style.cssText = 'margin-top:12px;';
-
-        function getAuthToken() {
-            return window.authToken ||
-                window.localStorage.getItem('token') ||
-                window.localStorage.getItem('authToken') ||
-                '';
-        }
-
-        async function loadSavedDrafts() {
-            const token = getAuthToken();
-            if (!token) {
-                draftList.textContent = 'Your login token was not found. Please sign in again.';
-                return;
-            }
-
-            loadDraftsButton.disabled = true;
-            loadDraftsButton.textContent = 'Loading…';
-            draftList.replaceChildren();
-
-            try {
-                const response = await fetch(
-                    'https://ndow-calendar-server.onrender.com/api/knowledge/documents?status=draft&limit=100',
-                    { headers: { Authorization: 'Bearer ' + token } }
-                );
-                const result = await response.json();
-                if (!response.ok || !result.success) {
-                    throw new Error(result.error || 'Unable to load saved drafts.');
-                }
-
-                if (!result.documents || result.documents.length === 0) {
-                    createElement('p', 'No saved drafts found.', draftList);
-                    return;
-                }
-
-                result.documents.forEach(documentRecord => {
-                    const row = createElement('div', undefined, draftList);
-                    row.style.cssText =
-                        'display:flex;align-items:center;justify-content:space-between;' +
-                        'gap:12px;padding:10px 0;border-bottom:1px solid #DBE3EC;';
-
-                    const details = createElement('div', undefined, row);
-                    details.style.cssText = 'min-width:0;flex:1;';
-                    createElement('strong', documentRecord.title || documentRecord.document_key, details);
-                    createElement('p', documentRecord.document_key, details).style.cssText =
-                        'margin:4px 0 0;color:#64748B;font-size:12px;overflow-wrap:anywhere;';
-
-                    const activateButton = createElement('button', 'Activate', row);
-                    activateButton.type = 'button';
-                    activateButton.style.cssText =
-                        'padding:7px 10px;border:0;border-radius:6px;' +
-                        'background:#19304B;color:#FFFFFF;font-weight:600;cursor:pointer;';
-
-                    activateButton.addEventListener('click', async () => {
-                        activateButton.disabled = true;
-                        activateButton.textContent = 'Activating…';
-                        try {
-                            const activationResponse = await fetch(
-                                'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
-                                    encodeURIComponent(documentRecord.document_key) + '/status',
-                                {
-                                    method: 'PATCH',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        Authorization: 'Bearer ' + token
-                                    },
-                                    body: JSON.stringify({ status: 'active' })
-                                }
-                            );
-                            const activationResult = await activationResponse.json();
-                            if (!activationResponse.ok || !activationResult.success) {
-                                throw new Error(
-                                    activationResult.error || 'Unable to activate this draft.'
-                                );
-                            }
-                            row.remove();
-                            if (!draftList.querySelector('div')) {
-                                draftList.textContent = 'No saved drafts found.';
-                            }
-                        } catch (error) {
-                            activateButton.disabled = false;
-                            activateButton.textContent = 'Activate';
-                            registrationStatus.textContent =
-                                error.message || 'Unable to activate this draft.';
-                            registrationStatus.style.color = '#B91C1C';
-                        }
-                    });
-                });
-            } catch (error) {
-                draftList.textContent = error.message || 'Unable to load saved drafts.';
-            } finally {
-                loadDraftsButton.disabled = false;
-                loadDraftsButton.textContent = 'Refresh Saved Drafts';
-            }
-        }
-
-        loadDraftsButton.addEventListener('click', loadSavedDrafts);
 
         const note = createElement(
             'p',
