@@ -251,6 +251,9 @@
             if (!hasHtml && !hasBody) missing.push('converted content');
             if (!classifications.engineering_center_id) missing.push('Engineering Center');
             if (!classifications.category_id) missing.push('Category');
+            if (!Array.isArray(classifications.topicIds) || classifications.topicIds.length === 0) {
+                missing.push('at least one Knowledge Topic');
+            }
 
             if (missing.length) {
                 registrationStatus.textContent =
