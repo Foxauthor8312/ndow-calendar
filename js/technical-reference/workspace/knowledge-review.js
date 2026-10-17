@@ -452,9 +452,19 @@
             addLine(detailBox, 'Document key', saved.document_key);
             addLine(detailBox, 'Document ID', saved.id);
             addLine(detailBox, 'Status', saved.active === true ? 'Active' : 'Draft');
+            addLine(detailBox, 'Engineering Center', payload.verification.engineering_center?.name || 'Record not found');
             addLine(detailBox, 'Engineering Center ID', saved.engineering_center_id);
+            addLine(detailBox, 'Category', payload.verification.category?.name || 'Record not found');
             addLine(detailBox, 'Category ID', saved.category_id);
             addLine(detailBox, 'Topic IDs saved', savedTopics.length ? savedTopics.join(', ') : 'None');
+            const savedRelated = payload.verification.related_documents || [];
+            addLine(
+                detailBox,
+                'Related documents saved',
+                savedRelated.length
+                    ? savedRelated.map(item => item.title || ('ID ' + item.id)).join('; ')
+                    : 'None'
+            );
 
             const checks = [
                 ['Document key matches', saved.document_key === snapshot.documentKey],
@@ -464,8 +474,15 @@
                 ['Formatted HTML matches submitted content', String(saved.body_html || '').trim() === snapshot.submitted.body_html],
                 ['Engineering Center matches', Number(saved.engineering_center_id) === snapshot.submitted.engineering_center_id],
                 ['Category matches', Number(saved.category_id) === snapshot.submitted.category_id],
+                ['Engineering Center record exists and is active', Boolean(payload.verification.engineering_center && payload.verification.engineering_center.active === true)],
+                ['Category record exists, is active, and belongs to the selected Center', Boolean(
+                    payload.verification.category &&
+                    payload.verification.category.active === true &&
+                    Number(payload.verification.category.center_id) === Number(saved.engineering_center_id)
+                )],
                 ['Topic relationships match', sameIds(savedTopics, snapshot.submitted.topic_ids)],
                 ['Related document IDs match', sameIds(saved.related_documents, snapshot.submitted.related_documents)],
+                ['Related document records all exist', (payload.verification.related_documents || []).length === snapshot.submitted.related_documents.length],
                 ['Article remains Draft', saved.active === false && String(saved.review_status || '').toLowerCase() === 'draft']
             ];
 
