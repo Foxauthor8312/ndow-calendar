@@ -19,7 +19,8 @@
         { id: 'document', label: '1. Document' },
         { id: 'classify', label: '2. Classify' },
         { id: 'references', label: '3. References' },
-        { id: 'review', label: '4. Review' }
+        { id: 'review', label: '4. Review & Register' },
+        { id: 'verification', label: '5. Verification' }
     ];
 
     let activeStage = 'document';
@@ -259,6 +260,15 @@
                     'The EKC Review module has not loaded.'
                 );
             }
+        } else if (stageId === 'verification') {
+            if (typeof window.renderKnowledgeVerification === 'function') {
+                window.renderKnowledgeVerification(content);
+            } else {
+                showModuleError(
+                    content,
+                    'The EKC Verification module has not loaded.'
+                );
+            }
         }
 
         host.querySelectorAll('[data-intake-stage]').forEach(button => {
@@ -322,5 +332,7 @@
 
     window.openKnowledgeIntakeWorkspace =
         openKnowledgeIntakeWorkspace;
+
+    window.showKnowledgeIntakeStage = showKnowledgeIntakeStage;
 
 })();

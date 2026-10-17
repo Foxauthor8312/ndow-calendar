@@ -95,7 +95,7 @@
         createElement(
             'p',
             'Review the article, summary, classification, and accepted references. ' +
-            'Choose whether the registered article should remain a Draft or become Active.',
+            'Registration saves the article as Draft, then automatically opens Verification.',
             container
         );
 
@@ -221,78 +221,6 @@
                 `margin:6px 0;color:${check.passed ? '#166534' : '#92400E'};`;
         });
 
-        const statusToggleButton = createElement(
-            'button',
-            'Status: Draft — Activate',
-            container
-        );
-        statusToggleButton.type = 'button';
-        statusToggleButton.disabled = true;
-        statusToggleButton.style.cssText =
-            'margin:12px 0 0 8px;padding:10px 18px;border:1px solid #19304B;' +
-            'border-radius:6px;background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
-        let savedDocumentKey = '';
-        let savedStatus = 'draft';
-
-        statusToggleButton.addEventListener('click', async () => {
-            if (!savedDocumentKey || !savedStatus) return;
-
-            const nextStatus = savedStatus === 'draft' ? 'active' : 'draft';
-            const token =
-                window.authToken ||
-                window.localStorage.getItem('token') ||
-                window.localStorage.getItem('authToken') ||
-                '';
-
-            if (!token) {
-                registrationStatus.textContent =
-                    'Your login token was not found. Please sign in again.';
-                registrationStatus.style.color = '#B91C1C';
-                return;
-            }
-
-            statusToggleButton.disabled = true;
-            statusToggleButton.textContent =
-                nextStatus === 'active' ? 'Activating…' : 'Returning to Draft…';
-
-            try {
-                const response = await fetch(
-                    'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
-                        encodeURIComponent(savedDocumentKey) + '/status',
-                    {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: 'Bearer ' + token
-                        },
-                        body: JSON.stringify({ status: nextStatus })
-                    }
-                );
-                const result = await response.json();
-                if (!response.ok || !result.success) {
-                    throw new Error(result.error || 'Unable to update article status.');
-                }
-
-                savedStatus = nextStatus;
-                statusToggleButton.textContent = savedStatus === 'draft'
-                    ? 'Status: Draft — Activate'
-                    : 'Status: Active — Return to Draft';
-                registrationStatus.textContent = savedStatus === 'active'
-                    ? 'Article is Active and included in active EKC search.'
-                    : 'Article is Draft and excluded from active EKC search.';
-                registrationStatus.style.color = '#166534';
-            } catch (error) {
-                registrationStatus.textContent =
-                    error.message || 'Unable to update article status.';
-                registrationStatus.style.color = '#B91C1C';
-                statusToggleButton.textContent = savedStatus === 'draft'
-                    ? 'Status: Draft — Activate'
-                    : 'Status: Active — Return to Draft';
-            } finally {
-                statusToggleButton.disabled = false;
-            }
-        });
-
         const registerButton = createElement(
             'button',
             'Register Article',
@@ -323,6 +251,9 @@
             if (!hasHtml && !hasBody) missing.push('converted content');
             if (!classifications.engineering_center_id) missing.push('Engineering Center');
             if (!classifications.category_id) missing.push('Category');
+            if (!Array.isArray(classifications.topicIds) || classifications.topicIds.length === 0) {
+                missing.push('at least one Knowledge Topic');
+            }
 
             if (missing.length) {
                 registrationStatus.textContent =
@@ -386,16 +317,39 @@
                     );
                 }
 
-                savedDocumentKey = result.document?.document_key || documentKey;
-                savedStatus = result.document?.active === true ? 'active' : 'draft';
+                const savedKey = result.document?.document_key || documentKey;
+                window.knowledgeRegistrationSnapshot = {
+                    documentKey: savedKey,
+                    submitted: {
+                        title: String(upload.title || '').trim(),
+                        description: String(upload.description || '').trim(),
+                        body: String(upload.text || '').trim(),
+                        body_html: String(upload.html || '').trim(),
+                        engineering_center_id: Number(classifications.engineering_center_id),
+                        category_id: Number(classifications.category_id),
+                        topic_ids: Array.isArray(classifications.topicIds)
+                            ? classifications.topicIds.map(Number).filter(Number.isFinite)
+                            : [],
+                        related_documents: acceptedReferences
+                            .map(item => Number(item.id))
+                            .filter(id => Number.isInteger(id) && id > 0)
+                    },
+                    registeredResponse: result.document || null,
+                    registeredAt: new Date().toISOString()
+                };
+                registerButton.textContent = 'Registered — Verifying…';
                 registrationStatus.textContent =
-                    'Article registered as Draft. Document key: ' + savedDocumentKey;
+                    'Registration succeeded. Opening Verification and reading back saved records…';
                 registrationStatus.style.color = '#166534';
-                registerButton.textContent = 'Draft Saved';
-                statusToggleButton.disabled = false;
-                statusToggleButton.textContent = savedStatus === 'draft'
-                    ? 'Status: Draft — Activate'
-                    : 'Status: Active — Return to Draft';
+
+                if (typeof window.showKnowledgeIntakeStage === 'function') {
+                    window.showKnowledgeIntakeStage('verification');
+                } else {
+                    throw new Error(
+                        'Registration succeeded, but the Verification tab is unavailable. ' +
+                        'Keep this session open and use the document key to verify the saved record: ' + savedKey
+                    );
+                }
             } catch (error) {
                 registrationStatus.textContent =
                     error.message || 'Registration failed. Please try again.';
@@ -407,13 +361,172 @@
 
         const note = createElement(
             'p',
-            'Registration saves the article as Draft. Use the status toggle to activate it when it is ready for active EKC search.',
+            'Registration saves the article as Draft. The next tab verifies the saved record and relationships; it does not publish or modify data.',
             container
         );
         note.style.cssText =
             'margin-top:16px;color:#64748B;font-size:13px;line-height:1.6;';
     }
 
+
+    /*
+    ==========================================================================
+     Read-Only Post-Registration Verification
+    ==========================================================================
+    */
+    async function renderKnowledgeVerification(container) {
+        container.replaceChildren();
+
+        const heading = createElement('h2', 'Registration Verification', container);
+        heading.style.cssText = 'margin:0 0 8px;color:#19304B;font-size:20px;';
+        createElement(
+            'p',
+            'This read-only screen compares the submitted article with the saved database record and topic relationships. It never repairs, re-registers, or publishes an article.',
+            container
+        );
+
+        const snapshot = window.knowledgeRegistrationSnapshot;
+        if (!snapshot || !snapshot.documentKey || !snapshot.submitted) {
+            const message = createElement(
+                'p',
+                'No successful registration is recorded in this intake session. Register the article from Review & Register first.',
+                container
+            );
+            message.style.color = '#92400E';
+            return;
+        }
+
+        const status = createElement('p', 'Reading saved record…', container);
+        status.setAttribute('role', 'status');
+        status.style.cssText = 'font-size:13px;color:#64748B;';
+        const resultsBox = addSection(container, 'Verification Results');
+        const detailBox = addSection(container, 'Saved Article Details');
+
+        function addResult(label, passed, detail) {
+            const line = createElement('p', undefined, resultsBox);
+            line.style.cssText = 'margin:8px 0;font-size:13px;line-height:1.5;color:' +
+                (passed ? '#166534' : '#B91C1C') + ';';
+            createElement('strong', (passed ? 'PASS — ' : 'FAIL — ') + label, line);
+            if (detail) createElement('span', ' ' + detail, line);
+        }
+
+        function normalizedIds(values) {
+            return [...new Set((Array.isArray(values) ? values : [])
+                .map(Number).filter(Number.isFinite))].sort((a, b) => a - b);
+        }
+
+        function sameIds(a, b) {
+            return JSON.stringify(normalizedIds(a)) === JSON.stringify(normalizedIds(b));
+        }
+
+        const token =
+            window.authToken ||
+            window.localStorage.getItem('token') ||
+            window.localStorage.getItem('authToken') ||
+            '';
+
+        if (!token) {
+            status.textContent = 'Verification could not run because the login token is missing. Your intake data is preserved.';
+            status.style.color = '#B91C1C';
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
+                    encodeURIComponent(snapshot.documentKey) + '/verification',
+                { headers: { Authorization: 'Bearer ' + token } }
+            );
+            const payload = await response.json();
+            if (!response.ok || !payload.success || !payload.verification?.document) {
+                throw new Error(payload.error || 'Saved document could not be verified.');
+            }
+
+            const saved = payload.verification.document;
+            const savedTopics = (payload.verification.topic_references || [])
+                .filter(item => item.reference_type === 'primary')
+                .map(item => Number(item.topic_id));
+
+            addLine(detailBox, 'Title', saved.title);
+            addLine(detailBox, 'Summary', saved.description);
+            addLine(detailBox, 'Document key', saved.document_key);
+            addLine(detailBox, 'Document ID', saved.id);
+            addLine(detailBox, 'Status', saved.active === true ? 'Active' : 'Draft');
+            addLine(detailBox, 'Engineering Center', payload.verification.engineering_center?.name || 'Record not found');
+            addLine(detailBox, 'Engineering Center ID', saved.engineering_center_id);
+            addLine(detailBox, 'Category', payload.verification.category?.name || 'Record not found');
+            addLine(detailBox, 'Category ID', saved.category_id);
+            addLine(detailBox, 'Topic IDs saved', savedTopics.length ? savedTopics.join(', ') : 'None');
+            const savedRelated = payload.verification.related_documents || [];
+            addLine(
+                detailBox,
+                'Related documents saved',
+                savedRelated.length
+                    ? savedRelated.map(item => item.title || ('ID ' + item.id)).join('; ')
+                    : 'None'
+            );
+
+            const checks = [
+                ['Document key matches', saved.document_key === snapshot.documentKey],
+                ['Title matches submitted value', String(saved.title || '') === snapshot.submitted.title],
+                ['Summary matches edited value', String(saved.description || '') === snapshot.submitted.description],
+                ['Readable body matches submitted content', String(saved.body || '').trim() === snapshot.submitted.body],
+                ['Formatted HTML matches submitted content', String(saved.body_html || '').trim() === snapshot.submitted.body_html],
+                ['Engineering Center matches', Number(saved.engineering_center_id) === snapshot.submitted.engineering_center_id],
+                ['Category matches', Number(saved.category_id) === snapshot.submitted.category_id],
+                ['Engineering Center record exists and is active', Boolean(payload.verification.engineering_center && payload.verification.engineering_center.active === true)],
+                ['Category record exists, is active, and belongs to the selected Center', Boolean(
+                    payload.verification.category &&
+                    payload.verification.category.active === true &&
+                    Number(payload.verification.category.center_id) === Number(saved.engineering_center_id)
+                )],
+                ['Topic relationships match', sameIds(savedTopics, snapshot.submitted.topic_ids)],
+                ['Related document IDs match', sameIds(saved.related_documents, snapshot.submitted.related_documents)],
+                ['Related document records all exist', (payload.verification.related_documents || []).length === snapshot.submitted.related_documents.length],
+                ['Article remains Draft', saved.active === false && String(saved.review_status || '').toLowerCase() === 'draft']
+            ];
+
+            checks.forEach(([label, passed]) => addResult(
+                label,
+                passed,
+                passed ? '' : 'Expected and saved values differ; inspect the details before finishing.'
+            ));
+
+            const failed = checks.filter(item => !item[1]);
+            status.textContent = failed.length
+                ? 'Verification finished with ' + failed.length + ' failed check(s). Keep this session open; no data was changed.'
+                : 'All verification checks passed. The article remains Draft and unpublished.';
+            status.style.color = failed.length ? '#B91C1C' : '#166534';
+
+            const finish = createElement(
+                'button',
+                'Finish — Keep Results Visible',
+                container
+            );
+            finish.type = 'button';
+            finish.style.cssText = 'margin-top:12px;padding:10px 18px;border:1px solid #19304B;border-radius:6px;background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
+            finish.addEventListener('click', () => {
+                finish.disabled = true;
+                finish.textContent = 'Verification results retained above';
+                createElement(
+                    'p',
+                    'You may now leave this screen. The results remain visible until you navigate away or close the workspace.',
+                    container
+                ).style.cssText = 'color:#64748B;font-size:13px;';
+            });
+        } catch (error) {
+            status.textContent = (error.message || 'Verification failed.') +
+                ' Your intake session remains open; no automatic retry or duplicate registration was performed.';
+            status.style.color = '#B91C1C';
+            createElement(
+                'p',
+                'Document key: ' + snapshot.documentKey,
+                detailBox
+            );
+        }
+    }
+
     window.renderKnowledgeReview = renderKnowledgeReview;
+    window.renderKnowledgeVerification = renderKnowledgeVerification;
 
 })();
