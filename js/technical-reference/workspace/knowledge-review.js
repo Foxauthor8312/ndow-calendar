@@ -381,33 +381,59 @@
         heading.style.cssText = 'margin:0 0 8px;color:#19304B;font-size:20px;';
         createElement(
             'p',
-            'This read-only screen compares the submitted article with the saved database record and topic relationships. It never repairs, re-registers, or publishes an article.',
+            'Verifies the saved document and its database relationships immediately after registration. This check is read-only and never activates or changes the article.',
             container
         );
 
         const snapshot = window.knowledgeRegistrationSnapshot;
+        const resultPanel = createElement('section', undefined, container);
+        resultPanel.setAttribute('aria-live', 'polite');
+        resultPanel.style.cssText =
+            'display:flex;align-items:center;gap:12px;padding:18px;margin-top:18px;' +
+            'border:1px solid #DBE3EC;border-radius:8px;background:#FFFFFF;';
+
+        const indicator = createElement('span', '…', resultPanel);
+        indicator.style.cssText =
+            'display:inline-flex;align-items:center;justify-content:center;' +
+            'width:34px;height:34px;flex:0 0 34px;border-radius:50%;' +
+            'font-size:20px;font-weight:700;background:#E2E8F0;color:#334155;';
+
+        const messageBox = createElement('div', undefined, resultPanel);
+        const resultHeading = createElement('strong', 'Verification in progress', messageBox);
+        resultHeading.style.cssText = 'display:block;color:#19304B;font-size:15px;';
+        const resultMessage = createElement('span', 'Reading back the saved database records…', messageBox);
+        resultMessage.style.cssText = 'display:block;margin-top:4px;color:#475569;font-size:13px;line-height:1.5;';
+
+        function showResult(passed, message) {
+            indicator.textContent = passed ? '✓' : '!';
+            indicator.style.background = passed ? '#DCFCE7' : '#FEE2E2';
+            indicator.style.color = passed ? '#166534' : '#B91C1C';
+            resultPanel.style.borderColor = passed ? '#7A9E7F' : '#DC2626';
+            resultHeading.textContent = passed ? 'Verification passed' : 'Verification failed';
+            resultHeading.style.color = passed ? '#166534' : '#B91C1C';
+            resultMessage.textContent = message;
+        }
+
         if (!snapshot || !snapshot.documentKey || !snapshot.submitted) {
-            const message = createElement(
-                'p',
-                'No successful registration is recorded in this intake session. Register the article from Review & Register first.',
-                container
+            showResult(
+                false,
+                'No successful registration is recorded in this intake session. Register the article first. No data was changed.'
             );
-            message.style.color = '#92400E';
             return;
         }
 
-        const status = createElement('p', 'Reading saved record…', container);
-        status.setAttribute('role', 'status');
-        status.style.cssText = 'font-size:13px;color:#64748B;';
-        const resultsBox = addSection(container, 'Verification Results');
-        const detailBox = addSection(container, 'Saved Article Details');
+        const token =
+            window.authToken ||
+            window.localStorage.getItem('token') ||
+            window.localStorage.getItem('authToken') ||
+            '';
 
-        function addResult(label, passed, detail) {
-            const line = createElement('p', undefined, resultsBox);
-            line.style.cssText = 'margin:8px 0;font-size:13px;line-height:1.5;color:' +
-                (passed ? '#166534' : '#B91C1C') + ';';
-            createElement('strong', (passed ? 'PASS — ' : 'FAIL — ') + label, line);
-            if (detail) createElement('span', ' ' + detail, line);
+        if (!token) {
+            showResult(
+                false,
+                'Verification could not run because the login token is missing. The article remains Draft and the intake session is preserved.'
+            );
+            return;
         }
 
         function normalizedIds(values) {
@@ -419,109 +445,73 @@
             return JSON.stringify(normalizedIds(a)) === JSON.stringify(normalizedIds(b));
         }
 
-        const token =
-            window.authToken ||
-            window.localStorage.getItem('token') ||
-            window.localStorage.getItem('authToken') ||
-            '';
-
-        if (!token) {
-            status.textContent = 'Verification could not run because the login token is missing. Your intake data is preserved.';
-            status.style.color = '#B91C1C';
-            return;
-        }
-
         try {
             const response = await fetch(
                 'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
                     encodeURIComponent(snapshot.documentKey) + '/verification',
                 { headers: { Authorization: 'Bearer ' + token } }
             );
-            const payload = await response.json();
-            if (!response.ok || !payload.success || !payload.verification?.document) {
-                throw new Error(payload.error || 'Saved document could not be verified.');
+
+            let payload = {};
+            try {
+                payload = await response.json();
+            } catch (_) {
+                throw new Error('The verification service returned an unreadable response.');
             }
 
-            const saved = payload.verification.document;
-            const savedTopics = (payload.verification.topic_references || [])
+            if (!response.ok || !payload.success || !payload.verification?.document) {
+                throw new Error(payload.error || 'The saved document or verification records could not be read.');
+            }
+
+            const verification = payload.verification;
+            const saved = verification.document;
+            const savedTopics = (verification.topic_references || [])
                 .filter(item => item.reference_type === 'primary')
                 .map(item => Number(item.topic_id));
-
-            addLine(detailBox, 'Title', saved.title);
-            addLine(detailBox, 'Summary', saved.description);
-            addLine(detailBox, 'Document key', saved.document_key);
-            addLine(detailBox, 'Document ID', saved.id);
-            addLine(detailBox, 'Status', saved.active === true ? 'Active' : 'Draft');
-            addLine(detailBox, 'Engineering Center', payload.verification.engineering_center?.name || 'Record not found');
-            addLine(detailBox, 'Engineering Center ID', saved.engineering_center_id);
-            addLine(detailBox, 'Category', payload.verification.category?.name || 'Record not found');
-            addLine(detailBox, 'Category ID', saved.category_id);
-            addLine(detailBox, 'Topic IDs saved', savedTopics.length ? savedTopics.join(', ') : 'None');
-            const savedRelated = payload.verification.related_documents || [];
-            addLine(
-                detailBox,
-                'Related documents saved',
-                savedRelated.length
-                    ? savedRelated.map(item => item.title || ('ID ' + item.id)).join('; ')
-                    : 'None'
-            );
+            const submitted = snapshot.submitted;
+            const related = verification.related_documents || [];
+            const savedBody = String(saved.body || '').trim();
+            const savedHtml = String(saved.body_html || '').trim();
 
             const checks = [
-                ['Document key matches', saved.document_key === snapshot.documentKey],
-                ['Title matches submitted value', String(saved.title || '') === snapshot.submitted.title],
-                ['Summary matches edited value', String(saved.description || '') === snapshot.submitted.description],
-                ['Readable body matches submitted content', String(saved.body || '').trim() === snapshot.submitted.body],
-                ['Formatted HTML matches submitted content', String(saved.body_html || '').trim() === snapshot.submitted.body_html],
-                ['Engineering Center matches', Number(saved.engineering_center_id) === snapshot.submitted.engineering_center_id],
-                ['Category matches', Number(saved.category_id) === snapshot.submitted.category_id],
-                ['Engineering Center record exists and is active', Boolean(payload.verification.engineering_center && payload.verification.engineering_center.active === true)],
-                ['Category record exists, is active, and belongs to the selected Center', Boolean(
-                    payload.verification.category &&
-                    payload.verification.category.active === true &&
-                    Number(payload.verification.category.center_id) === Number(saved.engineering_center_id)
-                )],
-                ['Topic relationships match', sameIds(savedTopics, snapshot.submitted.topic_ids)],
-                ['Related document IDs match', sameIds(saved.related_documents, snapshot.submitted.related_documents)],
-                ['Related document records all exist', (payload.verification.related_documents || []).length === snapshot.submitted.related_documents.length],
-                ['Article remains Draft', saved.active === false && String(saved.review_status || '').toLowerCase() === 'draft']
+                saved.document_key === snapshot.documentKey,
+                String(saved.title || '') === submitted.title,
+                String(saved.description || '') === submitted.description,
+                savedBody === submitted.body,
+                savedHtml === submitted.body_html,
+                Number(saved.engineering_center_id) === submitted.engineering_center_id,
+                Number(saved.category_id) === submitted.category_id,
+                Boolean(verification.engineering_center && verification.engineering_center.active === true),
+                Boolean(
+                    verification.category &&
+                    verification.category.active === true &&
+                    Number(verification.category.center_id) === Number(saved.engineering_center_id)
+                ),
+                sameIds(savedTopics, submitted.topic_ids),
+                sameIds(saved.related_documents, submitted.related_documents),
+                related.length === submitted.related_documents.length,
+                saved.active === false &&
+                    String(saved.review_status || '').toLowerCase() === 'draft'
             ];
 
-            checks.forEach(([label, passed]) => addResult(
-                label,
-                passed,
-                passed ? '' : 'Expected and saved values differ; inspect the details before finishing.'
-            ));
+            const failedCount = checks.filter(passed => !passed).length;
+            if (failedCount) {
+                showResult(
+                    false,
+                    failedCount + ' verification check(s) failed. The document remains Draft. Keep this document open and correct the intake or saved relationships before activating it.'
+                );
+                return;
+            }
 
-            const failed = checks.filter(item => !item[1]);
-            status.textContent = failed.length
-                ? 'Verification finished with ' + failed.length + ' failed check(s). Keep this session open; no data was changed.'
-                : 'All verification checks passed. The article remains Draft and unpublished.';
-            status.style.color = failed.length ? '#B91C1C' : '#166534';
-
-            const finish = createElement(
-                'button',
-                'Finish — Keep Results Visible',
-                container
+            showResult(
+                true,
+                'The saved document, summary, content, Engineering Center, category, topic relationships, and references match the submitted values. The article remains Draft. You may now review it and explicitly select Active when ready.'
             );
-            finish.type = 'button';
-            finish.style.cssText = 'margin-top:12px;padding:10px 18px;border:1px solid #19304B;border-radius:6px;background:#FFFFFF;color:#19304B;font-weight:600;cursor:pointer;';
-            finish.addEventListener('click', () => {
-                finish.disabled = true;
-                finish.textContent = 'Verification results retained above';
-                createElement(
-                    'p',
-                    'You may now leave this screen. The results remain visible until you navigate away or close the workspace.',
-                    container
-                ).style.cssText = 'color:#64748B;font-size:13px;';
-            });
         } catch (error) {
-            status.textContent = (error.message || 'Verification failed.') +
-                ' Your intake session remains open; no automatic retry or duplicate registration was performed.';
-            status.style.color = '#B91C1C';
-            createElement(
-                'p',
-                'Document key: ' + snapshot.documentKey,
-                detailBox
+            showResult(
+                false,
+                (error && error.message ? error.message : 'Verification could not be completed.') +
+                ' The intake session remains open. No automatic retry, duplicate registration, repair, or activation was performed.'
             );
         }
     }
