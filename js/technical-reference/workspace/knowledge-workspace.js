@@ -260,8 +260,7 @@
                     'The EKC Review module has not loaded.'
                 );
             }
-        }
- else if (stageId === 'verification') {
+        } else if (stageId === 'verification') {
             if (typeof window.renderKnowledgeVerification === 'function') {
                 window.renderKnowledgeVerification(content);
             } else {
