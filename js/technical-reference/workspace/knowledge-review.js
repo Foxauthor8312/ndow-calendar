@@ -557,7 +557,7 @@
             activateButton.style.cssText =
                 'padding:10px 16px;border:0;border-radius:6px;background:#19304B;color:#FFFFFF;font-weight:600;cursor:pointer;';
 
-            const statusLine = createElement('p', '', activationSection);
+            let statusLine = createElement('p', '', activationSection);
             statusLine.setAttribute('role', 'status');
             statusLine.style.cssText = 'margin-top:10px;font-size:13px;line-height:1.5;';
 
@@ -599,6 +599,9 @@
                     const freshChecks = buildChecks(freshVerification);
                     renderChecks(freshChecks);
                     renderActivationControls(freshVerification, freshChecks.every(item => item.passed));
+                    statusLine = createElement('p', '', activationSection);
+                    statusLine.setAttribute('role', 'status');
+                    statusLine.style.cssText = 'margin-top:10px;font-size:13px;line-height:1.5;';
 
                     if (!confirmed) {
                         showResult(false, 'The activation request returned, but the fresh database read did not confirm active=true and review_status=Verified. Do not treat activation as successful.');
