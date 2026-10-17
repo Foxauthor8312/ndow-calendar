@@ -381,7 +381,7 @@
         heading.style.cssText = 'margin:0 0 8px;color:#19304B;font-size:20px;';
         createElement(
             'p',
-            'Verifies the saved document and its database relationships immediately after registration. This check is read-only and never activates or changes the article.',
+            'Verification reads the saved document, classifications, relationships, and search-index rows directly from the database. Activation is verified only after a fresh database read confirms the saved status.',
             container
         );
 
@@ -401,8 +401,17 @@
         const messageBox = createElement('div', undefined, resultPanel);
         const resultHeading = createElement('strong', 'Verification in progress', messageBox);
         resultHeading.style.cssText = 'display:block;color:#19304B;font-size:15px;';
-        const resultMessage = createElement('span', 'Reading back the saved database records…', messageBox);
+        const resultMessage = createElement('span', 'Reading saved database records…', messageBox);
         resultMessage.style.cssText = 'display:block;margin-top:4px;color:#475569;font-size:13px;line-height:1.5;';
+
+        const detailSection = addSection(container, 'Database Read-Back Results');
+        const activationSection = addSection(container, 'Publication Status');
+        let activationMessage = createElement(
+            'p',
+            'Activation is available after every registration and relationship check passes.',
+            activationSection
+        );
+        activationMessage.style.cssText = 'margin:0;color:#475569;font-size:13px;line-height:1.5;';
 
         function showResult(passed, message) {
             indicator.textContent = passed ? '✓' : '!';
@@ -414,11 +423,33 @@
             resultMessage.textContent = message;
         }
 
+        function normalizedIds(values) {
+            return [...new Set((Array.isArray(values) ? values : [])
+                .map(Number).filter(Number.isFinite))].sort((a, b) => a - b);
+        }
+
+        function sameIds(a, b) {
+            return JSON.stringify(normalizedIds(a)) === JSON.stringify(normalizedIds(b));
+        }
+
+        function renderChecks(checks) {
+            detailSection.replaceChildren();
+            createElement('h3', 'Database Read-Back Results', detailSection).style.cssText =
+                'margin:0 0 10px;color:#19304B;font-size:16px;';
+            checks.forEach(check => {
+                const line = createElement(
+                    'p',
+                    (check.passed ? '✓ PASS — ' : '✗ FAIL — ') + check.label,
+                    detailSection
+                );
+                line.style.cssText =
+                    'margin:6px 0;color:' + (check.passed ? '#166534' : '#B91C1C') +
+                    ';font-size:13px;line-height:1.5;';
+            });
+        }
+
         if (!snapshot || !snapshot.documentKey || !snapshot.submitted) {
-            showResult(
-                false,
-                'No successful registration is recorded in this intake session. Register the article first. No data was changed.'
-            );
+            showResult(false, 'No successful registration is recorded in this intake session. Register an article first.');
             return;
         }
 
@@ -429,23 +460,11 @@
             '';
 
         if (!token) {
-            showResult(
-                false,
-                'Verification could not run because the login token is missing. The article remains Draft and the intake session is preserved.'
-            );
+            showResult(false, 'Verification could not run because the login token is missing. No data was changed.');
             return;
         }
 
-        function normalizedIds(values) {
-            return [...new Set((Array.isArray(values) ? values : [])
-                .map(Number).filter(Number.isFinite))].sort((a, b) => a - b);
-        }
-
-        function sameIds(a, b) {
-            return JSON.stringify(normalizedIds(a)) === JSON.stringify(normalizedIds(b));
-        }
-
-        try {
+        async function readVerification() {
             const response = await fetch(
                 'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
                     encodeURIComponent(snapshot.documentKey) + '/verification',
@@ -460,59 +479,185 @@
             }
 
             if (!response.ok || !payload.success || !payload.verification?.document) {
-                throw new Error(payload.error || 'The saved document or verification records could not be read.');
+                throw new Error(payload.error || 'The saved document or its database relationships could not be read.');
             }
+            return payload.verification;
+        }
 
-            const verification = payload.verification;
+        function buildChecks(verification) {
             const saved = verification.document;
-            const savedTopics = (verification.topic_references || [])
+            const submitted = snapshot.submitted;
+            const topicReferences = verification.topic_references || [];
+            const savedTopics = topicReferences
                 .filter(item => item.reference_type === 'primary')
                 .map(item => Number(item.topic_id));
-            const submitted = snapshot.submitted;
             const related = verification.related_documents || [];
+            const indexRows = verification.search_index_records || [];
+            const expectedTopics = normalizedIds(submitted.topic_ids);
+            const indexedTopics = normalizedIds(indexRows.map(item => item.topic_id));
+            const relatedIds = normalizedIds(saved.related_documents);
+            const actualRelatedIds = normalizedIds(related.map(item => item.id));
             const savedBody = String(saved.body || '').trim();
             const savedHtml = String(saved.body_html || '').trim();
+            const center = verification.engineering_center;
+            const category = verification.category;
+            const statusConsistent =
+                (saved.active === true && String(saved.review_status || '').toLowerCase() === 'verified') ||
+                (saved.active === false && String(saved.review_status || '').toLowerCase() === 'draft');
 
-            const checks = [
-                saved.document_key === snapshot.documentKey,
-                String(saved.title || '') === submitted.title,
-                String(saved.description || '') === submitted.description,
-                savedBody === submitted.body,
-                savedHtml === submitted.body_html,
-                Number(saved.engineering_center_id) === submitted.engineering_center_id,
-                Number(saved.category_id) === submitted.category_id,
-                Boolean(verification.engineering_center && verification.engineering_center.active === true),
-                Boolean(
-                    verification.category &&
-                    verification.category.active === true &&
-                    Number(verification.category.center_id) === Number(saved.engineering_center_id)
-                ),
-                sameIds(savedTopics, submitted.topic_ids),
-                sameIds(saved.related_documents, submitted.related_documents),
-                related.length === submitted.related_documents.length,
-                saved.active === false &&
-                    String(saved.review_status || '').toLowerCase() === 'draft'
+            return [
+                { label: 'Document row exists and document key matches', passed: saved.document_key === snapshot.documentKey },
+                { label: 'Saved title matches submitted title', passed: String(saved.title || '') === submitted.title },
+                { label: 'Saved required summary matches submitted summary', passed: String(saved.description || '') === submitted.description },
+                { label: 'Saved text body matches submitted content', passed: savedBody === submitted.body },
+                { label: 'Saved HTML body matches submitted content', passed: savedHtml === submitted.body_html },
+                { label: 'Saved Engineering Center ID matches selection', passed: Number(saved.engineering_center_id) === submitted.engineering_center_id },
+                { label: 'Engineering Center row exists and is active', passed: Boolean(center && center.active === true && Number(center.id) === Number(saved.engineering_center_id)) },
+                { label: 'Saved Category ID matches selection', passed: Number(saved.category_id) === submitted.category_id },
+                { label: 'Category row exists, is active, and belongs to the selected Center', passed: Boolean(category && category.active === true && Number(category.id) === Number(saved.category_id) && Number(category.center_id) === Number(saved.engineering_center_id)) },
+                { label: 'Topic relationship rows match all selected topic IDs', passed: sameIds(savedTopics, expectedTopics) },
+                { label: 'Related-document IDs match the accepted references', passed: sameIds(relatedIds, submitted.related_documents) },
+                { label: 'Every related-document row exists and matches the saved IDs', passed: sameIds(actualRelatedIds, relatedIds) },
+                { label: 'Search-index rows exist for every selected topic', passed: expectedTopics.length > 0 && expectedTopics.every(id => indexedTopics.includes(id)) && indexRows.every(row => Number(row.document_id) === Number(saved.id)) },
+                { label: 'Search-index row count matches selected topic count', passed: indexRows.length === expectedTopics.length },
+                { label: 'Saved publication status and review status are consistent', passed: statusConsistent }
             ];
+        }
 
-            const failedCount = checks.filter(passed => !passed).length;
-            if (failedCount) {
-                showResult(
-                    false,
-                    failedCount + ' verification check(s) failed. The document remains Draft. Keep this document open and correct the intake or saved relationships before activating it.'
-                );
+        function renderActivationControls(verification, checksPassed) {
+            activationSection.replaceChildren();
+            createElement('h3', 'Publication Status', activationSection).style.cssText =
+                'margin:0 0 10px;color:#19304B;font-size:16px;';
+
+            const saved = verification.document;
+            createElement(
+                'p',
+                'Database currently reports: ' + (saved.active ? 'ACTIVE' : 'DRAFT') +
+                    ' (review_status: ' + String(saved.review_status || 'unset') + ').',
+                activationSection
+            ).style.cssText = 'margin:0 0 10px;color:#334155;font-size:13px;line-height:1.5;';
+
+            if (saved.active === true && String(saved.review_status || '').toLowerCase() === 'verified') {
+                createElement('p', 'Activation confirmed: a fresh database read reports active=true and review_status=Verified.', activationSection)
+                    .style.cssText = 'margin:0;color:#166534;font-size:13px;line-height:1.5;';
                 return;
             }
 
-            showResult(
-                true,
-                'The saved document, summary, content, Engineering Center, category, topic relationships, and references match the submitted values. The article remains Draft. You may now review it and explicitly select Active when ready.'
-            );
+            if (!checksPassed) {
+                createElement('p', 'Activation is blocked because one or more verification checks failed. Correct the listed failures before publishing.', activationSection)
+                    .style.cssText = 'margin:0;color:#B91C1C;font-size:13px;line-height:1.5;';
+                return;
+            }
+
+            createElement('p', 'All document, relationship, and index checks passed. You can activate this article now.', activationSection)
+                .style.cssText = 'margin:0 0 10px;color:#475569;font-size:13px;line-height:1.5;';
+
+            const activateButton = createElement('button', 'Activate Article', activationSection);
+            activateButton.type = 'button';
+            activateButton.style.cssText =
+                'padding:10px 16px;border:0;border-radius:6px;background:#19304B;color:#FFFFFF;font-weight:600;cursor:pointer;';
+
+            let statusLine = createElement('p', '', activationSection);
+            statusLine.setAttribute('role', 'status');
+            statusLine.style.cssText = 'margin-top:10px;font-size:13px;line-height:1.5;';
+
+            activateButton.addEventListener('click', async () => {
+                activateButton.disabled = true;
+                activateButton.textContent = 'Activating…';
+                statusLine.textContent = 'Saving Active status, then reading the document back from the database…';
+                statusLine.style.color = '#475569';
+
+                try {
+                    const response = await fetch(
+                        'https://ndow-calendar-server.onrender.com/api/knowledge/document/' +
+                            encodeURIComponent(snapshot.documentKey) + '/status',
+                        {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                Authorization: 'Bearer ' + token
+                            },
+                            body: JSON.stringify({ status: 'active' })
+                        }
+                    );
+
+                    let result = {};
+                    try {
+                        result = await response.json();
+                    } catch (_) {
+                        throw new Error('The activation endpoint returned an unreadable response.');
+                    }
+                    if (!response.ok || !result.success) {
+                        throw new Error(result.error || 'The activation request failed.');
+                    }
+
+                    const freshVerification = await readVerification();
+                    const freshDocument = freshVerification.document;
+                    const confirmed = freshDocument.active === true &&
+                        String(freshDocument.review_status || '').toLowerCase() === 'verified';
+
+                    const freshChecks = buildChecks(freshVerification);
+                    renderChecks(freshChecks);
+                    renderActivationControls(freshVerification, freshChecks.every(item => item.passed));
+                    statusLine = createElement('p', '', activationSection);
+                    statusLine.setAttribute('role', 'status');
+                    statusLine.style.cssText = 'margin-top:10px;font-size:13px;line-height:1.5;';
+
+                    if (!confirmed) {
+                        showResult(false, 'The activation request returned, but the fresh database read did not confirm active=true and review_status=Verified. Do not treat activation as successful.');
+                        statusLine.textContent = 'Activation NOT confirmed by database read-back.';
+                        statusLine.style.color = '#B91C1C';
+                        return;
+                    }
+
+                    if (!freshChecks.every(item => item.passed)) {
+                        showResult(false, 'The database confirms Active status, but one or more integrity checks now fail. Review the listed results; publication status was saved.');
+                        statusLine.textContent = 'Active status saved, but verification has failures.';
+                        statusLine.style.color = '#B91C1C';
+                        return;
+                    }
+
+                    showResult(true, 'Database read-back confirms the article is Active and all document, relationship, and search-index checks pass.');
+                    statusLine.textContent = 'Activation confirmed by fresh database read-back.';
+                    statusLine.style.color = '#166534';
+                } catch (error) {
+                    showResult(false, (error && error.message ? error.message : 'Activation could not be verified.') + ' Check the saved status before retrying.');
+                    statusLine.textContent = 'Activation result is uncertain until the database is read again.';
+                    statusLine.style.color = '#B91C1C';
+                    activateButton.disabled = false;
+                    activateButton.textContent = 'Retry Activation';
+                }
+            });
+        }
+
+        try {
+            const verification = await readVerification();
+            const checks = buildChecks(verification);
+            const passed = checks.every(item => item.passed);
+            renderChecks(checks);
+            renderActivationControls(verification, passed);
+
+            if (passed) {
+                showResult(
+                    true,
+                    'All ' + checks.length + ' database checks passed. The saved document and all selected relationships and search-index rows were read back.'
+                );
+            } else {
+                const failed = checks.filter(item => !item.passed);
+                showResult(
+                    false,
+                    failed.length + ' of ' + checks.length +
+                    ' database checks failed. See the itemized results below. Activation is blocked until these are corrected.'
+                );
+            }
         } catch (error) {
             showResult(
                 false,
                 (error && error.message ? error.message : 'Verification could not be completed.') +
-                ' The intake session remains open. No automatic retry, duplicate registration, repair, or activation was performed.'
+                ' The intake session remains open. No automatic retry or duplicate registration was performed.'
             );
+            createElement('p', 'No successful database read-back was completed. Do not assume registration or activation succeeded.', detailSection)
+                .style.cssText = 'color:#B91C1C;font-size:13px;';
         }
     }
 
