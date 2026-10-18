@@ -8932,6 +8932,77 @@ async function saveVolunteerHours(){
 
 }
 
+
+/* ========================================
+   EVENT ROSTER COUNT CACHE
+   Retrieves counts only — no student details.
+======================================== */
+
+let eventRosterCountsCache = null;
+let eventRosterCountsPromise = null;
+
+async function loadEventRosterCounts() {
+
+  if (eventRosterCountsCache !== null) {
+    return eventRosterCountsCache;
+  }
+
+  if (eventRosterCountsPromise) {
+    return eventRosterCountsPromise;
+  }
+
+  eventRosterCountsPromise = fetch(
+    'https://ndow-calendar-server.onrender.com/api/event-roster-counts',
+    {
+      cache: 'no-store'
+    }
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(
+          'Roster counts request failed: ' + response.status
+        );
+      }
+
+      return response.json();
+    })
+    .then(result => {
+      if (
+        !result ||
+        result.success !== true ||
+        !Array.isArray(result.counts)
+      ) {
+        throw new Error(
+          'Roster counts response was not valid.'
+        );
+      }
+
+      eventRosterCountsCache = new Map(
+        result.counts.map(row => [
+          String(row.event_id),
+          {
+            count: row.registered_count,
+            lastChecked: row.roster_last_checked
+          }
+        ])
+      );
+
+      return eventRosterCountsCache;
+    })
+    .catch(error => {
+      console.warn(
+        'Event roster counts unavailable:',
+        error
+      );
+
+      eventRosterCountsPromise = null;
+      return null;
+    });
+
+  return eventRosterCountsPromise;
+}
+
+
 // ========================================
 // START EVENT MODAL SYSTEM
 // ========================================
@@ -8963,6 +9034,13 @@ if(
 }
 
 selectedEvent = event;
+
+// Load the shared roster counts and find this event's count.
+const rosterCounts = await loadEventRosterCounts();
+
+const rosterInfo = rosterCounts
+  ? rosterCounts.get(String(event?.id))
+  : null;
 
 if(!departmentContacts.length){
 
@@ -9177,6 +9255,59 @@ ${
   ">
     ${event.time || event.date || ''}
   </div>
+
+  
+  <div style="
+    margin:10px 0 12px 0;
+    padding:10px 12px;
+    background:#ffffff;
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+  ">
+    <div style="
+      font-size:14px;
+      font-weight:700;
+      color:#19304B;
+    ">
+      Registered Students: ${(() => {
+        const rosterCount = rosterInfo?.count;
+        return rosterCount !== null &&
+               rosterCount !== undefined &&
+               Number.isFinite(Number(rosterCount))
+          ? Number(rosterCount)
+          : 'Unavailable';
+      })()}
+    </div>
+    <div style="
+      margin-top:4px;
+      font-size:12px;
+      color:#64748b;
+    ">
+      ${(() => {
+        if (!rosterInfo?.lastChecked) {
+          return 'Roster status unavailable';
+        }
+
+        const checkedDate = new Date(rosterInfo.lastChecked);
+
+        if (Number.isNaN(checkedDate.getTime())) {
+          return 'Roster status unavailable';
+        }
+
+        const ageDays = Math.floor(
+          (Date.now() - checkedDate.getTime()) / 86400000
+        );
+
+        const checkedText =
+          checkedDate.toLocaleString();
+
+        return ageDays > 7
+          ? 'Roster last checked: ' + checkedText + ' (stale)'
+          : 'Roster last checked: ' + checkedText;
+      })()}
+    </div>
+  </div>
+
 
   <div style="
     font-size:14px;
