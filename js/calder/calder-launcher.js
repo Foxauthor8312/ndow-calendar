@@ -223,7 +223,7 @@
       if (event.key === "Escape" && panel.classList.contains("is-open")) setOpen(false);
     });
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
       const question = input.value.trim();
       if (!question) return;
@@ -237,17 +237,63 @@
         return;
       }
 
-      if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
-        answerHoursQuestion();
-      } else if (/\b(events?|calendar|fishing|hunter|archery|boating|programs?|classes|workshops?|where|when|upcoming|coming up|next week|this week|location|county|region|january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(question)) {
-        if (!hasCalendarTimeframe(question)) {
-          pendingCalendarQuestion = question;
-          addMessage("What time frame would you like for " + question + "? You can say this week, this month, a specific month and year (for example, October 2026), a year, or all dates.", "calder-reply");
-        } else {
-          answerCalendarQuestion(question);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        addMessage("Please sign in to the NDOW Volunteer Calendar first so I can securely look up your information.", "calder-error");
+        return;
+      }
+
+      sendButton.disabled = true;
+      input.disabled = true;
+      addMessage("Let me understand what you're asking…", "calder-reply");
+
+      try {
+        const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/reason", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          body: JSON.stringify({ question: question })
+        });
+        const body = await response.json().catch(function () { return {}; });
+        if (!response.ok || !body.success || !body.plan) {
+          throw new Error(body.error || body.message || "Calder's reasoning service returned HTTP " + response.status + ".");
         }
-      } else {
-        addMessage("I can look up your recorded volunteer hours or search the published Volunteer Calendar. Try a program, event title, location, or month.", "calder-reply");
+
+        const plan = body.plan;
+        const priorStatus = messages.querySelector(".calder-message.calder-reply:last-child");
+        if (priorStatus && priorStatus.textContent === "Let me understand what you're asking…") priorStatus.remove();
+
+        if (plan.intent === "my_hours") {
+          answerHoursQuestion();
+        } else if (plan.intent === "calendar_search") {
+          const calendarQuestion = [question, plan.search_terms, plan.timeframe].filter(Boolean).join(" ");
+          if (!hasCalendarTimeframe(calendarQuestion)) {
+            pendingCalendarQuestion = question;
+            addMessage("What time frame would you like? You can say this week, this month, a specific month and year, a year, or all dates.", "calder-reply");
+          } else {
+            answerCalendarQuestion(calendarQuestion);
+          }
+        } else if (plan.intent === "clarify" && plan.clarification) {
+          addMessage(plan.clarification, "calder-reply");
+        } else if (plan.intent === "my_assignments") {
+          addMessage("I understand you're asking about your instructor assignments. That lookup isn't connected to Calder yet; we'll add it next.", "calder-reply");
+        } else if (plan.intent === "help_search" || plan.intent === "knowledge_search") {
+          addMessage("I understand you're looking for help or Engineering Knowledge Center information. That search isn't connected to Calder yet; we'll add it next.", "calder-reply");
+        } else {
+          addMessage("I can help with your recorded hours and the published Volunteer Calendar. Tell me a little more about what you need.", "calder-reply");
+        }
+      } catch (error) {
+        console.error("Calder reasoning request failed:", error);
+        const statusMessages = messages.querySelectorAll(".calder-message.calder-reply");
+        const lastStatus = statusMessages[statusMessages.length - 1];
+        if (lastStatus && lastStatus.textContent === "Let me understand what you're asking…") lastStatus.remove();
+        addMessage("I couldn't interpret that request right now. Please try again. Your calendar and hours records haven't been changed.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
       }
     });
   }
