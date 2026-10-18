@@ -97,7 +97,7 @@
           "Events recorded: " + formatNumber(body.events) + "\n" +
           "Event hours: " + formatNumber(body.eventHours ?? body.volunteerHours, 2) + "\n" +
           "Travel hours: " + formatNumber(body.travelHours, 2) + "\n" +
-          "Total hours (event + travel): " + formatNumber(body.totalHours ?? (Number(body.eventHours ?? body.volunteerHours || 0) + Number(body.travelHours || 0)), 2) + "\n" +
+          "Total hours (event + travel): " + formatNumber(body.totalHours ?? (Number((body.eventHours ?? body.volunteerHours) || 0) + Number(body.travelHours || 0)), 2) + "\n" +
           "Miles: " + formatNumber(body.mileage, 2) + "\n" +
           "Estimated service value: $" + formatNumber(body.serviceValue, 2);
         addMessage(summary, "calder-reply");
