@@ -30,11 +30,11 @@
         '<button class="calder-close" type="button" aria-label="Close Calder chat">&times;</button>' +
       '</div>' +
       '<div class="calder-messages" aria-live="polite">' +
-        '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can look up your recorded volunteer hours and search the existing NDOW Help and Engineering Knowledge Center.</div>' +
+        '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can look up your recorded volunteer hours, your calendar assignments, published events, and information in the existing Help and Engineering Knowledge Center.</div>' +
       '</div>' +
       '<div class="calder-status">Connected to the NDOW hours summary service for supported hours questions.</div>' +
       '<form class="calder-composer">' +
-        '<input type="text" name="message" aria-label="Message Calder" placeholder="Ask about your volunteer hours…" autocomplete="off">' +
+        '<input type="text" name="message" aria-label="Message Calder" placeholder="Ask about hours, your events, or the calendar…" autocomplete="off">' +
         '<button type="submit">Send</button>' +
       '</form>';
 
@@ -69,37 +69,134 @@
       });
     }
 
-    function askToOpenNdowSync() {
-      const message = document.createElement("div");
-      message.className = "calder-message calder-reply";
-      message.textContent = "I can use the calendar’s existing NDOW SYNC workflow to retrieve your instructor assignments and, if you choose, synchronize your NDOW volunteer hours. Would you like to open the NDOW login window?";
-      const actions = document.createElement("div");
-      actions.style.cssText = "display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;";
-      const yes = document.createElement("button");
-      yes.type = "button";
-      yes.textContent = "Open NDOW SYNC";
-      yes.style.cssText = "background:#19304B;color:#fff;border:0;border-radius:6px;padding:8px 10px;cursor:pointer;";
-      yes.addEventListener("click", function () {
-        message.remove();
-        if (typeof window.openNdowSyncMessage === "function") {
-          addMessage("The existing NDOW SYNC window is opening. Enter your NDOW credentials there—not in this chat. Choose “Synchronize my NDOW volunteer hours” only if you want to retrieve hours too. When the sync finishes, its report will show the results.", "calder-reply");
-          window.openNdowSyncMessage();
-        } else {
-          addMessage("I couldn’t open the existing NDOW SYNC window because it isn’t available on this page. Please use the calendar’s Sync NDOW button.", "calder-error");
+    async function loadPublishedEvents() {
+      const response = await fetch(
+        "https://foxauthor8312.github.io/ndow-calendar/events.json?t=" + Date.now()
+      );
+      if (!response.ok) throw new Error("Calendar feed returned HTTP " + response.status);
+      const payload = await response.json();
+      return Array.isArray(payload) ? payload : (payload.events || []);
+    }
+
+    function calendarDate(event) {
+      const raw = event.date || event.event_date || event.startDate || "";
+      if (!raw) return null;
+      const date = new Date(raw);
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function calendarDateLabel(event) {
+      const date = calendarDate(event);
+      return date ? date.toLocaleDateString(undefined, {
+        weekday: "short", month: "short", day: "numeric", year: "numeric"
+      }) : (event.date || event.event_date || "Date not listed");
+    }
+
+    async function answerMyAssignments() {
+      sendButton.disabled = true;
+      input.disabled = true;
+      addMessage("I’ll check the assignments recorded for your signed-in calendar account…", "calder-reply");
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("Your calendar session has expired. Please sign in again.");
+        const responses = await Promise.all([
+          fetch("https://ndow-calendar-server.onrender.com/api/ndow-assignments/mine", {
+            headers: { Authorization: "Bearer " + token }
+          }),
+          loadPublishedEvents()
+        ]);
+        const assignmentResponse = responses[0];
+        const assignmentBody = await assignmentResponse.json().catch(function () { return {}; });
+        if (!assignmentResponse.ok || !assignmentBody.success) {
+          throw new Error(assignmentBody.error || "Could not load your calendar assignments.");
         }
-      });
-      const no = document.createElement("button");
-      no.type = "button";
-      no.textContent = "Not now";
-      no.style.cssText = "background:#E8EEF5;color:#19304B;border:1px solid #CBD5E1;border-radius:6px;padding:8px 10px;cursor:pointer;";
-      no.addEventListener("click", function () {
-        message.remove();
-        addMessage("No problem. I haven’t connected to NDOW or changed anything.", "calder-reply");
-      });
-      actions.append(yes, no);
-      message.appendChild(actions);
-      messages.appendChild(message);
-      messages.scrollTop = messages.scrollHeight;
+        const ids = new Set((assignmentBody.eventIds || []).map(function (id) { return String(id).trim(); }));
+        const events = responses[1];
+        const matches = events.filter(function (event) { return ids.has(String(event.id || event.event_id || "").trim()); });
+        matches.sort(function (a, b) {
+          const da = calendarDate(a), db = calendarDate(b);
+          if (da && db) return da - db;
+          if (da) return -1;
+          if (db) return 1;
+          return 0;
+        });
+        if (!matches.length) {
+          addMessage(ids.size
+            ? "Your account has " + ids.size + " recorded assignment ID(s), but I couldn’t match them to events in the published calendar. I haven’t checked the external NDOW system."
+            : "I don’t see any instructor assignments recorded for your signed-in calendar account yet. This checks the calendar’s existing records only; it does not log in to external NDOW.", "calder-reply");
+          return;
+        }
+        const shown = matches.slice(0, 10);
+        const lines = shown.map(function (event, index) {
+          return (index + 1) + ". " + (event.title || event.program || "Calendar event") +
+            "\\n   " + calendarDateLabel(event) +
+            "\\n   " + (event.location || event.county || event.region || "Location not listed");
+        });
+        let reply = "Your signed-in calendar account has " + matches.length + " matching instructor assignment(s):\\n\\n" + lines.join("\\n\\n");
+        if (matches.length > shown.length) reply += "\\n\\nI’ve shown the first " + shown.length + ". Ask for a month or program to narrow the list.";
+        addMessage(reply, "calder-reply");
+      } catch (error) {
+        console.error("Calder assignment lookup failed:", error);
+        addMessage(error.message || "I couldn’t load your calendar assignments right now.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
+    async function answerCalendarQuestion(question) {
+      sendButton.disabled = true;
+      input.disabled = true;
+      addMessage("I’ll search the published Volunteer Calendar…", "calder-reply");
+      try {
+        const events = await loadPublishedEvents();
+        const q = question.toLowerCase();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const upcomingOnly = /\\b(upcoming|coming up|next events|future|this week|next week|what'?s next)\\b/.test(q);
+        const monthNames = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+        const requestedMonth = monthNames.findIndex(function (month) { return q.includes(month); });
+        const terms = q.replace(/\\b(show|find|list|search|tell|me|about|what|which|are|is|the|a|an|for|of|in|on|at|calendar|event|events|upcoming|coming|up|next|please|do|we|have|there|any|this|week|month|near|around)\\b/g, " ")
+          .replace(/[^a-z0-9\\s-]/g, " ").split(/\\s+/)
+          .filter(function (term) { return term.length > 2; });
+        let matches = events.filter(function (event) {
+          const date = calendarDate(event);
+          if (upcomingOnly && date && date < today) return false;
+          if (requestedMonth >= 0 && date && date.getMonth() !== requestedMonth) return false;
+          const searchable = [event.title, event.program, event.category, event.location, event.county, event.region, event.description]
+            .filter(Boolean).join(" ").toLowerCase();
+          return terms.length === 0 || terms.some(function (term) { return searchable.includes(term); });
+        });
+        matches.sort(function (a, b) {
+          const da = calendarDate(a), db = calendarDate(b);
+          if (da && db) return da - db;
+          if (da) return -1;
+          if (db) return 1;
+          return String(a.title || "").localeCompare(String(b.title || ""));
+        });
+        if (!matches.length) {
+          addMessage("I couldn’t find a matching event in the published Volunteer Calendar. Try a program, title, location, or month. Personal instructor assignments are checked separately against your signed-in account.", "calder-reply");
+          return;
+        }
+        const shown = matches.slice(0, 8);
+        const lines = shown.map(function (event, index) {
+          return (index + 1) + ". " + (event.title || event.program || "Calendar event") +
+            "\\n   " + calendarDateLabel(event) +
+            "\\n   " + (event.time ? event.time + " · " : "") +
+            (event.location || event.county || event.region || "Location not listed");
+        });
+        let reply = "I found " + matches.length + " matching published calendar event(s):\\n\\n" + lines.join("\\n\\n");
+        if (matches.length > shown.length) reply += "\\n\\nShowing " + shown.length + " results. Narrow by program, month, or location for more specific results.";
+        addMessage(reply, "calder-reply");
+      } catch (error) {
+        console.error("Calder calendar lookup failed:", error);
+        addMessage("I couldn’t load the published Volunteer Calendar right now. Please try again shortly.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
     }
 
     async function answerKnowledgeQuestion(question) {
@@ -231,10 +328,12 @@
       addMessage(question, "calder-user");
       input.value = "";
 
-      if (/\b(ndow|official ndow|ndow system|ndow assignments?|assigned events|my assignments|instructor assignments|sync my hours|synchronize my hours)\b/i.test(question)) {
-        askToOpenNdowSync();
+      if (/\b(my events|my assignments|events am i assigned|events am i an instructor|where am i teaching|what am i teaching|my instructor assignments)\b/i.test(question)) {
+        answerMyAssignments();
       } else if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
         answerHoursQuestion();
+      } else if (/\b(events?|calendar|fishing|hunter|archery|boating|programs?|classes|workshops?|where|when|upcoming|coming up|next week|this week|location|county|region|january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(question)) {
+        answerCalendarQuestion(question);
       } else {
         answerKnowledgeQuestion(question);
       }
