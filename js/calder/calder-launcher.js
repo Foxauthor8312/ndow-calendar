@@ -181,31 +181,31 @@
       let end = null;
       let label = "";
 
-      if (/\\bthis week\\b/.test(q)) {
+      if (q.includes("this week")) {
         start = new Date(today);
         start.setDate(today.getDate() - ((today.getDay() + 6) % 7));
         end = new Date(start);
         end.setDate(start.getDate() + 6);
         label = "this week";
-      } else if (/\\blast week\\b/.test(q)) {
+      } else if (q.includes("last week")) {
         end = new Date(today);
         end.setDate(today.getDate() - ((today.getDay() + 6) % 7) - 1);
         start = new Date(end);
         start.setDate(end.getDate() - 6);
         label = "last week";
-      } else if (/\\bthis month\\b/.test(q)) {
+      } else if (q.includes("this month")) {
         start = new Date(today.getFullYear(), today.getMonth(), 1);
         end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
         label = "this month";
-      } else if (/\\blast month\\b/.test(q)) {
+      } else if (q.includes("last month")) {
         start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
         end = new Date(today.getFullYear(), today.getMonth(), 0);
         label = "last month";
-      } else if (/\\bthis year\\b/.test(q)) {
+      } else if (q.includes("this year")) {
         start = new Date(today.getFullYear(), 0, 1);
         end = new Date(today.getFullYear(), 11, 31);
         label = "this year";
-      } else if (/\\blast year\\b/.test(q)) {
+      } else if (q.includes("last year")) {
         start = new Date(today.getFullYear() - 1, 0, 1);
         end = new Date(today.getFullYear() - 1, 11, 31);
         label = "last year";
