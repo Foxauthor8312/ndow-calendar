@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Calder Assistant — isolated prototype styles
+   NDOW Volunteer Portal palette; no character artwork is bundled.
+   ========================================================================== */
+
+#calderAssistant {
+  --calder-navy: #19304B;
+  --calder-blue: #589FD6;
+  --calder-green: #7A9E7F;
+  --calder-orange: #F29647;
+  --calder-bg: #F8FAFC;
+  --calder-border: #DBE3EC;
+  --calder-text: #243447;
+  --calder-muted: #64748B;
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9998;
+  font-family: Inter, sans-serif;
+  color: var(--calder-text);
+}
+
+#calderAssistant *,
+#calderAssistant *::before,
+#calderAssistant *::after { box-sizing: border-box; }
+
+#calderAssistant .calder-launcher {
+  width: 62px;
+  height: 62px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--calder-navy);
+  color: #fff;
+  box-shadow: 0 5px 22px #19304b35;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  font-weight: 700;
+  overflow: hidden;
+  padding: 0;
+}
+
+#calderAssistant .calder-launcher img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#calderAssistant .calder-panel {
+  position: absolute;
+  right: 0;
+  bottom: 76px;
+  display: none;
+  flex-direction: column;
+  width: min(380px, calc(100vw - 28px));
+  height: min(560px, calc(100dvh - 120px));
+  min-height: 330px;
+  background: #fff;
+  border: 1px solid var(--calder-border);
+  border-radius: 16px;
+  box-shadow: 0 16px 48px #19304b2b;
+  overflow: hidden;
+}
+
+#calderAssistant.is-open .calder-panel { display: flex; }
+
+#calderAssistant .calder-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 15px;
+  color: #fff;
+  background: var(--calder-navy);
+}
+
+#calderAssistant .calder-header-avatar {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #ffffff80;
+  border-radius: 50%;
+  background: #ffffff1a;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+#calderAssistant .calder-header-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#calderAssistant .calder-heading { flex: 1; min-width: 0; }
+#calderAssistant .calder-name { font-size: 15px; font-weight: 700; }
+#calderAssistant .calder-subtitle { margin-top: 3px; font-size: 12px; opacity: .82; }
+
+#calderAssistant .calder-close {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 23px;
+  line-height: 1;
+}
+#calderAssistant .calder-close:hover { background: #ffffff1c; }
+
+#calderAssistant .calder-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  background: var(--calder-bg);
+}
+
+#calderAssistant .calder-message {
+  max-width: 94%;
+  margin: 0 0 12px;
+  padding: 11px 12px;
+  border: 1px solid var(--calder-border);
+  border-radius: 12px 12px 12px 4px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+#calderAssistant .calder-message.user {
+  margin-left: auto;
+  border-color: #d5e8f7;
+  border-radius: 12px 12px 4px 12px;
+  background: #eaf4fc;
+}
+
+#calderAssistant .calder-message strong { color: var(--calder-navy); }
+#calderAssistant .calder-message p { margin: 5px 0 0; }
+#calderAssistant .calder-message a { color: #245d8b; text-decoration: underline; }
+#calderAssistant .calder-result { margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--calder-border); }
+#calderAssistant .calder-result-title { font-weight: 700; color: var(--calder-navy); }
+#calderAssistant .calder-result-meta { margin-top: 2px; color: var(--calder-muted); font-size: 11px; }
+
+#calderAssistant .calder-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+#calderAssistant .calder-suggestion {
+  border: 1px solid #c7d9e8;
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: #fff;
+  color: var(--calder-navy);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+#calderAssistant .calder-suggestion:hover { background: #edf5fb; }
+
+#calderAssistant .calder-compose {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  padding: 11px;
+  border-top: 1px solid var(--calder-border);
+  background: #fff;
+}
+
+#calderAssistant .calder-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 42px;
+  max-height: 100px;
+  resize: vertical;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 11px;
+  color: var(--calder-text);
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+}
+#calderAssistant .calder-input:focus { outline: 2px solid #589fd655; border-color: var(--calder-blue); }
+
+#calderAssistant .calder-send {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--calder-navy);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+#calderAssistant .calder-send:disabled { opacity: .45; cursor: wait; }
+
+#calderAssistant .calder-disclaimer {
+  padding: 0 12px 9px;
+  background: #fff;
+  color: var(--calder-muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (max-width: 520px) {
+  #calderAssistant { right: 12px; bottom: 12px; }
+  #calderAssistant .calder-panel {
+    position: fixed;
+    right: 8px;
+    bottom: 82px;
+    width: calc(100vw - 16px);
+    height: min(70dvh, 600px);
+  }
+}
