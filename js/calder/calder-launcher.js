@@ -303,6 +303,58 @@
       }
     }
 
+    async function answerHelpQuestion(question) {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        addMessage("Please sign in to the NDOW Volunteer Calendar first so I can search Help.", "calder-error");
+        return;
+      }
+
+      sendButton.disabled = true;
+      input.disabled = true;
+      addMessage("I’ll look for the best Help route…", "calder-reply");
+      try {
+        const url = new URL("https://ndow-calendar-server.onrender.com/api/calder/help-search");
+        url.searchParams.set("q", question);
+        const response = await fetch(url.toString(), {
+          method: "GET",
+          headers: { "Authorization": "Bearer " + token }
+        });
+        const body = await response.json().catch(function () { return {}; });
+        if (!response.ok || !body.success) {
+          throw new Error(body.error || "Help search returned HTTP " + response.status);
+        }
+
+        if (!body.results || !body.results.length) {
+          addMessage("I couldn't find a matching Help topic. I'll need to record this as a Help gap so we can add a reliable route. You can try different wording or search the Engineering Knowledge Center.", "calder-reply");
+          return;
+        }
+
+        const lines = body.results.map(function (item, index) {
+          let line = (index + 1) + ". " + (item.title || "Help topic");
+          if (item.category) line += "\n   Area: " + item.category;
+          if (item.destination) line += "\n   Go to: " + item.destination;
+          if (item.steps && item.steps.length) {
+            line += "\n   Steps:\n   - " + item.steps.join("\n   - ");
+          }
+          if (item.content) line += "\n   Guidance: " + item.content;
+          if (item.status && item.status !== "verified") {
+            line += "\n   Note: This route still needs verification in the live interface.";
+          }
+          if (item.fallback) line += "\n   If that doesn't work: " + item.fallback;
+          return line;
+        });
+        addMessage("Here are the closest Help routes I found:\n\n" + lines.join("\n\n"), "calder-reply");
+      } catch (error) {
+        console.error("Calder Help search failed:", error);
+        addMessage("I couldn't search Help right now. Please try again shortly.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
     function resolveHoursRange(question) {
       const q = String(question || "").toLowerCase();
       const today = new Date();
@@ -468,8 +520,10 @@
           addMessage(plan.clarification, "calder-reply");
         } else if (plan.intent === "my_assignments") {
           answerAssignmentsQuestion(question + " " + (plan.timeframe || ""));
-        } else if (plan.intent === "help_search" || plan.intent === "knowledge_search") {
-          addMessage("I understand you're looking for help or Engineering Knowledge Center information. That search isn't connected to Calder yet; we'll add it next.", "calder-reply");
+        } else if (plan.intent === "help_search") {
+          answerHelpQuestion([question, plan.search_terms].filter(Boolean).join(" "));
+        } else if (plan.intent === "knowledge_search") {
+          addMessage("I understand you're looking for Engineering Knowledge Center information. That search isn't connected to Calder yet.", "calder-reply");
         } else {
           addMessage("I can help with your recorded hours and the published Volunteer Calendar. Tell me a little more about what you need.", "calder-reply");
         }
