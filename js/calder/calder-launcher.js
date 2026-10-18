@@ -235,10 +235,10 @@
 
       sendButton.disabled = true;
       input.disabled = true;
+      const range = resolveHoursRange(question);
       addMessage("Let me check your volunteer hours" + (range ? " for " + range.label + " (" + range.start + " to " + range.end + ")" : " across all recorded dates") + "…", "calder-reply");
 
       try {
-        const range = resolveHoursRange(question);
         const summaryUrl = new URL("https://ndow-calendar-server.onrender.com/api/my-hours/summary");
         if (range) {
           summaryUrl.searchParams.set("start_date", range.start);
