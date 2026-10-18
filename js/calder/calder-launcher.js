@@ -69,6 +69,99 @@
       });
     }
 
+    let calendarEventsPromise = null;
+
+    async function loadCalendarEvents() {
+      if (!calendarEventsPromise) {
+        calendarEventsPromise = fetch(
+          "https://foxauthor8312.github.io/ndow-calendar/events.json?t=" + Date.now()
+        ).then(function (response) {
+          if (!response.ok) throw new Error("Calendar feed returned HTTP " + response.status);
+          return response.json();
+        }).then(function (payload) {
+          return Array.isArray(payload) ? payload : (payload.events || []);
+        }).catch(function (error) {
+          calendarEventsPromise = null;
+          throw error;
+        });
+      }
+      return calendarEventsPromise;
+    }
+
+    function eventDateValue(event) {
+      const raw = event.date || event.event_date || event.startDate || "";
+      const parsed = new Date(raw);
+      return Number.isNaN(parsed.getTime()) ? null : parsed;
+    }
+
+    function formatEventDate(event) {
+      const date = eventDateValue(event);
+      if (!date) return event.date || "Date not listed";
+      return date.toLocaleDateString(undefined, {
+        weekday: "short", month: "short", day: "numeric", year: "numeric"
+      });
+    }
+
+    async function answerCalendarQuestion(question) {
+      sendButton.disabled = true;
+      input.disabled = true;
+      addMessage("I’ll check the published NDOW calendar…", "calder-reply");
+      try {
+        const events = await loadCalendarEvents();
+        const q = question.toLowerCase();
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        const upcomingOnly = /\b(upcoming|coming up|next events|future|this week|next week|what'?s next)\b/.test(q);
+        const monthNames = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+        const requestedMonth = monthNames.findIndex(function (month) { return q.includes(month); });
+        const terms = q.replace(/\b(show|find|list|search|tell|me|about|what|which|are|is|the|a|an|for|of|in|on|at|calendar|event|events|upcoming|coming|up|next|please|do|we|have|there|any|this|week|month|near|around)\b/g, " ")
+          .replace(/[^a-z0-9\s-]/g, " ")
+          .split(/\s+/).filter(function (term) { return term.length > 2; });
+
+        let matches = events.filter(function (event) {
+          const date = eventDateValue(event);
+          if (upcomingOnly && date && date < now) return false;
+          if (requestedMonth >= 0 && date && date.getMonth() !== requestedMonth) return false;
+          const searchable = [
+            event.title, event.program, event.category, event.location,
+            event.county, event.region, event.description
+          ].filter(Boolean).join(" ").toLowerCase();
+          return terms.length === 0 || terms.some(function (term) { return searchable.includes(term); });
+        });
+
+        matches.sort(function (a, b) {
+          const da = eventDateValue(a), db = eventDateValue(b);
+          if (da && db) return da - db;
+          if (da) return -1;
+          if (db) return 1;
+          return String(a.title || "").localeCompare(String(b.title || ""));
+        });
+
+        if (!matches.length) {
+          addMessage("I couldn’t find a matching event in the published calendar. Try a program, event title, location, or month. I can’t confirm personal instructor assignments from the public calendar alone.", "calder-reply");
+          return;
+        }
+
+        const shown = matches.slice(0, 5);
+        const lines = shown.map(function (event, index) {
+          const title = event.title || event.program || "NDOW event";
+          const location = event.location || event.county || "Location not listed";
+          const time = event.time ? " · " + event.time : "";
+          return (index + 1) + ". " + title + "\n   " + formatEventDate(event) + time + "\n   " + location;
+        });
+        let reply = "I found " + matches.length + " matching calendar event" + (matches.length === 1 ? "" : "s") + ". Here are " + shown.length + ":\n\n" + lines.join("\n\n");
+        if (matches.length > shown.length) reply += "\n\nThere are more matches. Narrow the search by program, month, or location.";
+        addMessage(reply, "calder-reply");
+      } catch (error) {
+        console.error("Calder calendar request failed:", error);
+        addMessage("I couldn’t load the published calendar right now. Please try again shortly.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
     async function answerHoursQuestion() {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -127,8 +220,10 @@
 
       if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
         answerHoursQuestion();
+      } else if (/\b(events?|calendar|fishing|hunter|archery|boating|programs?|classes|workshops?|where|when|upcoming|coming up|next week|this week|instructor|location|county|region|january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(question)) {
+        answerCalendarQuestion(question);
       } else {
-        addMessage("I can currently look up your current-year volunteer-hours summary. More calendar and event questions will be added as those connections are completed.", "calder-reply");
+        addMessage("Try asking about your volunteer hours, upcoming events, a program, event title, location, or month. Personal instructor assignments will require your signed-in account data.", "calder-reply");
       }
     });
   }
