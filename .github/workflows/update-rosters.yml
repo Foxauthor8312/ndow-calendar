@@ -1,38 +1,51 @@
+
 name: Update Event Rosters
 
 on:
   workflow_dispatch:
 
   schedule:
-    # Daily at 9:00 AM and 5:00 PM Pacific during PDT
-    - cron: '0 0,16 * * *'
+    # Hourly across the Pacific 5 AM–5 PM window year-round.
+    # The time-window guard handles PST/PDT changes.
+    - cron: '0 0-1,12-23 * * *'
 
 jobs:
-
   update-rosters:
-
     runs-on: ubuntu-latest
-
     timeout-minutes: 60
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Check Pacific Time Window
+        id: time-window
+        run: |
+          hour=$(TZ=America/Los_Angeles date +%H)
+
+          if [ "$hour" -ge 5 ] && [ "$hour" -le 17 ]; then
+            echo "run_sync=true" >> "$GITHUB_OUTPUT"
+            echo "Within the 5 AM–5 PM Pacific window."
+          else
+            echo "run_sync=false" >> "$GITHUB_OUTPUT"
+            echo "Outside the Pacific window; skipping sync."
+          fi
+
       - name: Setup Node.js
+        if: steps.time-window.outputs.run_sync == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Install Dependencies
+        if: steps.time-window.outputs.run_sync == 'true'
         run: npm install
 
       - name: Run Roster Synchronization
+        if: steps.time-window.outputs.run_sync == 'true'
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           NDOW_EMAIL: ${{ secrets.NDOW_EMAIL }}
           NDOW_PASSWORD: ${{ secrets.NDOW_PASSWORD }}
-
         run: node roster-update.cjs
