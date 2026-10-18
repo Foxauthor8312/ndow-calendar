@@ -164,13 +164,13 @@
           throw new Error(body.message || body.error || "The NDOW service returned HTTP " + response.status + ".");
         }
 
-        const year = body.year || new Date().getFullYear();
         const summary =
-          "Your " + year + " volunteer-hours summary:\n" +
+          "Your recorded volunteer-hours summary:\n" +
           "Events recorded: " + formatNumber(body.events) + "\n" +
-          "Volunteer hours: " + formatNumber(body.volunteerHours, 2) + "\n" +
+          "Event hours: " + formatNumber(body.eventHours ?? body.volunteerHours, 2) + "\n" +
           "Travel hours: " + formatNumber(body.travelHours, 2) + "\n" +
-          "Miles: " + formatNumber(body.mileage, 1) + "\n" +
+          "Total hours: " + formatNumber(body.totalHours ?? ((body.eventHours ?? body.volunteerHours ?? 0) + (body.travelHours || 0)), 2) + "\n" +
+          "Miles: " + formatNumber(body.mileage, 2) + "\n" +
           "Estimated service value: $" + formatNumber(body.serviceValue, 2);
         addMessage(summary, "calder-reply");
       } catch (error) {
