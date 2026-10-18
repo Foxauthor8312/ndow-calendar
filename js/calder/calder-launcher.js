@@ -69,6 +69,83 @@
       });
     }
 
+    async function loadPublishedEvents() {
+      const response = await fetch(
+        "https://foxauthor8312.github.io/ndow-calendar/events.json?t=" + Date.now()
+      );
+      if (!response.ok) throw new Error("Calendar feed returned HTTP " + response.status);
+      const payload = await response.json();
+      return Array.isArray(payload) ? payload : (payload.events || []);
+    }
+
+    function eventDate(event) {
+      const raw = event.date || event.event_date || event.startDate || "";
+      if (!raw) return null;
+      const date = new Date(raw);
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    async function answerCalendarQuestion(question) {
+      sendButton.disabled = true;
+      input.disabled = true;
+      addMessage("I’ll search the published Volunteer Calendar…", "calder-reply");
+
+      try {
+        const events = await loadPublishedEvents();
+        const q = question.toLowerCase();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const upcomingOnly = /\b(upcoming|coming up|next events|future|this week|next week|what'?s next)\b/.test(q);
+        const monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+        const requestedMonth = monthNames.findIndex(function (month) { return q.includes(month); });
+        const terms = q.replace(/\b(show|find|list|search|tell|me|about|what|which|are|is|the|a|an|for|of|in|on|at|calendar|event|events|upcoming|coming|up|next|please|do|we|have|there|any|this|week|month|near|around)\b/g, " ")
+          .replace(/[^a-z0-9\s-]/g, " ").split(/\s+/)
+          .filter(function (term) { return term.length > 2; });
+
+        let matches = events.filter(function (event) {
+          const date = eventDate(event);
+          if (upcomingOnly && date && date < today) return false;
+          if (requestedMonth >= 0 && date && date.getMonth() !== requestedMonth) return false;
+          const searchable = [event.title, event.program, event.category, event.location, event.county, event.region, event.description]
+            .filter(Boolean).join(" ").toLowerCase();
+          return terms.length === 0 || terms.some(function (term) { return searchable.includes(term); });
+        });
+
+        matches.sort(function (a, b) {
+          const da = eventDate(a), db = eventDate(b);
+          if (da && db) return da - db;
+          if (da) return -1;
+          if (db) return 1;
+          return String(a.title || "").localeCompare(String(b.title || ""));
+        });
+
+        if (!matches.length) {
+          addMessage("I couldn’t find a matching event in the published Volunteer Calendar. Try a program, event title, location, or month.", "calder-reply");
+          return;
+        }
+
+        const shown = matches.slice(0, 8);
+        const lines = shown.map(function (event, index) {
+          const date = eventDate(event);
+          const dateLabel = date ? date.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" }) : (event.date || event.event_date || "Date not listed");
+          return (index + 1) + ". " + (event.title || event.program || "Calendar event") +
+            "\n   " + dateLabel +
+            "\n   " + (event.time ? event.time + " · " : "") +
+            (event.location || event.county || event.region || "Location not listed");
+        });
+        let reply = "I found " + matches.length + " matching published calendar event(s):\n\n" + lines.join("\n\n");
+        if (matches.length > shown.length) reply += "\n\nShowing " + shown.length + " results. Narrow by program, month, or location for more specific results.";
+        addMessage(reply, "calder-reply");
+      } catch (error) {
+        console.error("Calder calendar lookup failed:", error);
+        addMessage("I couldn’t load the published Volunteer Calendar right now. Please try again shortly.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
     async function answerHoursQuestion() {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -128,8 +205,10 @@
 
       if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
         answerHoursQuestion();
+      } else if (/\b(events?|calendar|fishing|hunter|archery|boating|programs?|classes|workshops?|where|when|upcoming|coming up|next week|this week|location|county|region|january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(question)) {
+        answerCalendarQuestion(question);
       } else {
-        addMessage("I can currently look up your current-year volunteer-hours summary. More calendar and event questions will be added as those connections are completed.", "calder-reply");
+        addMessage("I can look up your recorded volunteer hours or search the published Volunteer Calendar. Try a program, event title, location, or month.", "calder-reply");
       }
     });
   }
