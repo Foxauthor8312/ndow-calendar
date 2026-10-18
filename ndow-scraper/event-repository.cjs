@@ -71,6 +71,26 @@ module.exports = async function syncEvents(
 
         }
 
+        // Preserve operational roster fields when refreshing the
+        // published event catalog. Roster synchronization owns these
+        // values; the catalog feed must not reset them.
+        const {
+            data: existingEvent,
+            error: existingEventError
+        } = await supabase
+            .from('events')
+            .select(
+                'registered_count,roster_student_count,roster_hash,roster_last_checked,roster_last_updated'
+            )
+            .eq('event_id', event.id)
+            .maybeSingle();
+
+        if (existingEventError) {
+
+            throw existingEventError;
+
+        }
+
         const row = {
 
             event_id:
@@ -109,8 +129,22 @@ module.exports = async function syncEvents(
             capacity:
                 null,
 
+            // Keep the last known roster values until the scheduled
+            // roster sync refreshes them. New events remain uncounted.
             registered_count:
-                null,
+                existingEvent?.registered_count ?? null,
+
+            roster_student_count:
+                existingEvent?.roster_student_count ?? null,
+
+            roster_hash:
+                existingEvent?.roster_hash ?? null,
+
+            roster_last_checked:
+                existingEvent?.roster_last_checked ?? null,
+
+            roster_last_updated:
+                existingEvent?.roster_last_updated ?? null,
 
             waitlist_enabled:
                 false,
