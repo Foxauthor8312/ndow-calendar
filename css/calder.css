@@ -1,0 +1,163 @@
+/* Calder floating assistant — isolated styles */
+#calder-launcher {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 10020;
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+  border: 2px solid #589FD6;
+  border-radius: 50%;
+  background: #19304B;
+  box-shadow: 0 5px 18px rgba(10, 30, 50, .28);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+#calder-launcher:hover,
+#calder-launcher:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10, 30, 50, .34);
+  outline: 3px solid rgba(88,159,214,.35);
+  outline-offset: 3px;
+}
+#calder-launcher img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  background: #fff;
+}
+#calder-launcher .calder-launcher-label {
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #fff;
+  background: #19304B;
+  border: 1px solid #589FD6;
+  font: 600 11px/1.4 Inter, Arial, sans-serif;
+}
+#calder-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 112px;
+  z-index: 10021;
+  width: min(370px, calc(100vw - 28px));
+  height: min(520px, calc(100dvh - 150px));
+  min-height: 330px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #DBE3EC;
+  border-radius: 16px;
+  background: #F8FAFC;
+  box-shadow: 0 14px 42px rgba(16, 35, 54, .28);
+  color: #253746;
+  font-family: Inter, Arial, sans-serif;
+}
+#calder-panel.is-open { display: flex; }
+#calder-panel .calder-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 14px;
+  color: #fff;
+  background: #19304B;
+}
+#calder-panel .calder-header img {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border: 2px solid #589FD6;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  background: #fff;
+}
+#calder-panel .calder-heading { min-width: 0; flex: 1; }
+#calder-panel .calder-heading strong { display: block; font-size: 15px; line-height: 1.3; }
+#calder-panel .calder-heading span { display: block; margin-top: 2px; font-size: 11px; opacity: .85; }
+#calder-panel .calder-close {
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: #fff;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+#calder-panel .calder-close:hover { background: rgba(255,255,255,.14); }
+#calder-panel .calder-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 13px;
+}
+#calder-panel .calder-message {
+  max-width: 94%;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border: 1px solid #DBE3EC;
+  border-radius: 12px 12px 12px 3px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#calder-panel .calder-message strong { color: #19304B; }
+#calder-panel .calder-status {
+  margin: 0 13px 10px;
+  padding: 8px 10px;
+  border-left: 3px solid #F29647;
+  border-radius: 4px;
+  background: #FFF4E8;
+  color: #6B4A2D;
+  font-size: 11px;
+  line-height: 1.4;
+}
+#calder-panel .calder-composer {
+  display: flex;
+  gap: 8px;
+  padding: 11px;
+  border-top: 1px solid #DBE3EC;
+  background: #fff;
+}
+#calder-panel .calder-composer input {
+  min-width: 0;
+  flex: 1;
+  padding: 10px 11px;
+  border: 1px solid #DBE3EC;
+  border-radius: 9px;
+  color: #253746;
+  background: #fff;
+  font: 13px Inter, Arial, sans-serif;
+}
+#calder-panel .calder-composer input:focus { outline: 2px solid #589FD6; outline-offset: 1px; }
+#calder-panel .calder-composer button {
+  padding: 0 13px;
+  border: 0;
+  border-radius: 9px;
+  color: #fff;
+  background: #19304B;
+  font: 600 13px Inter, Arial, sans-serif;
+  cursor: pointer;
+}
+#calder-panel .calder-composer button:disabled { opacity: .55; cursor: not-allowed; }
+@media (max-width: 520px) {
+  #calder-launcher { right: 14px; bottom: 14px; width: 64px; height: 64px; }
+  #calder-panel {
+    right: 10px;
+    bottom: 88px;
+    width: calc(100vw - 20px);
+    height: min(68dvh, 520px);
+    max-height: calc(100dvh - 112px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #calder-launcher { transition: none; }
+}
