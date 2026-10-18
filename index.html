@@ -8937,6 +8937,61 @@ async function saveVolunteerHours(){
 // ========================================
 
 	
+// ========================================
+// EVENT ROSTER COUNT CACHE
+// Read-only counts; never loads student roster details.
+// ========================================
+
+let eventRosterCountsCache = null;
+let eventRosterCountsPromise = null;
+
+async function loadEventRosterCounts() {
+
+  if (eventRosterCountsCache !== null) {
+    return eventRosterCountsCache;
+  }
+
+  if (eventRosterCountsPromise) {
+    return eventRosterCountsPromise;
+  }
+
+  eventRosterCountsPromise = fetch(
+    'https://ndow-calendar-server.onrender.com/api/event-roster-counts',
+    { cache: 'no-store' }
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Roster counts request failed: ' + response.status);
+      }
+      return response.json();
+    })
+    .then(result => {
+      if (!result || result.success !== true || !Array.isArray(result.counts)) {
+        throw new Error('Roster counts response was not valid.');
+      }
+
+      eventRosterCountsCache = new Map(
+        result.counts.map(row => [
+          String(row.event_id),
+          {
+            count: row.registered_count,
+            lastChecked: row.roster_last_checked
+          }
+        ])
+      );
+
+      return eventRosterCountsCache;
+    })
+    .catch(error => {
+      console.warn('Event roster counts unavailable:', error);
+      eventRosterCountsPromise = null;
+      return null;
+    });
+
+  return eventRosterCountsPromise;
+}
+
+
 async function openEventModal(eventUrl) {
 
   try {
@@ -8963,6 +9018,12 @@ if(
 }
 
 selectedEvent = event;
+
+// Fetch count-only roster data once, then reuse it for later event panels.
+const rosterCounts = await loadEventRosterCounts();
+const rosterInfo = rosterCounts
+  ? rosterCounts.get(String(event?.id))
+  : null;
 
 if(!departmentContacts.length){
 
@@ -9176,6 +9237,33 @@ ${
     margin-bottom:12px;
   ">
     ${event.time || event.date || ''}
+  </div>
+
+  <div style="
+    margin:10px 0 12px 0;
+    padding:10px 12px;
+    background:#ffffff;
+    border:1px solid #DBE3EC;
+    border-radius:6px;
+  ">
+    <div style="
+      font-size:14px;
+      font-weight:700;
+      color:#19304B;
+    ">
+      Registered Students: ${rosterInfo && rosterInfo.count !== null && rosterInfo.count !== undefined
+        ? Number(rosterInfo.count)
+        : 'Unavailable'}
+    </div>
+    <div style="
+      margin-top:4px;
+      font-size:12px;
+      color:#64748b;
+    ">
+      ${rosterInfo && rosterInfo.lastChecked
+        ? 'Roster last checked: ' + new Date(rosterInfo.lastChecked).toLocaleString()
+        : 'Roster status unavailable'}
+    </div>
   </div>
 
   <div style="
