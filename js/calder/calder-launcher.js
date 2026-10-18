@@ -173,7 +173,51 @@
       }
     }
 
-    async function answerHoursQuestion() {
+    function resolveHoursRange(question) {
+      const q = String(question || "").toLowerCase();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      let start = null;
+      let end = null;
+      let label = "";
+
+      if (/\\bthis week\\b/.test(q)) {
+        start = new Date(today);
+        start.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+        end = new Date(start);
+        end.setDate(start.getDate() + 6);
+        label = "this week";
+      } else if (/\\blast week\\b/.test(q)) {
+        end = new Date(today);
+        end.setDate(today.getDate() - ((today.getDay() + 6) % 7) - 1);
+        start = new Date(end);
+        start.setDate(end.getDate() - 6);
+        label = "last week";
+      } else if (/\\bthis month\\b/.test(q)) {
+        start = new Date(today.getFullYear(), today.getMonth(), 1);
+        end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+        label = "this month";
+      } else if (/\\blast month\\b/.test(q)) {
+        start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+        end = new Date(today.getFullYear(), today.getMonth(), 0);
+        label = "last month";
+      } else if (/\\bthis year\\b/.test(q)) {
+        start = new Date(today.getFullYear(), 0, 1);
+        end = new Date(today.getFullYear(), 11, 31);
+        label = "this year";
+      } else if (/\\blast year\\b/.test(q)) {
+        start = new Date(today.getFullYear() - 1, 0, 1);
+        end = new Date(today.getFullYear() - 1, 11, 31);
+        label = "last year";
+      }
+
+      function isoDate(date) {
+        return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+      }
+      return start && end ? { start: isoDate(start), end: isoDate(end), label: label } : null;
+    }
+
+    async function answerHoursQuestion(question) {
       const token = localStorage.getItem("token");
       if (!token) {
         addMessage("Please sign in to the NDOW Volunteer Calendar first. I need your existing sign-in session to look up your hours.", "calder-error");
@@ -185,7 +229,13 @@
       addMessage("Let me check your current-year volunteer hours…", "calder-reply");
 
       try {
-        const response = await fetch("https://ndow-calendar-server.onrender.com/api/my-hours/summary", {
+        const range = resolveHoursRange(question);
+        const summaryUrl = new URL("https://ndow-calendar-server.onrender.com/api/my-hours/summary");
+        if (range) {
+          summaryUrl.searchParams.set("start_date", range.start);
+          summaryUrl.searchParams.set("end_date", range.end);
+        }
+        const response = await fetch(summaryUrl.toString(), {
           method: "GET",
           headers: { "Authorization": "Bearer " + token }
         });
@@ -266,7 +316,7 @@
         if (priorStatus && priorStatus.textContent === "Let me understand what you're asking…") priorStatus.remove();
 
         if (plan.intent === "my_hours") {
-          answerHoursQuestion();
+          answerHoursQuestion(question + " " + (plan.timeframe || ""));
         } else if (plan.intent === "calendar_search") {
           const calendarQuestion = [question, plan.search_terms, plan.timeframe].filter(Boolean).join(" ");
           if (!hasCalendarTimeframe(calendarQuestion)) {
