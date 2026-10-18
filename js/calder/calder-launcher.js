@@ -85,6 +85,14 @@
       return Number.isNaN(date.getTime()) ? null : date;
     }
 
+    let pendingCalendarQuestion = "";
+
+    function hasCalendarTimeframe(question) {
+      const q = question.toLowerCase();
+      return /\b(this week|next week|this month|next month|upcoming|coming up|next events|future|this year|all year|year-round|any time|anytime|all dates|any year|20\d{2})\b/.test(q) ||
+        /\b(january|february|march|april|may|june|july|august|september|october|november|december)\b/.test(q);
+    }
+
     async function answerCalendarQuestion(question) {
       sendButton.disabled = true;
       input.disabled = true;
@@ -96,8 +104,20 @@
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const upcomingOnly = /\b(upcoming|coming up|next events|future|this week|next week|what'?s next)\b/.test(q);
+        const thisWeek = /\bthis week\b/.test(q);
+        const nextWeek = /\bnext week\b/.test(q);
+        const thisMonth = /\bthis month\b/.test(q);
+        const nextMonth = /\bnext month\b/.test(q);
+        const yearMatch = q.match(/\b(20\d{2})\b/);
+        const requestedYear = yearMatch ? Number(yearMatch[1]) : null;
         const monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-        const requestedMonth = monthNames.findIndex(function (month) { return q.includes(month); });
+        let requestedMonth = monthNames.findIndex(function (month) { return q.includes(month); });
+        if (thisMonth || nextMonth) requestedMonth = (today.getMonth() + (nextMonth ? 1 : 0)) % 12;
+        const weekStart = new Date(today);
+        if (nextWeek) weekStart.setDate(weekStart.getDate() + (8 - (weekStart.getDay() || 7)));
+        else if (thisWeek) weekStart.setDate(weekStart.getDate() - ((weekStart.getDay() + 6) % 7));
+        const weekEnd = new Date(weekStart);
+        if (thisWeek || nextWeek) weekEnd.setDate(weekEnd.getDate() + 7);
         const terms = q.replace(/\b(show|find|list|search|tell|me|about|what|which|are|is|the|a|an|for|of|in|on|at|calendar|event|events|upcoming|coming|up|next|please|do|we|have|there|any|this|week|month|near|around)\b/g, " ")
           .replace(/[^a-z0-9\s-]/g, " ").split(/\s+/)
           .filter(function (term) { return term.length > 2; });
@@ -105,7 +125,14 @@
         let matches = events.filter(function (event) {
           const date = eventDate(event);
           if (upcomingOnly && date && date < today) return false;
+          if (requestedYear && date && date.getFullYear() !== requestedYear) return false;
           if (requestedMonth >= 0 && date && date.getMonth() !== requestedMonth) return false;
+          if ((thisWeek || nextWeek) && date && (date < weekStart || date >= weekEnd)) return false;
+          if (thisMonth && date && (date.getMonth() !== today.getMonth() || date.getFullYear() !== today.getFullYear())) return false;
+          if (nextMonth && date) {
+            const targetMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+            if (date.getMonth() !== targetMonth.getMonth() || date.getFullYear() !== targetMonth.getFullYear()) return false;
+          }
           const searchable = [event.title, event.program, event.category, event.location, event.county, event.region, event.description]
             .filter(Boolean).join(" ").toLowerCase();
           return terms.length === 0 || terms.some(function (term) { return searchable.includes(term); });
@@ -203,10 +230,22 @@
       addMessage(question, "calder-user");
       input.value = "";
 
+      if (pendingCalendarQuestion) {
+        const originalQuestion = pendingCalendarQuestion;
+        pendingCalendarQuestion = "";
+        answerCalendarQuestion(originalQuestion + " " + question);
+        return;
+      }
+
       if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
         answerHoursQuestion();
       } else if (/\b(events?|calendar|fishing|hunter|archery|boating|programs?|classes|workshops?|where|when|upcoming|coming up|next week|this week|location|county|region|january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(question)) {
-        answerCalendarQuestion(question);
+        if (!hasCalendarTimeframe(question)) {
+          pendingCalendarQuestion = question;
+          addMessage("What time frame would you like for " + question + "? You can say this week, this month, a specific month and year (for example, October 2026), a year, or all dates.", "calder-reply");
+        } else {
+          answerCalendarQuestion(question);
+        }
       } else {
         addMessage("I can look up your recorded volunteer hours or search the published Volunteer Calendar. Try a program, event title, location, or month.", "calder-reply");
       }
