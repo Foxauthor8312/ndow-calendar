@@ -93,6 +93,136 @@
         /\b(january|february|march|april|may|june|july|august|september|october|november|december)\b/.test(q);
     }
 
+
+    function isCurrentUserAssigned(event) {
+      if (!event) return false;
+      let currentUser = {};
+      try {
+        currentUser = JSON.parse(localStorage.getItem("user") || "{}");
+      } catch (_) {
+        currentUser = {};
+      }
+      const customerId = String(currentUser.ndow_customer_id || "").trim();
+      const email = String(currentUser.email || "").trim().toLowerCase();
+      const instructors = Array.isArray(event.instructors) ? event.instructors : [];
+      return instructors.some(function (instructor) {
+        const instructorId = String(instructor && instructor.customerId || "").trim();
+        const instructorEmail = String(instructor && instructor.email || "").trim().toLowerCase();
+        return Boolean(
+          (customerId && instructorId && customerId === instructorId) ||
+          (email && instructorEmail && email === instructorEmail)
+        );
+      });
+    }
+
+    function resolveAssignmentRange(question) {
+      const q = String(question || "").toLowerCase();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const sunday = new Date(today);
+      sunday.setDate(today.getDate() - today.getDay());
+      let start = null;
+      let end = null;
+      let label = "";
+      if (q.includes("this week")) {
+        start = new Date(sunday);
+        end = new Date(sunday);
+        end.setDate(end.getDate() + 6);
+        label = "this week";
+      } else if (q.includes("next week")) {
+        start = new Date(sunday);
+        start.setDate(start.getDate() + 7);
+        end = new Date(start);
+        end.setDate(end.getDate() + 6);
+        label = "next week";
+      } else if (q.includes("last week")) {
+        end = new Date(sunday);
+        end.setDate(end.getDate() - 1);
+        start = new Date(end);
+        start.setDate(start.getDate() - 6);
+        label = "last week";
+      } else if (q.includes("this month")) {
+        start = new Date(today.getFullYear(), today.getMonth(), 1);
+        end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+        label = "this month";
+      } else if (q.includes("next month")) {
+        start = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+        end = new Date(today.getFullYear(), today.getMonth() + 2, 0);
+        label = "next month";
+      } else if (q.includes("last month")) {
+        start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+        end = new Date(today.getFullYear(), today.getMonth(), 0);
+        label = "last month";
+      } else if (q.includes("this year")) {
+        start = new Date(today.getFullYear(), 0, 1);
+        end = new Date(today.getFullYear(), 11, 31);
+        label = "this year";
+      } else if (q.includes("last year")) {
+        start = new Date(today.getFullYear() - 1, 0, 1);
+        end = new Date(today.getFullYear() - 1, 11, 31);
+        label = "last year";
+      }
+      return start && end ? { start: start, end: end, label: label } : null;
+    }
+
+    async function answerAssignmentsQuestion(question) {
+      sendButton.disabled = true;
+      input.disabled = true;
+      const range = resolveAssignmentRange(question);
+      addMessage("I’ll check the published Volunteer Calendar for events assigned to you" +
+        (range ? " for " + range.label : " across all dates") + "…", "calder-reply");
+      try {
+        const events = await loadPublishedEvents();
+        const matches = events.filter(function (event) {
+          if (!isCurrentUserAssigned(event)) return false;
+          if (!range) return true;
+          const date = eventDate(event);
+          if (!date) return false;
+          const day = new Date(date);
+          day.setHours(0, 0, 0, 0);
+          return day >= range.start && day <= range.end;
+        });
+        matches.sort(function (a, b) {
+          const da = eventDate(a);
+          const db = eventDate(b);
+          if (da && db) return da - db;
+          if (da) return -1;
+          if (db) return 1;
+          return String(a.title || "").localeCompare(String(b.title || ""));
+        });
+        if (!matches.length) {
+          addMessage("I couldn’t find instructor assignments matching your signed-in ID or email in the published calendar" +
+            (range ? " for " + range.label : "") +
+            ". I checked the event instructor details only; I did not access the external NDOW assignment service. If the calendar’s My Events filter shows your events, those assignments may be stored in the separate assignment feed and are not included in this lookup yet.", "calder-reply");
+          return;
+        }
+        const shown = matches.slice(0, 12);
+        const lines = shown.map(function (event, index) {
+          const date = eventDate(event);
+          const dateLabel = date ? date.toLocaleDateString(undefined, {
+            weekday: "short", month: "short", day: "numeric", year: "numeric"
+          }) : "Date not listed";
+          const location = event.location || event.county || event.region || "Location not listed";
+          const time = event.time ? event.time + " · " : "";
+          return (index + 1) + ". " + (event.title || event.program || "Calendar event") +
+            "\n   " + dateLabel + "\n   " + time + location;
+        });
+        let reply = "I found " + matches.length + " event(s) assigned to you" +
+          (range ? " for " + range.label : "") + ":\n\n" + lines.join("\n\n");
+        if (matches.length > shown.length) {
+          reply += "\n\nShowing " + shown.length + " results. Narrow the search by date range to see fewer events.";
+        }
+        addMessage(reply, "calder-reply");
+      } catch (error) {
+        console.error("Calder assignment lookup failed:", error);
+        addMessage("I couldn’t load the published Volunteer Calendar to check your assignments. Please try again shortly.", "calder-error");
+      } finally {
+        sendButton.disabled = false;
+        input.disabled = false;
+        input.focus();
+      }
+    }
+
     async function answerCalendarQuestion(question) {
       sendButton.disabled = true;
       input.disabled = true;
@@ -337,7 +467,7 @@
         } else if (plan.intent === "clarify" && plan.clarification) {
           addMessage(plan.clarification, "calder-reply");
         } else if (plan.intent === "my_assignments") {
-          addMessage("I understand you're asking about your instructor assignments. That lookup isn't connected to Calder yet; we'll add it next.", "calder-reply");
+          answerAssignmentsQuestion(question + " " + (plan.timeframe || ""));
         } else if (plan.intent === "help_search" || plan.intent === "knowledge_search") {
           addMessage("I understand you're looking for help or Engineering Knowledge Center information. That search isn't connected to Calder yet; we'll add it next.", "calder-reply");
         } else {
