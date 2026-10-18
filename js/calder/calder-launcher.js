@@ -181,17 +181,26 @@
       let end = null;
       let label = "";
 
+      // The NDOW calendar is Sunday-first: weeks run Sunday through Saturday.
+      const sunday = new Date(today);
+      sunday.setDate(today.getDate() - today.getDay());
+
       if (q.includes("this week")) {
-        start = new Date(today);
-        start.setDate(today.getDate() - ((today.getDay() + 6) % 7));
-        end = new Date(start);
-        end.setDate(start.getDate() + 6);
+        start = new Date(sunday);
+        end = new Date(sunday);
+        end.setDate(end.getDate() + 6);
         label = "this week";
+      } else if (q.includes("next week")) {
+        start = new Date(sunday);
+        start.setDate(start.getDate() + 7);
+        end = new Date(start);
+        end.setDate(end.getDate() + 6);
+        label = "next week";
       } else if (q.includes("last week")) {
-        end = new Date(today);
-        end.setDate(today.getDate() - ((today.getDay() + 6) % 7) - 1);
+        end = new Date(sunday);
+        end.setDate(end.getDate() - 1);
         start = new Date(end);
-        start.setDate(end.getDate() - 6);
+        start.setDate(start.getDate() - 6);
         label = "last week";
       } else if (q.includes("this month")) {
         start = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -226,7 +235,7 @@
 
       sendButton.disabled = true;
       input.disabled = true;
-      addMessage("Let me check your current-year volunteer hours…", "calder-reply");
+      addMessage("Let me check your volunteer hours" + (range ? " for " + range.label + " (" + range.start + " to " + range.end + ")" : " across all recorded dates") + "…", "calder-reply");
 
       try {
         const range = resolveHoursRange(question);
