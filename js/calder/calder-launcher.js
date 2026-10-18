@@ -30,9 +30,9 @@
         '<button class="calder-close" type="button" aria-label="Close Calder chat">&times;</button>' +
       '</div>' +
       '<div class="calder-messages" aria-live="polite">' +
-        '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can help with your current-year volunteer-hours summary. Ask me how many hours you have this year.</div>' +
+        '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can help with your volunteer-hours summary. Ask me how many hours you have recorded.</div>' +
       '</div>' +
-      '<div class="calder-status">Connected to the NDOW hours summary service for supported hours questions.</div>' +
+      '<div class="calder-status">Connected to the NDOW volunteer-hours summary service.</div>' +
       '<form class="calder-composer">' +
         '<input type="text" name="message" aria-label="Message Calder" placeholder="Ask about your volunteer hours…" autocomplete="off">' +
         '<button type="submit">Send</button>' +
@@ -93,11 +93,12 @@
 
         const year = body.year || new Date().getFullYear();
         const summary =
-          "Your " + year + " volunteer-hours summary:\n" +
+          "Your volunteer-hours summary (report-aligned):\n" +
           "Events recorded: " + formatNumber(body.events) + "\n" +
-          "Volunteer hours: " + formatNumber(body.volunteerHours, 2) + "\n" +
+          "Event hours: " + formatNumber(body.eventHours ?? body.volunteerHours, 2) + "\n" +
           "Travel hours: " + formatNumber(body.travelHours, 2) + "\n" +
-          "Miles: " + formatNumber(body.mileage, 1) + "\n" +
+          "Total hours (event + travel): " + formatNumber(body.totalHours ?? (Number(body.eventHours ?? body.volunteerHours || 0) + Number(body.travelHours || 0)), 2) + "\n" +
+          "Miles: " + formatNumber(body.mileage, 2) + "\n" +
           "Estimated service value: $" + formatNumber(body.serviceValue, 2);
         addMessage(summary, "calder-reply");
       } catch (error) {
