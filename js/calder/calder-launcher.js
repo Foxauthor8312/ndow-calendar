@@ -69,6 +69,39 @@
       });
     }
 
+    function askToOpenNdowSync() {
+      const message = document.createElement("div");
+      message.className = "calder-message calder-reply";
+      message.textContent = "I can use the calendar’s existing NDOW SYNC workflow to retrieve your instructor assignments and, if you choose, synchronize your NDOW volunteer hours. Would you like to open the NDOW login window?";
+      const actions = document.createElement("div");
+      actions.style.cssText = "display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;";
+      const yes = document.createElement("button");
+      yes.type = "button";
+      yes.textContent = "Open NDOW SYNC";
+      yes.style.cssText = "background:#19304B;color:#fff;border:0;border-radius:6px;padding:8px 10px;cursor:pointer;";
+      yes.addEventListener("click", function () {
+        message.remove();
+        if (typeof window.openNdowSyncMessage === "function") {
+          addMessage("The existing NDOW SYNC window is opening. Enter your NDOW credentials there—not in this chat. Choose “Synchronize my NDOW volunteer hours” only if you want to retrieve hours too. When the sync finishes, its report will show the results.", "calder-reply");
+          window.openNdowSyncMessage();
+        } else {
+          addMessage("I couldn’t open the existing NDOW SYNC window because it isn’t available on this page. Please use the calendar’s Sync NDOW button.", "calder-error");
+        }
+      });
+      const no = document.createElement("button");
+      no.type = "button";
+      no.textContent = "Not now";
+      no.style.cssText = "background:#E8EEF5;color:#19304B;border:1px solid #CBD5E1;border-radius:6px;padding:8px 10px;cursor:pointer;";
+      no.addEventListener("click", function () {
+        message.remove();
+        addMessage("No problem. I haven’t connected to NDOW or changed anything.", "calder-reply");
+      });
+      actions.append(yes, no);
+      message.appendChild(actions);
+      messages.appendChild(message);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
     async function answerKnowledgeQuestion(question) {
       sendButton.disabled = true;
       input.disabled = true;
@@ -198,7 +231,9 @@
       addMessage(question, "calder-user");
       input.value = "";
 
-      if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
+      if (/\b(ndow|official ndow|ndow system|ndow assignments?|assigned events|my assignments|instructor assignments|sync my hours|synchronize my hours)\b/i.test(question)) {
+        askToOpenNdowSync();
+      } else if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
         answerHoursQuestion();
       } else {
         answerKnowledgeQuestion(question);
