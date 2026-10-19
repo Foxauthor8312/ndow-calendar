@@ -438,10 +438,12 @@
           category.style.cssText = "display:block;margin-top:3px;color:#64748b;font-size:12px;";
           articleButton.append(title, category);
           articleButton.addEventListener("click", function () {
-            const holder = document.createElement("div");
-            holder.innerHTML = String(topic.content || "");
-            const articleText = (holder.textContent || holder.innerText || "").replace(/\\s+/g, " ").trim();
-            addMessage((topic.title || "Help article") + (articleText ? "\\n\\n" + articleText : "\\n\\nThis article does not have any content yet."), "calder-reply");
+            if (typeof window.openHelpArticleById === "function" && topic.id != null) {
+              window.openHelpArticleById(topic.id);
+              addMessage("Opening the Help system to: " + (topic.title || "the selected article") + ". You can close Calder whenever you're ready.", "calder-reply");
+            } else {
+              addMessage("I found the article, but the Help system isn't ready to open it yet. Please open Help from the calendar menu.", "calder-error");
+            }
           });
           resultsCard.appendChild(articleButton);
         });
