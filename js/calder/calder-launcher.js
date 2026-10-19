@@ -356,6 +356,85 @@
       return start && end ? { start: isoDate(start), end: isoDate(end), label: label } : null;
     }
 
+    async function answerHelpQuestion(question) {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        addMessage("Please sign in to the NDOW Volunteer Calendar so I can find the right Help article.", "calder-error");
+        return;
+      }
+
+      input.disabled = true;
+      sendButton.disabled = true;
+      addMessage("I'll look through the Help articles for you…", "calder-reply");
+
+      try {
+        const response = await fetch("https://ndow-calendar-server.onrender.com/api/help/topics", {
+          headers: { "Authorization": "Bearer " + token }
+        });
+        const body = await response.json().catch(function () { return {}; });
+        if (!response.ok) throw new Error(body.error || "Help articles could not be loaded.");
+
+        const topics = Array.isArray(body) ? body : (body.topics || []);
+        const q = String(question || "").toLowerCase().replace(/[^a-z0-9\\s']/g, " ").replace(/\\s+/g, " ").trim();
+        const aliases = [
+          { pattern: /how do i (enter|record|log) (my )?hours|submit my hours|where do i put my hours/, terms: ["entering volunteer hours", "entering hours", "logging hours", "volunteer management", "break", "mileage"] },
+          { pattern: /find my events|show me my events|events i('?m| am) teaching|my upcoming events/, terms: ["filter my events", "calendar", "events", "instructor"] },
+          { pattern: /how many hours|my hours|volunteer time|service time/, terms: ["volunteer hour calculations", "entering volunteer hours", "hours submitted", "volunteer management"] },
+          { pattern: /when am i teaching|my next class|next event|upcoming class/, terms: ["calendar", "events", "filter my events"] },
+          { pattern: /request to teach|instructor request|request status/, terms: ["submitting a request", "instructor request", "status"] },
+          { pattern: /student roster|registered students|attendance|email my students/, terms: ["communications", "registered students", "event attendance", "roster"] }
+        ];
+        const searchTerms = new Set(q.split(" ").filter(function (word) { return word.length > 2; }));
+        aliases.forEach(function (alias) {
+          if (alias.pattern.test(q)) alias.terms.forEach(function (term) {
+            term.toLowerCase().split(" ").forEach(function (word) { if (word.length > 2) searchTerms.add(word); });
+          });
+        });
+
+        const ranked = topics.map(function (topic) {
+          const title = String(topic.title || "").toLowerCase();
+          const category = String(topic.category || "").toLowerCase();
+          const content = String(topic.content || "").toLowerCase();
+          let score = 0;
+          if (title.includes(q)) score += 20;
+          if (content.includes(q)) score += 5;
+          searchTerms.forEach(function (term) {
+            if (title.includes(term)) score += 6;
+            else if (category.includes(term)) score += 3;
+            else if (content.includes(term)) score += 1;
+          });
+          return { topic: topic, score: score };
+        }).filter(function (result) { return result.score > 0; })
+          .sort(function (a, b) { return b.score - a.score; });
+
+        const status = messages.querySelector(".calder-message.calder-reply:last-child");
+        if (status && status.textContent === "I'll look through the Help articles for you…") status.remove();
+
+        if (!ranked.length) {
+          addMessage("I couldn't find a Help article that clearly answers that yet. Try asking another way, or tell me a little more about what you're trying to do.", "calder-reply");
+          return;
+        }
+
+        const best = ranked[0].topic;
+        const holder = document.createElement("div");
+        holder.innerHTML = String(best.content || "");
+        const articleText = (holder.textContent || holder.innerText || "").replace(/\\s+/g, " ").trim();
+        const excerpt = articleText.length > 1600 ? articleText.slice(0, 1600).trim() + "…" : articleText;
+        addMessage("I found a Help article that may answer your question: " + (best.title || "Help article") + (excerpt ? "\\n\\n" + excerpt : ""), "calder-reply");
+
+        if (ranked.length > 1 && ranked[1].score >= ranked[0].score * 0.7) {
+          addMessage("You might also find these useful: " + ranked.slice(1, 3).map(function (result) { return result.topic.title; }).filter(Boolean).join("; "), "calder-reply");
+        }
+      } catch (error) {
+        console.error("Calder Help search failed:", error);
+        addMessage("I couldn't load the Help articles right now. Please try again shortly.", "calder-error");
+      } finally {
+        input.disabled = false;
+        sendButton.disabled = false;
+        input.focus();
+      }
+    }
+
     async function answerHoursQuestion(question) {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -468,8 +547,10 @@
           addMessage(plan.clarification, "calder-reply");
         } else if (plan.intent === "my_assignments") {
           answerAssignmentsQuestion(question + " " + (plan.timeframe || ""));
-        } else if (plan.intent === "help_search" || plan.intent === "knowledge_search") {
-          addMessage("I understand you're looking for help or Engineering Knowledge Center information. That search isn't connected to Calder yet; we'll add it next.", "calder-reply");
+        } else if (plan.intent === "help_search") {
+          answerHelpQuestion(question);
+        } else if (plan.intent === "knowledge_search") {
+          addMessage("You're looking for Engineering Knowledge Center information. That connection is not enabled in Calder yet, but I can search the portal Help articles.", "calder-reply");
         } else {
           addMessage("I can help with your recorded hours and the published Volunteer Calendar. Tell me a little more about what you need.", "calder-reply");
         }
