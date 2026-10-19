@@ -415,16 +415,39 @@
           return;
         }
 
-        const best = ranked[0].topic;
-        const holder = document.createElement("div");
-        holder.innerHTML = String(best.content || "");
-        const articleText = (holder.textContent || holder.innerText || "").replace(/\\s+/g, " ").trim();
-        const excerpt = articleText.length > 1600 ? articleText.slice(0, 1600).trim() + "…" : articleText;
-        addMessage("I found a Help article that may answer your question: " + (best.title || "Help article") + (excerpt ? "\\n\\n" + excerpt : ""), "calder-reply");
+        const matches = ranked.slice(0, 4).filter(function (result, index) {
+          return index === 0 || result.score >= ranked[0].score * 0.45;
+        });
 
-        if (ranked.length > 1 && ranked[1].score >= ranked[0].score * 0.7) {
-          addMessage("You might also find these useful: " + ranked.slice(1, 3).map(function (result) { return result.topic.title; }).filter(Boolean).join("; "), "calder-reply");
-        }
+        addMessage("I found these Help articles that may help. Select one to read it:", "calder-reply");
+
+        const resultsCard = document.createElement("div");
+        resultsCard.className = "calder-message calder-reply calder-help-results";
+        resultsCard.style.cssText = "display:flex;flex-direction:column;gap:8px;padding:10px;background:#ffffff;border:1px solid #dbe3ec;border-radius:10px;";
+
+        matches.forEach(function (result) {
+          const topic = result.topic;
+          const articleButton = document.createElement("button");
+          articleButton.type = "button";
+          articleButton.style.cssText = "display:block;width:100%;padding:10px 12px;text-align:left;background:#f8fafc;color:#19304b;border:1px solid #dbe3ec;border-radius:8px;cursor:pointer;font:inherit;";
+          const title = document.createElement("span");
+          title.textContent = topic.title || "Help article";
+          title.style.cssText = "display:block;font-weight:700;";
+          const category = document.createElement("span");
+          category.textContent = topic.category || "Help";
+          category.style.cssText = "display:block;margin-top:3px;color:#64748b;font-size:12px;";
+          articleButton.append(title, category);
+          articleButton.addEventListener("click", function () {
+            const holder = document.createElement("div");
+            holder.innerHTML = String(topic.content || "");
+            const articleText = (holder.textContent || holder.innerText || "").replace(/\\s+/g, " ").trim();
+            addMessage((topic.title || "Help article") + (articleText ? "\\n\\n" + articleText : "\\n\\nThis article does not have any content yet."), "calder-reply");
+          });
+          resultsCard.appendChild(articleButton);
+        });
+
+        messages.appendChild(resultsCard);
+        messages.scrollTop = messages.scrollHeight;
       } catch (error) {
         console.error("Calder Help search failed:", error);
         addMessage("I couldn't load the Help articles right now. Please try again shortly.", "calder-error");
