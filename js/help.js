@@ -106,13 +106,13 @@ if(
       // Translate everyday instructor wording into related Help terms.
       // This improves article discovery without changing article content or database fields.
       const searchAliases = [
-        { pattern: /\\bfind my events?\\b|\\bshow me my events?\\b|\\bmy upcoming events?\\b|\\bevents? i('?m| am) teaching\\b/, terms: ['filter my events', 'calendar', 'instructor', 'events'] },
-        { pattern: /\\bhow many (hours|hours have i|service hours)\\b|\\bmy hours\\b|\\bvolunteer time\\b|\\bservice time\\b/, terms: ['volunteer hours', 'entering hours', 'hour calculations', 'hours submitted'] },
-        { pattern: /\\bwhen am i teaching\\b|\\bmy next class\\b|\\bnext event\\b|\\bupcoming class\\b/, terms: ['calendar', 'events', 'filter my events'] },
-        { pattern: /\\bhow do i (enter|record|log) (my )?hours\\b|\\bsubmit my hours\\b/, terms: ['entering volunteer hours', 'logging hours', 'volunteer management'] },
-        { pattern: /\\bhow do i find\\b|\\bwhere do i find\\b|\\bshow me\\b/, terms: ['calendar', 'filter', 'using', 'find'] },
-        { pattern: /\\brequest to teach\\b|\\binstructor request\\b|\\brequest status\\b/, terms: ['instructor request', 'submitting a request', 'status'] },
-        { pattern: /\\bstudents registered\\b|\\bclass roster\\b|\\battendance\\b/, terms: ['communications', 'registered students', 'event attendance', 'roster'] }
+        { pattern: /\bfind my events?\b|\bshow me my events?\b|\bmy upcoming events?\b|\bevents? i('?m| am) teaching\b/, terms: ['filter my events', 'calendar', 'instructor', 'events'] },
+        { pattern: /\bhow many (hours|hours have i|service hours)\b|\bmy hours\b|\bvolunteer time\b|\bservice time\b/, terms: ['volunteer hours', 'entering hours', 'hour calculations', 'hours submitted'] },
+        { pattern: /\bwhen am i teaching\b|\bmy next class\b|\bnext event\b|\bupcoming class\b/, terms: ['calendar', 'events', 'filter my events'] },
+        { pattern: /\bhow do i (enter|record|log) (my )?hours\b|\bsubmit my hours\b/, terms: ['entering volunteer hours', 'logging hours', 'volunteer management'] },
+        { pattern: /\bhow do i find\b|\bwhere do i find\b|\bshow me\b/, terms: ['calendar', 'filter', 'using', 'find'] },
+        { pattern: /\brequest to teach\b|\binstructor request\b|\brequest status\b/, terms: ['instructor request', 'submitting a request', 'status'] },
+        { pattern: /\bstudents registered\b|\bclass roster\b|\battendance\b/, terms: ['communications', 'registered students', 'event attendance', 'roster'] }
       ];
 
       const expandedTerms = new Set([search]);
@@ -123,7 +123,7 @@ if(
       });
 
       const terms = Array.from(expandedTerms)
-        .flatMap(term => term.split(/\\s+/))
+        .flatMap(term => term.split(/\s+/))
         .filter(term => term.length > 2 && !['the','and','for','how','does','are','you','can','with','what','where'].includes(term));
 
       const scored = topicArray.map(topic => {
