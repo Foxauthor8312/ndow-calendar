@@ -30,7 +30,7 @@
         '<button class="calder-close" type="button" aria-label="Exit Calder chat">Exit Chat</button>' +
       '</div>' +
       '<div class="calder-messages" aria-live="polite">' +
-        '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can help with your volunteer-hours summary. Ask me how many hours you have recorded.</div>' +
+        '<div class="calder-message">I’m Calder, your Volunteer AI Assistant. Ask me what you need to know.</div>' +
       '</div>' +
       '<form class="calder-composer">' +
         '<input type="text" name="message" aria-label="Message Calder" placeholder="Ask about your volunteer hours…" autocomplete="off">' +
