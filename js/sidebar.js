@@ -290,49 +290,19 @@ if (title === "Users") {
     Select Help Category...
   </option>
 
-  <option value="Getting Started">
-    Getting Started
-  </option>
-
-  <option value="Calendar">
-    Calendar
-  </option>
-
-  <option value="Events">
-    Events
-  </option>
-
-  <option value="Volunteer Management">
-    Volunteer Management
-  </option>
-
-  <option value="Instructor Management">
-    Instructor Management
-  </option>
-
-  <option value="Users & Accounts">
-    Users & Accounts
-  </option>
-
-  <option value="Announcements">
-    Announcements
-  </option>
-
-  <option value="Administration">
-    Administration
-  </option>
-
-  <option value="Reports & Analytics">
-    Reports & Analytics
-  </option>
-
-  <option value="Troubleshooting">
-    Troubleshooting
-  </option>
-
-  <option value="FAQ">
-    FAQ
-  </option>
+  <option value="Getting Started">Getting Started</option>
+  <option value="Calendar & Events">Calendar & Events</option>
+  <option value="Instructor Management">Instructor Management</option>
+  <option value="Volunteer Management">Volunteer Management</option>
+  <option value="User Accounts">User Accounts</option>
+  <option value="Communications">Communications</option>
+  <option value="Announcements">Announcements</option>
+  <option value="Reports & Analytics">Reports & Analytics</option>
+  <option value="Administration">Administration</option>
+  <option value="Troubleshooting">Troubleshooting</option>
+  <option value="FAQ">FAQ</option>
+  <option value="Help System">Help System</option>
+  <option value="System Updates">System Updates</option>
 
 </select>
 
