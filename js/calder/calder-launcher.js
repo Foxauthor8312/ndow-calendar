@@ -512,8 +512,11 @@
           articleButton.type = "button";
           articleButton.style.cssText = "display:block;width:100%;padding:2px 0;text-align:left;background:transparent;color:#2563eb;border:0;border-radius:0;cursor:pointer;font:inherit;text-decoration:underline;";
           articleButton.textContent = title;
-          articleButton.addEventListener("click", function () {
+          articleButton.addEventListener("click", async function () {
             if (result.documentKey && typeof window.openTechnicalReferenceDocument === "function") {
+              if (typeof window.openTechnicalReference === "function") {
+                await window.openTechnicalReference();
+              }
               window.openTechnicalReferenceDocument(result.documentKey);
               addMessage("Opening the EKC article: " + title + ".", "calder-reply");
             } else {
