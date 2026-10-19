@@ -463,6 +463,80 @@
       }
     }
 
+    async function answerKnowledgeQuestion(question, searchTerms) {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        addMessage("Please sign in to the NDOW Volunteer Calendar so I can check which knowledge resources are available to you.", "calder-error");
+        return;
+      }
+
+      input.disabled = true;
+      sendButton.disabled = true;
+      addMessage("I'll look for relevant knowledge articles…", "calder-reply");
+
+      try {
+        const query = String(searchTerms || question || "").trim();
+        const response = await fetch(
+          "https://ndow-calendar-server.onrender.com/api/knowledge/search?q=" + encodeURIComponent(query) + "&limit=5",
+          { headers: { "Authorization": "Bearer " + token } }
+        );
+        const body = await response.json().catch(function () { return {}; });
+        const status = messages.querySelector(".calder-message.calder-reply:last-child");
+        if (status && status.textContent === "I'll look for relevant knowledge articles…") status.remove();
+
+        if (response.status === 403 && body.code === "EKC_ROLE_RESTRICTED") {
+          addMessage("The Engineering Knowledge Center is reserved for technical and administrative personnel. I can still help you with portal questions—here are some Help articles that may be useful.", "calder-reply");
+          await answerHelpQuestion(question);
+          return;
+        }
+
+        if (!response.ok || !body.success) {
+          throw new Error(body.error || "Knowledge search failed.");
+        }
+
+        const results = Array.isArray(body.results) ? body.results.slice(0, 5) : [];
+        if (!results.length) {
+          addMessage("I couldn't find a relevant EKC article for that question yet. You could try different wording or ask me to look for related documentation.", "calder-reply");
+          return;
+        }
+
+        addMessage("I found these EKC articles that may help. Select a title to open it:", "calder-reply");
+
+        const resultsCard = document.createElement("div");
+        resultsCard.className = "calder-message calder-reply calder-knowledge-results";
+        resultsCard.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:0;background:transparent;border:0;border-radius:0;";
+
+        results.forEach(function (result) {
+          const title = result.topic || result.documentTitle || result.documentKey || "EKC article";
+          const articleButton = document.createElement("button");
+          articleButton.type = "button";
+          articleButton.style.cssText = "display:block;width:100%;padding:2px 0;text-align:left;background:transparent;color:#2563eb;border:0;border-radius:0;cursor:pointer;font:inherit;text-decoration:underline;";
+          articleButton.textContent = title;
+          articleButton.addEventListener("click", function () {
+            if (result.documentKey && typeof window.openTechnicalReferenceDocument === "function") {
+              window.openTechnicalReferenceDocument(result.documentKey);
+              addMessage("Opening the EKC article: " + title + ".", "calder-reply");
+            } else {
+              addMessage("I found the article, but the EKC document viewer isn't available right now. Please open the Engineering Knowledge Center to read it.", "calder-error");
+            }
+          });
+          resultsCard.appendChild(articleButton);
+        });
+
+        messages.appendChild(resultsCard);
+        messages.scrollTop = messages.scrollHeight;
+      } catch (error) {
+        console.error("Calder EKC search failed:", error);
+        const status = messages.querySelector(".calder-message.calder-reply:last-child");
+        if (status && status.textContent === "I'll look for relevant knowledge articles…") status.remove();
+        addMessage("I couldn't search the Engineering Knowledge Center right now. Please try again shortly.", "calder-error");
+      } finally {
+        input.disabled = false;
+        sendButton.disabled = false;
+        input.focus();
+      }
+    }
+
     async function answerHoursQuestion(question) {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -578,7 +652,7 @@
         } else if (plan.intent === "help_search") {
           answerHelpQuestion(question);
         } else if (plan.intent === "knowledge_search") {
-          addMessage("You're looking for Engineering Knowledge Center information. That connection is not enabled in Calder yet, but I can search the portal Help articles.", "calder-reply");
+          answerKnowledgeQuestion(question, plan.search_terms);
         } else {
           addMessage("I can help with your recorded hours and the published Volunteer Calendar. Tell me a little more about what you need.", "calder-reply");
         }
