@@ -47,11 +47,21 @@
     const input = form.querySelector('input[name="message"]');
     const sendButton = form.querySelector('button[type="submit"]');
 
+    const welcomeMessage =
+      '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can help with your volunteer-hours summary. Ask me how many hours you have recorded.</div>';
+
     function setOpen(open) {
       panel.classList.toggle("is-open", open);
       launcher.setAttribute("aria-expanded", String(open));
       if (open) input.focus();
       else launcher.focus();
+    }
+
+    function closeCalderChat() {
+      pendingCalendarQuestion = "";
+      input.value = "";
+      messages.innerHTML = welcomeMessage;
+      setOpen(false);
     }
 
     function addMessage(text, kind) {
@@ -505,9 +515,9 @@
     launcher.addEventListener("click", function () {
       setOpen(!panel.classList.contains("is-open"));
     });
-    closeButton.addEventListener("click", function () { setOpen(false); });
+    closeButton.addEventListener("click", closeCalderChat);
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && panel.classList.contains("is-open")) setOpen(false);
+      if (event.key === "Escape" && panel.classList.contains("is-open")) closeCalderChat();
     });
 
     form.addEventListener("submit", async function (event) {
