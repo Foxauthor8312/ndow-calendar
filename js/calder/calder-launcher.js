@@ -423,20 +423,14 @@
 
         const resultsCard = document.createElement("div");
         resultsCard.className = "calder-message calder-reply calder-help-results";
-        resultsCard.style.cssText = "display:flex;flex-direction:column;gap:8px;padding:10px;background:#ffffff;border:1px solid #dbe3ec;border-radius:10px;";
+        resultsCard.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0;background:transparent;border:0;border-radius:0;";
 
         matches.forEach(function (result) {
           const topic = result.topic;
           const articleButton = document.createElement("button");
           articleButton.type = "button";
-          articleButton.style.cssText = "display:block;width:100%;padding:10px 12px;text-align:left;background:#f8fafc;color:#19304b;border:1px solid #dbe3ec;border-radius:8px;cursor:pointer;font:inherit;";
-          const title = document.createElement("span");
-          title.textContent = topic.title || "Help article";
-          title.style.cssText = "display:block;font-weight:700;";
-          const category = document.createElement("span");
-          category.textContent = topic.category || "Help";
-          category.style.cssText = "display:block;margin-top:3px;color:#64748b;font-size:12px;";
-          articleButton.append(title, category);
+          articleButton.style.cssText = "display:block;width:100%;padding:2px 0;text-align:left;background:transparent;color:#2563eb;border:0;border-radius:0;cursor:pointer;font:inherit;text-decoration:underline;";
+          articleButton.textContent = topic.title || "Help article";
           articleButton.addEventListener("click", function () {
             if (typeof window.openHelpArticleById === "function" && topic.id != null) {
               window.openHelpArticleById(topic.id);
