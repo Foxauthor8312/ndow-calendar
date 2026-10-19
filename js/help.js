@@ -696,24 +696,30 @@ const helpCategoryOrders = {
 
   'User Accounts':500,
 
-  'Announcements':600,
+  'Communications':600,
 
-  'Help System':700,
+  'Announcements':700,
 
-  'Administration':800,
+  'Reports & Analytics':800,
 
-  'Troubleshooting':900,
+  'Administration':900,
 
-  'FAQ':1000,
+  'Troubleshooting':1000,
 
-  'System Updates':1100
+  'FAQ':1100,
+
+  'Help System':1200,
+
+  'System Updates':1300
 
 };
 
 const helpTemplates = {
 
   'Getting Started':
-`Overview
+`Summary
+
+Overview
 
 Requirements
 
@@ -722,7 +728,9 @@ Steps
 Additional Notes`,
 
   'Calendar & Events':
-`Overview
+`Summary
+
+Overview
 
 Purpose
 
@@ -731,7 +739,9 @@ Steps
 Additional Notes`,
 
   'Instructor Management':
-`Purpose
+`Summary
+
+Purpose
 
 Requirements
 
@@ -740,7 +750,9 @@ Steps
 Additional Notes`,
 
   'Volunteer Management':
-`Overview
+`Summary
+
+Overview
 
 Requirements
 
@@ -749,16 +761,29 @@ Steps
 Additional Notes`,
 
   'User Accounts':
-`Overview
+`Summary
 
-Requirements
+Overview
 
 Steps
 
 Administrator Notes`,
 
+  'Communications':
+`Summary
+
+Purpose
+
+Workflow
+
+Important Notes
+
+Troubleshooting`,
+
   'Announcements':
-`Announcement Purpose
+`Summary
+
+Announcement Purpose
 
 Audience
 
@@ -766,17 +791,21 @@ Message Content
 
 Additional Notes`,
 
-  'Help System':
-`Purpose
+  'Reports & Analytics':
+`Summary
+
+Purpose
+
+Available Reports
 
 Steps
-
-Examples
 
 Additional Notes`,
 
   'Administration':
-`Purpose
+`Summary
+
+Purpose
 
 Required Permissions
 
@@ -787,7 +816,9 @@ Warnings
 Additional Notes`,
 
   'Troubleshooting':
-`Problem
+`Summary
+
+Problem
 
 Possible Causes
 
@@ -796,14 +827,29 @@ Resolution Steps
 Additional Information`,
 
   'FAQ':
-`Question
+`Summary
+
+Question
 
 Answer
 
 Additional Information`,
 
+  'Help System':
+`Summary
+
+Purpose
+
+Steps
+
+Examples
+
+Additional Notes`,
+
   'System Updates':
-`Update Summary
+`Summary
+
+Update Summary
 
 Effective Date
 
