@@ -308,106 +308,111 @@ function formatHelpContent(
 
 }
 
-function renderHelpTopicList(
-  topics
-){
+function renderHelpTopicList(topics){
 
   const topicList =
-    document.getElementById(
-      'helpTopicList'
-    );
+    document.getElementById('helpTopicList');
 
   const helpContent =
-    document.getElementById(
-      'helpContentArea'
-    );
+    document.getElementById('helpContentArea');
+
+  if(!topicList || !helpContent){
+    return;
+  }
 
   topicList.innerHTML = '';
 
+  const grouped = new Map();
+
   topics.forEach(topic => {
-
-    const item =
-      document.createElement('div');
-
-    item.style.padding =
-      '8px 12px';
-
-    item.style.borderBottom =
-      '1px solid #e5e7eb';
-
-    item.style.cursor =
-      'pointer';
-
-    item.style.fontWeight =
-      '600';
-
-    item.style.fontSize =
-      '13px';
-
-    item.style.color =
-      '#19304B';
-
-    item.style.borderLeft =
-      '4px solid transparent';
-
-    item.innerText =
-      topic.title;
-
-    item.onclick = () => {
-
-      document
-        .querySelectorAll(
-          '#helpTopicList > div'
-        )
-        .forEach(el => {
-
-          el.style.background =
-            '';
-
-          el.style.borderLeft =
-            '4px solid transparent';
-
-        });
-
-      item.style.background =
-        '#eef4ff';
-
-      item.style.borderLeft =
-        '4px solid #19304B';
-
-      helpContent.innerHTML = `
-        <div style="
-          padding:16px;
-          max-width:900px;
-        ">
-
-          <div style="
-            line-height:1.8;
-            font-size:15px;
-            color:#374151;
-          ">
-            ${formatHelpContent(
-             topic.content,
-             topic.title
-          )}
-          </div>
-
-        </div>
-      `;
-
-    };
-
-    topicList.appendChild(item);
-
+    const category = (topic.category || 'Uncategorized').trim();
+    if(!grouped.has(category)){
+      grouped.set(category, []);
+    }
+    grouped.get(category).push(topic);
   });
 
-  if(
-    topics.length > 0 &&
-    topicList.firstChild
-  ){
-    topicList.firstChild.click();
-  }
+  const categoryNames = Array.from(grouped.keys()).sort((a,b) => {
+    const aOrder = helpCategoryOrders[a] ?? 9999;
+    const bOrder = helpCategoryOrders[b] ?? 9999;
+    return aOrder - bOrder || a.localeCompare(b);
+  });
 
+  let firstArticleButton = null;
+
+  categoryNames.forEach(category => {
+    const articles = grouped.get(category);
+    const section = document.createElement('section');
+    section.style.borderBottom = '1px solid #DBE3EC';
+
+    const heading = document.createElement('button');
+    heading.type = 'button';
+    heading.style.cssText = 'width:100%;display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border:0;background:#F8FAFC;color:#19304B;font-weight:700;text-align:left;cursor:pointer;';
+    heading.setAttribute('aria-expanded', 'true');
+
+    const label = document.createElement('span');
+    label.textContent = category;
+
+    const marker = document.createElement('span');
+    marker.textContent = '−';
+    marker.setAttribute('aria-hidden', 'true');
+
+    heading.append(label, marker);
+
+    const articleList = document.createElement('div');
+    articleList.style.padding = '2px 0 6px 0';
+
+    heading.onclick = () => {
+      const expanded = heading.getAttribute('aria-expanded') === 'true';
+      heading.setAttribute('aria-expanded', String(!expanded));
+      articleList.style.display = expanded ? 'none' : 'block';
+      marker.textContent = expanded ? '+' : '−';
+    };
+
+    articles.forEach(topic => {
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.textContent = topic.title || 'Untitled article';
+      item.style.cssText = 'display:block;width:100%;padding:8px 12px 8px 24px;border:0;border-left:4px solid transparent;background:transparent;color:#19304B;font-size:13px;font-weight:600;text-align:left;cursor:pointer;';
+
+      item.onclick = () => {
+        topicList.querySelectorAll('[data-help-article="true"]').forEach(el => {
+          el.style.background = 'transparent';
+          el.style.borderLeftColor = 'transparent';
+          el.setAttribute('aria-current', 'false');
+        });
+
+        item.style.background = '#EEF4FF';
+        item.style.borderLeftColor = '#19304B';
+        item.setAttribute('aria-current', 'true');
+
+        helpContent.innerHTML = `
+          <div style="padding:16px;max-width:900px;">
+            <div style="line-height:1.8;font-size:15px;color:#374151;">
+              ${formatHelpContent(topic.content, topic.title)}
+            </div>
+          </div>
+        `;
+      };
+
+      item.dataset.helpArticle = 'true';
+      item.setAttribute('aria-current', 'false');
+      articleList.appendChild(item);
+
+      if(!firstArticleButton){
+        firstArticleButton = item;
+      }
+    });
+
+    section.append(heading, articleList);
+    topicList.appendChild(section);
+  });
+
+  if(firstArticleButton){
+    firstArticleButton.click();
+  } else {
+    helpContent.innerHTML = '<div style="padding:16px;color:#64748b;">No help articles match your search.</div>';
+  }
 }
 
 function openHelpTopic(topic){
@@ -587,6 +592,8 @@ async function saveHelpTopic(){
          'helpVisibilityRole'
          ).value,
 		
+      help_type: 'help',
+
       content:
         document.getElementById(
           'helpContent'
