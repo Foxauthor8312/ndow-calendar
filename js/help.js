@@ -953,7 +953,14 @@ async function renderHelpAdminList(){
 
     container.innerHTML = '';
 
-    topics.forEach(topic => {
+    const selectedCategory =
+      document.getElementById('helpCategory')?.value || '';
+
+    const visibleTopics = selectedCategory
+      ? topics.filter(topic => topic.category === selectedCategory)
+      : topics;
+
+    visibleTopics.forEach(topic => {
 
       const div =
         document.createElement(
