@@ -98,25 +98,56 @@ if(
           .toLowerCase()
           .trim();
 
-      const filtered =
-        topicArray.filter(
-          topic =>
-            (topic.title || '')
-              .toLowerCase()
-              .includes(search)
-            ||
-            (topic.content || '')
-              .toLowerCase()
-              .includes(search)
-            ||
-            (topic.category || '')
-              .toLowerCase()
-              .includes(search)
-        );
+      if(!search){
+        renderHelpTopicList(topicArray);
+        return;
+      }
 
-      renderHelpTopicList(
-        filtered
-      );
+      // Translate everyday instructor wording into related Help terms.
+      // This improves article discovery without changing article content or database fields.
+      const searchAliases = [
+        { pattern: /\\bfind my events?\\b|\\bshow me my events?\\b|\\bmy upcoming events?\\b|\\bevents? i('?m| am) teaching\\b/, terms: ['filter my events', 'calendar', 'instructor', 'events'] },
+        { pattern: /\\bhow many (hours|hours have i|service hours)\\b|\\bmy hours\\b|\\bvolunteer time\\b|\\bservice time\\b/, terms: ['volunteer hours', 'entering hours', 'hour calculations', 'hours submitted'] },
+        { pattern: /\\bwhen am i teaching\\b|\\bmy next class\\b|\\bnext event\\b|\\bupcoming class\\b/, terms: ['calendar', 'events', 'filter my events'] },
+        { pattern: /\\bhow do i (enter|record|log) (my )?hours\\b|\\bsubmit my hours\\b/, terms: ['entering volunteer hours', 'logging hours', 'volunteer management'] },
+        { pattern: /\\bhow do i find\\b|\\bwhere do i find\\b|\\bshow me\\b/, terms: ['calendar', 'filter', 'using', 'find'] },
+        { pattern: /\\brequest to teach\\b|\\binstructor request\\b|\\brequest status\\b/, terms: ['instructor request', 'submitting a request', 'status'] },
+        { pattern: /\\bstudents registered\\b|\\bclass roster\\b|\\battendance\\b/, terms: ['communications', 'registered students', 'event attendance', 'roster'] }
+      ];
+
+      const expandedTerms = new Set([search]);
+      searchAliases.forEach(alias => {
+        if(alias.pattern.test(search)){
+          alias.terms.forEach(term => expandedTerms.add(term));
+        }
+      });
+
+      const terms = Array.from(expandedTerms)
+        .flatMap(term => term.split(/\\s+/))
+        .filter(term => term.length > 2 && !['the','and','for','how','does','are','you','can','with','what','where'].includes(term));
+
+      const scored = topicArray.map(topic => {
+        const title = (topic.title || '').toLowerCase();
+        const category = (topic.category || '').toLowerCase();
+        const content = (topic.content || '').toLowerCase();
+        const searchable = title + ' ' + category + ' ' + content;
+        let score = 0;
+
+        if(title.includes(search)) score += 12;
+        if(category.includes(search)) score += 6;
+        if(content.includes(search)) score += 4;
+
+        terms.forEach(term => {
+          if(title.includes(term)) score += 5;
+          else if(category.includes(term)) score += 3;
+          else if(content.includes(term)) score += 1;
+        });
+
+        return { topic, score, searchable };
+      }).filter(result => result.score > 0)
+        .sort((a,b) => b.score - a.score || (a.topic.title || '').localeCompare(b.topic.title || ''));
+
+      renderHelpTopicList(scored.map(result => result.topic));
 
     }
   );
