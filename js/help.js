@@ -427,6 +427,7 @@ function renderHelpTopicList(topics){
       };
 
       item.dataset.helpArticle = 'true';
+      item.dataset.helpTopicId = String(topic.id || '');
       item.setAttribute('aria-current', 'false');
       articleList.appendChild(item);
 
@@ -572,6 +573,27 @@ async function openHelpModal(){
 
   await loadHelpTopics();
 
+}
+
+async function openHelpArticleById(topicId){
+  const modal = document.getElementById('helpModal');
+  if(!modal) return;
+
+  await openHelpModal();
+
+  const topic = (window.helpTopics || []).find(item =>
+    String(item.id) === String(topicId)
+  );
+
+  if(!topic) return;
+
+  renderHelpTopicList([topic]);
+
+  const articleButton = document.querySelector(
+    '[data-help-article="true"][data-help-topic-id="' + String(topicId).replace(/"/g, '') + '"]'
+  );
+
+  if(articleButton) articleButton.click();
 }
 
 function closeHelpModal(){
@@ -1140,6 +1162,7 @@ window.loadHelpTopics = loadHelpTopics;
 window.showContextHelp = showContextHelp;
 window.openHelpTopic = openHelpTopic;
 window.openHelpModal = openHelpModal;
+window.openHelpArticleById = openHelpArticleById;
 window.closeHelpModal = closeHelpModal;
 
 window.saveHelpTopic = saveHelpTopic;
