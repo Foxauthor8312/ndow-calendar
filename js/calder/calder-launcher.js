@@ -27,12 +27,11 @@
       '<div class="calder-header">' +
         '<img src="' + avatarUrl + '" alt="Calder, the NDOW Volunteer Assistant">' +
         '<div class="calder-heading"><strong>Calder</strong><span>NDOW Volunteer Assistant</span></div>' +
-        '<button class="calder-close" type="button" aria-label="Close Calder chat">&times;</button>' +
+        '<button class="calder-close" type="button" aria-label="Exit Calder chat">Exit Chat</button>' +
       '</div>' +
       '<div class="calder-messages" aria-live="polite">' +
         '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can help with your volunteer-hours summary. Ask me how many hours you have recorded.</div>' +
       '</div>' +
-      '<div class="calder-status">Connected to the NDOW volunteer-hours summary service.</div>' +
       '<form class="calder-composer">' +
         '<input type="text" name="message" aria-label="Message Calder" placeholder="Ask about your volunteer hours…" autocomplete="off">' +
         '<button type="submit">Send</button>' +
@@ -48,7 +47,7 @@
     const sendButton = form.querySelector('button[type="submit"]');
 
     const welcomeMessage =
-      '<div class="calder-message"><strong>Hi! I’m Calder.</strong><br>I can help with your volunteer-hours summary. Ask me how many hours you have recorded.</div>';
+      '<div class="calder-message">I’m Calder, your Volunteer AI Assistant. Ask me what you need to know.</div>';
 
     function setOpen(open) {
       panel.classList.toggle("is-open", open);
