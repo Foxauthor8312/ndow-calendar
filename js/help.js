@@ -130,15 +130,20 @@ if(
         const title = (topic.title || '').toLowerCase();
         const category = (topic.category || '').toLowerCase();
         const content = (topic.content || '').toLowerCase();
-        const searchable = title + ' ' + category + ' ' + content;
+        const tags = (Array.isArray(topic.tags) ? topic.tags : [])
+          .join(' ')
+          .toLowerCase();
+        const searchable = title + ' ' + category + ' ' + tags + ' ' + content;
         let score = 0;
 
         if(title.includes(search)) score += 12;
         if(category.includes(search)) score += 6;
         if(content.includes(search)) score += 4;
+        if(tags.includes(search)) score += 10;
 
         terms.forEach(term => {
           if(title.includes(term)) score += 5;
+          else if(tags.split(/[,\\s]+/).some(tag => tag === term)) score += 4;
           else if(category.includes(term)) score += 3;
           else if(content.includes(term)) score += 1;
         });
@@ -650,7 +655,13 @@ async function saveHelpTopic(){
       content:
         document.getElementById(
           'helpContent'
-        ).value
+        ).value,
+
+      tags: document.getElementById('helpTags').value
+        .split(',')
+        .map(tag => tag.trim().toLowerCase())
+        .filter(Boolean)
+        .filter((tag, index, all) => all.indexOf(tag) === index)
 
     };
 
@@ -708,6 +719,8 @@ function newHelpTopic(){
   document.getElementById(
     'helpTitle'
   ).value = '';
+
+  document.getElementById('helpTags').value = '';
 
 document.getElementById(
   'helpVisibilityRole'
@@ -1062,6 +1075,9 @@ async function renderHelpAdminList(){
           'helpTitle'
         ).value =
           topic.title || '';
+
+        document.getElementById('helpTags').value =
+          (Array.isArray(topic.tags) ? topic.tags : []).join(', ');
 
         document.getElementById(
           'helpSortOrder'
