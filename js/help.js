@@ -132,9 +132,11 @@ if(
         const title = (topic.title || '').toLowerCase();
         const category = (topic.category || '').toLowerCase();
         const content = (topic.content || '').toLowerCase();
-        const tags = (Array.isArray(topic.tags) ? topic.tags : [])
-          .join(' ')
-          .toLowerCase();
+        const tagList = (Array.isArray(topic.tags) ? topic.tags : [])
+          .map(tag => String(tag).trim().toLowerCase())
+          .filter(Boolean);
+        const tags = tagList.join(' ');
+        const tagWords = tagList.flatMap(tag => tag.split(/[\\s,]+/));
         const searchable = title + ' ' + category + ' ' + tags + ' ' + content;
         let score = 0;
 
@@ -145,7 +147,7 @@ if(
 
         terms.forEach(term => {
           if(title.includes(term)) score += 5;
-          else if(tags.split(/\\s+/).some(tag => tag === term)) score += 4;
+          else if(tagList.some(tag => tag === term) || tagWords.includes(term)) score += 4;
           else if(category.includes(term)) score += 3;
           else if(content.includes(term)) score += 1;
         });
