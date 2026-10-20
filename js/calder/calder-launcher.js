@@ -404,11 +404,15 @@
           const title = String(topic.title || "").toLowerCase();
           const category = String(topic.category || "").toLowerCase();
           const content = String(topic.content || "").toLowerCase();
+          const tags = (Array.isArray(topic.tags) ? topic.tags : [])
+            .map(function (tag) { return String(tag).toLowerCase(); });
           let score = 0;
           if (title.includes(q)) score += 20;
           if (content.includes(q)) score += 5;
+          if (tags.some(function (tag) { return tag.includes(q); })) score += 15;
           searchTerms.forEach(function (term) {
             if (title.includes(term)) score += 6;
+            else if (tags.some(function (tag) { return tag.split(/[^a-z0-9]+/).includes(term); })) score += 5;
             else if (category.includes(term)) score += 3;
             else if (content.includes(term)) score += 1;
           });
