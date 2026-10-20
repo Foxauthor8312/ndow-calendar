@@ -1052,12 +1052,17 @@ async function renderHelpAdminList(){
 
     container.innerHTML = '';
 
-    const selectedCategory =
-      document.getElementById('helpCategory')?.value || '';
+    // Show every Help topic in the manager, regardless of the editor's
+    // currently selected category. Sort by category, then display order/title.
+    const visibleTopics = [...topics].sort((a, b) => {
+      const categoryCompare = (a.category || '').localeCompare(b.category || '');
+      if(categoryCompare !== 0) return categoryCompare;
 
-    const visibleTopics = selectedCategory
-      ? topics.filter(topic => topic.category === selectedCategory)
-      : topics;
+      const orderCompare = Number(a.sort_order || 0) - Number(b.sort_order || 0);
+      if(orderCompare !== 0) return orderCompare;
+
+      return (a.title || '').localeCompare(b.title || '');
+    });
 
     visibleTopics.forEach(topic => {
 
@@ -1075,18 +1080,14 @@ async function renderHelpAdminList(){
       div.style.cursor =
         'pointer';
 
-      div.innerHTML = `
-        <strong>
-          ${topic.title}
-        </strong>
-        <br>
-        <span style="
-          color:#6b7280;
-          font-size:13px;
-        ">
-          ${topic.category || ''}
-        </span>
-      `;
+      const title = document.createElement('strong');
+      title.textContent = topic.title || 'Untitled topic';
+
+      const category = document.createElement('span');
+      category.style.cssText = 'display:block;color:#6b7280;font-size:13px;margin-top:3px;';
+      category.textContent = topic.category || 'Uncategorized';
+
+      div.append(title, category);
 
       div.onclick = () => {
 
@@ -1145,7 +1146,7 @@ async function renderHelpAdminList(){
   }
 
 }
-	
+
 async function deleteHelpTopic(){
 
   const id =
