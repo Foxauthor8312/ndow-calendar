@@ -354,6 +354,31 @@ if (title === "Users") {
   font-weight:600;
   color:#374151;
 ">
+  Article Tags
+</div>
+
+<input
+  id="helpTags"
+  class="contact-input"
+  placeholder="Tags separated by commas (e.g. calendar, instructor, hours)"
+  style="width:100%;box-sizing:border-box;"
+>
+
+<div style="
+  margin-top:6px;
+  color:#6b7280;
+  font-size:12px;
+">
+  Add words volunteers might use when searching for this article.
+</div>
+
+<div style="
+  margin-top:16px;
+  margin-bottom:6px;
+  font-size:12px;
+  font-weight:600;
+  color:#374151;
+">
   Topic Content
 </div>
 
