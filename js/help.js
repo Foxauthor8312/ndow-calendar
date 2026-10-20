@@ -143,7 +143,7 @@ if(
 
         terms.forEach(term => {
           if(title.includes(term)) score += 5;
-          else if(tags.split(/[,\\s]+/).some(tag => tag === term)) score += 4;
+          else if(tags.split(/\\s+/).some(tag => tag === term)) score += 4;
           else if(category.includes(term)) score += 3;
           else if(content.includes(term)) score += 1;
         });
