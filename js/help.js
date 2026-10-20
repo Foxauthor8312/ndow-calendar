@@ -348,6 +348,32 @@ function formatHelpContent(
 
 }
 
+function formatHelpTags(tags){
+  const tagList = Array.isArray(tags)
+    ? tags.map(tag => String(tag).trim()).filter(Boolean)
+    : [];
+
+  if(!tagList.length) return '';
+
+  const escapeHtml = value => value.replace(/[&<>"']/g, character => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  })[character]);
+
+  return `
+    <div aria-label="Article tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;">
+      ${tagList.map(tag => `
+        <span style="display:inline-block;padding:3px 8px;border:1px solid #DBE3EC;border-radius:12px;background:#F8FAFC;color:#475569;font-size:12px;line-height:1.4;">
+          ${escapeHtml(tag)}
+        </span>
+      `).join('')}
+    </div>
+  `;
+}
+
 function renderHelpTopicList(topics){
 
   const topicList =
@@ -428,6 +454,7 @@ function renderHelpTopicList(topics){
 
         helpContent.innerHTML = `
           <div style="padding:16px;max-width:900px;">
+            ${formatHelpTags(topic.tags)}
             <div style="line-height:1.8;font-size:15px;color:#374151;">
               ${formatHelpContent(topic.content, topic.title)}
             </div>
@@ -472,6 +499,8 @@ function openHelpTopic(topic){
       padding:16px;
       max-width:900px;
     ">
+
+      ${formatHelpTags(topic.tags)}
 
       <div style="
         line-height:1.8;
