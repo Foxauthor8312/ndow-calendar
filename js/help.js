@@ -98,8 +98,10 @@ if(
           .toLowerCase()
           .trim();
 
+      const currentTopics = window.helpTopics || topicArray;
+
       if(!search){
-        renderHelpTopicList(topicArray);
+        renderHelpTopicList(currentTopics);
         return;
       }
 
@@ -126,7 +128,7 @@ if(
         .flatMap(term => term.split(/\s+/))
         .filter(term => term.length > 2 && !['the','and','for','how','does','are','you','can','with','what','where'].includes(term));
 
-      const scored = topicArray.map(topic => {
+      const scored = currentTopics.map(topic => {
         const title = (topic.title || '').toLowerCase();
         const category = (topic.category || '').toLowerCase();
         const content = (topic.content || '').toLowerCase();
