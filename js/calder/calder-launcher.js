@@ -223,7 +223,8 @@
         const terms = question.toLowerCase().replace(/[^a-z0-9\s]/g, " ")
           .split(/\s+/).filter(function (term) { return term.length > 2; });
         const matchedHelp = helpTopics.filter(function (topic) {
-          const text = [topic.title, topic.category, topic.topic_key, topic.content]
+          const text = [topic.title, topic.category, topic.topic_key, topic.summary, topic.content]
+            .concat(Array.isArray(topic.tags) ? topic.tags : [])
             .filter(Boolean).join(" ").toLowerCase();
           return terms.some(function (term) { return text.includes(term); });
         }).slice(0, 3);
@@ -332,6 +333,8 @@
         answerMyAssignments();
       } else if (/\b(hours?|mileage|miles|service value|volunteer time|how much have i volunteered)\b/i.test(question)) {
         answerHoursQuestion();
+      } else if (/\b(email|e-mail|communications?|communicate|registered students|student roster|send a message|email students|attendance|survey|survey results)\b/i.test(question)) {
+        answerKnowledgeQuestion(question);
       } else if (/\b(events?|calendar|fishing|hunter|archery|boating|programs?|classes|workshops?|where|when|upcoming|coming up|next week|this week|location|county|region|january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(question)) {
         answerCalendarQuestion(question);
       } else {
