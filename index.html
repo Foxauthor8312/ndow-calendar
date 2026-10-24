@@ -6240,7 +6240,7 @@ async function openDiscrepanciesReport(){
           ? new Date(record.event_date + 'T00:00:00').toLocaleDateString('en-US')
           : 'Date unknown';
         const rawEventName = String(record.event_name || 'Unnamed event')
-          .split(/\\s(?:•|▪|■)\\s*Events Results Pending|\\s+Location:|\\s+Taught by:|\\s+Date & Times:|\\s+Registration (?:Open|Closed)|\\s+View \\/|\\s+Copy Event/i)[0]
+          .split(/\\s(?:•|▪|■)\\s*Events Results Pending|\\s+Location:|\\s+Taught by:|\\s+Date & Times:|\\s+Registration (?:Open|Closed)|\\s+Copy Event/i)[0]
           .trim();
         const cleanEventName = rawEventName.length > 90
           ? rawEventName.slice(0, 87).trimEnd() + '…'
