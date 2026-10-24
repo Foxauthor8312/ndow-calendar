@@ -13398,568 +13398,84 @@ const reportId =
 
 `;
 
- let rows = `
+const comparisonRecords = data.comparisonRecords || [];
+const calendarGrandTotal = comparisonRecords.reduce(
+  (sum, row) => sum + Number(row.calendarTotalHours || 0), 0
+);
+const ndowGrandTotal = comparisonRecords.reduce(
+  (sum, row) => sum + Number(row.ndowTotalHours || 0), 0
+);
+const totalDifference = calendarGrandTotal - ndowGrandTotal;
 
-<table
-  style="
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
-    font-size:11px;
-  "
->
-
-<tr>
-
-  <th rowspan="2"
-      align="right"
-      style="width:55px;">
-    Evt#
-  </th>
-
-  <th rowspan="2"
-      align="left"
-      style="width:70px;">
-    Date
-  </th>
-
-  <th rowspan="2"
-    align="left"
-    style="width:320px;">
-  Event
-</th>
-
- <th
-  colspan="4"
-  align="center"
-  style="
-    background:#f3f4f6;
-    padding-left:4px;
-    padding-right:4px;
-  "
->
-  Portal
-</th>
-
-<th
-  colspan="4"
-  align="center"
-  style="
-    background:#dbeafe;
-    padding-left:4px;
-    padding-right:4px;
-  "
->
-  NDOW
-</th>
-
-<th rowspan="2"
-    align="right"
-    style="
-      width:70px;
-      background:#dcfce7;
-    ">
-  Value
-</th>
-
-</tr>
-
-<tr>
-
-  <th align="right" style="background:#f3f4f6;">Hrs</th>
-  <th align="right" style="background:#f3f4f6;">Brk</th>
-  <th align="right" style="background:#f3f4f6;">Trv</th>
-  <th align="right"
-    style="
-      background:#f3f4f6;
-      padding-right:6px;
-    ">
-  Mi
-</th>
-
-  <th align="right" style="background:#dbeafe;">Hrs</th>
-  <th align="right" style="background:#dbeafe;">Brk</th>
-  <th align="right" style="background:#dbeafe;">Trv</th>
-  <th align="right" style="background:#dbeafe;">Mi</th>
-
-</tr>
-
+let rows = `
+<table style="width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px;">
+  <thead>
+    <tr>
+      <th align="left" style="width:48%;padding:7px;background:#f3f4f6;">Calendar Hours — Event</th>
+      <th align="right" style="width:18%;padding:7px;background:#dbeafe;">NDOW Hours</th>
+      <th align="right" style="width:18%;padding:7px;background:#dcfce7;">Discrepancy</th>
+      <th align="left" style="width:16%;padding:7px;background:#f3f4f6;">Match</th>
+    </tr>
+  </thead>
+  <tbody>
 `;
 
-let currentMonth = '';
-
-let monthEvents = 0;
-let monthHours = 0;
-let monthMiles = 0;
-let monthValue = 0;
-let monthBreak = 0;
-let monthTravel = 0;
-let monthNdowHours = 0;
-let monthNdowBreak = 0;
-let monthNdowTravel = 0;
-let monthNdowMiles = 0;	  
-
-data.records.forEach(
-  (record,index) => {
-
-    const recordDate =
-      new Date(
-        record.event_date
-      );
-
-    const monthName =
-      recordDate.toLocaleDateString(
-        'en-US',
-        {
-          month:'long',
-          year:'numeric'
-        }
-      );
-
-    if(
-      currentMonth !== monthName
-    ){
-
-if(currentMonth){
+comparisonRecords.forEach(record => {
+  const calendarValue = record.calendarTotalHours;
+  const ndowValue = record.ndowTotalHours;
+  const difference = record.discrepancy;
+  const dateLabel = record.event_date
+    ? new Date(record.event_date + 'T00:00:00').toLocaleDateString('en-US', { month:'2-digit', day:'2-digit', year:'2-digit' })
+    : 'Date unknown';
+  const eventName = String(record.event_name || 'Unnamed event')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+  const eventLink = record.event_id
+    ? `<a href="#" onclick="openEventFromReport('${String(record.event_id).replace(/'/g, '')}');return false;" style="color:#19304B;font-weight:600;text-decoration:underline;">#${record.event_id} — ${eventName}</a>`
+    : eventName;
+  const discrepancyText = difference === null || difference === undefined
+    ? '—'
+    : `${difference > 0 ? '+' : ''}${Number(difference).toFixed(2)}`;
+  const discrepancyColor = difference === null || difference === undefined
+    ? '#64748b'
+    : Math.abs(Number(difference)) < 0.01 ? '#166534' : '#b45309';
+  const statusColor = record.comparisonStatus === 'Matched' ? '#166534' : '#b91c1c';
 
   rows += `
-
-<tr>
-
-  <td
-    colspan="3"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-      padding:6px;
-      border-top:1px solid #d1d5db;
-      border-bottom:1px solid #d1d5db;
-    "
-  >
-    ${currentMonth} Totals
-  </td>
-
-  <td align="right">
-    ${monthHours.toFixed(1)}
-  </td>
-
-  <td align="right">
-    ${monthBreak.toFixed(1)}
-  </td>
-
-  <td align="right">
-    ${monthTravel.toFixed(1)}
-  </td>
-
-  <td align="right">
-    ${monthMiles.toFixed(0)}
-  </td>
-
-  <td align="right">
-    ${monthNdowHours.toFixed(1)}
-  </td>
-
-  <td align="right">
-    ${monthNdowBreak.toFixed(1)}
-  </td>
-
-  <td align="right">
-    ${monthNdowTravel.toFixed(1)}
-  </td>
-
-  <td align="right">
-    ${monthNdowMiles.toFixed(0)}
-  </td>
-
-  <td align="right">
-    $${monthValue.toFixed(0)}
-  </td>
-
-</tr>
-
-`;
-
-}
-
-currentMonth =
-monthName;
-
-monthEvents = 0;
-
-monthHours = 0;
-monthBreak = 0;
-monthTravel = 0;
-monthMiles = 0;
-
-monthNdowHours = 0;
-monthNdowBreak = 0;
-monthNdowTravel = 0;
-monthNdowMiles = 0;
-
-monthValue = 0;
-
-      rows += `
-
-<tr>
-  <td
-    colspan="12"
-    style="
-      padding-top:12px;
-      padding-bottom:4px;
-      font-weight:700;
-      font-size:12px;
-      border-top:2px solid #19304B;
-    "
-  >
-    ${monthName}
-  </td>
-</tr>
-
-`;
-
-    }
-
- let title = '';
-
-if(
-  record.event_id &&
-  record.event_date >= '2026-03-16'
-){
-
-  title = `
-    <span
-      class="report-event-link"
-      onclick="
-        openEventFromReport(
-          '${record.event_id}'
-        )
-      "
-      style="
-        color:#19304B;
-        font-weight:600;
-        cursor:pointer;
-      "
-    >
-      [${record.event_id}]
-    </span>
-    ${record.event_name
-      .split('■')[0]
-      .trim()}
+    <tr style="border-bottom:1px solid #e2e8f0;">
+      <td style="padding:6px;background:#f9fafb;">
+        <div style="font-size:10px;color:#64748b;">${dateLabel}</div>
+        ${eventLink}
+        ${calendarValue === null ? '<div style="font-size:10px;color:#b91c1c;">No calendar entry</div>' : ''}
+      </td>
+      <td align="right" style="padding:6px;background:#eff6ff;">
+        ${ndowValue === null ? '—' : Number(ndowValue).toFixed(2)}
+        ${ndowValue === null ? '<div style="font-size:10px;color:#b91c1c;">No NDOW record</div>' : ''}
+      </td>
+      <td align="right" style="padding:6px;font-weight:700;color:${discrepancyColor};">
+        ${discrepancyText}
+      </td>
+      <td style="padding:6px;font-size:10px;color:${statusColor};font-weight:600;">
+        ${record.comparisonStatus}
+      </td>
+    </tr>
   `;
-
-}else{
-
-  title =
-    record.event_name
-      .split('■')[0]
-      .trim();
-
-}
-
-    const formattedDate =
-      recordDate.toLocaleDateString(
-        'en-US',
-        {
-          year:'2-digit',
-          month:'2-digit',
-          day:'2-digit'
-        }
-      );
-
-    monthEvents++;
-
-    monthHours +=
-  Number(
-    record.volunteer_hours || 0
-  );
-
-monthBreak +=
-  Number(
-    record.break_minutes || 0
-  ) / 60;
-
-monthTravel +=
-  Number(
-    record.travel_hours || 0
-  );
-
-monthMiles +=
-  Number(
-    record.mileage || 0
-  );	  
-
-monthNdowHours +=
-  Number(
-    record.ndowHours || 0
-  );
-
-monthNdowBreak +=
-  Number(
-    record.ndowBreak || 0
-  );
-
-monthNdowTravel +=
-  Number(
-    record.ndowTravel || 0
-  );
-
-monthNdowMiles +=
-  Number(
-    record.ndowMileage || 0
-  );
-
-monthValue +=
-  Number(
-    record.service_value || 0
-  );	  
+});
 
 rows += `
-
-<tr
-  style="
-    border-bottom:1px solid #f3f4f6;
-  "
->
-
-  <td align="right">
-    ${record.event_id}
-  </td>
-
-  <td>
-    ${formattedDate}
-  </td>
-
-  <td>
-    ${title}
-  </td>
-
-  <td
-  align="right"
-  style="background:#f9fafb;"
->
-  ${Number(
-    record.volunteer_hours || 0
-  ).toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="background:#f9fafb;"
->
-  ${(
-    Number(
-      record.break_minutes || 0
-    ) / 60
-  ).toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="background:#f9fafb;"
->
-  ${Number(
-    record.travel_hours || 0
-  ).toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    background:#f9fafb;
-    padding-right:8px;
-  "
->
-  ${Number(
-    record.mileage || 0
-  ).toFixed(0)}
-</td>
-
-<td
-  align="right"
-  style="background:#eff6ff;"
->
-  ${Number(
-    record.ndowHours || 0
-  ).toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="background:#eff6ff;"
->
-  ${Number(
-    record.ndowBreak || 0
-  ).toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="background:#eff6ff;"
->
-  ${Number(
-    record.ndowTravel || 0
-  ).toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="background:#eff6ff;"
->
-  ${Number(
-    record.ndowMileage || 0
-  ).toFixed(0)}
-</td>
-
-<td
-  align="right"
-  style="
-    background:#f0fdf4;
-    font-weight:600;
-  "
->
-  $${Number(
-    record.service_value || 0
-  ).toFixed(0)}
-</td>
-
-</tr>
-
-`;
-
-    if(
-      index ===
-      data.records.length - 1
-    ){
-
- rows += `
-
-<tr>
-  <td
-    colspan="3"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-      padding:6px;
-      border-top:1px solid #d1d5db;
-      border-bottom:1px solid #d1d5db;
-    "
-  >
-    ${currentMonth} Totals
-  </td>
-
- <td
-  align="right"
-  style="
-    font-weight:700;
-    background:#f3f4f6;
-  "
->
-  ${monthHours.toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#f3f4f6;
-  "
->
-  ${monthBreak.toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#f3f4f6;
-  "
->
-  ${monthTravel.toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#f3f4f6;
-    padding-right:8px;
-  "
->
-  ${monthMiles.toFixed(0)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#dbeafe;
-  "
->
-  ${monthNdowHours.toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#dbeafe;
-  "
->
-  ${monthNdowBreak.toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#dbeafe;
-  "
->
-  ${monthNdowTravel.toFixed(1)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#dbeafe;
-  "
->
-  ${monthNdowMiles.toFixed(0)}
-</td>
-
-<td
-  align="right"
-  style="
-    font-weight:700;
-    background:#dcfce7;
-  "
->
-  $${monthValue.toFixed(0)}
-</td>
-
-  <td
-    align="right"
-    style="
-      font-weight:700;
-      background:#f3f4f6;
-    "
-  >
-    $${monthValue.toFixed(0)}
-  </td>
-
-</tr>
-
-`;
-
-    }
-
-  }
-);
-
-rows += `
+    <tr style="font-weight:700;border-top:2px solid #19304B;background:#f1f5f9;">
+      <td style="padding:8px;">TOTAL HOURS</td>
+      <td align="right" style="padding:8px;">${ndowGrandTotal.toFixed(2)}</td>
+      <td align="right" style="padding:8px;color:${Math.abs(totalDifference) < 0.01 ? '#166534' : '#b45309'};">${totalDifference > 0 ? '+' : ''}${totalDifference.toFixed(2)}</td>
+      <td style="padding:8px;">Calendar: ${calendarGrandTotal.toFixed(2)}</td>
+    </tr>
+  </tbody>
 </table>
+<div style="margin-top:8px;padding:8px 10px;background:#fffbeb;border-left:3px solid #f59e0b;border-radius:4px;font-size:11px;color:#92400e;">
+  Reconciliation note: Calendar hours include volunteer hours plus travel hours; NDOW hours use the same calculation. “Calendar only” and “NDOW only” rows identify records that need review. Verify the source records before making year-end award decisions.
+</div>
 `;
+
 let programHtml = `
 
 <table
