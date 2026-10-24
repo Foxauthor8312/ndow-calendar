@@ -14700,6 +14700,7 @@ const result =
       hours: ndowRowsForSummary.reduce((sum, row) => sum + Number(row.ndow_hours || 0), 0),
       mileage: ndowRowsForSummary.reduce((sum, row) => sum + Number(row.ndow_mileage || 0), 0)
     };
+    ndowSummary.serviceValue = ndowSummary.hours * 56.55;
 
     const comparisonHtml = `
       <div style="margin:0 0 14px 0;">
@@ -14713,29 +14714,29 @@ const result =
               <div class="dashboard-stat-card">
                 <div class="dashboard-stat-icon">📅</div>
                 <div class="dashboard-stat-content">
-                  <div class="dashboard-stat-label">NDOW EVENTS</div>
+                  <div class="dashboard-stat-label">EVENTS</div>
                   <div class="dashboard-stat-value">${ndowSummary.events}</div>
                 </div>
               </div>
               <div class="dashboard-stat-card">
                 <div class="dashboard-stat-icon">⏱</div>
                 <div class="dashboard-stat-content">
-                  <div class="dashboard-stat-label">NDOW HOURS</div>
+                  <div class="dashboard-stat-label">HOURS</div>
                   <div class="dashboard-stat-value">${ndowSummary.hours.toFixed(1)}</div>
                 </div>
               </div>
               <div class="dashboard-stat-card">
                 <div class="dashboard-stat-icon">🚗</div>
                 <div class="dashboard-stat-content">
-                  <div class="dashboard-stat-label">NDOW MILES</div>
+                  <div class="dashboard-stat-label">MILES</div>
                   <div class="dashboard-stat-value">${ndowSummary.mileage.toFixed(0)}</div>
                 </div>
               </div>
               <div class="dashboard-stat-card">
                 <div class="dashboard-stat-icon">💲</div>
                 <div class="dashboard-stat-content">
-                  <div class="dashboard-stat-label">NDOW VALUE</div>
-                  <div class="dashboard-stat-value">Not supplied</div>
+                  <div class="dashboard-stat-label">VOLUNTEER VALUE</div>
+                  <div class="dashboard-stat-value">$${ndowSummary.serviceValue.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</div>
                 </div>
               </div>
             </div>
