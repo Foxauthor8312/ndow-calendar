@@ -6258,10 +6258,26 @@ async function openDiscrepanciesReport(){
           diff,
           record.comparisonStatus || 'Needs review'
         ];
-        values.forEach(value => {
+        values.forEach((value, columnIndex) => {
           const td = document.createElement('td');
-          td.textContent = String(value);
           td.style.cssText = 'padding:9px;border:1px solid #DBE3EC;vertical-align:top;white-space:pre-wrap;overflow-wrap:anywhere;';
+
+          if(columnIndex === 0 && record.event_id != null){
+            const eventLink = document.createElement('a');
+            eventLink.href = '#';
+            eventLink.textContent = String(value);
+            eventLink.title = 'Open event #' + record.event_id + ' in the calendar';
+            eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
+            eventLink.addEventListener('click', clickEvent => {
+              clickEvent.preventDefault();
+              overlay.remove();
+              openEventFromReport(String(record.event_id));
+            });
+            td.appendChild(eventLink);
+          } else {
+            td.textContent = String(value);
+          }
+
           tr.appendChild(td);
         });
         tbody.appendChild(tr);
