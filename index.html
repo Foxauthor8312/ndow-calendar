@@ -6094,9 +6094,7 @@ function showNdowHoursReport(reportRows){
     'width:100%;border-collapse:collapse;font-size:13px;';
 
   const columns = [
-    ['Event ID', 'eventId'],
-    ['Event Date', 'eventDate'],
-    ['Event Name', 'eventName'],
+    ['Event', 'event'],
     ['Hours', 'hours'],
     ['Outcome', 'outcome'],
     ['Details', 'detail']
@@ -6138,7 +6136,25 @@ function showNdowHoursReport(reportRows){
 
       columns.forEach(([, key]) => {
         const td = document.createElement('td');
-        const value = row && row[key] != null ? row[key] : '';
+        let value = row && row[key] != null ? row[key] : '';
+
+        if(key === 'event'){
+          const eventId = row && row.eventId != null
+            ? String(row.eventId).trim()
+            : '';
+          const eventDate = row && row.eventDate != null
+            ? String(row.eventDate).trim()
+            : '';
+          const eventName = row && row.eventName != null
+            ? String(row.eventName).trim()
+            : '';
+          value = [
+            eventId ? 'Event #' + eventId : '',
+            eventDate,
+            eventName
+          ].filter(Boolean).join(' | ');
+        }
+
         td.textContent = String(value);
         td.style.cssText =
           'padding:9px;border:1px solid #DBE3EC;vertical-align:top;' +
