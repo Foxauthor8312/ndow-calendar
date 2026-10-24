@@ -6192,8 +6192,21 @@ async function openDiscrepanciesReport(){
       Math.abs(Number(record.discrepancy)) >= 0.01
     );
 
+    const calendarTotal = discrepancies.reduce((sum, record) =>
+      sum + (record.calendarTotalHours == null ? 0 : Number(record.calendarTotalHours) || 0), 0);
+    const ndowTotal = discrepancies.reduce((sum, record) =>
+      sum + (record.ndowTotalHours == null ? 0 : Number(record.ndowTotalHours) || 0), 0);
+    const comparable = discrepancies.filter(record =>
+      record.calendarTotalHours != null && record.ndowTotalHours != null);
+    const discrepancyTotal = comparable.reduce((sum, record) =>
+      sum + (Number(record.discrepancy) || 0), 0);
+    const discrepancyEventCount = discrepancies.filter(record =>
+      record.comparisonStatus !== 'Matched' ||
+      record.discrepancy == null ||
+      Math.abs(Number(record.discrepancy)) >= 0.01).length;
+
     summary.textContent = discrepancies.length
-      ? discrepancies.length + ' record(s) need review out of ' + records.length + ' compared records. Blank values indicate missing data, not zero.'
+      ? discrepancies.length + ' event/date record(s) need review out of ' + records.length + ' compared records. Blank values indicate missing data, not zero.'
       : 'No discrepancies were returned. Compared records: ' + records.length + '.';
 
     const table = document.createElement('table');
@@ -6226,10 +6239,16 @@ async function openDiscrepanciesReport(){
         const dateLabel = record.event_date
           ? new Date(record.event_date + 'T00:00:00').toLocaleDateString('en-US')
           : 'Date unknown';
+        const rawEventName = String(record.event_name || 'Unnamed event')
+          .split(/\\s(?:•|▪|■)\\s*Events Results Pending|\\s+Location:|\\s+Taught by:|\\s+Date & Times:|\\s+Registration (?:Open|Closed)|\\s+View \\/|\\s+Copy Event/i)[0]
+          .trim();
+        const cleanEventName = rawEventName.length > 90
+          ? rawEventName.slice(0, 87).trimEnd() + '…'
+          : rawEventName;
         const eventLabel = [
           record.event_id != null ? 'Event #' + record.event_id : '',
           dateLabel,
-          record.event_name || 'Unnamed event'
+          cleanEventName
         ].filter(Boolean).join(' | ');
         const diff = record.discrepancy == null ? '—' : (Number(record.discrepancy) > 0 ? '+' : '') + Number(record.discrepancy).toFixed(2);
         const values = [
@@ -6249,7 +6268,31 @@ async function openDiscrepanciesReport(){
       });
     }
     table.appendChild(tbody);
+
+    const tfoot = document.createElement('tfoot');
+    const totalRow = document.createElement('tr');
+    totalRow.style.cssText = 'background:#EAF0F6;font-weight:700;';
+    const totalValues = [
+      'TOTALS (' + discrepancyEventCount + ' events/records)',
+      calendarTotal.toFixed(2),
+      ndowTotal.toFixed(2),
+      (discrepancyTotal > 0 ? '+' : '') + discrepancyTotal.toFixed(2),
+      comparable.length + ' comparable'
+    ];
+    totalValues.forEach(value => {
+      const td = document.createElement('td');
+      td.textContent = String(value);
+      td.style.cssText = 'padding:10px;border:1px solid #DBE3EC;vertical-align:top;';
+      totalRow.appendChild(td);
+    });
+    tfoot.appendChild(totalRow);
+    table.appendChild(tfoot);
+
+    const totalsNote = document.createElement('p');
+    totalsNote.textContent = 'Totals cover the rows displayed above. Difference total includes only rows with both calendar and NDOW hours; missing-source records are counted in the event/record total but cannot contribute a numeric difference.';
+    totalsNote.style.cssText = 'margin:10px 0 0;color:#4B5563;font-size:12px;';
     tableWrap.appendChild(table);
+    tableWrap.appendChild(totalsNote);
 
     const print = document.createElement('button');
     print.type = 'button';
