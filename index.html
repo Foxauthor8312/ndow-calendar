@@ -6185,12 +6185,29 @@ async function openDiscrepanciesReport(){
     if(!response.ok) throw new Error(data.error || 'Unable to load the discrepancies report.');
 
     const records = Array.isArray(data.comparisonRecords) ? data.comparisonRecords : [];
-    const discrepancies = records.filter(record =>
+
+    // Resolve cancellation from the calendar's authoritative event status.
+    const cancelledRecords = [];
+    const activeRecords = [];
+    records.forEach(record => {
+      const calendarEvent = events.find(event => String(event.id) === String(record.event_id));
+      if(calendarEvent && calendarEvent.status === 'Canceled'){
+        cancelledRecords.push({ ...record, _cancelled: true });
+      } else {
+        activeRecords.push(record);
+      }
+    });
+
+    // Cancelled events are shown with a red indicator for context, but excluded
+    // from discrepancy calculations and totals.
+    const discrepancies = activeRecords.filter(record =>
       record.comparisonStatus !== 'Matched' ||
       record.discrepancy === null ||
       record.discrepancy === undefined ||
       Math.abs(Number(record.discrepancy)) >= 0.01
     );
+    const displayRecords = [...discrepancies, ...cancelledRecords]
+      .sort((a, b) => String(b.event_date || '').localeCompare(String(a.event_date || '')));
 
     const calendarTotal = discrepancies.reduce((sum, record) =>
       sum + (record.calendarTotalHours == null ? 0 : Number(record.calendarTotalHours) || 0), 0);
@@ -6206,8 +6223,8 @@ async function openDiscrepanciesReport(){
       Math.abs(Number(record.discrepancy)) >= 0.01).length;
 
     summary.textContent = discrepancies.length
-      ? discrepancies.length + ' event/date record(s) need review out of ' + records.length + ' compared records. Blank values indicate missing data, not zero.'
-      : 'No discrepancies were returned. Compared records: ' + records.length + '.';
+      ? discrepancies.length + ' event/date record(s) need review. ' + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals. Blank values indicate missing data, not zero.'
+      : 'No active discrepancies found. ' + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals.';
 
     const table = document.createElement('table');
     table.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px;';
@@ -6224,7 +6241,7 @@ async function openDiscrepanciesReport(){
     table.appendChild(thead);
 
     const tbody = document.createElement('tbody');
-    if(!discrepancies.length){
+    if(!displayRecords.length){
       const tr = document.createElement('tr');
       const td = document.createElement('td');
       td.colSpan = headers.length;
@@ -6233,7 +6250,7 @@ async function openDiscrepanciesReport(){
       tr.appendChild(td);
       tbody.appendChild(tr);
     } else {
-      discrepancies.forEach((record, index) => {
+      displayRecords.forEach((record, index) => {
         const tr = document.createElement('tr');
         if(index % 2) tr.style.background = '#F8FAFC';
         const dateLabel = record.event_date
@@ -6256,7 +6273,7 @@ async function openDiscrepanciesReport(){
           record.calendarTotalHours == null ? '—' : Number(record.calendarTotalHours).toFixed(2),
           record.ndowTotalHours == null ? '—' : Number(record.ndowTotalHours).toFixed(2),
           diff,
-          record.comparisonStatus || 'Needs review'
+          record._cancelled ? 'Cancelled — excluded' : (record.comparisonStatus || 'Needs review')
         ];
         values.forEach((value, columnIndex) => {
           const td = document.createElement('td');
@@ -6265,8 +6282,17 @@ async function openDiscrepanciesReport(){
           if(columnIndex === 0 && record.event_id != null){
             const eventLink = document.createElement('a');
             eventLink.href = '#';
+            if(record._cancelled){
+              const dot = document.createElement('span');
+              dot.textContent = '● ';
+              dot.style.cssText = 'color:#DC2626;font-size:14px;margin-right:4px;';
+              dot.title = 'Cancelled event — excluded from discrepancy totals';
+              td.appendChild(dot);
+            }
             eventLink.textContent = String(value);
-            eventLink.title = 'Open event #' + record.event_id + ' in the calendar';
+            eventLink.title = record._cancelled
+              ? 'Cancelled event — excluded from discrepancy totals; click to open event'
+              : 'Open event #' + record.event_id + ' in the calendar';
             eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
             eventLink.addEventListener('click', clickEvent => {
               clickEvent.preventDefault();
