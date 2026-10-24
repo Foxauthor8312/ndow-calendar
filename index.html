@@ -6270,8 +6270,26 @@ async function openDiscrepanciesReport(){
             eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
             eventLink.addEventListener('click', clickEvent => {
               clickEvent.preventDefault();
-              overlay.remove();
+              overlay.style.display = 'none';
               openEventFromReport(String(record.event_id));
+
+              // Keep the report alive behind the event panel and restore it on close.
+              const eventModal = document.getElementById('eventModal');
+              const eventCloseButton = document.getElementById('closeModal');
+              if(eventCloseButton && eventCloseButton.dataset.reportReturnBound !== 'true'){
+                eventCloseButton.dataset.reportReturnBound = 'true';
+                eventCloseButton.addEventListener('click', () => {
+                  overlay.style.display = 'flex';
+                });
+              }
+              if(eventModal && eventModal.dataset.reportReturnBound !== 'true'){
+                eventModal.dataset.reportReturnBound = 'true';
+                eventModal.addEventListener('click', eventClick => {
+                  if(eventClick.target === eventModal){
+                    overlay.style.display = 'flex';
+                  }
+                });
+              }
             });
             td.appendChild(eventLink);
           } else {
