@@ -14666,6 +14666,106 @@ const result =
     `)
     .join('');
 
+
+    let comparisonRows = [];
+    let comparisonLoadFailed = false;
+
+    try {
+      const comparisonResponse = await fetch(
+        'https://ndow-calendar-server.onrender.com/api/my-hours/comparison',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      const comparisonResult = await comparisonResponse.json();
+
+      if (comparisonResponse.ok && comparisonResult.success) {
+        comparisonRows = comparisonResult.rows || [];
+      } else {
+        comparisonLoadFailed = true;
+      }
+    } catch (comparisonError) {
+      console.warn('NDOW comparison unavailable:', comparisonError);
+      comparisonLoadFailed = true;
+    }
+
+    const comparisonNumber = value =>
+      value === null || value === undefined || value === ''
+        ? '—'
+        : Number(value).toFixed(2);
+
+    const comparisonTableRows = comparisonRows.map(row => {
+      const difference =
+        row.ndow_hours !== null &&
+        row.ndow_hours !== undefined &&
+        row.portal_hours !== null &&
+        row.portal_hours !== undefined
+          ? Number(row.portal_hours) - Number(row.ndow_hours)
+          : null;
+
+      const differenceText =
+        difference === null ? '—' :
+        `${difference > 0 ? '+' : ''}${difference.toFixed(2)}`;
+
+      const differenceColor =
+        difference === null ? '#64748b' :
+        Math.abs(difference) < 0.01 ? '#166534' : '#b45309';
+
+      const eventName = String(row.event_name || 'Unnamed event')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      return `
+        <tr>
+          <td style="padding:7px;border-bottom:1px solid #e2e8f0;white-space:nowrap;">${row.event_date || '—'}</td>
+          <td style="padding:7px;border-bottom:1px solid #e2e8f0;">${eventName}<div style="font-size:10px;color:#64748b;">#${row.event_id}</div></td>
+          <td style="padding:7px;text-align:right;border-bottom:1px solid #e2e8f0;">${comparisonNumber(row.ndow_hours)}</td>
+          <td style="padding:7px;text-align:right;border-bottom:1px solid #e2e8f0;">${comparisonNumber(row.portal_hours)}</td>
+          <td style="padding:7px;text-align:right;font-weight:700;color:${differenceColor};border-bottom:1px solid #e2e8f0;">${differenceText}</td>
+        </tr>
+      `;
+    }).join('');
+
+    const comparisonHtml = `
+      <div style="margin:0 0 18px 0;padding:12px;background:#fff;border:1px solid #DBE3EC;border-radius:8px;">
+        <div style="font-size:12px;font-weight:700;color:#19304B;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">
+          NDOW Records Comparison
+        </div>
+        <div style="font-size:11px;color:#64748b;margin-bottom:10px;">
+          Official NDOW hours compared with hours entered in the volunteer portal. Difference = Portal minus NDOW.
+        </div>
+        ${comparisonLoadFailed
+          ? '<div style="padding:10px;color:#92400e;background:#fffbeb;border-radius:5px;font-size:12px;">NDOW comparison records could not be loaded. Please try again later.</div>'
+          : comparisonRows.length
+            ? `
+              <div style="overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;font-size:11px;">
+                  <thead>
+                    <tr style="background:#f1f5f9;color:#334155;">
+                      <th style="padding:7px;text-align:left;">Date</th>
+                      <th style="padding:7px;text-align:left;">Event</th>
+                      <th style="padding:7px;text-align:right;">NDOW Hours</th>
+                      <th style="padding:7px;text-align:right;">Portal Hours</th>
+                      <th style="padding:7px;text-align:right;">Difference</th>
+                    </tr>
+                  </thead>
+                  <tbody>${comparisonTableRows}</tbody>
+                </table>
+              </div>
+              <div style="margin-top:9px;padding:8px 10px;background:#f8fafc;border-left:3px solid #589FD6;border-radius:4px;font-size:11px;line-height:1.45;color:#475569;">
+                Note: Hours entered within the past 24 hours may not be reflected here until the next automatic update. Use <strong>Sync NDOW</strong> for a manual update if needed.
+              </div>
+            `
+            : '<div style="padding:10px;color:#64748b;background:#f8fafc;border-radius:5px;font-size:12px;">No NDOW or portal hour records are available for comparison yet.</div>'
+        }
+      </div>
+    `;
+
 container.innerHTML = `
 
 <!-- Dashboard Statistics -->
