@@ -14697,7 +14697,7 @@ const result =
     );
     const ndowSummary = {
       events: ndowRowsForSummary.length,
-      hours: ndowRowsForSummary.reduce((sum, row) => sum + Number(row.ndow_hours || 0), 0),
+      hours: ndowRowsForSummary.reduce((sum, row) => sum + Number(row.ndow_hours || 0) + Number(row.ndow_travel_hours || 0), 0),
       mileage: ndowRowsForSummary.reduce((sum, row) => sum + Number(row.ndow_mileage || 0), 0)
     };
     ndowSummary.serviceValue = ndowSummary.hours * 56.55;
@@ -14750,6 +14750,15 @@ const result =
 
 container.innerHTML = `
 
+<!-- Compact Dashboard Recap Cards -->
+<style>
+  .dashboard-compact-recap .dashboard-stat-cards { gap: 6px; margin-bottom: 10px; }
+  .dashboard-compact-recap .dashboard-stat-card { min-height: 46px; padding: 6px 8px; gap: 7px; }
+  .dashboard-compact-recap .dashboard-stat-icon { width: 27px; height: 27px; font-size: 14px; }
+  .dashboard-compact-recap .dashboard-stat-label { font-size: 9px; line-height: 11px; }
+  .dashboard-compact-recap .dashboard-stat-value { font-size: 17px; line-height: 18px; margin-top: 1px; }
+</style>
+<div class="dashboard-compact-recap">
 <!-- Dashboard Statistics -->
 
 <div class="dashboard-stat-cards">
@@ -14812,6 +14821,7 @@ container.innerHTML = `
 
 ${comparisonHtml}
 
+</div>
 <!-- Program Activity -->
 
 <div id="dashboardProgramSummary"
