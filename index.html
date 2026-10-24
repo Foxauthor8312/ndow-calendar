@@ -8526,6 +8526,9 @@ function generateRoute(){
 
 function showHoursConfirmation(){
 
+  window.multiDayEntryActive =
+    document.getElementById('multiDayHours')?.value === 'yes';
+
   const start =
     document.getElementById(
       'hoursStart'
