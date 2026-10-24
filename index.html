@@ -7529,14 +7529,31 @@ window.currentEvent =
 
       <br><br>
 
-      <strong>Date:</strong>
-      ${selectedEvent.date || ''}
+      <strong>Activity date:</strong>
+      ${window.pendingHoursEntry.event_date || selectedEvent.date || ''}
 
       <br><br>
 
       <strong>Location:</strong>
       ${selectedEvent.location || ''}
 
+    </div>
+
+    <div style="margin:0 0 16px;padding:12px;border:1px solid #DBE3EC;border-radius:8px;background:#F8FAFC;">
+      <label style="display:block;font-weight:600;margin-bottom:8px;">
+        Are you entering hours for multiple days of this event?
+        <select id="multiDayHours" onchange="toggleMultiDayHours()" style="display:block;width:100%;margin-top:6px;padding:9px;">
+          <option value="no">No — one day</option>
+          <option value="yes">Yes — multiple days</option>
+        </select>
+      </label>
+      <label style="display:block;font-weight:600;">
+        Activity date
+        <input type="date" id="activityDate" value="${window.multiDayNextDate || String(selectedEvent.date || '').slice(0,10)}" style="display:block;width:100%;margin-top:6px;padding:9px;">
+      </label>
+      <div id="multiDayHelp" style="display:none;font-size:12px;color:#475569;margin-top:8px;">
+        Save each activity date separately. After saving, choose “Add Another Date” to enter the next day. Each date is stored independently for reporting.
+      </div>
     </div>
 
     <div style="display:grid;gap:12px;">
@@ -7981,6 +7998,28 @@ if(window.routeGeometry){
 }
 
 }  // <-- closes openHoursModal()
+
+function addAnotherHoursDate(){
+  window.multiDayEntryActive = true;
+  const currentDate = String(window.pendingHoursEntry?.event_date || selectedEvent?.date || '').slice(0,10);
+  const nextDate = currentDate ? new Date(currentDate + 'T12:00:00') : null;
+  if(nextDate) nextDate.setDate(nextDate.getDate() + 1);
+  window.multiDayNextDate = nextDate
+    ? `${nextDate.getFullYear()}-${String(nextDate.getMonth()+1).padStart(2,'0')}-${String(nextDate.getDate()).padStart(2,'0')}`
+    : '';
+  openHoursModal();
+  setTimeout(() => {
+    const selector = document.getElementById('multiDayHours');
+    if(selector) selector.value = 'yes';
+    toggleMultiDayHours();
+  }, 0);
+}
+
+function toggleMultiDayHours(){
+  const multiDay = document.getElementById('multiDayHours')?.value === 'yes';
+  const help = document.getElementById('multiDayHelp');
+  if(help) help.style.display = multiDay ? 'block' : 'none';
+}
 
 function closeHoursModal(){
   document.getElementById(
@@ -8555,7 +8594,7 @@ window.pendingHoursEntry = {
   county: selectedEvent.county,
   region: selectedEvent.region,
 
-  event_date: selectedEvent.date,
+  event_date: document.getElementById('activityDate')?.value || String(selectedEvent.date || '').slice(0,10),
   location: selectedEvent.location,
 
   start_time: start,
@@ -8863,6 +8902,19 @@ async function saveVolunteerHours(){
 
     }
 
+    const savedEntry = window.pendingHoursEntry || {};
+    window.multiDaySessionTotals = window.multiDaySessionTotals || { hours: 0, travel: 0, mileage: 0, dates: [] };
+    const session = window.multiDaySessionTotals;
+    const savedDate = String(savedEntry.event_date || '');
+    if (!session.dates.includes(savedDate)) {
+      session.hours += Number(savedEntry.volunteer_hours || 0);
+      session.travel += Number(savedEntry.travel_hours || 0);
+      session.mileage += Number(savedEntry.mileage || 0);
+      session.dates.push(savedDate);
+    }
+    const isMultiDay = document.getElementById('multiDayHours')?.value === 'yes' || window.multiDayEntryActive === true;
+    window.multiDayEntryActive = isMultiDay;
+
     document.getElementById(
       'hoursModalContent'
     ).innerHTML = `
@@ -8884,9 +8936,19 @@ async function saveVolunteerHours(){
         </h3>
 
         <p>
-          Your Instructor hours
-          have been recorded.
+          Activity date ${savedDate} has been saved.
         </p>
+
+        ${isMultiDay ? `
+          <div style="background:#f8fafc;border:1px solid #DBE3EC;padding:12px;border-radius:8px;text-align:left;margin-top:14px;">
+            <strong>Multi-day totals so far</strong><br>
+            Volunteer hours: ${session.hours.toFixed(2)}<br>
+            Travel hours: ${session.travel.toFixed(2)}<br>
+            Mileage: ${session.mileage.toFixed(1)}<br>
+            Dates entered: ${session.dates.length}
+          </div>
+          <button onclick="addAnotherHoursDate()" style="margin-top:16px;background:#19304B;color:white;border:0;padding:11px 16px;border-radius:6px;font-weight:600;cursor:pointer;">＋ Add Another Date</button>
+        ` : ''}`
 
                <div style="
           background:#fef3c7;
