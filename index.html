@@ -8026,6 +8026,14 @@ function closeHoursModal(){
     'hoursModal'
   ).style.display = 'none';
 
+  window.multiDayEntryActive = false;
+  window.multiDayNextDate = '';
+  window.multiDaySessionTotals = {
+    hours: 0,
+    travel: 0,
+    mileage: 0,
+    dates: []
+  };
 }
 
 let routeMap;
