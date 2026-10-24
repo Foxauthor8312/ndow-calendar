@@ -9177,6 +9177,17 @@ async function saveVolunteerHours(){
     const isMultiDay = document.getElementById('multiDayHours')?.value === 'yes' || window.multiDayEntryActive === true;
     window.multiDayEntryActive = isMultiDay;
 
+    const multiDaySummaryHtml = isMultiDay
+      ? '<div style="background:#f8fafc;border:1px solid #DBE3EC;padding:12px;border-radius:8px;text-align:left;margin-top:14px;">' +
+          '<strong>Multi-day totals so far</strong><br>' +
+          'Volunteer hours: ' + session.hours.toFixed(2) + '<br>' +
+          'Travel hours: ' + session.travel.toFixed(2) + '<br>' +
+          'Mileage: ' + session.mileage.toFixed(1) + '<br>' +
+          'Dates entered: ' + session.dates.length +
+        '</div>' +
+        '<button onclick="addAnotherHoursDate()" style="margin-top:16px;background:#19304B;color:white;border:0;padding:11px 16px;border-radius:6px;font-weight:600;cursor:pointer;">＋ Add Another Date</button>'
+      : '';
+
     document.getElementById(
       'hoursModalContent'
     ).innerHTML = `
@@ -9201,18 +9212,9 @@ async function saveVolunteerHours(){
           Activity date ${savedDate} has been saved.
         </p>
 
-        ${isMultiDay ? `
-          <div style="background:#f8fafc;border:1px solid #DBE3EC;padding:12px;border-radius:8px;text-align:left;margin-top:14px;">
-            <strong>Multi-day totals so far</strong><br>
-            Volunteer hours: ${session.hours.toFixed(2)}<br>
-            Travel hours: ${session.travel.toFixed(2)}<br>
-            Mileage: ${session.mileage.toFixed(1)}<br>
-            Dates entered: ${session.dates.length}
-          </div>
-          <button onclick="addAnotherHoursDate()" style="margin-top:16px;background:#19304B;color:white;border:0;padding:11px 16px;border-radius:6px;font-weight:600;cursor:pointer;">＋ Add Another Date</button>
-        ` : ''}`
+        ${multiDaySummaryHtml}
 
-               <div style="
+        <div style="
           background:#fef3c7;
           color:#92400e;
           padding:12px;
