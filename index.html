@@ -6198,18 +6198,29 @@ async function openDiscrepanciesReport(){
     const records = allRecords.filter(record =>
       !record.event_date || String(record.event_date).slice(0, 10) <= todayKey
     );
+    const futureRecordsExcluded = allRecords.length - records.length;
 
-    // Use the calendar feed (events.json) as the authority for event status
-    // and, when available, its display name/date.
+    // Use events.json for authoritative event status and calendar details.
+    // Track records that cannot be tied back to a published calendar event.
     const cancelledRecords = [];
     const activeRecords = [];
+    let calendarMatchedRecords = 0;
+    let calendarUnmatchedRecords = 0;
+    const calendarEventById = new Map(
+      events.map(event => [String(event.id), event])
+    );
     records.forEach(record => {
-      const calendarEvent = events.find(event => String(event.id) === String(record.event_id));
+      const calendarEvent = calendarEventById.get(String(record.event_id));
+      if(calendarEvent){
+        calendarMatchedRecords++;
+      } else {
+        calendarUnmatchedRecords++;
+      }
       const enrichedRecord = calendarEvent ? {
         ...record,
         event_name: calendarEvent.title || calendarEvent.name || record.event_name,
         _calendarStatus: calendarEvent.status || ''
-      } : record;
+      } : { ...record, _calendarMissing: true };
       if(calendarEvent && calendarEvent.status === 'Canceled'){
         cancelledRecords.push({ ...enrichedRecord, _cancelled: true });
       } else {
@@ -6242,8 +6253,14 @@ async function openDiscrepanciesReport(){
       Math.abs(Number(record.discrepancy)) >= 0.01).length;
 
     summary.textContent = discrepancies.length
-      ? discrepancies.length + ' event/date record(s) need review. ' + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals. Blank values indicate missing data, not zero.'
-      : 'No active discrepancies found. ' + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals.';
+      ? discrepancies.length + ' event/date record(s) need review. '
+        + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals. '
+        + futureRecordsExcluded + ' future-dated record(s) excluded. '
+        + 'Calendar match: ' + calendarMatchedRecords + '; no calendar match: ' + calendarUnmatchedRecords + '. Blank values indicate missing data, not zero.'
+      : 'No active discrepancies found. '
+        + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals. '
+        + futureRecordsExcluded + ' future-dated record(s) excluded. '
+        + 'Calendar match: ' + calendarMatchedRecords + '; no calendar match: ' + calendarUnmatchedRecords + '.';
 
     const table = document.createElement('table');
     table.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px;';
@@ -6311,7 +6328,9 @@ async function openDiscrepanciesReport(){
             eventLink.textContent = String(value);
             eventLink.title = record._cancelled
               ? 'Cancelled event — excluded from discrepancy totals; click to open event'
-              : 'Open event #' + record.event_id + ' in the calendar';
+              : record._calendarMissing
+                ? 'No matching event ID found in events.json; click to try opening event'
+                : 'Open event #' + record.event_id + ' in the calendar';
             eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
             eventLink.addEventListener('click', clickEvent => {
               clickEvent.preventDefault();
