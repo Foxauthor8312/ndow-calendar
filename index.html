@@ -6235,6 +6235,12 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
   const historicCheckbox = document.createElement('input');
   historicCheckbox.type = 'checkbox';
   historicCheckbox.checked = includeHistoric;
+  historicCheckbox.addEventListener('change', () => {
+    const startDate = startInput.value;
+    const endDate = endInput.value;
+    overlay.remove();
+    openDiscrepanciesReport(startDate, endDate, historicCheckbox.checked);
+  });
   historicLabel.append(historicCheckbox, document.createTextNode('Include historic events outside date range'));
   filterBar.append(startLabel, endLabel, applyFilter, resetFilter, sortLabel, historicLabel);
 
