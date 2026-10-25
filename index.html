@@ -5696,6 +5696,14 @@ setTimeout(() => {
 
 if(data.user?.onboarding_completed === false){
   profileFirstLoginMode = true;
+
+  const onboardingOverlay = document.getElementById('loadingOverlay');
+  if(onboardingOverlay){
+    onboardingOverlay.style.display = 'none';
+    onboardingOverlay.style.visibility = 'hidden';
+    onboardingOverlay.style.opacity = '0';
+  }
+
   openFirstLoginNdowModal();
 }else if(new URLSearchParams(window.location.search).get('onboardingTest') === '1'){
   await startFirstLoginOnboardingTest();
@@ -13715,6 +13723,10 @@ async function saveProfile(){
         'token'
       );
 
+    // Re-geocode the address the new volunteer has just reviewed.
+    if(profileFirstLoginMode){
+      await geocodeProfileAddress();
+    }
 
     /*
     ----------------------------------------------
