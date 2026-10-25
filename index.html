@@ -6485,7 +6485,7 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
 
     sortSelect.addEventListener('change', () => {
       overlay.remove();
-      openDiscrepanciesReport(startDate, endDate);
+      openDiscrepanciesReport(startDate, endDate, historicCheckbox.checked);
       // Sort choice is applied by the report's selector on render.
     });
 
