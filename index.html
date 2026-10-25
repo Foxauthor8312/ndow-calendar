@@ -6557,10 +6557,29 @@ function showNdowHoursReport(reportRows){
 
   const rows = Array.isArray(reportRows) ? reportRows : [];
 
+  const isCancelled = row => {
+    const text = [
+      row?.status,
+      row?.outcome,
+      row?.detail,
+      row?.eventName
+    ].filter(Boolean).join(' ').toLowerCase();
+    return /cancelled|canceled/.test(text);
+  };
+
+  const visibleRows = rows.filter(row => !isCancelled(row));
+  const updatedRows = visibleRows.filter(row =>
+    ['inserted', 'updated'].includes(String(row?.outcome || '').toLowerCase())
+  );
+  const preservedRows = visibleRows.filter(row =>
+    String(row?.outcome || '').toLowerCase() === 'preserved'
+  );
+  const skippedRows = visibleRows.filter(row =>
+    !['inserted', 'updated', 'preserved'].includes(String(row?.outcome || '').toLowerCase())
+  );
+
   const existing = document.getElementById('ndowHoursReportOverlay');
-  if(existing){
-    existing.remove();
-  }
+  if(existing) existing.remove();
 
   const overlay = document.createElement('div');
   overlay.id = 'ndowHoursReportOverlay';
@@ -6570,23 +6589,122 @@ function showNdowHoursReport(reportRows){
 
   const panel = document.createElement('div');
   panel.style.cssText =
-    'background:#fff;color:#19304B;width:100%;max-width:1200px;' +
-    'max-height:90vh;overflow:auto;padding:22px;border-radius:8px;' +
+    'background:#fff;color:#19304B;width:100%;max-width:1000px;' +
+    'max-height:90vh;overflow:auto;padding:24px;border-radius:8px;' +
     'box-shadow:0 8px 30px rgba(0,0,0,.25);font-family:Arial,sans-serif;';
 
   const heading = document.createElement('h2');
   heading.textContent = 'NDOW Volunteer Hours Sync Report';
-  heading.style.cssText = 'margin:0 0 8px;font-size:21px;';
+  heading.style.cssText = 'margin:0 0 12px;font-size:22px;';
 
-  const summary = document.createElement('p');
-  summary.textContent =
-    'Report rows: ' + rows.length +
-    '. This report is temporary and is not saved to the database.';
-  summary.style.cssText = 'margin:0 0 16px;color:#4B5563;';
+  const intro = document.createElement('p');
+  intro.textContent =
+    "I've finished syncing your events and hours to the NDOW system. Here are the results:";
+  intro.style.cssText = 'margin:0 0 18px;color:#334155;line-height:1.6;font-size:15px;';
+
+  const updatedHeading = document.createElement('h3');
+  updatedHeading.textContent =
+    updatedRows.length + ' event' + (updatedRows.length === 1 ? ' has' : 's have') +
+    ' been updated as follows:';
+  updatedHeading.style.cssText = 'font-size:16px;margin:18px 0 8px;';
+
+  const eventList = document.createElement('div');
+  eventList.style.cssText =
+    'border:1px solid #DBE3EC;border-radius:7px;overflow:hidden;margin-bottom:18px;';
+
+  function eventLine(row){
+    const eventId = row?.eventId != null ? String(row.eventId).trim() : '';
+    const eventDate = row?.eventDate != null ? String(row.eventDate).trim() : '';
+    const eventName = row?.eventName != null ? String(row.eventName).trim() : '';
+    return [
+      eventId ? 'Event #' + eventId : '',
+      eventDate,
+      eventName
+    ].filter(Boolean).join(' | ') || 'Event details unavailable';
+  }
+
+  if(updatedRows.length){
+    updatedRows.forEach((row, index) => {
+      const line = document.createElement('div');
+      line.textContent = eventLine(row);
+      line.style.cssText =
+        'padding:10px 12px;line-height:1.45;overflow-wrap:anywhere;' +
+        (index % 2 ? 'background:#F8FAFC;' : 'background:#FFFFFF;') +
+        (index ? 'border-top:1px solid #DBE3EC;' : '');
+      eventList.appendChild(line);
+    });
+  } else {
+    const empty = document.createElement('div');
+    empty.textContent = 'No non-cancelled events were reported as newly inserted or updated.';
+    empty.style.cssText = 'padding:12px;color:#64748B;';
+    eventList.appendChild(empty);
+  }
+
+  const summaryHeading = document.createElement('h3');
+  summaryHeading.textContent = 'Summary';
+  summaryHeading.style.cssText = 'font-size:16px;margin:18px 0 8px;';
+
+  const summary = document.createElement('div');
+  summary.style.cssText =
+    'padding:14px 16px;background:#F8FAFC;border:1px solid #DBE3EC;' +
+    'border-radius:7px;line-height:1.65;color:#334155;';
+
+  const summaryLines = [
+    updatedRows.length + ' event' + (updatedRows.length === 1 ? '' : 's') +
+      ' inserted or updated in the volunteer-hours records.',
+    preservedRows.length + ' existing submitted record' +
+      (preservedRows.length === 1 ? ' was' : 's were') +
+      ' preserved and not overwritten.',
+    skippedRows.length + ' record' + (skippedRows.length === 1 ? '' : 's') +
+      ' skipped or needing attention.',
+    rows.length - visibleRows.length + ' cancelled record' +
+      (rows.length - visibleRows.length === 1 ? ' was' : 's were') +
+      ' left out of the event list.'
+  ];
+
+  summaryLines.forEach(text => {
+    const line = document.createElement('div');
+    line.textContent = '• ' + text;
+    summary.appendChild(line);
+  });
+
+  if(preservedRows.length){
+    const preserved = document.createElement('p');
+    preserved.textContent =
+      'Preserved records: ' + preservedRows.map(eventLine).join('; ');
+    preserved.style.cssText = 'margin:10px 0 0;';
+    summary.appendChild(preserved);
+  }
+
+  if(skippedRows.length){
+    const attentionHeading = document.createElement('h3');
+    attentionHeading.textContent = 'Items needing attention';
+    attentionHeading.style.cssText = 'font-size:15px;margin:18px 0 8px;';
+    const attention = document.createElement('div');
+    attention.style.cssText =
+      'border:1px solid #DBE3EC;border-radius:7px;overflow:hidden;margin-bottom:16px;';
+    skippedRows.forEach((row, index) => {
+      const line = document.createElement('div');
+      line.textContent = eventLine(row) +
+        (row?.detail ? ' — ' + String(row.detail) : '');
+      line.style.cssText =
+        'padding:10px 12px;line-height:1.45;overflow-wrap:anywhere;' +
+        (index % 2 ? 'background:#F8FAFC;' : 'background:#FFFFFF;') +
+        (index ? 'border-top:1px solid #DBE3EC;' : '');
+      attention.appendChild(line);
+    });
+    summary.appendChild(attentionHeading);
+    summary.appendChild(attention);
+  }
+
+  const footer = document.createElement('p');
+  footer.textContent =
+    'This report reflects the latest sync in this browser session and is not saved as a separate database report.';
+  footer.style.cssText = 'font-size:12px;color:#64748B;margin:16px 0 0;';
 
   const buttonBar = document.createElement('div');
   buttonBar.style.cssText =
-    'display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;';
+    'display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:18px;';
 
   function makeButton(label, background, action){
     const button = document.createElement('button');
@@ -6599,117 +6717,27 @@ function showNdowHoursReport(reportRows){
     return button;
   }
 
-  const tableWrap = document.createElement('div');
-  tableWrap.style.cssText = 'overflow:auto;';
-
-  const table = document.createElement('table');
-  table.style.cssText =
-    'width:100%;border-collapse:collapse;font-size:13px;';
-
-  const columns = [
-    ['Event', 'event'],
-    ['Hours', 'hours'],
-    ['Outcome', 'outcome'],
-    ['Details', 'detail']
-  ];
-
-  const thead = document.createElement('thead');
-  const headerRow = document.createElement('tr');
-
-  columns.forEach(([label]) => {
-    const th = document.createElement('th');
-    th.textContent = label;
-    th.style.cssText =
-      'background:#19304B;color:white;text-align:left;padding:10px;' +
-      'border:1px solid #DBE3EC;position:sticky;top:0;';
-    headerRow.appendChild(th);
-  });
-
-  thead.appendChild(headerRow);
-  table.appendChild(thead);
-
-  const tbody = document.createElement('tbody');
-
-  if(rows.length === 0){
-    const tr = document.createElement('tr');
-    const td = document.createElement('td');
-    td.colSpan = columns.length;
-    td.textContent =
-      'No hours report rows were returned. Confirm that hours sync was selected and that the server returns hoursReport.';
-    td.style.cssText = 'padding:14px;border:1px solid #DBE3EC;';
-    tr.appendChild(td);
-    tbody.appendChild(tr);
-  } else {
-    rows.forEach((row, index) => {
-      const tr = document.createElement('tr');
-
-      if(index % 2 === 1){
-        tr.style.background = '#F8FAFC';
-      }
-
-      columns.forEach(([, key]) => {
-        const td = document.createElement('td');
-        let value = row && row[key] != null ? row[key] : '';
-
-        if(key === 'event'){
-          const eventId = row && row.eventId != null
-            ? String(row.eventId).trim()
-            : '';
-          const eventDate = row && row.eventDate != null
-            ? String(row.eventDate).trim()
-            : '';
-          const eventName = row && row.eventName != null
-            ? String(row.eventName).trim()
-            : '';
-          value = [
-            eventId ? 'Event #' + eventId : '',
-            eventDate,
-            eventName
-          ].filter(Boolean).join(' | ');
-        }
-
-        td.textContent = String(value);
-        td.style.cssText =
-          'padding:9px;border:1px solid #DBE3EC;vertical-align:top;' +
-          'white-space:pre-wrap;overflow-wrap:anywhere;';
-        tr.appendChild(td);
-      });
-
-      tbody.appendChild(tr);
-    });
-  }
-
-  table.appendChild(tbody);
-  tableWrap.appendChild(table);
-
   const closeReport = () => overlay.remove();
 
   const printButton = makeButton('Print Report', '#19304B', () => {
     const printWindow = window.open('', '_blank');
-
     if(!printWindow){
       alert('The print window was blocked. Allow pop-ups for this site and try again.');
       return;
     }
 
-    const printableTable = table.cloneNode(true);
-
     printWindow.document.open();
     printWindow.document.write(
       '<!doctype html><html><head><title>NDOW Volunteer Hours Sync Report</title>' +
-      '<style>' +
-      'body{font-family:Arial,sans-serif;color:#19304B;padding:20px}' +
-      'h1{font-size:20px}p{color:#4B5563}table{width:100%;border-collapse:collapse;font-size:11px}' +
-      'th{background:#19304B!important;color:white!important;text-align:left}' +
-      'th,td{border:1px solid #DBE3EC;padding:7px;vertical-align:top;overflow-wrap:anywhere}' +
-      'tr{break-inside:avoid}' +
-      '@media print{body{padding:0}}' +
-      '</style></head><body>' +
-      '<h1>NDOW Volunteer Hours Sync Report</h1>' +
-      '<p>Report rows: ' + rows.length +
-      '. Temporary report; not saved to the database.</p>' +
-      printableTable.outerHTML +
-      '</body></html>'
+      '<style>body{font-family:Arial,sans-serif;color:#19304B;padding:24px;line-height:1.5}' +
+      'h1,h2,h3{color:#19304B} .event-line{padding:8px 10px;border-bottom:1px solid #DBE3EC}' +
+      '@media print{body{padding:0}}</style></head><body>' +
+      '<h1>' + heading.textContent + '</h1>' +
+      '<p>' + intro.textContent + '</p>' +
+      '<h2>' + updatedHeading.textContent + '</h2>' +
+      eventList.outerHTML +
+      '<h2>Summary</h2>' + summary.outerHTML +
+      '<p>' + footer.textContent + '</p></body></html>'
     );
     printWindow.document.close();
     printWindow.focus();
@@ -6718,19 +6746,14 @@ function showNdowHoursReport(reportRows){
 
   const screenshotButton = makeButton('Save Screenshot', '#589FD6', async () => {
     if(typeof window.html2canvas !== 'function'){
-      alert(
-        'Screenshot saving is not available because html2canvas is not loaded. ' +
-        'Use Print Report, then choose Save as PDF.'
-      );
+      alert('Screenshot saving is unavailable. Use Print Report, then choose Save as PDF.');
       return;
     }
-
     try{
       const canvas = await window.html2canvas(panel, {
-        backgroundColor: '#ffffff',
-        scale: 2
+        backgroundColor:'#ffffff',
+        scale:2
       });
-
       const link = document.createElement('a');
       link.download = 'ndow-hours-sync-report.png';
       link.href = canvas.toDataURL('image/png');
@@ -6741,16 +6764,12 @@ function showNdowHoursReport(reportRows){
     }
   });
 
-  const closeButton = makeButton('Close', '#6B7280', closeReport);
-
-  buttonBar.append(printButton, screenshotButton, closeButton);
-  panel.append(heading, summary, buttonBar, tableWrap);
+  buttonBar.append(printButton, screenshotButton, makeButton('Close', '#6B7280', closeReport));
+  panel.append(heading, intro, updatedHeading, eventList, summaryHeading, summary, footer, buttonBar);
   overlay.appendChild(panel);
 
   overlay.addEventListener('click', event => {
-    if(event.target === overlay){
-      closeReport();
-    }
+    if(event.target === overlay) closeReport();
   });
 
   document.addEventListener('keydown', function closeOnEscape(event){
@@ -6762,7 +6781,6 @@ function showNdowHoursReport(reportRows){
 
   document.body.appendChild(overlay);
 }
-
 
 /* =========================================================
    LOAD MY NDOW ASSIGNMENTS
