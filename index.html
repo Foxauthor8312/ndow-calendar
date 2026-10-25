@@ -6073,7 +6073,7 @@ function openMyReports(){
     const button = document.createElement('button');
     button.type = 'button';
     button.disabled = !!disabled;
-    button.style.cssText = 'display:block;text-align:left;padding:13px 15px;border:1px solid #DBE3EC;border-radius:7px;background:' + (disabled ? '#f8fafc' : '#fff') + ';color:#19304B;cursor:' + (disabled ? 'not-allowed' : 'pointer') + ';opacity:' + (disabled ? '.65' : '1') + ';';
+    button.style.cssText = 'display:block;position:relative;z-index:2;pointer-events:auto;width:100%;text-align:left;padding:13px 15px;border:1px solid #DBE3EC;border-radius:7px;background:' + (disabled ? '#f8fafc' : '#fff') + ';color:#19304B;cursor:' + (disabled ? 'not-allowed' : 'pointer') + ';opacity:' + (disabled ? '.65' : '1') + ';';
     const titleNode = document.createElement('div');
     titleNode.textContent = title;
     titleNode.style.cssText = 'font-weight:700;margin-bottom:4px;';
@@ -6081,10 +6081,20 @@ function openMyReports(){
     descriptionNode.textContent = description;
     descriptionNode.style.cssText = 'font-size:12px;color:#64748b;line-height:1.45;';
     button.append(titleNode, descriptionNode);
-    if(!disabled) button.addEventListener('click', () => {
-      overlay.remove();
-      action();
-    });
+    if(!disabled) {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        try {
+          overlay.remove();
+          if(typeof action !== 'function') throw new Error('This report is not available.');
+          action();
+        } catch(error) {
+          console.error('My Reports click failed:', error);
+          alert('Unable to open this report: ' + (error?.message || error));
+        }
+      });
+    }
     list.appendChild(button);
   }
 
