@@ -6230,7 +6230,13 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
   sortSelect.value = window.ndowReportSortOrder || 'desc';
   sortSelect.addEventListener('change', () => { window.ndowReportSortOrder = sortSelect.value; });
   sortLabel.appendChild(sortSelect);
-  filterBar.append(startLabel, endLabel, applyFilter, resetFilter, sortLabel);
+  const historicLabel = document.createElement('label');
+  historicLabel.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:7px 0;';
+  const historicCheckbox = document.createElement('input');
+  historicCheckbox.type = 'checkbox';
+  historicCheckbox.checked = includeHistoric;
+  historicLabel.append(historicCheckbox, document.createTextNode('Include historic events outside date range'));
+  filterBar.append(startLabel, endLabel, applyFilter, resetFilter, sortLabel, historicLabel);
 
   panel.append(heading, filterBar, summary, tableWrap, actions);
   overlay.appendChild(panel);
