@@ -213,6 +213,11 @@ button:hover{
     transform:rotate(360deg);
   }
 }
+
+@keyframes ndowSyncProgress{
+  0%{transform:translateX(-120%);}
+  100%{transform:translateX(290%);}
+}
 	
 	
 .calendar {
@@ -5916,13 +5921,24 @@ async function startNdowAssignmentSync(){
     button.textContent = 'Syncing...';
   }
 
+  let ndowSyncProgressTimer = null;
+  const ndowSyncStartedAt = Date.now();
+
   if(status){
-    status.style.display = 'flex';
-    status.style.alignItems = 'center';
-    status.gap = '10px';
+    status.style.display = 'block';
+    status.style.marginBottom = '16px';
+    status.style.padding = '12px';
+    status.style.border = '1px solid #DBE3EC';
+    status.style.borderRadius = '8px';
+    status.style.background = '#F8FAFC';
+    status.style.color = '#19304B';
     status.setAttribute('role', 'status');
     status.setAttribute('aria-live', 'polite');
     status.replaceChildren();
+
+    const progressHeader = document.createElement('div');
+    progressHeader.style.cssText =
+      'display:flex;align-items:center;gap:10px;font-weight:600;';
 
     const spinner = document.createElement('span');
     spinner.setAttribute('aria-hidden', 'true');
@@ -5933,9 +5949,39 @@ async function startNdowAssignmentSync(){
       'animation:ndowSyncSpin .8s linear infinite;';
 
     const message = document.createElement('span');
+    message.id = 'ndowSyncProgressMessage';
     message.textContent = 'Connecting to NDOW and retrieving your assignments...';
 
-    status.append(spinner, message);
+    progressHeader.append(spinner, message);
+
+    const progressTrack = document.createElement('div');
+    progressTrack.setAttribute('aria-hidden', 'true');
+    progressTrack.style.cssText =
+      'height:7px;overflow:hidden;margin:12px 0 8px;' +
+      'border-radius:99px;background:#DBE3EC;';
+
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText =
+      'height:100%;width:38%;border-radius:99px;background:#589FD6;' +
+      'animation:ndowSyncProgress 1.25s ease-in-out infinite;';
+    progressTrack.appendChild(progressBar);
+
+    const elapsed = document.createElement('div');
+    elapsed.id = 'ndowSyncElapsed';
+    elapsed.style.cssText = 'font-size:12px;color:#64748B;';
+    elapsed.textContent = 'Elapsed time: 0 seconds';
+
+    status.append(progressHeader, progressTrack, elapsed);
+
+    ndowSyncProgressTimer = setInterval(() => {
+      const seconds = Math.floor((Date.now() - ndowSyncStartedAt) / 1000);
+      elapsed.textContent = 'Elapsed time: ' + seconds + (seconds === 1 ? ' second' : ' seconds');
+
+      if(seconds >= 12){
+        message.textContent =
+          'Still working — NDOW is taking time to respond. Please keep this window open.';
+      }
+    }, 1000);
   }
 
   try{
@@ -6053,6 +6099,11 @@ async function startNdowAssignmentSync(){
     }
 
   } finally{
+    if(ndowSyncProgressTimer){
+      clearInterval(ndowSyncProgressTimer);
+      ndowSyncProgressTimer = null;
+    }
+
     if(button){
       button.disabled = false;
 
