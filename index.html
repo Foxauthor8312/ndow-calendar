@@ -14104,7 +14104,8 @@ const monthlySubtotalRows = [...monthlyReportTotals.entries()]
     <td align="right" style="padding:6px;">${sums.comparable ? (sums.difference > 0 ? '+' : '') + sums.difference.toFixed(2) : '—'}</td>
     <td style="padding:6px;">Monthly total</td>
   </tr>`).join('');
-rows = rows.replace('</tbody></table>', monthlySubtotalRows + '</tbody></table>');
+// Add monthly subtotals before the grand-total row is appended below.
+rows += monthlySubtotalRows;
 
 const portalTotals = portalRecords.reduce((totals, row) => {
   totals.work += Number(row.volunteer_hours || 0); totals.break += Number(row.break_minutes || 0); totals.travel += Number(row.travel_hours || 0); totals.miles += Number(row.mileage || 0); totals.value += Number(row.service_value || 0); return totals;
