@@ -2114,6 +2114,34 @@ body{
 
 </div>
 
+<div
+  id="firstLoginNdowModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    z-index:100003;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    box-sizing:border-box;
+  "
+>
+  <div style="background:#FFFFFF;width:100%;max-width:460px;border-radius:10px;padding:24px;box-sizing:border-box;box-shadow:0 12px 35px rgba(0,0,0,.25);">
+    <h2 style="margin:0 0 10px;color:#19304B;">Complete Your First-Time Setup</h2>
+    <p style="margin:0 0 16px;color:#374151;font-size:14px;line-height:1.55;">
+      Sign in to NDOW so we can retrieve your account contact information. Review the details before they are saved to your portal profile. Your NDOW password is used temporarily and is not stored.
+    </p>
+    <label for="firstLoginNdowEmail" style="display:block;margin-bottom:5px;color:#19304B;font-size:13px;font-weight:600;">NDOW Email</label>
+    <input id="firstLoginNdowEmail" type="email" autocomplete="username" style="width:100%;box-sizing:border-box;padding:10px;margin-bottom:12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;">
+    <label for="firstLoginNdowPassword" style="display:block;margin-bottom:5px;color:#19304B;font-size:13px;font-weight:600;">NDOW Password</label>
+    <input id="firstLoginNdowPassword" type="password" autocomplete="current-password" style="width:100%;box-sizing:border-box;padding:10px;margin-bottom:12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;">
+    <div id="firstLoginNdowError" role="alert" style="color:#DC2626;font-size:13px;line-height:1.45;margin-bottom:12px;"></div>
+    <button type="button" id="firstLoginNdowSubmit" onclick="submitFirstLoginNdowCredentials()" style="width:100%;padding:10px;background:#19304B;color:#FFFFFF;border-radius:6px;">Retrieve My NDOW Profile</button>
+  </div>
+</div>
+
 <script>
 
 async function submitChangePin(){
@@ -2319,13 +2347,18 @@ if(appContent){
 
 /*
 ------------------------------------
-Open profile completion
+Only genuinely new accounts enter
+the onboarding flow. PIN resets for
+existing users return to normal use.
 ------------------------------------
 */
 
-profileFirstLoginMode = true;
+profileFirstLoginMode =
+  loginData.user?.onboarding_completed === false;
 
-openProfileModal();
+if(profileFirstLoginMode){
+  openFirstLoginNdowModal();
+}
 
   }catch(err){
 
@@ -12798,6 +12831,103 @@ let profileFirstLoginMode = false;
 ====================================================
 */
 
+function openFirstLoginNdowModal(){
+  const modal = document.getElementById('firstLoginNdowModal');
+  const email = document.getElementById('firstLoginNdowEmail');
+  const password = document.getElementById('firstLoginNdowPassword');
+  const error = document.getElementById('firstLoginNdowError');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  if(email){
+    email.value = user.email || localStorage.getItem('email') || '';
+  }
+  if(password) password.value = '';
+  if(error) error.textContent = '';
+  if(modal) modal.style.display = 'flex';
+  setTimeout(() => email?.focus(), 50);
+}
+
+async function submitFirstLoginNdowCredentials(){
+  const emailInput = document.getElementById('firstLoginNdowEmail');
+  const passwordInput = document.getElementById('firstLoginNdowPassword');
+  const error = document.getElementById('firstLoginNdowError');
+  const button = document.getElementById('firstLoginNdowSubmit');
+  const email = String(emailInput?.value || '').trim();
+  const password = String(passwordInput?.value || '');
+
+  if(error) error.textContent = '';
+  if(!email || !password){
+    if(error) error.textContent = 'Enter your NDOW email and password to continue.';
+    return;
+  }
+
+  if(button){
+    button.disabled = true;
+    button.textContent = 'Retrieving profile…';
+  }
+
+  try{
+    const token = localStorage.getItem('token');
+    if(!token) throw new Error('Your portal session has expired. Please sign in again.');
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/ndow-assignments/account-profile',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({ ndowEmail: email, ndowPassword: password })
+      }
+    );
+
+    const result = await response.json();
+
+    if(passwordInput) passwordInput.value = '';
+
+    if(!response.ok || !result.success){
+      throw new Error(result.error || 'Unable to retrieve your NDOW account profile.');
+    }
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const portalCustomerId = String(user.ndow_customer_id || user.ndow_id || '').trim();
+    const returnedCustomerId = String(result.profile?.ndow_customer_id || '').trim();
+
+    if(returnedCustomerId && portalCustomerId && returnedCustomerId !== portalCustomerId){
+      throw new Error(
+        'The NDOW account ID does not match the customer ID on this portal account. No profile data was saved. Please contact an administrator.'
+      );
+    }
+
+    window.firstLoginNdowProfileDraft = result.profile || {};
+    profileFirstLoginMode = true;
+
+    const modal = document.getElementById('firstLoginNdowModal');
+    if(modal) modal.style.display = 'none';
+
+    openProfileModal();
+  }catch(err){
+    if(error) error.textContent = err.message || 'Unable to retrieve NDOW profile.';
+  }finally{
+    if(passwordInput) passwordInput.value = '';
+    if(button){
+      button.disabled = false;
+      button.textContent = 'Retrieve My NDOW Profile';
+    }
+  }
+}
+
+function openFirstLoginWelcome(){
+  const modal = document.getElementById('firstLoginWelcomeModal');
+  if(modal) modal.style.display = 'flex';
+}
+
+function closeFirstLoginWelcome(){
+  const modal = document.getElementById('firstLoginWelcomeModal');
+  if(modal) modal.style.display = 'none';
+}
+
 function openProfileModal(){
 
   const modal =
@@ -12909,6 +13039,18 @@ async function loadProfile(){
 
     const profile =
       data.profile || {};
+
+    const ndowDraft =
+      window.firstLoginNdowProfileDraft || null;
+
+    if(ndowDraft){
+      profile.email = ndowDraft.email || profile.email || '';
+      profile.phone = ndowDraft.phone || profile.phone || '';
+      profile.home_address = ndowDraft.home_address || profile.home_address || '';
+      profile.home_city = ndowDraft.home_city || profile.home_city || '';
+      profile.home_state = ndowDraft.home_state || profile.home_state || '';
+      profile.home_zip = ndowDraft.home_zip || profile.home_zip || '';
+    }
 
     const user =
       JSON.parse(
@@ -13717,7 +13859,10 @@ async function saveProfile(){
               homeLatitude,
 
             home_longitude:
-              homeLongitude
+              homeLongitude,
+
+            complete_onboarding:
+              profileFirstLoginMode === true
 
           })
 
@@ -13859,6 +14004,9 @@ async function saveProfile(){
       }
 
       closeProfileModal();
+
+      window.firstLoginNdowProfileDraft = null;
+      openFirstLoginWelcome();
 
     }
 
@@ -20891,6 +21039,35 @@ geographic analysis.
 
   </div>
 </div>
+<div
+  id="firstLoginWelcomeModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100004;
+    background:rgba(25,48,75,.96);
+    color:#FFFFFF;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    box-sizing:border-box;
+    text-align:center;
+  "
+>
+  <div style="width:100%;max-width:620px;">
+    <div style="font-size:44px;margin-bottom:12px;" aria-hidden="true">🐏</div>
+    <h1 style="margin:0 0 14px;font-size:30px;">Welcome to the NDOW Volunteer Calendar</h1>
+    <p style="font-size:16px;line-height:1.7;color:#E2E8F0;margin:0 auto 12px;max-width:540px;">
+      Your first-time setup is complete. You can now explore events, manage your volunteer activity, and record your service hours.
+    </p>
+    <p style="font-size:14px;line-height:1.6;color:#BFDBFE;margin:0 auto 26px;">
+      Here to help volunteers make a difference.
+    </p>
+    <button type="button" onclick="closeFirstLoginWelcome()" style="padding:11px 22px;background:#589FD6;color:#FFFFFF;border-radius:6px;font-size:14px;">Open Calendar</button>
+  </div>
+</div>
+
 <div id="profileModal" class="modal hidden">
 
   <div
