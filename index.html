@@ -6445,12 +6445,18 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     varianceLabel.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;text-align:right;';
     ndowVarianceRow.appendChild(varianceLabel);
     const varianceValue = document.createElement('td');
-    varianceValue.textContent = (discrepancyTotal > 0 ? '+' : '') + discrepancyTotal.toFixed(2) + ' hrs';
+    const variance = Number((calendarTotal - ndowTotal).toFixed(2));
+    varianceValue.textContent =
+      ndowTotal.toFixed(2) + (variance >= 0 ? ' + ' : ' − ') +
+      Math.abs(variance).toFixed(2) + ' = ' + calendarTotal.toFixed(2) + ' hrs';
     varianceValue.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;';
     ndowVarianceRow.appendChild(varianceValue);
     const varianceNote = document.createElement('td');
     varianceNote.colSpan = 2;
-    varianceNote.textContent = 'Positive = portal has more hours; negative = NDOW has more hours.';
+    varianceNote.textContent = 'NDOW total ' + ndowTotal.toFixed(2) +
+      ' hrs, adjusted by the net difference (' + (variance > 0 ? '+' : '') +
+      variance.toFixed(2) + ' hrs), equals calendar total ' +
+      calendarTotal.toFixed(2) + ' hrs.';
     varianceNote.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;color:#4B5563;font-weight:400;';
     ndowVarianceRow.appendChild(varianceNote);
     tfoot.appendChild(ndowVarianceRow);
