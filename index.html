@@ -6203,7 +6203,7 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
       return;
     }
     overlay.remove();
-    openDiscrepanciesReport(startInput.value, endInput.value);
+    openDiscrepanciesReport(startInput.value, endInput.value, historicCheckbox.checked);
   });
   const resetFilter = document.createElement('button');
   resetFilter.type = 'button';
@@ -6211,7 +6211,7 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
   resetFilter.style.cssText = 'padding:8px 12px;border:1px solid #DBE3EC;border-radius:5px;background:#fff;color:#19304B;cursor:pointer;';
   resetFilter.addEventListener('click', () => {
     overlay.remove();
-    openDiscrepanciesReport(yearStart, todayKey);
+    openDiscrepanciesReport(yearStart, todayKey, false);
   });
   const sortLabel = document.createElement('label');
   sortLabel.textContent = 'Event date order';
@@ -6263,7 +6263,9 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     const endDate = endInput.value;
     const records = allRecords.filter(record => {
       const date = String(record.event_date || '').slice(0, 10);
-      return Boolean(date && date >= startDate && date <= endDate);
+      const inRange = Boolean(date && date >= startDate && date <= endDate);
+      const historic = String(record.event_status || '').toLowerCase() === 'historical';
+      return inRange || (historicCheckbox.checked && historic);
     });
     const undatedRecordsExcluded = allRecords.filter(record =>
       !String(record.event_date || '').slice(0, 10)
