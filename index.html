@@ -13991,21 +13991,27 @@ const safeText = value => String(value || '').replace(/&/g, '&amp;').replace(/</
 
 let rows = `
 <div style="overflow-x:auto;width:100%;">
-<table style="min-width:1180px;width:100%;border-collapse:collapse;font-size:10px;">
-  <thead><tr>
-    <th align="left" style="padding:7px;background:#f3f4f6;">Event / Date</th>
-    <th align="right" style="padding:7px;background:#dbeafe;">Portal Work</th>
-    <th align="right" style="padding:7px;background:#dbeafe;">Portal Break (min)</th>
-    <th align="right" style="padding:7px;background:#dbeafe;">Portal Travel</th>
-    <th align="right" style="padding:7px;background:#dbeafe;">Portal Miles</th>
-    <th align="right" style="padding:7px;background:#dbeafe;">Service Value</th>
-    <th align="right" style="padding:7px;background:#dcfce7;">NDOW Work</th>
-    <th align="right" style="padding:7px;background:#dcfce7;">NDOW Break (min)</th>
-    <th align="right" style="padding:7px;background:#dcfce7;">NDOW Travel</th>
-    <th align="right" style="padding:7px;background:#dcfce7;">NDOW Miles</th>
-    <th align="right" style="padding:7px;background:#fef3c7;">Total Δ</th>
-    <th align="left" style="padding:7px;background:#f3f4f6;">Status</th>
-  </tr></thead><tbody>`;
+<table style="min-width:980px;width:100%;border-collapse:collapse;table-layout:auto;font-size:10px;">
+  <thead>
+  <tr>
+    <th rowspan="2" align="left" style="padding:5px 4px;background:#f3f4f6;white-space:nowrap;">Event / Date</th>
+    <th colspan="5" align="center" style="padding:5px;background:#dbeafe;border-bottom:1px solid #b8d4f4;">Portal Hours</th>
+    <th colspan="4" align="center" style="padding:5px;background:#dcfce7;border-bottom:1px solid #bbf7d0;">NDOW Hours</th>
+    <th rowspan="2" align="right" style="padding:5px 3px;background:#fef3c7;white-space:nowrap;">Δ Hrs</th>
+    <th rowspan="2" align="left" style="padding:5px 3px;background:#f3f4f6;">Status</th>
+  </tr>
+  <tr>
+    <th align="right" style="padding:4px 3px;background:#dbeafe;">Class</th>
+    <th align="right" style="padding:4px 3px;background:#dbeafe;">Break min</th>
+    <th align="right" style="padding:4px 3px;background:#dbeafe;">Travel</th>
+    <th align="right" style="padding:4px 3px;background:#dbeafe;">Miles</th>
+    <th align="right" style="padding:4px 3px;background:#dbeafe;">Value</th>
+    <th align="right" style="padding:4px 3px;background:#dcfce7;">Class</th>
+    <th align="right" style="padding:4px 3px;background:#dcfce7;">Break min</th>
+    <th align="right" style="padding:4px 3px;background:#dcfce7;">Travel</th>
+    <th align="right" style="padding:4px 3px;background:#dcfce7;">Miles</th>
+  </tr>
+  </thead><tbody>`;
 
 comparisonRecords.forEach(record => {
   const key = reportKey(record);
@@ -14019,9 +14025,9 @@ comparisonRecords.forEach(record => {
   const deltaText = delta === null || delta === undefined ? '—' : `${Number(delta) > 0 ? '+' : ''}${Number(delta).toFixed(2)}`;
   const deltaColor = delta === null || delta === undefined ? '#64748b' : Math.abs(Number(delta)) < 0.01 ? '#166534' : '#b45309';
   const statusColor = record.comparisonStatus === 'Matched' ? '#166534' : '#b91c1c';
-  const cell = (value, background) => `<td align="right" style="padding:6px;background:${background};">${value}</td>`;
+  const cell = (value, background) => `<td align="right" style="padding:4px 3px;background:${background};white-space:nowrap;">${value}</td>`;
   rows += `<tr style="border-bottom:1px solid #e2e8f0;">
-    <td style="padding:6px;background:#f9fafb;min-width:190px;"><div style="font-size:10px;color:#64748b;">${dateLabel}</div>${eventLabel}</td>
+    <td style="padding:4px;background:#f9fafb;white-space:nowrap;"><span style="font-size:10px;color:#64748b;margin-right:5px;">${dateLabel}</span>${eventLabel}</td>
     ${cell(portal ? fmt(portal.volunteer_hours) : '—', '#eff6ff')}
     ${cell(portal ? String(portal.break_minutes) : '—', '#eff6ff')}
     ${cell(portal ? fmt(portal.travel_hours) : '—', '#eff6ff')}
