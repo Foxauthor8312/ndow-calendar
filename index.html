@@ -13978,7 +13978,8 @@ const comparisonRecords = data.comparisonRecords || [];
 const portalRecords = data.records || [];
 const ndowRecords = data.ndowRecords || [];
 
-const reportKey = row => String(row.event_id || '') + '|' + String(row.event_date || '');
+// Match source hours by event ID, not event date. Historic portal entry dates can differ from NDOW's official event date.
+const reportKey = row => String(row.event_id || '');
 const sumFields = (sourceRows, fields) => {
   const grouped = new Map();
   sourceRows.forEach(row => {
