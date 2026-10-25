@@ -5917,8 +5917,25 @@ async function startNdowAssignmentSync(){
   }
 
   if(status){
-    status.style.display = 'block';
-    status.textContent = 'Connecting to NDOW and retrieving your assignments...';
+    status.style.display = 'flex';
+    status.style.alignItems = 'center';
+    status.gap = '10px';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.replaceChildren();
+
+    const spinner = document.createElement('span');
+    spinner.setAttribute('aria-hidden', 'true');
+    spinner.style.cssText =
+      'display:inline-block;flex:0 0 18px;width:18px;height:18px;' +
+      'border:3px solid #DBE3EC;border-top-color:#19304B;' +
+      'border-radius:50%;box-sizing:border-box;' +
+      'animation:ndowSyncSpin .8s linear infinite;';
+
+    const message = document.createElement('span');
+    message.textContent = 'Connecting to NDOW and retrieving your assignments...';
+
+    status.append(spinner, message);
   }
 
   try{
