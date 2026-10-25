@@ -6315,14 +6315,16 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
         + (undatedRecordsExcluded ? undatedRecordsExcluded + ' undated event(s) excluded from date filtering.' : '');
 
     const table = document.createElement('table');
-    table.style.cssText = 'width:100%;border-collapse:collapse;font-size:12px;min-width:1050px;';
+    table.style.cssText = 'width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px;';
+    const columnWidths = ['48%', '7%', '7%', '5%', '7%', '7%', '5%', '7%', '7%'];
     const headers = ['Event # / Date / Title', 'Portal Class Hrs', 'Portal Travel Hrs', 'Portal Miles', 'NDOW Class Hrs', 'NDOW Travel Hrs', 'NDOW Miles', 'Hours Difference', 'Status'];
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
-    headers.forEach(label => {
+    headers.forEach((label, i) => {
       const th = document.createElement('th');
       th.textContent = label;
-      th.style.cssText = 'background:#19304B;color:#fff;text-align:left;padding:9px;border:1px solid #DBE3EC;position:sticky;top:0;';
+      th.style.cssText = 'background:#19304B;color:#fff;text-align:left;padding:6px 5px;border:1px solid #DBE3EC;position:sticky;top:0;white-space:normal;overflow-wrap:anywhere;font-size:11px;';
+      th.style.width = columnWidths[i];
       headerRow.appendChild(th);
     });
     thead.appendChild(headerRow);
@@ -6411,12 +6413,12 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
           .split(/\\s(?:•|▪|■)\\s*Events Results Pending|\\s+Location:|\\s+Taught by:|\\s+Date & Times:|\\s+Registration (?:Open|Closed)|\\s+Copy Event/i)[0]
           .trim();
         const eventCell = document.createElement('td');
-        eventCell.style.cssText = 'padding:8px;border:1px solid #DBE3EC;vertical-align:top;min-width:250px;';
+        eventCell.style.cssText = 'padding:5px 6px;border:1px solid #DBE3EC;vertical-align:top;white-space:nowrap;overflow:visible;';
         const eventLink = document.createElement('a');
         eventLink.href = '#';
         eventLink.textContent = 'Event #' + record.event_id + ' | ' + dateLabel + ' | ' + rawEventName;
         eventLink.title = 'Open event #' + record.event_id + ' in the calendar';
-        eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
+        eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;white-space:nowrap;';
         eventLink.addEventListener('click', clickEvent => {
           clickEvent.preventDefault();
           overlay.style.display = 'none';
@@ -6446,7 +6448,7 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
         cells.forEach(value => {
           const td = document.createElement('td');
           td.textContent = value;
-          td.style.cssText = 'padding:8px;border:1px solid #DBE3EC;vertical-align:top;white-space:nowrap;';
+          td.style.cssText = 'padding:5px 4px;border:1px solid #DBE3EC;vertical-align:top;white-space:nowrap;font-size:11px;';
           tr.appendChild(td);
         });
         tbody.appendChild(tr);
