@@ -6135,7 +6135,7 @@ function openMyReports(){
   document.body.appendChild(overlay);
 }
 
-async function openDiscrepanciesReport(){
+async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate = ''){
   const existing = document.getElementById('discrepanciesReportOverlay');
   if(existing) existing.remove();
 
@@ -6167,7 +6167,55 @@ async function openDiscrepanciesReport(){
   close.addEventListener('click', () => overlay.remove());
   actions.appendChild(close);
 
-  panel.append(heading, summary, tableWrap, actions);
+  const filterBar = document.createElement('div');
+  filterBar.style.cssText = 'display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;margin:0 0 14px;padding:12px;background:#F8FAFC;border:1px solid #DBE3EC;border-radius:6px;';
+  const now = new Date();
+  const todayKey = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, '0'),
+    String(now.getDate()).padStart(2, '0')
+  ].join('-');
+  const yearStart = now.getFullYear() + '-01-01';
+  const startLabel = document.createElement('label');
+  startLabel.textContent = 'Start date';
+  startLabel.style.cssText = 'display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;';
+  const startInput = document.createElement('input');
+  startInput.type = 'date';
+  startInput.value = requestedStartDate || yearStart;
+  startInput.style.cssText = 'padding:7px;border:1px solid #DBE3EC;border-radius:4px;color:#19304B;font:inherit;';
+  startLabel.appendChild(startInput);
+  const endLabel = document.createElement('label');
+  endLabel.textContent = 'End date';
+  endLabel.style.cssText = 'display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;';
+  const endInput = document.createElement('input');
+  endInput.type = 'date';
+  endInput.value = requestedEndDate || todayKey;
+  endInput.max = todayKey;
+  endInput.style.cssText = 'padding:7px;border:1px solid #DBE3EC;border-radius:4px;color:#19304B;font:inherit;';
+  endLabel.appendChild(endInput);
+  const applyFilter = document.createElement('button');
+  applyFilter.type = 'button';
+  applyFilter.textContent = 'Apply dates';
+  applyFilter.style.cssText = 'padding:8px 12px;border:0;border-radius:5px;background:#19304B;color:#fff;cursor:pointer;';
+  applyFilter.addEventListener('click', () => {
+    if(!startInput.value || !endInput.value || startInput.value > endInput.value){
+      alert('Choose a valid date range. The start date must be on or before the end date.');
+      return;
+    }
+    overlay.remove();
+    openDiscrepanciesReport(startInput.value, endInput.value);
+  });
+  const resetFilter = document.createElement('button');
+  resetFilter.type = 'button';
+  resetFilter.textContent = 'Current year';
+  resetFilter.style.cssText = 'padding:8px 12px;border:1px solid #DBE3EC;border-radius:5px;background:#fff;color:#19304B;cursor:pointer;';
+  resetFilter.addEventListener('click', () => {
+    overlay.remove();
+    openDiscrepanciesReport(yearStart, todayKey);
+  });
+  filterBar.append(startLabel, endLabel, applyFilter, resetFilter);
+
+  panel.append(heading, filterBar, summary, tableWrap, actions);
   overlay.appendChild(panel);
   overlay.addEventListener('click', event => {
     if(event.target === overlay) overlay.remove();
@@ -6186,19 +6234,17 @@ async function openDiscrepanciesReport(){
 
     const allRecords = Array.isArray(data.comparisonRecords) ? data.comparisonRecords : [];
 
-    // Compare completed/current-date records only. Future scheduled events are
-    // not volunteer-hours discrepancies yet.
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const todayKey = [
-      today.getFullYear(),
-      String(today.getMonth() + 1).padStart(2, '0'),
-      String(today.getDate()).padStart(2, '0')
-    ].join('-');
-    const records = allRecords.filter(record =>
-      !record.event_date || String(record.event_date).slice(0, 10) <= todayKey
-    );
-    const futureRecordsExcluded = allRecords.length - records.length;
+    // The report defaults to the current calendar year. The date controls
+    // allow any historical range through today; future events are excluded by the API.
+    const startDate = startInput.value;
+    const endDate = endInput.value;
+    const records = allRecords.filter(record => {
+      const date = String(record.event_date || '').slice(0, 10);
+      return Boolean(date && date >= startDate && date <= endDate);
+    });
+    const undatedRecordsExcluded = allRecords.filter(record =>
+      !String(record.event_date || '').slice(0, 10)
+    ).length;
 
     // The server has already limited this list to assigned past/current events
     // and removed cancelled events. Keep calendar matching for diagnostics.
@@ -6223,31 +6269,30 @@ async function openDiscrepanciesReport(){
       record.discrepancy === undefined ||
       Math.abs(Number(record.discrepancy)) >= 0.01
     );
-    const displayRecords = [...discrepancies]
+    // Show every eligible event in the selected range, not only flagged events.
+    const displayRecords = [...activeRecords]
       .sort((a, b) => String(b.event_date || '').localeCompare(String(a.event_date || '')));
 
-    const calendarTotal = discrepancies.reduce((sum, record) =>
+    const calendarTotal = activeRecords.reduce((sum, record) =>
       sum + (record.calendarTotalHours == null ? 0 : Number(record.calendarTotalHours) || 0), 0);
-    const ndowTotal = discrepancies.reduce((sum, record) =>
+    const ndowTotal = activeRecords.reduce((sum, record) =>
       sum + (record.ndowTotalHours == null ? 0 : Number(record.ndowTotalHours) || 0), 0);
-    const comparable = discrepancies.filter(record =>
+    const comparable = activeRecords.filter(record =>
       record.calendarTotalHours != null && record.ndowTotalHours != null);
     const discrepancyTotal = comparable.reduce((sum, record) =>
       sum + (Number(record.discrepancy) || 0), 0);
-    const discrepancyEventCount = discrepancies.filter(record =>
-      record.comparisonStatus !== 'Matched' ||
-      record.discrepancy == null ||
-      Math.abs(Number(record.discrepancy)) >= 0.01).length;
+    const portalRecordCount = activeRecords.reduce((sum, record) =>
+      sum + Number(record.calendarRecordCount || 0), 0);
 
-    summary.textContent = discrepancies.length
-      ? discrepancies.length + ' event(s) need review. '
-        + futureRecordsExcluded + ' future-dated event(s) excluded. '
-        + 'Portal records in scope: ' + Number(data.summary?.events || 0) + '. '
-        + 'Calendar match: ' + calendarMatchedRecords + '; historic records not in current calendar: ' + calendarUnmatchedRecords + '. Blank values indicate missing data, not zero.'
-      : 'No discrepancies found. '
-        + futureRecordsExcluded + ' future-dated event(s) excluded. '
-        + 'Portal records in scope: ' + Number(data.summary?.events || 0) + '. '
-        + 'Calendar match: ' + calendarMatchedRecords + '; historic records not in current calendar: ' + calendarUnmatchedRecords + '.';
+    summary.textContent = activeRecords.length
+      ? activeRecords.length + ' event(s) in selected date range; ' + discrepancies.length + ' need review. '
+        + 'Portal records in range: ' + portalRecordCount + '. '
+        + 'Calendar match: ' + calendarMatchedRecords + '; historic records not in current calendar: ' + calendarUnmatchedRecords + '. '
+        + (undatedRecordsExcluded ? undatedRecordsExcluded + ' undated event(s) excluded from date filtering. ' : '')
+        + 'Blank values indicate missing data, not zero.'
+      : 'No events found in the selected date range. '
+        + 'Calendar match: ' + calendarMatchedRecords + '; historic records not in current calendar: ' + calendarUnmatchedRecords + '. '
+        + (undatedRecordsExcluded ? undatedRecordsExcluded + ' undated event(s) excluded from date filtering.' : '');
 
     const table = document.createElement('table');
     table.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px;';
@@ -6268,7 +6313,7 @@ async function openDiscrepanciesReport(){
       const tr = document.createElement('tr');
       const td = document.createElement('td');
       td.colSpan = headers.length;
-      td.textContent = 'No discrepancies found.';
+      td.textContent = 'No events found in the selected date range.';
       td.style.cssText = 'padding:14px;border:1px solid #DBE3EC;';
       tr.appendChild(td);
       tbody.appendChild(tr);
@@ -6348,10 +6393,8 @@ async function openDiscrepanciesReport(){
     const tfoot = document.createElement('tfoot');
     const totalRow = document.createElement('tr');
     totalRow.style.cssText = 'background:#EAF0F6;font-weight:700;';
-    const portalRecordsInFlaggedEvents = discrepancies.reduce((sum, record) =>
-      sum + Number(record.calendarRecordCount || 0), 0);
     const totalValues = [
-      'TOTALS (' + portalRecordsInFlaggedEvents + ' portal records in flagged events)',
+      'TOTALS (' + activeRecords.length + ' events; ' + portalRecordCount + ' portal records)',
       calendarTotal.toFixed(2),
       ndowTotal.toFixed(2),
       (discrepancyTotal > 0 ? '+' : '') + discrepancyTotal.toFixed(2),
@@ -6367,7 +6410,7 @@ async function openDiscrepanciesReport(){
     table.appendChild(tfoot);
 
     const totalsNote = document.createElement('p');
-    totalsNote.textContent = 'Portal record counts follow the main dashboard: each volunteer_hours row counts as one record, and displayed hours equal volunteer hours plus travel hours. The table totals cover flagged events only; difference total includes only rows with both sources.';
+    totalsNote.textContent = 'All instructor-assigned events in the selected date range are listed, including matched events. Cancelled events are excluded. Portal record counts follow the main dashboard: each volunteer_hours row counts as one record; displayed hours equal volunteer hours plus travel hours. Difference totals include events with both sources.';
     totalsNote.style.cssText = 'margin:10px 0 0;color:#4B5563;font-size:12px;';
     tableWrap.appendChild(table);
     tableWrap.appendChild(totalsNote);
