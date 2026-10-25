@@ -13243,7 +13243,10 @@ async function loadProfile(){
       JSON.stringify(user)
     );
 
-	  await loadMyInstructorRequests();
+    // First-time onboarding is profile setup only; do not load instructor requests here.
+    if(!profileFirstLoginMode){
+      await loadMyInstructorRequests();
+    }
 
   }catch(error){
 
