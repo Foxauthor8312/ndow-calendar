@@ -12905,6 +12905,11 @@ function openProfileModal(){
   modal.style.display =
     'flex';
 
+  const profileCloseButton = modal.querySelector('.modal-close');
+  if(profileCloseButton){
+    profileCloseButton.style.display = profileFirstLoginMode ? 'none' : '';
+  }
+
   const firstLoginMessage =
     document.getElementById(
       'profileFirstLoginMessage'
