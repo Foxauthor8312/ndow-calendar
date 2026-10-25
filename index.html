@@ -14028,10 +14028,36 @@ let rows = `
   </tr>
   </thead><tbody>`;
 
+const monthlyReportTotals = new Map();
 comparisonRecords.forEach(record => {
   const key = reportKey(record);
   const portal = portalByKey.get(key) || null;
   const ndow = ndowByKey.get(key) || null;
+  const monthKey = String(record.event_date || '').slice(0, 7) || 'undated';
+  if (!monthlyReportTotals.has(monthKey)) monthlyReportTotals.set(monthKey, {
+    events: 0, portalWork: 0, portalBreak: 0, portalTravel: 0, portalMiles: 0, portalValue: 0,
+    ndowWork: 0, ndowBreak: 0, ndowTravel: 0, ndowMiles: 0, difference: 0, comparable: 0
+  });
+  const monthTotals = monthlyReportTotals.get(monthKey);
+  monthTotals.events++;
+  if (portal) {
+    monthTotals.portalWork += Number(portal.volunteer_hours || 0);
+    monthTotals.portalBreak += Number(portal.break_minutes || 0);
+    monthTotals.portalTravel += Number(portal.travel_hours || 0);
+    monthTotals.portalMiles += Number(portal.mileage || 0);
+    monthTotals.portalValue += Number(portal.service_value || 0);
+  }
+  if (ndow) {
+    monthTotals.ndowWork += Number(ndow.volunteer_hours || 0);
+    monthTotals.ndowBreak += Number(ndow.break_minutes || 0);
+    monthTotals.ndowTravel += Number(ndow.travel_hours || 0);
+    monthTotals.ndowMiles += Number(ndow.mileage || 0);
+  }
+  if (portal && ndow) {
+    monthTotals.difference += Number(portal.volunteer_hours || 0) + Number(portal.travel_hours || 0)
+      - Number(ndow.volunteer_hours || 0) - Number(ndow.travel_hours || 0);
+    monthTotals.comparable++;
+  }
   const dateLabel = record.event_date ? new Date(record.event_date + 'T00:00:00').toLocaleDateString('en-US', { month:'2-digit', day:'2-digit', year:'numeric' }) : 'Date unknown';
   const eventName = safeText(record.event_name || 'Unnamed event');
   const eventId = String(record.event_id || '').replace(/'/g, '');
@@ -14056,6 +14082,29 @@ comparisonRecords.forEach(record => {
     <td style="padding:6px;font-size:10px;color:${statusColor};font-weight:600;">${record.comparisonStatus}</td>
   </tr>`;
 });
+
+const monthLabelForReport = key => {
+  if (key === 'undated') return 'Date unknown';
+  const [year, month] = key.split('-').map(Number);
+  return new Date(year, month - 1, 1).toLocaleDateString('en-US', { month:'long', year:'numeric' });
+};
+const monthlySubtotalRows = [...monthlyReportTotals.entries()]
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([monthKey, sums]) => `<tr style="font-weight:700;background:#EEF3F8;border-top:1px solid #DBE3EC;">
+    <td style="padding:6px;">${monthLabelForReport(monthKey)} subtotal (${sums.events} events)</td>
+    <td align="right" style="padding:6px;">${fmt(sums.portalWork)}</td>
+    <td align="right" style="padding:6px;">${sums.portalBreak}</td>
+    <td align="right" style="padding:6px;">${fmt(sums.portalTravel)}</td>
+    <td align="right" style="padding:6px;">${fmt(sums.portalMiles)}</td>
+    <td align="right" style="padding:6px;">${fmt(sums.portalValue)}</td>
+    <td align="right" style="padding:6px;">${fmt(sums.ndowWork)}</td>
+    <td align="right" style="padding:6px;">${sums.ndowBreak}</td>
+    <td align="right" style="padding:6px;">${fmt(sums.ndowTravel)}</td>
+    <td align="right" style="padding:6px;">${fmt(sums.ndowMiles)}</td>
+    <td align="right" style="padding:6px;">${sums.comparable ? (sums.difference > 0 ? '+' : '') + sums.difference.toFixed(2) : '—'}</td>
+    <td style="padding:6px;">Monthly total</td>
+  </tr>`).join('');
+rows = rows.replace('</tbody></table>', monthlySubtotalRows + '</tbody></table>');
 
 const portalTotals = portalRecords.reduce((totals, row) => {
   totals.work += Number(row.volunteer_hours || 0); totals.break += Number(row.break_minutes || 0); totals.travel += Number(row.travel_hours || 0); totals.miles += Number(row.mileage || 0); totals.value += Number(row.service_value || 0); return totals;
