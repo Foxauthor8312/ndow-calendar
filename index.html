@@ -5792,6 +5792,10 @@ setTimeout(() => {
 
 }, 250);
 
+if(new URLSearchParams(window.location.search).get('onboardingTest') === '1'){
+  await startFirstLoginOnboardingTest();
+}
+
 } catch(err){
 
   console.error(err);
@@ -12831,6 +12835,30 @@ let profileFirstLoginMode = false;
 ====================================================
 */
 
+async function startFirstLoginOnboardingTest(){
+  try{
+    const token = localStorage.getItem('token');
+    if(!token) return;
+
+    const response = await fetch(
+      'https://ndow-calendar-server.onrender.com/api/onboarding/test-mode',
+      { headers: { Authorization: 'Bearer ' + token } }
+    );
+    const result = await response.json();
+
+    if(!response.ok || !result.success){
+      console.warn('Onboarding preview unavailable:', result.message || 'Not authorized.');
+      return;
+    }
+
+    window.onboardingTestMode = true;
+    profileFirstLoginMode = true;
+    openFirstLoginNdowModal();
+  }catch(error){
+    console.error('Unable to start onboarding preview:', error);
+  }
+}
+
 function openFirstLoginNdowModal(){
   const modal = document.getElementById('firstLoginNdowModal');
   const email = document.getElementById('firstLoginNdowEmail');
@@ -12926,6 +12954,16 @@ function openFirstLoginWelcome(){
 function closeFirstLoginWelcome(){
   const modal = document.getElementById('firstLoginWelcomeModal');
   if(modal) modal.style.display = 'none';
+
+  if(window.onboardingTestMode === true){
+    window.onboardingTestMode = false;
+    window.firstLoginNdowProfileDraft = null;
+    const profileModal = document.getElementById('profileModal');
+    if(profileModal){
+      profileModal.classList.add('hidden');
+      profileModal.style.display = 'none';
+    }
+  }
 }
 
 function openProfileModal(){
@@ -13740,6 +13778,17 @@ async function geocodeProfileAddress(){
 */
 
 async function saveProfile(){
+
+  if(window.onboardingTestMode === true){
+    const message = document.getElementById('profileMessage');
+    if(message){
+      message.innerText = 'Preview mode: no profile changes were saved.';
+    }
+    profileFirstLoginMode = false;
+    closeProfileModal();
+    openFirstLoginWelcome();
+    return;
+  }
 
   try{
 
