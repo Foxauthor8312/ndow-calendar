@@ -6200,43 +6200,30 @@ async function openDiscrepanciesReport(){
     );
     const futureRecordsExcluded = allRecords.length - records.length;
 
-    // Use events.json for authoritative event status and calendar details.
-    // Track records that cannot be tied back to a published calendar event.
-    const cancelledRecords = [];
-    const activeRecords = [];
+    // The server has already limited this list to assigned past/current events
+    // and removed cancelled events. Keep calendar matching for diagnostics.
     let calendarMatchedRecords = 0;
     let calendarUnmatchedRecords = 0;
     const calendarEventById = new Map(
       events.map(event => [String(event.id), event])
     );
-    records.forEach(record => {
+    const activeRecords = records.map(record => {
       const calendarEvent = calendarEventById.get(String(record.event_id));
-      if(calendarEvent){
-        calendarMatchedRecords++;
-      } else {
-        calendarUnmatchedRecords++;
-      }
-      const enrichedRecord = calendarEvent ? {
+      if(calendarEvent) calendarMatchedRecords++;
+      else calendarUnmatchedRecords++;
+      return calendarEvent ? {
         ...record,
-        event_name: calendarEvent.title || calendarEvent.name || record.event_name,
-        _calendarStatus: calendarEvent.status || ''
+        event_name: calendarEvent.title || calendarEvent.name || record.event_name
       } : { ...record, _calendarMissing: true };
-      if(calendarEvent && calendarEvent.status === 'Canceled'){
-        cancelledRecords.push({ ...enrichedRecord, _cancelled: true });
-      } else {
-        activeRecords.push(enrichedRecord);
-      }
     });
 
-    // Cancelled events are shown with a red indicator for context, but excluded
-    // from discrepancy calculations and totals.
     const discrepancies = activeRecords.filter(record =>
       record.comparisonStatus !== 'Matched' ||
       record.discrepancy === null ||
       record.discrepancy === undefined ||
       Math.abs(Number(record.discrepancy)) >= 0.01
     );
-    const displayRecords = [...discrepancies, ...cancelledRecords]
+    const displayRecords = [...discrepancies]
       .sort((a, b) => String(b.event_date || '').localeCompare(String(a.event_date || '')));
 
     const calendarTotal = discrepancies.reduce((sum, record) =>
@@ -6253,14 +6240,14 @@ async function openDiscrepanciesReport(){
       Math.abs(Number(record.discrepancy)) >= 0.01).length;
 
     summary.textContent = discrepancies.length
-      ? discrepancies.length + ' event/date record(s) need review. '
-        + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals. '
-        + futureRecordsExcluded + ' future-dated record(s) excluded. '
-        + 'Calendar match: ' + calendarMatchedRecords + '; no calendar match: ' + calendarUnmatchedRecords + '. Blank values indicate missing data, not zero.'
-      : 'No active discrepancies found. '
-        + cancelledRecords.length + ' cancelled record(s) shown with a red dot and excluded from totals. '
-        + futureRecordsExcluded + ' future-dated record(s) excluded. '
-        + 'Calendar match: ' + calendarMatchedRecords + '; no calendar match: ' + calendarUnmatchedRecords + '.';
+      ? discrepancies.length + ' event(s) need review. '
+        + futureRecordsExcluded + ' future-dated event(s) excluded. '
+        + 'Portal records in scope: ' + Number(data.summary?.events || 0) + '. '
+        + 'Calendar match: ' + calendarMatchedRecords + '; historic records not in current calendar: ' + calendarUnmatchedRecords + '. Blank values indicate missing data, not zero.'
+      : 'No discrepancies found. '
+        + futureRecordsExcluded + ' future-dated event(s) excluded. '
+        + 'Portal records in scope: ' + Number(data.summary?.events || 0) + '. '
+        + 'Calendar match: ' + calendarMatchedRecords + '; historic records not in current calendar: ' + calendarUnmatchedRecords + '.';
 
     const table = document.createElement('table');
     table.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px;';
@@ -6309,7 +6296,7 @@ async function openDiscrepanciesReport(){
           record.calendarTotalHours == null ? '—' : Number(record.calendarTotalHours).toFixed(2),
           record.ndowTotalHours == null ? '—' : Number(record.ndowTotalHours).toFixed(2),
           diff,
-          record._cancelled ? 'Cancelled — excluded' : (record.comparisonStatus || 'Needs review')
+          record.comparisonStatus || 'Needs review'
         ];
         values.forEach((value, columnIndex) => {
           const td = document.createElement('td');
@@ -6318,19 +6305,10 @@ async function openDiscrepanciesReport(){
           if(columnIndex === 0 && record.event_id != null){
             const eventLink = document.createElement('a');
             eventLink.href = '#';
-            if(record._cancelled){
-              const dot = document.createElement('span');
-              dot.textContent = '● ';
-              dot.style.cssText = 'color:#DC2626;font-size:14px;margin-right:4px;';
-              dot.title = 'Cancelled event — excluded from discrepancy totals';
-              td.appendChild(dot);
-            }
             eventLink.textContent = String(value);
-            eventLink.title = record._cancelled
-              ? 'Cancelled event — excluded from discrepancy totals; click to open event'
-              : record._calendarMissing
-                ? 'No matching event ID found in events.json; click to try opening event'
-                : 'Open event #' + record.event_id + ' in the calendar';
+            eventLink.title = record._calendarMissing
+              ? 'Historical event not in current events.json; click to try opening event'
+              : 'Open event #' + record.event_id + ' in the calendar';
             eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
             eventLink.addEventListener('click', clickEvent => {
               clickEvent.preventDefault();
@@ -6370,8 +6348,10 @@ async function openDiscrepanciesReport(){
     const tfoot = document.createElement('tfoot');
     const totalRow = document.createElement('tr');
     totalRow.style.cssText = 'background:#EAF0F6;font-weight:700;';
+    const portalRecordsInFlaggedEvents = discrepancies.reduce((sum, record) =>
+      sum + Number(record.calendarRecordCount || 0), 0);
     const totalValues = [
-      'TOTALS (' + discrepancyEventCount + ' events/records)',
+      'TOTALS (' + portalRecordsInFlaggedEvents + ' portal records in flagged events)',
       calendarTotal.toFixed(2),
       ndowTotal.toFixed(2),
       (discrepancyTotal > 0 ? '+' : '') + discrepancyTotal.toFixed(2),
@@ -6387,7 +6367,7 @@ async function openDiscrepanciesReport(){
     table.appendChild(tfoot);
 
     const totalsNote = document.createElement('p');
-    totalsNote.textContent = 'Totals cover the rows displayed above. Difference total includes only rows with both calendar and NDOW hours; missing-source records are counted in the event/record total but cannot contribute a numeric difference.';
+    totalsNote.textContent = 'Portal record counts follow the main dashboard: each volunteer_hours row counts as one record, and displayed hours equal volunteer hours plus travel hours. The table totals cover flagged events only; difference total includes only rows with both sources.';
     totalsNote.style.cssText = 'margin:10px 0 0;color:#4B5563;font-size:12px;';
     tableWrap.appendChild(table);
     tableWrap.appendChild(totalsNote);
