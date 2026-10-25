@@ -6213,7 +6213,23 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     overlay.remove();
     openDiscrepanciesReport(yearStart, todayKey);
   });
-  filterBar.append(startLabel, endLabel, applyFilter, resetFilter);
+  const sortLabel = document.createElement('label');
+  sortLabel.textContent = 'Event date order';
+  sortLabel.style.cssText = 'display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;';
+  const sortSelect = document.createElement('select');
+  sortSelect.style.cssText = 'padding:7px;border:1px solid #DBE3EC;border-radius:4px;background:#fff;color:#19304B;font:inherit;';
+  [
+    { value: 'desc', label: 'Newest first' },
+    { value: 'asc', label: 'Oldest first' }
+  ].forEach(optionInfo => {
+    const option = document.createElement('option');
+    option.value = optionInfo.value;
+    option.textContent = optionInfo.label;
+    sortSelect.appendChild(option);
+  });
+  sortSelect.value = 'desc';
+  sortLabel.appendChild(sortSelect);
+  filterBar.append(startLabel, endLabel, applyFilter, resetFilter, sortLabel);
 
   panel.append(heading, filterBar, summary, tableWrap, actions);
   overlay.appendChild(panel);
@@ -6271,7 +6287,10 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     );
     // Show every eligible event in the selected range, not only flagged events.
     const displayRecords = [...activeRecords]
-      .sort((a, b) => String(b.event_date || '').localeCompare(String(a.event_date || '')));
+      .sort((a, b) => {
+        const comparison = String(a.event_date || '').localeCompare(String(b.event_date || ''));
+        return sortSelect.value === 'asc' ? comparison : -comparison;
+      });
 
     const calendarTotal = activeRecords.reduce((sum, record) =>
       sum + (record.calendarTotalHours == null ? 0 : Number(record.calendarTotalHours) || 0), 0);
@@ -6320,6 +6339,7 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     } else {
       displayRecords.forEach((record, index) => {
         const tr = document.createElement('tr');
+        tr.dataset.eventDate = String(record.event_date || '');
         if(index % 2) tr.style.background = '#F8FAFC';
         const dateLabel = record.event_date
           ? new Date(record.event_date + 'T00:00:00').toLocaleDateString('en-US')
@@ -6389,6 +6409,14 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
       });
     }
     table.appendChild(tbody);
+    sortSelect.addEventListener('change', () => {
+      const rows = Array.from(tbody.querySelectorAll('tr[data-event-date]'));
+      rows.sort((a, b) => {
+        const comparison = a.dataset.eventDate.localeCompare(b.dataset.eventDate);
+        return sortSelect.value === 'asc' ? comparison : -comparison;
+      });
+      rows.forEach(row => tbody.appendChild(row));
+    });
 
     const tfoot = document.createElement('tfoot');
     const totalRow = document.createElement('tr');
@@ -6407,6 +6435,25 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
       totalRow.appendChild(td);
     });
     tfoot.appendChild(totalRow);
+
+    // Show the net NDOW +/- hours directly beneath the final NDOW total.
+    const ndowVarianceRow = document.createElement('tr');
+    ndowVarianceRow.style.cssText = 'background:#F8FAFC;font-weight:600;';
+    const varianceLabel = document.createElement('td');
+    varianceLabel.colSpan = 2;
+    varianceLabel.textContent = 'NDOW +/- Hours (Calendar − NDOW)';
+    varianceLabel.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;text-align:right;';
+    ndowVarianceRow.appendChild(varianceLabel);
+    const varianceValue = document.createElement('td');
+    varianceValue.textContent = (discrepancyTotal > 0 ? '+' : '') + discrepancyTotal.toFixed(2) + ' hrs';
+    varianceValue.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;';
+    ndowVarianceRow.appendChild(varianceValue);
+    const varianceNote = document.createElement('td');
+    varianceNote.colSpan = 2;
+    varianceNote.textContent = 'Positive = portal has more hours; negative = NDOW has more hours.';
+    varianceNote.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;color:#4B5563;font-weight:400;';
+    ndowVarianceRow.appendChild(varianceNote);
+    tfoot.appendChild(ndowVarianceRow);
     table.appendChild(tfoot);
 
     const totalsNote = document.createElement('p');
