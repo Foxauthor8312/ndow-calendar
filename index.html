@@ -12853,6 +12853,14 @@ async function startFirstLoginOnboardingTest(){
 
     window.onboardingTestMode = true;
     profileFirstLoginMode = true;
+
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    if(loadingOverlay){
+      loadingOverlay.style.display = 'none';
+      loadingOverlay.style.visibility = 'hidden';
+      loadingOverlay.style.opacity = '0';
+    }
+
     openFirstLoginNdowModal();
   }catch(error){
     console.error('Unable to start onboarding preview:', error);
@@ -12995,6 +13003,11 @@ function openProfileModal(){
       profileFirstLoginMode
         ? 'block'
         : 'none';
+
+    firstLoginMessage.textContent =
+      window.onboardingTestMode === true
+        ? 'PREVIEW ONLY — review the retrieved details. Nothing will be saved to your portal profile.'
+        : 'Please review and complete your profile before continuing.';
 
   }
 
