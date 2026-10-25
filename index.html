@@ -6227,7 +6227,8 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     option.textContent = optionInfo.label;
     sortSelect.appendChild(option);
   });
-  sortSelect.value = 'desc';
+  sortSelect.value = window.ndowReportSortOrder || 'desc';
+  sortSelect.addEventListener('change', () => { window.ndowReportSortOrder = sortSelect.value; });
   sortLabel.appendChild(sortSelect);
   filterBar.append(startLabel, endLabel, applyFilter, resetFilter, sortLabel);
 
@@ -6314,20 +6315,59 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
         + (undatedRecordsExcluded ? undatedRecordsExcluded + ' undated event(s) excluded from date filtering.' : '');
 
     const table = document.createElement('table');
-    table.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px;';
-    const headers = ['Event', 'Calendar Hours', 'NDOW Hours', 'Difference', 'Status'];
+    table.style.cssText = 'width:100%;border-collapse:collapse;font-size:12px;min-width:1050px;';
+    const headers = ['Event # / Date / Title', 'Portal Class Hrs', 'Portal Travel Hrs', 'Portal Miles', 'NDOW Class Hrs', 'NDOW Travel Hrs', 'NDOW Miles', 'Hours Difference', 'Status'];
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
     headers.forEach(label => {
       const th = document.createElement('th');
       th.textContent = label;
-      th.style.cssText = 'background:#19304B;color:#fff;text-align:left;padding:10px;border:1px solid #DBE3EC;position:sticky;top:0;';
+      th.style.cssText = 'background:#19304B;color:#fff;text-align:left;padding:9px;border:1px solid #DBE3EC;position:sticky;top:0;';
       headerRow.appendChild(th);
     });
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
     const tbody = document.createElement('tbody');
+    const monthKey = record => String(record.event_date || '').slice(0, 7) || 'undated';
+    const monthLabel = key => {
+      if(key === 'undated') return 'Date unknown';
+      const parts = key.split('-').map(Number);
+      return new Date(parts[0], parts[1] - 1, 1).toLocaleDateString('en-US', {month:'long', year:'numeric'});
+    };
+    const n = value => value == null || value === '' ? 0 : (Number(value) || 0);
+    const fmt = value => value == null ? '—' : n(value).toFixed(2);
+    const monthTotals = () => ({events:0, portalClass:0, portalTravel:0, portalMiles:0, ndowClass:0, ndowTravel:0, ndowMiles:0, difference:0});
+    let currentMonth = null;
+    let totals = monthTotals();
+    const grand = monthTotals();
+
+    const appendSubtotal = (label, sums, isGrand = false) => {
+      const tr = document.createElement('tr');
+      tr.style.cssText = isGrand
+        ? 'background:#DCE7F1;font-weight:700;page-break-inside:avoid;'
+        : 'background:#EEF3F8;font-weight:700;page-break-inside:avoid;';
+      const vals = [
+        label + ' (' + sums.events + ' events)',
+        sums.portalClass.toFixed(2),
+        sums.portalTravel.toFixed(2),
+        sums.portalMiles.toFixed(1),
+        sums.ndowClass.toFixed(2),
+        sums.ndowTravel.toFixed(2),
+        sums.ndowMiles.toFixed(1),
+        (sums.difference > 0 ? '+' : '') + sums.difference.toFixed(2),
+        ''
+      ];
+      vals.forEach((value, i) => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        td.style.cssText = 'padding:9px;border:1px solid #DBE3EC;';
+        if(i === 0) td.colSpan = 1;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    };
+
     if(!displayRecords.length){
       const tr = document.createElement('tr');
       const td = document.createElement('td');
@@ -6338,6 +6378,29 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
       tbody.appendChild(tr);
     } else {
       displayRecords.forEach((record, index) => {
+        const key = monthKey(record);
+        if(currentMonth !== null && key !== currentMonth){
+          appendSubtotal(monthLabel(currentMonth) + ' subtotal', totals);
+          totals = monthTotals();
+        }
+        if(key !== currentMonth){
+          currentMonth = key;
+          const monthRow = document.createElement('tr');
+          const monthCell = document.createElement('td');
+          monthCell.colSpan = headers.length;
+          monthCell.textContent = monthLabel(key);
+          monthCell.style.cssText = 'padding:9px;background:#DCE7F1;color:#19304B;font-weight:700;border:1px solid #DBE3EC;';
+          monthRow.appendChild(monthCell);
+          tbody.appendChild(monthRow);
+        }
+
+        const portalClass = record.volunteer_hours;
+        const portalTravel = record.travel_hours;
+        const portalMiles = record.mileage;
+        const ndowClass = record.ndowHours;
+        const ndowTravel = record.ndowTravel;
+        const ndowMiles = record.ndowMileage;
+        const difference = record.discrepancy;
         const tr = document.createElement('tr');
         tr.dataset.eventDate = String(record.event_date || '');
         if(index % 2) tr.style.background = '#F8FAFC';
@@ -6347,123 +6410,77 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
         const rawEventName = String(record.event_name || 'Unnamed event')
           .split(/\\s(?:•|▪|■)\\s*Events Results Pending|\\s+Location:|\\s+Taught by:|\\s+Date & Times:|\\s+Registration (?:Open|Closed)|\\s+Copy Event/i)[0]
           .trim();
-        const cleanEventName = rawEventName.length > 90
-          ? rawEventName.slice(0, 87).trimEnd() + '…'
-          : rawEventName;
-        const eventLabel = [
-          record.event_id != null ? 'Event #' + record.event_id : '',
-          dateLabel,
-          cleanEventName
-        ].filter(Boolean).join(' | ');
-        const diff = record.discrepancy == null ? '—' : (Number(record.discrepancy) > 0 ? '+' : '') + Number(record.discrepancy).toFixed(2);
-        const values = [
-          eventLabel,
-          record.calendarTotalHours == null ? '—' : Number(record.calendarTotalHours).toFixed(2),
-          record.ndowTotalHours == null ? '—' : Number(record.ndowTotalHours).toFixed(2),
-          diff,
+        const eventCell = document.createElement('td');
+        eventCell.style.cssText = 'padding:8px;border:1px solid #DBE3EC;vertical-align:top;min-width:250px;';
+        const eventLink = document.createElement('a');
+        eventLink.href = '#';
+        eventLink.textContent = 'Event #' + record.event_id + ' | ' + dateLabel + ' | ' + rawEventName;
+        eventLink.title = 'Open event #' + record.event_id + ' in the calendar';
+        eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
+        eventLink.addEventListener('click', clickEvent => {
+          clickEvent.preventDefault();
+          overlay.style.display = 'none';
+          openEventFromReport(String(record.event_id));
+          const eventModal = document.getElementById('eventModal');
+          const eventCloseButton = document.getElementById('closeModal');
+          if(eventCloseButton && eventCloseButton.dataset.reportReturnBound !== 'true'){
+            eventCloseButton.dataset.reportReturnBound = 'true';
+            eventCloseButton.addEventListener('click', () => { overlay.style.display = 'flex'; });
+          }
+          if(eventModal && eventModal.dataset.reportReturnBound !== 'true'){
+            eventModal.dataset.reportReturnBound = 'true';
+            eventModal.addEventListener('click', eventClick => {
+              if(eventClick.target === eventModal) overlay.style.display = 'flex';
+            });
+          }
+        });
+        eventCell.appendChild(eventLink);
+        tr.appendChild(eventCell);
+
+        const cells = [
+          fmt(portalClass), fmt(portalTravel), fmt(portalMiles),
+          fmt(ndowClass), fmt(ndowTravel), fmt(ndowMiles),
+          difference == null ? '—' : (n(difference) > 0 ? '+' : '') + n(difference).toFixed(2),
           record.comparisonStatus || 'Needs review'
         ];
-        values.forEach((value, columnIndex) => {
+        cells.forEach(value => {
           const td = document.createElement('td');
-          td.style.cssText = 'padding:9px;border:1px solid #DBE3EC;vertical-align:top;white-space:pre-wrap;overflow-wrap:anywhere;';
-
-          if(columnIndex === 0 && record.event_id != null){
-            const eventLink = document.createElement('a');
-            eventLink.href = '#';
-            eventLink.textContent = String(value);
-            eventLink.title = record._calendarMissing
-              ? 'Historical event not in current events.json; click to try opening event'
-              : 'Open event #' + record.event_id + ' in the calendar';
-            eventLink.style.cssText = 'color:#19304B;font-weight:600;text-decoration:underline;cursor:pointer;';
-            eventLink.addEventListener('click', clickEvent => {
-              clickEvent.preventDefault();
-              overlay.style.display = 'none';
-              openEventFromReport(String(record.event_id));
-
-              // Keep the report alive behind the event panel and restore it on close.
-              const eventModal = document.getElementById('eventModal');
-              const eventCloseButton = document.getElementById('closeModal');
-              if(eventCloseButton && eventCloseButton.dataset.reportReturnBound !== 'true'){
-                eventCloseButton.dataset.reportReturnBound = 'true';
-                eventCloseButton.addEventListener('click', () => {
-                  overlay.style.display = 'flex';
-                });
-              }
-              if(eventModal && eventModal.dataset.reportReturnBound !== 'true'){
-                eventModal.dataset.reportReturnBound = 'true';
-                eventModal.addEventListener('click', eventClick => {
-                  if(eventClick.target === eventModal){
-                    overlay.style.display = 'flex';
-                  }
-                });
-              }
-            });
-            td.appendChild(eventLink);
-          } else {
-            td.textContent = String(value);
-          }
-
+          td.textContent = value;
+          td.style.cssText = 'padding:8px;border:1px solid #DBE3EC;vertical-align:top;white-space:nowrap;';
           tr.appendChild(td);
         });
         tbody.appendChild(tr);
+
+        totals.events++;
+        totals.portalClass += n(portalClass);
+        totals.portalTravel += n(portalTravel);
+        totals.portalMiles += n(portalMiles);
+        totals.ndowClass += n(ndowClass);
+        totals.ndowTravel += n(ndowTravel);
+        totals.ndowMiles += n(ndowMiles);
+        totals.difference += n(difference);
+        grand.events++;
+        grand.portalClass += n(portalClass);
+        grand.portalTravel += n(portalTravel);
+        grand.portalMiles += n(portalMiles);
+        grand.ndowClass += n(ndowClass);
+        grand.ndowTravel += n(ndowTravel);
+        grand.ndowMiles += n(ndowMiles);
+        grand.difference += n(difference);
       });
+      if(currentMonth !== null) appendSubtotal(monthLabel(currentMonth) + ' subtotal', totals);
     }
+    appendSubtotal('FINAL TOTAL', grand, true);
     table.appendChild(tbody);
+
     sortSelect.addEventListener('change', () => {
-      const rows = Array.from(tbody.querySelectorAll('tr[data-event-date]'));
-      rows.sort((a, b) => {
-        const comparison = a.dataset.eventDate.localeCompare(b.dataset.eventDate);
-        return sortSelect.value === 'asc' ? comparison : -comparison;
-      });
-      rows.forEach(row => tbody.appendChild(row));
+      overlay.remove();
+      openDiscrepanciesReport(startDate, endDate);
+      // Sort choice is applied by the report's selector on render.
     });
-
-    const tfoot = document.createElement('tfoot');
-    const totalRow = document.createElement('tr');
-    totalRow.style.cssText = 'background:#EAF0F6;font-weight:700;';
-    const totalValues = [
-      'TOTALS (' + activeRecords.length + ' events; ' + portalRecordCount + ' portal records)',
-      calendarTotal.toFixed(2),
-      ndowTotal.toFixed(2),
-      (discrepancyTotal > 0 ? '+' : '') + discrepancyTotal.toFixed(2),
-      comparable.length + ' comparable'
-    ];
-    totalValues.forEach(value => {
-      const td = document.createElement('td');
-      td.textContent = String(value);
-      td.style.cssText = 'padding:10px;border:1px solid #DBE3EC;vertical-align:top;';
-      totalRow.appendChild(td);
-    });
-    tfoot.appendChild(totalRow);
-
-    // Show the net NDOW +/- hours directly beneath the final NDOW total.
-    const ndowVarianceRow = document.createElement('tr');
-    ndowVarianceRow.style.cssText = 'background:#F8FAFC;font-weight:600;';
-    const varianceLabel = document.createElement('td');
-    varianceLabel.colSpan = 2;
-    varianceLabel.textContent = 'NDOW +/- Hours (Calendar − NDOW)';
-    varianceLabel.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;text-align:right;';
-    ndowVarianceRow.appendChild(varianceLabel);
-    const varianceValue = document.createElement('td');
-    const variance = Number((calendarTotal - ndowTotal).toFixed(2));
-    varianceValue.textContent =
-      ndowTotal.toFixed(2) + (variance >= 0 ? ' + ' : ' − ') +
-      Math.abs(variance).toFixed(2) + ' = ' + calendarTotal.toFixed(2) + ' hrs';
-    varianceValue.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;';
-    ndowVarianceRow.appendChild(varianceValue);
-    const varianceNote = document.createElement('td');
-    varianceNote.colSpan = 2;
-    varianceNote.textContent = 'NDOW total ' + ndowTotal.toFixed(2) +
-      ' hrs, adjusted by the net difference (' + (variance > 0 ? '+' : '') +
-      variance.toFixed(2) + ' hrs), equals calendar total ' +
-      calendarTotal.toFixed(2) + ' hrs.';
-    varianceNote.style.cssText = 'padding:9px 10px;border:1px solid #DBE3EC;color:#4B5563;font-weight:400;';
-    ndowVarianceRow.appendChild(varianceNote);
-    tfoot.appendChild(ndowVarianceRow);
-    table.appendChild(tfoot);
 
     const totalsNote = document.createElement('p');
-    totalsNote.textContent = 'All instructor-assigned events in the selected date range are listed, including matched events. Cancelled events are excluded. Portal record counts follow the main dashboard: each volunteer_hours row counts as one record; displayed hours equal volunteer hours plus travel hours. Difference totals include events with both sources.';
+    totalsNote.textContent = 'Monthly subtotals and final totals show portal and NDOW class hours, travel hours, mileage, and net hours difference. A dash means that source has no recorded value. Event numbers are clickable where the event can be opened in the calendar.';
     totalsNote.style.cssText = 'margin:10px 0 0;color:#4B5563;font-size:12px;';
     tableWrap.appendChild(table);
     tableWrap.appendChild(totalsNote);
