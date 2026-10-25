@@ -2242,123 +2242,25 @@ async function submitChangePin(){
 
     /*
     ------------------------------------
-    Re-authenticate with new PIN
+    Re-enter through the normal login
+    initialization so the calendar,
+    permissions, and preferences load
+    exactly as they do for other users.
     ------------------------------------
     */
 
-    const loginResponse =
-      await fetch(
-        'https://ndow-calendar-server.onrender.com/api/login',
-        {
-          method:'POST',
+    const usernameInput =
+      document.getElementById('userName');
 
-          headers:{
-            'Content-Type':
-              'application/json'
-          },
+    const pinInput =
+      document.getElementById('userPin');
 
-          body:JSON.stringify({
+    if(usernameInput) usernameInput.value = username;
+    if(pinInput) pinInput.value = newPin;
 
-            username,
+    closeChangePinModal();
 
-            pin:newPin
-
-          })
-
-        }
-      );
-
-    const loginData =
-      await loginResponse.json();
-
-    if(!loginData.success){
-
-      errorBox.innerText =
-        'PIN was changed, but automatic login failed. Please log in again.';
-
-      console.error(
-        'Automatic login failed:',
-        loginData
-      );
-
-      return;
-
-    }
-
-    /*
-    ------------------------------------
-    Store authenticated session
-    ------------------------------------
-    */
-
-    localStorage.setItem(
-      'token',
-      loginData.token
-    );
-
-    localStorage.setItem(
-      'user',
-      JSON.stringify(
-        loginData.user
-      )
-    );
-
-    localStorage.setItem(
-      'email',
-      loginData.user.email || ''
-    );
-
-    localStorage.setItem(
-      'phone',
-      loginData.user.phone || ''
-    );
-
-   /*
-------------------------------------
-Enter application
-------------------------------------
-*/
-
-closeChangePinModal();
-
-const loginScreen =
-  document.getElementById(
-    'loginScreen'
-  );
-
-const appContent =
-  document.getElementById(
-    'appContent'
-  );
-
-if(loginScreen){
-
-  loginScreen.style.display =
-    'none';
-
-}
-
-if(appContent){
-
-  appContent.style.display =
-    'flex';
-
-}
-
-/*
-------------------------------------
-Only genuinely new accounts enter
-the onboarding flow. PIN resets for
-existing users return to normal use.
-------------------------------------
-*/
-
-profileFirstLoginMode =
-  loginData.user?.onboarding_completed === false;
-
-if(profileFirstLoginMode){
-  openFirstLoginNdowModal();
-}
+    await checkLogin();
 
   }catch(err){
 
@@ -5792,7 +5694,10 @@ setTimeout(() => {
 
 }, 250);
 
-if(new URLSearchParams(window.location.search).get('onboardingTest') === '1'){
+if(data.user?.onboarding_completed === false){
+  profileFirstLoginMode = true;
+  openFirstLoginNdowModal();
+}else if(new URLSearchParams(window.location.search).get('onboardingTest') === '1'){
   await startFirstLoginOnboardingTest();
 }
 
