@@ -6135,7 +6135,7 @@ function openMyReports(){
   document.body.appendChild(overlay);
 }
 
-async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate = ''){
+async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate = '', includeHistoric = false){
   const existing = document.getElementById('discrepanciesReportOverlay');
   if(existing) existing.remove();
 
