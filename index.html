@@ -6280,7 +6280,8 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     const records = allRecords.filter(record => {
       const date = String(record.event_date || '').slice(0, 10);
       const inRange = Boolean(date && date >= startDate && date <= endDate);
-      const historic = String(record.event_status || '').toLowerCase() === 'historical';
+      const eventStatus = String(record.event_status || record.status || '').trim().toLowerCase();
+      const historic = eventStatus.includes('historic');
       return inRange || (historicCheckbox.checked && historic);
     });
     const undatedRecordsExcluded = allRecords.filter(record =>
