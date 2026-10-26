@@ -5748,22 +5748,10 @@ setTimeout(() => {
 
 }, 250);
 
-if(data.user?.onboarding_completed === false){
-  profileFirstLoginMode = true;
-
-  const onboardingOverlay = document.getElementById('loadingOverlay');
-  if(onboardingOverlay){
-    onboardingOverlay.style.display = 'none';
-    onboardingOverlay.style.visibility = 'hidden';
-    onboardingOverlay.style.opacity = '0';
-  }
-
-  if(window.firstLoginNdowProfileDraft){
-    openProfileModal();
-  }else{
-    openFirstLoginNdowModal();
-  }
-}else if(new URLSearchParams(window.location.search).get('onboardingSaveTest') === '1'){
+// Normal PIN login must not reopen first-login onboarding.
+// First-time users are routed to onboarding by continueLogin() before PIN entry.
+// Keep the explicit superuser preview URLs available for testing.
+if(new URLSearchParams(window.location.search).get('onboardingSaveTest') === '1'){
   await startFirstLoginOnboardingTest(true);
 }else if(new URLSearchParams(window.location.search).get('onboardingTest') === '1'){
   await startFirstLoginOnboardingTest(false);
