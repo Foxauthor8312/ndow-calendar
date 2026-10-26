@@ -2279,6 +2279,13 @@ async function submitChangePin(){
 
     closeChangePinModal();
 
+    if(window.firstLoginPinSetup === true){
+      window.firstLoginPinSetup = false;
+      await checkLogin();
+      openFirstLoginWelcome();
+      return;
+    }
+
     await checkLogin();
 
   }catch(err){
@@ -14111,32 +14118,28 @@ async function saveProfile(){
 
     if(profileFirstLoginMode){
 
-      profileFirstLoginMode =
-        false;
+      profileFirstLoginMode = false;
 
       const firstLoginMessage =
-        document.getElementById(
-          'profileFirstLoginMessage'
-        );
+        document.getElementById('profileFirstLoginMessage');
 
-      if(firstLoginMessage){
+      if(firstLoginMessage) firstLoginMessage.style.display = 'none';
 
-        firstLoginMessage.style.display =
-          'none';
-
-      }
-
-      if(message){
-
-        message.innerText =
-          'Profile completed successfully.';
-
-      }
+      if(message) message.innerText = 'Profile completed successfully.';
 
       closeProfileModal();
-
       window.firstLoginNdowProfileDraft = null;
-      openFirstLoginWelcome();
+
+      // Profile review is complete; PIN setup is the next required step.
+      const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
+      window.pendingLoginData = {
+        token: localStorage.getItem('token'),
+        user: savedUser
+      };
+      window.firstLoginPinSetup = true;
+
+      const pinModal = document.getElementById('changePinModal');
+      if(pinModal) pinModal.style.display = 'flex';
 
     }
 
