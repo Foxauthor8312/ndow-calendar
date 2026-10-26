@@ -13868,17 +13868,8 @@ async function loadMyInstructorRequests(){
 */
 
 async function geocodeProfileAddress(){
-
-  const address =
-    document.getElementById(
-      'profileAddress'
-    )?.value.trim() || '';
-
-  const city =
-    document.getElementById(
-      'profileCity'
-    )?.value.trim() || '';
-
+  const address = document.getElementById('profileAddress')?.value.trim() || '';
+  const city = document.getElementById('profileCity')?.value.trim() || '';
   const stateInput = document.getElementById('profileState');
   let state = stateInput?.value.trim().toUpperCase() || '';
   const prefixedState = state.match(/^(?:US|USA)[-_: ]([A-Z]{2})$/);
@@ -13886,151 +13877,73 @@ async function geocodeProfileAddress(){
     state = prefixedState[1];
     if(stateInput) stateInput.value = state;
   }
+  const zip = document.getElementById('profileZip')?.value.trim() || '';
+  const latitude = document.getElementById('profileLatitude');
+  const longitude = document.getElementById('profileLongitude');
+  const message = document.getElementById('profileMessage');
 
-  const zip =
-    document.getElementById(
-      'profileZip'
-    )?.value.trim() || '';
-
-  const latitude =
-    document.getElementById(
-      'profileLatitude'
-    );
-
-  const longitude =
-    document.getElementById(
-      'profileLongitude'
-    );
-
-  if(
-    !address ||
-    !city ||
-    !state ||
-    !zip ||
-    !latitude ||
-    !longitude
-  ){
-
+  if(!address || !city || !state || !zip || !latitude || !longitude){
+    if(message) message.innerText = 'Enter the street address, city, state, and ZIP before locating the address.';
     return;
-
   }
 
-  const fullAddress =
-    [
-      address,
-      city,
-      state,
-      zip
-    ]
-    .filter(Boolean)
-    .join(', ');
+  const fullAddress = [address, city, state, zip, 'USA'].filter(Boolean).join(', ');
+  latitude.value = 'Looking up...';
+  longitude.value = 'Looking up...';
+  if(message) message.innerText = 'Trying address lookup services...';
 
   try{
+    let coordinates = null;
 
-    latitude.value = 'Looking up...';
-    longitude.value = 'Looking up...';
-
-    const url =
-      'https://nominatim.openstreetmap.org/search' +
-      '?format=jsonv2' +
-      '&limit=1' +
-      '&countrycodes=us' +
-      '&q=' +
-      encodeURIComponent(
-        fullAddress
-      );
-
-    const response =
-      await fetch(
-        url
-      );
-
-    if(
-      !response.ok
-    ){
-
-      throw new Error(
-        'Address lookup failed'
-      );
-
+    // Primary lookup: OpenStreetMap/Nominatim.
+    try{
+      const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&q=' + encodeURIComponent(fullAddress);
+      const response = await fetch(url);
+      if(response.ok){
+        const results = await response.json();
+        if(Array.isArray(results) && results.length && Number.isFinite(Number(results[0].lat)) && Number.isFinite(Number(results[0].lon))){
+          coordinates = { lat: Number(results[0].lat), lon: Number(results[0].lon), source: 'OpenStreetMap' };
+        }
+      }
+    }catch(error){
+      console.warn('Primary address lookup unavailable; trying fallback.', error);
     }
 
-    const results =
-      await response.json();
+    // Fallback: U.S. Census geocoder, which often recognizes U.S. street addresses
+    // that the first provider does not return.
+    if(!coordinates){
+      try{
+        const censusUrl = 'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=' + encodeURIComponent(fullAddress);
+        const response = await fetch(censusUrl);
+        if(response.ok){
+          const data = await response.json();
+          const match = data?.result?.addressMatches?.[0]?.coordinates;
+          if(match && Number.isFinite(Number(match.y)) && Number.isFinite(Number(match.x))){
+            coordinates = { lat: Number(match.y), lon: Number(match.x), source: 'U.S. Census' };
+          }
+        }
+      }catch(error){
+        console.warn('Fallback address lookup unavailable.', error);
+      }
+    }
 
-    if(
-      !results ||
-      !results.length
-    ){
-
+    if(!coordinates){
       latitude.value = '';
       longitude.value = '';
-
-      const message =
-        document.getElementById(
-          'profileMessage'
-        );
-
-      if(message){
-
-        message.innerText =
-          'Address could not be located. Please verify the street address, city, state, and ZIP.';
-
-      }
-
+      if(message) message.innerText = 'Neither address lookup service could confirm this address. Check the street spelling and ZIP, then try Locate Address again.';
       return;
-
     }
 
-    const result =
-      results[0];
-
-    latitude.value =
-      Number(
-        result.lat
-      ).toFixed(7);
-
-    longitude.value =
-      Number(
-        result.lon
-      ).toFixed(7);
-
-    const message =
-      document.getElementById(
-        'profileMessage'
-      );
-
-    if(message){
-
-      message.innerText =
-        'Address location found.';
-
-    }
-
+    latitude.value = coordinates.lat.toFixed(7);
+    longitude.value = coordinates.lon.toFixed(7);
+    if(message) message.innerText = 'Address location found (' + coordinates.source + ').';
   }catch(error){
-
-    console.error(
-      'Profile address geocode error:',
-      error
-    );
-
+    console.error('Profile address geocode error:', error);
     latitude.value = '';
     longitude.value = '';
-
-    const message =
-      document.getElementById(
-        'profileMessage'
-      );
-
-    if(message){
-
-      message.innerText =
-        'Unable to locate this address.';
-    }
-
+    if(message) message.innerText = 'Address lookup failed. Check your connection and try Locate Address again.';
   }
-
-}	
+}
 
 /*
 ====================================================
