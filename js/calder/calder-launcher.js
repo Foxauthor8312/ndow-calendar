@@ -661,7 +661,19 @@
       sendButton.disabled = true; input.disabled = true;
       addMessage("I'll search official NDOW material and put the answer together…", "calder-reply");
       try {
-        const query = String(searchTerms || question || "").trim();
+        let query = String(searchTerms || question || "").trim();
+        try {
+          const retainedResponse = await fetch("https://ndow-calendar-server.onrender.com/api/calder/knowledge/search?q=" + encodeURIComponent(query), {
+            headers: { "Authorization": "Bearer " + token }
+          });
+          const retainedBody = await retainedResponse.json().catch(function () { return {}; });
+          if (retainedResponse.ok && retainedBody.success && Array.isArray(retainedBody.results) && retainedBody.results.length) {
+            const aliases = retainedBody.results[0].search_terms;
+            if (Array.isArray(aliases) && aliases.length) query += " " + aliases.slice(0, 6).join(" ");
+          }
+        } catch (retainedSearchError) {
+          console.warn("Calder retained knowledge lookup unavailable:", retainedSearchError);
+        }
         const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/sources/ndow-search?q=" + encodeURIComponent(query), { headers: { "Authorization": "Bearer " + token } });
         const body = await response.json().catch(function () { return {}; });
         const status = messages.querySelector(".calder-message.calder-reply:last-child");
