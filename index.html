@@ -12945,8 +12945,9 @@ async function submitFirstLoginNdowCredentials(){
       if(passwordInput) passwordInput.value = '';
       openProfileModal();
       return;
-    }else if(window.firstLoginExistingAccountMode === true){
-      const existingPortalUsername = String(window.firstLoginTargetUsername || usernameInput?.value || document.getElementById('userName')?.value || '').trim();
+    }else if(window.firstLoginExistingAccountMode === true || !createAccount){
+      const storedPortalUser = JSON.parse(localStorage.getItem('user') || '{}');
+      const existingPortalUsername = String(window.firstLoginTargetUsername || window.firstLoginPortalUsername || usernameInput?.value || document.getElementById('userName')?.value || storedPortalUser.username || '').trim();
       if(!existingPortalUsername){
         throw new Error('I could not identify the existing portal username. Return to the login screen, enter the existing username, and try again.');
       }
