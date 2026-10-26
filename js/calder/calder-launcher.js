@@ -646,7 +646,7 @@
       const token = localStorage.getItem("token");
       if (!token) { addMessage("Please sign in to the NDOW Volunteer Calendar first.", "calder-error"); return; }
       const sourceQuestion = String(question || "").trim();
-      const locationMatch = sourceQuestion.match(/\\b(?:in|for|near|at)\\s+(?:(?:the\\s+)?(?:town|city|village|community)\\s+of\\s+)?(.+?)(?=\\s+(?:for\\s+)?(?:tomorrow|today|tonight|this\\s+afternoon|this\\s+evening|this\\s+weekend|next\\s+week|on\\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday))\\b|[?.!]|$)/i);
+      const locationMatch = sourceQuestion.match(/\b(?:in|for|near|at)\s+(?:(?:the\s+)?(?:town|city|village|community)\s+of\s+)?(.+?)(?=\s+(?:for\s+)?(?:tomorrow|today|tonight|this\s+afternoon|this\s+evening|this\s+weekend|next\s+week|on\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday))\b|[?.!]|$)/i);
       let location = locationMatch ? locationMatch[1].trim() : "";
       location = location.replace(/^(?:the\\s+)?(?:town|city|village|community)\\s+of\\s+/i, "").replace(/^(?:the\\s+)?(?:weather|forecast)\\s+/i, "").replace(/\\s+/g, " ").trim();
       if (!location || /^(?:weather|forecast|tomorrow|today|tonight)$/i.test(location)) {
