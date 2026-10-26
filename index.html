@@ -7933,6 +7933,14 @@ function renderSelectedDayEvents(dateStr, dayEvents) {
 	
 function logout(showMessage = false){
 
+  // Onboarding intentionally has no normal calendar token until setup finishes.
+  // A background/session cleanup must not erase the verified onboarding session
+  // or reload the page while the profile/PIN steps are in progress.
+  if(localStorage.getItem('onboarding_token')){
+    console.warn('Logout suppressed: first-login onboarding is still active.');
+    return;
+  }
+
   localStorage.removeItem(
     'ndowAccess'
   );
