@@ -672,7 +672,7 @@
         } else { lines.push("", "No active NWS alerts were returned for this location."); }
         addMessage(lines.join("\n"), "calder-reply");
         const sourceLink = document.createElement("a");
-        sourceLink.href = body.sourceUrl || "https://www.weather.gov/";
+        sourceLink.href = body.publicUrl || "https://www.weather.gov/";
         sourceLink.target = "_blank"; sourceLink.rel = "noopener noreferrer";
         sourceLink.textContent = "Open official National Weather Service forecast";
         sourceLink.style.cssText = "display:block;margin:4px 0 8px;color:#19304B;font-weight:600;";
