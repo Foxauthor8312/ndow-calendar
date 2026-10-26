@@ -14060,9 +14060,23 @@ async function saveProfile(){
         : 'Your session has expired. Please sign in again.');
     }
 
-    // Re-geocode the address the new volunteer has just reviewed.
+    // Preserve valid coordinates entered manually; only geocode when either
+    // coordinate is missing or invalid. This lets verified external coordinates
+    // be used when the address providers cannot find a match.
     if(profileFirstLoginMode){
-      await geocodeProfileAddress();
+      const existingLat = String(document.getElementById('profileLatitude')?.value || '').trim();
+      const existingLon = String(document.getElementById('profileLongitude')?.value || '').trim();
+      const existingLatNum = Number(existingLat);
+      const existingLonNum = Number(existingLon);
+      const existingCoordinatesValid =
+        existingLat !== '' && existingLon !== '' &&
+        Number.isFinite(existingLatNum) && Number.isFinite(existingLonNum) &&
+        existingLatNum >= -90 && existingLatNum <= 90 &&
+        existingLonNum >= -180 && existingLonNum <= 180;
+
+      if(!existingCoordinatesValid){
+        await geocodeProfileAddress();
+      }
 
       const latitudeText = String(document.getElementById('profileLatitude')?.value || '').trim();
       const longitudeText = String(document.getElementById('profileLongitude')?.value || '').trim();
