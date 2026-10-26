@@ -13176,6 +13176,43 @@ async function loadProfile(){
 
   try{
 
+    // First-login review must use the verified NDOW profile draft directly.
+    // Do not call the normal /api/profile endpoint with an onboarding-only
+    // token; that endpoint/session path can redirect the user out of setup.
+    if(profileFirstLoginMode){
+      const draft = window.firstLoginNdowProfileDraft || {};
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      const setValue = (id, value) => {
+        const el = document.getElementById(id);
+        if(el) el.value = value == null ? '' : String(value);
+      };
+      setValue('profileUsername', user.username || window.firstLoginPortalUsername || '');
+      setValue('profileFullName', draft.full_name || user.full_name || '');
+      const nameField = document.getElementById('profileFullName');
+      if(nameField){
+        nameField.readOnly = true;
+        nameField.setAttribute('aria-readonly', 'true');
+      }
+      // Customer ID is held in the hidden field only; never display it.
+      setValue('profileCustomerId', draft.ndow_customer_id || user.ndow_customer_id || user.ndow_id || '');
+      setValue('profileEmail', draft.email || user.email || '');
+      setValue('profilePhone', draft.phone || user.phone || '');
+      setValue('profileAddress', draft.home_address || user.home_address || '');
+      setValue('profileCity', draft.home_city || user.home_city || '');
+      setValue('profileState', draft.home_state || user.home_state || '');
+      setValue('profileZip', draft.home_zip || user.home_zip || '');
+      setValue('profileLatitude', draft.home_latitude || user.home_latitude || '');
+      setValue('profileLongitude', draft.home_longitude || user.home_longitude || '');
+      setValue('profileRegion', user.region || 'Southern');
+      const notifyEmail = document.getElementById('profileNotifyEmail');
+      if(notifyEmail) notifyEmail.checked = !!user.notify_email;
+      const notifySms = document.getElementById('profileNotifySms');
+      if(notifySms) notifySms.checked = !!user.notify_sms;
+      const message = document.getElementById('profileMessage');
+      if(message) message.textContent = '';
+      return;
+    }
+
     const token = profileFirstLoginMode
       ? localStorage.getItem('onboarding_token')
       : localStorage.getItem('token');
