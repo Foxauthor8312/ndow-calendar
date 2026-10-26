@@ -4078,10 +4078,14 @@ async function loadEvents(){
 
   if(!token){
 
+    // First-login onboarding deliberately has no normal calendar token yet.
+    // Do not call logout() while the separate onboarding session is active.
+    if(localStorage.getItem('onboarding_token')){
+      return;
+    }
+
     logout();
-
     return;
-
   }
 
   try {
