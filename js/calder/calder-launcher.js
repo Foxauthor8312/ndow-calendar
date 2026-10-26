@@ -605,36 +605,44 @@
       const token = localStorage.getItem("token");
       if (!token) { addMessage("Please sign in to the NDOW Volunteer Calendar first.", "calder-error"); return; }
       sendButton.disabled = true; input.disabled = true;
-      addMessage("I'll check the official NDOW website for you…", "calder-reply");
+      addMessage("I'll search official NDOW material and put the answer together…", "calder-reply");
       try {
         const query = String(searchTerms || question || "").trim();
         const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/sources/ndow-search?q=" + encodeURIComponent(query), { headers: { "Authorization": "Bearer " + token } });
         const body = await response.json().catch(function () { return {}; });
         const status = messages.querySelector(".calder-message.calder-reply:last-child");
-        if (status && status.textContent === "I'll check the official NDOW website for you…") status.remove();
+        if (status && status.textContent === "I'll search official NDOW material and put the answer together…") status.remove();
         if (!response.ok || !body.success) throw new Error(body.error || "NDOW source search failed.");
         const results = Array.isArray(body.results) ? body.results : [];
         if (!results.length) {
-          addMessage("I couldn't find a reliable answer in the official NDOW website pages I checked. I’m not authorized to search general web sources. Try different wording or contact NDOW directly.", "calder-reply");
+          addMessage("I couldn't find a reliable answer in the official NDOW pages I checked. I'm not authorized to search general web sources. Try rephrasing the question or contact NDOW directly.", "calder-reply");
           return;
         }
-        addMessage("Here’s what I found in official NDOW material. Open a source to review the original page:", "calder-reply");
+
+        if (body.answer) {
+          addMessage(body.answer, "calder-reply");
+        } else {
+          addMessage("I found relevant official NDOW pages, but couldn't confidently assemble a direct answer from the retrieved text. Here are the sources I found:", "calder-reply");
+        }
+
         const card = document.createElement("div");
         card.className = "calder-message calder-reply calder-ndow-results";
-        card.style.cssText = "display:flex;flex-direction:column;align-items:stretch;gap:10px;";
-        results.forEach(function (item) {
-          const section = document.createElement("div");
-          section.style.cssText = "padding:8px 0;border-bottom:1px solid #DBE3EC;";
+        card.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:6px;";
+        const sourceHeading = document.createElement("strong");
+        sourceHeading.textContent = results.length === 1 ? "Official NDOW source" : "Official NDOW sources";
+        card.appendChild(sourceHeading);
+
+        results.slice(0, 3).forEach(function (item) {
           const link = document.createElement("a");
-          link.href = item.url; link.target = "_blank"; link.rel = "noopener noreferrer";
-          link.textContent = item.title || "Official NDOW page";
+          link.href = item.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = item.title || "Open official NDOW page";
           link.style.cssText = "font-weight:600;color:#19304B;";
-          const excerpt = document.createElement("p");
-          excerpt.textContent = String(item.excerpt || "").slice(0, 850);
-          excerpt.style.cssText = "margin:6px 0 0;white-space:pre-wrap;";
-          section.appendChild(link); section.appendChild(excerpt); card.appendChild(section);
+          card.appendChild(link);
         });
-        messages.appendChild(card); messages.scrollTop = messages.scrollHeight;
+        messages.appendChild(card);
+        messages.scrollTop = messages.scrollHeight;
         addMessage("Source: NDOW official website • Retrieved " + new Date(body.retrievedAt || Date.now()).toLocaleString(), "calder-reply");
       } catch (error) {
         console.error("Calder NDOW lookup failed:", error);
