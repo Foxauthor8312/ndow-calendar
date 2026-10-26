@@ -13887,61 +13887,36 @@ async function geocodeProfileAddress(){
     return;
   }
 
-  const fullAddress = [address, city, state, zip, 'USA'].filter(Boolean).join(', ');
+  const fullAddress = [address, city, state, zip, 'USA'].join(', ');
   latitude.value = 'Looking up...';
   longitude.value = 'Looking up...';
-  if(message) message.innerText = 'Trying address lookup services...';
+  if(message) message.innerText = 'Confirming address location...';
 
   try{
-    let coordinates = null;
+    // Use the portal API as a server-side proxy; public geocoders may block
+    // browser requests from GitHub Pages because of CORS.
+    const url = 'https://ndow-calendar-server.onrender.com/api/address/geocode?address=' + encodeURIComponent(fullAddress);
+    const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
+    const result = await response.json();
 
-    // Primary lookup: OpenStreetMap/Nominatim.
-    try{
-      const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&q=' + encodeURIComponent(fullAddress);
-      const response = await fetch(url);
-      if(response.ok){
-        const results = await response.json();
-        if(Array.isArray(results) && results.length && Number.isFinite(Number(results[0].lat)) && Number.isFinite(Number(results[0].lon))){
-          coordinates = { lat: Number(results[0].lat), lon: Number(results[0].lon), source: 'OpenStreetMap' };
-        }
-      }
-    }catch(error){
-      console.warn('Primary address lookup unavailable; trying fallback.', error);
+    if(!response.ok || !result.success){
+      throw new Error(result.message || 'Address lookup service is unavailable.');
     }
-
-    // Fallback: U.S. Census geocoder, which often recognizes U.S. street addresses
-    // that the first provider does not return.
-    if(!coordinates){
-      try{
-        const censusUrl = 'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address=' + encodeURIComponent(fullAddress);
-        const response = await fetch(censusUrl);
-        if(response.ok){
-          const data = await response.json();
-          const match = data?.result?.addressMatches?.[0]?.coordinates;
-          if(match && Number.isFinite(Number(match.y)) && Number.isFinite(Number(match.x))){
-            coordinates = { lat: Number(match.y), lon: Number(match.x), source: 'U.S. Census' };
-          }
-        }
-      }catch(error){
-        console.warn('Fallback address lookup unavailable.', error);
-      }
-    }
-
-    if(!coordinates){
+    if(!result.found || !Number.isFinite(Number(result.latitude)) || !Number.isFinite(Number(result.longitude))){
       latitude.value = '';
       longitude.value = '';
-      if(message) message.innerText = 'Neither address lookup service could confirm this address. Check the street spelling and ZIP, then try Locate Address again.';
+      if(message) message.innerText = 'No matching address was found. Check the street address, city, state, and ZIP, then try again.';
       return;
     }
 
-    latitude.value = coordinates.lat.toFixed(7);
-    longitude.value = coordinates.lon.toFixed(7);
-    if(message) message.innerText = 'Address location found (' + coordinates.source + ').';
+    latitude.value = Number(result.latitude).toFixed(7);
+    longitude.value = Number(result.longitude).toFixed(7);
+    if(message) message.innerText = 'Address location found' + (result.matchedAddress ? ': ' + result.matchedAddress : '') + '.';
   }catch(error){
     console.error('Profile address geocode error:', error);
     latitude.value = '';
     longitude.value = '';
-    if(message) message.innerText = 'Address lookup failed. Check your connection and try Locate Address again.';
+    if(message) message.innerText = error.message || 'Address lookup failed. Please try Locate Address again.';
   }
 }
 
