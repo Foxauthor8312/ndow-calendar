@@ -12806,9 +12806,11 @@ function openFirstLoginNdowModal(createAccount = false){
   const username = document.getElementById('firstLoginPortalUsername');
   const usernameLabel = document.getElementById('firstLoginPortalUsernameLabel');
   const modeNote = document.getElementById('firstLoginAccountModeNote');
+  const submitButton = document.getElementById('firstLoginNdowSubmit');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   window.firstLoginCreateAccountMode = createAccount === true;
+  if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : 'Retrieve My NDOW Profile';
   if(username) username.value = '';
   if(username) username.style.display = createAccount ? 'block' : 'none';
   if(usernameLabel) usernameLabel.style.display = createAccount ? 'block' : 'none';
@@ -12911,7 +12913,7 @@ async function submitFirstLoginNdowCredentials(){
     if(passwordInput) passwordInput.value = '';
     if(button){
       button.disabled = false;
-      button.textContent = 'Retrieve My NDOW Profile';
+      button.textContent = createAccount ? 'Verify NDOW Account' : 'Retrieve My NDOW Profile';
     }
   }
 }
