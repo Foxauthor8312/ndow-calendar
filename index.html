@@ -21699,12 +21699,13 @@ geographic analysis.
 
 </div>
 
-<div style="margin-top:10px; display:flex; justify-content:flex-start;">
+<div style="margin-top:10px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
   <button
     type="button"
     onclick="geocodeProfileAddress()"
     style="padding:8px 14px; background:#589FD6; color:#FFFFFF; border:0; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer;"
   >Locate Address</button>
+  <span style="font-size:12px; color:#64748b;">If lookup fails, you can enter verified latitude and longitude manually.</span>
 </div>
 
 <div
@@ -21724,7 +21725,8 @@ geographic analysis.
     <input
       id="profileLatitude"
       type="text"
-      readonly
+      inputmode="decimal"
+      placeholder="e.g. 36.112276"
       style="
         width:100%;
         padding:10px;
@@ -21748,7 +21750,8 @@ geographic analysis.
     <input
       id="profileLongitude"
       type="text"
-      readonly
+      inputmode="decimal"
+      placeholder="e.g. -115.274361"
       style="
         width:100%;
         padding:10px;
