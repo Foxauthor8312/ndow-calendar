@@ -14019,6 +14019,63 @@ async function geocodeProfileAddress(){
 ====================================================
 */
 
+async function finishFirstLoginSession(user, token){
+  const overlay = document.getElementById('loadingOverlay');
+  const loginScreen = document.getElementById('loginScreen');
+  const appContent = document.getElementById('appContent');
+
+  try{
+    localStorage.removeItem('onboarding_token');
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify({ ...user, onboarding_completed: true, must_change_pin: false }));
+    localStorage.setItem('email', user.email || '');
+    localStorage.setItem('phone', user.phone || '');
+    localStorage.setItem('ndowAccess', 'granted');
+
+    if(overlay){
+      overlay.style.display = 'flex';
+      overlay.style.visibility = 'visible';
+      overlay.style.opacity = '1';
+      overlay.style.zIndex = '999999';
+      const message = document.getElementById('loadingMessage');
+      if(message) message.textContent = 'Finishing your NDOW Volunteer Portal setup...';
+    }
+    if(loginScreen) loginScreen.style.display = 'none';
+    if(appContent){
+      appContent.style.display = 'flex';
+      appContent.style.opacity = '1';
+    }
+    showMyEventsSyncNotice();
+    if(user.role === 'admin' || user.role === 'superuser') await loadUsers();
+    await loadPublicConfig();
+    await loadDepartmentContacts();
+    await loadZipLookup();
+    await loadEvents();
+    if(typeof loadUserPreferences === 'function') await loadUserPreferences();
+    if(typeof applyCalendarPreferences === 'function') applyCalendarPreferences();
+    if(typeof initializeUserPreferenceListeners === 'function') initializeUserPreferenceListeners();
+    if(typeof initializeUserPreferencesUI === 'function') initializeUserPreferencesUI();
+    if(typeof renderCalendar === 'function') renderCalendar(currentDate);
+    await loadAnnouncements(user.role);
+    if(overlay){
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+      }, 250);
+    }
+  }catch(error){
+    console.error('First-login calendar startup failed:', error);
+    if(overlay){
+      overlay.style.display = 'none';
+      overlay.style.visibility = 'hidden';
+      overlay.style.opacity = '0';
+    }
+    const message = document.getElementById('profileMessage');
+    if(message) message.textContent = 'Your profile is saved, but the calendar could not finish loading. Please refresh the page.';
+  }
+}
+
 async function saveProfile(){
 
   if(window.onboardingTestMode === true){
@@ -14359,13 +14416,24 @@ async function saveProfile(){
         user: { ...savedUser }
       };
 
-      // First-time onboarding always requires PIN confirmation/setup,
-      // even if this portal record already contained a PIN.
-      savedUser.must_change_pin = true;
-      localStorage.setItem('user', JSON.stringify(savedUser));
-      window.firstLoginPinSetup = true;
-      const pinModal = document.getElementById('changePinModal');
-      if(pinModal) pinModal.style.display = 'flex';
+      const pinSetupRequired =
+        pending.pin_exists !== true &&
+        pending.user?.pin_exists !== true;
+
+      if(pinSetupRequired){
+        savedUser.must_change_pin = true;
+        localStorage.setItem('user', JSON.stringify(savedUser));
+        window.firstLoginPinSetup = true;
+        const pinModal = document.getElementById('changePinModal');
+        if(pinModal) pinModal.style.display = 'flex';
+      }else{
+        window.firstLoginPinSetup = false;
+        profileFirstLoginMode = false;
+        window.firstLoginNdowProfileDraft = null;
+        closeProfileModal();
+        openFirstLoginWelcome();
+        await finishFirstLoginSession(savedUser, sessionToken);
+      }
 
     }
 
