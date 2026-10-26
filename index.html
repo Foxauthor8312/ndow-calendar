@@ -13061,21 +13061,28 @@ function closeFirstLoginWelcome(){
 
 function openProfileModal(){
 
-  const modal =
-    document.getElementById(
-      'profileModal'
-    );
+  const modal = document.getElementById('profileModal');
+  if(!modal) return;
 
-  if(!modal){
-    return;
+  // Keep first-login profile review as a clean, isolated step. Never leave
+  // the credential modal or PIN modal visible behind/over the review.
+  if(profileFirstLoginMode){
+    const ndowModal = document.getElementById('firstLoginNdowModal');
+    const pinModal = document.getElementById('changePinModal');
+    const welcomeModal = document.getElementById('firstLoginWelcomeModal');
+    if(ndowModal) ndowModal.style.display = 'none';
+    if(pinModal) pinModal.style.display = 'none';
+    if(welcomeModal) welcomeModal.style.display = 'none';
+    modal.style.zIndex = '100004';
   }
 
-  modal.classList.remove(
-    'hidden'
-  );
+  modal.classList.remove('hidden');
+  modal.style.display = 'flex';
 
-  modal.style.display =
-    'flex';
+  const title = document.getElementById('profileModalTitle');
+  if(title){
+    title.textContent = profileFirstLoginMode ? 'Review Your NDOW Profile' : 'My Profile';
+  }
 
   const profileCloseButton = modal.querySelector('.modal-close');
   if(profileCloseButton){
@@ -21347,7 +21354,7 @@ geographic analysis.
     style="
       max-width:620px;
       width:90%;
-      max-height:70vh;
+      max-height:85vh;
       overflow-y:auto;
     "
   >
@@ -21359,7 +21366,7 @@ geographic analysis.
       ✕
     </button>
 
-    <h2>My Profile</h2>
+    <h2 id="profileModalTitle">My Profile</h2>
 
     <div
       id="profileFirstLoginMessage"
