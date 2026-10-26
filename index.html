@@ -13879,10 +13879,13 @@ async function geocodeProfileAddress(){
       'profileCity'
     )?.value.trim() || '';
 
-  const state =
-    document.getElementById(
-      'profileState'
-    )?.value.trim() || '';
+  const stateInput = document.getElementById('profileState');
+  let state = stateInput?.value.trim().toUpperCase() || '';
+  const prefixedState = state.match(/^(?:US|USA)[-_: ]([A-Z]{2})$/);
+  if(prefixedState){
+    state = prefixedState[1];
+    if(stateInput) stateInput.value = state;
+  }
 
   const zip =
     document.getElementById(
@@ -21783,6 +21786,13 @@ geographic analysis.
 
 </div>
 
+<div style="margin-top:10px; display:flex; justify-content:flex-start;">
+  <button
+    type="button"
+    onclick="geocodeProfileAddress()"
+    style="padding:8px 14px; background:#589FD6; color:#FFFFFF; border:0; border-radius:6px; font-size:13px; font-weight:600; cursor:pointer;"
+  >Locate Address</button>
+</div>
 
 <div
   style="
