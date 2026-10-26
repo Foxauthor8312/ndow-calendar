@@ -5562,6 +5562,9 @@ loadVersion();
       setTimeout(resolve, 100)
     );
 
+// A successful normal PIN login replaces the temporary onboarding
+// credential with the standard calendar session token.
+localStorage.removeItem('onboarding_token');
 localStorage.setItem(
   'token',
   data.token
@@ -7937,6 +7940,8 @@ function logout(showMessage = false){
   localStorage.removeItem(
     'token'
   );
+
+  localStorage.removeItem('onboarding_token');
 
 const userSpan = document.getElementById('loggedInUser');
 
