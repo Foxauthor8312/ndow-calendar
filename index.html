@@ -5193,12 +5193,18 @@ try {
       const validationMessage =
         String(data.message || '').trim().toLowerCase();
 
-      // Unknown usernames must not start onboarding automatically.
-      // Only an existing account explicitly flagged for first-time setup
-      // is routed to onboarding. All other validation failures stay here.
+      // A definitive "username not found" result starts the onboarding
+      // flow; transport/server errors must never be treated as new users.
+      if (validationMessage === 'username not found.') {
+        document.getElementById('loginError').innerText = '';
+        document.getElementById('pinSection').style.display = 'none';
+        document.getElementById('userName').disabled = false;
+        openFirstLoginNdowModal(true, username);
+        return;
+      }
+
       document.getElementById('loginError').innerText =
         data.message || 'Unable to validate username.';
-
       return;
 
     }
