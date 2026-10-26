@@ -894,7 +894,8 @@
             question: question,
             conversation: Array.from(messages.children)
               .filter(function (item) {
-                return item.classList.contains("calder-user") || item.classList.contains("calder-reply");
+                return (item.classList.contains("calder-user") || item.classList.contains("calder-reply")) &&
+                  String(item.textContent || "").trim() !== question;
               })
               .slice(-9, -1)
               .map(function (item) {
