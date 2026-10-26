@@ -13975,6 +13975,26 @@ async function saveProfile(){
     // Re-geocode the address the new volunteer has just reviewed.
     if(profileFirstLoginMode){
       await geocodeProfileAddress();
+
+      const latitudeText = String(document.getElementById('profileLatitude')?.value || '').trim();
+      const longitudeText = String(document.getElementById('profileLongitude')?.value || '').trim();
+      const latitudeNumber = Number(latitudeText);
+      const longitudeNumber = Number(longitudeText);
+      const validCoordinates =
+        latitudeText !== '' &&
+        longitudeText !== '' &&
+        Number.isFinite(latitudeNumber) &&
+        Number.isFinite(longitudeNumber) &&
+        latitudeNumber >= -90 && latitudeNumber <= 90 &&
+        longitudeNumber >= -180 && longitudeNumber <= 180;
+
+      if(!validCoordinates){
+        const message = document.getElementById('profileMessage');
+        if(message){
+          message.innerText = 'We could not locate this address. Please correct the address, city, state, and ZIP so the map coordinates can be confirmed before completing onboarding.';
+        }
+        return;
+      }
     }
 
     /*
