@@ -5211,6 +5211,14 @@ try {
 
     document.getElementById('loginError').innerText = '';
 
+    // Flagged existing accounts use the same NDOW verification flow as new volunteers.
+    if (data.user.needs_first_login === true) {
+      document.getElementById('pinSection').style.display = 'none';
+      document.getElementById('userName').disabled = false;
+      openFirstLoginNdowModal(false, data.user.username);
+      return;
+    }
+
     document.getElementById('welcomeMessage').innerText =
       `Welcome ${data.user.full_name}`;
 
@@ -12833,13 +12841,17 @@ function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   window.firstLoginCreateAccountMode = createAccount === true;
-  if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : 'Retrieve My NDOW Profile';
-  if(username) username.value = createAccount ? String(suggestedUsername || '').trim() : '';
+  window.firstLoginExistingAccountMode = createAccount !== true && !!String(suggestedUsername || '').trim();
+  window.firstLoginTargetUsername = String(suggestedUsername || '').trim();
+  if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : (window.firstLoginExistingAccountMode ? 'Verify NDOW Account & Continue' : 'Retrieve My NDOW Profile');
+  if(username) username.value = createAccount ? String(suggestedUsername || '').trim() : String(suggestedUsername || user.username || '').trim();
   if(username) username.style.display = createAccount ? 'block' : 'none';
   if(usernameLabel) usernameLabel.style.display = createAccount ? 'block' : 'none';
   if(modeNote) modeNote.style.display = createAccount ? 'block' : 'none';
   if(email){
-    email.value = createAccount ? '' : (user.email || localStorage.getItem('email') || '');
+    email.value = (createAccount || window.firstLoginExistingAccountMode)
+      ? ''
+      : (user.email || localStorage.getItem('email') || '');
   }
   if(password) password.value = '';
   if(error) error.textContent = '';
@@ -12895,6 +12907,44 @@ async function submitFirstLoginNdowCredentials(){
       localStorage.setItem('email', result.user?.email || email);
       window.pendingLoginData = result;
       window.firstLoginPortalUsername = result.user?.username || username;
+      window.firstLoginNdowProfileDraft = result.profile || {};
+      profileFirstLoginMode = true;
+
+      const onboardingModal = document.getElementById('firstLoginNdowModal');
+      if(onboardingModal) onboardingModal.style.display = 'none';
+
+      const pinModal = document.getElementById('changePinModal');
+      if(pinModal) pinModal.style.display = 'flex';
+      if(passwordInput) passwordInput.value = '';
+      return;
+    }else if(window.firstLoginExistingAccountMode === true){
+      const existingPortalUsername = String(window.firstLoginTargetUsername || usernameInput?.value || '').trim();
+      const response = await fetch(
+        'https://ndow-calendar-server.onrender.com/api/onboarding/verify-ndow',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ndowEmail: email,
+            ndowPassword: password,
+            username: existingPortalUsername,
+            existingAccount: true
+          })
+        }
+      );
+      result = await response.json();
+      if(!response.ok || !result.success){
+        const remaining = Number.isFinite(Number(result.attempts_remaining))
+          ? ` Attempts remaining: ${result.attempts_remaining}.`
+          : '';
+        throw new Error((result.error || 'Unable to verify your NDOW account.') + remaining);
+      }
+
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('user', JSON.stringify(result.user || {}));
+      localStorage.setItem('email', result.user?.email || email);
+      window.pendingLoginData = result;
+      window.firstLoginPortalUsername = result.user?.username || existingPortalUsername;
       window.firstLoginNdowProfileDraft = result.profile || {};
       profileFirstLoginMode = true;
 
