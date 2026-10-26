@@ -12969,11 +12969,19 @@ async function submitFirstLoginNdowCredentials(){
       window.firstLoginNdowProfileDraft = result.profile || {};
       profileFirstLoginMode = true;
 
+      // Verification succeeded: leave the login screen entirely and move
+      // directly into the existing profile editor for review/confirmation.
+      const loginScreen = document.getElementById('loginScreen');
+      if(loginScreen) {
+        loginScreen.style.display = 'none';
+        loginScreen.setAttribute('aria-hidden', 'true');
+      }
       const onboardingModal = document.getElementById('firstLoginNdowModal');
-      if(onboardingModal) onboardingModal.style.display = 'none';
+      if(onboardingModal) {
+        onboardingModal.classList.add('hidden');
+        onboardingModal.style.display = 'none';
+      }
 
-      // Identity verification succeeded. Require profile review and completion
-      // before presenting the first-time PIN screen.
       if(passwordInput) passwordInput.value = '';
       openProfileModal();
       return;
@@ -13019,11 +13027,19 @@ async function submitFirstLoginNdowCredentials(){
       window.firstLoginNdowProfileDraft = result.profile || {};
       profileFirstLoginMode = true;
 
+      // Verification succeeded: leave the login screen entirely and move
+      // directly into the existing profile editor for review/confirmation.
+      const loginScreen = document.getElementById('loginScreen');
+      if(loginScreen) {
+        loginScreen.style.display = 'none';
+        loginScreen.setAttribute('aria-hidden', 'true');
+      }
       const onboardingModal = document.getElementById('firstLoginNdowModal');
-      if(onboardingModal) onboardingModal.style.display = 'none';
+      if(onboardingModal) {
+        onboardingModal.classList.add('hidden');
+        onboardingModal.style.display = 'none';
+      }
 
-      // Identity verification succeeded. Require profile review and completion
-      // before presenting the first-time PIN screen.
       if(passwordInput) passwordInput.value = '';
       openProfileModal();
       return;
