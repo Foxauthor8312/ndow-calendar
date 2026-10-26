@@ -13172,10 +13172,15 @@ async function loadProfile(){
 
   try{
 
-    const token =
-      localStorage.getItem(
-        'token'
-      );
+    const token = profileFirstLoginMode
+      ? localStorage.getItem('onboarding_token')
+      : localStorage.getItem('token');
+
+    if(!token){
+      throw new Error(profileFirstLoginMode
+        ? 'The NDOW verification session is missing. Please verify your NDOW account again.'
+        : 'Your portal session has expired. Please sign in again.');
+    }
 
     const response =
       await fetch(
