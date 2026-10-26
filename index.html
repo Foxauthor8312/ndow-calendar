@@ -5218,18 +5218,23 @@ try {
 
     document.getElementById('loginError').innerText = '';
 
-    // Follow the backend's explicit account-state scan. The first-PIN flag
-    // has highest priority; otherwise any missing profile field or missing PIN
-    // routes to onboarding/profile confirmation before login can continue.
-    const requiresFirstLogin =
-      data.user.must_change_pin === true ||
+    // Profile retrieval/review takes priority over PIN setup. A PIN flag must
+    // never bypass the NDOW profile workflow when the profile is incomplete.
+    const profileNeedsReview =
       data.user.profile_complete !== true ||
-      data.user.pin_exists !== true ||
       data.user.needs_first_login === true;
 
-    if (requiresFirstLogin) {
+    const pinNeedsSetup =
+      data.user.must_change_pin === true ||
+      data.user.pin_exists !== true;
+
+    if (profileNeedsReview || pinNeedsSetup) {
       document.getElementById('pinSection').style.display = 'none';
       document.getElementById('userName').disabled = false;
+
+      // All first-time/incomplete-account paths start with NDOW credential
+      // verification. Successful verification opens profile review; PIN setup
+      // is offered only after the profile has been saved.
       openFirstLoginNdowModal(false, data.user.username);
       return;
     }
@@ -5252,18 +5257,9 @@ try {
     button.onclick =
       checkLogin;
 
-    if (data.user.must_change_pin) {
-
-      window.pendingLoginData = {
-        user: data.user
-      };
-
-      document.getElementById(
-        'changePinModal'
-      ).style.display =
-        'flex';
-
-    }
+    // PIN changes are handled by the explicit PIN workflow after profile
+    // review, or by the normal authenticated PIN-change action. Do not open
+    // the PIN modal directly from username validation.
 
   } catch (err) {
 
