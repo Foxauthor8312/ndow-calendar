@@ -14018,6 +14018,72 @@ async function geocodeProfileAddress(){
 ====================================================
 */
 
+async function finishFirstLoginSession(user, token){
+  const overlay = document.getElementById('loadingOverlay');
+  const loginScreen = document.getElementById('loginScreen');
+  const appContent = document.getElementById('appContent');
+
+  if(overlay){
+    overlay.style.display = 'flex';
+    overlay.style.visibility = 'visible';
+    overlay.style.opacity = '1';
+    overlay.style.zIndex = '999999';
+    const message = document.getElementById('loadingMessage');
+    if(message) message.textContent = 'Finishing your NDOW Volunteer Portal setup...';
+  }
+
+  try{
+    localStorage.removeItem('onboarding_token');
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('email', user.email || '');
+    localStorage.setItem('phone', user.phone || '');
+    localStorage.setItem('ndowAccess', 'granted');
+
+    if(loginScreen) loginScreen.style.display = 'none';
+    if(appContent){
+      appContent.style.display = 'flex';
+      appContent.style.opacity = '1';
+    }
+
+    showMyEventsSyncNotice();
+
+    if(user.role === 'admin' || user.role === 'superuser'){
+      await loadUsers();
+    }
+    await loadPublicConfig();
+    await loadDepartmentContacts();
+    await loadZipLookup();
+    await loadEvents();
+
+    if(typeof loadUserPreferences === 'function') await loadUserPreferences();
+    if(typeof applyCalendarPreferences === 'function') applyCalendarPreferences();
+    if(typeof initializeUserPreferenceListeners === 'function') initializeUserPreferenceListeners();
+    if(typeof initializeUserPreferencesUI === 'function') initializeUserPreferencesUI();
+    if(typeof renderCalendar === 'function') renderCalendar(currentDate);
+    await loadAnnouncements(user.role);
+
+    if(overlay){
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+      }, 250);
+    }
+  }catch(error){
+    console.error('First-login session startup failed:', error);
+    if(overlay){
+      overlay.style.opacity = '0';
+      overlay.style.display = 'none';
+      overlay.style.visibility = 'hidden';
+    }
+    const message = document.getElementById('loginError');
+    if(message){
+      message.textContent = 'Your profile was saved, but the calendar could not finish loading. Please refresh the page.';
+    }
+  }
+}
+
 async function saveProfile(){
 
   if(window.onboardingTestMode === true){
@@ -14339,32 +14405,38 @@ async function saveProfile(){
       closeProfileModal();
       window.firstLoginNdowProfileDraft = null;
 
-      // Profile review is complete; PIN setup is the next required step.
+      // Profile review is complete. The server returns a normal calendar
+      // session token; only accounts that genuinely require a new PIN see
+      // the PIN setup modal.
       const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
       const pending = window.pendingLoginData || {};
+      const sessionToken = data.token;
+      if(!sessionToken){
+        throw new Error('Profile saved, but the secure calendar session was not returned. Please try again.');
+      }
+
+      localStorage.setItem('token', sessionToken);
+      localStorage.removeItem('onboarding_token');
+
+      window.pendingLoginData = {
+        ...pending,
+        token: sessionToken,
+        user: { ...savedUser }
+      };
+
       const pinRequired =
         pending.must_change_pin === true ||
         pending.user?.must_change_pin === true ||
         savedUser.must_change_pin === true ||
         savedUser.pin_exists === false;
 
-      window.pendingLoginData = {
-        ...pending,
-        token: localStorage.getItem('onboarding_token') || localStorage.getItem('token'),
-        user: { ...savedUser }
-      };
-
       if(pinRequired){
         window.firstLoginPinSetup = true;
         const pinModal = document.getElementById('changePinModal');
         if(pinModal) pinModal.style.display = 'flex';
       }else{
-        const usernameInput = document.getElementById('userName');
-        const pinInput = document.getElementById('userPin');
-        if(usernameInput) usernameInput.value = savedUser.username || window.firstLoginTargetUsername || '';
-        if(pinInput) pinInput.value = '';
         window.firstLoginPinSetup = false;
-        await checkLogin();
+        await finishFirstLoginSession(savedUser, sessionToken);
       }
 
     }
