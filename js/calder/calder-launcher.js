@@ -677,25 +677,26 @@
         const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/sources/ndow-search?q=" + encodeURIComponent(query), { headers: { "Authorization": "Bearer " + token } });
         const body = await response.json().catch(function () { return {}; });
         const status = messages.querySelector(".calder-message.calder-reply:last-child");
-        if (status && status.textContent === "I'll search official NDOW material and put the answer together…") status.remove();
+        if (status && status.textContent === "I'll search approved NDOW and Nevada regulations material and put the answer together…") status.remove();
         if (!response.ok || !body.success) throw new Error(body.error || "NDOW source search failed.");
         const results = Array.isArray(body.results) ? body.results : [];
         if (!results.length) {
-          addMessage("I couldn't find a reliable answer in the official NDOW pages I checked. I'm not authorized to search general web sources. Try rephrasing the question or contact NDOW directly.", "calder-reply");
+          addMessage("I couldn't find a reliable answer in the approved NDOW or Nevada eRegulations sources I checked. I’m not authorized to search general web sources. Try rephrasing the question or contact NDOW directly.", "calder-reply");
           return;
         }
 
         if (body.answer) {
           addMessage(body.answer, "calder-reply");
         } else {
-          addMessage("I found relevant official NDOW pages, but couldn't confidently assemble a direct answer from the retrieved text. Here are the sources I found:", "calder-reply");
+          addMessage("I found relevant approved source pages, but couldn’t confidently assemble a direct answer from the retrieved text. Here are the sources I found:", "calder-reply");
         }
 
         const card = document.createElement("div");
         card.className = "calder-message calder-reply calder-ndow-results";
         card.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:6px;";
         const sourceHeading = document.createElement("strong");
-        sourceHeading.textContent = results.length === 1 ? "Official NDOW source" : "Official NDOW sources";
+        const hasRegulationsSource = results.some(function (item) { try { return ["www.eregulations.com", "eregulations.com"].includes(new URL(item.url).hostname); } catch (_) { return false; } });
+        sourceHeading.textContent = hasRegulationsSource ? (results.length === 1 ? "Nevada regulations source" : "Nevada regulations and wildlife sources") : (results.length === 1 ? "Official NDOW source" : "Official NDOW sources");
         card.appendChild(sourceHeading);
 
         results.slice(0, 3).forEach(function (item) {
@@ -703,13 +704,13 @@
           link.href = item.url;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          link.textContent = item.title || "Open official NDOW page";
+          link.textContent = item.title || "Open approved source page";
           link.style.cssText = "font-weight:600;color:#19304B;";
           card.appendChild(link);
         });
         messages.appendChild(card);
         messages.scrollTop = messages.scrollHeight;
-        addMessage("Source: NDOW official website • Retrieved " + new Date(body.retrievedAt || Date.now()).toLocaleString(), "calder-reply");
+        addMessage("Source: " + (body.source || "Approved NDOW source") + " • Retrieved " + new Date(body.retrievedAt || Date.now()).toLocaleString(), "calder-reply");
         if (body.answer && results.length) {
           try {
             const assessmentResponse = await fetch(
@@ -736,7 +737,7 @@
               prompt.className = "calder-message calder-retention-prompt";
               prompt.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:8px;border-color:#F29647;background:#FFF9F2;";
               const promptText = document.createElement("div");
-              promptText.textContent = "I found useful NDOW information that may help with future questions. Would you like me to remember it?";
+              promptText.textContent = "I found useful information from an approved wildlife or regulations source that may help with future questions. Would you like me to remember it?";
               promptText.style.cssText = "font-weight:600;color:#19304B;";
               const buttonRow = document.createElement("div");
               buttonRow.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;";
@@ -777,7 +778,7 @@
                   const saved = await saveResponse.json().catch(function () { return {}; });
                   if (!saveResponse.ok || !saved.success) throw new Error(saved.error || "Save failed.");
                   prompt.remove();
-                  addMessage("Saved. I'll be able to reuse this verified NDOW information and its source references in future searches.", "calder-reply");
+                  addMessage("Saved. I’ll be able to reuse this approved wildlife or regulations information and its source references in future searches.", "calder-reply");
                 } catch (saveError) {
                   console.error("Calder knowledge save failed:", saveError);
                   yesButton.disabled = false;
@@ -797,7 +798,7 @@
         }
       } catch (error) {
         console.error("Calder NDOW lookup failed:", error);
-        addMessage("I couldn't retrieve official NDOW information right now. Please try again later. I won't search other websites.", "calder-error");
+        addMessage("I couldn’t retrieve information from the approved NDOW or Nevada eRegulations sources right now. Please try again later. I won’t search other websites.", "calder-error");
       } finally { sendButton.disabled = false; input.disabled = false; input.focus(); }
     }
 
@@ -915,7 +916,7 @@
         } else if (plan.intent === "weather") {
           answerWeatherQuestion(question, plan.search_terms);
         } else {
-          addMessage("I am not authorized to access general information from the web except NDOW information from that site and weather information.", "calder-reply");
+          addMessage("I am not authorized to search the general web. I can use official NDOW information, Nevada eRegulations for hunting and fishing rules, and National Weather Service weather information.", "calder-reply");
         }
       } catch (error) {
         console.error("Calder reasoning request failed:", error);
