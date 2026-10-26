@@ -48,24 +48,48 @@
       const originalLabel = aboutButton.textContent;
       aboutButton.textContent = "Opening Help…";
       try {
-        const response = await fetch(
-          "https://ndow-calendar-server.onrender.com/api/help/topics",
-          { headers: { Authorization: "Bearer " + (localStorage.getItem("token") || "") } }
-        );
-        if (!response.ok) throw new Error("Help topics returned HTTP " + response.status);
-        const payload = await response.json();
-        const topics = payload.topics || payload;
-        const article = topics.find(function (topic) {
-          return String(topic.title || "").trim().toLowerCase() ===
-            "calder: information access, privacy & learning";
-        });
-        if (!article || typeof window.openHelpArticleById !== "function") {
-          throw new Error("The Calder Help article or Help viewer is unavailable.");
+        let topics = Array.isArray(window.helpTopics) ? window.helpTopics : [];
+        if (typeof window.loadHelpTopics === "function") {
+          await window.loadHelpTopics();
+          topics = Array.isArray(window.helpTopics) ? window.helpTopics : topics;
         }
-        window.openHelpArticleById(article.id);
+        const normalize = value => String(value || "")
+          .toLowerCase()
+          .replace(/&amp;/g, "&")
+          .replace(/[^a-z0-9]+/g, " ")
+          .trim();
+        const targetTitle = normalize("Calder: Information Access, Privacy & Learning");
+        let article = topics.find(topic => normalize(topic.title) === targetTitle);
+        if (!article) {
+          article = topics.find(topic => {
+            const title = normalize(topic.title);
+            const key = normalize(topic.topic_key);
+            const tags = normalize(Array.isArray(topic.tags) ? topic.tags.join(" ") : topic.tags);
+            return (
+              (title.includes("calder") && title.includes("privacy") && title.includes("learning")) ||
+              (key.includes("calder") && key.includes("privacy")) ||
+              (tags.includes("calder") && tags.includes("privacy") && title.includes("information access"))
+            );
+          });
+        }
+        if (!article) {
+          throw new Error("Help article not found. Available Calder titles: " +
+            topics.filter(topic => normalize(topic.title).includes("calder"))
+              .map(topic => topic.title).join(" | "));
+        }
+        if (typeof window.openHelpArticleById === "function") {
+          await window.openHelpArticleById(article.id);
+        } else if (typeof window.openHelpModal === "function" && typeof window.openHelpTopic === "function") {
+          await window.openHelpModal();
+          window.openHelpTopic(article);
+        } else {
+          throw new Error("System Help viewer functions are not available on this page.");
+        }
       } catch (error) {
         console.error("Unable to open Calder Help article:", error);
-        addMessage("I couldn’t open the Calder privacy article in System Help. Please open Help from the portal toolbar and search for “Calder: Information Access, Privacy & Learning.”", "calder-error");
+        addMessage("I couldn’t open the Calder privacy article in System Help. " +
+          (error && error.message ? error.message : "Please open Help from the portal toolbar and search for the Calder privacy article."),
+          "calder-error");
       } finally {
         aboutButton.disabled = false;
         aboutButton.textContent = originalLabel;
