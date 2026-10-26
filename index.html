@@ -5185,16 +5185,9 @@ try {
       const validationMessage =
         String(data.message || '').trim().toLowerCase();
 
-      // An unknown portal username may be a first-time volunteer.
-      // Only this specific response starts onboarding; disabled accounts
-      // and service errors remain on the normal login screen.
-      if (validationMessage === 'username not found.') {
-        document.getElementById('loginError').innerText = '';
-        document.getElementById('pinSection').style.display = 'none';
-        openFirstLoginNdowModal(true, username);
-        return;
-      }
-
+      // Unknown usernames must not start onboarding automatically.
+      // Only an existing account explicitly flagged for first-time setup
+      // is routed to onboarding. All other validation failures stay here.
       document.getElementById('loginError').innerText =
         data.message || 'Unable to validate username.';
 
