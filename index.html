@@ -12899,9 +12899,10 @@ async function submitFirstLoginNdowCredentials(){
       const onboardingModal = document.getElementById('firstLoginNdowModal');
       if(onboardingModal) onboardingModal.style.display = 'none';
 
-      const pinModal = document.getElementById('changePinModal');
-      if(pinModal) pinModal.style.display = 'flex';
+      // Identity verification succeeded. Require profile review and completion
+      // before presenting the first-time PIN screen.
       if(passwordInput) passwordInput.value = '';
+      openProfileModal();
       return;
     }else if(window.firstLoginExistingAccountMode === true){
       const existingPortalUsername = String(window.firstLoginTargetUsername || usernameInput?.value || '').trim();
@@ -12937,9 +12938,10 @@ async function submitFirstLoginNdowCredentials(){
       const onboardingModal = document.getElementById('firstLoginNdowModal');
       if(onboardingModal) onboardingModal.style.display = 'none';
 
-      const pinModal = document.getElementById('changePinModal');
-      if(pinModal) pinModal.style.display = 'flex';
+      // Identity verification succeeded. Require profile review and completion
+      // before presenting the first-time PIN screen.
       if(passwordInput) passwordInput.value = '';
+      openProfileModal();
       return;
     }else{
       const token = localStorage.getItem('token');
