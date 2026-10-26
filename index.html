@@ -5189,8 +5189,21 @@ try {
 
     if (!data.success) {
 
+      const validationMessage =
+        String(data.message || '').trim().toLowerCase();
+
+      // An unknown portal username may be a first-time volunteer.
+      // Only this specific response starts onboarding; disabled accounts
+      // and service errors remain on the normal login screen.
+      if (validationMessage === 'username not found.') {
+        document.getElementById('loginError').innerText = '';
+        document.getElementById('pinSection').style.display = 'none';
+        openFirstLoginNdowModal(true, username);
+        return;
+      }
+
       document.getElementById('loginError').innerText =
-        data.message || 'Username not found.';
+        data.message || 'Unable to validate username.';
 
       return;
 
@@ -12808,7 +12821,7 @@ async function startFirstLoginOnboardingTest(saveMode = false){
   }
 }
 
-function openFirstLoginNdowModal(createAccount = false){
+function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
   const modal = document.getElementById('firstLoginNdowModal');
   const email = document.getElementById('firstLoginNdowEmail');
   const password = document.getElementById('firstLoginNdowPassword');
@@ -12821,7 +12834,7 @@ function openFirstLoginNdowModal(createAccount = false){
 
   window.firstLoginCreateAccountMode = createAccount === true;
   if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : 'Retrieve My NDOW Profile';
-  if(username) username.value = '';
+  if(username) username.value = createAccount ? String(suggestedUsername || '').trim() : '';
   if(username) username.style.display = createAccount ? 'block' : 'none';
   if(usernameLabel) usernameLabel.style.display = createAccount ? 'block' : 'none';
   if(modeNote) modeNote.style.display = createAccount ? 'block' : 'none';
