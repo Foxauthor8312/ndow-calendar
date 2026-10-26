@@ -14356,6 +14356,10 @@ async function saveProfile(){
     user.home_longitude =
       homeLongitude;
 
+    if(profileFirstLoginMode){
+      user.onboarding_completed = true;
+    }
+
     delete user.home_address_id;
 
 
