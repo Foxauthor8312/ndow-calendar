@@ -13238,8 +13238,18 @@ async function loadProfile(){
       setValue('profileEmail', draft.email || user.email || '');
       setValue('profilePhone', draft.phone || user.phone || '');
       setValue('profileAddress', draft.home_address || user.home_address || '');
-      setValue('profileCity', draft.home_city || user.home_city || '');
-      setValue('profileState', draft.home_state || user.home_state || '');
+      // Never display a stale/encoded city from an earlier bad extraction.
+      const cityCandidate = String(draft.home_city || user.home_city || '').trim();
+      const cleanCity = cityCandidate.length <= 60 &&
+        /^[\\p{L}][\\p{L} .'-]*$/u.test(cityCandidate)
+          ? cityCandidate
+          : '';
+      setValue('profileCity', cleanCity);
+      // NDOW may return state as a country-prefixed code (for example US-NV).
+      const stateCandidate = String(draft.home_state || user.home_state || '').trim().toUpperCase();
+      const stateMatch = stateCandidate.match(/^(?:US|USA)[-_: ]([A-Z]{2})$/);
+      const cleanState = stateMatch ? stateMatch[1] : (/^[A-Z]{2}$/.test(stateCandidate) ? stateCandidate : '');
+      setValue('profileState', cleanState);
       setValue('profileZip', draft.home_zip || user.home_zip || '');
       setValue('profileLatitude', draft.home_latitude || user.home_latitude || '');
       setValue('profileLongitude', draft.home_longitude || user.home_longitude || '');
