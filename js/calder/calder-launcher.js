@@ -95,6 +95,7 @@
     }
 
     let pendingCalendarQuestion = "";
+    let pendingWeatherQuestion = "";
 
     function hasCalendarTimeframe(question) {
       const q = question.toLowerCase();
@@ -649,6 +650,7 @@
       let location = locationMatch ? locationMatch[1].trim() : "";
       location = location.replace(/^(?:the\\s+)?(?:town|city|village|community)\\s+of\\s+/i, "").replace(/^(?:the\\s+)?(?:weather|forecast)\\s+/i, "").replace(/\\s+/g, " ").trim();
       if (!location || /^(?:weather|forecast|tomorrow|today|tonight)$/i.test(location)) {
+        pendingWeatherQuestion = sourceQuestion;
         addMessage("Which town, city, park, or lake should I check? Please include the state if the name might be ambiguous.", "calder-reply");
         return;
       }
@@ -688,6 +690,13 @@
       if (!question) return;
       addMessage(question, "calder-user");
       input.value = "";
+
+      if (pendingWeatherQuestion) {
+        const originalWeatherQuestion = pendingWeatherQuestion;
+        pendingWeatherQuestion = "";
+        answerWeatherQuestion(originalWeatherQuestion + " " + question, originalWeatherQuestion + " " + question);
+        return;
+      }
 
       if (pendingCalendarQuestion) {
         const originalQuestion = pendingCalendarQuestion;
