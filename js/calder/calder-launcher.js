@@ -873,13 +873,6 @@
         return;
       }
 
-      // Acknowledge explicit corrections/contributions before routing as a new lookup.
-      const contributionSignal = /\b(?:actually|correction|that's not right|that is not right|you are wrong|you're wrong|i told you|i just told you|the answer is|the correct answer is|it should be|that should be|no[, ]+the|not quite|you missed|let me correct|for your information|i know that|i can tell you)\b/i;
-      if (contributionSignal.test(question)) {
-        addMessage("Thanks for correcting me or adding that information. I should respond to what you contributed instead of ignoring it. I’ll treat it as user-provided—not verified NDOW guidance—until an approved source confirms it. If you want, tell me “suggest keywords” and I’ll help identify reusable search terms rather than treating this as a one-off answer.", "calder-reply");
-        return;
-      }
-
       const token = localStorage.getItem("token");
       if (!token) {
         addMessage("Please sign in to the NDOW Volunteer Calendar first so I can securely look up your information.", "calder-error");
@@ -897,7 +890,21 @@
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token
           },
-          body: JSON.stringify({ question: question })
+          body: JSON.stringify({
+            question: question,
+            conversation: Array.from(messages.children)
+              .filter(function (item) {
+                return item.classList.contains("calder-user") || item.classList.contains("calder-reply");
+              })
+              .slice(-9, -1)
+              .map(function (item) {
+                return {
+                  role: item.classList.contains("calder-user") ? "user" : "assistant",
+                  content: String(item.textContent || "").trim().slice(0, 1200)
+                };
+              })
+              .filter(function (item) { return item.content; })
+          })
         });
         const body = await response.json().catch(function () { return {}; });
         if (!response.ok || !body.success || !body.plan) {
@@ -908,7 +915,9 @@
         const priorStatus = messages.querySelector(".calder-message.calder-reply:last-child");
         if (priorStatus && priorStatus.textContent === "Let me understand what you're asking…") priorStatus.remove();
 
-        if (plan.intent === "my_hours") {
+        if (plan.intent === "user_contribution") {
+          addMessage(plan.clarification || "Thanks for adding that context. I’ll treat it as user-provided information, not verified guidance. I can help identify reusable search keywords for you to review.", "calder-reply");
+        } else if (plan.intent === "my_hours") {
           answerHoursQuestion(question + " " + (plan.timeframe || ""));
         } else if (plan.intent === "calendar_search") {
           const calendarQuestion = [question, plan.search_terms, plan.timeframe].filter(Boolean).join(" ");
