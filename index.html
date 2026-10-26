@@ -5218,8 +5218,15 @@ try {
 
     document.getElementById('loginError').innerText = '';
 
-    // Flagged existing accounts use the same NDOW verification flow as new volunteers.
-    if (data.user.needs_first_login === true) {
+    // Onboarding must take priority over every PIN-change path.
+    // Treat a missing onboarding flag as incomplete when the account requires
+    // a PIN change; this prevents older API responses from skipping verification.
+    const requiresFirstLogin =
+      data.user.needs_first_login === true ||
+      (data.user.must_change_pin === true &&
+       data.user.onboarding_completed !== true);
+
+    if (requiresFirstLogin) {
       document.getElementById('pinSection').style.display = 'none';
       document.getElementById('userName').disabled = false;
       openFirstLoginNdowModal(false, data.user.username);
