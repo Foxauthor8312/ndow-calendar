@@ -13113,6 +13113,12 @@ function openProfileModal(){
   const modal = document.getElementById('profileModal');
   if(!modal) return;
 
+  // First-login review must render outside appContent, which stays hidden
+  // until onboarding finishes. A child of display:none cannot be shown by z-index.
+  if(profileFirstLoginMode && modal.parentElement?.id === 'appContent'){
+    document.body.appendChild(modal);
+  }
+
   // Keep first-login profile review as a clean, isolated step. Never leave
   // the credential modal or PIN modal visible behind/over the review.
   if(profileFirstLoginMode){
