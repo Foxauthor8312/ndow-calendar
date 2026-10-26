@@ -644,15 +644,16 @@
     async function answerWeatherQuestion(question, searchTerms) {
       const token = localStorage.getItem("token");
       if (!token) { addMessage("Please sign in to the NDOW Volunteer Calendar first.", "calder-error"); return; }
-      const combined = (String(question || "") + " " + String(searchTerms || "")).toLowerCase();
-      const knownPlaces = ["Las Vegas", "Henderson", "Reno", "Carson City", "Elko", "Mesquite", "Pahrump", "Boulder City", "Fallon", "Ely", "Lake Mead", "Great Basin National Park"];
-      const location = knownPlaces.find(function (place) { return combined.includes(place.toLowerCase()); }) || "";
-      if (!location) {
-        addMessage("Which Nevada location should I check? For example, Las Vegas, Reno, Carson City, Elko, or Lake Mead.", "calder-reply");
+      const sourceQuestion = String(question || "").trim();
+      const locationMatch = sourceQuestion.match(/\\b(?:in|for|near|at)\\s+(?:(?:the\\s+)?(?:town|city|village|community)\\s+of\\s+)?(.+?)(?=\\s+(?:for\\s+)?(?:tomorrow|today|tonight|this\\s+afternoon|this\\s+evening|this\\s+weekend|next\\s+week|on\\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday))\\b|[?.!]|$)/i);
+      let location = locationMatch ? locationMatch[1].trim() : "";
+      location = location.replace(/^(?:the\\s+)?(?:town|city|village|community)\\s+of\\s+/i, "").replace(/^(?:the\\s+)?(?:weather|forecast)\\s+/i, "").replace(/\\s+/g, " ").trim();
+      if (!location || /^(?:weather|forecast|tomorrow|today|tonight)$/i.test(location)) {
+        addMessage("Which town, city, park, or lake should I check? Please include the state if the name might be ambiguous.", "calder-reply");
         return;
       }
       sendButton.disabled = true; input.disabled = true;
-      addMessage("I'll check the National Weather Service for " + location + "…", "calder-reply");
+      addMessage("I'll look up " + location + " and check the National Weather Service forecast…", "calder-reply");
       try {
         const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/sources/weather?location=" + encodeURIComponent(location), { headers: { "Authorization": "Bearer " + token } });
         const body = await response.json().catch(function () { return {}; });
