@@ -12913,7 +12913,10 @@ async function submitFirstLoginNdowCredentials(){
         throw new Error((result.error || 'Unable to verify your NDOW account.') + remaining);
       }
 
-      localStorage.setItem('token', result.token);
+      // Keep the short-lived onboarding credential separate from a normal
+      // calendar session. The normal token is created only after PIN login.
+      localStorage.removeItem('token');
+      localStorage.setItem('onboarding_token', result.token);
       localStorage.setItem('user', JSON.stringify({
         ...(result.user || {}),
         must_change_pin: result.must_change_pin === true,
@@ -12959,7 +12962,10 @@ async function submitFirstLoginNdowCredentials(){
         throw new Error((result.error || 'Unable to verify your NDOW account.') + remaining);
       }
 
-      localStorage.setItem('token', result.token);
+      // Keep the short-lived onboarding credential separate from a normal
+      // calendar session. The normal token is created only after PIN login.
+      localStorage.removeItem('token');
+      localStorage.setItem('onboarding_token', result.token);
       localStorage.setItem('user', JSON.stringify({
         ...(result.user || {}),
         must_change_pin: result.must_change_pin === true,
@@ -13970,13 +13976,14 @@ async function saveProfile(){
       return;
     }
 
-    const token =
-      localStorage.getItem(
-        'token'
-      );
+    const token = profileFirstLoginMode
+      ? localStorage.getItem('onboarding_token')
+      : localStorage.getItem('token');
 
     if(!token){
-      throw new Error('Your session has expired. Please verify your NDOW account again.');
+      throw new Error(profileFirstLoginMode
+        ? 'Your onboarding session has expired. Please verify your NDOW account again.'
+        : 'Your session has expired. Please sign in again.');
     }
 
     // Re-geocode the address the new volunteer has just reviewed.
@@ -14259,7 +14266,7 @@ async function saveProfile(){
 
       window.pendingLoginData = {
         ...pending,
-        token: localStorage.getItem('token'),
+        token: localStorage.getItem('onboarding_token') || localStorage.getItem('token'),
         user: { ...savedUser }
       };
 
