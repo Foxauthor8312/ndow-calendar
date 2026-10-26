@@ -5218,12 +5218,14 @@ try {
 
     document.getElementById('loginError').innerText = '';
 
-    // The must_change_pin flag always requires first-time onboarding.
-    // NDOW verification and profile confirmation must happen before PIN setup,
-    // even if an older/stale record says onboarding_completed is true.
+    // Follow the backend's explicit account-state scan. The first-PIN flag
+    // has highest priority; otherwise any missing profile field or missing PIN
+    // routes to onboarding/profile confirmation before login can continue.
     const requiresFirstLogin =
-      data.user.needs_first_login === true ||
-      data.user.must_change_pin === true;
+      data.user.must_change_pin === true ||
+      data.user.profile_complete !== true ||
+      data.user.pin_exists !== true ||
+      data.user.needs_first_login === true;
 
     if (requiresFirstLogin) {
       document.getElementById('pinSection').style.display = 'none';
