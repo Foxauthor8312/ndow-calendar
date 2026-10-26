@@ -2225,7 +2225,9 @@ async function submitChangePin(){
 
           headers:{
             'Content-Type':
-              'application/json'
+              'application/json',
+            'Authorization':
+              'Bearer ' + (window.pendingLoginData?.token || localStorage.getItem('token') || '')
           },
 
           body:JSON.stringify({
