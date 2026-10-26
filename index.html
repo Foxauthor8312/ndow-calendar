@@ -12843,11 +12843,14 @@ function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
   const submitButton = document.getElementById('firstLoginNdowSubmit');
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
+  const resolvedPortalUsername = String(suggestedUsername || user.username || '').trim();
   window.firstLoginCreateAccountMode = createAccount === true;
-  window.firstLoginExistingAccountMode = createAccount !== true && !!String(suggestedUsername || '').trim();
-  window.firstLoginTargetUsername = String(suggestedUsername || '').trim();
-  if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : (window.firstLoginExistingAccountMode ? 'Verify NDOW Account & Continue' : 'Retrieve My NDOW Profile');
-  if(username) username.value = createAccount ? String(suggestedUsername || '').trim() : String(suggestedUsername || user.username || '').trim();
+  // A known portal user must verify the existing NDOW account. Do not silently
+  // route this first-time setup screen into a different profile-retrieval flow.
+  window.firstLoginExistingAccountMode = createAccount !== true && !!resolvedPortalUsername;
+  window.firstLoginTargetUsername = resolvedPortalUsername;
+  if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : (window.firstLoginExistingAccountMode ? 'Verify NDOW Account & Continue' : 'Sign In to NDOW & Retrieve Profile');
+  if(username) username.value = createAccount ? String(suggestedUsername || '').trim() : resolvedPortalUsername;
   if(username) username.style.display = createAccount ? 'block' : 'none';
   if(usernameLabel) usernameLabel.style.display = createAccount ? 'block' : 'none';
   if(modeNote) modeNote.style.display = createAccount ? 'block' : 'none';
@@ -12961,6 +12964,9 @@ async function submitFirstLoginNdowCredentials(){
       openProfileModal();
       return;
     }else{
+      throw new Error('I could not identify your existing portal account. Please return to the login screen and enter your portal username, then continue with NDOW account verification.');
+      /* Legacy profile-retrieval path intentionally disabled: first-time setup
+         must verify NDOW credentials rather than skip directly to profile data. */
       const token = localStorage.getItem('token');
       if(!token) throw new Error('Your portal session has expired. Please sign in again.');
 
