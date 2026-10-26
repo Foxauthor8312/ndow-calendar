@@ -12854,6 +12854,8 @@ function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
   if(username) username.style.display = createAccount ? 'block' : 'none';
   if(usernameLabel) usernameLabel.style.display = createAccount ? 'block' : 'none';
   if(modeNote) modeNote.style.display = createAccount ? 'block' : 'none';
+  const usernameError = 'Choose a portal username of 3–60 characters using letters, numbers, periods, underscores, or hyphens.';
+  if(error && !createAccount && error.textContent.trim() === usernameError) error.textContent = '';
   if(email){
     email.value = (createAccount || window.firstLoginExistingAccountMode)
       ? ''
@@ -13007,7 +13009,11 @@ async function submitFirstLoginNdowCredentials(){
     if(passwordInput) passwordInput.value = '';
     if(button){
       button.disabled = false;
-      button.textContent = createAccount ? 'Verify NDOW Account' : 'Retrieve My NDOW Profile';
+      button.textContent = createAccount
+        ? 'Verify NDOW Account'
+        : (window.firstLoginExistingAccountMode === true
+            ? 'Verify NDOW Account & Continue'
+            : 'Sign In to NDOW & Retrieve Profile');
     }
   }
 }
