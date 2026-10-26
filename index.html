@@ -5718,7 +5718,11 @@ if(data.user?.onboarding_completed === false){
     onboardingOverlay.style.opacity = '0';
   }
 
-  openFirstLoginNdowModal();
+  if(window.firstLoginNdowProfileDraft){
+    openProfileModal();
+  }else{
+    openFirstLoginNdowModal();
+  }
 }else if(new URLSearchParams(window.location.search).get('onboardingSaveTest') === '1'){
   await startFirstLoginOnboardingTest(true);
 }else if(new URLSearchParams(window.location.search).get('onboardingTest') === '1'){
@@ -12872,8 +12876,18 @@ async function submitFirstLoginNdowCredentials(){
       localStorage.setItem('token', result.token);
       localStorage.setItem('user', JSON.stringify(result.user || {}));
       localStorage.setItem('email', result.user?.email || email);
-      window.pendingLoginData = { user: result.user };
+      window.pendingLoginData = result;
       window.firstLoginPortalUsername = result.user?.username || username;
+      window.firstLoginNdowProfileDraft = result.profile || {};
+      profileFirstLoginMode = true;
+
+      const onboardingModal = document.getElementById('firstLoginNdowModal');
+      if(onboardingModal) onboardingModal.style.display = 'none';
+
+      const pinModal = document.getElementById('changePinModal');
+      if(pinModal) pinModal.style.display = 'flex';
+      if(passwordInput) passwordInput.value = '';
+      return;
     }else{
       const token = localStorage.getItem('token');
       if(!token) throw new Error('Your portal session has expired. Please sign in again.');
