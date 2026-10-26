@@ -14363,8 +14363,10 @@ async function saveProfile(){
       };
 
       const pinSetupRequired =
-        pending.pin_exists !== true &&
-        pending.user?.pin_exists !== true;
+        pending.must_change_pin === true ||
+        pending.user?.must_change_pin === true ||
+        savedUser.must_change_pin === true ||
+        (pending.pin_exists !== true && pending.user?.pin_exists !== true);
 
       if(pinSetupRequired){
         savedUser.must_change_pin = true;
