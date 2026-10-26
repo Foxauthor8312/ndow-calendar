@@ -13172,6 +13172,8 @@ async function loadProfile(){
       window.firstLoginNdowProfileDraft || null;
 
     if(ndowDraft){
+      profile.full_name = ndowDraft.full_name || profile.full_name || '';
+      profile.ndow_customer_id = ndowDraft.ndow_customer_id || profile.ndow_customer_id || '';
       profile.email = ndowDraft.email || profile.email || '';
       profile.phone = ndowDraft.phone || profile.phone || '';
       profile.home_address = ndowDraft.home_address || profile.home_address || '';
@@ -13208,6 +13210,26 @@ async function loadProfile(){
 
     }
 
+
+    const fullName =
+      document.getElementById('profileFullName');
+
+    if(fullName){
+      fullName.value = profile.full_name || user.full_name || '';
+      fullName.readOnly = true;
+      fullName.setAttribute('aria-readonly', 'true');
+    }
+
+    const customerIdField =
+      document.getElementById('profileCustomerId');
+
+    if(customerIdField){
+      customerIdField.value =
+        profile.ndow_customer_id ||
+        user.ndow_customer_id ||
+        user.ndow_id ||
+        '';
+    }
 
     const email =
       document.getElementById(
@@ -13364,6 +13386,15 @@ async function loadProfile(){
      Keep Local User Object Current
     ----------------------------------------------
     */
+
+    user.full_name =
+      profile.full_name || user.full_name || '';
+
+    user.ndow_customer_id =
+      profile.ndow_customer_id ||
+      user.ndow_customer_id ||
+      user.ndow_id ||
+      '';
 
     user.email =
       profile.email || '';
@@ -13885,10 +13916,41 @@ async function saveProfile(){
 
   try{
 
+    const requiredProfileFields = [
+      ['profileFullName', 'Name'],
+      ['profileAddress', 'Street address'],
+      ['profileCity', 'City'],
+      ['profileState', 'State'],
+      ['profileZip', 'ZIP code'],
+      ['profilePhone', 'Phone'],
+      ['profileEmail', 'Email']
+    ];
+
+    const missingFields = requiredProfileFields
+      .filter(([id]) => !String(document.getElementById(id)?.value || '').trim())
+      .map(([, label]) => label);
+
+    const emailValue = String(document.getElementById('profileEmail')?.value || '').trim();
+    if(emailValue && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)){
+      missingFields.push('a valid email address');
+    }
+
+    if(missingFields.length){
+      const message = document.getElementById('profileMessage');
+      if(message){
+        message.innerText = 'Please complete the required fields: ' + [...new Set(missingFields)].join(', ') + '.';
+      }
+      return;
+    }
+
     const token =
       localStorage.getItem(
         'token'
       );
+
+    if(!token){
+      throw new Error('Your session has expired. Please verify your NDOW account again.');
+    }
 
     // Re-geocode the address the new volunteer has just reviewed.
     if(profileFirstLoginMode){
@@ -21280,7 +21342,31 @@ geographic analysis.
         "
       >
 
-      <label>
+      <label for="profileFullName">
+        Full Name (from NDOW)
+      </label>
+
+      <input
+        id="profileFullName"
+        type="text"
+        readonly
+        aria-readonly="true"
+        style="
+          width:100%;
+          padding:10px;
+          margin-top:6px;
+          margin-bottom:14px;
+          border:1px solid #d1d5db;
+          border-radius:8px;
+          box-sizing:border-box;
+          background:#f3f4f6;
+          color:#6b7280;
+        "
+      >
+
+      <input id="profileCustomerId" type="hidden" value="">
+
+      <label for="profileEmail">
         Email Address
       </label>
 
