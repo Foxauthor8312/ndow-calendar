@@ -26,7 +26,8 @@
     panel.innerHTML =
       '<div class="calder-header">' +
         '<img src="' + avatarUrl + '" alt="Calder, the NDOW Volunteer Assistant">' +
-        '<div class="calder-heading"><strong>Calder</strong><span>NDOW Volunteer Assistant</span></div>' +
+        '<div class="calder-heading"><strong>Calder</strong><span>NDOW Volunteer Assistant</span>' +
+        '<button class="calder-about" type="button">About Calder &amp; Privacy</button></div>' +
         '<button class="calder-close" type="button" aria-label="Exit Calder chat">Exit Chat</button>' +
       '</div>' +
       '<div class="calder-messages" aria-live="polite">' +
@@ -41,6 +42,35 @@
     document.body.appendChild(panel);
 
     const closeButton = panel.querySelector(".calder-close");
+    const aboutButton = panel.querySelector(".calder-about");
+    aboutButton.addEventListener("click", async function () {
+      aboutButton.disabled = true;
+      const originalLabel = aboutButton.textContent;
+      aboutButton.textContent = "Opening Help…";
+      try {
+        const response = await fetch(
+          "https://ndow-calendar-server.onrender.com/api/help/topics",
+          { headers: { Authorization: "Bearer " + (localStorage.getItem("token") || "") } }
+        );
+        if (!response.ok) throw new Error("Help topics returned HTTP " + response.status);
+        const payload = await response.json();
+        const topics = payload.topics || payload;
+        const article = topics.find(function (topic) {
+          return String(topic.title || "").trim().toLowerCase() ===
+            "calder: information access, privacy & learning";
+        });
+        if (!article || typeof window.openHelpArticleById !== "function") {
+          throw new Error("The Calder Help article or Help viewer is unavailable.");
+        }
+        window.openHelpArticleById(article.id);
+      } catch (error) {
+        console.error("Unable to open Calder Help article:", error);
+        addMessage("I couldn’t open the Calder privacy article in System Help. Please open Help from the portal toolbar and search for “Calder: Information Access, Privacy & Learning.”", "calder-error");
+      } finally {
+        aboutButton.disabled = false;
+        aboutButton.textContent = originalLabel;
+      }
+    });
     const messages = panel.querySelector(".calder-messages");
     const form = panel.querySelector(".calder-composer");
     const input = form.querySelector('input[name="message"]');
