@@ -12829,6 +12829,11 @@ async function startFirstLoginOnboardingTest(saveMode = false){
 }
 
 function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
+  // First-login verification must never leave an old PIN modal covering the
+  // NDOW credential or profile-review steps.
+  const stalePinModal = document.getElementById('changePinModal');
+  if(stalePinModal) stalePinModal.style.display = 'none';
+
   const modal = document.getElementById('firstLoginNdowModal');
   const email = document.getElementById('firstLoginNdowEmail');
   const password = document.getElementById('firstLoginNdowPassword');
@@ -13094,6 +13099,13 @@ function openProfileModal(){
         ? 'PREVIEW ONLY — review the retrieved details. Nothing will be saved to your portal profile.'
         : 'Please review and complete your profile before continuing.';
 
+  }
+
+  if(profileFirstLoginMode){
+    // The profile review must be visible above any leftover login/PIN layer.
+    const pinModal = document.getElementById('changePinModal');
+    if(pinModal) pinModal.style.display = 'none';
+    modal.style.zIndex = '100004';
   }
 
   loadProfile();
