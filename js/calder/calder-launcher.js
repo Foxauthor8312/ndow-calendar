@@ -737,8 +737,16 @@
               prompt.className = "calder-message calder-retention-prompt";
               prompt.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:8px;border-color:#F29647;background:#FFF9F2;";
               const promptText = document.createElement("div");
-              promptText.textContent = "I found useful information from an approved wildlife or regulations source that may help with future questions. Would you like me to remember it?";
+              promptText.textContent = "I found information that may be useful beyond this question. Review the suggested search keywords, edit them if needed, and choose whether to save them with the source reference.";
               promptText.style.cssText = "font-weight:600;color:#19304B;";
+              const keywordLabel = document.createElement("label");
+              keywordLabel.textContent = "Suggested reusable keywords — edit these before saving:";
+              keywordLabel.style.cssText = "font-size:12px;font-weight:600;color:#19304B;";
+              const keywordInput = document.createElement("textarea");
+              keywordInput.rows = 3;
+              keywordInput.value = (Array.isArray(proposal.searchTerms) ? proposal.searchTerms : []).join(", ");
+              keywordInput.setAttribute("aria-label", "Suggested reusable keywords");
+              keywordInput.style.cssText = "box-sizing:border-box;width:100%;min-height:66px;resize:vertical;border:1px solid #DBE3EC;border-radius:7px;padding:8px;font:inherit;font-size:12px;color:#19304B;background:#fff;";
               const buttonRow = document.createElement("div");
               buttonRow.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;";
               const yesButton = document.createElement("button");
@@ -770,7 +778,7 @@
                         consent: true,
                         title: proposal.title,
                         summary: proposal.summary,
-                        searchTerms: proposal.searchTerms,
+                        searchTerms: [...new Set(keywordInput.value.split(",").map(function (term) { return term.trim(); }).filter(Boolean))],
                         sources: proposal.sources
                       })
                     }
@@ -778,7 +786,7 @@
                   const saved = await saveResponse.json().catch(function () { return {}; });
                   if (!saveResponse.ok || !saved.success) throw new Error(saved.error || "Save failed.");
                   prompt.remove();
-                  addMessage("Saved. I’ll be able to reuse this approved wildlife or regulations information and its source references in future searches.", "calder-reply");
+                  addMessage("Saved. I’ll reuse these approved search keywords to find relevant source material for future questions. I’ll still check the source itself for details that may change.", "calder-reply");
                 } catch (saveError) {
                   console.error("Calder knowledge save failed:", saveError);
                   yesButton.disabled = false;
@@ -788,7 +796,7 @@
                 }
               });
               buttonRow.append(yesButton, noButton);
-              prompt.append(promptText, buttonRow);
+              prompt.append(promptText, keywordLabel, keywordInput, buttonRow);
               messages.appendChild(prompt);
               messages.scrollTop = messages.scrollHeight;
             }
