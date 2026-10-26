@@ -698,6 +698,91 @@
         messages.appendChild(card);
         messages.scrollTop = messages.scrollHeight;
         addMessage("Source: NDOW official website • Retrieved " + new Date(body.retrievedAt || Date.now()).toLocaleString(), "calder-reply");
+        if (body.answer && results.length) {
+          try {
+            const assessmentResponse = await fetch(
+              "https://ndow-calendar-server.onrender.com/api/calder/knowledge/assess",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify({
+                  question: question,
+                  answer: body.answer,
+                  sources: results.slice(0, 3).map(function (item) {
+                    return { title: item.title, url: item.url };
+                  })
+                })
+              }
+            );
+            const assessment = await assessmentResponse.json().catch(function () { return {}; });
+            if (assessmentResponse.ok && assessment.success && assessment.shouldOffer && assessment.proposal) {
+              const proposal = assessment.proposal;
+              const prompt = document.createElement("div");
+              prompt.className = "calder-message calder-retention-prompt";
+              prompt.style.cssText = "display:flex;flex-direction:column;align-items:flex-start;gap:8px;border-color:#F29647;background:#FFF9F2;";
+              const promptText = document.createElement("div");
+              promptText.textContent = "I found useful NDOW information that may help with future questions. Would you like me to remember it?";
+              promptText.style.cssText = "font-weight:600;color:#19304B;";
+              const buttonRow = document.createElement("div");
+              buttonRow.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;";
+              const yesButton = document.createElement("button");
+              yesButton.type = "button";
+              yesButton.textContent = "Yes, remember this";
+              yesButton.style.cssText = "border:0;border-radius:7px;padding:7px 10px;background:#19304B;color:#fff;font-weight:600;cursor:pointer;";
+              const noButton = document.createElement("button");
+              noButton.type = "button";
+              noButton.textContent = "No thanks";
+              noButton.style.cssText = "border:1px solid #DBE3EC;border-radius:7px;padding:7px 10px;background:#fff;color:#19304B;cursor:pointer;";
+              noButton.addEventListener("click", function () {
+                prompt.remove();
+                addMessage("No problem. I won't save this information for future use.", "calder-reply");
+              });
+              yesButton.addEventListener("click", async function () {
+                yesButton.disabled = true;
+                noButton.disabled = true;
+                yesButton.textContent = "Saving…";
+                try {
+                  const saveResponse = await fetch(
+                    "https://ndow-calendar-server.onrender.com/api/calder/knowledge/remember",
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + token
+                      },
+                      body: JSON.stringify({
+                        consent: true,
+                        title: proposal.title,
+                        summary: proposal.summary,
+                        searchTerms: proposal.searchTerms,
+                        sources: proposal.sources
+                      })
+                    }
+                  );
+                  const saved = await saveResponse.json().catch(function () { return {}; });
+                  if (!saveResponse.ok || !saved.success) throw new Error(saved.error || "Save failed.");
+                  prompt.remove();
+                  addMessage("Saved. I'll be able to reuse this verified NDOW information and its source references in future searches.", "calder-reply");
+                } catch (saveError) {
+                  console.error("Calder knowledge save failed:", saveError);
+                  yesButton.disabled = false;
+                  noButton.disabled = false;
+                  yesButton.textContent = "Try saving again";
+                  addMessage("I couldn't save that knowledge yet. Nothing was marked as saved; please try again later.", "calder-error");
+                }
+              });
+              buttonRow.append(yesButton, noButton);
+              prompt.append(promptText, buttonRow);
+              messages.appendChild(prompt);
+              messages.scrollTop = messages.scrollHeight;
+            }
+          } catch (assessmentError) {
+            console.warn("Calder knowledge assessment unavailable:", assessmentError);
+          }
+        }
       } catch (error) {
         console.error("Calder NDOW lookup failed:", error);
         addMessage("I couldn't retrieve official NDOW information right now. Please try again later. I won't search other websites.", "calder-error");
