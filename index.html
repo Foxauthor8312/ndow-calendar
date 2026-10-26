@@ -14356,10 +14356,6 @@ async function saveProfile(){
     user.home_longitude =
       homeLongitude;
 
-    if(profileFirstLoginMode){
-      user.onboarding_completed = true;
-    }
-
     delete user.home_address_id;
 
 
@@ -14428,20 +14424,13 @@ async function saveProfile(){
         user: { ...savedUser }
       };
 
-      const pinRequired =
-        pending.must_change_pin === true ||
-        pending.user?.must_change_pin === true ||
-        savedUser.must_change_pin === true ||
-        savedUser.pin_exists === false;
-
-      if(pinRequired){
-        window.firstLoginPinSetup = true;
-        const pinModal = document.getElementById('changePinModal');
-        if(pinModal) pinModal.style.display = 'flex';
-      }else{
-        window.firstLoginPinSetup = false;
-        await finishFirstLoginSession(savedUser, sessionToken);
-      }
+      // First-time onboarding always requires PIN confirmation/setup,
+      // even if this portal record already contained a PIN.
+      savedUser.must_change_pin = true;
+      localStorage.setItem('user', JSON.stringify(savedUser));
+      window.firstLoginPinSetup = true;
+      const pinModal = document.getElementById('changePinModal');
+      if(pinModal) pinModal.style.display = 'flex';
 
     }
 
