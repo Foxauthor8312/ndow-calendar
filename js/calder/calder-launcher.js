@@ -873,6 +873,13 @@
         return;
       }
 
+      // Acknowledge explicit corrections/contributions before routing as a new lookup.
+      const contributionSignal = /\b(?:actually|correction|that's not right|that is not right|you are wrong|you're wrong|i told you|i just told you|the answer is|the correct answer is|it should be|that should be|no[, ]+the|not quite|you missed|let me correct|for your information|i know that|i can tell you)\b/i;
+      if (contributionSignal.test(question)) {
+        addMessage("Thanks for correcting me or adding that information. I should respond to what you contributed instead of ignoring it. I’ll treat it as user-provided—not verified NDOW guidance—until an approved source confirms it. If you want, tell me “suggest keywords” and I’ll help identify reusable search terms rather than treating this as a one-off answer.", "calder-reply");
+        return;
+      }
+
       const token = localStorage.getItem("token");
       if (!token) {
         addMessage("Please sign in to the NDOW Volunteer Calendar first so I can securely look up your information.", "calder-error");
