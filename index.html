@@ -12909,7 +12909,11 @@ async function submitFirstLoginNdowCredentials(){
       }
 
       localStorage.setItem('token', result.token);
-      localStorage.setItem('user', JSON.stringify(result.user || {}));
+      localStorage.setItem('user', JSON.stringify({
+        ...(result.user || {}),
+        must_change_pin: result.must_change_pin === true,
+        pin_exists: result.pin_exists === true
+      }));
       localStorage.setItem('email', result.user?.email || email);
       window.pendingLoginData = result;
       window.firstLoginPortalUsername = result.user?.username || username;
@@ -12951,7 +12955,11 @@ async function submitFirstLoginNdowCredentials(){
       }
 
       localStorage.setItem('token', result.token);
-      localStorage.setItem('user', JSON.stringify(result.user || {}));
+      localStorage.setItem('user', JSON.stringify({
+        ...(result.user || {}),
+        must_change_pin: result.must_change_pin === true,
+        pin_exists: result.pin_exists === true
+      }));
       localStorage.setItem('email', result.user?.email || email);
       window.pendingLoginData = result;
       window.firstLoginPortalUsername = result.user?.username || existingPortalUsername;
@@ -14203,14 +14211,31 @@ async function saveProfile(){
 
       // Profile review is complete; PIN setup is the next required step.
       const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
-      window.pendingLoginData = {
-        token: localStorage.getItem('token'),
-        user: savedUser
-      };
-      window.firstLoginPinSetup = true;
+      const pending = window.pendingLoginData || {};
+      const pinRequired =
+        pending.must_change_pin === true ||
+        pending.user?.must_change_pin === true ||
+        savedUser.must_change_pin === true ||
+        savedUser.pin_exists === false;
 
-      const pinModal = document.getElementById('changePinModal');
-      if(pinModal) pinModal.style.display = 'flex';
+      window.pendingLoginData = {
+        ...pending,
+        token: localStorage.getItem('token'),
+        user: { ...savedUser }
+      };
+
+      if(pinRequired){
+        window.firstLoginPinSetup = true;
+        const pinModal = document.getElementById('changePinModal');
+        if(pinModal) pinModal.style.display = 'flex';
+      }else{
+        const usernameInput = document.getElementById('userName');
+        const pinInput = document.getElementById('userPin');
+        if(usernameInput) usernameInput.value = savedUser.username || window.firstLoginTargetUsername || '';
+        if(pinInput) pinInput.value = '';
+        window.firstLoginPinSetup = false;
+        await checkLogin();
+      }
 
     }
 
