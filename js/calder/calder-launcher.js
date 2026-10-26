@@ -600,6 +600,87 @@
       if (event.key === "Escape" && panel.classList.contains("is-open")) closeCalderChat();
     });
 
+    async function answerNDOWQuestion(question, searchTerms) {
+      const token = localStorage.getItem("token");
+      if (!token) { addMessage("Please sign in to the NDOW Volunteer Calendar first.", "calder-error"); return; }
+      sendButton.disabled = true; input.disabled = true;
+      addMessage("I'll check the official NDOW website for you…", "calder-reply");
+      try {
+        const query = String(searchTerms || question || "").trim();
+        const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/sources/ndow-search?q=" + encodeURIComponent(query), { headers: { "Authorization": "Bearer " + token } });
+        const body = await response.json().catch(function () { return {}; });
+        const status = messages.querySelector(".calder-message.calder-reply:last-child");
+        if (status && status.textContent === "I'll check the official NDOW website for you…") status.remove();
+        if (!response.ok || !body.success) throw new Error(body.error || "NDOW source search failed.");
+        const results = Array.isArray(body.results) ? body.results : [];
+        if (!results.length) {
+          addMessage("I couldn't find a reliable answer in the official NDOW website pages I checked. I’m not authorized to search general web sources. Try different wording or contact NDOW directly.", "calder-reply");
+          return;
+        }
+        addMessage("Here’s what I found in official NDOW material. Open a source to review the original page:", "calder-reply");
+        const card = document.createElement("div");
+        card.className = "calder-message calder-reply calder-ndow-results";
+        card.style.cssText = "display:flex;flex-direction:column;align-items:stretch;gap:10px;";
+        results.forEach(function (item) {
+          const section = document.createElement("div");
+          section.style.cssText = "padding:8px 0;border-bottom:1px solid #DBE3EC;";
+          const link = document.createElement("a");
+          link.href = item.url; link.target = "_blank"; link.rel = "noopener noreferrer";
+          link.textContent = item.title || "Official NDOW page";
+          link.style.cssText = "font-weight:600;color:#19304B;";
+          const excerpt = document.createElement("p");
+          excerpt.textContent = String(item.excerpt || "").slice(0, 850);
+          excerpt.style.cssText = "margin:6px 0 0;white-space:pre-wrap;";
+          section.appendChild(link); section.appendChild(excerpt); card.appendChild(section);
+        });
+        messages.appendChild(card); messages.scrollTop = messages.scrollHeight;
+        addMessage("Source: NDOW official website • Retrieved " + new Date(body.retrievedAt || Date.now()).toLocaleString(), "calder-reply");
+      } catch (error) {
+        console.error("Calder NDOW lookup failed:", error);
+        addMessage("I couldn't retrieve official NDOW information right now. Please try again later. I won't search other websites.", "calder-error");
+      } finally { sendButton.disabled = false; input.disabled = false; input.focus(); }
+    }
+
+    async function answerWeatherQuestion(question, searchTerms) {
+      const token = localStorage.getItem("token");
+      if (!token) { addMessage("Please sign in to the NDOW Volunteer Calendar first.", "calder-error"); return; }
+      const combined = (String(question || "") + " " + String(searchTerms || "")).toLowerCase();
+      const knownPlaces = ["Las Vegas", "Henderson", "Reno", "Carson City", "Elko", "Mesquite", "Pahrump", "Boulder City", "Fallon", "Ely", "Lake Mead", "Great Basin National Park"];
+      const location = knownPlaces.find(function (place) { return combined.includes(place.toLowerCase()); }) || "";
+      if (!location) {
+        addMessage("Which Nevada location should I check? For example, Las Vegas, Reno, Carson City, Elko, or Lake Mead.", "calder-reply");
+        return;
+      }
+      sendButton.disabled = true; input.disabled = true;
+      addMessage("I'll check the National Weather Service for " + location + "…", "calder-reply");
+      try {
+        const response = await fetch("https://ndow-calendar-server.onrender.com/api/calder/sources/weather?location=" + encodeURIComponent(location), { headers: { "Authorization": "Bearer " + token } });
+        const body = await response.json().catch(function () { return {}; });
+        const status = messages.querySelector(".calder-message.calder-reply:last-child");
+        if (status && status.textContent.indexOf("I'll check the National Weather Service for ") === 0) status.remove();
+        if (!response.ok || !body.success) { addMessage(body.error || "I couldn't retrieve a verified forecast right now.", "calder-reply"); return; }
+        const lines = ["National Weather Service forecast for " + body.location + ":"];
+        (body.forecast || []).slice(0, 4).forEach(function (period) {
+          lines.push(period.name + ": " + period.shortForecast + "; " + period.temperature + "°" + period.temperatureUnit + "; wind " + period.windSpeed + " " + period.windDirection + ".");
+        });
+        if (body.alerts && body.alerts.length) {
+          lines.push("", "Active weather alerts:");
+          body.alerts.forEach(function (alert) { lines.push("• " + alert.event + (alert.headline ? ": " + alert.headline : "") + (alert.ends ? " (ends " + new Date(alert.ends).toLocaleString() + ")" : "")); });
+        } else { lines.push("", "No active NWS alerts were returned for this location."); }
+        addMessage(lines.join("\n"), "calder-reply");
+        const sourceLink = document.createElement("a");
+        sourceLink.href = body.sourceUrl || "https://www.weather.gov/";
+        sourceLink.target = "_blank"; sourceLink.rel = "noopener noreferrer";
+        sourceLink.textContent = "Open official National Weather Service forecast";
+        sourceLink.style.cssText = "display:block;margin:4px 0 8px;color:#19304B;font-weight:600;";
+        messages.appendChild(sourceLink);
+        addMessage("Retrieved " + new Date(body.retrievedAt || Date.now()).toLocaleString() + ". Forecasts can change; check the official source for updates.", "calder-reply");
+      } catch (error) {
+        console.error("Calder weather lookup failed:", error);
+        addMessage("The National Weather Service data is temporarily unavailable. I don't have a verified forecast right now.", "calder-error");
+      } finally { sendButton.disabled = false; input.disabled = false; input.focus(); }
+    }
+
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
       const question = input.value.trim();
@@ -660,8 +741,12 @@
           answerHelpQuestion(question);
         } else if (plan.intent === "knowledge_search") {
           answerKnowledgeQuestion(question, plan.search_terms);
+        } else if (plan.intent === "ndow_public_knowledge") {
+          answerNDOWQuestion(question, plan.search_terms);
+        } else if (plan.intent === "weather") {
+          answerWeatherQuestion(question, plan.search_terms);
         } else {
-          addMessage("I can help with your recorded hours and the published Volunteer Calendar. Tell me a little more about what you need.", "calder-reply");
+          addMessage("I am not authorized to access general information from the web except NDOW information from that site and weather information.", "calder-reply");
         }
       } catch (error) {
         console.error("Calder reasoning request failed:", error);
