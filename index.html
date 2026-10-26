@@ -2150,7 +2150,7 @@ body{
     <label for="firstLoginNdowPassword" style="display:block;margin-bottom:5px;color:#19304B;font-size:13px;font-weight:600;">NDOW Password</label>
     <input id="firstLoginNdowPassword" type="password" autocomplete="current-password" style="width:100%;box-sizing:border-box;padding:10px;margin-bottom:12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;">
     <div id="firstLoginNdowError" role="alert" style="color:#DC2626;font-size:13px;line-height:1.45;margin-bottom:12px;"></div>
-    <button type="button" id="firstLoginNdowSubmit" onclick="submitFirstLoginNdowCredentials()" style="width:100%;padding:10px;background:#19304B;color:#FFFFFF;border-radius:6px;">Retrieve My NDOW Profile</button>
+    <button type="button" id="firstLoginNdowSubmit" onclick="submitFirstLoginNdowCredentials()" style="width:100%;padding:10px;background:#19304B;color:#FFFFFF;border-radius:6px;">Verify NDOW Account</button>
   </div>
 </div>
 
@@ -12918,6 +12918,13 @@ async function submitFirstLoginNdowCredentials(){
 
 function openFirstLoginWelcome(){
   const modal = document.getElementById('firstLoginWelcomeModal');
+  const reminder = document.getElementById('firstLoginUsernameReminder');
+  const username = window.firstLoginPortalUsername || JSON.parse(localStorage.getItem('user') || '{}').username || '';
+  if(reminder){
+    reminder.textContent = username
+      ? `Your portal username is “${username}”. Keep it handy for future sign-ins.`
+      : 'Remember your portal username for future sign-ins.';
+  }
   if(modal) modal.style.display = 'flex';
 }
 
@@ -21096,6 +21103,9 @@ geographic analysis.
     <h1 style="margin:0 0 14px;font-size:30px;">Welcome to the NDOW Volunteer Calendar</h1>
     <p style="font-size:16px;line-height:1.7;color:#E2E8F0;margin:0 auto 12px;max-width:540px;">
       Your first-time setup is complete. You can now explore events, manage your volunteer activity, and record your service hours.
+    </p>
+    <p id="firstLoginUsernameReminder" style="font-size:14px;line-height:1.6;color:#E2E8F0;margin:0 auto 18px;">
+      Remember your portal username for future sign-ins.
     </p>
     <p style="font-size:14px;line-height:1.6;color:#BFDBFE;margin:0 auto 26px;">
       Here to help volunteers make a difference.
