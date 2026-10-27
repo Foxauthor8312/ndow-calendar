@@ -24493,7 +24493,9 @@ function toggleGeographicLocationSelection(checkbox){
     String(result.location || '').trim().toLowerCase() === key &&
     ['ready_create_address','ready_link_existing','ready_reuse_planned_address'].includes(result.status)
   );
-  if(!ready) return;
+  const manual = geoManualData(item);
+  const manualReady = !!(String(manual.location_name).trim() && String(manual.address1).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= 34 && Number(manual.latitude) <= 42 && Number(manual.longitude) >= -120 && Number(manual.longitude) <= -113);
+  if(!ready && !manualReady) return;
   if(checkbox.checked) state.selectedLocations.add(key);
   else state.selectedLocations.delete(key);
   state.applied = false;
