@@ -24571,7 +24571,7 @@ function geoEnrichmentRender(){
         <td style="padding:7px 8px;text-align:center;vertical-align:top;">
           <input type="checkbox" data-geo-enrichment-index="${index}"
             onchange="toggleGeographicLocationSelection(this)"
-            ${safe ? '' : 'disabled'}
+            ${safe && !state.applied && !state.applying ? '' : 'disabled'}
             ${checked && safe ? 'checked' : ''}
             aria-label="Select ${geoEnrichmentEscape(item.location)} for apply"
             style="width:16px;height:16px;cursor:${safe ? 'pointer' : 'not-allowed'};">
