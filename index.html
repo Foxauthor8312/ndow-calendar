@@ -24418,7 +24418,8 @@ window.geoEnrichmentState = {
   evaluated: [],
   ready: [],
   lastLoadedAt: null,
-  applying: false
+  applying: false,
+  applied: false
 };
 
 function geoEnrichmentEscape(value){
@@ -24506,7 +24507,7 @@ function geoEnrichmentRender(){
     `;
   }).join('') || '<tr><td colspan="6" style="padding:12px;">No locations found.</td></tr>';
 
-  applyBtn.disabled = !state.ready.length || state.applying;
+  applyBtn.disabled = !state.ready.length || state.applying || state.applied;
 }
 
 async function loadGeographicEnrichment(){
@@ -24524,6 +24525,8 @@ async function loadGeographicEnrichment(){
   state.preview = [];
   state.evaluated = [];
   state.ready = [];
+  state.lastLoadedAt = null;
+  state.applied = false;
   if(refreshBtn) refreshBtn.disabled = true;
   if(applyBtn) applyBtn.disabled = true;
   if(tbody) tbody.innerHTML = '<tr><td colspan="6" style="padding:12px;">Loading preview…</td></tr>';
@@ -24648,7 +24651,7 @@ async function applyGeographicEnrichment(){
       acc[item.status] = (acc[item.status] || 0) + 1;
       return acc;
     }, {});
-    state.evaluated = applied;
+    state.applied = true;
     geoEnrichmentRender();
     geoEnrichmentSetStatus(
       'Apply finished. ' + Object.entries(counts).map(([status, count]) => `${status}: ${count}`).join(' · ') +
@@ -24664,7 +24667,7 @@ async function applyGeographicEnrichment(){
   }finally{
     state.applying = false;
     if(refreshBtn) refreshBtn.disabled = false;
-    if(applyBtn) applyBtn.disabled = !state.ready.length;
+    if(applyBtn) applyBtn.disabled = !state.ready.length || state.applied;
   }
 }
 
