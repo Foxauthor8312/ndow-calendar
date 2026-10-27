@@ -2131,7 +2131,7 @@ body{
   <div style="background:#FFFFFF;width:100%;max-width:460px;border-radius:10px;padding:24px;box-sizing:border-box;box-shadow:0 12px 35px rgba(0,0,0,.25);">
     <h2 style="margin:0 0 10px;color:#19304B;">Complete Your First-Time Setup</h2>
     <div id="firstLoginWarningNotice" role="alert" style="margin:0 0 14px;padding:13px 14px;background:#FFF7ED;border:1px solid #F29647;border-left:4px solid #F29647;border-radius:6px;color:#7C2D12;font-size:13px;line-height:1.55;">
-      <p id="firstLoginUsernameMismatchNotice" style="display:none;margin:0 0 10px;font-weight:700;">The username you entered does not match our records. Please enter your NDOW login name and password to proceed. If you still cannot verify your account, contact your NDOW Volunteer Portal Administrator.</p>
+      <p id="firstLoginUsernameMismatchNotice" style="display:none;margin:0 0 10px;font-weight:700;">Your existing portal username could not be matched. Return to the login panel and check the username; this process does not create portal accounts.</p>
       <h3 style="margin:0 0 8px;color:#7C2D12;font-size:15px;font-weight:700;">NDOW Instructor Verification</h3>
       <p style="margin:0 0 9px;">The system will use your NDOW login to verify your identity and instructor account before allowing you to continue with portal setup.</p>
       <ul style="margin:0 0 10px;padding-left:20px;">
@@ -2143,11 +2143,7 @@ body{
       <p style="margin:0;font-weight:600;">Please verify your information before submitting your login credentials.</p>
     </div>
 
-    <p id="firstLoginAccountModeNote" style="display:none;margin:0 0 14px;padding:10px;background:#FFF7ED;border:1px solid #FDBA74;border-radius:6px;color:#7C2D12;font-size:13px;line-height:1.5;">
-      Use the same name and email you registered with NDOW. After your NDOW account is verified, your portal account will be created with the standard user role. Administrator privileges can only be granted by an authorized administrator.
-    </p>
-    <label id="firstLoginPortalUsernameLabel" for="firstLoginPortalUsername" style="display:none;margin-bottom:5px;color:#19304B;font-size:13px;font-weight:600;">Choose a Portal Username</label>
-    <input id="firstLoginPortalUsername" type="text" autocomplete="username" maxlength="60" placeholder="Portal username for future sign-ins" style="display:none;width:100%;box-sizing:border-box;padding:10px;margin-bottom:12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;">
+    <input id="firstLoginPortalUsername" type="hidden" autocomplete="username">
     <p style="margin:0 0 16px;color:#374151;font-size:14px;line-height:1.55;">
       Sign in to NDOW so we can retrieve your account contact information. Review the details before they are saved to your portal profile. Your NDOW password is used temporarily and is not stored.
     </p>
