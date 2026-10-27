@@ -15628,6 +15628,19 @@ ${comparisonHtml}
     <span>Projects</span>
   </button>
 
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openEventMap();"
+    title="Explore mapped event locations and filter to your assigned instructor events.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/>
+        <path d="M9 3v15M15 6v15"/>
+        <circle cx="12" cy="10" r="2"/>
+      </svg>
+    </span>
+    <span>Event Map</span>
+  </button>
+
 </div>
 
 <div class="dashboard-section dashboard-section-divider"
@@ -24822,7 +24835,7 @@ async function applyGeographicEnrichment(){
 	
 <div id="eventMapModal" class="modal hidden" style="z-index:10020;">
 <div class="modal-content" style="width:min(1280px,96vw);height:min(88vh,900px);max-height:92vh;display:flex;flex-direction:column;gap:10px;padding:18px;">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div style="font-size:22px;font-weight:700;color:#19304B;">NDOW Event Map</div><div style="font-size:13px;color:#64748b;">Zoom and pan to explore saved event locations. Each marker represents a saved address record.</div></div><button class="modal-close" onclick="closeEventMap()" aria-label="Close event map">✕</button></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div style="font-size:22px;font-weight:700;color:#19304B;">NDOW Event Map</div><div style="font-size:13px;color:#64748b;">Zoom and pan to explore mapped event locations. Instructors see only events assigned to them; administrators can view all mapped events.</div></div><button class="modal-close" onclick="closeEventMap()" aria-label="Close event map">✕</button></div>
 <div style="display:flex;flex-wrap:wrap;gap:8px;"><input id="eventMapSearch" type="search" placeholder="Search venue or event…" oninput="renderEventMapMarkers()" style="min-width:190px;flex:1;padding:9px;border:1px solid #DBE3EC;border-radius:7px;">
 <select id="eventMapCategory" onchange="renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All categories</option></select>
 <select id="eventMapYear" onchange="populateEventMapDateFilters();renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All years</option></select>
