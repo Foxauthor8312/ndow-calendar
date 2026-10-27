@@ -5205,13 +5205,14 @@ try {
       const validationMessage =
         String(data.message || '').trim().toLowerCase();
 
-      // A definitive "username not found" result starts the onboarding
-      // flow; transport/server errors must never be treated as new users.
+      // Do not invent a portal account or ask volunteers to create a username.
+      // If the entered username is not already in the portal, return to login
+      // and direct the volunteer to the administrator for account setup.
       if (validationMessage === 'username not found.') {
-        document.getElementById('loginError').innerText = '';
+        document.getElementById('loginError').innerText =
+          'This portal username was not found. Use your existing NDOW Volunteer Portal username, or contact the portal administrator. Do not create a new username here.';
         document.getElementById('pinSection').style.display = 'none';
         document.getElementById('userName').disabled = false;
-        openFirstLoginNdowModal(true, username);
         return;
       }
 
@@ -12869,11 +12870,7 @@ async function startFirstLoginOnboardingTest(saveMode = false){
 }
 
 function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
-  // First-login verification must never leave an old PIN modal covering the
-  // NDOW credential or profile-review steps.
-  const stalePinModal = document.getElementById('changePinModal');
-  if(stalePinModal) stalePinModal.style.display = 'none';
-
+  // Existing portal users only: never expose a create-your-own username path.
   const modal = document.getElementById('firstLoginNdowModal');
   const email = document.getElementById('firstLoginNdowEmail');
   const password = document.getElementById('firstLoginNdowPassword');
@@ -12887,29 +12884,19 @@ function openFirstLoginNdowModal(createAccount = false, suggestedUsername = ''){
 
   const loginUsername = String(document.getElementById('userName')?.value || '').trim();
   const resolvedPortalUsername = String(suggestedUsername || user.username || loginUsername || '').trim();
-  window.firstLoginCreateAccountMode = createAccount === true;
-  // This modal is opened with createAccount=false only after the portal has
-  // positively identified an existing account. Keep it on the existing-account
-  // NDOW verification/profile retrieval path even if a username field is absent.
-  window.firstLoginExistingAccountMode = createAccount !== true;
+  window.firstLoginCreateAccountMode = false;
+  window.firstLoginExistingAccountMode = true;
   window.firstLoginTargetUsername = resolvedPortalUsername;
-  if(submitButton) submitButton.textContent = createAccount ? 'Verify NDOW Account' : (window.firstLoginExistingAccountMode ? 'Verify NDOW Account & Continue' : 'Sign In to NDOW & Retrieve Profile');
-  if(username) username.value = createAccount ? String(suggestedUsername || '').trim() : resolvedPortalUsername;
-  if(username) username.style.display = createAccount ? 'block' : 'none';
-  if(usernameLabel) usernameLabel.style.display = createAccount ? 'block' : 'none';
-  if(modeNote) modeNote.style.display = createAccount ? 'block' : 'none';
-  if(mismatchNotice) mismatchNotice.style.display = createAccount ? 'block' : 'none';
-  const usernameError = 'Choose a portal username of 3–60 characters using letters, numbers, periods, underscores, or hyphens.';
-  if(error && !createAccount && error.textContent.trim() === usernameError) error.textContent = '';
-  if(email){
-    email.value = (createAccount || window.firstLoginExistingAccountMode)
-      ? ''
-      : (user.email || localStorage.getItem('email') || '');
-  }
+  if(submitButton) submitButton.textContent = 'Verify NDOW Account & Continue';
+  if(username){ username.value = resolvedPortalUsername; username.style.display = 'none'; }
+  if(usernameLabel) usernameLabel.style.display = 'none';
+  if(modeNote) modeNote.style.display = 'none';
+  if(mismatchNotice) mismatchNotice.style.display = 'none';
+  if(email) email.value = '';
   if(password) password.value = '';
   if(error) error.textContent = '';
   if(modal) modal.style.display = 'flex';
-  setTimeout(() => (createAccount ? username : email)?.focus(), 50);
+  setTimeout(() => email?.focus(), 50);
 }
 
 async function submitFirstLoginNdowCredentials(){
@@ -12920,65 +12907,25 @@ async function submitFirstLoginNdowCredentials(){
   const button = document.getElementById('firstLoginNdowSubmit');
   const email = String(emailInput?.value || '').trim();
   const password = String(passwordInput?.value || '');
-  const createAccount = window.firstLoginCreateAccountMode === true;
-  const username = String(usernameInput?.value || '').trim();
+  const createAccount = false;
+  const username = String(window.firstLoginTargetUsername || document.getElementById('userName')?.value || '').trim();
 
   if(error) error.textContent = '';
-  if(!email || !password || (createAccount && !username)){
-    if(error) error.textContent = createAccount
-      ? 'Enter your NDOW email, NDOW password, and a portal username.'
+  if(!email || !password || !username){
+    if(error) error.textContent = !username
+      ? 'Your existing portal username is missing. Return to the login panel and enter it before continuing.'
       : 'Enter your NDOW email and password to continue.';
     return;
   }
 
   if(button){
     button.disabled = true;
-    button.textContent = createAccount ? 'Verifying NDOW Account…' : 'Retrieving profile…';
+    button.textContent = 'Verifying NDOW Account…';
   }
 
   try{
     let result;
-    if(createAccount){
-      const response = await fetch(
-        'https://ndow-calendar-server.onrender.com/api/onboarding/verify-ndow',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ndowEmail: email, ndowPassword: password, username })
-        }
-      );
-      result = await response.json();
-      if(!response.ok || !result.success){
-        const remaining = Number.isFinite(Number(result.attempts_remaining))
-          ? ` Attempts remaining: ${result.attempts_remaining}.`
-          : '';
-        throw new Error((result.error || 'Unable to verify your NDOW account.') + remaining);
-      }
-
-      // Keep the short-lived onboarding credential separate from a normal
-      // calendar session. The normal token is created only after PIN login.
-      localStorage.removeItem('token');
-      localStorage.setItem('onboarding_token', result.token);
-      localStorage.setItem('user', JSON.stringify({
-        ...(result.user || {}),
-        must_change_pin: result.must_change_pin === true,
-        pin_exists: result.pin_exists === true
-      }));
-      localStorage.setItem('email', result.user?.email || email);
-      window.pendingLoginData = result;
-      window.firstLoginPortalUsername = result.user?.username || username;
-      window.firstLoginNdowProfileDraft = result.profile || {};
-      profileFirstLoginMode = true;
-
-      const onboardingModal = document.getElementById('firstLoginNdowModal');
-      if(onboardingModal) onboardingModal.style.display = 'none';
-
-      // Identity verification succeeded. Require profile review and completion
-      // before presenting the first-time PIN screen.
-      if(passwordInput) passwordInput.value = '';
-      openProfileModal();
-      return;
-    }else if(window.firstLoginExistingAccountMode === true || !createAccount){
+    if(window.firstLoginExistingAccountMode === true || !createAccount){
       const storedPortalUser = JSON.parse(localStorage.getItem('user') || '{}');
       const existingPortalUsername = String(window.firstLoginTargetUsername || window.firstLoginPortalUsername || usernameInput?.value || document.getElementById('userName')?.value || storedPortalUser.username || '').trim();
       if(!existingPortalUsername){
@@ -13983,6 +13930,19 @@ async function finishFirstLoginSession(user, token){
   }
 }
 
+function updateProfileRequiredHighlights(){
+  const ids = ['profileFullName','profileAddress','profileCity','profileState','profileZip','profilePhone','profileEmail'];
+  ids.forEach(id => {
+    const field = document.getElementById(id);
+    if(!field) return;
+    const empty = !String(field.value || '').trim();
+    field.style.borderColor = empty ? '#DC2626' : '';
+    field.style.backgroundColor = empty ? '#FEF2F2' : '';
+    field.style.boxShadow = empty ? '0 0 0 2px rgba(220,38,38,.12)' : '';
+    field.setAttribute('aria-invalid', empty ? 'true' : 'false');
+  });
+}
+
 async function saveProfile(){
 
   if(window.onboardingTestMode === true){
@@ -14017,11 +13977,16 @@ async function saveProfile(){
       missingFields.push('a valid email address');
     }
 
+    updateProfileRequiredHighlights();
     if(missingFields.length){
       const message = document.getElementById('profileMessage');
       if(message){
-        message.innerText = 'Please complete the required fields: ' + [...new Set(missingFields)].join(', ') + '.';
+        message.innerText = 'Complete the fields highlighted in red: ' + [...new Set(missingFields)].join(', ') + '.';
       }
+      const firstMissing = ['profileFullName','profileAddress','profileCity','profileState','profileZip','profilePhone','profileEmail']
+        .map(id => document.getElementById(id))
+        .find(field => field && !String(field.value || '').trim());
+      firstMissing?.focus();
       return;
     }
 
