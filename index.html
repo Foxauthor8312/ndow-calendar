@@ -24494,7 +24494,7 @@ function toggleGeographicLocationSelection(checkbox){
     ['ready_create_address','ready_link_existing','ready_reuse_planned_address'].includes(result.status)
   );
   const manual = geoManualData(item);
-  const manualReady = !!(String(manual.location_name).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= -90 && Number(manual.latitude) <= 90 && Number(manual.longitude) >= -180 && Number(manual.longitude) <= 180);
+  const manualReady = !!(String(manual.location_name).trim() && String(manual.city).trim() && /^[A-Z]{2}$/.test(String(manual.state).trim().toUpperCase()) && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= -90 && Number(manual.latitude) <= 90 && Number(manual.longitude) >= -180 && Number(manual.longitude) <= 180);
   if(!ready && !manualReady) return;
   if(checkbox.checked) state.selectedLocations.add(key);
   else state.selectedLocations.delete(key);
@@ -24557,7 +24557,7 @@ function geoEnrichmentRender(){
     const previewItem = state.preview[index];
     if (!previewItem) return false;
     const manual = geoManualData(previewItem);
-    return !!(String(manual.location_name).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= -90 && Number(manual.latitude) <= 90 && Number(manual.longitude) >= -180 && Number(manual.longitude) <= 180);
+    return !!(String(manual.location_name).trim() && String(manual.city).trim() && /^[A-Z]{2}$/.test(String(manual.state).trim().toUpperCase()) && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= -90 && Number(manual.latitude) <= 90 && Number(manual.longitude) >= -180 && Number(manual.longitude) <= 180);
   });
   const readyKeys = new Set(state.ready.map(item => String(item.location || '').trim().toLowerCase()));
   state.selectedLocations = new Set(
@@ -24608,7 +24608,7 @@ function geoEnrichmentRender(){
     const resultStatus = result?.status || 'not evaluated';
     const safe = readyStatuses.has(result?.status);
     const manual = geoManualData(item);
-    const manualValid = !!(String(manual.location_name).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase()==='NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude)>=-90 && Number(manual.latitude)<=90 && Number(manual.longitude)>=-180 && Number(manual.longitude)<=180);
+    const manualValid = !!(String(manual.location_name).trim() && String(manual.city).trim() && /^[A-Z]{2}$/.test(String(manual.state).trim().toUpperCase()) && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude)>=-90 && Number(manual.latitude)<=90 && Number(manual.longitude)>=-180 && Number(manual.longitude)<=180);
     const eligible = safe || manualValid;
     const checked = state.selectedLocations.has(key);
     return `
@@ -24742,7 +24742,7 @@ async function applyGeographicEnrichment(){
 
   const eventCount = readyEntries.reduce((sum, item) => sum + item.event_ids.length, 0);
   const confirmed = window.confirm(
-    `Apply the ${readyEntries.length} selected location groups covering up to ${eventCount} events?\n\nOnly the rows you selected, which are marked ready by the dry run, are included. The server will revalidate each event and address. Uncertain, conflicting, or out-of-state locations remain untouched. County and NDOW Region are derived from the existing ZIP lookup when available; unmapped ZIPs remain unassigned.\n\nThis action writes to the database and cannot be automatically undone.`
+    `Apply the ${readyEntries.length} selected location groups covering up to ${eventCount} events?\n\nOnly the rows you selected, which are marked ready by the dry run, are included. The server will revalidate each event and address. Uncertain or conflicting locations remain untouched; valid out-of-state addresses are allowed. County and NDOW Region are derived from the existing ZIP lookup when available; unmapped ZIPs remain unassigned.\n\nThis action writes to the database and cannot be automatically undone.`
   );
   if(!confirmed) return;
 
