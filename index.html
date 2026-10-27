@@ -13207,6 +13207,7 @@ async function loadProfile(){
       if(notifySms) notifySms.checked = !!user.notify_sms;
       const message = document.getElementById('profileMessage');
       if(message) message.textContent = '';
+      updateProfileRequiredHighlights();
       return;
     }
 
