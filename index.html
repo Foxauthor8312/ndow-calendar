@@ -17937,6 +17937,44 @@ async function loadRouteAddressDropdowns(){
       </option>
     `;
 
+    // Add the signed-in volunteer's saved profile home as a convenient origin.
+    // Keep the shared Address Library entries and destination options unchanged.
+    try {
+      const currentUser = JSON.parse(
+        localStorage.getItem('user') || '{}'
+      );
+      const homeLat = Number(currentUser.home_latitude);
+      const homeLng = Number(currentUser.home_longitude);
+      const hasHomeCoordinates =
+        currentUser.home_latitude !== null &&
+        currentUser.home_latitude !== undefined &&
+        String(currentUser.home_latitude).trim() !== '' &&
+        currentUser.home_longitude !== null &&
+        currentUser.home_longitude !== undefined &&
+        String(currentUser.home_longitude).trim() !== '' &&
+        Number.isFinite(homeLat) &&
+        Number.isFinite(homeLng) &&
+        homeLat >= -90 && homeLat <= 90 &&
+        homeLng >= -180 && homeLng <= 180;
+
+      if (hasHomeCoordinates) {
+        const homeOption = document.createElement('option');
+        homeOption.value = '__PROFILE_HOME__';
+        homeOption.textContent = '⌂ My Home (profile)';
+        homeOption.dataset.address = [
+          currentUser.home_address,
+          currentUser.home_city,
+          currentUser.home_state,
+          currentUser.home_zip
+        ].filter(Boolean).join(', ');
+        homeOption.dataset.lat = String(homeLat);
+        homeOption.dataset.lng = String(homeLng);
+        origin.appendChild(homeOption);
+      }
+    } catch (profileError) {
+      console.warn('Could not load profile home as route origin:', profileError);
+    }
+
     addresses.forEach(a => {
 
       const label =
