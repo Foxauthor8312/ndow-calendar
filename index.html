@@ -13881,9 +13881,10 @@ function updateProfileRequiredHighlights(){
     const field = document.getElementById(id);
     if(!field) return;
     const empty = !String(field.value || '').trim();
-    field.style.borderColor = empty ? '#DC2626' : '';
-    field.style.backgroundColor = empty ? '#FEF2F2' : '';
-    field.style.boxShadow = empty ? '0 0 0 2px rgba(220,38,38,.12)' : '';
+    // Keep the red outline visible on every required empty field until filled.
+    field.style.setProperty('border', empty ? '2px solid #DC2626' : '', 'important');
+    field.style.setProperty('background-color', empty ? '#FEF2F2' : '', 'important');
+    field.style.setProperty('box-shadow', empty ? '0 0 0 2px rgba(220,38,38,.12)' : '', 'important');
     field.setAttribute('aria-invalid', empty ? 'true' : 'false');
   });
 }
