@@ -11394,6 +11394,11 @@ function openAdminSection(section){
     'addressPanel'
     );
 
+  const geoEnrichment =
+    document.getElementById(
+      'geoEnrichmentPanel'
+    );
+
   if(users){
     users.style.display = 'none';
   }
@@ -11425,7 +11430,11 @@ if(contacts){
 
 if(addresses){
   addresses.style.display = 'none';
-}	
+}
+
+if(geoEnrichment){
+  geoEnrichment.style.display = 'none';
+}
 /* ACTIVE SIDEBAR BUTTON */
 
 document
@@ -11448,6 +11457,7 @@ const buttonMap = {
     'adminContactsBtn',
   addresses:
     'adminAddressesBtn',
+  geoEnrichment: 'adminGeoEnrichmentBtn',
   help: 'adminHelpBtn',
   geo: 'adminAnalyticsBtn',
   category:
@@ -11534,7 +11544,15 @@ if(section === 'addresses' && addresses){
 
   loadAddresses();
 
-}	
+}
+
+if(section === 'geoEnrichment' && geoEnrichment){
+
+  geoEnrichment.style.display = 'block';
+
+  loadGeographicEnrichment();
+
+}
 
 }
 
@@ -19321,6 +19339,13 @@ id="adminSidebar"
 >
   Addresses
 </button>
+
+<button
+  id="adminGeoEnrichmentBtn"
+  onclick="openAdminSection('geoEnrichment')"
+>
+  Geo Enrichment
+</button>
 	
 <button
   id="adminHelpBtn"
@@ -20023,6 +20048,63 @@ geographic analysis.
 	
 </div>
 	
+
+<!-- GEOGRAPHIC ENRICHMENT -->
+
+<div
+  class="admin-panel"
+  id="geoEnrichmentPanel"
+  style="
+    flex:1;
+    display:none;
+    overflow:hidden;
+    flex-direction:column;
+    min-height:0;
+    color:#19304B;
+  "
+>
+  <h2 style="margin:0 0 8px;">Geographic Enrichment</h2>
+  <p style="margin:0 0 12px;line-height:1.5;font-size:13px;">
+    Review unlinked event locations. Preview and dry run make no database changes.
+    Only records the server marks as ready will be eligible for the confirmed apply.
+    Uncertain locations and region assignments remain untouched.
+  </p>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+    <button class="action-btn" id="geoEnrichmentDryRunBtn" onclick="loadGeographicEnrichment()">
+      Refresh Preview + Dry Run
+    </button>
+    <button class="action-btn" id="geoEnrichmentApplyBtn" onclick="applyGeographicEnrichment()" disabled>
+      Apply Ready Items
+    </button>
+  </div>
+
+  <div id="geoEnrichmentStatus" role="status" aria-live="polite"
+    style="padding:10px 12px;background:#F8FAFC;border:1px solid #DBE3EC;border-radius:8px;margin-bottom:10px;font-size:13px;">
+    Select Refresh Preview + Dry Run to evaluate the unlinked locations. No changes will be made.
+  </div>
+
+  <div id="geoEnrichmentSummary" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"></div>
+
+  <div style="flex:1;min-height:0;overflow:auto;border:1px solid #DBE3EC;border-radius:8px;background:#fff;">
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead style="position:sticky;top:0;background:#F8FAFC;z-index:1;">
+        <tr>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Event location</th>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Preview</th>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Proposed address</th>
+          <th style="padding:8px;text-align:right;border-bottom:1px solid #DBE3EC;">Events</th>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Dry-run result</th>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Reason</th>
+        </tr>
+      </thead>
+      <tbody id="geoEnrichmentResults">
+        <tr><td colspan="6" style="padding:12px;">No results loaded yet.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <!-- HELP -->
 
 <div
@@ -24326,6 +24408,267 @@ async function loadNdowAssignments(){
 </script>
 
 	
-<script src="js/calder/calder-launcher.js?v=20261018-help-search"></script>
+<script src="js/calder/calder-launcher.js?v=20261018-help-search">
+/* ========================================
+   GEOGRAPHIC ENRICHMENT ADMIN WORKFLOW
+======================================== */
+
+window.geoEnrichmentState = {
+  preview: [],
+  evaluated: [],
+  ready: [],
+  lastLoadedAt: null,
+  applying: false
+};
+
+function geoEnrichmentEscape(value){
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[char]));
+}
+
+function geoEnrichmentSetStatus(message, isError = false){
+  const el = document.getElementById('geoEnrichmentStatus');
+  if(!el) return;
+  el.textContent = message;
+  el.style.color = isError ? '#DC2626' : '#19304B';
+  el.style.borderColor = isError ? '#DC2626' : '#DBE3EC';
+}
+
+function geoEnrichmentRender(){
+  const state = window.geoEnrichmentState;
+  const tbody = document.getElementById('geoEnrichmentResults');
+  const summary = document.getElementById('geoEnrichmentSummary');
+  const applyBtn = document.getElementById('geoEnrichmentApplyBtn');
+  if(!tbody || !summary || !applyBtn) return;
+
+  const evaluatedByLocation = new Map(
+    state.evaluated.map(item => [String(item.location || '').trim().toLowerCase(), item])
+  );
+  const readyStatuses = new Set([
+    'ready_create_address',
+    'ready_link_existing',
+    'ready_reuse_planned_address'
+  ]);
+  state.ready = state.evaluated.filter(item => readyStatuses.has(item.status));
+
+  const countEvents = list => list.reduce((sum, item) => sum + Number(item.event_count || 0), 0);
+  const counts = state.evaluated.reduce((acc, item) => {
+    acc[item.status] = (acc[item.status] || 0) + 1;
+    return acc;
+  }, {});
+
+  summary.innerHTML = [
+    ['Locations reviewed', state.preview.length],
+    ['Ready to apply', state.ready.length],
+    ['Events in ready groups', countEvents(state.ready)],
+    ['Manual review / skipped', state.evaluated.length - state.ready.length]
+  ].map(([label, value]) => `
+    <div style="padding:8px 10px;border:1px solid #DBE3EC;border-radius:8px;background:#fff;min-width:130px;">
+      <div style="font-size:11px;color:#64748B;">${geoEnrichmentEscape(label)}</div>
+      <div style="font-size:18px;font-weight:700;margin-top:2px;">${geoEnrichmentEscape(value)}</div>
+    </div>
+  `).join('');
+
+  const statusCounts = Object.entries(counts).map(([status, count]) => `${status}: ${count}`).join(' · ');
+  if(state.evaluated.length){
+    geoEnrichmentSetStatus(
+      `Dry run complete. No database changes were made. ${state.ready.length} location groups are marked ready. ${statusCounts}`
+    );
+  }
+
+  tbody.innerHTML = state.preview.map(item => {
+    const key = String(item.location || '').trim().toLowerCase();
+    const result = evaluatedByLocation.get(key);
+    const proposed = item.proposed_address || {};
+    const address = [
+      proposed.location_name,
+      proposed.address1,
+      [proposed.city, proposed.state, proposed.zip].filter(Boolean).join(' ')
+    ].filter(Boolean).join(', ');
+    const reason = result?.reason || item.note || result?.planned_group || '';
+    const previewStatus = item.status || '';
+    const resultStatus = result?.status || 'not evaluated';
+    const safe = readyStatuses.has(result?.status);
+    return `
+      <tr style="border-bottom:1px solid #E2E8F0;">
+        <td style="padding:7px 8px;vertical-align:top;max-width:260px;overflow-wrap:anywhere;">${geoEnrichmentEscape(item.location)}</td>
+        <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(previewStatus)}</td>
+        <td style="padding:7px 8px;vertical-align:top;min-width:180px;">${geoEnrichmentEscape(address || 'Needs manual address review')}</td>
+        <td style="padding:7px 8px;text-align:right;vertical-align:top;">${geoEnrichmentEscape(item.event_count || 0)}</td>
+        <td style="padding:7px 8px;vertical-align:top;font-weight:${safe ? '700' : '400'};color:${safe ? '#166534' : '#64748B'};">${geoEnrichmentEscape(resultStatus)}</td>
+        <td style="padding:7px 8px;vertical-align:top;max-width:280px;overflow-wrap:anywhere;">${geoEnrichmentEscape(reason)}</td>
+      </tr>
+    `;
+  }).join('') || '<tr><td colspan="6" style="padding:12px;">No locations found.</td></tr>';
+
+  applyBtn.disabled = !state.ready.length || state.applying;
+}
+
+async function loadGeographicEnrichment(){
+  const state = window.geoEnrichmentState;
+  const refreshBtn = document.getElementById('geoEnrichmentDryRunBtn');
+  const applyBtn = document.getElementById('geoEnrichmentApplyBtn');
+  const tbody = document.getElementById('geoEnrichmentResults');
+  const token = localStorage.getItem('token') || '';
+  if(!token){
+    geoEnrichmentSetStatus('Your portal login token was not found. Sign in again and reopen this panel.', true);
+    return;
+  }
+  if(state.applying) return;
+
+  state.preview = [];
+  state.evaluated = [];
+  state.ready = [];
+  if(refreshBtn) refreshBtn.disabled = true;
+  if(applyBtn) applyBtn.disabled = true;
+  if(tbody) tbody.innerHTML = '<tr><td colspan="6" style="padding:12px;">Loading preview…</td></tr>';
+  geoEnrichmentSetStatus('Loading the read-only preview…');
+
+  const base = 'https://ndow-calendar-server.onrender.com/api/admin/geographic-enrichment';
+  try{
+    let offset = 0;
+    while(true){
+      const response = await fetch(`${base}/preview?limit=10&offset=${offset}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const data = await response.json();
+      if(!response.ok || !data.success || !Array.isArray(data.results)){
+        throw new Error(data.message || `Preview request failed (HTTP ${response.status}).`);
+      }
+      state.preview.push(...data.results);
+      geoEnrichmentSetStatus(`Loaded ${state.preview.length} location groups. Building dry run…`);
+      if(data.totals?.next_offset == null) break;
+      offset = data.totals.next_offset;
+    }
+
+    const entries = state.preview.map(item => ({
+      location: item.location,
+      event_ids: (item.events || []).map(event => event.event_id),
+      latitude: item.proposed_address?.latitude,
+      longitude: item.proposed_address?.longitude
+    }));
+
+    for(let i = 0; i < entries.length; i += 25){
+      const response = await fetch(`${base}/apply`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ dry_run: true, entries: entries.slice(i, i + 25) })
+      });
+      const data = await response.json();
+      if(!response.ok || !data.success || data.dry_run !== true || !Array.isArray(data.results)){
+        throw new Error(data.message || `Dry-run request failed (HTTP ${response.status}).`);
+      }
+      state.evaluated.push(...data.results);
+      geoEnrichmentSetStatus(`Dry run evaluated ${state.evaluated.length} of ${entries.length} location groups. No changes made.`);
+    }
+
+    state.lastLoadedAt = new Date().toISOString();
+    geoEnrichmentRender();
+  }catch(error){
+    console.error('Geographic enrichment preview/dry-run failed:', error);
+    geoEnrichmentSetStatus(error.message || 'Unable to load geographic enrichment results.', true);
+    if(tbody && !state.preview.length){
+      tbody.innerHTML = '<tr><td colspan="6" style="padding:12px;">Preview could not be loaded. See the status message above.</td></tr>';
+    }
+  }finally{
+    if(refreshBtn) refreshBtn.disabled = false;
+  }
+}
+
+async function applyGeographicEnrichment(){
+  const state = window.geoEnrichmentState;
+  if(state.applying || !state.ready.length) return;
+  if(!state.lastLoadedAt || !state.evaluated.length || state.evaluated.length !== state.preview.length){
+    geoEnrichmentSetStatus('Refresh the preview and complete a dry run before applying.', true);
+    return;
+  }
+
+  const readyLocations = new Set(state.ready.map(item => String(item.location || '').trim().toLowerCase()));
+  const readyEntries = state.preview.filter(item =>
+    readyLocations.has(String(item.location || '').trim().toLowerCase())
+  ).map(item => ({
+    location: item.location,
+    event_ids: (item.events || []).map(event => event.event_id),
+    latitude: item.proposed_address?.latitude,
+    longitude: item.proposed_address?.longitude
+  }));
+
+  const eventCount = readyEntries.reduce((sum, item) => sum + item.event_ids.length, 0);
+  const confirmed = window.confirm(
+    `Apply ${readyEntries.length} location groups covering up to ${eventCount} events?\n\nOnly locations marked ready by the dry run are included. The server will revalidate each event and address. Uncertain, conflicting, or out-of-state locations remain untouched. New address regions will remain blank.\n\nThis action writes to the database and cannot be automatically undone.`
+  );
+  if(!confirmed) return;
+
+  const token = localStorage.getItem('token') || '';
+  if(!token){
+    geoEnrichmentSetStatus('Your portal login token was not found. Sign in again.', true);
+    return;
+  }
+
+  state.applying = true;
+  const applyBtn = document.getElementById('geoEnrichmentApplyBtn');
+  const refreshBtn = document.getElementById('geoEnrichmentDryRunBtn');
+  if(applyBtn) applyBtn.disabled = true;
+  if(refreshBtn) refreshBtn.disabled = true;
+  geoEnrichmentSetStatus('Applying ready location groups…');
+
+  const base = 'https://ndow-calendar-server.onrender.com/api/admin/geographic-enrichment/apply';
+  const applied = [];
+  try{
+    for(let i = 0; i < readyEntries.length; i += 25){
+      const response = await fetch(base, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          dry_run: false,
+          confirm: 'APPLY_GEOGRAPHIC_ENRICHMENT',
+          entries: readyEntries.slice(i, i + 25)
+        })
+      });
+      const data = await response.json();
+      if(!response.ok || !data.success || data.dry_run !== false || !Array.isArray(data.results)){
+        throw new Error(data.message || `Apply request failed (HTTP ${response.status}).`);
+      }
+      applied.push(...data.results);
+      geoEnrichmentSetStatus(`Applied ${applied.length} of ${readyEntries.length} ready location groups…`);
+    }
+
+    const counts = applied.reduce((acc, item) => {
+      acc[item.status] = (acc[item.status] || 0) + 1;
+      return acc;
+    }, {});
+    state.evaluated = applied;
+    geoEnrichmentRender();
+    geoEnrichmentSetStatus(
+      'Apply finished. ' + Object.entries(counts).map(([status, count]) => `${status}: ${count}`).join(' · ') +
+      '. Refresh preview + dry run to verify current database state.'
+    );
+    if(applyBtn) applyBtn.disabled = true;
+  }catch(error){
+    console.error('Geographic enrichment apply failed:', error);
+    geoEnrichmentSetStatus(
+      (error.message || 'Apply failed.') + ' Some earlier batches may already have completed. Refresh the preview to verify before retrying.',
+      true
+    );
+  }finally{
+    state.applying = false;
+    if(refreshBtn) refreshBtn.disabled = false;
+    if(applyBtn) applyBtn.disabled = !state.ready.length;
+  }
+}
+
+
+</script>
 </body>
 </html>
