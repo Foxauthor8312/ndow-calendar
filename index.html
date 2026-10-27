@@ -24550,7 +24550,13 @@ function geoEnrichmentRender(){
     'ready_link_existing',
     'ready_reuse_planned_address'
   ]);
-  state.ready = state.evaluated.filter(item => readyStatuses.has(item.status));
+  state.ready = state.evaluated.filter((item, index) => {
+    if (readyStatuses.has(item.status)) return true;
+    const previewItem = state.preview[index];
+    if (!previewItem) return false;
+    const manual = geoManualData(previewItem);
+    return !!(String(manual.location_name).trim() && String(manual.address1).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= 34 && Number(manual.latitude) <= 42 && Number(manual.longitude) >= -120 && Number(manual.longitude) <= -113);
+  });
   const readyKeys = new Set(state.ready.map(item => String(item.location || '').trim().toLowerCase()));
   state.selectedLocations = new Set(
     [...state.selectedLocations].filter(key => readyKeys.has(key))
