@@ -11548,7 +11548,9 @@ if(section === 'addresses' && addresses){
 
 if(section === 'geoEnrichment' && geoEnrichment){
 
-  geoEnrichment.style.display = 'block';
+  geoEnrichment.style.display = 'flex';
+  geoEnrichment.style.flexDirection = 'column';
+  geoEnrichment.style.minHeight = '0';
 
   loadGeographicEnrichment();
 
