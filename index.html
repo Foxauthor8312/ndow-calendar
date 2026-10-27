@@ -24787,12 +24787,16 @@ async function applyGeographicEnrichment(){
       acc[item.status] = (acc[item.status] || 0) + 1;
       return acc;
     }, {});
+    const resultSummary = Object.entries(counts).map(([status, count]) => `${status}: ${count}`).join(' · ');
     state.applied = true;
     geoEnrichmentRender();
-    geoEnrichmentSetStatus(
-      'Apply finished. ' + Object.entries(counts).map(([status, count]) => `${status}: ${count}`).join(' · ') +
-      '. Refresh preview + dry run to verify current database state.'
-    );
+    geoEnrichmentSetStatus('Apply finished. ' + resultSummary + '. Refreshing preview to verify linked events…');
+    if(applied.some(item => ['linked_existing','linked_new_address','created_and_linked'].includes(item.status))) {
+      await loadGeographicEnrichment();
+      geoEnrichmentSetStatus('Apply results: ' + resultSummary + '. Preview refreshed from the database; successfully linked locations should no longer appear.');
+    } else {
+      geoEnrichmentSetStatus('No locations were successfully linked. Results: ' + resultSummary + '. Review the result statuses and reasons before retrying.', true);
+    }
     if(applyBtn) applyBtn.disabled = true;
   }catch(error){
     console.error('Geographic enrichment apply failed:', error);
