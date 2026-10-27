@@ -20113,8 +20113,19 @@ geographic analysis.
   <div id="geoEnrichmentSummary" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"></div>
 
   <div style="flex:1;min-height:0;overflow:auto;border:1px solid #DBE3EC;border-radius:8px;background:#fff;">
-    <table style="width:100%;border-collapse:collapse;font-size:12px;">
-      <thead style="position:sticky;top:0;background:#F8FAFC;z-index:1;">
+    <table style="width:100%;min-width:1420px;table-layout:auto;border-collapse:collapse;font-size:13px;">
+      <colgroup>
+        <col style="width:54px;">
+        <col style="width:280px;">
+        <col style="width:210px;">
+        <col style="width:300px;">
+        <col style="width:110px;">
+        <col style="width:115px;">
+        <col style="width:65px;">
+        <col style="width:200px;">
+        <col style="width:320px;">
+      </colgroup>
+      <thead style="position:sticky;top:0;background:#F8FAFC;z-index:1;white-space:nowrap;">
         <tr>
           <th style="padding:8px;text-align:center;border-bottom:1px solid #DBE3EC;">Select</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Event location</th>
@@ -24586,17 +24597,17 @@ function geoEnrichmentRender(){
             aria-label="Select ${geoEnrichmentEscape(item.location)} for apply"
             style="width:16px;height:16px;cursor:${safe ? 'pointer' : 'not-allowed'};">
         </td>
-        <td style="padding:7px 8px;vertical-align:top;max-width:260px;overflow-wrap:anywhere;">${geoEnrichmentEscape(item.location)}</td>
+        <td style="padding:7px 8px;vertical-align:top;min-width:240px;white-space:normal;overflow-wrap:anywhere;line-height:1.45;">${geoEnrichmentEscape(item.location)}</td>
         <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(previewStatus)}</td>
-        <td style="padding:7px 8px;vertical-align:top;min-width:180px;">${geoEnrichmentEscape(address || 'Needs manual address review')}</td>
+        <td style="padding:7px 8px;vertical-align:top;min-width:280px;white-space:normal;overflow-wrap:anywhere;line-height:1.45;">${geoEnrichmentEscape(address || 'Needs manual address review')}</td>
         <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(geoAssignment.county || 'Review ZIP')}</td>
         <td style="padding:7px 8px;vertical-align:top;font-weight:600;">${geoEnrichmentEscape(geoAssignment.region || 'Unassigned')}</td>
         <td style="padding:7px 8px;text-align:right;vertical-align:top;">${geoEnrichmentEscape(item.event_count || 0)}</td>
         <td style="padding:7px 8px;vertical-align:top;font-weight:${safe ? '700' : '400'};color:${safe ? '#166534' : '#64748B'};">${geoEnrichmentEscape(resultStatus)}</td>
-        <td style="padding:7px 8px;vertical-align:top;max-width:280px;overflow-wrap:anywhere;">${geoEnrichmentEscape(reason)}</td>
+        <td style="padding:7px 8px;vertical-align:top;min-width:300px;white-space:normal;overflow-wrap:anywhere;line-height:1.45;">${geoEnrichmentEscape(reason || 'No additional detail supplied')}</td>
       </tr>
     `;
-  }).join('') || '<tr><td colspan="7" style="padding:12px;">No locations found.</td></tr>';
+  }).join('') || '<tr><td colspan="9" style="padding:12px;">No locations found.</td></tr>';
 
   applyBtn.textContent = selectedReady.length
     ? `Apply Selected Items (${selectedReady.length})`
