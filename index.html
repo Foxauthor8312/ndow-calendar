@@ -24494,7 +24494,7 @@ function toggleGeographicLocationSelection(checkbox){
     ['ready_create_address','ready_link_existing','ready_reuse_planned_address'].includes(result.status)
   );
   const manual = geoManualData(item);
-  const manualReady = !!(String(manual.location_name).trim() && String(manual.address1).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= 34 && Number(manual.latitude) <= 42 && Number(manual.longitude) >= -120 && Number(manual.longitude) <= -113);
+  const manualReady = !!(String(manual.location_name).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= 34 && Number(manual.latitude) <= 42 && Number(manual.longitude) >= -120 && Number(manual.longitude) <= -113);
   if(!ready && !manualReady) return;
   if(checkbox.checked) state.selectedLocations.add(key);
   else state.selectedLocations.delete(key);
@@ -24557,7 +24557,7 @@ function geoEnrichmentRender(){
     const previewItem = state.preview[index];
     if (!previewItem) return false;
     const manual = geoManualData(previewItem);
-    return !!(String(manual.location_name).trim() && String(manual.address1).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= 34 && Number(manual.latitude) <= 42 && Number(manual.longitude) >= -120 && Number(manual.longitude) <= -113);
+    return !!(String(manual.location_name).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase() === 'NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude) >= 34 && Number(manual.latitude) <= 42 && Number(manual.longitude) >= -120 && Number(manual.longitude) <= -113);
   });
   const readyKeys = new Set(state.ready.map(item => String(item.location || '').trim().toLowerCase()));
   state.selectedLocations = new Set(
@@ -24608,7 +24608,7 @@ function geoEnrichmentRender(){
     const resultStatus = result?.status || 'not evaluated';
     const safe = readyStatuses.has(result?.status);
     const manual = geoManualData(item);
-    const manualValid = !!(String(manual.location_name).trim() && String(manual.address1).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase()==='NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude)>=34 && Number(manual.latitude)<=42 && Number(manual.longitude)>=-120 && Number(manual.longitude)<=-113);
+    const manualValid = !!(String(manual.location_name).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase()==='NV' && /^\d{5}(?:-\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude)>=34 && Number(manual.latitude)<=42 && Number(manual.longitude)>=-120 && Number(manual.longitude)<=-113);
     const eligible = safe || manualValid;
     const checked = state.selectedLocations.has(key);
     return `
