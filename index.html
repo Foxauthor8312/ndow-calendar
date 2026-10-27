@@ -24895,6 +24895,12 @@ function renderEventMapMarkers(){
  document.getElementById('eventMapStatus').textContent='Showing '+filtered.length+' mapped locations · '+filtered.reduce((s,l)=>s+(l.event_count||0),0)+' linked events. Unlinked events are not plotted yet.';
 }
 function fitEventMap(){if(!eventMapInstance||!eventMapMarkerLayer)return;const pts=[];eventMapMarkerLayer.eachLayer(l=>{if(l.getLatLng)pts.push(l.getLatLng());});if(pts.length===1)eventMapInstance.setView(pts[0],12);else if(pts.length>1)eventMapInstance.fitBounds(L.latLngBounds(pts),{padding:[30,30],maxZoom:12});else eventMapInstance.setView([39.3,-116.6],6);}
+// Expose map controls explicitly for the dashboard's inline click handlers.
+window.openEventMap = openEventMap;
+window.closeEventMap = closeEventMap;
+window.renderEventMapMarkers = renderEventMapMarkers;
+window.fitEventMap = fitEventMap;
+
 
 </script>
 </body>
