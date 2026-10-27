@@ -24461,7 +24461,8 @@ window.geoEnrichmentState = {
   lastLoadedAt: null,
   applying: false,
   applied: false,
-  selectedLocations: new Set()
+  selectedLocations: new Set(),
+  manualEdits: {}
 };
 
 function geoEnrichmentEscape(value){
@@ -24515,9 +24516,21 @@ function clearGeographicLocationSelection(){
 
 function geoEnrichmentRegionFor(item){
   const proposed = item?.proposed_address || {};
-  const zip = String(proposed.zip || '').match(/\d{5}/)?.[0];
+  const edit = window.geoEnrichmentState?.manualEdits?.[String(item?.location || '').trim().toLowerCase()] || {};
+  const zip = String(edit.zip ?? proposed.zip ?? '').match(/\d{5}/)?.[0];
   const mapped = zip ? zipLookup[zip] : null;
   return { county: mapped?.county || '', region: mapped?.region || '' };
+}
+
+function geoManualData(item){
+  const p=item?.proposed_address||{};
+  const e=window.geoEnrichmentState.manualEdits[String(item?.location||'').trim().toLowerCase()]||{};
+  return {location_name:e.location_name??p.location_name??'',address1:e.address1??p.address1??'',city:e.city??p.city??'',state:e.state??p.state??'NV',zip:e.zip??p.zip??'',latitude:e.latitude??p.latitude??'',longitude:e.longitude??p.longitude??''};
+}
+function updateGeoManualField(index,field,value){
+  const state=window.geoEnrichmentState,item=state.preview[index];if(!item)return;
+  const key=String(item.location||'').trim().toLowerCase();if(!state.manualEdits[key])state.manualEdits[key]={};
+  state.manualEdits[key][field]=value;state.selectedLocations.delete(key);geoEnrichmentRender();
 }
 
 function geoEnrichmentRender(){
@@ -24586,20 +24599,23 @@ function geoEnrichmentRender(){
     const previewStatus = item.status || '';
     const resultStatus = result?.status || 'not evaluated';
     const safe = readyStatuses.has(result?.status);
+    const manual = geoManualData(item);
+    const manualValid = !!(String(manual.location_name).trim() && String(manual.address1).trim() && String(manual.city).trim() && String(manual.state).trim().toUpperCase()==='NV' && /^\\d{5}(?:-\\d{4})?$/.test(String(manual.zip).trim()) && Number.isFinite(Number(manual.latitude)) && Number.isFinite(Number(manual.longitude)) && Number(manual.latitude)>=34 && Number(manual.latitude)<=42 && Number(manual.longitude)>=-120 && Number(manual.longitude)<=-113);
+    const eligible = safe || manualValid;
     const checked = state.selectedLocations.has(key);
     return `
       <tr style="border-bottom:1px solid #E2E8F0;">
         <td style="padding:7px 8px;text-align:center;vertical-align:top;">
           <input type="checkbox" data-geo-enrichment-index="${index}"
             onchange="toggleGeographicLocationSelection(this)"
-            ${safe && !state.applied && !state.applying ? '' : 'disabled'}
-            ${checked && safe ? 'checked' : ''}
+            ${eligible && !state.applied && !state.applying ? '' : 'disabled'}
+            ${checked && eligible ? 'checked' : ''}
             aria-label="Select ${geoEnrichmentEscape(item.location)} for apply"
-            style="width:16px;height:16px;cursor:${safe ? 'pointer' : 'not-allowed'};">
+            style="width:16px;height:16px;cursor:${eligible ? 'pointer' : 'not-allowed'};">
         </td>
         <td style="padding:7px 8px;vertical-align:top;min-width:240px;white-space:normal;overflow-wrap:anywhere;line-height:1.45;">${geoEnrichmentEscape(item.location)}</td>
         <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(previewStatus)}</td>
-        <td style="padding:7px 8px;vertical-align:top;min-width:280px;white-space:normal;overflow-wrap:anywhere;line-height:1.45;">${geoEnrichmentEscape(address || 'Needs manual address review')}</td>
+        <td style="padding:7px 8px;vertical-align:top;min-width:280px;white-space:normal;overflow-wrap:anywhere;line-height:1.45;">${geoEnrichmentEscape(address || 'Enter venue details')}<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px;min-width:260px;">${[['location_name','Venue'],['address1','Street'],['city','City'],['state','State'],['zip','ZIP'],['latitude','Latitude'],['longitude','Longitude']].map(([field,label])=>`<label style="font-size:10px;">${label}<input value="${geoEnrichmentEscape(manual[field])}" onchange="updateGeoManualField(${index},'${field}',this.value)" style="box-sizing:border-box;width:100%;padding:4px;border:1px solid #CBD5E1;border-radius:4px;"></label>`).join('')}</div><div style="font-size:10px;color:${manualValid?'#166534':'#64748B'};margin-top:4px;">${manualValid?'Address and coordinates entered; select checkbox to approve':'Enter address fields and Nevada coordinates to enable approval'}</div></td>
         <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(geoAssignment.county || 'Review ZIP')}</td>
         <td style="padding:7px 8px;vertical-align:top;font-weight:600;">${geoEnrichmentEscape(geoAssignment.region || 'Unassigned')}</td>
         <td style="padding:7px 8px;text-align:right;vertical-align:top;">${geoEnrichmentEscape(item.event_count || 0)}</td>
@@ -24657,13 +24673,12 @@ async function loadGeographicEnrichment(){
       offset = data.totals.next_offset;
     }
 
-    const entries = state.preview.map(item => ({
-      location: item.location,
-      event_ids: (item.events || []).map(event => event.event_id),
-      latitude: item.proposed_address?.latitude,
-      longitude: item.proposed_address?.longitude,
+    const entries = state.preview.map(item => {
+      const manual=geoManualData(item);
+      return { location:item.location,event_ids:(item.events||[]).map(event=>event.event_id),latitude:manual.latitude,longitude:manual.longitude,manual_address:state.manualEdits[String(item.location||'').trim().toLowerCase()]?manual:null,
       ...geoEnrichmentRegionFor(item)
-    }));
+      };
+    });
 
     for(let i = 0; i < entries.length; i += 25){
       const response = await fetch(`${base}/apply`, {
@@ -24710,13 +24725,12 @@ async function applyGeographicEnrichment(){
   }
   const readyEntries = state.preview.filter(item =>
     selectedLocations.has(String(item.location || '').trim().toLowerCase())
-  ).map(item => ({
-    location: item.location,
-    event_ids: (item.events || []).map(event => event.event_id),
-    latitude: item.proposed_address?.latitude,
-    longitude: item.proposed_address?.longitude,
+  ).map(item => {
+    const manual=geoManualData(item);
+    return {location:item.location,event_ids:(item.events||[]).map(event=>event.event_id),latitude:manual.latitude,longitude:manual.longitude,manual_address:state.manualEdits[String(item.location||'').trim().toLowerCase()]?manual:null,
     ...geoEnrichmentRegionFor(item)
-  }));
+    };
+  });
 
   const eventCount = readyEntries.reduce((sum, item) => sum + item.event_ids.length, 0);
   const confirmed = window.confirm(
