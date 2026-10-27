@@ -20094,8 +20094,14 @@ geographic analysis.
     <button class="action-btn" id="geoEnrichmentDryRunBtn" onclick="loadGeographicEnrichment()">
       Refresh Preview + Dry Run
     </button>
+    <button class="action-btn" id="geoEnrichmentSelectAllBtn" onclick="selectAllReadyGeographicLocations()" disabled>
+      Select All Ready
+    </button>
+    <button class="action-btn" id="geoEnrichmentClearBtn" onclick="clearGeographicLocationSelection()" disabled>
+      Clear Selection
+    </button>
     <button class="action-btn" id="geoEnrichmentApplyBtn" onclick="applyGeographicEnrichment()" disabled>
-      Apply Ready Items
+      Apply Selected Items
     </button>
   </div>
 
@@ -20110,6 +20116,7 @@ geographic analysis.
     <table style="width:100%;border-collapse:collapse;font-size:12px;">
       <thead style="position:sticky;top:0;background:#F8FAFC;z-index:1;">
         <tr>
+          <th style="padding:8px;text-align:center;border-bottom:1px solid #DBE3EC;">Select</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Event location</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Preview</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Proposed address</th>
@@ -20119,7 +20126,7 @@ geographic analysis.
         </tr>
       </thead>
       <tbody id="geoEnrichmentResults">
-        <tr><td colspan="6" style="padding:12px;">No results loaded yet.</td></tr>
+        <tr><td colspan="7" style="padding:12px;">No results loaded yet.</td></tr>
       </tbody>
     </table>
   </div>
@@ -24440,7 +24447,8 @@ window.geoEnrichmentState = {
   ready: [],
   lastLoadedAt: null,
   applying: false,
-  applied: false
+  applied: false,
+  selectedLocations: new Set()
 };
 
 function geoEnrichmentEscape(value){
@@ -24461,11 +24469,44 @@ function geoEnrichmentSetStatus(message, isError = false){
   el.style.borderColor = isError ? '#DC2626' : '#DBE3EC';
 }
 
+function toggleGeographicLocationSelection(checkbox){
+  const state = window.geoEnrichmentState;
+  const index = Number(checkbox?.dataset?.geoEnrichmentIndex);
+  const item = state.preview[index];
+  if(!item) return;
+  const key = String(item.location || '').trim().toLowerCase();
+  const ready = state.evaluated.some(result =>
+    String(result.location || '').trim().toLowerCase() === key &&
+    ['ready_create_address','ready_link_existing','ready_reuse_planned_address'].includes(result.status)
+  );
+  if(!ready) return;
+  if(checkbox.checked) state.selectedLocations.add(key);
+  else state.selectedLocations.delete(key);
+  state.applied = false;
+  geoEnrichmentRender();
+}
+
+function selectAllReadyGeographicLocations(){
+  const state = window.geoEnrichmentState;
+  if(state.applying || state.applied) return;
+  state.ready.forEach(item => state.selectedLocations.add(String(item.location || '').trim().toLowerCase()));
+  geoEnrichmentRender();
+}
+
+function clearGeographicLocationSelection(){
+  const state = window.geoEnrichmentState;
+  if(state.applying || state.applied) return;
+  state.selectedLocations.clear();
+  geoEnrichmentRender();
+}
+
 function geoEnrichmentRender(){
   const state = window.geoEnrichmentState;
   const tbody = document.getElementById('geoEnrichmentResults');
   const summary = document.getElementById('geoEnrichmentSummary');
   const applyBtn = document.getElementById('geoEnrichmentApplyBtn');
+  const selectAllBtn = document.getElementById('geoEnrichmentSelectAllBtn');
+  const clearBtn = document.getElementById('geoEnrichmentClearBtn');
   if(!tbody || !summary || !applyBtn) return;
 
   const evaluatedByLocation = new Map(
@@ -24477,6 +24518,13 @@ function geoEnrichmentRender(){
     'ready_reuse_planned_address'
   ]);
   state.ready = state.evaluated.filter(item => readyStatuses.has(item.status));
+  const readyKeys = new Set(state.ready.map(item => String(item.location || '').trim().toLowerCase()));
+  state.selectedLocations = new Set(
+    [...state.selectedLocations].filter(key => readyKeys.has(key))
+  );
+  const selectedReady = state.ready.filter(item =>
+    state.selectedLocations.has(String(item.location || '').trim().toLowerCase())
+  );
 
   const countEvents = list => list.reduce((sum, item) => sum + Number(item.event_count || 0), 0);
   const counts = state.evaluated.reduce((acc, item) => {
@@ -24486,8 +24534,9 @@ function geoEnrichmentRender(){
 
   summary.innerHTML = [
     ['Locations reviewed', state.preview.length],
-    ['Ready to apply', state.ready.length],
-    ['Events in ready groups', countEvents(state.ready)],
+    ['Ready candidates', state.ready.length],
+    ['Selected to apply', selectedReady.length],
+    ['Events in selection', countEvents(selectedReady)],
     ['Manual review / skipped', state.evaluated.length - state.ready.length]
   ].map(([label, value]) => `
     <div style="padding:8px 10px;border:1px solid #DBE3EC;border-radius:8px;background:#fff;min-width:130px;">
@@ -24503,7 +24552,7 @@ function geoEnrichmentRender(){
     );
   }
 
-  tbody.innerHTML = state.preview.map(item => {
+  tbody.innerHTML = state.preview.map((item, index) => {
     const key = String(item.location || '').trim().toLowerCase();
     const result = evaluatedByLocation.get(key);
     const proposed = item.proposed_address || {};
@@ -24516,8 +24565,17 @@ function geoEnrichmentRender(){
     const previewStatus = item.status || '';
     const resultStatus = result?.status || 'not evaluated';
     const safe = readyStatuses.has(result?.status);
+    const checked = state.selectedLocations.has(key);
     return `
       <tr style="border-bottom:1px solid #E2E8F0;">
+        <td style="padding:7px 8px;text-align:center;vertical-align:top;">
+          <input type="checkbox" data-geo-enrichment-index="${index}"
+            onchange="toggleGeographicLocationSelection(this)"
+            ${safe ? '' : 'disabled'}
+            ${checked && safe ? 'checked' : ''}
+            aria-label="Select ${geoEnrichmentEscape(item.location)} for apply"
+            style="width:16px;height:16px;cursor:${safe ? 'pointer' : 'not-allowed'};">
+        </td>
         <td style="padding:7px 8px;vertical-align:top;max-width:260px;overflow-wrap:anywhere;">${geoEnrichmentEscape(item.location)}</td>
         <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(previewStatus)}</td>
         <td style="padding:7px 8px;vertical-align:top;min-width:180px;">${geoEnrichmentEscape(address || 'Needs manual address review')}</td>
@@ -24526,9 +24584,14 @@ function geoEnrichmentRender(){
         <td style="padding:7px 8px;vertical-align:top;max-width:280px;overflow-wrap:anywhere;">${geoEnrichmentEscape(reason)}</td>
       </tr>
     `;
-  }).join('') || '<tr><td colspan="6" style="padding:12px;">No locations found.</td></tr>';
+  }).join('') || '<tr><td colspan="7" style="padding:12px;">No locations found.</td></tr>';
 
-  applyBtn.disabled = !state.ready.length || state.applying || state.applied;
+  applyBtn.textContent = selectedReady.length
+    ? `Apply Selected Items (${selectedReady.length})`
+    : 'Apply Selected Items';
+  applyBtn.disabled = !selectedReady.length || state.applying || state.applied;
+  if(selectAllBtn) selectAllBtn.disabled = !state.ready.length || state.applying || state.applied;
+  if(clearBtn) clearBtn.disabled = !state.selectedLocations.size || state.applying || state.applied;
 }
 
 async function loadGeographicEnrichment(){
@@ -24546,6 +24609,7 @@ async function loadGeographicEnrichment(){
   state.preview = [];
   state.evaluated = [];
   state.ready = [];
+  state.selectedLocations.clear();
   state.lastLoadedAt = null;
   state.applied = false;
   if(refreshBtn) refreshBtn.disabled = true;
@@ -24615,9 +24679,13 @@ async function applyGeographicEnrichment(){
     return;
   }
 
-  const readyLocations = new Set(state.ready.map(item => String(item.location || '').trim().toLowerCase()));
+  const selectedLocations = new Set(state.selectedLocations);
+  if(!selectedLocations.size){
+    geoEnrichmentSetStatus('Select one or more ready locations before applying.', true);
+    return;
+  }
   const readyEntries = state.preview.filter(item =>
-    readyLocations.has(String(item.location || '').trim().toLowerCase())
+    selectedLocations.has(String(item.location || '').trim().toLowerCase())
   ).map(item => ({
     location: item.location,
     event_ids: (item.events || []).map(event => event.event_id),
@@ -24627,7 +24695,7 @@ async function applyGeographicEnrichment(){
 
   const eventCount = readyEntries.reduce((sum, item) => sum + item.event_ids.length, 0);
   const confirmed = window.confirm(
-    `Apply ${readyEntries.length} location groups covering up to ${eventCount} events?\n\nOnly locations marked ready by the dry run are included. The server will revalidate each event and address. Uncertain, conflicting, or out-of-state locations remain untouched. New address regions will remain blank.\n\nThis action writes to the database and cannot be automatically undone.`
+    `Apply the ${readyEntries.length} selected location groups covering up to ${eventCount} events?\n\nOnly the rows you selected, which are marked ready by the dry run, are included. The server will revalidate each event and address. Uncertain, conflicting, or out-of-state locations remain untouched. New address regions will remain blank.\n\nThis action writes to the database and cannot be automatically undone.`
   );
   if(!confirmed) return;
 
