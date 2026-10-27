@@ -15570,6 +15570,19 @@ ${comparisonHtml}
 <div class="dashboard-tool-list">
 
   <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openEventMap();"
+    title="Explore mapped event locations and filter to your assigned instructor events.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/>
+        <path d="M9 3v15M15 6v15"/>
+        <circle cx="12" cy="10" r="2"/>
+      </svg>
+    </span>
+    <span>Event Map</span>
+  </button>
+
+  <button class="admin-button dashboard-tool-button"
     onclick="closeDashboard(); openProfileModal();"
     title="View and update your personal NDOW instructor profile and email history.">
     <span class="dashboard-button-icon">
@@ -15628,18 +15641,7 @@ ${comparisonHtml}
     <span>Projects</span>
   </button>
 
-  <button class="admin-button dashboard-tool-button"
-    onclick="closeDashboard(); openEventMap();"
-    title="Explore mapped event locations and filter to your assigned instructor events.">
-    <span class="dashboard-button-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/>
-        <path d="M9 3v15M15 6v15"/>
-        <circle cx="12" cy="10" r="2"/>
-      </svg>
-    </span>
-    <span>Event Map</span>
-  </button>
+
 
 </div>
 
@@ -24844,12 +24846,12 @@ async function applyGeographicEnrichment(){
 <select id="eventMapRegion" onchange="renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All regions</option><option>Southern</option><option>Eastern</option><option>Western</option><option>Unassigned</option></select><button onclick="fitEventMap()" style="padding:9px 12px;border:1px solid #DBE3EC;border-radius:7px;background:#F8FAFC;">Show all pins</button></div>
 <div id="eventMapStatus" style="font-size:12px;color:#475569;">Loading mapped event locations…</div>
 <div style="display:flex;flex:1;min-height:280px;gap:10px;"><div id="eventMapCanvas" style="flex:1;min-width:0;min-height:280px;border:1px solid #DBE3EC;border-radius:8px;overflow:hidden;"></div><div id="eventMapDetails" style="width:280px;max-width:32%;overflow:auto;border:1px solid #DBE3EC;border-radius:8px;padding:10px;background:#fff;font-size:12px;">Select a map marker to inspect its events.</div></div>
-<div style="font-size:11px;color:#64748b;">Markers use saved address coordinates. Verified district boundary outlines are a separate next layer; they will not be guessed from marker locations.</div>
+<div style="font-size:11px;color:#64748b;">Markers use saved address coordinates. Outlines use NDOW’s published administrative-region boundary layer.</div>
 </div></div>
 
 <script src="js/calder/calder-launcher.js?v=20261018-help-search"></script>
 <script>
-let eventMapInstance=null,eventMapLocations=[],eventMapMarkerLayer=null,eventMapLoaded=false;
+let eventMapInstance=null,eventMapLocations=[],eventMapMarkerLayer=null,eventMapLoaded=false,eventMapDistrictLayer=null,eventMapDistrictLoading=false;
 function openEventMap(){
  const modal=document.getElementById('eventMapModal');if(!modal)return;
  modal.classList.remove('hidden');modal.style.display='flex';
@@ -24859,9 +24861,36 @@ function openEventMap(){
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(eventMapInstance);
   eventMapMarkerLayer=L.layerGroup().addTo(eventMapInstance);
  }
- setTimeout(()=>eventMapInstance?.invalidateSize(),120);if(!eventMapLoaded)loadEventMapLocations();
+ setTimeout(()=>eventMapInstance?.invalidateSize(),120);
+ loadEventMapDistricts();
+ if(!eventMapLoaded)loadEventMapLocations();
 }
 function closeEventMap(){const m=document.getElementById('eventMapModal');if(m){m.classList.add('hidden');m.style.display='';}}
+
+async function loadEventMapDistricts(){
+ if(!eventMapInstance||eventMapDistrictLayer||eventMapDistrictLoading)return;
+ eventMapDistrictLoading=true;
+ try{
+  // Official NDOW administrative-region boundaries from its published ArcGIS service.
+  const url='https://services.arcgis.com/RyxlXSfFi87rAosq/ArcGIS/rest/services/NDOWRegions/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&returnGeometry=true&f=geojson';
+  const response=await fetch(url,{headers:{'Accept':'application/geo+json,application/json'}});
+  if(!response.ok)throw new Error('Boundary service returned '+response.status);
+  const geojson=await response.json();
+  if(!geojson||!Array.isArray(geojson.features))throw new Error('Unexpected boundary data format.');
+  eventMapDistrictLayer=L.geoJSON(geojson,{
+   style:{color:'#19304B',weight:2,opacity:.9,fillColor:'#589FD6',fillOpacity:.06},
+   onEachFeature:(feature,layer)=>{
+    const props=feature.properties||{};
+    const entry=Object.entries(props).find(([key,value])=>/region|name|district/i.test(key)&&value!==null&&String(value).trim());
+    const label=entry?String(entry[1]):'';
+    if(label)layer.bindTooltip(eventMapEscape(label),{sticky:true});
+    layer.bindPopup('<strong>NDOW administrative region</strong>'+(label?'<br>'+eventMapEscape(label):''));
+   }
+  }).addTo(eventMapInstance);
+  eventMapDistrictLayer.bringToBack();
+ }catch(error){console.warn('NDOW region boundaries could not be loaded:',error);}
+ finally{eventMapDistrictLoading=false;}
+}
 async function loadEventMapLocations(){
  const status=document.getElementById('eventMapStatus');status.textContent='Loading saved address coordinates…';
  try{
