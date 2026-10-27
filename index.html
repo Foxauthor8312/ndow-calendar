@@ -12183,6 +12183,16 @@ if(data.success){
 
 }
 
+function openGeographicEnrichmentAdmin(){
+
+  openAdminPanel();
+
+  setTimeout(() => {
+    openAdminSection('geoEnrichment');
+  }, 100);
+
+}
+
 function openAnalytics(){
 
   const modal =
@@ -15695,6 +15705,19 @@ ${comparisonHtml}
       </svg>
     </span>
     <span>Address Library</span>
+  </button>
+
+  <button class="admin-button dashboard-tool-button"
+    onclick="closeDashboard(); openGeographicEnrichmentAdmin();"
+    title="Review and safely link event locations to geographic address records.">
+    <span class="dashboard-button-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+        <path d="M3 4h4M5 2v4M17 3h4M19 1v4"/>
+      </svg>
+    </span>
+    <span>Geo Enrichment</span>
   </button>
 
   <button class="admin-button dashboard-tool-button"
@@ -19340,12 +19363,7 @@ id="adminSidebar"
   Addresses
 </button>
 
-<button
-  id="adminGeoEnrichmentBtn"
-  onclick="openAdminSection('geoEnrichment')"
->
-  Geo Enrichment
-</button>
+
 	
 <button
   id="adminHelpBtn"
