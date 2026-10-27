@@ -20120,6 +20120,8 @@ geographic analysis.
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Event location</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Preview</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Proposed address</th>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">County</th>
+          <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">NDOW Region</th>
           <th style="padding:8px;text-align:right;border-bottom:1px solid #DBE3EC;">Events</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Dry-run result</th>
           <th style="padding:8px;text-align:left;border-bottom:1px solid #DBE3EC;">Reason</th>
@@ -24500,6 +24502,13 @@ function clearGeographicLocationSelection(){
   geoEnrichmentRender();
 }
 
+function geoEnrichmentRegionFor(item){
+  const proposed = item?.proposed_address || {};
+  const zip = String(proposed.zip || '').match(/\d{5}/)?.[0];
+  const mapped = zip ? zipLookup[zip] : null;
+  return { county: mapped?.county || '', region: mapped?.region || '' };
+}
+
 function geoEnrichmentRender(){
   const state = window.geoEnrichmentState;
   const tbody = document.getElementById('geoEnrichmentResults');
@@ -24562,6 +24571,7 @@ function geoEnrichmentRender(){
       [proposed.city, proposed.state, proposed.zip].filter(Boolean).join(' ')
     ].filter(Boolean).join(', ');
     const reason = result?.reason || item.note || result?.planned_group || '';
+    const geoAssignment = geoEnrichmentRegionFor(item);
     const previewStatus = item.status || '';
     const resultStatus = result?.status || 'not evaluated';
     const safe = readyStatuses.has(result?.status);
@@ -24579,6 +24589,8 @@ function geoEnrichmentRender(){
         <td style="padding:7px 8px;vertical-align:top;max-width:260px;overflow-wrap:anywhere;">${geoEnrichmentEscape(item.location)}</td>
         <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(previewStatus)}</td>
         <td style="padding:7px 8px;vertical-align:top;min-width:180px;">${geoEnrichmentEscape(address || 'Needs manual address review')}</td>
+        <td style="padding:7px 8px;vertical-align:top;">${geoEnrichmentEscape(geoAssignment.county || 'Review ZIP')}</td>
+        <td style="padding:7px 8px;vertical-align:top;font-weight:600;">${geoEnrichmentEscape(geoAssignment.region || 'Unassigned')}</td>
         <td style="padding:7px 8px;text-align:right;vertical-align:top;">${geoEnrichmentEscape(item.event_count || 0)}</td>
         <td style="padding:7px 8px;vertical-align:top;font-weight:${safe ? '700' : '400'};color:${safe ? '#166534' : '#64748B'};">${geoEnrichmentEscape(resultStatus)}</td>
         <td style="padding:7px 8px;vertical-align:top;max-width:280px;overflow-wrap:anywhere;">${geoEnrichmentEscape(reason)}</td>
@@ -24638,7 +24650,8 @@ async function loadGeographicEnrichment(){
       location: item.location,
       event_ids: (item.events || []).map(event => event.event_id),
       latitude: item.proposed_address?.latitude,
-      longitude: item.proposed_address?.longitude
+      longitude: item.proposed_address?.longitude,
+      ...geoEnrichmentRegionFor(item)
     }));
 
     for(let i = 0; i < entries.length; i += 25){
@@ -24690,12 +24703,13 @@ async function applyGeographicEnrichment(){
     location: item.location,
     event_ids: (item.events || []).map(event => event.event_id),
     latitude: item.proposed_address?.latitude,
-    longitude: item.proposed_address?.longitude
+    longitude: item.proposed_address?.longitude,
+    ...geoEnrichmentRegionFor(item)
   }));
 
   const eventCount = readyEntries.reduce((sum, item) => sum + item.event_ids.length, 0);
   const confirmed = window.confirm(
-    `Apply the ${readyEntries.length} selected location groups covering up to ${eventCount} events?\n\nOnly the rows you selected, which are marked ready by the dry run, are included. The server will revalidate each event and address. Uncertain, conflicting, or out-of-state locations remain untouched. New address regions will remain blank.\n\nThis action writes to the database and cannot be automatically undone.`
+    `Apply the ${readyEntries.length} selected location groups covering up to ${eventCount} events?\n\nOnly the rows you selected, which are marked ready by the dry run, are included. The server will revalidate each event and address. Uncertain, conflicting, or out-of-state locations remain untouched. County and NDOW Region are derived from the existing ZIP lookup when available; unmapped ZIPs remain unassigned.\n\nThis action writes to the database and cannot be automatically undone.`
   );
   if(!confirmed) return;
 
