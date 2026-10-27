@@ -24704,7 +24704,7 @@ async function loadGeographicEnrichment(){
 
     const entries = state.preview.map(item => {
       const manual=geoManualData(item);
-      return { location:item.location,event_ids:(item.events||[]).map(event=>event.event_id),latitude:manual.latitude,longitude:manual.longitude,manual_address:state.manualEdits[String(item.location||'').trim().toLowerCase()]?manual:null,
+      return { location:item.location,event_ids:(item.events||[]).map(event=>event.event_id),latitude:manual.latitude,longitude:manual.longitude,manual_address:manual,
       ...geoEnrichmentRegionFor(item)
       };
     });
@@ -24756,7 +24756,7 @@ async function applyGeographicEnrichment(){
     selectedLocations.has(String(item.location || '').trim().toLowerCase())
   ).map(item => {
     const manual=geoManualData(item);
-    return {location:item.location,event_ids:(item.events||[]).map(event=>event.event_id),latitude:manual.latitude,longitude:manual.longitude,manual_address:state.manualEdits[String(item.location||'').trim().toLowerCase()]?manual:null,
+    return {location:item.location,event_ids:(item.events||[]).map(event=>event.event_id),latitude:manual.latitude,longitude:manual.longitude,manual_address:manual,
     ...geoEnrichmentRegionFor(item)
     };
   });
