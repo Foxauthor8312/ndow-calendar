@@ -15569,6 +15569,10 @@ ${comparisonHtml}
   
 <div class="dashboard-tool-list">
 
+  <button class="admin-button dashboard-tool-button" onclick="closeDashboard(); openEventMap();" title="Explore mapped event locations on a zoomable map.">
+    <span class="dashboard-button-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/><circle cx="12" cy="10" r="2"/></svg></span><span>Event Map</span>
+  </button>
+
   <button class="admin-button dashboard-tool-button"
     onclick="closeDashboard(); openEventMap();"
     title="Explore mapped event locations and filter to your assigned instructor events.">
@@ -15724,9 +15728,7 @@ ${comparisonHtml}
     <span>Address Library</span>
   </button>
 
-  <button class="admin-button dashboard-tool-button" onclick="closeDashboard(); openEventMap();" title="Explore mapped event locations on a zoomable map.">
-    <span class="dashboard-button-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/><circle cx="12" cy="10" r="2"/></svg></span><span>Event Map</span>
-  </button>
+
 
   <button class="admin-button dashboard-tool-button"
     onclick="closeDashboard(); openGeographicEnrichmentAdmin();"
@@ -24906,7 +24908,7 @@ function populateEventMapDateFilters(){
  const ys=[...new Set(dates.map(d=>d.year))].sort((a,b)=>b-a);
  years.innerHTML='<option value="">All years</option>'+ys.map(y=>'<option value="'+y+'">'+y+'</option>').join('');
  if(ys.includes(Number(oldYear)))years.value=oldYear;
- const cs=[...new Set(eventMapLocations.flatMap(l=>(l.events||[]).map(e=>String(e.category||e.program||'').trim())).filter(Boolean))].sort();
+ const cs=[...new Set(eventMapLocations.flatMap(l=>(l.events||[]).map(e=>String(e.program||e.category||'').trim())).filter(Boolean))].sort();
  cats.innerHTML='<option value="">All categories</option>'+cs.map(c=>'<option value="'+eventMapEscape(c)+'">'+eventMapEscape(c)+'</option>').join('');
  if(cs.includes(oldCat))cats.value=oldCat;
 }
@@ -24921,7 +24923,7 @@ function eventMapEscape(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&am
 function renderEventMapMarkers(){
  if(!eventMapMarkerLayer)return;eventMapMarkerLayer.clearLayers();
  const search=(document.getElementById('eventMapSearch')?.value||'').trim().toLowerCase(),region=document.getElementById('eventMapRegion')?.value||'',category=document.getElementById('eventMapCategory')?.value||'',year=Number(document.getElementById('eventMapYear')?.value||0),month=Number(document.getElementById('eventMapMonth')?.value||0),date=document.getElementById('eventMapDate')?.value||'';
- const filtered=eventMapLocations.map(loc=>({...loc,events:(loc.events||[]).filter(e=>{const d=eventMapDateParts(e.event_date);if(category&&String(e.category||e.program||'').trim()!==category)return false;if(year&&(!d||d.year!==year))return false;if(month&&(!d||d.month!==month))return false;if(date&&(!d||d.date!==date))return false;const hay=[e.title,e.location,e.program,e.category,loc.name,loc.city].join(' ').toLowerCase();return !search||hay.includes(search);})})).filter(loc=>{const rg=String(loc.region||'').trim()||'Unassigned';return loc.events.length>0&&(!region||rg===region);});
+ const filtered=eventMapLocations.map(loc=>({...loc,events:(loc.events||[]).filter(e=>{const d=eventMapDateParts(e.event_date);if(category&&String(e.program||e.category||'').trim()!==category)return false;if(year&&(!d||d.year!==year))return false;if(month&&(!d||d.month!==month))return false;if(date&&(!d||d.date!==date))return false;const hay=[e.title,e.location,e.program,e.category,loc.name,loc.city].join(' ').toLowerCase();return !search||hay.includes(search);})})).filter(loc=>{const rg=String(loc.region||'').trim()||'Unassigned';return loc.events.length>0&&(!region||rg===region);});
 
  const colors={Southern:'#DC2626',Eastern:'#F29647',Western:'#589FD6',Unassigned:'#64748B'};
  const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
