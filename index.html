@@ -24823,13 +24823,19 @@ async function applyGeographicEnrichment(){
 <div id="eventMapModal" class="modal hidden" style="z-index:10020;">
 <div class="modal-content" style="width:min(1280px,96vw);height:min(88vh,900px);max-height:92vh;display:flex;flex-direction:column;gap:10px;padding:18px;">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div style="font-size:22px;font-weight:700;color:#19304B;">NDOW Event Map</div><div style="font-size:13px;color:#64748b;">Zoom and pan to explore saved event locations. Each marker represents a saved address record.</div></div><button class="modal-close" onclick="closeEventMap()" aria-label="Close event map">✕</button></div>
-<div style="display:flex;flex-wrap:wrap;gap:8px;"><input id="eventMapSearch" type="search" placeholder="Search venue, city, or event…" oninput="renderEventMapMarkers()" style="min-width:230px;flex:1;padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><select id="eventMapRegion" onchange="renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;min-width:170px;"><option value="">All regions</option><option>Southern</option><option>Eastern</option><option>Western</option><option>Unassigned</option></select><button onclick="fitEventMap()" style="padding:9px 12px;border:1px solid #DBE3EC;border-radius:7px;background:#F8FAFC;">Show all pins</button></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;"><input id="eventMapSearch" type="search" placeholder="Search venue or event…" oninput="renderEventMapMarkers()" style="min-width:190px;flex:1;padding:9px;border:1px solid #DBE3EC;border-radius:7px;">
+<select id="eventMapCategory" onchange="renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All categories</option></select>
+<select id="eventMapYear" onchange="populateEventMapDateFilters();renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All years</option></select>
+<select id="eventMapMonth" onchange="renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All months</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
+<input id="eventMapDate" type="date" aria-label="Specific event date" onchange="renderEventMapMarkers()" style="padding:8px;border:1px solid #DBE3EC;border-radius:7px;">
+<select id="eventMapRegion" onchange="renderEventMapMarkers()" style="padding:9px;border:1px solid #DBE3EC;border-radius:7px;"><option value="">All regions</option><option>Southern</option><option>Eastern</option><option>Western</option><option>Unassigned</option></select><button onclick="fitEventMap()" style="padding:9px 12px;border:1px solid #DBE3EC;border-radius:7px;background:#F8FAFC;">Show all pins</button></div>
 <div id="eventMapStatus" style="font-size:12px;color:#475569;">Loading mapped event locations…</div>
 <div style="display:flex;flex:1;min-height:280px;gap:10px;"><div id="eventMapCanvas" style="flex:1;min-width:0;min-height:280px;border:1px solid #DBE3EC;border-radius:8px;overflow:hidden;"></div><div id="eventMapDetails" style="width:280px;max-width:32%;overflow:auto;border:1px solid #DBE3EC;border-radius:8px;padding:10px;background:#fff;font-size:12px;">Select a map marker to inspect its events.</div></div>
 <div style="font-size:11px;color:#64748b;">Markers use saved address coordinates. Verified district boundary outlines are a separate next layer; they will not be guessed from marker locations.</div>
 </div></div>
 
-<script src="js/calder/calder-launcher.js?v=20261018-help-search">
+<script src="js/calder/calder-launcher.js?v=20261018-help-search"></script>
+<script>
 let eventMapInstance=null,eventMapLocations=[],eventMapMarkerLayer=null,eventMapLoaded=false;
 function openEventMap(){
  const modal=document.getElementById('eventMapModal');if(!modal)return;
@@ -24848,13 +24854,33 @@ async function loadEventMapLocations(){
  try{
   const response=await fetch('https://ndow-calendar-server.onrender.com/api/admin/event-map/locations',{headers:{'Authorization':'Bearer '+(localStorage.getItem('token')||''),'Accept':'application/json'}});
   const data=await response.json();if(!response.ok||!data.success)throw new Error(data.message||'Could not load event map data.');
-  eventMapLocations=data.locations||[];eventMapLoaded=true;renderEventMapMarkers();fitEventMap();
+  eventMapLocations=data.locations||[];eventMapLoaded=true;populateEventMapDateFilters();renderEventMapMarkers();fitEventMap();
  }catch(e){status.textContent='Could not load map locations: '+(e.message||'Unknown error')+'. The backend endpoint may still be deploying.';}
 }
+function populateEventMapDateFilters(){
+ const years=document.getElementById('eventMapYear'),cats=document.getElementById('eventMapCategory');if(!years||!cats)return;
+ const oldYear=years.value,oldCat=cats.value;
+ const dates=eventMapLocations.flatMap(l=>l.events||[]).map(e=>eventMapDateParts(e.event_date)).filter(Boolean);
+ const ys=[...new Set(dates.map(d=>d.year))].sort((a,b)=>b-a);
+ years.innerHTML='<option value="">All years</option>'+ys.map(y=>'<option value="'+y+'">'+y+'</option>').join('');
+ if(ys.includes(Number(oldYear)))years.value=oldYear;
+ const cs=[...new Set(eventMapLocations.flatMap(l=>(l.events||[]).map(e=>String(e.category||e.program||'').trim())).filter(Boolean))].sort();
+ cats.innerHTML='<option value="">All categories</option>'+cs.map(c=>'<option value="'+eventMapEscape(c)+'">'+eventMapEscape(c)+'</option>').join('');
+ if(cs.includes(oldCat))cats.value=oldCat;
+}
+function eventMapDateParts(value){
+ const s=String(value||'').trim();if(!s)return null;
+ let m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return {year:Number(m[1]),month:Number(m[2]),date:m[0]};
+ const d=new Date(s);if(!Number.isNaN(d.getTime()))return {year:d.getFullYear(),month:d.getMonth()+1,date:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+ m=s.match(/([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})/);if(m){const d=new Date(m[1]+' '+m[2]+', '+m[3]);if(!Number.isNaN(d.getTime()))return {year:d.getFullYear(),month:d.getMonth()+1,date:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};}
+ return null;
+}
+function eventMapEscape(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function renderEventMapMarkers(){
  if(!eventMapMarkerLayer)return;eventMapMarkerLayer.clearLayers();
- const search=(document.getElementById('eventMapSearch')?.value||'').trim().toLowerCase(),region=document.getElementById('eventMapRegion')?.value||'';
- const filtered=eventMapLocations.filter(loc=>{const r=String(loc.region||'').trim()||'Unassigned';if(region&&r!==region)return false;const hay=[loc.name,loc.address1,loc.city,loc.state,loc.zip,...(loc.events||[]).flatMap(e=>[e.title,e.location,e.program,e.category])].join(' ').toLowerCase();return !search||hay.includes(search);});
+ const search=(document.getElementById('eventMapSearch')?.value||'').trim().toLowerCase(),region=document.getElementById('eventMapRegion')?.value||'',category=document.getElementById('eventMapCategory')?.value||'',year=Number(document.getElementById('eventMapYear')?.value||0),month=Number(document.getElementById('eventMapMonth')?.value||0),date=document.getElementById('eventMapDate')?.value||'';
+ const filtered=eventMapLocations.map(loc=>({...loc,events:(loc.events||[]).filter(e=>{const d=eventMapDateParts(e.event_date);if(category&&String(e.category||e.program||'').trim()!==category)return false;if(year&&(!d||d.year!==year))return false;if(month&&(!d||d.month!==month))return false;if(date&&(!d||d.date!==date))return false;const hay=[e.title,e.location,e.program,e.category,loc.name,loc.city].join(' ').toLowerCase();return !search||hay.includes(search);})})).filter(loc=>{const rg=String(loc.region||'').trim()||'Unassigned';return loc.events.length>0&&(!region||rg===region);});
+
  const colors={Southern:'#DC2626',Eastern:'#F29647',Western:'#589FD6',Unassigned:'#64748B'};
  const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  filtered.forEach(loc=>{
@@ -24862,8 +24888,8 @@ function renderEventMapMarkers(){
   const marker=L.circleMarker([Number(loc.latitude),Number(loc.longitude)],{radius:Math.min(11,5+Math.log2(Math.max(1,loc.event_count||1))),color:'#fff',weight:1.5,fillColor:colors[rg]||'#19304B',fillOpacity:.9}).addTo(eventMapMarkerLayer);
   marker.bindTooltip(safe(loc.name)+' · '+loc.event_count+' event(s)');
   marker.on('click',()=>{
-   const evs=(loc.events||[]).map(e=>'<div style="padding:8px 0;border-bottom:1px solid #E2E8F0;"><b style="color:#19304B;">'+safe(e.title)+'</b><div style="color:#64748b;margin-top:3px;">'+safe(e.event_date)+' · '+safe(e.program||e.category||'')+'</div><div>Event #'+safe(e.event_id)+'</div></div>').join('');
-   document.getElementById('eventMapDetails').innerHTML='<div style="font-size:16px;font-weight:700;color:#19304B;">'+safe(loc.name)+'</div><div style="margin:5px 0;color:#475569;">'+safe([loc.address1,loc.city,loc.state,loc.zip].filter(Boolean).join(', '))+'</div><div><b>NDOW region:</b> '+safe(rg)+'</div><div style="margin:5px 0;"><b>Coordinates:</b> '+Number(loc.latitude).toFixed(6)+', '+Number(loc.longitude).toFixed(6)+'</div><div style="font-weight:700;margin:8px 0;">'+loc.event_count+' linked event(s)</div>'+evs;
+   const evs=(loc.events||[]).map(e=>'<div style="padding:8px 0;border-bottom:1px solid #E2E8F0;"><a href="https://nevada.events.licensing.app/dashboard/em/assigned_events/'+encodeURIComponent(e.event_id)+'" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:#19304B;text-decoration:underline;">'+safe(e.title)+'</a><div style="color:#64748b;margin-top:3px;">'+safe(e.event_date)+' · '+safe(e.program||e.category||'')+'</div><div>Event #'+safe(e.event_id)+' · <a href="https://nevada.events.licensing.app/dashboard/em/assigned_events/'+encodeURIComponent(e.event_id)+'" target="_blank" rel="noopener noreferrer">Open NDOW event ↗</a></div></div>').join('');
+   document.getElementById('eventMapDetails').innerHTML='<div style="font-size:16px;font-weight:700;color:#19304B;">'+safe(loc.name)+'</div><div style="margin:5px 0;color:#475569;">'+safe([loc.address1,loc.city,loc.state,loc.zip].filter(Boolean).join(', '))+'</div><div><b>NDOW region:</b> '+safe(rg)+'</div><div style="margin:5px 0;"><b>Coordinates:</b> '+Number(loc.latitude).toFixed(6)+', '+Number(loc.longitude).toFixed(6)+'</div><div style="font-weight:700;margin:8px 0;">'+loc.events.length+' matching event(s)</div>'+evs;
   });
  });
  document.getElementById('eventMapStatus').textContent='Showing '+filtered.length+' mapped locations · '+filtered.reduce((s,l)=>s+(l.event_count||0),0)+' linked events. Unlinked events are not plotted yet.';
