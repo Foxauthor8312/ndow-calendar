@@ -456,7 +456,23 @@ event.program =
 
  event.status =
   details.status ||
-  'Registration Open'; 
+  'Registration Open';
+
+// Events denied activation never became active. Exclude them before
+// instructor/results scraping so they cannot enter all-events.txt/events.json
+// or create/update volunteer-hour records.
+if (
+  String(event.status || '')
+    .trim()
+    .toLowerCase() === 'activation denied'
+) {
+  console.log(
+    'SKIPPING ACTIVATION-DENIED EVENT:',
+    event.id,
+    event.title
+  );
+  continue;
+}
 
 if(details.eventName){
   event.title =
@@ -582,11 +598,29 @@ try{
 
   });
 
-if (
+const hasPrimaryInstructor =
   Array.isArray(instructorData) &&
-  instructorData.length > 0
-) {
+  instructorData.some(instructor =>
+    String(instructor.role || '')
+      .trim()
+      .toUpperCase() === 'PRIMARY' &&
+    String(instructor.customerId || '').trim() !== ''
+  );
+
+if (hasPrimaryInstructor) {
+  // Accept the NDOW roster as authoritative only when it contains a
+  // primary instructor. Replacing the full list also removes assistants
+  // who are no longer assigned to this event.
   event.instructors = instructorData;
+} else {
+  // Every valid NDOW event must have a primary. If the roster is empty,
+  // incomplete, or unreadable, keep the instructor captured from the event
+  // card rather than accidentally clearing the assignment.
+  console.warn(
+    'INSTRUCTOR ROSTER NOT RECONCILED — PRIMARY INSTRUCTOR NOT VERIFIED:',
+    event.id,
+    event.title
+  );
 }
 
 event.ndowResults = [];
