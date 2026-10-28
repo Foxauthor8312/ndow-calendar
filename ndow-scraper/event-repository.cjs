@@ -41,7 +41,24 @@ module.exports = async function syncEvents(
         // Locate matching address record
         // --------------------------------------------------
 
-        let addressId = null;
+        // Load the existing operational link before attempting a fresh
+        // venue-name match. A failed lookup must never erase a verified link.
+        const {
+            data: existingEvent,
+            error: existingEventError
+        } = await supabase
+            .from('events')
+            .select(
+                'address_id,registered_count,roster_student_count,roster_hash,roster_last_checked,roster_last_updated'
+            )
+            .eq('event_id', event.id)
+            .maybeSingle();
+
+        if (existingEventError) {
+            throw existingEventError;
+        }
+
+        let addressId = existingEvent?.address_id ?? null;
 
         if (event.location) {
 
@@ -64,32 +81,16 @@ module.exports = async function syncEvents(
             else {
 
                 console.warn(
-                    `Address not found: ${event.location}`
+                    existingEvent?.address_id
+                        ? `Address lookup missed for "${event.location}"; preserving existing address_id ${existingEvent.address_id}.`
+                        : `Address not found for "${event.location}"; event remains unlinked.`
                 );
 
             }
 
         }
 
-        // Preserve operational roster fields when refreshing the
-        // published event catalog. Roster synchronization owns these
-        // values; the catalog feed must not reset them.
-        const {
-            data: existingEvent,
-            error: existingEventError
-        } = await supabase
-            .from('events')
-            .select(
-                'registered_count,roster_student_count,roster_hash,roster_last_checked,roster_last_updated'
-            )
-            .eq('event_id', event.id)
-            .maybeSingle();
-
-        if (existingEventError) {
-
-            throw existingEventError;
-
-        }
+        // Preserve existing operational fields; see lookup above.
 
         const row = {
 
