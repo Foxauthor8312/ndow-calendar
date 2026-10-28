@@ -495,6 +495,59 @@ button:hover{
 .hidden{
   display:none !important;
 }
+
+/* Dashboard: keep the dialog inside the viewport and make its contents
+   touch-scrollable, especially on mobile browsers. */
+#dashboardModal{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+#dashboardModal > .modal-content{
+  min-height:0;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+#dashboardContent{
+  min-height:0;
+}
+
+@media (max-width: 768px){
+  #dashboardModal{
+    align-items:flex-start !important;
+    justify-content:center;
+    padding:calc(env(safe-area-inset-top, 0px) + 8px) 10px
+      calc(env(safe-area-inset-bottom, 0px) + 10px) !important;
+    overflow-y:auto;
+    touch-action:pan-y;
+  }
+
+  #dashboardModal > .modal-content{
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    max-height:calc(100vh - 18px - env(safe-area-inset-top, 0px)
+      - env(safe-area-inset-bottom, 0px)) !important;
+    max-height:calc(100dvh - 18px - env(safe-area-inset-top, 0px)
+      - env(safe-area-inset-bottom, 0px)) !important;
+    flex:0 0 auto;
+    margin:0 !important;
+    padding:16px !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+  }
+
+  #dashboardUserGreeting{
+    margin-right:42px !important;
+    max-width:48% !important;
+    font-size:12px !important;
+    line-height:16px !important;
+  }
+}
 	
 .modal-close{
   position:absolute;
