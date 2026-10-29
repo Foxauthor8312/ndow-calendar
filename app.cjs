@@ -47,7 +47,7 @@ const { createClient } =
 // scraper falls back to its existing single-summary behavior.
 function parseNdowDailyEntries(pageText, fallbackYear) {
   const lines = String(pageText || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-  const monthDate = /^(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?:day)?[,]?\s+)?(?:Date\s*:?\s*)?(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,?\s+(\d{4}))?$/i;
+  const monthDate = /^(?:(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|Mon|Tue|Wed|Thu|Fri|Sat|Sun)[,]?\s+)?(?:Date\s*:?\s*)?(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,?\s+(\d{4}))?$/i;
   const numericDate = /^(?:Date\s*:?\s*)?(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/i;
   const monthIndex = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
 
