@@ -3105,6 +3105,32 @@ async function submitForgotPin(){
       font-size:13px;
       font-weight:600;
     ">
+      Sync Passcode
+    </label>
+
+    <input
+      id="ndowSyncPasscode"
+      type="password"
+      autocomplete="off"
+      aria-label="NDOW sync passcode"
+      style="
+        width:100%;
+        box-sizing:border-box;
+        padding:9px 10px;
+        margin-bottom:14px;
+        border:1px solid #CBD5E1;
+        border-radius:6px;
+        font-size:14px;
+      "
+    >
+
+    <label style="
+      display:block;
+      margin-bottom:6px;
+      color:#19304B;
+      font-size:13px;
+      font-weight:600;
+    ">
       NDOW Email
     </label>
 
@@ -5875,6 +5901,9 @@ function openNdowSyncMessage(){
     return;
   }
 
+  const passcode =
+    document.getElementById('ndowSyncPasscode');
+
   const email =
     document.getElementById(
       'ndowSyncEmail'
@@ -5889,6 +5918,10 @@ function openNdowSyncMessage(){
     document.getElementById(
       'ndowSyncStatus'
     );
+
+  if(passcode){
+    passcode.value = '';
+  }
 
   if(email){
     email.value = '';
@@ -5952,13 +5985,24 @@ function closeNdowSyncMessage(){
 
 async function startNdowAssignmentSync(){
 
+  const passcodeInput = document.getElementById('ndowSyncPasscode');
   const emailInput = document.getElementById('ndowSyncEmail');
   const passwordInput = document.getElementById('ndowSyncPassword');
   const status = document.getElementById('ndowSyncStatus');
   const button = document.getElementById('ndowSyncButton');
 
+  const passcode = String(passcodeInput?.value || '');
   const email = String(emailInput?.value || '').trim();
   const password = String(passwordInput?.value || '');
+
+  if(!passcode){
+    if(status){
+      status.style.display = 'block';
+      status.textContent = 'Enter the sync passcode before continuing to NDOW.';
+    }
+    passcodeInput?.focus();
+    return;
+  }
 
   if(!email || !password){
     if(status){
@@ -6055,6 +6099,7 @@ async function startNdowAssignmentSync(){
           'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
+          syncPasscode: passcode,
           ndowEmail: email,
           ndowPassword: password,
           includeHours
