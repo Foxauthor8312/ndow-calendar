@@ -71,7 +71,7 @@ function parseNdowDailyEntries(pageText, fallbackYear) {
     if (eventDate) dateLines.push({ index, eventDate });
   });
 
-  const summaryStart = lines.findIndex(line => /^(?:Event Working Hours|Summary|Totals?)\b/i.test(line));
+  const summaryStart = lines.findIndex(line => /^(?:Event Working Hours|Summary|Totals?)\s*$/i.test(line));
   const datedLines = dateLines.filter(item => summaryStart < 0 || item.index < summaryStart);
   if (datedLines.length < 2) return [];
 
