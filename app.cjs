@@ -42,15 +42,14 @@ const { createClient } =
 
   const DEBUG = false;
 
-// Parse daily sections only when NDOW exposes multiple dated entries.
-// If the page does not clearly provide each date's values, return [] so the
-// scraper falls back to its existing single-summary behavior.
+// Parse dated instructor-result sections from NDOW's rendered page text.
+// NDOW repeats each date as a value under its "Date" field; those values are
+// not new section headings. Empty placeholders are ignored and zero days kept.
 function parseNdowDailyEntries(pageText, fallbackYear) {
   const lines = String(pageText || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
   const monthDate = /^(?:(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|Mon|Tue|Wed|Thu|Fri|Sat|Sun)[,]?\s+)?(?:Date\s*:?\s*)?(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,?\s+(\d{4}))?$/i;
   const numericDate = /^(?:Date\s*:?\s*)?(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/i;
   const monthIndex = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
-
   const parseDate = line => {
     let match = line.match(monthDate);
     if (match) {
@@ -59,49 +58,55 @@ function parseNdowDailyEntries(pageText, fallbackYear) {
       return year + '-' + String(month).padStart(2, '0') + '-' + String(Number(match[2])).padStart(2, '0');
     }
     match = line.match(numericDate);
-    if (match) {
-      return match[3] + '-' + String(Number(match[1])).padStart(2, '0') + '-' + String(Number(match[2])).padStart(2, '0');
-    }
+    if (match) return match[3] + '-' + String(Number(match[1])).padStart(2, '0') + '-' + String(Number(match[2])).padStart(2, '0');
     return null;
   };
-
   const dateLines = [];
   lines.forEach((line, index) => {
+    if (/^\d{1,2}[/-]\d{1,2}[/-]\d{4}$/.test(line) && /^Date\s*:?\s*$/i.test(lines[index - 1] || '')) return;
     const eventDate = parseDate(line);
     if (eventDate) dateLines.push({ index, eventDate });
   });
-
   const summaryStart = lines.findIndex(line => /^(?:Event Working Hours|Summary)\b/i.test(line));
   const datedLines = dateLines.filter(item => summaryStart < 0 || item.index < summaryStart);
   if (datedLines.length < 2) return [];
-
   const readNumber = (section, pattern) => {
     const match = section.match(pattern);
     return match ? Number(match[1]) : null;
   };
-
-  const entries = [];
+  const entriesByDate = new Map();
   for (let i = 0; i < datedLines.length; i++) {
-    const start = datedLines[i].index;
-    const end = i + 1 < datedLines.length
-      ? datedLines[i + 1].index
-      : (summaryStart >= 0 ? summaryStart : lines.length);
-    const section = lines.slice(start, end).join('\n');
+    const sectionStart = datedLines[i].index;
+    const sectionEnd = i + 1 < datedLines.length ? datedLines[i + 1].index : (summaryStart >= 0 ? summaryStart : lines.length);
+    const section = lines.slice(sectionStart, sectionEnd).join('\n');
     const hours = readNumber(section, /Total\s*\(hrs\)\s*:?\s*([0-9]+(?:\.[0-9]+)?)/i);
     const breakHours = readNumber(section, /Select how many break hours you took\s*:?\s*([0-9]+(?:\.[0-9]+)?)/i);
     const travelHours = readNumber(section, /Travel Hours\s*:?\s*([0-9]+(?:\.[0-9]+)?)/i);
     const mileage = readNumber(section, /Mileage\s*:?\s*([0-9]+(?:\.[0-9]+)?)/i);
-
-    if (hours === null) return null;
-    entries.push({
+    const hasDateValue = /\bDate\b/i.test(section);
+    const hasStartOrFinish = /\b(?:Start|Finish)\b/i.test(section);
+    const hasHoursPrompt = /What time did you leave and return home from the event\?/i.test(section);
+    const hasAnyValues = [hours, breakHours, travelHours, mileage].some(value => value !== null);
+    if (!hasAnyValues && !hasDateValue && !hasStartOrFinish) continue;
+    let dailyHours = hours;
+    if (dailyHours === null) {
+      const explicitZeroDay = hasHoursPrompt &&
+        /What time did you leave and return home from the event\?\s*0(?:\.0+)?\b/i.test(section) &&
+        breakHours === 0 && travelHours === 0 && mileage === 0;
+      if (explicitZeroDay) dailyHours = 0;
+      else return null;
+    }
+    const entry = {
       eventDate: datedLines[i].eventDate,
-      hours,
+      hours: dailyHours,
       breakHours: breakHours ?? 0,
       travelHours: travelHours ?? 0,
       mileage: mileage ?? 0
-    });
+    };
+    if (entriesByDate.has(entry.eventDate)) return null;
+    entriesByDate.set(entry.eventDate, entry);
   }
-  return entries;
+  return [...entriesByDate.values()];
 }
 
   
@@ -761,10 +766,10 @@ try{
   event.ndowResults.push({
     customerId: instructor.customerId,
     name: instructor.name,
-    hours: hoursMatch ? Number(hoursMatch[1]) : 0,
-    breakHours: breakMatch ? Number(breakMatch[1]) : 0,
-    travelHours: travelMatch ? Number(travelMatch[1]) : 0,
-    mileage: mileageMatch ? Number(mileageMatch[1]) : 0,
+    hours: dailyEntries.length ? dailyEntries.reduce((sum, day) => sum + day.hours, 0) : (hoursMatch ? Number(hoursMatch[1]) : 0),
+    breakHours: dailyEntries.length ? dailyEntries.reduce((sum, day) => sum + day.breakHours, 0) : (breakMatch ? Number(breakMatch[1]) : 0),
+    travelHours: dailyEntries.length ? dailyEntries.reduce((sum, day) => sum + day.travelHours, 0) : (travelMatch ? Number(travelMatch[1]) : 0),
+    mileage: dailyEntries.length ? dailyEntries.reduce((sum, day) => sum + day.mileage, 0) : (mileageMatch ? Number(mileageMatch[1]) : 0),
     dailyEntries
   });
 
