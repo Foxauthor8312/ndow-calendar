@@ -6536,8 +6536,8 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
     const appendSubtotal = (label, sums, isGrand = false) => {
       const tr = document.createElement('tr');
       tr.style.cssText = isGrand
-        ? 'background:#DCE7F1;font-weight:700;page-break-inside:avoid;'
-        : 'background:#EEF3F8;font-weight:700;page-break-inside:avoid;';
+        ? 'background:#DCE7F1;color:#19304B;font-weight:800;border-top:2px solid #19304B;page-break-inside:avoid;'
+        : 'background:#E8EEF5;color:#19304B;font-weight:700;border-top:2px solid #589FD6;page-break-inside:avoid;';
       const vals = [
         label + ' (' + sums.events + ' events)',
         sums.portalClass.toFixed(2),
@@ -6579,8 +6579,8 @@ async function openDiscrepanciesReport(requestedStartDate = '', requestedEndDate
           const monthRow = document.createElement('tr');
           const monthCell = document.createElement('td');
           monthCell.colSpan = headers.length;
-          monthCell.textContent = monthLabel(key);
-          monthCell.style.cssText = 'padding:9px;background:#DCE7F1;color:#19304B;font-weight:700;border:1px solid #DBE3EC;';
+          monthCell.textContent = monthLabel(key).toUpperCase() + ' — MONTHLY RECORDS';
+          monthCell.style.cssText = 'padding:11px 9px;background:#19304B;color:#FFFFFF;font-weight:700;font-size:12px;letter-spacing:.04em;border:1px solid #19304B;border-top:3px solid #F29647;';
           monthRow.appendChild(monthCell);
           tbody.appendChild(monthRow);
         }
