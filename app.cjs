@@ -773,7 +773,7 @@ try{
     dailyEntries
   });
 
-  if (!hoursMatch && !breakMatch && !travelMatch && !mileageMatch) {
+  if (!dailyEntries.length && !hoursMatch && !breakMatch && !travelMatch && !mileageMatch) {
     console.warn('NDOW result fields missing; no ndow_hours rows written:', event.id, instructor.customerId);
     continue;
   }
