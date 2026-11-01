@@ -898,7 +898,9 @@ const description =
   // ----------------------------------------
 
   let locationDisplay =
-    escapeAnglingHtml(location);
+    location
+      ? escapeAnglingHtml(location)
+      : '<span style="color:#6B7280;font-style:italic;">No location provided for this event.</span>';
 
   if (location) {
 
@@ -1004,7 +1006,7 @@ ${anglingDetailRow(
       }
 
 ${
-  location
+  true
     ? `
       <div
         style="
