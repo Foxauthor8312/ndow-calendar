@@ -1393,11 +1393,62 @@ async function createAnglingGoogleEvent() {
   } catch (error) { alert(error.message); }
 }
 
+async function chooseAnglingAddress(currentLocation) {
+  const endpoint = ANGLING_CALENDAR_API.replace('/angling-calendar', '/angling-calendar/google/addresses');
+  const response = await fetch(endpoint, { headers: anglingHeaders() });
+  const payload = await response.json();
+  if (!response.ok || !payload.success) throw new Error(payload.message || 'Unable to load address library.');
+  const addresses = payload.addresses || [];
+  const query = prompt('Search the NDOW address library by venue, street, or city. Leave blank to show all:', currentLocation || '');
+  if (query === null) return null;
+  const q = query.trim().toLowerCase();
+  const matches = addresses.filter(a => !q || [a.location_name,a.address1,a.city,a.state,a.zip].join(' ').toLowerCase().includes(q));
+  const format = a => [a.location_name,a.address1,a.city,a.state,a.zip].filter(Boolean).join(' — ');
+  let selected = null;
+  if (matches.length) {
+    const menu = matches.slice(0, 40).map((a,i) => `${i+1}. ${format(a)}`).join('\\n');
+    const choice = prompt(`Choose an address number, or enter N to add a new address:\\n\\n${menu}\\n\\nN. Add new address\\n0. Keep current location`, '1');
+    if (choice === null || choice.trim() === '0') return null;
+    if (choice.trim().toLowerCase() !== 'n') {
+      const index = Number(choice) - 1;
+      if (!Number.isInteger(index) || index < 0 || index >= Math.min(matches.length,40)) throw new Error('Please enter a valid address number.');
+      selected = matches[index];
+    }
+  } else if (!confirm('No matching active address was found. Add a new Angling address?')) {
+    return null;
+  }
+  if (!selected) {
+    const location_name = prompt('Venue / location name:', query || '');
+    if (location_name === null) return null;
+    const address1 = prompt('Street address:');
+    if (address1 === null) return null;
+    const city = prompt('City:');
+    if (city === null) return null;
+    const state = prompt('State (two-letter code):', 'NV');
+    if (state === null) return null;
+    const zip = prompt('ZIP code:');
+    if (zip === null) return null;
+    const region = prompt('NDOW region (Western, Eastern, Southern), if known:', '');
+    if (region === null) return null;
+    const created = await fetch(endpoint, {
+      method: 'POST',
+      headers: { ...anglingHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ location_name, address1, city, state, zip, region })
+    });
+    const result = await created.json();
+    if (!created.ok || !result.success) throw new Error(result.message || 'Unable to add address.');
+    selected = result.address;
+  }
+  return [selected.location_name, selected.address1, selected.city, selected.state, selected.zip].filter(Boolean).join(', ');
+}
+
 async function editAnglingGoogleEvent(event) {
   const g = event.googleEvent || {};
   const summary = prompt('Event title:', g.summary || '');
   if (summary === null) return;
-  const location = prompt('Location:', g.location || '');
+  let location;
+  try { location = await chooseAnglingAddress(g.location || ''); }
+  catch (error) { alert(error.message); return; }
   if (location === null) return;
   const description = prompt('Description:', g.description || '');
   if (description === null) return;
@@ -1405,9 +1456,9 @@ async function editAnglingGoogleEvent(event) {
   if (start === null) return;
   const end = prompt('End date/time (YYYY-MM-DDTHH:MM) or all-day date:', g.end?.dateTime || g.end?.date || '');
   if (end === null) return;
-  const allDay = /^\d{4}-\d{2}-\d{2}$/.test(start.trim());
+  const allDay = /^\\d{4}-\\d{2}-\\d{2}$/.test(start.trim());
   const body = {
-    summary: summary.trim(), location: location.trim(), description,
+    summary: summary.trim(), location, description,
     start: allDay ? { date: start.trim() } : { dateTime: anglingDateTimeWithOffset(start.trim()) },
     end: allDay ? { date: end.trim() } : { dateTime: anglingDateTimeWithOffset(end.trim()) }
   };
