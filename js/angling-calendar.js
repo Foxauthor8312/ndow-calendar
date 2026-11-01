@@ -1315,6 +1315,7 @@ function closeAnglingEventDetails() {
 
 
 let anglingCanEdit = false;
+let anglingGoogleConnected = false;
 
 function anglingHeaders() {
   const token = localStorage.getItem('token');
@@ -1327,10 +1328,22 @@ async function checkAnglingEditorAccess() {
     const response = await fetch(url, { headers: anglingHeaders() });
     if (!response.ok) return anglingCanEdit = false;
     const result = await response.json();
+    anglingGoogleConnected = !!result.connected;
     return anglingCanEdit = !!result.success;
   } catch (_) {
     return anglingCanEdit = false;
   }
+}
+
+
+async function connectAnglingGoogleCalendar() {
+  try {
+    const url = ANGLING_CALENDAR_API.replace('/angling-calendar', '/angling-calendar/google/start-url');
+    const response = await fetch(url, { headers: anglingHeaders() });
+    const result = await response.json();
+    if (!response.ok || !result.authorizationUrl) throw new Error(result.message || 'Unable to start Google authorization.');
+    window.location.href = result.authorizationUrl;
+  } catch (error) { alert(error.message); }
 }
 
 function anglingDateTimeWithOffset(value) {
@@ -1648,9 +1661,10 @@ ${
   if (anglingCanEdit) {
     const bar = document.createElement('div');
     bar.style.cssText = 'display:flex;justify-content:flex-end;padding:4px 8px 10px;';
-    bar.innerHTML = '<button id="anglingAddGoogle" style="padding:7px 11px;background:#19304B;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;">+ Add Google Event</button>';
+    bar.innerHTML = (anglingGoogleConnected ? '' : '<button id="anglingConnectGoogle" style="padding:7px 11px;background:#589FD6;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;margin-right:6px;">Connect Google Calendar</button>') + '<button id="anglingAddGoogle" style="padding:7px 11px;background:#19304B;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;">+ Add Google Event</button>';
     container.prepend(bar);
     document.getElementById('anglingAddGoogle').addEventListener('click', createAnglingGoogleEvent);
+    document.getElementById('anglingConnectGoogle')?.addEventListener('click', connectAnglingGoogleCalendar);
   }
 
   // ----------------------------------------
