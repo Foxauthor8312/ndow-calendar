@@ -514,6 +514,40 @@ function formatAnglingDateTime(value) {
 }
 
 
+// Format the clock time for the compact event list.
+// Date-only events intentionally return no time.
+function formatAnglingTime(value) {
+
+  if (!value) {
+    return '';
+  }
+
+  const raw = String(value).trim();
+
+  if (
+    /^\\d{4}-\\d{2}-\\d{2}$/.test(raw) ||
+    /^\\d{8}$/.test(raw)
+  ) {
+    return '';
+  }
+
+  const date = normalizeAnglingDate(raw);
+
+  if (!date) {
+    return '';
+  }
+
+  return date.toLocaleTimeString(
+    undefined,
+    {
+      hour: 'numeric',
+      minute: '2-digit'
+    }
+  );
+
+}
+
+
 // ========================================
 // HTML SAFETY
 // ========================================
@@ -1380,6 +1414,17 @@ const upcoming =
               event.start
             );
 
+          const startTime =
+            formatAnglingTime(event.start);
+
+          const endTime =
+            formatAnglingTime(event.end);
+
+          const timeDisplay =
+            startTime
+              ? startTime + (endTime ? ' – ' + endTime : '')
+              : 'Time not specified';
+
           const location =
             event.location ||
             '';
@@ -1416,7 +1461,7 @@ const upcoming =
     color:#555;
   "
 >
-  ${escapeAnglingHtml(date)}
+  ${escapeAnglingHtml(date)} • ${escapeAnglingHtml(timeDisplay)}
 </div>
 
 ${
