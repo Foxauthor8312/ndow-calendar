@@ -1661,9 +1661,11 @@ ${
   if (anglingCanEdit) {
     const bar = document.createElement('div');
     bar.style.cssText = 'display:flex;justify-content:flex-end;padding:4px 8px 10px;';
-    bar.innerHTML = (anglingGoogleConnected ? '' : '<button id="anglingConnectGoogle" style="padding:7px 11px;background:#589FD6;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;margin-right:6px;">Connect Google Calendar</button>') + '<button id="anglingAddGoogle" style="padding:7px 11px;background:#19304B;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;">+ Add Google Event</button>';
+    bar.innerHTML = anglingGoogleConnected
+      ? '<button id="anglingAddGoogle" style="padding:7px 11px;background:#19304B;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;">+ Add Google Event</button>'
+      : '<button id="anglingConnectGoogle" style="padding:7px 11px;background:#589FD6;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;">Connect Google Calendar</button>';
     container.prepend(bar);
-    document.getElementById('anglingAddGoogle').addEventListener('click', createAnglingGoogleEvent);
+    document.getElementById('anglingAddGoogle')?.addEventListener('click', createAnglingGoogleEvent);
     document.getElementById('anglingConnectGoogle')?.addEventListener('click', connectAnglingGoogleCalendar);
   }
 
