@@ -552,8 +552,6 @@ function showContextHelp(topicKey){
         if (visibility === 'user') return !isAdminViewer;
         return true;
       });
-        t => t.topic_key === topicKey
-      );
 
     if(!topic){
       console.log(
