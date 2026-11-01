@@ -1142,7 +1142,7 @@ ${
         >
 
           ${
-            uid
+            anglingCanEdit && uid
               ? anglingDetailRow(
                   'Event ID',
                   uid
