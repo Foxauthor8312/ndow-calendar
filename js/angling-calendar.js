@@ -556,8 +556,8 @@ function formatAnglingTime(value) {
   const raw = String(value).trim();
 
   if (
-    /^\\d{4}-\\d{2}-\\d{2}$/.test(raw) ||
-    /^\\d{8}$/.test(raw)
+    /^\d{4}-\d{2}-\d{2}$/.test(raw) ||
+    /^\d{8}$/.test(raw)
   ) {
     return '';
   }
@@ -1378,7 +1378,7 @@ async function createAnglingGoogleEvent() {
   if (location === null) return;
   const description = prompt('Description (optional):', '');
   if (description === null) return;
-  const allDay = /^\\d{4}-\\d{2}-\\d{2}$/.test(start.trim());
+  const allDay = /^\d{4}-\d{2}-\d{2}$/.test(start.trim());
   const body = {
     summary: summary.trim(), location: location.trim(), description,
     start: allDay ? { date: start.trim() } : { dateTime: anglingDateTimeWithOffset(start.trim()) },
@@ -1403,7 +1403,7 @@ async function editAnglingGoogleEvent(event) {
   if (start === null) return;
   const end = prompt('End date/time (YYYY-MM-DDTHH:MM) or all-day date:', g.end?.dateTime || g.end?.date || '');
   if (end === null) return;
-  const allDay = /^\\d{4}-\\d{2}-\\d{2}$/.test(start.trim());
+  const allDay = /^\d{4}-\d{2}-\d{2}$/.test(start.trim());
   const body = {
     summary: summary.trim(), location: location.trim(), description,
     start: allDay ? { date: start.trim() } : { dateTime: anglingDateTimeWithOffset(start.trim()) },
