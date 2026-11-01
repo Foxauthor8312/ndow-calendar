@@ -11,6 +11,37 @@ const ANGLING_CALENDAR_API =
 async function loadAnglingCalendar() {
 
   try {
+    const live = await fetch(ANGLING_CALENDAR_API.replace('/angling-calendar', '/angling-calendar/google/events'));
+    if (live.ok) {
+      const payload = await live.json();
+      if (payload.success && Array.isArray(payload.items)) {
+        return payload.items.map(item => ({
+          id: item.id,
+          uid: item.iCalUID || item.id,
+          title: item.summary || 'Untitled Event',
+          start: item.start?.dateTime || item.start?.date || '',
+          end: item.end?.dateTime || item.end?.date || '',
+          location: item.location || '',
+          description: item.description || '',
+          status: item.status || '',
+          lastModified: item.updated || '',
+          url: item.htmlLink || '',
+          rrule: item.recurrence || '',
+          recurrenceId: item.recurringEventId || '',
+          organizer: item.organizer?.displayName || item.organizer?.email || '',
+          creator: item.creator?.displayName || item.creator?.email || '',
+          attendees: Array.isArray(item.attendees) ? item.attendees : [],
+          visibility: item.visibility || '',
+          transparency: item.transparency || '',
+          googleEvent: item
+        }));
+      }
+    }
+  } catch (error) {
+    console.warn('Live Google Calendar unavailable; using iCal feed.', error);
+  }
+
+  try {
 
     const response =
       await fetch(ANGLING_CALENDAR_API);
