@@ -1399,20 +1399,14 @@ async function chooseAnglingAddress(currentLocation) {
   const payload = await response.json();
   if (!response.ok || !payload.success) throw new Error(payload.message || 'Unable to load address library.');
   const addresses = payload.addresses || [];
-
   const createNewAddress = async () => {
     const location_name = prompt('Venue / location name:');
     if (location_name === null || !location_name.trim()) return null;
-    const address1 = prompt('Street address:');
-    if (address1 === null) return null;
-    const city = prompt('City:');
-    if (city === null) return null;
-    const state = prompt('State (two-letter code):', 'NV');
-    if (state === null) return null;
-    const zip = prompt('ZIP code:');
-    if (zip === null) return null;
-    const region = prompt('NDOW region (Western, Eastern, Southern), if known:', '');
-    if (region === null) return null;
+    const address1 = prompt('Street address:'); if (address1 === null) return null;
+    const city = prompt('City:'); if (city === null) return null;
+    const state = prompt('State (two-letter code):', 'NV'); if (state === null) return null;
+    const zip = prompt('ZIP code:'); if (zip === null) return null;
+    const region = prompt('NDOW region (Western, Eastern, Southern), if known:', ''); if (region === null) return null;
     const created = await fetch(endpoint, {
       method: 'POST',
       headers: { ...anglingHeaders(), 'Content-Type': 'application/json' },
@@ -1435,31 +1429,43 @@ async function chooseAnglingAddress(currentLocation) {
     title.textContent = 'Select Event Location';
     title.style.cssText = 'font-size:19px;font-weight:700;color:#19304B;margin-bottom:5px;';
     const subtitle = document.createElement('div');
-    subtitle.textContent = 'Search by venue name, street, or city. Select the matching venue and verify its address.';
+    subtitle.textContent = 'Search the address library, then choose an address number and continue.';
     subtitle.style.cssText = 'font-size:13px;color:#64748b;line-height:1.4;';
     heading.append(title, subtitle);
+    const searchRow = document.createElement('div');
+    searchRow.style.cssText = 'display:flex;gap:8px;padding:14px 18px 8px;';
     const search = document.createElement('input');
     search.type = 'search';
-    search.placeholder = 'Search address library…';
+    search.placeholder = 'Search venue, street, or city…';
     search.value = currentLocation || '';
-    search.style.cssText = 'margin:14px 18px 8px;padding:11px 12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;';
+    search.style.cssText = 'flex:1;min-width:0;padding:11px 12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;';
+    const searchButton = document.createElement('button');
+    searchButton.type = 'button';
+    searchButton.textContent = 'Search';
+    const buttonStyle = 'border:1px solid #CBD5E1;border-radius:6px;padding:9px 14px;font-weight:600;cursor:pointer;';
+    searchButton.style.cssText = buttonStyle + 'background:#19304B;color:white;border-color:#19304B;';
+    searchRow.append(search, searchButton);
+    const selectionHint = document.createElement('div');
+    selectionHint.textContent = 'Select a numbered entry below.';
+    selectionHint.style.cssText = 'padding:0 20px 8px;font-size:12px;color:#64748b;';
     const list = document.createElement('div');
     list.style.cssText = 'padding:4px 18px 14px;overflow:auto;min-height:100px;';
     const footer = document.createElement('div');
     footer.style.cssText = 'display:flex;justify-content:space-between;gap:10px;padding:12px 18px;border-top:1px solid #DBE3EC;background:#F8FAFC;';
-    const buttonStyle = 'border:1px solid #CBD5E1;border-radius:6px;padding:9px 14px;font-weight:600;cursor:pointer;';
     const add = document.createElement('button');
     add.textContent = '+ Add New Address';
-    add.style.cssText = buttonStyle + 'background:#19304B;color:white;border-color:#19304B;';
+    add.style.cssText = buttonStyle + 'background:white;color:#19304B;';
     const cancel = document.createElement('button');
     cancel.textContent = 'Cancel';
     cancel.style.cssText = buttonStyle + 'background:white;color:#334155;';
     footer.append(add, cancel);
-    panel.append(heading, search, list, footer);
+    panel.append(heading, searchRow, selectionHint, list, footer);
     overlay.append(panel);
     document.body.append(overlay);
 
     let finished = false;
+    let matches = [];
+    let selected = null;
     const close = value => {
       if (finished) return;
       finished = true;
@@ -1471,33 +1477,52 @@ async function chooseAnglingAddress(currentLocation) {
 
     const render = () => {
       const q = search.value.trim().toLowerCase();
-      const matches = addresses.filter(a =>
+      matches = addresses.filter(a =>
         [a.location_name, a.address1, a.city, a.state, a.zip].join(' ').toLowerCase().includes(q)
       );
+      selected = null;
+      searchButton.textContent = 'Search';
+      selectionHint.textContent = matches.length
+        ? matches.length + ' matching addresses. Select a number, then Continue.'
+        : 'No matching addresses. Use Add New Address to create one.';
       list.replaceChildren();
       if (!matches.length) {
         const empty = document.createElement('div');
-        empty.textContent = 'No matching addresses. Use “Add New Address” to create one.';
+        empty.textContent = 'No matching addresses found.';
         empty.style.cssText = 'padding:22px 10px;color:#64748b;text-align:center;font-size:13px;';
         list.append(empty);
         return;
       }
-      matches.forEach(a => {
+      matches.forEach((a, i) => {
         const card = document.createElement('button');
         card.type = 'button';
-        card.style.cssText = 'display:block;width:100%;text-align:left;padding:12px 13px;margin:5px 0;border:1px solid #DBE3EC;border-radius:7px;background:white;cursor:pointer;';
+        card.style.cssText = 'display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:11px 13px;margin:5px 0;border:1px solid #DBE3EC;border-radius:7px;background:white;cursor:pointer;';
+        const number = document.createElement('div');
+        number.textContent = String(i + 1);
+        number.style.cssText = 'flex:0 0 28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#EAF0F6;color:#19304B;font-weight:700;font-size:13px;';
+        const details = document.createElement('div');
+        details.style.cssText = 'min-width:0;';
         const name = document.createElement('div');
         name.textContent = a.location_name || 'Unnamed location';
         name.style.cssText = 'font-weight:700;color:#19304B;font-size:14px;margin-bottom:4px;';
         const address = document.createElement('div');
         address.textContent = [a.address1, [a.city, a.state].filter(Boolean).join(', '), a.zip].filter(Boolean).join(' · ');
         address.style.cssText = 'font-size:13px;color:#475569;line-height:1.4;';
-        card.append(name, address);
-        card.addEventListener('click', () => close(a));
+        details.append(name, address);
+        card.append(number, details);
+        card.addEventListener('click', () => {
+          selected = a;
+          [...list.children].forEach(row => { row.style.background = 'white'; row.style.borderColor = '#DBE3EC'; });
+          card.style.background = '#EFF6FF';
+          card.style.borderColor = '#589FD6';
+          searchButton.textContent = 'Continue';
+          selectionHint.textContent = 'Selected: ' + (a.location_name || 'Unnamed location') + '. Press Continue to use this address.';
+        });
         list.append(card);
       });
     };
-    search.addEventListener('input', render);
+    searchButton.addEventListener('click', () => selected ? close(selected) : render());
+    search.addEventListener('keydown', e => { if (e.key === 'Enter') render(); });
     add.addEventListener('click', async () => {
       add.disabled = true;
       try {
