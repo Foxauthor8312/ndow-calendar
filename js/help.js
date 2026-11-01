@@ -531,8 +531,13 @@ function openHelpTopic(topic){
 
 function showContextHelp(topicKey){
 
+  const token = localStorage.getItem('token');
+
   fetch(
-    'https://ndow-calendar-server.onrender.com/api/help/topics'
+    'https://ndow-calendar-server.onrender.com/api/help/topics',
+    {
+      headers:{ Authorization: `Bearer ${token}` }
+    }
   )
   .then(response => response.json())
   .then(data => {
