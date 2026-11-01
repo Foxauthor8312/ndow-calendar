@@ -38,7 +38,7 @@ async function loadAnglingCalendar() {
       }
     }
   } catch (error) {
-    console.warn('Live Google Calendar unavailable; using iCal feed.', error);
+    // Use the fallback feed quietly when the live Google request is unavailable.
   }
 
   try {
@@ -1544,30 +1544,71 @@ async function chooseAnglingAddress(currentLocation) {
 
 async function editAnglingGoogleEvent(event) {
   const g = event.googleEvent || {};
-  const summary = prompt('Event title:', g.summary || '');
-  if (summary === null) return;
-  let location;
-  try { location = await chooseAnglingAddress(g.location || ''); }
-  catch (error) { alert(error.message); return; }
-  if (location === null) return;
-  const description = prompt('Description:', g.description || '');
-  if (description === null) return;
-  const start = prompt('Start date/time (YYYY-MM-DDTHH:MM) or all-day date:', g.start?.dateTime || g.start?.date || '');
-  if (start === null) return;
-  const end = prompt('End date/time (YYYY-MM-DDTHH:MM) or all-day date:', g.end?.dateTime || g.end?.date || '');
-  if (end === null) return;
-  const allDay = /^\\d{4}-\\d{2}-\\d{2}$/.test(start.trim());
-  const body = {
-    summary: summary.trim(), location, description,
-    start: allDay ? { date: start.trim() } : { dateTime: anglingDateTimeWithOffset(start.trim()) },
-    end: allDay ? { date: end.trim() } : { dateTime: anglingDateTimeWithOffset(end.trim()) }
-  };
-  try {
-    await anglingGoogleWrite('/' + encodeURIComponent(event.id), 'PATCH', body);
-    alert('Google Calendar event updated.');
-    closeAnglingEventDetails();
-    await renderAnglingCalendar();
-  } catch (error) { alert(error.message); }
+  const body = document.getElementById('anglingEventDetailsBody');
+  if (!body) return;
+  const allDay = !!g.start?.date;
+  const inputType = allDay ? 'date' : 'datetime-local';
+  const startValue = allDay ? (g.start?.date || '') : String(g.start?.dateTime || '').slice(0,16);
+  const endValue = allDay ? (g.end?.date || '') : String(g.end?.dateTime || '').slice(0,16);
+  const fieldStyle = 'width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid #CBD5E1;border-radius:6px;font:inherit;color:#1F2937;background:#fff;margin-top:5px;' ;
+  const labelStyle = 'display:block;font-size:12px;font-weight:700;color:#19304B;margin-bottom:13px;' ;
+  body.innerHTML = `
+    <div style="font-size:20px;font-weight:700;color:#19304B;margin-bottom:16px;">Edit Google Calendar Event</div>
+    <label style="${labelStyle}">Event Title<input id="anglingEditTitle" type="text" value="${escapeAnglingHtml(g.summary || '')}" style="${fieldStyle}" required></label>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <label style="${labelStyle}">Start ${allDay ? 'Date' : 'Date & Time'}<input id="anglingEditStart" type="${inputType}" value="${escapeAnglingHtml(startValue)}" style="${fieldStyle}" required></label>
+      <label style="${labelStyle}">End ${allDay ? 'Date' : 'Date & Time'}<input id="anglingEditEnd" type="${inputType}" value="${escapeAnglingHtml(endValue)}" style="${fieldStyle}" required></label>
+    </div>
+    <label style="${labelStyle}">Location<div style="display:flex;gap:8px;margin-top:5px;"><input id="anglingEditLocation" type="text" value="${escapeAnglingHtml(g.location || '')}" style="${fieldStyle}margin:0;flex:1;min-width:0;"><button id="anglingChooseEditLocation" type="button" style="white-space:nowrap;padding:8px 11px;border:1px solid #19304B;border-radius:6px;background:#19304B;color:white;cursor:pointer;">Choose Address</button></div></label>
+    <label style="${labelStyle}">Description<textarea id="anglingEditDescription" rows="5" style="${fieldStyle}resize:vertical;">${escapeAnglingHtml(g.description || '')}</textarea></label>
+    <div id="anglingEditError" style="display:none;color:#B91C1C;font-size:13px;margin:8px 0;"></div>
+    <div style="display:flex;gap:9px;justify-content:flex-end;margin-top:18px;">
+      <button id="anglingCancelEdit" type="button" style="padding:9px 14px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;color:#19304B;cursor:pointer;">Cancel</button>
+      <button id="anglingSaveEdit" type="button" style="padding:9px 16px;border:0;border-radius:6px;background:#19304B;color:#fff;font-weight:700;cursor:pointer;">Save Changes</button>
+    </div>`;
+  document.getElementById('anglingCancelEdit')?.addEventListener('click', () => openAnglingEventDetails(event));
+  document.getElementById('anglingChooseEditLocation')?.addEventListener('click', async () => {
+    const button = document.getElementById('anglingChooseEditLocation');
+    try {
+      button.disabled = true;
+      const selected = await chooseAnglingAddress(document.getElementById('anglingEditLocation').value);
+      if (selected !== null) document.getElementById('anglingEditLocation').value = selected;
+    } catch (error) {
+      const errorBox = document.getElementById('anglingEditError');
+      errorBox.textContent = error.message;
+      errorBox.style.display = 'block';
+    } finally { button.disabled = false; }
+  });
+  document.getElementById('anglingSaveEdit')?.addEventListener('click', async () => {
+    const title = document.getElementById('anglingEditTitle').value.trim();
+    const startValue = document.getElementById('anglingEditStart').value;
+    const endValue = document.getElementById('anglingEditEnd').value;
+    const errorBox = document.getElementById('anglingEditError');
+    if (!title || !startValue || !endValue) { errorBox.textContent = 'Title, start, and end are required.'; errorBox.style.display = 'block'; return; }
+    if (new Date(startValue) >= new Date(endValue)) { errorBox.textContent = 'The end must be later than the start.'; errorBox.style.display = 'block'; return; }
+    const updated = {
+      summary: title,
+      location: document.getElementById('anglingEditLocation').value.trim(),
+      description: document.getElementById('anglingEditDescription').value,
+      start: allDay ? { date: startValue } : { dateTime: anglingDateTimeWithOffset(startValue) },
+      end: allDay ? { date: endValue } : { dateTime: anglingDateTimeWithOffset(endValue) }
+    };
+    const saveButton = document.getElementById('anglingSaveEdit');
+    saveButton.disabled = true;
+    saveButton.textContent = 'Saving…';
+    try {
+      await anglingGoogleWrite('/' + encodeURIComponent(event.id), 'PATCH', updated);
+      await renderAnglingCalendar();
+      const refreshed = await loadAnglingCalendar();
+      const match = refreshed.find(item => item.id === event.id);
+      if (match) openAnglingEventDetails(match); else closeAnglingEventDetails();
+    } catch (error) {
+      errorBox.textContent = error.message;
+      errorBox.style.display = 'block';
+      saveButton.disabled = false;
+      saveButton.textContent = 'Save Changes';
+    }
+  });
 }
 
 async function deleteAnglingGoogleEvent(event) {
@@ -1593,9 +1634,7 @@ async function renderAnglingCalendar() {
 
   if (!container) {
 
-    console.warn(
-      'ANGLING CALENDAR: #proposedEventsList not found.'
-    );
+    // The Angling Calendar panel is not present on this page.
 
     return;
 
