@@ -69,11 +69,22 @@ async function loadHelpTopics(){
 const topicArray =
   topics.topics || topics;
 
-window.helpTopics =
-  topicArray;
+// Help visibility is enforced in the portal display, not just in the editor.
+const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
+const currentRole = String(savedUser.role || 'user').toLowerCase();
+const isAdminViewer = currentRole === 'admin' || currentRole === 'superuser';
+const permittedTopics = topicArray.filter(topic => {
+  const visibility = String(topic.visibility_role || 'all').toLowerCase();
+  if (visibility === 'admin' || visibility === 'admin_superuser') return isAdminViewer;
+  if (visibility === 'superuser') return currentRole === 'superuser';
+  if (visibility === 'user') return !isAdminViewer;
+  return true;
+});
+
+window.helpTopics = permittedTopics;
 
 renderHelpTopicList(
-  topicArray
+  permittedTopics
 );
 
 const searchBox =
@@ -529,8 +540,18 @@ function showContextHelp(topicKey){
     const topics =
       data.topics || data;
 
+    const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    const currentRole = String(savedUser.role || 'user').toLowerCase();
+    const isAdminViewer = currentRole === 'admin' || currentRole === 'superuser';
     const topic =
-      topics.find(
+      topics.find(t => {
+        if (t.topic_key !== topicKey) return false;
+        const visibility = String(t.visibility_role || 'all').toLowerCase();
+        if (visibility === 'admin' || visibility === 'admin_superuser') return isAdminViewer;
+        if (visibility === 'superuser') return currentRole === 'superuser';
+        if (visibility === 'user') return !isAdminViewer;
+        return true;
+      });
         t => t.topic_key === topicKey
       );
 
