@@ -1399,27 +1399,10 @@ async function chooseAnglingAddress(currentLocation) {
   const payload = await response.json();
   if (!response.ok || !payload.success) throw new Error(payload.message || 'Unable to load address library.');
   const addresses = payload.addresses || [];
-  const query = prompt('Search the NDOW address library by venue, street, or city. Leave blank to show all:', currentLocation || '');
-  if (query === null) return null;
-  const q = query.trim().toLowerCase();
-  const matches = addresses.filter(a => !q || [a.location_name,a.address1,a.city,a.state,a.zip].join(' ').toLowerCase().includes(q));
-  const format = a => [a.location_name,a.address1,a.city,a.state,a.zip].filter(Boolean).join(' — ');
-  let selected = null;
-  if (matches.length) {
-    const menu = matches.slice(0, 40).map((a,i) => `${i+1}. ${format(a)}`).join('\\n');
-    const choice = prompt(`Choose an address number, or enter N to add a new address:\\n\\n${menu}\\n\\nN. Add new address\\n0. Keep current location`, '1');
-    if (choice === null || choice.trim() === '0') return null;
-    if (choice.trim().toLowerCase() !== 'n') {
-      const index = Number(choice) - 1;
-      if (!Number.isInteger(index) || index < 0 || index >= Math.min(matches.length,40)) throw new Error('Please enter a valid address number.');
-      selected = matches[index];
-    }
-  } else if (!confirm('No matching active address was found. Add a new Angling address?')) {
-    return null;
-  }
-  if (!selected) {
-    const location_name = prompt('Venue / location name:', query || '');
-    if (location_name === null) return null;
+
+  const createNewAddress = async () => {
+    const location_name = prompt('Venue / location name:');
+    if (location_name === null || !location_name.trim()) return null;
     const address1 = prompt('Street address:');
     if (address1 === null) return null;
     const city = prompt('City:');
@@ -1437,9 +1420,101 @@ async function chooseAnglingAddress(currentLocation) {
     });
     const result = await created.json();
     if (!created.ok || !result.success) throw new Error(result.message || 'Unable to add address.');
-    selected = result.address;
-  }
-  return [selected.location_name, selected.address1, selected.city, selected.state, selected.zip].filter(Boolean).join(', ');
+    return result.address;
+  };
+
+  return new Promise((resolve, reject) => {
+    const overlay = document.createElement('div');
+    overlay.id = 'anglingAddressPicker';
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:100000;background:rgba(15,23,42,.62);display:flex;align-items:center;justify-content:center;padding:18px;';
+    const panel = document.createElement('div');
+    panel.style.cssText = 'width:min(620px,96vw);max-height:82vh;background:#fff;border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.3);display:flex;flex-direction:column;overflow:hidden;font-family:inherit;';
+    const heading = document.createElement('div');
+    heading.style.cssText = 'padding:18px 20px 12px;border-bottom:1px solid #DBE3EC;';
+    const title = document.createElement('div');
+    title.textContent = 'Select Event Location';
+    title.style.cssText = 'font-size:19px;font-weight:700;color:#19304B;margin-bottom:5px;';
+    const subtitle = document.createElement('div');
+    subtitle.textContent = 'Search by venue name, street, or city. Select the matching venue and verify its address.';
+    subtitle.style.cssText = 'font-size:13px;color:#64748b;line-height:1.4;';
+    heading.append(title, subtitle);
+    const search = document.createElement('input');
+    search.type = 'search';
+    search.placeholder = 'Search address library…';
+    search.value = currentLocation || '';
+    search.style.cssText = 'margin:14px 18px 8px;padding:11px 12px;border:1px solid #CBD5E1;border-radius:6px;font-size:14px;';
+    const list = document.createElement('div');
+    list.style.cssText = 'padding:4px 18px 14px;overflow:auto;min-height:100px;';
+    const footer = document.createElement('div');
+    footer.style.cssText = 'display:flex;justify-content:space-between;gap:10px;padding:12px 18px;border-top:1px solid #DBE3EC;background:#F8FAFC;';
+    const buttonStyle = 'border:1px solid #CBD5E1;border-radius:6px;padding:9px 14px;font-weight:600;cursor:pointer;';
+    const add = document.createElement('button');
+    add.textContent = '+ Add New Address';
+    add.style.cssText = buttonStyle + 'background:#19304B;color:white;border-color:#19304B;';
+    const cancel = document.createElement('button');
+    cancel.textContent = 'Cancel';
+    cancel.style.cssText = buttonStyle + 'background:white;color:#334155;';
+    footer.append(add, cancel);
+    panel.append(heading, search, list, footer);
+    overlay.append(panel);
+    document.body.append(overlay);
+
+    let finished = false;
+    const close = value => {
+      if (finished) return;
+      finished = true;
+      overlay.remove();
+      resolve(value);
+    };
+    cancel.addEventListener('click', () => close(null));
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(null); });
+
+    const render = () => {
+      const q = search.value.trim().toLowerCase();
+      const matches = addresses.filter(a =>
+        [a.location_name, a.address1, a.city, a.state, a.zip].join(' ').toLowerCase().includes(q)
+      );
+      list.replaceChildren();
+      if (!matches.length) {
+        const empty = document.createElement('div');
+        empty.textContent = 'No matching addresses. Use “Add New Address” to create one.';
+        empty.style.cssText = 'padding:22px 10px;color:#64748b;text-align:center;font-size:13px;';
+        list.append(empty);
+        return;
+      }
+      matches.forEach(a => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.style.cssText = 'display:block;width:100%;text-align:left;padding:12px 13px;margin:5px 0;border:1px solid #DBE3EC;border-radius:7px;background:white;cursor:pointer;';
+        const name = document.createElement('div');
+        name.textContent = a.location_name || 'Unnamed location';
+        name.style.cssText = 'font-weight:700;color:#19304B;font-size:14px;margin-bottom:4px;';
+        const address = document.createElement('div');
+        address.textContent = [a.address1, [a.city, a.state].filter(Boolean).join(', '), a.zip].filter(Boolean).join(' · ');
+        address.style.cssText = 'font-size:13px;color:#475569;line-height:1.4;';
+        card.append(name, address);
+        card.addEventListener('click', () => close(a));
+        list.append(card);
+      });
+    };
+    search.addEventListener('input', render);
+    add.addEventListener('click', async () => {
+      add.disabled = true;
+      try {
+        const address = await createNewAddress();
+        if (address) close(address);
+        else add.disabled = false;
+      } catch (error) {
+        add.disabled = false;
+        reject(error);
+        overlay.remove();
+      }
+    });
+    render();
+    search.focus();
+  }).then(selected => selected
+    ? [selected.location_name, selected.address1, selected.city, selected.state, selected.zip].filter(Boolean).join(', ')
+    : null);
 }
 
 async function editAnglingGoogleEvent(event) {
