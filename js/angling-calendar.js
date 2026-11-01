@@ -1668,7 +1668,7 @@ const upcoming =
 
       // Ignore NDOW administrative reminders, not actual angling events.
       const eventTitle = String(event.title || '').trim();
-      if (/^please log hours\\b/i.test(eventTitle)) {
+      if (/^please log hours\b/i.test(eventTitle)) {
         return false;
       }
 
