@@ -1225,8 +1225,13 @@ ${
   }
 
 
-  body.innerHTML =
-    html;
+  if (anglingCanEdit && event.googleEvent) {
+    html += '<div style="display:flex;gap:8px;margin-top:16px;"><button id="anglingEditGoogle" style="padding:9px 14px;background:#19304B;color:#fff;border:0;border-radius:6px;cursor:pointer;">Edit Google Event</button><button id="anglingDeleteGoogle" style="padding:9px 14px;background:#fff;color:#DC2626;border:1px solid #DC2626;border-radius:6px;cursor:pointer;">Delete Event</button></div>';
+  }
+
+  body.innerHTML = html;
+  document.getElementById('anglingEditGoogle')?.addEventListener('click', () => editAnglingGoogleEvent(event));
+  document.getElementById('anglingDeleteGoogle')?.addEventListener('click', () => deleteAnglingGoogleEvent(event));
 
 
   modal.style.display =
@@ -1308,6 +1313,107 @@ function closeAnglingEventDetails() {
 }
 
 
+
+let anglingCanEdit = false;
+
+function anglingHeaders() {
+  const token = localStorage.getItem('token');
+  return token ? { Authorization: 'Bearer ' + token } : {};
+}
+
+async function checkAnglingEditorAccess() {
+  try {
+    const url = ANGLING_CALENDAR_API.replace('/angling-calendar', '/angling-calendar/google/status');
+    const response = await fetch(url, { headers: anglingHeaders() });
+    if (!response.ok) return anglingCanEdit = false;
+    const result = await response.json();
+    return anglingCanEdit = !!result.success;
+  } catch (_) {
+    return anglingCanEdit = false;
+  }
+}
+
+function anglingDateTimeWithOffset(value) {
+  const d = new Date(value);
+  const p = n => String(n).padStart(2, '0');
+  const offset = -d.getTimezoneOffset();
+  return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + 'T' +
+    p(d.getHours()) + ':' + p(d.getMinutes()) + ':00' +
+    (offset >= 0 ? '+' : '-') + p(Math.floor(Math.abs(offset)/60)) + ':' + p(Math.abs(offset)%60);
+}
+
+async function anglingGoogleWrite(path, method, body) {
+  const url = ANGLING_CALENDAR_API.replace('/angling-calendar', '/angling-calendar/google/events') + path;
+  const response = await fetch(url, {
+    method,
+    headers: Object.assign({ 'Content-Type': 'application/json' }, anglingHeaders()),
+    ...(body ? { body: JSON.stringify(body) } : {})
+  });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(result.message || 'Google Calendar request failed.');
+  return result;
+}
+
+async function createAnglingGoogleEvent() {
+  const summary = prompt('Event title:');
+  if (summary === null || !summary.trim()) return;
+  const start = prompt('Start date/time (YYYY-MM-DDTHH:MM) or all-day date (YYYY-MM-DD):');
+  if (start === null) return;
+  const end = prompt('End date/time (YYYY-MM-DDTHH:MM) or all-day date (YYYY-MM-DD):');
+  if (end === null) return;
+  const location = prompt('Location (optional):', '');
+  if (location === null) return;
+  const description = prompt('Description (optional):', '');
+  if (description === null) return;
+  const allDay = /^\\d{4}-\\d{2}-\\d{2}$/.test(start.trim());
+  const body = {
+    summary: summary.trim(), location: location.trim(), description,
+    start: allDay ? { date: start.trim() } : { dateTime: anglingDateTimeWithOffset(start.trim()) },
+    end: allDay ? { date: end.trim() } : { dateTime: anglingDateTimeWithOffset(end.trim()) }
+  };
+  try {
+    await anglingGoogleWrite('', 'POST', body);
+    alert('Google Calendar event created.');
+    await renderAnglingCalendar();
+  } catch (error) { alert(error.message); }
+}
+
+async function editAnglingGoogleEvent(event) {
+  const g = event.googleEvent || {};
+  const summary = prompt('Event title:', g.summary || '');
+  if (summary === null) return;
+  const location = prompt('Location:', g.location || '');
+  if (location === null) return;
+  const description = prompt('Description:', g.description || '');
+  if (description === null) return;
+  const start = prompt('Start date/time (YYYY-MM-DDTHH:MM) or all-day date:', g.start?.dateTime || g.start?.date || '');
+  if (start === null) return;
+  const end = prompt('End date/time (YYYY-MM-DDTHH:MM) or all-day date:', g.end?.dateTime || g.end?.date || '');
+  if (end === null) return;
+  const allDay = /^\\d{4}-\\d{2}-\\d{2}$/.test(start.trim());
+  const body = {
+    summary: summary.trim(), location: location.trim(), description,
+    start: allDay ? { date: start.trim() } : { dateTime: anglingDateTimeWithOffset(start.trim()) },
+    end: allDay ? { date: end.trim() } : { dateTime: anglingDateTimeWithOffset(end.trim()) }
+  };
+  try {
+    await anglingGoogleWrite('/' + encodeURIComponent(event.id), 'PATCH', body);
+    alert('Google Calendar event updated.');
+    closeAnglingEventDetails();
+    await renderAnglingCalendar();
+  } catch (error) { alert(error.message); }
+}
+
+async function deleteAnglingGoogleEvent(event) {
+  if (!confirm('Delete this event from Google Calendar? This cannot be undone.')) return;
+  try {
+    await anglingGoogleWrite('/' + encodeURIComponent(event.id), 'DELETE');
+    alert('Google Calendar event deleted.');
+    closeAnglingEventDetails();
+    await renderAnglingCalendar();
+  } catch (error) { alert(error.message); }
+}
+
 // ========================================
 // RENDER ANGling CALENDAR
 // ========================================
@@ -1333,6 +1439,8 @@ async function renderAnglingCalendar() {
   container.innerHTML =
     '<div style="padding:10px;">Loading...</div>';
 
+
+await checkAnglingEditorAccess();
 
 const events =
   await loadAnglingCalendar();
@@ -1537,6 +1645,13 @@ ${
       )
       .join('');
 
+  if (anglingCanEdit) {
+    const bar = document.createElement('div');
+    bar.style.cssText = 'display:flex;justify-content:flex-end;padding:4px 8px 10px;';
+    bar.innerHTML = '<button id="anglingAddGoogle" style="padding:7px 11px;background:#19304B;color:#fff;border:0;border-radius:5px;cursor:pointer;font-size:12px;">+ Add Google Event</button>';
+    container.prepend(bar);
+    document.getElementById('anglingAddGoogle').addEventListener('click', createAnglingGoogleEvent);
+  }
 
   // ----------------------------------------
   // CLICK HANDLERS
