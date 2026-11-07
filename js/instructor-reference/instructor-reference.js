@@ -5,6 +5,30 @@
 const INSTRUCTOR_REFERENCE_API =
   'https://ndow-calendar-server.onrender.com/api/instructor-reference';
 
+const HOOK_LINE_THINKER_API =
+  'https://ndow-calendar-server.onrender.com/api/game-sessions';
+
+async function launchHookLineThinker(){
+  const launchWindow = window.open('about:blank','_blank');
+  try{
+    const token = localStorage.getItem('token');
+    if(!token) throw new Error('Your portal login has expired. Please sign in again.');
+    const response = await fetch(HOOK_LINE_THINKER_API + '/launch',{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Authorization:'Bearer '+token}
+    });
+    const data = await response.json();
+    if(!response.ok || !data.success) throw new Error(data.error || 'Unable to launch the game.');
+    const url = 'https://foxauthor8312.github.io/hook-line-thinker/?launch='+encodeURIComponent(data.launch_code);
+    if(launchWindow) launchWindow.location.href=url;
+    else window.location.href=url;
+  }catch(error){
+    if(launchWindow) launchWindow.close();
+    alert('Hook, Line & Thinker could not start: '+error.message);
+  }
+}
+
+
 let instructorReferenceDocuments = [];
 
 
@@ -1122,6 +1146,20 @@ function openInstructorReferenceFolder(
             margin:0 auto;
           "
         >
+
+          ${
+            category === 'Angling Education' && folder === 'Resources'
+              ? `
+                <div style="background:white;border:1px solid #DBE3EC;border-left:4px solid #F29647;border-radius:8px;padding:18px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+                  <div>
+                    <div style="font-size:16px;font-weight:700;color:#19304B">Hook, Line &amp; Thinker</div>
+                    <div style="font-size:13px;color:#64748B;margin-top:4px">Launch the fishing knowledge game and connect the host tablet.</div>
+                  </div>
+                  <button type="button" onclick="launchHookLineThinker()" style="background:#19304B;color:white;border:0;border-radius:6px;padding:10px 16px;font-weight:700;cursor:pointer">LAUNCH GAME</button>
+                </div>
+              `
+              : ''
+          }
 
           ${
             documents.length === 0
